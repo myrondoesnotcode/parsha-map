@@ -3,3 +3,16 @@ dist
 .env
 .env.local
 src/data/places.json
+
+# TypeScript build artifacts
+*.tsbuildinfo
+*.d.ts
+*.js.map
+
+# Compiled script outputs (scripts/ runs via tsx, not compiled)
+scripts/*.js
+scripts/*.d.ts
+
+# Vite compiled config (not needed in repo)
+vite.config.js
+vite.config.d.ts
