@@ -2,7 +2,6 @@ node_modules
 dist
 .env
 .env.local
-src/data/places.json
 
 # TypeScript build artifacts
 *.tsbuildinfo
