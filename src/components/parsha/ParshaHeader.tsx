@@ -55,7 +55,7 @@ export function ParshaHeader() {
       </div>
 
       <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-stone-500">
-        <span>Parasha #{parsha.number}</span>
+        <span>Portion {parsha.number} of {parshas.length}</span>
         {parsha.approximateDateBCE.start && (
           <span>
             {formatYearBCE(parsha.approximateDateBCE.start)}
@@ -66,7 +66,7 @@ export function ParshaHeader() {
           </span>
         )}
         {currentWeekParsha?.id === parsha.id && (
-          <span className="text-amber-600 font-medium">This week's Parsha</span>
+          <span className="text-amber-600 font-medium">This week's portion</span>
         )}
       </div>
     </div>

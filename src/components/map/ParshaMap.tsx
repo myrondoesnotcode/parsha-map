@@ -136,9 +136,9 @@ export function ParshaMap() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[300]">
           <div className="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl shadow-lg px-6 py-5 text-center max-w-xs border border-stone-200">
             <div className="text-4xl mb-3">🗺️</div>
-            <p className="text-stone-700 font-medium">Select a Parsha</p>
+            <p className="text-stone-700 font-medium">Choose a Torah portion</p>
             <p className="text-stone-400 text-sm mt-1">
-              Biblical places will appear on the map
+              Biblical places mentioned in the text will appear on the map
             </p>
           </div>
         </div>

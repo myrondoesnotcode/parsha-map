@@ -29,8 +29,8 @@ export function ParshaTextViewer() {
       <div className="flex-1 flex items-center justify-center text-stone-300 text-sm p-4">
         <div className="text-center">
           <div className="text-4xl mb-3">📖</div>
-          <p>Select a Parsha from the dropdown above</p>
-          <p className="mt-1 text-xs text-stone-300">to read the text and see its places on the map</p>
+          <p>Select a Torah portion to read</p>
+          <p className="mt-1 text-xs text-stone-300">Places mentioned in the text will light up on the map</p>
         </div>
       </div>
     )
@@ -74,7 +74,7 @@ export function ParshaTextViewer() {
           ))}
           {hebrewVerses.length > 20 && (
             <p className="text-xs text-stone-400 text-center pt-1">
-              Showing first 20 verses
+              Displaying first 20 of {hebrewVerses.length} verses
             </p>
           )}
         </div>
@@ -91,7 +91,7 @@ export function ParshaTextViewer() {
           ))}
           {englishVerses.length > 20 && (
             <p className="text-xs text-stone-400 text-center pt-2">
-              Showing first 20 verses of {englishVerses.length} total
+              Displaying first 20 of {englishVerses.length} verses
             </p>
           )}
         </div>

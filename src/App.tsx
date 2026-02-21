@@ -42,12 +42,12 @@ export default function App() {
         <div className="flex items-center gap-3">
           <LogoLockup />
           <span className="text-stone-400 text-sm hidden sm:inline">
-            Historical Context &amp; Ancient Near East
+            Biblical geography &amp; historical context
           </span>
         </div>
         {selectedParshaId && (
           <span className="text-xs text-stone-400 hidden sm:inline">
-            Scroll the timeline to explore eras
+            Drag the timeline to change the historical era
           </span>
         )}
       </header>

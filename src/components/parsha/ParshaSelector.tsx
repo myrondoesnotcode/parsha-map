@@ -37,7 +37,7 @@ export function ParshaSelector({ filterQuery }: Props) {
         )}
         aria-label="Select Parsha"
       >
-        <Select.Value placeholder="Choose a Parsha…" />
+        <Select.Value placeholder="Choose a Torah portion…" />
         <Select.Icon className="ml-2 text-stone-400">
           <ChevronDown size={16} />
         </Select.Icon>

@@ -29,7 +29,7 @@ export function ContextPanel() {
           <div className="flex items-center justify-center h-32 text-stone-300 text-sm">
             <div className="text-center">
               <div className="text-3xl mb-2">🏺</div>
-              <p>Move the timeline slider to explore eras</p>
+              <p>Select a Parsha to see its historical context</p>
             </div>
           </div>
         )}
