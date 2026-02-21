@@ -1,0 +1,112 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "via-maris",
+        "name": "Via Maris",
+        "nameHe": "דֶּרֶךְ הַיָּם",
+        "activeFrom": 3000,
+        "activeTo": 400,
+        "color": "#E67E22",
+        "description": "The coastal highway from Egypt to Mesopotamia; the primary international road of the ancient Near East, running along the Mediterranean coast through Canaan.",
+        "biblicalRef": "Isaiah 9:1"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [31.2, 30.1],
+          [32.5, 31.2],
+          [34.3, 31.5],
+          [34.7, 32.1],
+          [35.0, 32.7],
+          [35.3, 33.0],
+          [35.5, 33.5],
+          [36.0, 36.2],
+          [37.1, 37.0]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "kings-highway",
+        "name": "King's Highway",
+        "nameHe": "דֶּרֶךְ הַמֶּלֶךְ",
+        "activeFrom": 2500,
+        "activeTo": 400,
+        "color": "#8E44AD",
+        "description": "The Transjordanian highland road running north–south through Edom, Moab, Ammon, and Gilead. A major route for trade and military movement east of the Jordan River.",
+        "biblicalRef": "Numbers 20:17"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [35.0, 29.5],
+          [35.5, 30.3],
+          [35.7, 30.9],
+          [35.8, 31.4],
+          [35.9, 31.9],
+          [36.1, 32.6],
+          [36.3, 33.5],
+          [36.6, 34.4],
+          [36.7, 35.2]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "incense-route",
+        "name": "Incense Route",
+        "nameHe": "דֶּרֶךְ הַבְּשָׂמִים",
+        "activeFrom": 1000,
+        "activeTo": 400,
+        "color": "#F39C12",
+        "description": "The Arabian spice and incense road from Sheba (Yemen) through the Hijaz and Nabatea to the Mediterranean ports. Carried frankincense, myrrh, and eastern spices.",
+        "biblicalRef": "1 Kings 10:2"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [44.2, 15.4],
+          [43.5, 17.0],
+          [42.5, 18.5],
+          [40.0, 21.5],
+          [38.5, 23.0],
+          [37.0, 25.0],
+          [36.5, 27.0],
+          [35.5, 29.5],
+          [34.8, 30.3],
+          [34.4, 31.5]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "great-trunk-road",
+        "name": "Euphrates Route",
+        "nameHe": "דֶּרֶךְ הַנָּהָר",
+        "activeFrom": 3000,
+        "activeTo": 400,
+        "color": "#1ABC9C",
+        "description": "The inland route following the Euphrates River connecting Mesopotamia (Babylon, Ur) with northern Syria and Anatolia. Used by Abraham's migration from Ur to Haran.",
+        "biblicalRef": "Genesis 11:31"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [46.2, 30.9],
+          [44.4, 33.3],
+          [42.0, 34.6],
+          [40.0, 36.2],
+          [38.5, 37.0],
+          [37.1, 37.1],
+          [36.8, 37.5]
+        ]
+      }
+    }
+  ]
+}

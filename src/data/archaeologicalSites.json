@@ -1,0 +1,242 @@
+[
+  {
+    "id": "megiddo",
+    "name": "Megiddo",
+    "alternateNames": ["Armageddon", "Tel Megiddo", "Tell el-Mutesellim"],
+    "latitude": 32.585,
+    "longitude": 35.183,
+    "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "Strategic city controlling the Jezreel Valley pass on the Via Maris trade route. 25+ layers of occupation make it one of the most excavated sites in the world.",
+    "significance": "UNESCO World Heritage Site; site of the Battle of Megiddo (1457 BCE); later gave its name to Armageddon"
+  },
+  {
+    "id": "hazor",
+    "name": "Hazor",
+    "alternateNames": ["Tel Hazor", "Tell el-Qedah"],
+    "latitude": 33.017,
+    "longitude": 35.567,
+    "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "The largest Canaanite city in the Late Bronze Age, with a population of 20,000-40,000. Joshua burned it. Solomon later rebuilt it as a royal city. Destroyed by Assyrians in 732 BCE.",
+    "significance": "Head of all Canaanite kingdoms (Josh 11:10); Amarna letters document its kings; UNESCO World Heritage Site"
+  },
+  {
+    "id": "lachish",
+    "name": "Lachish",
+    "alternateNames": ["Tell ed-Duweir", "Tel Lachish"],
+    "latitude": 31.556,
+    "longitude": 34.847,
+    "eraIds": ["late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "Judah's second most important city after Jerusalem. The Lachish Letters (586 BCE) are among the oldest Hebrew documents. Famous Assyrian reliefs in the British Museum depict Sennacherib's siege.",
+    "significance": "Key Judean fortress; Lachish reliefs in British Museum; Lachish Letters document final days of First Temple period"
+  },
+  {
+    "id": "gezer",
+    "name": "Gezer",
+    "alternateNames": ["Tel Gezer", "Tell Jezer"],
+    "latitude": 31.859,
+    "longitude": 34.919,
+    "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "Important city at the crossroads of the coastal plain and Shephelah. The Gezer Calendar (10th c. BCE) is one of the oldest Hebrew inscriptions. Egyptian pharaoh burned Gezer and gave it as dowry to Solomon.",
+    "significance": "Gezer Calendar (earliest Hebrew agricultural inscription); strategic crossroads site; built by Solomon (1 Kgs 9:15-17)"
+  },
+  {
+    "id": "shechem",
+    "name": "Shechem",
+    "alternateNames": ["Tell Balata", "Nablus area", "Sichem"],
+    "latitude": 32.208,
+    "longitude": 35.282,
+    "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "Central highland city where Abraham built his first altar in Canaan. Jacob bought land and dug a well here. Joshua held the covenant renewal ceremony at Shechem. Rehoboam was crowned here before the kingdom split.",
+    "significance": "First site where God appeared to Abraham in Canaan; place of covenant renewal; Jeroboam made it northern capital"
+  },
+  {
+    "id": "arad",
+    "name": "Arad",
+    "alternateNames": ["Tel Arad", "Tell Arad"],
+    "latitude": 31.276,
+    "longitude": 35.118,
+    "eraIds": ["early-bronze", "iron-age-2"],
+    "description": "Excavations revealed a remarkable Israelite temple at Arad — one of only two known Israelite temples from the biblical period. Contains altars of the same dimensions as described in the Torah. The Arad ostraca (600+ Hebrew inscriptions) document military administration.",
+    "significance": "One of two known Israelite temples (with Moza); Arad ostraca are largest collection of pre-exilic Hebrew inscriptions"
+  },
+  {
+    "id": "beersheba",
+    "name": "Beersheba",
+    "alternateNames": ["Tel Beer-Sheba", "Be'er Sheva", "Bersheva"],
+    "latitude": 31.244,
+    "longitude": 34.798,
+    "eraIds": ["middle-bronze", "iron-age-1", "iron-age-2"],
+    "description": "Southernmost city of biblical Israel ('from Dan to Beersheba'). Abraham dug a well and planted a tamarisk tree here. Isaac built an altar. Elijah fled here from Jezebel. A dismantled Iron Age altar was found, possibly from Hezekiah's reforms.",
+    "significance": "Marks southern extent of biblical Israel; Abraham's covenant with Abimelech (Gen 21); UNESCO World Heritage Site"
+  },
+  {
+    "id": "dan",
+    "name": "Tel Dan",
+    "alternateNames": ["Tel Dan", "Tell el-Qadi", "Laish"],
+    "latitude": 33.249,
+    "longitude": 35.651,
+    "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "Northernmost city of biblical Israel. The Tel Dan Stele (9th century BCE) contains the earliest extra-biblical reference to the 'House of David.' Jeroboam erected a golden calf shrine here. The city controlled a major spring feeding the Jordan River.",
+    "significance": "Tel Dan Stele — first extra-biblical mention of 'House of David'; Jeroboam's golden calf shrine (1 Kgs 12:29)"
+  },
+  {
+    "id": "jerusalem-city-of-david",
+    "name": "City of David",
+    "alternateNames": ["Jebus", "Jerusalem", "Zion", "Ophel"],
+    "latitude": 31.774,
+    "longitude": 35.236,
+    "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "The original settlement of Jerusalem on the southeastern ridge south of the Temple Mount. David conquered it from the Jebusites around 1000 BCE. Hezekiah's Tunnel (701 BCE) is still walkable — cut through solid rock to secure water supply during Sennacherib's siege.",
+    "significance": "David's capital; Hezekiah's Tunnel; Siloam Inscription; Pool of Siloam; ongoing excavations reveal 3000+ years of occupation"
+  },
+  {
+    "id": "babylon",
+    "name": "Babylon",
+    "alternateNames": ["Bavel", "Babel", "Babilu"],
+    "latitude": 32.542,
+    "longitude": 44.421,
+    "eraIds": ["early-bronze", "middle-bronze", "babylonian-persian"],
+    "description": "One of the ancient world's greatest cities. Under Nebuchadnezzar II, Babylon was rebuilt with massive walls, the Ishtar Gate, the ziggurat Etemenanki (possibly the Tower of Babel prototype), and legendary Hanging Gardens. The Jewish exile was centered here.",
+    "significance": "Tower of Babel tradition; site of Jewish exile; Ishtar Gate now in Berlin's Pergamon Museum; UNESCO World Heritage Site"
+  },
+  {
+    "id": "ur",
+    "name": "Ur of the Chaldees",
+    "alternateNames": ["Ur", "Tell el-Muqayyar", "Ur Kasdim"],
+    "latitude": 30.962,
+    "longitude": 46.104,
+    "eraIds": ["chalcolithic", "early-bronze", "middle-bronze"],
+    "description": "A major Sumerian city-state near the mouth of the Euphrates. The Royal Cemetery of Ur (c. 2600 BCE) contained extraordinary gold artifacts. The massive ziggurat of Ur-Nammu still stands. This is the city where Terah took his family before Abraham's call.",
+    "significance": "Abraham's hometown (Gen 11:28-31); Royal Cemetery of Ur with spectacular gold artifacts; well-preserved ziggurat"
+  },
+  {
+    "id": "eridu",
+    "name": "Eridu",
+    "alternateNames": ["Tell Abu Shahrain"],
+    "latitude": 30.815,
+    "longitude": 45.998,
+    "eraIds": ["chalcolithic", "early-bronze"],
+    "description": "Considered the world's first city according to the Sumerian King List. Continuously occupied from 5400 BCE, Eridu has 18 layers of temple construction. The Sumerian flood story was preserved here. Possibly the origin of the Garden of Eden traditions.",
+    "significance": "Possibly world's oldest city; 18 superimposed temples; source of Sumerian flood narrative; near ancient Persian Gulf coastline"
+  },
+  {
+    "id": "uruk",
+    "name": "Uruk",
+    "alternateNames": ["Warka", "Erech", "Biblical Erech"],
+    "latitude": 31.324,
+    "longitude": 45.636,
+    "eraIds": ["chalcolithic", "early-bronze"],
+    "description": "The world's first true city (c. 3200 BCE), with a population of 50,000-80,000. Uruk gave us the first writing (cuneiform), the first monumental architecture, and complex administration. The Epic of Gilgamesh's hero ruled here. Genesis lists it among Nimrod's cities.",
+    "significance": "First true city; birthplace of writing; Epic of Gilgamesh; biblical 'Erech' (Gen 10:10)"
+  },
+  {
+    "id": "ugarit-site",
+    "name": "Ugarit (Ras Shamra)",
+    "alternateNames": ["Ras Shamra", "Ugarit"],
+    "latitude": 35.602,
+    "longitude": 35.786,
+    "eraIds": ["middle-bronze", "late-bronze"],
+    "description": "Major Late Bronze Age city-state on the Syrian coast. Excavations since 1929 revealed a palace library with thousands of clay tablets in Ugaritic — closely related to Hebrew. The Baal Cycle and other myths illuminate the Canaanite religious world confronted by the biblical prophets.",
+    "significance": "Ugaritic language closest to biblical Hebrew; Baal Cycle illuminates Canaanite religion; destroyed c. 1185 BCE"
+  },
+  {
+    "id": "persepolis",
+    "name": "Persepolis",
+    "alternateNames": ["Parsa", "Takht-e Jamshid"],
+    "latitude": 29.935,
+    "longitude": 52.891,
+    "eraIds": ["babylonian-persian"],
+    "description": "The ceremonial capital of the Achaemenid Persian Empire, built by Darius I and Xerxes. Its massive terrace held palaces, audience halls (apadanas), and treasury storehouses. Delegations from all 23 satrapies brought tribute — depicted in famous carved reliefs. Burned by Alexander the Great in 330 BCE.",
+    "significance": "Persian imperial capital; reliefs show delegations from all provinces; Xerxes (Ahasuerus of Esther) built the famous harem here"
+  },
+  {
+    "id": "tell-el-amarna",
+    "name": "Tell el-Amarna (Akhetaten)",
+    "alternateNames": ["Amarna", "Akhetaten", "Tell el-Amarna"],
+    "latitude": 27.645,
+    "longitude": 30.895,
+    "eraIds": ["late-bronze"],
+    "description": "Akhenaten's purpose-built capital for his monotheistic Aten religion, founded c. 1346 BCE and abandoned after his death. The Amarna Letters archive — 382 clay tablets — documents diplomatic correspondence between Egypt and Canaanite city-states, Mitanni, Babylon, Assyria, and Hatti.",
+    "significance": "Amarna Letters document Late Bronze Age international diplomacy; first experiment in state monotheism; abandoned within 20 years"
+  },
+  {
+    "id": "ekron",
+    "name": "Ekron",
+    "alternateNames": ["Tel Miqne", "Khirbet el-Muqanna"],
+    "latitude": 31.766,
+    "longitude": 34.855,
+    "eraIds": ["iron-age-1", "iron-age-2"],
+    "description": "One of the five Philistine cities. The Ark of the Covenant was brought here after being taken from Israel. The largest olive oil industrial center of the ancient Near East was discovered here — 115 olive oil presses from the 7th century BCE. A royal dedicatory inscription confirmed the identification.",
+    "significance": "Ark of the Covenant brought here (1 Sam 5); largest ancient olive oil factory; royal inscription confirms identification"
+  },
+  {
+    "id": "ashdod",
+    "name": "Ashdod",
+    "alternateNames": ["Tell Ashdod", "Azotus"],
+    "latitude": 31.814,
+    "longitude": 34.651,
+    "eraIds": ["late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "One of the five Philistine cities and the largest. The Ark of the Covenant was housed in the temple of Dagon here after capture. Excavations revealed continuous occupation from Bronze Age through Byzantine period. The idol of Dagon fell before the Ark twice.",
+    "significance": "Ark captured and placed in Dagon's temple (1 Sam 5); Dagon's idol falls twice before the Ark; major Philistine city"
+  },
+  {
+    "id": "shiloh",
+    "name": "Shiloh",
+    "alternateNames": ["Khirbet Seilun", "Tel Shiloh"],
+    "latitude": 32.057,
+    "longitude": 35.291,
+    "eraIds": ["late-bronze", "iron-age-1"],
+    "description": "The central sanctuary of Israel during the period of the Judges — home of the Tabernacle and Ark of the Covenant for approximately 300 years. Hannah prayed here for a son; Samuel grew up here. Destroyed by Philistines around 1050 BCE.",
+    "significance": "Home of the Tabernacle and Ark (Josh 18); Samuel's childhood home; Hannah's prayer (1 Sam 1); destroyed before Jerusalem Temple"
+  },
+  {
+    "id": "hebron",
+    "name": "Hebron",
+    "alternateNames": ["Kiryat Arba", "Tel Rumeida"],
+    "latitude": 31.532,
+    "longitude": 35.095,
+    "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "The cave of Machpelah purchased by Abraham from Ephron the Hittite became the burial place of the patriarchs and matriarchs. David's first capital before Jerusalem. The tomb structure above Machpelah was built by Herod the Great and stands today.",
+    "significance": "Cave of Machpelah — burial of Abraham, Isaac, Jacob, Sarah, Rebekah, Leah; David's first capital (2 Sam 2:11)"
+  },
+  {
+    "id": "mizpah",
+    "name": "Mizpah",
+    "alternateNames": ["Tell en-Nasbeh", "Mizpa"],
+    "latitude": 31.868,
+    "longitude": 35.222,
+    "eraIds": ["iron-age-1", "iron-age-2", "babylonian-persian"],
+    "description": "Central assembly point for Israel in Judges and Samuel. Samuel held his circuit court here. After Jerusalem's fall in 586 BCE, Mizpah became the administrative capital of the Babylonian province of Judah under Gedaliah.",
+    "significance": "Samuel anoints Saul near here (1 Sam 10); Gedaliah's provincial capital after Jerusalem's fall (2 Kgs 25:23-25)"
+  },
+  {
+    "id": "elephantine",
+    "name": "Elephantine",
+    "alternateNames": ["Yeb", "Jeb", "Elephantine Island"],
+    "latitude": 24.085,
+    "longitude": 32.887,
+    "eraIds": ["babylonian-persian"],
+    "description": "Island in the Nile where a Jewish military garrison maintained a temple to YHWH in the 5th century BCE. The Elephantine Papyri (discovered 1893) contain letters, contracts, and religious documents from this Jewish community — remarkable evidence of diaspora Judaism during the Persian period.",
+    "significance": "Jewish temple to YHWH outside Jerusalem; Elephantine Papyri document 5th century BCE Jewish diaspora in Egypt"
+  },
+  {
+    "id": "tell-es-sakan",
+    "name": "Tell es-Sakan (ancient Gaza)",
+    "alternateNames": ["Gaza (ancient)", "Tell as-Sakan", "Hazzu"],
+    "latitude": 31.503,
+    "longitude": 34.449,
+    "eraIds": ["late-bronze", "iron-age-1", "iron-age-2"],
+    "description": "The ancient tell underlying modern Gaza, with continuous occupation since at least the Early Bronze Age. Egyptian pharaohs maintained garrisons and administrative centers here. The Philistine city of Gaza controlled the southern coastal trade route. Samson met his end in the temple of Dagon here.",
+    "significance": "Samson's death at the Philistine temple (Judg 16); major Egyptian administrative center; gateway to Sinai"
+  },
+  {
+    "id": "tel-dan",
+    "name": "Tel Dan Stele Site",
+    "alternateNames": ["Beit Tzida", "Dan excavation"],
+    "latitude": 33.252,
+    "longitude": 35.654,
+    "eraIds": ["iron-age-2"],
+    "description": "The site where, in 1993-94, three fragments of an Aramaic stele were discovered mentioning 'the House of David' — the first extra-biblical reference to the Davidic dynasty. The stele was likely erected by Hazael of Damascus after defeating Israelite and Judahite forces.",
+    "significance": "Tel Dan Stele — first extra-biblical proof of David's dynasty; erected by Hazael of Aram c. 835 BCE"
+  }
+]

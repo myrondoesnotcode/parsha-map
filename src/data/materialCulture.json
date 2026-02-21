@@ -1,0 +1,78 @@
+{
+  "chalcolithic": {
+    "eraId": "chalcolithic",
+    "writing": "Pre-literate; pictographic tokens used for accounting in Mesopotamia",
+    "pottery": "Ghassulian fine ware; copper implements first appearing",
+    "architecture": "Mudbrick villages; early temples at Eridu (Mesopotamia)",
+    "religion": "Animistic religion; fertility cults; early temple culture in Mesopotamia",
+    "politics": "Village-based tribal societies; early chiefdoms in Levant",
+    "trade": "Obsidian, copper, and shell traded regionally across the Near East",
+    "keyPowers": ["Early Sumerian city-states", "Pre-Dynastic Egypt", "Ghassulian culture (Canaan)"]
+  },
+  "early-bronze": {
+    "eraId": "early-bronze",
+    "writing": "Cuneiform invented (~3200 BCE); Egyptian hieroglyphics develop; earliest literary texts",
+    "pottery": "Wheel-made pottery widespread; Khirbet Kerak ware in Canaan",
+    "architecture": "Monumental mudbrick temples (ziggurats); Egyptian pyramid construction begins",
+    "religion": "Sumerian pantheon (Enlil, Enki, Inanna); Egyptian state religion; pharaoh as god-king",
+    "politics": "Sumerian city-states (Ur, Uruk, Lagash); Old Kingdom Egypt; Akkadian Empire",
+    "trade": "Lapis lazuli from Afghanistan; cedar from Lebanon; tin from unknown eastern source",
+    "keyPowers": ["Old Kingdom Egypt", "Ur (Sumer)", "Akkadian Empire", "Early Dynastic city-states"],
+    "archaeologicalSites": ["Uruk", "Ur", "Megiddo (Early Bronze)", "Arad", "Tell es-Sakan"]
+  },
+  "middle-bronze": {
+    "eraId": "middle-bronze",
+    "writing": "Cuneiform literature flourishes (Epic of Gilgamesh); Proto-Sinaitic alphabet emerging (~1800 BCE)",
+    "pottery": "Wheel-made red-burnished ware; Tell el-Ajjul tradition in Canaan",
+    "architecture": "Mudbrick city walls with glacis; triple-gate complexes at Megiddo, Hazor, Gezer",
+    "religion": "El as chief deity in Canaan; Baal storm-god worship; temples at Megiddo and Shechem",
+    "politics": "City-state system under Egyptian influence; Old Babylonian Empire (Hammurabi); Hyksos",
+    "trade": "Tin from Afghanistan via Assyrian merchant colonies (karum) at Kanesh; Egyptian trade with Byblos",
+    "keyPowers": ["Old Babylonian Empire", "Egyptian Middle Kingdom", "Amorite city-states", "Minoan Crete"],
+    "archaeologicalSites": ["Tell el-Ajjul", "Hazor", "Megiddo", "Shechem", "Gezer", "Hebron"]
+  },
+  "late-bronze": {
+    "eraId": "late-bronze",
+    "writing": "Alphabetic writing spreading (Ugaritic, early Phoenician); Amarna Letters in Akkadian",
+    "pottery": "Mycenaean and Cypriot imports; bichrome ware; Canaanite jars for trade",
+    "architecture": "Egyptian administrative buildings in Canaan; Canaanite temple style (broad-room); palaces",
+    "religion": "Baal cycle mythology at Ugarit; Egyptian solar religion under Akhenaten; cult of Asherah",
+    "politics": "Egyptian New Kingdom controls Canaan; Hittite Empire in north; Mitanni, Assyria competing",
+    "trade": "Pan-Mediterranean Bronze Age trading network; tin from Europe; copper from Cyprus",
+    "keyPowers": ["Egyptian New Kingdom", "Hittite Empire", "Mitanni", "Mycenaean Greece", "Ugarit"],
+    "archaeologicalSites": ["Megiddo", "Hazor", "Lachish", "Gezer", "Tell el-Amarna", "Ugarit"]
+  },
+  "iron-age-1": {
+    "eraId": "iron-age-1",
+    "writing": "Phoenician alphabet spreading; early Hebrew script emerging; Gezer Calendar",
+    "pottery": "Collared-rim store jars associated with highland settlements; Philistine bichrome ware",
+    "architecture": "Four-room house as Israelite architectural type; Philistine cities (Ashdod, Ekron)",
+    "religion": "Yahweh worship establishing; Ba'al conflict; local shrines (bamot); ark of the covenant",
+    "politics": "Bronze Age Collapse fragments empires; Philistine pentapolis; tribal confederacy; early monarchy",
+    "trade": "Disrupted international trade; local exchange economies; iron metallurgy spreading",
+    "keyPowers": ["Philistine city-states", "Emerging Israelite confederacy", "Phoenician cities", "Aramaean kingdoms"],
+    "archaeologicalSites": ["Shiloh", "Megiddo VIA", "Hazor XI", "Tel Dan", "Ekron", "Ashdod"]
+  },
+  "iron-age-2": {
+    "eraId": "iron-age-2",
+    "writing": "Hebrew ostraca (Samaria Ostraca, Lachish Letters); royal inscriptions; early biblical texts",
+    "pottery": "Red-slip ware; Assyrian palace ware in conquered territories; storage jar traditions",
+    "architecture": "Israelite royal architecture at Megiddo, Hazor, Gezer (Solomon's gates); Assyrian palaces",
+    "religion": "Reform movements; Deuteronomistic theology; Isaiah, Jeremiah, Amos prophesying",
+    "politics": "United Monarchy (David/Solomon); Divided Kingdom (Israel/Judah); Assyrian conquest of Israel (722 BCE)",
+    "trade": "Phoenician maritime trade; Arabian incense route active; Assyrian tribute system",
+    "keyPowers": ["Neo-Assyrian Empire", "Kingdom of Israel", "Kingdom of Judah", "Phoenicia", "Aram-Damascus"],
+    "archaeologicalSites": ["Jerusalem (City of David)", "Megiddo IVA", "Lachish III", "Arad", "Beersheba"]
+  },
+  "babylonian-persian": {
+    "eraId": "babylonian-persian",
+    "writing": "Aramaic becomes international language; Dead Sea region scribal traditions begin",
+    "pottery": "Persian-period ware; Attic imports; mortaria and storage jars",
+    "architecture": "Persian administrative buildings; Second Temple construction begins; Nehemiah's walls",
+    "religion": "Monotheism crystallizing in exile; Torah edited; synagogue origins; Zoroastrian influence",
+    "politics": "Babylonian exile (586–538 BCE); Cyrus Edict; Persian province of Yehud (Judah)",
+    "trade": "Persian royal road system; Aramaic commercial documents; Elephantine Jewish community",
+    "keyPowers": ["Neo-Babylonian Empire", "Persian Achaemenid Empire", "Yehud (Persian province)"],
+    "archaeologicalSites": ["Babylon", "Persepolis", "Mizpah", "Elephantine (Egypt)", "Jerusalem (Persian)"]
+  }
+}

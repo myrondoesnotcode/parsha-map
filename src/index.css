@@ -1,0 +1,66 @@
+/* Leaflet map CSS must come before @tailwind directives */
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Hebrew text styling */
+  .font-hebrew {
+    font-family: 'Frank Ruhl Libre', 'David', serif;
+  }
+
+  /* Fix leaflet z-index conflicts with Radix UI */
+  .leaflet-pane {
+    z-index: 10;
+  }
+  .leaflet-top,
+  .leaflet-bottom {
+    z-index: 15;
+  }
+}
+
+@layer components {
+  button.place-highlight {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #b45309;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    cursor: pointer;
+  }
+
+  button.place-highlight:hover {
+    color: #92400e;
+    background-color: #fef3c7;
+    border-radius: 2px;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: #cbd5e1;
+    border-radius: 2px;
+  }
+}

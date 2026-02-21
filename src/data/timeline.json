@@ -1,0 +1,103 @@
+[
+  {
+    "id": "chalcolithic",
+    "name": "Chalcolithic Period",
+    "startBCE": 4500,
+    "endBCE": 3300,
+    "color": "#8B7355",
+    "shortDesc": "Copper Age; early settled agriculture and first urbanization in Mesopotamia and Levant",
+    "biblicalContext": "Pre-patriarchal; antediluvian narratives",
+    "events": [
+      { "yearBCE": 4000, "description": "Ubaid culture flourishes in Mesopotamia", "significance": "Proto-urban settlements emerge along rivers" },
+      { "yearBCE": 3500, "description": "First cities rise at Uruk and Eridu", "significance": "Beginning of urban civilization" },
+      { "yearBCE": 3200, "description": "Earliest pictographic writing (proto-cuneiform) at Uruk", "significance": "Humanity's first written records" }
+    ]
+  },
+  {
+    "id": "early-bronze",
+    "name": "Early Bronze Age",
+    "startBCE": 3300,
+    "endBCE": 2000,
+    "color": "#B8860B",
+    "shortDesc": "First cities; cuneiform writing; Sumerian city-states; Old Kingdom Egypt; pyramids",
+    "biblicalContext": "Primordial narratives; Table of Nations; Tower of Babel",
+    "events": [
+      { "yearBCE": 3100, "description": "Egypt unified under Narmer/Menes", "significance": "First Egyptian dynasty; start of pharaonic civilization" },
+      { "yearBCE": 2560, "description": "Great Pyramid of Giza completed", "significance": "Pinnacle of Old Kingdom engineering" },
+      { "yearBCE": 2334, "description": "Sargon of Akkad creates first empire", "significance": "First recorded multi-city empire in history" },
+      { "yearBCE": 2100, "description": "Third Dynasty of Ur (Ur III) rises", "significance": "Sumerian renaissance; elaborate temple-ziggurats built" }
+    ]
+  },
+  {
+    "id": "middle-bronze",
+    "name": "Middle Bronze Age",
+    "startBCE": 2000,
+    "endBCE": 1550,
+    "color": "#DAA520",
+    "shortDesc": "Amorite kingdoms; Old Babylonian Empire; Hyksos in Egypt; Canaanite city-state system",
+    "biblicalContext": "Abraham, Isaac, Jacob, Joseph — the Patriarchal period",
+    "events": [
+      { "yearBCE": 1792, "description": "Hammurabi becomes king of Babylon", "significance": "Law code promulgated; first written legal system" },
+      { "yearBCE": 1800, "description": "Proto-Sinaitic alphabet invented in Sinai/Canaan", "significance": "Ancestor of Hebrew, Greek, and all modern alphabets" },
+      { "yearBCE": 1650, "description": "Hyksos seize control of northern Egypt", "significance": "First foreign rulers of Egypt; introduced chariots and bronze weapons" }
+    ]
+  },
+  {
+    "id": "late-bronze",
+    "name": "Late Bronze Age",
+    "startBCE": 1550,
+    "endBCE": 1200,
+    "color": "#CD853F",
+    "shortDesc": "Egyptian New Kingdom; Hittite Empire; Amarna international system; widespread trade networks",
+    "biblicalContext": "Moses, the Exodus, wilderness wanderings",
+    "events": [
+      { "yearBCE": 1457, "description": "Battle of Megiddo — Thutmose III defeats Canaanite coalition", "significance": "Egypt establishes dominance over Canaan" },
+      { "yearBCE": 1352, "description": "Akhenaten's religious revolution; worship of Aten", "significance": "First documented monotheistic state religion" },
+      { "yearBCE": 1274, "description": "Battle of Kadesh — Egypt vs. Hittites", "significance": "Oldest known peace treaty; Ramesses II and Hattusili III" },
+      { "yearBCE": 1200, "description": "Bronze Age Collapse — widespread destruction across the eastern Mediterranean", "significance": "Collapse of major palace economies; Ugarit, Hatti, and Mycenae destroyed" }
+    ]
+  },
+  {
+    "id": "iron-age-1",
+    "name": "Iron Age I",
+    "startBCE": 1200,
+    "endBCE": 900,
+    "color": "#708090",
+    "shortDesc": "Bronze Age Collapse; Philistine settlement; early Israelite tribal confederacy; Sea Peoples",
+    "biblicalContext": "Settlement of Canaan; period of the Judges; early monarchy",
+    "events": [
+      { "yearBCE": 1177, "description": "Fall of Ugarit; Sea Peoples invade Egypt and Canaan", "significance": "Final blow to Bronze Age palace system" },
+      { "yearBCE": 1050, "description": "Philistines capture the Ark of the Covenant at Aphek", "significance": "Crisis that leads to demand for Israelite kingship" },
+      { "yearBCE": 1010, "description": "David becomes king of all Israel at Hebron", "significance": "United Monarchy established; Jerusalem conquered" }
+    ]
+  },
+  {
+    "id": "iron-age-2",
+    "name": "Iron Age II",
+    "startBCE": 900,
+    "endBCE": 586,
+    "color": "#4682B4",
+    "shortDesc": "United and Divided Monarchy; Assyrian Empire domination; Neo-Babylonian rise",
+    "biblicalContext": "Kings of Israel and Judah; major prophets; Assyrian exile",
+    "events": [
+      { "yearBCE": 931, "description": "Kingdom splits into Israel (north) and Judah (south) after Solomon's death", "significance": "Permanent division; two separate biblical kingdoms" },
+      { "yearBCE": 722, "description": "Assyria conquers Samaria; Northern Kingdom of Israel destroyed", "significance": "Ten tribes exiled; 'Lost Tribes of Israel'" },
+      { "yearBCE": 701, "description": "Sennacherib besieges Jerusalem; miraculous deliverance", "significance": "Isaiah's prophecy fulfilled; Hezekiah's tunnel built" }
+    ]
+  },
+  {
+    "id": "babylonian-persian",
+    "name": "Babylonian–Persian Period",
+    "startBCE": 586,
+    "endBCE": 400,
+    "color": "#6A5ACD",
+    "shortDesc": "Babylonian exile; Cyrus Edict (538 BCE); Return to Zion; Second Temple foundation",
+    "biblicalContext": "Ezra, Nehemiah, Chronicles; post-exilic period",
+    "events": [
+      { "yearBCE": 586, "description": "Nebuchadnezzar destroys Jerusalem and the First Temple", "significance": "Babylonian exile begins; major theological crisis for Israel" },
+      { "yearBCE": 539, "description": "Cyrus the Great captures Babylon without battle", "significance": "Persian Empire replaces Neo-Babylonian Empire" },
+      { "yearBCE": 538, "description": "Cyrus Edict — Jews permitted to return to Judah", "significance": "End of exile; Isaiah 45 prophecy fulfilled" },
+      { "yearBCE": 516, "description": "Second Temple dedicated in Jerusalem", "significance": "Restoration of Temple worship after 70-year gap" }
+    ]
+  }
+]
