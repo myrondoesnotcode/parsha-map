@@ -2,8 +2,16 @@ import * as Select from '@radix-ui/react-select'
 import { ChevronDown, ChevronUp, Check } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshasGroupedByBook, BOOKS_ORDER } from '../../utils/parshaUtils'
+import { formatYearBCE } from '../../utils/yearUtils'
 import { cn } from '../../utils/cn'
 import type { ParshaListItem } from '../../types/parsha'
+
+function parshaDateLabel(parsha: ParshaListItem): string | null {
+  const { start, end } = parsha.approximateDateBCE
+  if (!start) return null
+  if (!end || end === start) return formatYearBCE(start)
+  return `${start.toLocaleString()}–${end.toLocaleString()} BCE`
+}
 
 const grouped = getParshasGroupedByBook()
 
@@ -86,6 +94,11 @@ export function ParshaSelector({ filterQuery }: Props) {
                         <span className="ml-1.5 text-stone-400 font-hebrew text-xs">
                           {parsha.hebrewName}
                         </span>
+                        {parshaDateLabel(parsha) && (
+                          <span className="ml-2 text-stone-400 text-xs font-sans">
+                            · {parshaDateLabel(parsha)}
+                          </span>
+                        )}
                       </Select.ItemText>
                     </Select.Item>
                   ))}
