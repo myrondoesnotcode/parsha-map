@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import { useAllTradeRoutes } from '../../hooks/useTradeRoutes'
 import { useAppStore } from '../../store/useAppStore'
 import { useTerritories } from '../../hooks/useTerritories'
@@ -8,12 +10,25 @@ export function MapLegend() {
   const showArchaeologicalSites = useAppStore((s) => s.showArchaeologicalSites)
   const currentYearBCE = useAppStore((s) => s.currentYearBCE)
   const territories = useTerritories(currentYearBCE)
+  const [collapsed, setCollapsed] = useState(false)
 
   return (
-    <div className="absolute bottom-6 left-3 z-[400] bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-md border border-stone-200 px-3 py-2 text-xs space-y-1.5">
-      <p className="font-semibold text-stone-600 text-[10px] uppercase tracking-wide">
-        Legend
-      </p>
+    <div className="absolute bottom-6 left-3 z-[1000] bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-md border border-stone-200 px-3 py-2 text-xs">
+      <button
+        onClick={() => setCollapsed((c) => !c)}
+        className="flex items-center justify-between w-full gap-2"
+      >
+        <p className="font-semibold text-stone-600 text-[10px] uppercase tracking-wide">
+          Legend
+        </p>
+        {collapsed ? (
+          <ChevronDown size={12} className="text-stone-400" />
+        ) : (
+          <ChevronUp size={12} className="text-stone-400" />
+        )}
+      </button>
+
+      {!collapsed && <div className="space-y-1.5 mt-1.5">
 
       {/* Place confidence */}
       <div className="space-y-1">
@@ -86,6 +101,7 @@ export function MapLegend() {
           )}
         </div>
       )}
+      </div>}
     </div>
   )
 }

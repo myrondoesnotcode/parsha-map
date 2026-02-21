@@ -41,14 +41,14 @@ export function ParshaMap() {
   return (
     <div className="relative h-full w-full">
       {/* Map controls overlay */}
-      <div className="absolute top-3 right-3 z-[400] flex flex-col gap-2">
+      <div className="absolute top-3 right-3 z-[1000] flex flex-col gap-2">
         <button
           onClick={toggleTradeRoutes}
           className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white border border-stone-200 rounded-lg shadow-sm hover:bg-stone-50 transition-colors"
           title="Toggle trade routes"
         >
           <Navigation size={12} className={showTradeRoutes ? 'text-amber-600' : 'text-stone-400'} />
-          <span className={showTradeRoutes ? 'text-stone-700' : 'text-stone-400'}>Routes</span>
+          <span className={`hidden sm:inline ${showTradeRoutes ? 'text-stone-700' : 'text-stone-400'}`}>Routes</span>
         </button>
         <button
           onClick={togglePlaceLabels}
@@ -60,7 +60,7 @@ export function ParshaMap() {
           ) : (
             <EyeOff size={12} className="text-stone-400" />
           )}
-          <span className={showPlaceLabels ? 'text-stone-700' : 'text-stone-400'}>Labels</span>
+          <span className={`hidden sm:inline ${showPlaceLabels ? 'text-stone-700' : 'text-stone-400'}`}>Labels</span>
         </button>
         <button
           onClick={toggleTerritories}
@@ -68,7 +68,7 @@ export function ParshaMap() {
           title="Toggle territory overlays"
         >
           <Layers size={12} className={showTerritories ? 'text-amber-600' : 'text-stone-400'} />
-          <span className={showTerritories ? 'text-stone-700' : 'text-stone-400'}>Territories</span>
+          <span className={`hidden sm:inline ${showTerritories ? 'text-stone-700' : 'text-stone-400'}`}>Territories</span>
         </button>
         <button
           onClick={toggleArchaeologicalSites}
@@ -76,12 +76,12 @@ export function ParshaMap() {
           title="Toggle archaeological sites"
         >
           <Pickaxe size={12} className={showArchaeologicalSites ? 'text-purple-600' : 'text-stone-400'} />
-          <span className={showArchaeologicalSites ? 'text-stone-700' : 'text-stone-400'}>Sites</span>
+          <span className={`hidden sm:inline ${showArchaeologicalSites ? 'text-stone-700' : 'text-stone-400'}`}>Sites</span>
         </button>
       </div>
 
       {/* Place count badge + type filter */}
-      <div className="absolute top-3 left-3 z-[400] flex flex-col gap-2">
+      <div className="absolute top-3 left-3 z-[1000] flex flex-col gap-2">
         {allPlaces.length > 0 && (
           <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white border border-stone-200 rounded-lg shadow-sm text-xs text-stone-600">
             <MapIcon size={12} className="text-amber-600" />
