@@ -9,6 +9,26 @@ import { Map, BookOpen, Clock } from 'lucide-react'
 
 type MobileTab = 'map' | 'text' | 'context'
 
+function LogoLockup() {
+  return (
+    <div className="flex items-center gap-2.5">
+      {/* Amber map-pin SVG */}
+      <svg width="18" height="22" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+        <path
+          d="M10 0C4.477 0 0 4.477 0 10c0 7.5 10 14 10 14s10-6.5 10-14C20 4.477 15.523 0 10 0z"
+          fill="#F59E0B"
+        />
+        <circle cx="10" cy="10" r="3.5" fill="#1C1917" />
+      </svg>
+      {/* "Parsha" in Frank Ruhl Libre serif, "Map" in Inter */}
+      <span className="leading-none flex items-baseline gap-1.5">
+        <span className="font-hebrew font-medium text-stone-100 text-xl tracking-wide">Parsha</span>
+        <span className="font-sans font-light text-amber-400 text-xs tracking-widest uppercase">Map</span>
+      </span>
+    </div>
+  )
+}
+
 export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const [mobileTab, setMobileTab] = useState<MobileTab>('map')
@@ -20,7 +40,7 @@ export default function App() {
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-2 bg-stone-900 text-stone-100 shrink-0">
         <div className="flex items-center gap-3">
-          <span className="text-lg font-semibold tracking-wide">Parsha Map</span>
+          <LogoLockup />
           <span className="text-stone-400 text-sm hidden sm:inline">
             Historical Context &amp; Ancient Near East
           </span>
