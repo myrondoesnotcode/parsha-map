@@ -1,4 +1,4 @@
-import { BookOpen } from 'lucide-react'
+import { BookOpen, ExternalLink } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { formatYearBCE } from '../../utils/yearUtils'
@@ -74,6 +74,18 @@ export function ParshaHeader() {
         <p className="mt-2 text-xs text-stone-500 leading-relaxed">
           {parsha.summary}
         </p>
+      )}
+
+      {parsha.commentaryUrl && (
+        <a
+          href={parsha.commentaryUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="mt-2 inline-flex items-center gap-1 text-xs text-amber-600 hover:text-amber-700 font-medium"
+        >
+          Read commentary by Michael Eisenberg
+          <ExternalLink size={10} />
+        </a>
       )}
     </div>
   )

@@ -13,4 +13,5 @@ export interface ParshaListItem {
   narrativeEra: string | null
   approximateDateBCE: ApproximateDateBCE
   summary?: string
+  commentaryUrl?: string
 }
