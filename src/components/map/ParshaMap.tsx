@@ -7,12 +7,11 @@ import { PlaceMarker } from './PlaceMarker'
 import { TradeRouteLayer } from './TradeRouteLayer'
 import { TerritoryLayer } from './TerritoryLayer'
 import { ArchaeologicalSiteMarker } from './ArchaeologicalSiteMarker'
-import { PlaceTypeFilter } from './PlaceTypeFilter'
 import { PlaceHighlightManager } from './PlaceHighlightManager'
 import { MapBoundsManager } from './MapBoundsManager'
 import { MapLegend } from './MapLegend'
 import { filterPlacesByType } from '../../utils/placeUtils'
-import { Map as MapIcon, Navigation, Eye, EyeOff, Layers, Pickaxe } from 'lucide-react'
+import { Navigation, Eye, EyeOff, Layers, Pickaxe } from 'lucide-react'
 
 // Center on ancient Near East
 const DEFAULT_CENTER: [number, number] = [31.5, 35.5]
@@ -78,21 +77,6 @@ export function ParshaMap() {
           <Pickaxe size={12} className={showArchaeologicalSites ? 'text-purple-600' : 'text-stone-400'} />
           <span className={`hidden sm:inline ${showArchaeologicalSites ? 'text-stone-700' : 'text-stone-400'}`}>Sites</span>
         </button>
-      </div>
-
-      {/* Place count badge + type filter */}
-      <div className="absolute top-3 left-3 z-[1000] flex flex-col gap-2">
-        {allPlaces.length > 0 && (
-          <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white border border-stone-200 rounded-lg shadow-sm text-xs text-stone-600">
-            <MapIcon size={12} className="text-amber-600" />
-            <span>{places.length} place{places.length !== 1 ? 's' : ''} mapped</span>
-          </div>
-        )}
-        {allPlaces.length > 0 && (
-          <div className="bg-white bg-opacity-95 border border-stone-200 rounded-lg shadow-sm px-2 py-1.5">
-            <PlaceTypeFilter />
-          </div>
-        )}
       </div>
 
       <MapContainer
