@@ -99,7 +99,7 @@ export function ParshaMap() {
         center={DEFAULT_CENTER}
         zoom={DEFAULT_ZOOM}
         className="h-full w-full"
-        zoomControl={true}
+        zoomControl={false}
       >
         <TileLayer
           url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
