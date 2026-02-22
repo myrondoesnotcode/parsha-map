@@ -7,7 +7,8 @@
     "seferiaUrl": "Genesis.1.1-6.8",
     "number": 1,
     "narrativeEra": null,
-    "approximateDateBCE": { "start": null, "end": null }
+    "approximateDateBCE": { "start": null, "end": null },
+    "summary": "God creates the world in six days and rests on the seventh. Adam and Eve live in Eden, eat the forbidden fruit, and are expelled. Cain murders Abel. The generations from Adam to Noah are listed as human corruption spreads across the earth."
   },
   {
     "id": "noach",
@@ -17,7 +18,8 @@
     "seferiaUrl": "Genesis.6.9-11.32",
     "number": 2,
     "narrativeEra": null,
-    "approximateDateBCE": { "start": null, "end": null }
+    "approximateDateBCE": { "start": null, "end": null },
+    "summary": "God floods the earth to wipe out wickedness; Noah builds an ark and survives with his family and two of every animal. After the waters recede, God makes a covenant never to flood the earth again and sets a rainbow as its sign. Humanity spreads and then unites to build the Tower of Babel, which God scatters."
   },
   {
     "id": "lech-lecha",
@@ -27,7 +29,8 @@
     "seferiaUrl": "Genesis.12.1-17.27",
     "number": 3,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 2000, "end": 1800 }
+    "approximateDateBCE": { "start": 2000, "end": 1800 },
+    "summary": "God calls Abram to leave his homeland for Canaan, promising him land, descendants, and blessing. Abram travels through Canaan, sojourns in Egypt, separates from Lot, and rescues him from a war of kings. God seals a covenant with Abram, promising the land. Hagar bears Ishmael. God renames Abram to Abraham, institutes circumcision, and promises a son through Sarai, who becomes Sarah."
   },
   {
     "id": "vayera",
@@ -37,7 +40,8 @@
     "seferiaUrl": "Genesis.18.1-22.24",
     "number": 4,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 2000, "end": 1800 }
+    "approximateDateBCE": { "start": 2000, "end": 1800 },
+    "summary": "Three angels visit Abraham and promise that Sarah will bear a son. Abraham pleads with God to spare Sodom; the city and Gomorrah are destroyed for their wickedness but Lot escapes. Isaac is born to Abraham and Sarah. Hagar and Ishmael are sent away. God tests Abraham by commanding him to sacrifice Isaac — at the last moment an angel stops him."
   },
   {
     "id": "chayei-sarah",
@@ -47,7 +51,8 @@
     "seferiaUrl": "Genesis.23.1-25.18",
     "number": 5,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 1900, "end": 1700 }
+    "approximateDateBCE": { "start": 1900, "end": 1700 },
+    "summary": "Sarah dies and Abraham buys the Cave of Machpelah in Hebron as a burial site. Abraham sends his servant to find a wife for Isaac from among his own kin; the servant returns with Rebekah, and Isaac loves her. Abraham dies and is buried with Sarah."
   },
   {
     "id": "toldot",
@@ -57,7 +62,8 @@
     "seferiaUrl": "Genesis.25.19-28.9",
     "number": 6,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 1900, "end": 1700 }
+    "approximateDateBCE": { "start": 1900, "end": 1700 },
+    "summary": "Rebekah gives birth to the twins Esau and Jacob after a difficult pregnancy. Esau, the elder, sells his birthright to Jacob for a bowl of stew. Isaac settles among the Philistines and prospers. Rebekah helps Jacob disguise himself to steal Esau's blessing from a blind Isaac, and Jacob flees to Haran before Esau can take revenge."
   },
   {
     "id": "vayetze",
@@ -67,7 +73,8 @@
     "seferiaUrl": "Genesis.28.10-32.3",
     "number": 7,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 1850, "end": 1650 }
+    "approximateDateBCE": { "start": 1850, "end": 1650 },
+    "summary": "Jacob flees to Haran and on the way dreams of a ladder reaching heaven with angels ascending and descending. He arrives at his uncle Laban's home, falls in love with Rachel, and works seven years to marry her — but Laban tricks him into marrying Leah first. Jacob works another seven years for Rachel. His twelve sons and a daughter are born. After twenty years, Jacob outwits Laban and escapes with his family toward Canaan."
   },
   {
     "id": "vayishlach",
@@ -77,7 +84,8 @@
     "seferiaUrl": "Genesis.32.4-36.43",
     "number": 8,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 1850, "end": 1650 }
+    "approximateDateBCE": { "start": 1850, "end": 1650 },
+    "summary": "Jacob prepares anxiously to meet his estranged brother Esau and wrestles through the night with a divine figure who renames him Israel. The brothers reconcile. Jacob's daughter Dinah is assaulted in Shechem; her brothers Simon and Levi take violent revenge. Rachel dies giving birth to Benjamin. Jacob reaches Canaan and reunites with his father Isaac, who then dies."
   },
   {
     "id": "vayeshev",
@@ -87,7 +95,8 @@
     "seferiaUrl": "Genesis.37.1-40.23",
     "number": 9,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 1750, "end": 1550 }
+    "approximateDateBCE": { "start": 1750, "end": 1550 },
+    "summary": "Jacob favors Joseph, giving him a special coat, which breeds jealousy among his brothers. They throw Joseph in a pit and sell him to merchants heading to Egypt, then deceive their father into thinking he is dead. In Egypt, Joseph serves in Potiphar's house but is falsely accused and imprisoned. Meanwhile, Judah's story with Tamar is told. In prison, Joseph correctly interprets the dreams of Pharaoh's cupbearer and baker."
   },
   {
     "id": "miketz",
@@ -97,7 +106,8 @@
     "seferiaUrl": "Genesis.41.1-44.17",
     "number": 10,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 1700, "end": 1550 }
+    "approximateDateBCE": { "start": 1700, "end": 1550 },
+    "summary": "Pharaoh dreams of seven fat cows swallowed by seven thin ones. Joseph is brought from prison and interprets the dreams as seven years of plenty followed by seven of famine. Pharaoh appoints Joseph as viceroy over all Egypt. When famine strikes, Joseph's brothers come from Canaan to buy grain. Joseph recognizes them but they don't recognize him; he tests them and eventually detains Benjamin."
   },
   {
     "id": "vayigash",
@@ -107,7 +117,8 @@
     "seferiaUrl": "Genesis.44.18-47.27",
     "number": 11,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 1700, "end": 1550 }
+    "approximateDateBCE": { "start": 1700, "end": 1550 },
+    "summary": "Judah steps forward and offers himself as a slave in Benjamin's place, delivering an impassioned plea. Joseph breaks down and reveals himself to his stunned brothers. He forgives them, crediting God's hand in all that happened. Jacob and the entire family — seventy people — migrate to Egypt and are settled in the fertile land of Goshen."
   },
   {
     "id": "vayechi",
@@ -117,7 +128,8 @@
     "seferiaUrl": "Genesis.47.28-50.26",
     "number": 12,
     "narrativeEra": "middle-bronze",
-    "approximateDateBCE": { "start": 1650, "end": 1550 }
+    "approximateDateBCE": { "start": 1650, "end": 1550 },
+    "summary": "Jacob lives in Egypt for seventeen years. On his deathbed, he blesses Joseph's two sons Ephraim and Manasseh, giving the younger precedence. He then delivers a poetic blessing to each of his twelve sons. Jacob dies and is carried back to Canaan for burial in the Cave of Machpelah. Joseph reassures his brothers he has forgiven them. Joseph dies at 110, asking that his bones be brought back to the promised land."
   },
   {
     "id": "shemot",
@@ -127,7 +139,8 @@
     "seferiaUrl": "Exodus.1.1-6.1",
     "number": 13,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1300, "end": 1200 }
+    "approximateDateBCE": { "start": 1300, "end": 1200 },
+    "summary": "A new Pharaoh who doesn't know Joseph enslaves the Israelites and orders their infant boys drowned. Moses is born, hidden in a basket on the Nile, rescued by Pharaoh's daughter, and raised in the palace. He kills an Egyptian beating a Hebrew, flees to Midian, and marries. God appears to Moses in a burning bush, revealing the divine name and sending him back to Egypt to free the Israelites."
   },
   {
     "id": "vaera",
@@ -137,7 +150,8 @@
     "seferiaUrl": "Exodus.6.2-9.35",
     "number": 14,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1300, "end": 1200 }
+    "approximateDateBCE": { "start": 1300, "end": 1200 },
+    "summary": "God reaffirms the covenant with Moses and Aaron and sends them to Pharaoh. When Pharaoh refuses to let the Israelites go, God unleashes the first seven plagues upon Egypt: water turning to blood, frogs, lice, wild animals, livestock disease, boils, and devastating hail — each time Pharaoh hardens his heart and refuses."
   },
   {
     "id": "bo",
@@ -147,7 +161,8 @@
     "seferiaUrl": "Exodus.10.1-13.16",
     "number": 15,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1280, "end": 1200 }
+    "approximateDateBCE": { "start": 1280, "end": 1200 },
+    "summary": "The last three plagues strike Egypt: locusts devour the land, darkness covers it for three days, and finally the firstborn of every Egyptian family dies at midnight. The Israelites are commanded to mark their doorposts with lamb's blood so the angel of death will pass over them — the origin of Passover. Pharaoh finally releases the Israelites, who leave Egypt after 430 years."
   },
   {
     "id": "beshalach",
@@ -157,7 +172,8 @@
     "seferiaUrl": "Exodus.13.17-17.16",
     "number": 16,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1270, "end": 1200 }
+    "approximateDateBCE": { "start": 1270, "end": 1200 },
+    "summary": "Pharaoh changes his mind and pursues the Israelites with his army. God splits the Sea of Reeds, the Israelites cross on dry land, and the Egyptian army drowns as the waters return. Moses and Miriam lead the people in song. In the desert, the people complain about hunger and thirst; God provides manna, quail, and water from a rock. The Israelites fight and defeat the tribe of Amalek."
   },
   {
     "id": "yitro",
@@ -167,7 +183,8 @@
     "seferiaUrl": "Exodus.18.1-20.23",
     "number": 17,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1260, "end": 1200 }
+    "approximateDateBCE": { "start": 1260, "end": 1200 },
+    "summary": "Moses's father-in-law Jethro visits and wisely advises Moses to delegate judging disputes to appointed leaders instead of handling everything himself. The Israelites arrive at Mount Sinai and God descends on the mountain in thunder and fire. Moses ascends and receives the Ten Commandments, which are proclaimed to all the people."
   },
   {
     "id": "mishpatim",
@@ -177,7 +194,8 @@
     "seferiaUrl": "Exodus.21.1-24.18",
     "number": 18,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1260, "end": 1200 }
+    "approximateDateBCE": { "start": 1260, "end": 1200 },
+    "summary": "Following the Ten Commandments, God gives Israel a detailed body of civil and social law covering slavery, personal injury, property disputes, obligations to the poor, Sabbath rest, and the three pilgrimage festivals. The people declare \"we will do and we will hear,\" ratifying the covenant. Moses and the elders ascend the mountain and see God; Moses goes up alone for forty days to receive the stone tablets."
   },
   {
     "id": "terumah",
@@ -187,7 +205,8 @@
     "seferiaUrl": "Exodus.25.1-27.19",
     "number": 19,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1260, "end": 1200 }
+    "approximateDateBCE": { "start": 1260, "end": 1200 },
+    "summary": "God instructs Moses to collect donations from the willing-hearted Israelites to build a portable Tabernacle (Mishkan) as a divine dwelling among the people. Detailed blueprints are given for the Ark of the Covenant with its gold cherubim, the menorah, the table for showbread, and the structure of the Tabernacle itself."
   },
   {
     "id": "tetzaveh",
@@ -197,7 +216,8 @@
     "seferiaUrl": "Exodus.27.20-30.10",
     "number": 20,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1260, "end": 1200 }
+    "approximateDateBCE": { "start": 1260, "end": 1200 },
+    "summary": "God commands the Israelites to bring pure olive oil for the eternal lamp of the Tabernacle. Elaborate instructions describe the priestly garments for Aaron and his sons: the ephod, breastplate with twelve gemstones for the twelve tribes, the robe, tunic, and turban. A seven-day ordination ceremony is prescribed for the priests, along with instructions for the golden incense altar."
   },
   {
     "id": "ki-tisa",
@@ -207,7 +227,8 @@
     "seferiaUrl": "Exodus.30.11-34.35",
     "number": 21,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1260, "end": 1200 }
+    "approximateDateBCE": { "start": 1260, "end": 1200 },
+    "summary": "While Moses is on the mountain, the Israelites panic and pressure Aaron into making a Golden Calf to worship. God threatens to destroy the people; Moses pleads for them and descends, smashing the tablets in fury. He destroys the calf and thousands die in a plague. Moses returns to God and pleads again for forgiveness; God relents and renews the covenant. Moses descends with new tablets, his face radiating divine light."
   },
   {
     "id": "vayakhel",
@@ -217,7 +238,8 @@
     "seferiaUrl": "Exodus.35.1-38.20",
     "number": 22,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1260, "end": 1200 }
+    "approximateDateBCE": { "start": 1260, "end": 1200 },
+    "summary": "Moses gathers the entire community of Israel, reiterates the Sabbath commandment, and calls for donations to build the Tabernacle. The people respond with overwhelming generosity. The master craftsmen Bezalel and Oholiab, filled with divine spirit and skill, lead the construction of the Tabernacle and all its furnishings."
   },
   {
     "id": "pekudei",
@@ -227,7 +249,8 @@
     "seferiaUrl": "Exodus.38.21-40.38",
     "number": 23,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1260, "end": 1200 }
+    "approximateDateBCE": { "start": 1260, "end": 1200 },
+    "summary": "The Tabernacle construction is completed and Moses accounts for all the gold, silver, and copper donated. The priestly garments are finished and Moses blesses the craftsmen. On the first day of the first month, Moses erects the Tabernacle, anoints and consecrates it, and the cloud of God's glory fills it — guiding the Israelites in all their travels."
   },
   {
     "id": "vayikra",
@@ -237,7 +260,8 @@
     "seferiaUrl": "Leviticus.1.1-5.26",
     "number": 24,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "God calls to Moses from the Tabernacle and begins dictating the laws of sacrifice. The different types of offerings are detailed: burnt offerings of cattle, sheep, or birds; grain offerings; peace offerings; sin offerings for unintentional violations by priests, leaders, and ordinary people; and guilt offerings for specific wrongs."
   },
   {
     "id": "tzav",
@@ -247,7 +271,8 @@
     "seferiaUrl": "Leviticus.6.1-8.36",
     "number": 25,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "God gives Moses detailed instructions for the priests on how to perform and eat from the various sacrifices: the burnt offering, grain offering, sin offering, guilt offering, and peace offering. The prohibition on eating fat or blood is reiterated. Moses then performs the ordination ceremony for Aaron and his sons, anointing them and consecrating them over seven days."
   },
   {
     "id": "shemini",
@@ -257,7 +282,8 @@
     "seferiaUrl": "Leviticus.9.1-11.47",
     "number": 26,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "On the eighth day of the ordination, Aaron and his sons offer their first sacrifices and God's fire consumes the altar in a divine sign. Then Aaron's sons Nadav and Abihu offer \"strange fire\" that God had not commanded, and are struck dead. God commands Aaron not to publicly mourn. The laws of kosher food are given: which land animals, fish, and birds may be eaten."
   },
   {
     "id": "tazria",
@@ -267,7 +293,8 @@
     "seferiaUrl": "Leviticus.12.1-13.59",
     "number": 27,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "Laws of ritual purity after childbirth are given, including the purification offerings a mother brings to the Tabernacle. The bulk of the portion details the laws of tzara'at — a skin affliction the Torah treats as a ritual impurity — and the priest's role in examining, diagnosing, quarantining, and pronouncing people clean or unclean."
   },
   {
     "id": "metzora",
@@ -277,7 +304,8 @@
     "seferiaUrl": "Leviticus.14.1-15.33",
     "number": 28,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "Elaborate purification rituals are given for someone healed of tzara'at, involving birds, water, oil, and sacrifices over eight days. Tzara'at can also affect houses, requiring inspection and sometimes demolition. The portion concludes with laws of ritual impurity from bodily discharges and the purification rituals required."
   },
   {
     "id": "acharei-mot",
@@ -287,7 +315,8 @@
     "seferiaUrl": "Leviticus.16.1-18.30",
     "number": 29,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "Following the deaths of Aaron's sons, God lays out the elaborate Yom Kippur service: the High Priest enters the Holy of Holies wearing plain linen, offers incense to create a cloud, and makes atonement for the entire community. One goat is sacrificed; another — the \"scapegoat\" — has Israel's sins confessed over it and is sent into the wilderness. Prohibitions against eating blood and forbidden sexual relationships are also given."
   },
   {
     "id": "kedoshim",
@@ -297,7 +326,8 @@
     "seferiaUrl": "Leviticus.19.1-20.27",
     "number": 30,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "The Holiness Code calls on Israel to be holy as God is holy. A dense collection of ethical and ritual laws follows: honor your parents, keep the Sabbath, leave the corners of your field for the poor, do not steal or lie, do not hate your brother, love your neighbor as yourself. Prohibitions against pagan practices and penalties for violations are included."
   },
   {
     "id": "emor",
@@ -307,7 +337,8 @@
     "seferiaUrl": "Leviticus.21.1-24.23",
     "number": 31,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "Special holiness laws apply to the priests: restrictions on contact with the dead, permitted marriages, and physical blemishes that disqualify someone from serving. God's appointed festivals are listed in order: Shabbat, Passover, the Omer counting, Shavuot, Rosh Hashana, Yom Kippur, and Sukkot. The portion ends with the case of a man who blasphemes God's name and is put to death."
   },
   {
     "id": "behar",
@@ -317,7 +348,8 @@
     "seferiaUrl": "Leviticus.25.1-26.2",
     "number": 32,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "Every seventh year the land must rest — no plowing, sowing, or harvesting (the Shemitah). After seven cycles of seven years comes the Jubilee, the fiftieth year, when all land returns to its original tribal owners and all Israelite slaves go free. Laws of fair land sales, redemption of sold land, and the prohibition on charging interest to a fellow Israelite are detailed."
   },
   {
     "id": "bechukotai",
@@ -327,7 +359,8 @@
     "seferiaUrl": "Leviticus.26.3-27.34",
     "number": 33,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "God promises abundant blessing — rain, harvest, peace, and divine presence — if Israel follows the laws. Then comes the Tochachah: a harrowing catalogue of curses for disobedience, culminating in exile from the land. Yet even in exile, God promises not to abandon Israel completely if they return. The book of Leviticus closes with laws on vows, dedications, and tithes."
   },
   {
     "id": "bamidbar",
@@ -337,7 +370,8 @@
     "seferiaUrl": "Numbers.1.1-4.20",
     "number": 34,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "In the Sinai desert, God commands a census of all men of fighting age from each of the twelve tribes — totaling over 600,000. The camp is arranged around the Tabernacle with specific positions for each tribe. The Levites, who serve in the Tabernacle, are counted separately and assigned to carry its components during the desert travels."
   },
   {
     "id": "nasso",
@@ -347,7 +381,8 @@
     "seferiaUrl": "Numbers.4.21-7.89",
     "number": 35,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "The Levite clans receive their specific Tabernacle duties. Laws follow for impure individuals to leave the camp, for confessing and making restitution for wrongs, and for the Sotah ritual used when a husband suspects his wife of infidelity. The Nazirite vow — abstaining from wine and haircuts as a sign of devotion — is outlined, along with the beautiful priestly blessing. The tribal leaders bring elaborate identical offerings at the Tabernacle's dedication."
   },
   {
     "id": "behaalotecha",
@@ -357,7 +392,8 @@
     "seferiaUrl": "Numbers.8.1-12.16",
     "number": 36,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "Aaron is commanded to light the menorah. The Levites are consecrated for service. A second Passover is established for those who could not observe the first. Silver trumpets are made to signal the camp's movements. The Israelites finally leave Sinai and begin their journey. The people complain repeatedly — about hardship, about manna — and Moses reaches a breaking point. God appoints seventy elders to share the burden. Miriam and Aaron speak against Moses; Miriam is struck with tzara'at and then healed."
   },
   {
     "id": "shelach",
@@ -367,7 +403,8 @@
     "seferiaUrl": "Numbers.13.1-15.41",
     "number": 37,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "Twelve spies are sent to scout the land of Canaan. Ten return with a discouraging report of giants and fortified cities, panicking the people. Only Caleb and Joshua urge trust and courage. God is furious at the lack of faith and decrees that the entire generation will die in the desert over forty years — only their children will enter the land. Laws of offerings, the Sabbath-breaker's punishment, and the mitzvah of tzitzit (fringes on garments) close the portion."
   },
   {
     "id": "korach",
@@ -377,7 +414,8 @@
     "seferiaUrl": "Numbers.16.1-18.32",
     "number": 38,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1250, "end": 1200 }
+    "approximateDateBCE": { "start": 1250, "end": 1200 },
+    "summary": "Korach, a Levite, leads 250 prominent men in a rebellion against Moses and Aaron's leadership, claiming all of Israel is equally holy. The earth opens and swallows Korach and his followers alive; fire consumes the 250 who offered incense. The next day the community blames Moses and a plague begins, killed only when Aaron runs into the crowd with incense to atone. Aaron's staff miraculously blossoms, confirming his priestly role. The priests' and Levites' portions are established."
   },
   {
     "id": "chukat",
@@ -387,7 +425,8 @@
     "seferiaUrl": "Numbers.19.1-22.1",
     "number": 39,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1240, "end": 1200 }
+    "approximateDateBCE": { "start": 1240, "end": 1200 },
+    "summary": "The mysterious ritual of the red heifer purifies those who have become impure through contact with a corpse. Miriam dies. The people complain of thirst and Moses strikes a rock for water instead of speaking to it as commanded — God tells him he will not enter the land. Aaron dies on Mount Hor and his son Elazar becomes High Priest. The people complain again and are punished with venomous snakes; Moses makes a bronze serpent to heal them. Israel defeats the kings Sihon and Og in battle."
   },
   {
     "id": "balak",
@@ -397,7 +436,8 @@
     "seferiaUrl": "Numbers.22.2-25.9",
     "number": 40,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1240, "end": 1200 }
+    "approximateDateBCE": { "start": 1240, "end": 1200 },
+    "summary": "Balak, king of Moab, terrified of Israel's march, hires the prophet Balaam to curse them. On the way, Balaam's donkey sees an angel blocking the road and miraculously speaks, rebuking its rider. Three times Balaam opens his mouth to curse Israel — and three times blessings pour out instead. The portion ends with Israelite men sinning with Moabite women at Baal Peor; the zealot Pinchas kills a flagrant offender and stops a plague."
   },
   {
     "id": "pinchas",
@@ -407,7 +447,8 @@
     "seferiaUrl": "Numbers.25.10-30.1",
     "number": 41,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1240, "end": 1200 }
+    "approximateDateBCE": { "start": 1240, "end": 1200 },
+    "summary": "God rewards Pinchas with a covenant of everlasting priesthood for his zealous act. A new census is taken of the new generation. The daughters of Zelophechad petition Moses for their father's inheritance since he had no sons — God rules in their favor, establishing inheritance rights for daughters. Joshua is appointed as Moses's successor. The daily and festival offerings are catalogued in detail."
   },
   {
     "id": "matot",
@@ -417,7 +458,8 @@
     "seferiaUrl": "Numbers.30.2-32.42",
     "number": 42,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1230, "end": 1200 }
+    "approximateDateBCE": { "start": 1230, "end": 1200 },
+    "summary": "Laws of vows and oaths are given, including a father's or husband's right to annul a woman's vow. A war against Midian is waged in retribution for the Baal Peor incident; laws of war spoils and purification of captured items follow. The tribes of Reuben and Gad, who have large cattle herds, ask to settle the fertile land east of the Jordan. Moses agrees on condition they lead the fight to conquer Canaan first."
   },
   {
     "id": "masei",
@@ -427,7 +469,8 @@
     "seferiaUrl": "Numbers.33.1-36.13",
     "number": 43,
     "narrativeEra": "late-bronze",
-    "approximateDateBCE": { "start": 1230, "end": 1200 }
+    "approximateDateBCE": { "start": 1230, "end": 1200 },
+    "summary": "All forty-two stopping points of Israel's desert journey are listed from Egypt to the plains of Moab. The borders of the Promised Land are defined and the tribes assigned portions. Forty-eight Levitical cities are to be spread throughout the land, including six cities of refuge for accidental killers. The book of Numbers closes with a ruling that the daughters of Zelophechad must marry within their tribe to keep the land inheritance intact."
   },
   {
     "id": "devarim",
@@ -437,7 +480,8 @@
     "seferiaUrl": "Deuteronomy.1.1-3.22",
     "number": 44,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "On the last day of his life, Moses addresses the entire people of Israel in a great farewell speech. He recounts the journey from Sinai: the appointment of judges to share his burden, the sending of the twelve spies, the people's faithless despair, and God's decree of forty years of wandering. He retells Israel's recent military victories over Sihon and Og east of the Jordan."
   },
   {
     "id": "vaetchanan",
@@ -447,7 +491,8 @@
     "seferiaUrl": "Deuteronomy.3.23-7.11",
     "number": 45,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "Moses recounts his plea to God to be allowed into the land — and God's refusal. He urges Israel to keep the Torah carefully so the nations will see their wisdom. The Ten Commandments are repeated in full. Moses then proclaims the Shema — \"Hear O Israel, the Lord our God, the Lord is One\" — and the command to love God with all one's heart, soul, and might. He warns against idolatry and intermarriage."
   },
   {
     "id": "ekev",
@@ -457,7 +502,8 @@
     "seferiaUrl": "Deuteronomy.7.12-11.25",
     "number": 46,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "Moses promises material blessings if Israel follows God's laws and warns against forgetting God in prosperity. He recalls God's care in the desert — the manna, the water, the clothes that never wore out — as proof of dependence on God. The second paragraph of the Shema is given. Moses retells the Golden Calf episode and his forty-day intercession, and reminds the people that God asks only to fear, love, and serve him."
   },
   {
     "id": "reeh",
@@ -467,7 +513,8 @@
     "seferiaUrl": "Deuteronomy.11.26-16.17",
     "number": 47,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "Moses sets before Israel a choice: blessing if they obey, curse if they don't. Worship must be centralized at the place God will choose — all other altars must be destroyed. Warnings are given against false prophets and those who lead Israel to other gods. Kosher laws are reviewed and tithes are commanded. The sabbatical year requires releasing debts and freeing Hebrew slaves. The three pilgrimage festivals — Passover, Shavuot, and Sukkot — are described."
   },
   {
     "id": "shoftim",
@@ -477,7 +524,8 @@
     "seferiaUrl": "Deuteronomy.16.18-21.9",
     "number": 48,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "Moses establishes the framework for Israel's governance: judges and officers, a supreme court, a future king (who must not accumulate horses, wives, or wealth), Levitical priests, and prophets. Cities of refuge are designated for accidental killers. Rules of warfare are given — including offering peace before battle and not cutting down fruit trees during a siege. The portion ends with the eglah arufah ritual for an unsolved murder."
   },
   {
     "id": "ki-teitzei",
@@ -487,7 +535,8 @@
     "seferiaUrl": "Deuteronomy.21.10-25.19",
     "number": 49,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "The longest portion in the Torah packs in seventy-four commandments covering a vast range of daily life: treatment of a female war captive, inheritance rights of firstborn sons, the rebellious son, proper burial, returning lost property, helping a fallen animal, forbidden cross-dressing, the mother bird, roof railings for safety, forbidden mixtures, tzitzit, marriage laws, honest weights and measures, and the command to remember and blot out Amalek."
   },
   {
     "id": "ki-tavo",
@@ -497,7 +546,8 @@
     "seferiaUrl": "Deuteronomy.26.1-29.8",
     "number": 50,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "When Israel enters the land, they must bring their first fruits to the Temple and recite a declaration of history beginning \"My father was a wandering Aramean.\" Tithes must be properly distributed. The people are to inscribe the Torah on stones at Mount Ebal and shout blessings from Mount Gerizim and curses from Mount Ebal. Then comes the great Tochachah — a sweeping and terrifying list of curses for disobedience that dwarfs the one in Leviticus, ending with exile."
   },
   {
     "id": "nitzavim",
@@ -507,7 +557,8 @@
     "seferiaUrl": "Deuteronomy.29.9-30.20",
     "number": 51,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "Moses gathers all of Israel — from leaders to woodcutters, including future generations — to renew the covenant. He predicts that Israel will sin and be exiled, but assures them that if they return to God, God will gather them from the ends of the earth and restore them. The Torah is not distant or mysterious; it is very near. Moses sets before the people life and death, blessing and curse — and urges them to choose life."
   },
   {
     "id": "vayeilech",
@@ -517,7 +568,8 @@
     "seferiaUrl": "Deuteronomy.31.1-31.30",
     "number": 52,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "On his final day, Moses tells the people he is 120 years old and can no longer lead; Joshua will take them across the Jordan. Moses writes the Torah and gives it to the Levitical priests to be read aloud to all Israel every seven years during Sukkot. God tells Moses and Joshua to stand in the Tent of Meeting and warns that after Moses's death the people will abandon the covenant — commanding that the Song of Ha'azinu be taught as a witness."
   },
   {
     "id": "haazinu",
@@ -527,7 +579,8 @@
     "seferiaUrl": "Deuteronomy.32.1-32.52",
     "number": 53,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "Moses recites a sweeping poem calling heaven and earth as witnesses. The song praises God's perfection and Israel's ingratitude through history: God nurtured Israel in the wilderness, but prosperity made them arrogant and they abandoned God for idols. God is angry and brings enemies against them — but will ultimately avenge his people and atone for their land. God then commands Moses to ascend Mount Nebo to view the Promised Land and die there."
   },
   {
     "id": "vzot-habracha",
@@ -537,6 +590,7 @@
     "seferiaUrl": "Deuteronomy.33.1-34.12",
     "number": 54,
     "narrativeEra": "iron-age-1",
-    "approximateDateBCE": { "start": 1210, "end": 1180 }
+    "approximateDateBCE": { "start": 1210, "end": 1180 },
+    "summary": "Moses delivers a final poetic blessing to each of the twelve tribes before his death. He then climbs Mount Nebo and God shows him the entire sweep of the Promised Land. Moses dies there at 120, his eyes undimmed and strength unabated. God buries him in an unmarked grave in Moab. The Torah ends with Israel mourning thirty days and Joshua taking leadership — and the statement that no prophet like Moses ever arose again in Israel."
   }
 ]

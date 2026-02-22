@@ -69,6 +69,12 @@ export function ParshaHeader() {
           <span className="text-amber-600 font-medium">This week's portion</span>
         )}
       </div>
+
+      {parsha.summary && (
+        <p className="mt-2 text-xs text-stone-500 leading-relaxed">
+          {parsha.summary}
+        </p>
+      )}
     </div>
   )
 }
