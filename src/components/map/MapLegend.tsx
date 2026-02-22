@@ -12,6 +12,13 @@ export function MapLegend() {
   const territories = useTerritories(currentYearBCE)
   const [collapsed, setCollapsed] = useState(false)
 
+  const hasContent =
+    showArchaeologicalSites ||
+    routes.length > 0 ||
+    (showTerritories && territories.length > 0)
+
+  if (!hasContent) return null
+
   return (
     <div className="absolute bottom-6 left-3 z-[1000] bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-md border border-stone-200 px-3 py-2 text-xs">
       <button
@@ -29,23 +36,6 @@ export function MapLegend() {
       </button>
 
       {!collapsed && <div className="space-y-1.5 mt-1.5">
-
-      {/* Place confidence */}
-      <div className="space-y-1">
-        {[
-          { color: '#D97706', label: 'High confidence' },
-          { color: '#6B7280', label: 'Medium confidence' },
-          { color: '#9CA3AF', label: 'Low confidence' },
-        ].map(({ color, label }) => (
-          <div key={label} className="flex items-center gap-2">
-            <div
-              className="w-2.5 h-2.5 rounded-full border-2 border-white shadow-sm shrink-0"
-              style={{ backgroundColor: color }}
-            />
-            <span className="text-stone-500">{label}</span>
-          </div>
-        ))}
-      </div>
 
       {/* Archaeological sites */}
       {showArchaeologicalSites && (
