@@ -20,7 +20,7 @@ export function MapBoundsManager({ places, parshaId }: Props) {
     if (!bounds) return
 
     // Pad bounds and fit
-    map.fitBounds(bounds, { padding: [50, 50], maxZoom: 8 })
+    map.fitBounds(bounds, { padding: [20, 20], maxZoom: 12, animate: true, duration: 1.2 })
   }, [map, places, parshaId, fitBoundsKey])
 
   return null
