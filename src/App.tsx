@@ -7,163 +7,273 @@ import { TutorialOverlay } from './components/TutorialOverlay'
 import { useAppStore } from './store/useAppStore'
 import { useAutoSelectParsha } from './hooks/useAutoSelectParsha'
 import { useAutoSelectParshaByYear } from './hooks/useAutoSelectParshaByYear'
-import { Map, BookOpen, Clock, PanelLeftClose, PanelLeftOpen, PanelRightClose, PanelRightOpen, HelpCircle } from 'lucide-react'
+import { getParshaById } from './utils/parshaUtils'
+import {
+  Map,
+  BookOpen,
+  Clock,
+  HelpCircle,
+  X,
+  ChevronDown,
+  ChevronUp,
+} from 'lucide-react'
 
 type MobileTab = 'map' | 'text' | 'context'
 
 const TUTORIAL_KEY = 'parshamap_tutorial_seen_v1'
 
+// ─── Logo ──────────────────────────────────────────────────────────────────────
+
 function LogoLockup() {
   return (
-    <div className="flex items-center gap-2.5">
-      <svg width="18" height="22" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+    <div className="flex items-center gap-2.5 shrink-0">
+      <svg width="16" height="20" viewBox="0 0 20 24" fill="none" aria-hidden="true">
         <path
           d="M10 0C4.477 0 0 4.477 0 10c0 7.5 10 14 10 14s10-6.5 10-14C20 4.477 15.523 0 10 0z"
           fill="#F59E0B"
         />
         <circle cx="10" cy="10" r="3.5" fill="#1C1917" />
       </svg>
-      <span className="leading-none flex items-baseline gap-1.5">
-        <span className="font-hebrew font-medium text-stone-100 text-xl tracking-wide">Parsha</span>
-        <span className="font-sans font-light text-amber-400 text-xs tracking-widest uppercase">Map</span>
+      <span className="flex items-baseline gap-1.5 leading-none">
+        <span className="font-hebrew font-medium text-stone-100 text-lg tracking-wide">Parsha</span>
+        <span className="font-sans font-light text-amber-400 text-[10px] tracking-widest uppercase">Map</span>
       </span>
     </div>
   )
 }
 
+// ─── Panel wrapper with close button ──────────────────────────────────────────
+
+function PanelShell({
+  open,
+  side,
+  onClose,
+  children,
+}: {
+  open: boolean
+  side: 'left' | 'right'
+  onClose: () => void
+  children: React.ReactNode
+}) {
+  const translate = open
+    ? 'translate-x-0'
+    : side === 'left'
+    ? '-translate-x-full'
+    : 'translate-x-full'
+
+  return (
+    <div
+      className={`absolute top-11 ${side}-0 bottom-[72px] z-[1000] w-[340px] max-w-[calc(100vw-48px)]
+        bg-white shadow-2xl flex flex-col
+        transition-transform duration-300 ease-in-out ${translate}`}
+    >
+      {/* Close tab on the exposed edge */}
+      <button
+        onClick={onClose}
+        className={`absolute top-4 ${side === 'left' ? '-right-9' : '-left-9'} z-10
+          w-9 h-9 flex items-center justify-center
+          bg-white border border-stone-200 shadow-md
+          ${side === 'left' ? 'rounded-r-xl' : 'rounded-l-xl'}
+          text-stone-400 hover:text-stone-700 hover:bg-stone-50 transition-colors`}
+        aria-label="Close panel"
+      >
+        <X size={14} />
+      </button>
+      {children}
+    </div>
+  )
+}
+
+// ─── App ───────────────────────────────────────────────────────────────────────
+
 export default function App() {
+  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
+
   const [mobileTab, setMobileTab] = useState<MobileTab>('map')
-  const [leftOpen, setLeftOpen] = useState(true)
-  const [rightOpen, setRightOpen] = useState(true)
+  const [leftOpen, setLeftOpen] = useState(false)
+  const [rightOpen, setRightOpen] = useState(false)
   const [showTutorial, setShowTutorial] = useState(false)
 
   useAutoSelectParsha()
   useAutoSelectParshaByYear()
 
+  // When a place panel opens, jump to the context tab on mobile
   useEffect(() => {
     if (selectedPlacePanel) setMobileTab('context')
   }, [selectedPlacePanel])
 
+  const parsha = selectedParshaId ? getParshaById(selectedParshaId) : null
+
   function reopenTutorial() {
     localStorage.removeItem(TUTORIAL_KEY)
     setShowTutorial((v) => !v)
-    // Force remount by toggling — TutorialOverlay reads localStorage on mount
-    // Instead, we'll just set a key to force re-render
   }
 
   return (
-    <div className="flex flex-col h-[100dvh] bg-stone-100 overflow-hidden">
-      {/* Tutorial overlay — renders on first visit */}
-      <TutorialOverlay key={showTutorial ? 'force-open' : 'normal'} forceOpen={showTutorial} onDismiss={() => setShowTutorial(false)} />
+    <div className="h-[100dvh] overflow-hidden bg-stone-900">
+      <TutorialOverlay
+        key={showTutorial ? 'open' : 'auto'}
+        forceOpen={showTutorial}
+        onDismiss={() => setShowTutorial(false)}
+      />
 
-      {/* ── Header ── */}
-      <header className="flex items-center justify-between px-4 py-0 bg-stone-900 text-stone-100 shrink-0 border-b border-stone-800 h-11">
-        {/* Left: logo + subtitle */}
-        <div className="flex items-center gap-3">
+      {/* ══════════════════════════════════════════════════════
+          DESKTOP  (md +)  — map fills full screen, panels overlay
+          ══════════════════════════════════════════════════════ */}
+      <div className="hidden md:block h-full relative">
+
+        {/* Map — base layer, true full-screen */}
+        <div className="absolute inset-0">
+          <ParshaMap />
+        </div>
+
+        {/* ── Floating header ── */}
+        <header className="absolute top-0 inset-x-0 z-[1100] h-11 flex items-center gap-1 px-3
+          bg-stone-900/95 backdrop-blur-sm border-b border-stone-800/60">
+
           <LogoLockup />
-          <span className="text-stone-500 text-xs hidden sm:inline select-none">|</span>
-          <span className="text-stone-400 text-xs hidden sm:inline select-none">
-            Biblical geography &amp; historical context
-          </span>
-        </div>
 
-        {/* Right: help button */}
-        <button
-          onClick={reopenTutorial}
-          className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-stone-400 hover:text-stone-200 hover:bg-stone-800 transition-colors text-xs"
-          title="Show tutorial"
-        >
-          <HelpCircle size={14} />
-          <span className="hidden sm:inline">Help</span>
-        </button>
-      </header>
+          <div className="w-px h-5 bg-stone-700 mx-2" />
 
-      {/* ── DESKTOP layout (md+) ── */}
-      <div className="hidden md:flex flex-1 min-h-0">
-        {/* Left sidebar — collapsible */}
-        <div
-          className={`shrink-0 flex flex-col border-r border-stone-200 bg-white overflow-hidden shadow-sm transition-all duration-300 ease-in-out ${
-            leftOpen ? 'w-72' : 'w-0'
-          }`}
-        >
-          {leftOpen && <Sidebar />}
-        </div>
-
-        {/* Center: map + timeline */}
-        <main className="flex flex-col flex-1 min-w-0 relative">
-          {/* Collapse toggles — float over map edges */}
+          {/* Text / Parsha panel toggle */}
           <button
             onClick={() => setLeftOpen((v) => !v)}
-            className="absolute left-2 top-2 z-[1000] p-1.5 rounded-lg bg-white/90 backdrop-blur-sm border border-stone-200/80 shadow-sm text-stone-500 hover:text-stone-800 hover:bg-white transition-colors"
-            title={leftOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              leftOpen
+                ? 'bg-stone-700 text-stone-100'
+                : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
+            }`}
           >
-            {leftOpen ? <PanelLeftClose size={15} /> : <PanelLeftOpen size={15} />}
+            <BookOpen size={13} />
+            <span className="hidden lg:inline">
+              {parsha ? parsha.name : 'Torah Text'}
+            </span>
+            <span className="lg:hidden">Text</span>
+            {leftOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
           </button>
+
+          {/* Parsha name pill (when selected, visible at all widths) */}
+          {parsha && !leftOpen && (
+            <span className="hidden xl:inline text-xs text-amber-400/80 truncate max-w-[200px]">
+              {parsha.hebrewName}
+            </span>
+          )}
+
+          <div className="flex-1" />
+
+          {/* History panel toggle */}
           <button
             onClick={() => setRightOpen((v) => !v)}
-            className="absolute right-2 top-2 z-[1000] p-1.5 rounded-lg bg-white/90 backdrop-blur-sm border border-stone-200/80 shadow-sm text-stone-500 hover:text-stone-800 hover:bg-white transition-colors"
-            title={rightOpen ? 'Collapse context panel' : 'Expand context panel'}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              rightOpen
+                ? 'bg-stone-700 text-stone-100'
+                : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
+            }`}
           >
-            {rightOpen ? <PanelRightClose size={15} /> : <PanelRightOpen size={15} />}
+            <Clock size={13} />
+            <span>History</span>
+            {rightOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
           </button>
 
-          <div className="flex-1 relative min-h-0">
-            <ParshaMap />
-          </div>
-          <div className="shrink-0 border-t border-stone-200 bg-gradient-to-b from-white to-stone-50 px-4 py-2.5">
-            <TimelineSlider compact />
-          </div>
-        </main>
+          <div className="w-px h-5 bg-stone-700 mx-1" />
 
-        {/* Right context panel — collapsible */}
-        <div
-          className={`shrink-0 flex flex-col border-l border-stone-200 bg-white overflow-hidden shadow-sm transition-all duration-300 ease-in-out ${
-            rightOpen ? 'w-80' : 'w-0'
-          }`}
-        >
-          {rightOpen && <ContextPanel />}
+          {/* Help */}
+          <button
+            onClick={reopenTutorial}
+            className="p-1.5 rounded-lg text-stone-500 hover:text-stone-200 hover:bg-stone-800 transition-colors"
+            title="Show tutorial"
+          >
+            <HelpCircle size={15} />
+          </button>
+        </header>
+
+        {/* ── Slide-in panels ── */}
+        <PanelShell open={leftOpen} side="left" onClose={() => setLeftOpen(false)}>
+          <Sidebar />
+        </PanelShell>
+
+        <PanelShell open={rightOpen} side="right" onClose={() => setRightOpen(false)}>
+          <ContextPanel />
+        </PanelShell>
+
+        {/* ── Floating timeline bar ── */}
+        <div className="absolute bottom-0 inset-x-0 z-[900] bg-white/95 backdrop-blur-md
+          border-t border-stone-200/70 px-5 py-2.5 h-[72px]">
+          <TimelineSlider />
         </div>
       </div>
 
-      {/* ── MOBILE layout (<md) ── */}
-      <div className="flex md:hidden flex-1 min-h-0 flex-col">
+      {/* ══════════════════════════════════════════════════════
+          MOBILE  (< md)  — header + tabs + slim timeline
+          ══════════════════════════════════════════════════════ */}
+      <div className="flex md:hidden flex-col h-full">
+
+        {/* Mobile header */}
+        <header className="shrink-0 h-11 flex items-center justify-between px-4
+          bg-stone-900 border-b border-stone-800/60">
+          <LogoLockup />
+          <div className="flex items-center gap-3">
+            {parsha && (
+              <span className="text-xs text-amber-400/80 font-medium truncate max-w-[130px]">
+                {parsha.name}
+              </span>
+            )}
+            <button
+              onClick={reopenTutorial}
+              className="p-1 rounded-lg text-stone-500 hover:text-stone-300 transition-colors"
+            >
+              <HelpCircle size={15} />
+            </button>
+          </div>
+        </header>
+
+        {/* Tab content */}
         <div className="flex-1 min-h-0 relative overflow-hidden">
+
+          {/* Map tab */}
           <div className={`absolute inset-0 flex flex-col ${mobileTab === 'map' ? '' : 'hidden'}`}>
             <div className="flex-1 relative min-h-0">
               <ParshaMap />
             </div>
-            <div className="shrink-0 border-t border-stone-200 bg-gradient-to-b from-white to-stone-50 px-3 py-2.5">
-              <TimelineSlider compact />
+            {/* Slim timeline strip above tab bar */}
+            <div className="shrink-0 bg-white border-t border-stone-200 px-4 py-2.5">
+              <TimelineSlider />
             </div>
           </div>
 
+          {/* Text tab */}
           <div className={`absolute inset-0 bg-white ${mobileTab === 'text' ? '' : 'hidden'}`}>
             <Sidebar />
           </div>
 
+          {/* History tab */}
           <div className={`absolute inset-0 bg-white ${mobileTab === 'context' ? '' : 'hidden'}`}>
             <ContextPanel />
           </div>
         </div>
 
         {/* Bottom tab bar */}
-        <nav className="shrink-0 flex border-t border-stone-200 bg-white shadow-[0_-1px_6px_rgba(0,0,0,0.06)]">
-          {([
-            { id: 'map' as MobileTab, label: 'Map', Icon: Map },
-            { id: 'text' as MobileTab, label: 'Text', Icon: BookOpen },
-            { id: 'context' as MobileTab, label: 'History', Icon: Clock },
-          ] as const).map(({ id, label, Icon }) => (
+        <nav className="shrink-0 flex h-14 border-t border-stone-200 bg-white">
+          {(
+            [
+              { id: 'map' as MobileTab, label: 'Map', Icon: Map },
+              { id: 'text' as MobileTab, label: 'Text', Icon: BookOpen },
+              { id: 'context' as MobileTab, label: 'History', Icon: Clock },
+            ] as const
+          ).map(({ id, label, Icon }) => (
             <button
               key={id}
               onClick={() => setMobileTab(id)}
-              className={`flex-1 flex flex-col items-center gap-0.5 py-3 text-[11px] font-medium transition-colors ${
-                mobileTab === id
-                  ? 'text-amber-600 border-t-2 border-amber-500 -mt-px'
-                  : 'text-stone-400 border-t-2 border-transparent -mt-px'
-              }`}
+              className={`flex-1 flex flex-col items-center justify-center gap-0.5
+                text-[10px] font-semibold uppercase tracking-wide transition-colors ${
+                  mobileTab === id ? 'text-amber-600' : 'text-stone-400'
+                }`}
             >
-              <Icon size={20} />
+              <Icon
+                size={20}
+                strokeWidth={mobileTab === id ? 2.5 : 1.8}
+              />
               {label}
             </button>
           ))}

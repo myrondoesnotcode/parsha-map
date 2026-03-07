@@ -1,84 +1,97 @@
 import * as Slider from '@radix-ui/react-slider'
 import { useAppStore } from '../../store/useAppStore'
-import { EraLabel } from './EraLabel'
-import { TimelineTrack } from './TimelineTrack'
-import { EraJumpButtons } from './EraJumpButtons'
+import { useEraContext } from '../../hooks/useEraContext'
 import { SLIDER_MIN, SLIDER_MAX } from '../../utils/yearUtils'
+import timeline from '../../data/timeline.json'
+import type { Era } from '../../types/timeline'
 
-interface Props {
-  compact?: boolean
-}
+const eras = timeline as Era[]
+const TOTAL_SPAN = SLIDER_MAX - SLIDER_MIN
 
-export function TimelineSlider({ compact }: Props) {
+export function TimelineSlider() {
   const currentYearBCE = useAppStore((s) => s.currentYearBCE)
   const setCurrentYear = useAppStore((s) => s.setCurrentYear)
-
-  const sliderValue = currentYearBCE
+  const { era } = useEraContext(currentYearBCE)
 
   return (
-    <div className="space-y-1.5">
-      <div className="flex items-center justify-between gap-2">
-        <EraLabel />
-        {!compact && (
-          <div className="flex items-center gap-2 text-xs text-stone-400 shrink-0">
-            <span>{SLIDER_MAX} BCE</span>
-            <span>←</span>
-            <span className="font-medium text-stone-500">Older</span>
-            <span className="text-stone-200">|</span>
-            <span className="font-medium text-stone-500">More Recent</span>
-            <span>→</span>
-            <span>{SLIDER_MIN} BCE</span>
-          </div>
+    <div className="space-y-1.5 select-none">
+
+      {/* Row 1: Era name + year */}
+      <div className="flex items-center gap-2">
+        {era && (
+          <div
+            className="w-2 h-2 rounded-full shrink-0"
+            style={{ backgroundColor: era.color }}
+          />
         )}
-        {compact && (
-          <span className="text-xs text-stone-400 shrink-0">{currentYearBCE} BCE</span>
-        )}
+        <span className="text-xs font-semibold text-stone-700 truncate leading-none">
+          {era ? era.name : 'Unknown Period'}
+        </span>
+        <span className="ml-auto text-xs text-stone-400 shrink-0 tabular-nums leading-none">
+          {currentYearBCE.toLocaleString()} BCE
+        </span>
       </div>
 
-      {/* Era color band */}
-      <TimelineTrack />
+      {/* Row 2: Era bands (clickable) with slider overlaid */}
+      <div className="relative h-7">
 
-      {/* Era jump buttons */}
-      <EraJumpButtons />
-
-      {/* Slider */}
-      <Slider.Root
-        className="relative flex items-center select-none touch-none w-full h-6"
-        value={[sliderValue]}
-        min={SLIDER_MIN}
-        max={SLIDER_MAX}
-        step={50}
-        inverted
-        onValueChange={([val]) => setCurrentYear(val)}
-        aria-label="Timeline year BCE"
-      >
-        <Slider.Track className="relative bg-transparent grow rounded-full h-2">
-          <Slider.Range className="absolute bg-transparent rounded-full h-full" />
-        </Slider.Track>
-        <Slider.Thumb
-          className="block w-6 h-6 bg-white border-2 border-amber-500 rounded-full shadow-md
-            hover:border-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-1
-            cursor-grab active:cursor-grabbing transition-colors"
-        />
-      </Slider.Root>
-
-      {/* Era tick labels — hidden in compact mode */}
-      {!compact && (
-        <div className="relative h-4">
-          {[4500, 3300, 2000, 1550, 1200, 900, 586, 400].map((year) => {
-            const pct = ((SLIDER_MAX - year) / (SLIDER_MAX - SLIDER_MIN)) * 100
+        {/* Colored era bands — visual background */}
+        <div className="absolute inset-x-0 top-1.5 bottom-1.5 flex gap-px rounded-full overflow-hidden pointer-events-none">
+          {eras.map((e) => {
+            const widthPct = ((e.startBCE - e.endBCE) / TOTAL_SPAN) * 100
             return (
-              <span
-                key={year}
-                className="absolute text-[10px] text-stone-300 -translate-x-1/2 whitespace-nowrap"
-                style={{ left: `${pct}%` }}
-              >
-                {year}
-              </span>
+              <div
+                key={e.id}
+                className="h-full transition-opacity duration-200"
+                style={{
+                  width: `${widthPct}%`,
+                  backgroundColor: e.color,
+                  opacity: era?.id === e.id ? 1 : 0.35,
+                }}
+              />
             )
           })}
         </div>
-      )}
+
+        {/* Era click zones — invisible, let you jump to an era */}
+        <div className="absolute inset-0 flex gap-px">
+          {eras.map((e) => {
+            const widthPct = ((e.startBCE - e.endBCE) / TOTAL_SPAN) * 100
+            const midpoint = Math.round((e.startBCE + e.endBCE) / 2)
+            return (
+              <button
+                key={e.id}
+                onClick={() => setCurrentYear(midpoint)}
+                title={`${e.name} — ${e.startBCE}–${e.endBCE} BCE`}
+                className="h-full hover:bg-white/25 transition-colors"
+                style={{ width: `${widthPct}%` }}
+              />
+            )
+          })}
+        </div>
+
+        {/* Slider — transparent track, amber thumb rides on top */}
+        <Slider.Root
+          className="absolute inset-0 flex items-center touch-none"
+          value={[currentYearBCE]}
+          min={SLIDER_MIN}
+          max={SLIDER_MAX}
+          step={50}
+          inverted
+          onValueChange={([val]) => setCurrentYear(val)}
+          aria-label="Timeline year"
+        >
+          <Slider.Track className="relative grow h-full bg-transparent">
+            <Slider.Range className="bg-transparent" />
+          </Slider.Track>
+          <Slider.Thumb
+            className="block w-5 h-5 rounded-full bg-white border-[2.5px] border-amber-500
+              shadow-md hover:border-amber-600 cursor-grab active:cursor-grabbing
+              focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-1
+              transition-colors z-10"
+          />
+        </Slider.Root>
+      </div>
     </div>
   )
 }
