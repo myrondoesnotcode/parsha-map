@@ -10,7 +10,7 @@ function SourceItem({ source }: { source: PrimarySource }) {
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <div className="border border-stone-100 rounded-lg overflow-hidden">
+    <div className="rounded-xl overflow-hidden shadow-sm ring-1 ring-stone-100">
       {source.imageUrl && (
         <img
           src={source.imageUrl}
@@ -67,7 +67,7 @@ export function PrimarySourcesCard({ era }: Props) {
   if (!era.primarySources || era.primarySources.length === 0) return null
 
   return (
-    <div className="rounded-xl border border-stone-200 overflow-hidden">
+    <div className="rounded-2xl overflow-hidden shadow-sm ring-1 ring-stone-100">
       <div className="px-4 py-3 bg-amber-50 border-b border-amber-100 flex items-center gap-2">
         <Scroll size={13} className="text-amber-700" />
         <h3 className="text-xs font-semibold text-amber-800 uppercase tracking-wide">
