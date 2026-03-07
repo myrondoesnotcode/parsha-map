@@ -83,7 +83,8 @@ export function ParshaHeader() {
             alt={parsha.doreImageCaption ?? `${parsha.name} illustration`}
             className="w-full object-cover max-h-52 opacity-90"
             onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.display = 'none'
+              const container = (e.currentTarget as HTMLElement).parentElement
+              if (container) container.style.display = 'none'
             }}
           />
           {parsha.doreImageCaption && (

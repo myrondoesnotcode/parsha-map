@@ -4,26 +4,14 @@ import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { useParshaText } from '../../hooks/useParshaText'
 import { useParshaPlaces } from '../../hooks/useParshaPlaces'
-import { useSefariaLinks } from '../../hooks/useSefariaLinks'
+import { useCommentary } from '../../hooks/useCommentary'
 import { flattenSefariaText } from '../../api/sefaria'
 import { highlightPlaceNames } from '../../utils/textUtils'
-import type { SefariaLink } from '../../types/sefaria'
 
 const COMMENTATORS = ['Rashi', 'Ramban', 'Ibn Ezra', 'Sforno'] as const
 type Commentator = (typeof COMMENTATORS)[number]
 
 const PAGE_SIZE = 20
-
-function getCommentaryText(link: SefariaLink): string {
-  const raw = link.text?.en
-  if (!raw) return ''
-  const text = Array.isArray(raw) ? raw.join(' ') : raw
-  return text.replace(/<[^>]+>/g, '').trim()
-}
-
-function shortVerseRef(anchorRef: string): string {
-  return anchorRef.split(' ').slice(-1)[0] ?? anchorRef
-}
 
 export function ParshaTextViewer() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
@@ -38,20 +26,16 @@ export function ParshaTextViewer() {
   const [commentatorMenuOpen, setCommentatorMenuOpen] = useState(false)
   const [commentaryLimit, setCommentaryLimit] = useState(40)
 
-  // Reset pagination when parsha changes
   useEffect(() => {
     setVisibleCount(PAGE_SIZE)
     setCommentaryLimit(40)
   }, [selectedParshaId])
 
-  const { data: links, isLoading: linksLoading } = useSefariaLinks(
+  const { data: commentary, isLoading: commentaryLoading } = useCommentary(
     parsha?.seferiaUrl ?? null,
+    selectedCommentator,
     commentaryOpen
   )
-
-  const filteredCommentary = links?.filter(
-    (link) => link.collectiveTitle?.en === selectedCommentator
-  ) ?? []
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
@@ -210,47 +194,53 @@ export function ParshaTextViewer() {
               </h3>
             </div>
 
-            {linksLoading ? (
-              <div className="space-y-3">
+            {commentaryLoading ? (
+              <div className="space-y-4">
                 {[...Array(4)].map((_, i) => (
-                  <div key={i} className="space-y-1">
-                    <div className="h-2.5 w-12 bg-amber-100 rounded animate-pulse" />
-                    <div className="h-3 bg-stone-100 rounded animate-pulse" style={{ width: '90%' }} />
-                    <div className="h-3 bg-stone-100 rounded animate-pulse" style={{ width: '75%' }} />
+                  <div key={i} className="space-y-1.5">
+                    <div className="h-2.5 w-10 bg-amber-100 rounded animate-pulse" />
+                    <div className="h-3 bg-stone-100 rounded animate-pulse" style={{ width: '85%' }} />
+                    <div className="h-8 bg-stone-50 rounded animate-pulse" style={{ width: '90%' }} />
                   </div>
                 ))}
               </div>
-            ) : filteredCommentary.length === 0 ? (
+            ) : !commentary || commentary.length === 0 ? (
               <p className="text-xs text-stone-400 italic">
                 No {selectedCommentator} commentary available for this portion.
               </p>
             ) : (
               <div className="space-y-4">
-                {filteredCommentary.slice(0, commentaryLimit).map((link, i) => {
-                  const text = getCommentaryText(link)
-                  if (!text) return null
-                  return (
-                    <div key={i} className="text-xs">
-                      <span className="font-mono text-amber-600 font-medium text-[10px] mr-2">
-                        {shortVerseRef(link.anchorRef)}
-                      </span>
-                      <span className="text-stone-600 leading-relaxed">{text}</span>
-                    </div>
-                  )
-                })}
-                {filteredCommentary.length > commentaryLimit && (
+                {commentary.slice(0, commentaryLimit).map((entry, i) => (
+                  <div key={i} className="text-xs border-l-2 border-amber-100 pl-3">
+                    <span className="font-mono text-amber-600 font-medium text-[10px]">
+                      {entry.chapter}:{entry.verse}
+                    </span>
+                    {entry.he && (
+                      <p
+                        dir="rtl"
+                        className="font-hebrew text-right text-stone-500 leading-relaxed mt-0.5 text-[11px]"
+                      >
+                        {entry.he}
+                      </p>
+                    )}
+                    {entry.en && (
+                      <p className="text-stone-600 leading-relaxed mt-0.5">{entry.en}</p>
+                    )}
+                  </div>
+                ))}
+                {commentary.length > commentaryLimit && (
                   <div className="flex items-center gap-3 pt-1">
                     <button
                       onClick={() => setCommentaryLimit((n) => n + 40)}
                       className="flex-1 text-xs text-amber-700 hover:text-amber-900 bg-amber-50 hover:bg-amber-100 py-2 rounded transition-colors font-medium"
                     >
-                      Show {Math.min(40, filteredCommentary.length - commentaryLimit)} more comments
+                      Show {Math.min(40, commentary.length - commentaryLimit)} more comments
                       <span className="text-stone-400 font-normal ml-1">
-                        ({commentaryLimit} of {filteredCommentary.length})
+                        ({commentaryLimit} of {commentary.length})
                       </span>
                     </button>
                     <button
-                      onClick={() => setCommentaryLimit(filteredCommentary.length)}
+                      onClick={() => setCommentaryLimit(commentary.length)}
                       className="text-xs text-stone-400 hover:text-stone-600 transition-colors"
                     >
                       Show all
