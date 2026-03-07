@@ -34,7 +34,9 @@
     "number": 3,
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 2000, "end": 1800 },
-    "summary": "God calls Abram to leave his homeland for Canaan, promising him land, descendants, and blessing. Abram travels through Canaan, sojourns in Egypt, separates from Lot, and rescues him from a war of kings. God seals a covenant with Abram, promising the land. Hagar bears Ishmael. God renames Abram to Abraham, institutes circumcision, and promises a son through Sarai, who becomes Sarah."
+    "summary": "God calls Abram to leave his homeland for Canaan, promising him land, descendants, and blessing. Abram travels through Canaan, sojourns in Egypt, separates from Lot, and rescues him from a war of kings. God seals a covenant with Abram, promising the land. Hagar bears Ishmael. God renames Abram to Abraham, institutes circumcision, and promises a son through Sarai, who becomes Sarah.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dore_bible_abram_journeying.jpg",
+    "doreImageCaption": "Abram Journeying into Canaan — Gustave Doré, 1866"
   },
   {
     "id": "vayera",
@@ -45,7 +47,9 @@
     "number": 4,
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 2000, "end": 1800 },
-    "summary": "Three angels visit Abraham and promise that Sarah will bear a son. Abraham pleads with God to spare Sodom; the city and Gomorrah are destroyed for their wickedness but Lot escapes. Isaac is born to Abraham and Sarah. Hagar and Ishmael are sent away. God tests Abraham by commanding him to sacrifice Isaac — at the last moment an angel stops him."
+    "summary": "Three angels visit Abraham and promise that Sarah will bear a son. Abraham pleads with God to spare Sodom; the city and Gomorrah are destroyed for their wickedness but Lot escapes. Isaac is born to Abraham and Sarah. Hagar and Ishmael are sent away. God tests Abraham by commanding him to sacrifice Isaac — at the last moment an angel stops him.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_The_Sacrifice_of_Isaac.jpg",
+    "doreImageCaption": "The Sacrifice of Isaac — Gustave Doré, 1866"
   },
   {
     "id": "chayei-sarah",
@@ -56,7 +60,9 @@
     "number": 5,
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 1900, "end": 1700 },
-    "summary": "Sarah dies and Abraham buys the Cave of Machpelah in Hebron as a burial site. Abraham sends his servant to find a wife for Isaac from among his own kin; the servant returns with Rebekah, and Isaac loves her. Abraham dies and is buried with Sarah."
+    "summary": "Sarah dies and Abraham buys the Cave of Machpelah in Hebron as a burial site. Abraham sends his servant to find a wife for Isaac from among his own kin; the servant returns with Rebekah, and Isaac loves her. Abraham dies and is buried with Sarah.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dore_Eliezer_and_Rebecca.jpg",
+    "doreImageCaption": "Eliezer and Rebekah at the Well — Gustave Doré, 1866"
   },
   {
     "id": "toldot",
@@ -67,7 +73,9 @@
     "number": 6,
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 1900, "end": 1700 },
-    "summary": "Rebekah gives birth to the twins Esau and Jacob after a difficult pregnancy. Esau, the elder, sells his birthright to Jacob for a bowl of stew. Isaac settles among the Philistines and prospers. Rebekah helps Jacob disguise himself to steal Esau's blessing from a blind Isaac, and Jacob flees to Haran before Esau can take revenge."
+    "summary": "Rebekah gives birth to the twins Esau and Jacob after a difficult pregnancy. Esau, the elder, sells his birthright to Jacob for a bowl of stew. Isaac settles among the Philistines and prospers. Rebekah helps Jacob disguise himself to steal Esau's blessing from a blind Isaac, and Jacob flees to Haran before Esau can take revenge.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_bible_isaac_blessing.jpg",
+    "doreImageCaption": "Isaac Blessing Jacob — Gustave Doré, 1866"
   },
   {
     "id": "vayetze",
@@ -119,7 +127,9 @@
     "number": 10,
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 1700, "end": 1550 },
-    "summary": "Pharaoh dreams of seven fat cows swallowed by seven thin ones. Joseph is brought from prison and interprets the dreams as seven years of plenty followed by seven of famine. Pharaoh appoints Joseph as viceroy over all Egypt. When famine strikes, Joseph's brothers come from Canaan to buy grain. Joseph recognizes them but they don't recognize him; he tests them and eventually detains Benjamin."
+    "summary": "Pharaoh dreams of seven fat cows swallowed by seven thin ones. Joseph is brought from prison and interprets the dreams as seven years of plenty followed by seven of famine. Pharaoh appoints Joseph as viceroy over all Egypt. When famine strikes, Joseph's brothers come from Canaan to buy grain. Joseph recognizes them but they don't recognize him; he tests them and eventually detains Benjamin.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_Joseph_Interpreting_Pharaoh%27s_Dream.jpg",
+    "doreImageCaption": "Joseph Interprets Pharaoh's Dream — Gustave Doré, 1866"
   },
   {
     "id": "vayigash",
@@ -130,7 +140,9 @@
     "number": 11,
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 1700, "end": 1550 },
-    "summary": "Judah steps forward and offers himself as a slave in Benjamin's place, delivering an impassioned plea. Joseph breaks down and reveals himself to his stunned brothers. He forgives them, crediting God's hand in all that happened. Jacob and the entire family — seventy people — migrate to Egypt and are settled in the fertile land of Goshen."
+    "summary": "Judah steps forward and offers himself as a slave in Benjamin's place, delivering an impassioned plea. Joseph breaks down and reveals himself to his stunned brothers. He forgives them, crediting God's hand in all that happened. Jacob and the entire family — seventy people — migrate to Egypt and are settled in the fertile land of Goshen.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_Joseph_recognised_by_his_brothers.jpg",
+    "doreImageCaption": "Joseph Recognised by His Brothers — Gustave Doré, 1866"
   },
   {
     "id": "vayechi",
@@ -142,7 +154,9 @@
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 1650, "end": 1550 },
     "summary": "Jacob lives in Egypt for seventeen years. On his deathbed, he blesses Joseph's two sons Ephraim and Manasseh, giving the younger precedence. He then delivers a poetic blessing to each of his twelve sons. Jacob dies and is carried back to Canaan for burial in the Cave of Machpelah. Joseph reassures his brothers he has forgiven them. Joseph dies at 110, asking that his bones be brought back to the promised land.",
-    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/rjuw4av4bx"
+    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/rjuw4av4bx",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_Jacob_blessing_Ephraim_and_Manasseh.jpg",
+    "doreImageCaption": "Jacob Blesses Ephraim and Manasseh — Gustave Doré, 1866"
   },
   {
     "id": "shemot",
@@ -168,7 +182,9 @@
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1300, "end": 1200 },
     "summary": "God reaffirms the covenant with Moses and Aaron and sends them to Pharaoh. When Pharaoh refuses to let the Israelites go, God unleashes the first seven plagues upon Egypt: water turning to blood, frogs, lice, wild animals, livestock disease, boils, and devastating hail — each time Pharaoh hardens his heart and refuses.",
-    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/h1mwstih11x"
+    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/h1mwstih11x",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_Plague_of_Frogs.jpg",
+    "doreImageCaption": "The Plague of Frogs — Gustave Doré, 1866"
   },
   {
     "id": "bo",
@@ -180,7 +196,9 @@
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1280, "end": 1200 },
     "summary": "The last three plagues strike Egypt: locusts devour the land, darkness covers it for three days, and finally the firstborn of every Egyptian family dies at midnight. The Israelites are commanded to mark their doorposts with lamb's blood so the angel of death will pass over them — the origin of Passover. Pharaoh finally releases the Israelites, who leave Egypt after 430 years.",
-    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/sj00tlurhwe"
+    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/sj00tlurhwe",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_The_Plague_of_the_First-born.jpg",
+    "doreImageCaption": "The Plague of the Firstborn — Gustave Doré, 1866"
   },
   {
     "id": "beshalach",
@@ -278,7 +296,9 @@
     "number": 23,
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1260, "end": 1200 },
-    "summary": "The Tabernacle construction is completed and Moses accounts for all the gold, silver, and copper donated. The priestly garments are finished and Moses blesses the craftsmen. On the first day of the first month, Moses erects the Tabernacle, anoints and consecrates it, and the cloud of God's glory fills it — guiding the Israelites in all their travels."
+    "summary": "The Tabernacle construction is completed and Moses accounts for all the gold, silver, and copper donated. The priestly garments are finished and Moses blesses the craftsmen. On the first day of the first month, Moses erects the Tabernacle, anoints and consecrates it, and the cloud of God's glory fills it — guiding the Israelites in all their travels.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_The_Ark_of_the_Covenant.jpg",
+    "doreImageCaption": "The Ark of the Covenant — Gustave Doré, 1866"
   },
   {
     "id": "vayikra",
@@ -311,7 +331,9 @@
     "number": 26,
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1250, "end": 1200 },
-    "summary": "On the eighth day of the ordination, Aaron and his sons offer their first sacrifices and God's fire consumes the altar in a divine sign. Then Aaron's sons Nadav and Abihu offer \"strange fire\" that God had not commanded, and are struck dead. God commands Aaron not to publicly mourn. The laws of kosher food are given: which land animals, fish, and birds may be eaten."
+    "summary": "On the eighth day of the ordination, Aaron and his sons offer their first sacrifices and God's fire consumes the altar in a divine sign. Then Aaron's sons Nadav and Abihu offer \"strange fire\" that God had not commanded, and are struck dead. God commands Aaron not to publicly mourn. The laws of kosher food are given: which land animals, fish, and birds may be eaten.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_Nadab_and_Abihu.jpg",
+    "doreImageCaption": "The Death of Nadab and Abihu — Gustave Doré, 1866"
   },
   {
     "id": "tazria",
@@ -421,7 +443,9 @@
     "number": 36,
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1250, "end": 1200 },
-    "summary": "Aaron is commanded to light the menorah. The Levites are consecrated for service. A second Passover is established for those who could not observe the first. Silver trumpets are made to signal the camp's movements. The Israelites finally leave Sinai and begin their journey. The people complain repeatedly — about hardship, about manna — and Moses reaches a breaking point. God appoints seventy elders to share the burden. Miriam and Aaron speak against Moses; Miriam is struck with tzara'at and then healed."
+    "summary": "Aaron is commanded to light the menorah. The Levites are consecrated for service. A second Passover is established for those who could not observe the first. Silver trumpets are made to signal the camp's movements. The Israelites finally leave Sinai and begin their journey. The people complain repeatedly — about hardship, about manna — and Moses reaches a breaking point. God appoints seventy elders to share the burden. Miriam and Aaron speak against Moses; Miriam is struck with tzara'at and then healed.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_Aaron.jpg",
+    "doreImageCaption": "Aaron Lighting the Menorah — Gustave Doré, 1866"
   },
   {
     "id": "shelach",
@@ -432,7 +456,9 @@
     "number": 37,
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1250, "end": 1200 },
-    "summary": "Twelve spies are sent to scout the land of Canaan. Ten return with a discouraging report of giants and fortified cities, panicking the people. Only Caleb and Joshua urge trust and courage. God is furious at the lack of faith and decrees that the entire generation will die in the desert over forty years — only their children will enter the land. Laws of offerings, the Sabbath-breaker's punishment, and the mitzvah of tzitzit (fringes on garments) close the portion."
+    "summary": "Twelve spies are sent to scout the land of Canaan. Ten return with a discouraging report of giants and fortified cities, panicking the people. Only Caleb and Joshua urge trust and courage. God is furious at the lack of faith and decrees that the entire generation will die in the desert over forty years — only their children will enter the land. Laws of offerings, the Sabbath-breaker's punishment, and the mitzvah of tzitzit (fringes on garments) close the portion.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_The_Spies_with_the_Grapes_of_the_Promised_Land.jpg",
+    "doreImageCaption": "The Spies with the Grapes of Canaan — Gustave Doré, 1866"
   },
   {
     "id": "korach",
@@ -443,7 +469,9 @@
     "number": 38,
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1250, "end": 1200 },
-    "summary": "Korach, a Levite, leads 250 prominent men in a rebellion against Moses and Aaron's leadership, claiming all of Israel is equally holy. The earth opens and swallows Korach and his followers alive; fire consumes the 250 who offered incense. The next day the community blames Moses and a plague begins, killed only when Aaron runs into the crowd with incense to atone. Aaron's staff miraculously blossoms, confirming his priestly role. The priests' and Levites' portions are established."
+    "summary": "Korach, a Levite, leads 250 prominent men in a rebellion against Moses and Aaron's leadership, claiming all of Israel is equally holy. The earth opens and swallows Korach and his followers alive; fire consumes the 250 who offered incense. The next day the community blames Moses and a plague begins, killed only when Aaron runs into the crowd with incense to atone. Aaron's staff miraculously blossoms, confirming his priestly role. The priests' and Levites' portions are established.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_Korah.jpg",
+    "doreImageCaption": "Korah Swallowed by the Earth — Gustave Doré, 1866"
   },
   {
     "id": "chukat",
@@ -454,7 +482,9 @@
     "number": 39,
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1240, "end": 1200 },
-    "summary": "The mysterious ritual of the red heifer purifies those who have become impure through contact with a corpse. Miriam dies. The people complain of thirst and Moses strikes a rock for water instead of speaking to it as commanded — God tells him he will not enter the land. Aaron dies on Mount Hor and his son Elazar becomes High Priest. The people complain again and are punished with venomous snakes; Moses makes a bronze serpent to heal them. Israel defeats the kings Sihon and Og in battle."
+    "summary": "The mysterious ritual of the red heifer purifies those who have become impure through contact with a corpse. Miriam dies. The people complain of thirst and Moses strikes a rock for water instead of speaking to it as commanded — God tells him he will not enter the land. Aaron dies on Mount Hor and his son Elazar becomes High Priest. The people complain again and are punished with venomous snakes; Moses makes a bronze serpent to heal them. Israel defeats the kings Sihon and Og in battle.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_The_Brazen_Serpent.jpg",
+    "doreImageCaption": "The Brazen Serpent — Gustave Doré, 1866"
   },
   {
     "id": "balak",
@@ -610,7 +640,9 @@
     "number": 53,
     "narrativeEra": "iron-age-1",
     "approximateDateBCE": { "start": 1210, "end": 1180 },
-    "summary": "Moses recites a sweeping poem calling heaven and earth as witnesses. The song praises God's perfection and Israel's ingratitude through history: God nurtured Israel in the wilderness, but prosperity made them arrogant and they abandoned God for idols. God is angry and brings enemies against them — but will ultimately avenge his people and atone for their land. God then commands Moses to ascend Mount Nebo to view the Promised Land and die there."
+    "summary": "Moses recites a sweeping poem calling heaven and earth as witnesses. The song praises God's perfection and Israel's ingratitude through history: God nurtured Israel in the wilderness, but prosperity made them arrogant and they abandoned God for idols. God is angry and brings enemies against them — but will ultimately avenge his people and atone for their land. God then commands Moses to ascend Mount Nebo to view the Promised Land and die there.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_Moses_and_Joshua_in_the_Tabernacle.jpg",
+    "doreImageCaption": "Moses and Joshua in the Tabernacle — Gustave Doré, 1866"
   },
   {
     "id": "vzot-habracha",
@@ -621,6 +653,8 @@
     "number": 54,
     "narrativeEra": "iron-age-1",
     "approximateDateBCE": { "start": 1210, "end": 1180 },
-    "summary": "Moses delivers a final poetic blessing to each of the twelve tribes before his death. He then climbs Mount Nebo and God shows him the entire sweep of the Promised Land. Moses dies there at 120, his eyes undimmed and strength unabated. God buries him in an unmarked grave in Moab. The Torah ends with Israel mourning thirty days and Joshua taking leadership — and the statement that no prophet like Moses ever arose again in Israel."
+    "summary": "Moses delivers a final poetic blessing to each of the twelve tribes before his death. He then climbs Mount Nebo and God shows him the entire sweep of the Promised Land. Moses dies there at 120, his eyes undimmed and strength unabated. God buries him in an unmarked grave in Moab. The Torah ends with Israel mourning thirty days and Joshua taking leadership — and the statement that no prophet like Moses ever arose again in Israel.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_Moses_on_Mount_Nebo.jpg",
+    "doreImageCaption": "Moses Views the Promised Land from Mount Nebo — Gustave Doré, 1866"
   }
 ]
