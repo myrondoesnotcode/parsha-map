@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Sidebar } from './components/layout/Sidebar'
 import { ContextPanel } from './components/layout/ContextPanel'
 import { ParshaMap } from './components/map/ParshaMap'
@@ -32,10 +32,16 @@ function LogoLockup() {
 
 export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
+  const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
   const [mobileTab, setMobileTab] = useState<MobileTab>('map')
 
   useAutoSelectParsha()
   useAutoSelectParshaByYear()
+
+  // Auto-switch to History tab when a map pin is tapped on mobile
+  useEffect(() => {
+    if (selectedPlacePanel) setMobileTab('context')
+  }, [selectedPlacePanel])
 
   return (
     <div className="flex flex-col h-[100dvh] bg-stone-50 overflow-hidden">
@@ -57,7 +63,7 @@ export default function App() {
       {/* ── DESKTOP layout (md+): 3 columns side by side ── */}
       <div className="hidden md:flex flex-1 min-h-0">
         {/* Left sidebar */}
-        <aside className="w-72 shrink-0 flex flex-col border-r border-stone-200 bg-white overflow-hidden">
+        <aside className="w-72 shrink-0 flex flex-col border-r border-stone-200 bg-white overflow-hidden shadow-sm">
           <Sidebar />
         </aside>
 
@@ -66,13 +72,13 @@ export default function App() {
           <div className="flex-1 relative min-h-0">
             <ParshaMap />
           </div>
-          <div className="shrink-0 border-t border-stone-200 bg-white px-4 py-3">
-            <TimelineSlider />
+          <div className="shrink-0 border-t border-stone-200 bg-white px-4 py-2">
+            <TimelineSlider compact />
           </div>
         </main>
 
         {/* Right context panel */}
-        <aside className="w-80 shrink-0 flex flex-col border-l border-stone-200 bg-white overflow-hidden">
+        <aside className="w-80 shrink-0 flex flex-col border-l border-stone-200 bg-white overflow-hidden shadow-sm">
           <ContextPanel />
         </aside>
       </div>
@@ -104,7 +110,7 @@ export default function App() {
         </div>
 
         {/* Bottom tab bar */}
-        <nav className="shrink-0 flex border-t border-stone-200 bg-white">
+        <nav className="shrink-0 flex border-t border-stone-200 bg-white shadow-[0_-1px_6px_rgba(0,0,0,0.06)]">
           {([
             { id: 'map' as MobileTab, label: 'Map', Icon: Map },
             { id: 'text' as MobileTab, label: 'Text', Icon: BookOpen },

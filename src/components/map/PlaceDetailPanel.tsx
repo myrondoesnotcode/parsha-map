@@ -45,7 +45,7 @@ export function PlaceDetailPanel() {
 
   return (
     <div
-      className={`absolute inset-0 bg-white z-10 overflow-y-auto transition-transform duration-300 ${
+      className={`absolute inset-y-0 right-0 left-8 bg-white z-10 overflow-y-auto transition-transform duration-300 rounded-tl-2xl rounded-bl-2xl shadow-xl ${
         item ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
@@ -69,7 +69,7 @@ export function PlaceDetailPanel() {
             </div>
             <button
               onClick={closePlacePanel}
-              className="flex-shrink-0 p-1 rounded hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors"
+              className="flex-shrink-0 p-1 rounded-lg hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors"
               aria-label="Close"
             >
               <X size={16} />
