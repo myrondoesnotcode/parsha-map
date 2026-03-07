@@ -49,21 +49,23 @@ export function NewsletterModal({ open, onClose }: Props) {
             </button>
           </div>
 
-          {/* Full-bleed iframe so Beehiiv form has maximum width */}
-          <iframe
-            src={BEEHIIV_EMBED_URL}
-            className="beehiiv-embed"
-            data-test-id="beehiiv-embed"
-            frameBorder={0}
-            scrolling="no"
-            style={{
-              display: 'block',
-              width: '100%',
-              height: 340,
-              backgroundColor: 'transparent',
-              boxShadow: 'none',
-            }}
-          />
+          {/* Beehiiv form — fixed at its natural 300px and centered */}
+          <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: 8 }}>
+            <iframe
+              src={BEEHIIV_EMBED_URL}
+              className="beehiiv-embed"
+              data-test-id="beehiiv-embed"
+              frameBorder={0}
+              scrolling="no"
+              style={{
+                display: 'block',
+                width: 300,
+                height: 340,
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+              }}
+            />
+          </div>
         </div>
       </div>
     </>
