@@ -1,5 +1,5 @@
-import { useCallback, useState, useEffect } from 'react'
-import { MessageSquare, ChevronDown, BookOpen } from 'lucide-react'
+import { useCallback, useState, useEffect, useRef } from 'react'
+import { ScrollText, ChevronDown, BookOpen } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { useParshaText } from '../../hooks/useParshaText'
@@ -26,6 +26,7 @@ export function ParshaTextViewer() {
   const [selectedCommentator, setSelectedCommentator] = useState<Commentator>('Rashi')
   const [commentatorMenuOpen, setCommentatorMenuOpen] = useState(false)
   const [commentaryLimit, setCommentaryLimit] = useState(40)
+  const commentaryRef = useRef<HTMLDivElement>(null)
 
   // Reset pagination when parsha changes
   useEffect(() => {
@@ -152,14 +153,18 @@ export function ParshaTextViewer() {
           )}
 
           <button
-            onClick={() => setCommentaryOpen((v) => !v)}
+            onClick={() => {
+              const opening = !commentaryOpen
+              setCommentaryOpen(opening)
+              if (opening) setTimeout(() => commentaryRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
+            }}
             className={`flex items-center gap-1.5 text-xs px-2.5 py-1 rounded transition-colors ${
               commentaryOpen
                 ? 'bg-amber-600 text-white'
                 : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
             }`}
           >
-            <MessageSquare size={12} />
+            <ScrollText size={12} />
             Commentary
           </button>
         </div>
@@ -221,9 +226,9 @@ export function ParshaTextViewer() {
 
         {/* Commentary section */}
         {commentaryOpen && (
-          <div className="border-t border-amber-100 pt-4">
+          <div ref={commentaryRef} className="border-t border-amber-100 pt-4">
             <div className="flex items-center gap-2 mb-3">
-              <MessageSquare size={13} className="text-amber-600" />
+              <ScrollText size={13} className="text-amber-600" />
               <h3 className="text-xs font-semibold text-amber-700 uppercase tracking-wide">
                 {selectedCommentator} on {parsha.name}
               </h3>
