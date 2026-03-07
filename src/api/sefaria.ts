@@ -1,4 +1,4 @@
-import type { SefariaCalendarItem, SefariaCalendarResponse, SefariaTextResponse } from '../types/sefaria'
+import type { SefariaCalendarItem, SefariaCalendarResponse, SefariaTextResponse, SefariaLink } from '../types/sefaria'
 
 const BASE = 'https://www.sefaria.org/api'
 
@@ -15,6 +15,12 @@ export async function fetchCurrentParsha(): Promise<SefariaCalendarItem | null> 
 export async function fetchParshaText(seferiaUrl: string): Promise<SefariaTextResponse> {
   const res = await fetch(`${BASE}/texts/${seferiaUrl}?context=0&pad=0`)
   if (!res.ok) throw new Error(`Sefaria texts error: ${res.status}`)
+  return res.json()
+}
+
+export async function fetchLinksForParsha(ref: string): Promise<SefariaLink[]> {
+  const res = await fetch(`${BASE}/links/${encodeURIComponent(ref)}?with_text=1`)
+  if (!res.ok) throw new Error(`Sefaria links error: ${res.status}`)
   return res.json()
 }
 
