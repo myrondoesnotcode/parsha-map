@@ -25,6 +25,23 @@ export async function fetchLinksForParsha(ref: string): Promise<SefariaLink[]> {
 }
 
 /**
+ * Fetch commentary text directly for a specific commentator and parsha.
+ * Converts dotted Sefaria URL format (e.g. "Exodus.30.11-34.35") to
+ * human ref format ("Exodus 30:11-34:35") and prefixes the commentator name.
+ */
+export async function fetchCommentaryText(
+  commentator: string,
+  seferiaUrl: string
+): Promise<SefariaTextResponse> {
+  // "Exodus.30.11-34.35" → "Exodus 30:11-34:35"
+  const humanRef = seferiaUrl.replace('.', ' ').replace(/\./g, ':')
+  const ref = encodeURIComponent(`${commentator} on ${humanRef}`)
+  const res = await fetch(`${BASE}/texts/${ref}?context=0&pad=0`)
+  if (!res.ok) throw new Error(`Sefaria commentary error: ${res.status}`)
+  return res.json()
+}
+
+/**
  * Flatten Sefaria text arrays (can be nested string[][]) into a flat string[].
  * Each element is one verse or chunk of text.
  */
