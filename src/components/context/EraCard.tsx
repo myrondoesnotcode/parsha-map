@@ -8,7 +8,7 @@ interface Props {
 export function EraCard({ era }: Props) {
   return (
     <div
-      className="rounded-xl border border-stone-200 overflow-hidden"
+      className="rounded-2xl overflow-hidden shadow-sm ring-1 ring-stone-100"
       style={{ borderTopColor: era.color, borderTopWidth: 4 }}
     >
       <div className="px-4 py-3" style={{ backgroundColor: `${era.color}18` }}>

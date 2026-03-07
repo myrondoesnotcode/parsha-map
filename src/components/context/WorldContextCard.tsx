@@ -9,7 +9,7 @@ export function WorldContextCard({ era }: Props) {
   if (!era.worldEvents || era.worldEvents.length === 0) return null
 
   return (
-    <div className="rounded-xl border border-stone-200 overflow-hidden">
+    <div className="rounded-2xl overflow-hidden shadow-sm ring-1 ring-stone-100">
       <div className="px-4 py-3 bg-stone-50 border-b border-stone-100 flex items-center gap-2">
         <Globe size={13} className="text-stone-500" />
         <h3 className="text-xs font-semibold text-stone-700 uppercase tracking-wide">

@@ -11,7 +11,7 @@ export function ArtifactsCard({ era }: Props) {
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-stone-200 overflow-hidden">
+      <div className="rounded-2xl overflow-hidden shadow-sm ring-1 ring-stone-100">
         <div className="px-4 py-3 bg-stone-50 border-b border-stone-100">
           <p className="text-xs font-semibold text-stone-500 uppercase tracking-wide">
             Artifacts from This Era
@@ -32,7 +32,7 @@ export function ArtifactsCard({ era }: Props) {
   if (!artifacts || artifacts.length === 0) return null
 
   return (
-    <div className="rounded-xl border border-stone-200 overflow-hidden">
+    <div className="rounded-2xl overflow-hidden shadow-sm ring-1 ring-stone-100">
       <div className="px-4 py-3 bg-stone-50 border-b border-stone-100 flex items-center justify-between">
         <p className="text-xs font-semibold text-stone-600 uppercase tracking-wide">
           Artifacts from This Era
@@ -56,7 +56,7 @@ export function ArtifactsCard({ era }: Props) {
             rel="noreferrer"
             className="group block"
           >
-            <div className="w-full aspect-square bg-stone-100 rounded overflow-hidden mb-1">
+            <div className="w-full aspect-square bg-stone-100 rounded-xl overflow-hidden mb-1">
               <img
                 src={artifact.primaryImageSmall}
                 alt={artifact.title}

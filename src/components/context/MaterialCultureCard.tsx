@@ -26,7 +26,7 @@ export function MaterialCultureCard({ entry }: Props) {
   const setSelectedPower = useAppStore((s) => s.setSelectedPower)
 
   return (
-    <div className="rounded-xl border border-stone-200 overflow-hidden">
+    <div className="rounded-2xl overflow-hidden shadow-sm ring-1 ring-stone-100">
       <div className="px-4 py-2 bg-stone-50 border-b border-stone-100">
         <h4 className="text-xs font-semibold text-stone-500 uppercase tracking-wide">
           Material Culture

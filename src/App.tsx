@@ -119,13 +119,13 @@ export default function App() {
             <button
               key={id}
               onClick={() => setMobileTab(id)}
-              className={`flex-1 flex flex-col items-center gap-0.5 py-2 text-[11px] font-medium transition-colors ${
+              className={`flex-1 flex flex-col items-center gap-0.5 py-3 text-[11px] font-medium transition-colors ${
                 mobileTab === id
                   ? 'text-amber-600 border-t-2 border-amber-500 -mt-px'
                   : 'text-stone-400 border-t-2 border-transparent -mt-px'
               }`}
             >
-              <Icon size={18} />
+              <Icon size={20} />
               {label}
             </button>
           ))}

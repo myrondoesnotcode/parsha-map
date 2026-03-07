@@ -33,7 +33,7 @@ export function EraJumpButtons() {
               opacity: isActive ? 1 : 0.4,
             }}
             className="h-5 text-[9px] text-white font-medium overflow-hidden truncate px-0.5
-              hover:opacity-80 transition-opacity rounded-sm"
+              hover:opacity-80 transition-opacity rounded"
           >
             {shortLabel}
           </button>
