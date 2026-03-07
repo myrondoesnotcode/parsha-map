@@ -1,5 +1,5 @@
 import { useCallback, useState, useEffect } from 'react'
-import { MessageSquare, ChevronDown } from 'lucide-react'
+import { MessageSquare, ChevronDown, BookOpen } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { useParshaText } from '../../hooks/useParshaText'
@@ -21,6 +21,7 @@ export function ParshaTextViewer() {
   const places = useParshaPlaces(selectedParshaId)
 
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
+  const [showHebrew, setShowHebrew] = useState(true)
   const [commentaryOpen, setCommentaryOpen] = useState(false)
   const [selectedCommentator, setSelectedCommentator] = useState<Commentator>('Rashi')
   const [commentatorMenuOpen, setCommentatorMenuOpen] = useState(false)
@@ -104,74 +105,92 @@ export function ParshaTextViewer() {
   return (
     <div className="flex-1 overflow-y-auto scrollbar-thin">
       {/* Controls bar */}
-      <div className="sticky top-0 z-10 bg-white border-b border-stone-100 px-4 py-2 flex items-center justify-end gap-2">
-        {commentaryOpen && (
-          <div className="relative">
-            <button
-              onClick={() => setCommentatorMenuOpen((v) => !v)}
-              className="flex items-center gap-1 text-xs text-stone-600 bg-stone-100 hover:bg-stone-200 px-2.5 py-1 rounded transition-colors"
-            >
-              {selectedCommentator}
-              <ChevronDown size={11} />
-            </button>
-            {commentatorMenuOpen && (
-              <div className="absolute right-0 top-full mt-1 bg-white border border-stone-200 rounded shadow-md z-20 py-1 min-w-[100px]">
-                {COMMENTATORS.map((c) => (
-                  <button
-                    key={c}
-                    onClick={() => {
-                      setSelectedCommentator(c)
-                      setCommentatorMenuOpen(false)
-                    }}
-                    className={`w-full text-left px-3 py-1.5 text-xs hover:bg-stone-50 transition-colors ${
-                      c === selectedCommentator ? 'text-amber-700 font-medium' : 'text-stone-700'
-                    }`}
-                  >
-                    {c}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
+      <div className="sticky top-0 z-10 bg-white border-b border-stone-100 px-4 py-2 flex items-center justify-between gap-2">
+        {/* Hebrew toggle */}
         <button
-          onClick={() => setCommentaryOpen((v) => !v)}
+          onClick={() => setShowHebrew((v) => !v)}
           className={`flex items-center gap-1.5 text-xs px-2.5 py-1 rounded transition-colors ${
-            commentaryOpen
-              ? 'bg-amber-600 text-white'
-              : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+            showHebrew
+              ? 'bg-stone-800 text-stone-100'
+              : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
           }`}
         >
-          <MessageSquare size={12} />
-          Commentary
+          <BookOpen size={12} />
+          <span className="font-hebrew">עב</span>
+          Hebrew
         </button>
+
+        <div className="flex items-center gap-2">
+          {commentaryOpen && (
+            <div className="relative">
+              <button
+                onClick={() => setCommentatorMenuOpen((v) => !v)}
+                className="flex items-center gap-1 text-xs text-stone-600 bg-stone-100 hover:bg-stone-200 px-2.5 py-1 rounded transition-colors"
+              >
+                {selectedCommentator}
+                <ChevronDown size={11} />
+              </button>
+              {commentatorMenuOpen && (
+                <div className="absolute right-0 top-full mt-1 bg-white border border-stone-200 rounded shadow-md z-20 py-1 min-w-[100px]">
+                  {COMMENTATORS.map((c) => (
+                    <button
+                      key={c}
+                      onClick={() => {
+                        setSelectedCommentator(c)
+                        setCommentatorMenuOpen(false)
+                      }}
+                      className={`w-full text-left px-3 py-1.5 text-xs hover:bg-stone-50 transition-colors ${
+                        c === selectedCommentator ? 'text-amber-700 font-medium' : 'text-stone-700'
+                      }`}
+                    >
+                      {c}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          <button
+            onClick={() => setCommentaryOpen((v) => !v)}
+            className={`flex items-center gap-1.5 text-xs px-2.5 py-1 rounded transition-colors ${
+              commentaryOpen
+                ? 'bg-amber-600 text-white'
+                : 'bg-stone-100 text-stone-600 hover:bg-stone-200'
+            }`}
+          >
+            <MessageSquare size={12} />
+            Commentary
+          </button>
+        </div>
       </div>
 
       <div className="p-4 space-y-4">
-        {/* Hebrew text block */}
-        {hebrewVerses.length > 0 && (
-          <div dir="rtl" className="font-hebrew text-right space-y-1 pb-3 border-b border-stone-100">
-            {hebrewVerses.slice(0, visibleCount).map((verse, i) => (
-              <p key={i} className="text-sm text-stone-700 leading-relaxed">
-                <span className="text-stone-400 text-xs ml-1">{i + 1}</span>{' '}
-                <span dangerouslySetInnerHTML={{ __html: verse }} />
-              </p>
-            ))}
-          </div>
-        )}
-
-        {/* English text block with place highlighting */}
-        {englishVerses.length > 0 && (
-          <div className="space-y-1" onClick={handleClick}>
-            {englishVerses.slice(0, visibleCount).map((verse, i) => (
-              <p key={i} className="text-sm text-stone-700 leading-relaxed">
-                <span className="text-stone-400 text-xs mr-1">{i + 1}</span>
-                <span dangerouslySetInnerHTML={{ __html: highlightPlaceNames(verse, places) }} />
-              </p>
-            ))}
-          </div>
-        )}
+        {/* Interleaved verse list: Hebrew + English together per verse */}
+        <div className="space-y-3" onClick={handleClick}>
+          {Array.from({ length: Math.min(visibleCount, totalVerses) }, (_, i) => {
+            const he = hebrewVerses[i] ?? ''
+            const en = englishVerses[i] ?? ''
+            return (
+              <div key={i} className="space-y-0.5">
+                <span className="text-[10px] text-stone-300 font-mono select-none">{i + 1}</span>
+                {showHebrew && he && (
+                  <p
+                    dir="rtl"
+                    className="font-hebrew text-right text-sm text-stone-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: he }}
+                  />
+                )}
+                {en && (
+                  <p
+                    className="text-sm text-stone-600 leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: highlightPlaceNames(en, places) }}
+                  />
+                )}
+              </div>
+            )
+          })}
+        </div>
 
         {/* Load more controls */}
         {hasMore && (
