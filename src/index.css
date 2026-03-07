@@ -75,6 +75,17 @@
   }
 }
 
+/* Tutorial spotlight ring */
+@keyframes tutorial-ring-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5), inset 0 0 0 2px rgba(245, 158, 11, 0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0),   inset 0 0 0 2px rgba(245, 158, 11, 0.8); }
+}
+
+.tutorial-ring {
+  animation: tutorial-ring-pulse 2s ease-in-out infinite;
+  border: 2px solid rgba(245, 158, 11, 0.55);
+}
+
 /* Smooth panel transitions */
 @keyframes slide-in-right {
   from { transform: translateX(100%); opacity: 0; }
