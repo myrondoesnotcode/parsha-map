@@ -28,7 +28,7 @@ function ParshaImage({ url, caption, name }: { url: string; caption?: string; na
   )
 }
 
-export function ParshaHeader() {
+export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: boolean }) {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const { data: currentParsha } = useCurrentParsha()
 
@@ -90,8 +90,8 @@ export function ParshaHeader() {
           )}
         </div>
 
-        {parsha.summary && (
-          <p className="mt-2 text-xs text-stone-500 leading-relaxed">
+        {parsha.summary && !summaryCollapsed && (
+          <p className="mt-2 text-xs text-stone-500 leading-relaxed transition-all">
             {parsha.summary}
           </p>
         )}

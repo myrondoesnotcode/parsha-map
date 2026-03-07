@@ -13,7 +13,7 @@ type Commentator = (typeof COMMENTATORS)[number]
 
 const PAGE_SIZE = 20
 
-export function ParshaTextViewer() {
+export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void }) {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const setHighlightedPlace = useAppStore((s) => s.setHighlightedPlace)
   const parsha = selectedParshaId ? getParshaById(selectedParshaId) : null
@@ -104,7 +104,10 @@ export function ParshaTextViewer() {
   const hasMore = visibleCount < totalVerses
 
   return (
-    <div className="flex-1 overflow-y-auto scrollbar-thin">
+    <div
+      className="flex-1 overflow-y-auto scrollbar-thin"
+      onScroll={(e) => { if (e.currentTarget.scrollTop > 0) onScrollStart?.() }}
+    >
       {/* Controls bar */}
       <div className="sticky top-0 z-10 bg-white border-b border-stone-100 px-4 py-2 flex items-center justify-between gap-2">
         {/* Hebrew toggle */}
