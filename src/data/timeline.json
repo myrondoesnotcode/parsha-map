@@ -11,6 +11,21 @@
       { "yearBCE": 4000, "description": "Ubaid culture flourishes in Mesopotamia", "significance": "Proto-urban settlements emerge along rivers" },
       { "yearBCE": 3500, "description": "First cities rise at Uruk and Eridu", "significance": "Beginning of urban civilization" },
       { "yearBCE": 3200, "description": "Earliest pictographic writing (proto-cuneiform) at Uruk", "significance": "Humanity's first written records" }
+    ],
+    "worldEvents": [
+      { "region": "Eastern Europe", "description": "Cucuteni-Trypillia culture builds mega-sites in Ukraine with up to 15,000 inhabitants — the world's largest Neolithic settlements" },
+      { "region": "South Asia", "description": "Early farming settlements emerge at Mehrgarh in modern Pakistan, ancestors of the later Indus Valley Civilization" },
+      { "region": "Andes", "description": "Caral civilization begins in coastal Peru — the oldest known civilization in the Americas" },
+      { "region": "China", "description": "Yangshao culture develops sophisticated painted pottery and millet farming along the Yellow River" }
+    ],
+    "primarySources": [
+      {
+        "name": "Proto-Cuneiform Tablet from Uruk",
+        "dateLabel": "c. 3100 BCE",
+        "description": "Among the oldest written records in history, these clay tablets from Uruk use pictographic symbols to track grain and livestock. The world's first writing was invented for accounting.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cuneiform_tablet-_grain_account.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Cuneiform"
+      }
     ]
   },
   {
@@ -26,6 +41,28 @@
       { "yearBCE": 2560, "description": "Great Pyramid of Giza completed", "significance": "Pinnacle of Old Kingdom engineering" },
       { "yearBCE": 2334, "description": "Sargon of Akkad creates first empire", "significance": "First recorded multi-city empire in history" },
       { "yearBCE": 2100, "description": "Third Dynasty of Ur (Ur III) rises", "significance": "Sumerian renaissance; elaborate temple-ziggurats built" }
+    ],
+    "worldEvents": [
+      { "region": "Britain", "description": "Stonehenge constructed in stages on Salisbury Plain — megalithic monument aligned with the summer solstice" },
+      { "region": "South Asia", "description": "Indus Valley Civilization peaks at Harappa and Mohenjo-daro: planned cities with sewage systems, standardized weights, and a population of 50,000" },
+      { "region": "China", "description": "Longshan culture develops walled towns, fine black pottery, and early bronze; traditions of the legendary Xia dynasty begin" },
+      { "region": "Americas", "description": "Norte Chico/Caral civilization in Peru builds monumental pyramids and irrigation canals — the oldest known city complex in the Western Hemisphere" }
+    ],
+    "primarySources": [
+      {
+        "name": "Pyramid Texts (Pyramid of Unas)",
+        "dateLabel": "c. 2375 BCE",
+        "description": "The oldest known religious texts in the world, carved on the walls of Pharaoh Unas's pyramid at Saqqara. They contain 228 spells to ensure the pharaoh's safe passage to the afterlife and his transformation into a star.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Pyramid_texts_unas.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Pyramid_Texts"
+      },
+      {
+        "name": "Epic of Gilgamesh (early version)",
+        "dateLabel": "c. 2100 BCE",
+        "description": "The world's oldest epic poem, from Sumerian Ur. It tells of King Gilgamesh's quest for immortality, his friendship with the wild man Enkidu, and a great flood survived by one righteous man — a story that predates and parallels the Noah narrative.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/British_Museum_Flood_Tablet.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Epic_of_Gilgamesh"
+      }
     ]
   },
   {
@@ -40,6 +77,29 @@
       { "yearBCE": 1792, "description": "Hammurabi becomes king of Babylon", "significance": "Law code promulgated; first written legal system" },
       { "yearBCE": 1800, "description": "Proto-Sinaitic alphabet invented in Sinai/Canaan", "significance": "Ancestor of Hebrew, Greek, and all modern alphabets" },
       { "yearBCE": 1650, "description": "Hyksos seize control of northern Egypt", "significance": "First foreign rulers of Egypt; introduced chariots and bronze weapons" }
+    ],
+    "worldEvents": [
+      { "region": "Aegean", "description": "Minoan civilization reaches its height on Crete — the palace of Knossos is built, Linear A script developed, and Minoan merchants trade across the Mediterranean" },
+      { "region": "China", "description": "Shang Dynasty rises along the Yellow River; oracle bone divination and early Chinese writing emerge" },
+      { "region": "India", "description": "Indus Valley Civilization collapses; Vedic culture and the Sanskrit language begin to emerge in the Punjab" },
+      { "region": "Americas", "description": "Olmec civilization begins on Mexico's Gulf Coast — the 'mother culture' of Mesoamerica, developing early calendars and colossal stone heads" }
+    ],
+    "primarySources": [
+      {
+        "name": "Code of Hammurabi",
+        "dateLabel": "c. 1754 BCE",
+        "description": "A black diorite stele inscribed with 282 laws covering contracts, property, family, and criminal justice. The prologue promises to establish justice so 'the strong may not oppress the weak.' The laws include famous principles of proportional justice.",
+        "excerpt": "If a man destroys the eye of another man, they shall destroy his eye. If he breaks another man's bone, they shall break his bone.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Stele_of_Hammurabi.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Code_of_Hammurabi"
+      },
+      {
+        "name": "Egyptian Execration Texts",
+        "dateLabel": "c. 1800 BCE",
+        "description": "Ritual texts inscribed on clay figurines or pottery, listing the names of Egypt's enemies — including the rulers of Canaanite cities like Shechem, Jerusalem, and Ashkelon. These are the earliest Egyptian references to biblical cities.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Execration_figure.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Execration_texts"
+      }
     ]
   },
   {
@@ -55,6 +115,30 @@
       { "yearBCE": 1352, "description": "Akhenaten's religious revolution; worship of Aten", "significance": "First documented monotheistic state religion" },
       { "yearBCE": 1274, "description": "Battle of Kadesh — Egypt vs. Hittites", "significance": "Oldest known peace treaty; Ramesses II and Hattusili III" },
       { "yearBCE": 1200, "description": "Bronze Age Collapse — widespread destruction across the eastern Mediterranean", "significance": "Collapse of major palace economies; Ugarit, Hatti, and Mycenae destroyed" }
+    ],
+    "worldEvents": [
+      { "region": "Aegean", "description": "Mycenaean Greece flourishes — the era of the Trojan War cycle immortalized by Homer. Mycenae, Tiryns, and Athens build massive palace complexes" },
+      { "region": "Aegean", "description": "Minoan civilization collapses suddenly around 1450 BCE, possibly from the eruption of Thera (Santorini) and Mycenaean invasion" },
+      { "region": "China", "description": "Shang Dynasty at its peak — sophisticated bronze ritual vessels, oracle bone divination, and ancestor worship become central to Chinese culture" },
+      { "region": "India", "description": "The Rigveda composed — the oldest scriptures of Hinduism, containing hymns to Agni, Indra, and Varuna still recited today" }
+    ],
+    "primarySources": [
+      {
+        "name": "Amarna Letters",
+        "dateLabel": "c. 1350 BCE",
+        "description": "Clay tablets discovered at Akhenaten's capital containing diplomatic letters between the Egyptian pharaoh and Canaanite city-kings. Letters mention Megiddo, Lachish, Jerusalem, Gezer, and Shechem — cities of the Torah — by name.",
+        "excerpt": "Say to the king, my lord, my Sun, my god: I am the dirt at the feet of the king, my lord, my Sun, my god. I have prostrated myself seven times and seven times. — King of Jerusalem (EA 287)",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Amarna_Akhenaten_Nefertiti_daughters.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Amarna_letters"
+      },
+      {
+        "name": "Merneptah Stele",
+        "dateLabel": "1208 BCE",
+        "description": "A victory inscription by Pharaoh Merneptah celebrating his campaigns in Canaan. Contains the earliest known mention of 'Israel' outside the Bible — the only ancient Egyptian text to name Israel as a people.",
+        "excerpt": "Canaan is plundered with every hardship. Ashkelon is taken; Gezer is captured; Yano'am is made non-existent. Israel is laid waste and his seed is no more.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Merenptah_Israel_Stele.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Merneptah_Stele"
+      }
     ]
   },
   {
@@ -69,6 +153,30 @@
       { "yearBCE": 1177, "description": "Fall of Ugarit; Sea Peoples invade Egypt and Canaan", "significance": "Final blow to Bronze Age palace system" },
       { "yearBCE": 1050, "description": "Philistines capture the Ark of the Covenant at Aphek", "significance": "Crisis that leads to demand for Israelite kingship" },
       { "yearBCE": 1010, "description": "David becomes king of all Israel at Hebron", "significance": "United Monarchy established; Jerusalem conquered" }
+    ],
+    "worldEvents": [
+      { "region": "Mediterranean", "description": "Phoenicians develop the first true alphabet — 22 consonants adopted from proto-Sinaitic script, ancestor of Hebrew, Greek, Latin, and ultimately every modern alphabet" },
+      { "region": "Greece", "description": "Greek Dark Ages: palace culture collapses, population plummets, writing is lost for 400 years. Small farming villages replace the great Mycenaean citadels" },
+      { "region": "China", "description": "Zhou Dynasty overthrows the Shang and establishes a feudal system across China. 'The Mandate of Heaven' becomes the legitimizing principle for rule" },
+      { "region": "Americas", "description": "Olmec civilization at San Lorenzo reaches its peak, carving colossal stone heads and developing the earliest Mesoamerican calendar systems" }
+    ],
+    "primarySources": [
+      {
+        "name": "Gezer Calendar",
+        "dateLabel": "c. 925 BCE",
+        "description": "A small limestone tablet found at biblical Gezer inscribed with an agricultural poem listing seasonal activities — harvest, planting, pruning. One of the oldest known Hebrew inscriptions, written in early Phoenician-Hebrew script.",
+        "excerpt": "Two months of harvest. Two months of planting. Two months of late planting. A month of hoeing flax. A month of barley-harvest...",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gezer_calendar_text.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Gezer_calendar"
+      },
+      {
+        "name": "Mesha Stele (Moabite Stone)",
+        "dateLabel": "c. 840 BCE",
+        "description": "A black basalt stele from Dibon in Jordan, inscribed by Mesha, King of Moab, describing his revolt against Israel. It mentions the tribe of Gad, the Israelite king Omri by name, and possibly contains the oldest extrabiblical reference to 'the House of David.'",
+        "excerpt": "I am Mesha, son of Chemosh...king of Moab...And Omri, king of Israel, he afflicted Moab many days...",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Mesha_stele.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Mesha_Stele"
+      }
     ]
   },
   {
@@ -83,6 +191,30 @@
       { "yearBCE": 931, "description": "Kingdom splits into Israel (north) and Judah (south) after Solomon's death", "significance": "Permanent division; two separate biblical kingdoms" },
       { "yearBCE": 722, "description": "Assyria conquers Samaria; Northern Kingdom of Israel destroyed", "significance": "Ten tribes exiled; 'Lost Tribes of Israel'" },
       { "yearBCE": 701, "description": "Sennacherib besieges Jerusalem; miraculous deliverance", "significance": "Isaiah's prophecy fulfilled; Hezekiah's tunnel built" }
+    ],
+    "worldEvents": [
+      { "region": "Greece", "description": "Homer composes the Iliad and Odyssey (c. 800 BCE), defining works of Western literature. Greek city-states rise; the Olympic Games begin in 776 BCE" },
+      { "region": "Italy", "description": "Rome founded (753 BCE, traditional date). Etruscan civilization flourishes in northern Italy with advanced metalwork and religious practices" },
+      { "region": "North Africa", "description": "Carthage founded by Phoenician settlers (c. 814 BCE). It grows into a Mediterranean commercial empire controlling trade routes across North Africa and Spain" },
+      { "region": "India", "description": "The major Upanishads are composed (800–500 BCE), developing concepts of Atman and Brahman. Mahavira founds Jainism; the Buddha is born in Nepal (c. 563 BCE)" }
+    ],
+    "primarySources": [
+      {
+        "name": "Siloam Inscription",
+        "dateLabel": "701 BCE",
+        "description": "Carved into the wall of Hezekiah's tunnel in Jerusalem, this inscription records the dramatic moment when two teams tunneling from opposite ends heard each other and broke through. It matches 2 Kings 20:20 precisely.",
+        "excerpt": "...And this is the account of the breakthrough: While the workers were still lifting the pick, each toward his fellow...there was heard the voice of a man calling his fellow, for there was a crack in the rock on the right side...",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Siloam_Tunnel_Inscription.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Siloam_inscription"
+      },
+      {
+        "name": "Lachish Letters",
+        "dateLabel": "588 BCE",
+        "description": "Ink-on-pottery letters (ostraca) exchanged between officers at Lachish as the Babylonian army advanced. They describe failing military signals and the chaos of the final days of Judah — and match Jeremiah 34:7 almost word for word.",
+        "excerpt": "Let my lord know that we are watching for the fire signals of Lachish according to all the signs which my lord has given, for we cannot see Azekah.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Lachish_letter_iii.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Lachish_letters"
+      }
     ]
   },
   {
@@ -98,6 +230,30 @@
       { "yearBCE": 539, "description": "Cyrus the Great captures Babylon without battle", "significance": "Persian Empire replaces Neo-Babylonian Empire" },
       { "yearBCE": 538, "description": "Cyrus Edict — Jews permitted to return to Judah", "significance": "End of exile; Isaiah 45 prophecy fulfilled" },
       { "yearBCE": 516, "description": "Second Temple dedicated in Jerusalem", "significance": "Restoration of Temple worship after 70-year gap" }
+    ],
+    "worldEvents": [
+      { "region": "Greece", "description": "Golden Age of Athens: the Parthenon is built (447–432 BCE), Socrates teaches in the agora, and Aeschylus, Sophocles, and Euripides write. Democracy is born." },
+      { "region": "China", "description": "Confucius (551–479 BCE) teaches ethics, governance, and social harmony. Sun Tzu writes The Art of War. This is China's Axial Age." },
+      { "region": "India", "description": "The Buddha attains enlightenment at Bodh Gaya (c. 528 BCE) and teaches the Dharma. Buddhism spreads across South Asia within a generation." },
+      { "region": "Persia", "description": "Zoroastrianism becomes the official Persian religion under the Achaemenid kings — its ideas of one God, good vs. evil, resurrection, and judgment profoundly influenced post-exilic Judaism" }
+    ],
+    "primarySources": [
+      {
+        "name": "Cyrus Cylinder",
+        "dateLabel": "539 BCE",
+        "description": "A clay cylinder from Babylon on which Cyrus the Great declares that he has conquered Babylon peacefully and will allow all deported peoples to return home and rebuild their temples. The decree directly parallels Ezra 1:2–4.",
+        "excerpt": "I gathered all their inhabitants and restored to them their dwellings. And the gods of Sumer and Akkad whom Nabonidus had brought into Babylon...I returned them to their places.",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Cyrus_Cylinder.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Cyrus_Cylinder"
+      },
+      {
+        "name": "Tel Dan Inscription",
+        "dateLabel": "c. 840 BCE",
+        "description": "Basalt fragments from Tel Dan in northern Israel bearing the Aramaic phrase 'House of David' — the first extrabiblical confirmation of the Davidic dynasty. The inscription was made by a Syrian king celebrating his victories over Israel and Judah.",
+        "excerpt": "...I killed [Jehoram son of] Ahab king of Israel, and I killed [Ahaziah son of Jehoram kin]g of the House of David...",
+        "imageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Tel_Dan_Inscription.jpg",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Tel_Dan_stele"
+      }
     ]
   }
 ]

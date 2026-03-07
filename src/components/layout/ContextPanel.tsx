@@ -4,6 +4,9 @@ import { EraCard } from '../context/EraCard'
 import { MaterialCultureCard } from '../context/MaterialCultureCard'
 import { HistoricalNote } from '../context/HistoricalNote'
 import { HistoricalEventsTicker } from '../context/HistoricalEventsTicker'
+import { WorldContextCard } from '../context/WorldContextCard'
+import { PrimarySourcesCard } from '../context/PrimarySourcesCard'
+import { ArtifactsCard } from '../context/ArtifactsCard'
 import { PowerDetailPanel } from '../context/PowerDetailPanel'
 import { PlaceDetailPanel } from '../map/PlaceDetailPanel'
 import { formatYearBCE } from '../../utils/yearUtils'
@@ -25,6 +28,9 @@ export function ContextPanel() {
             <EraCard era={era} />
             {cultureEntry && <MaterialCultureCard entry={cultureEntry} />}
             <HistoricalEventsTicker era={era} />
+            <WorldContextCard era={era} />
+            <PrimarySourcesCard era={era} />
+            <ArtifactsCard era={era} />
           </>
         ) : (
           <div className="flex items-center justify-center h-32 text-stone-300 text-sm">
