@@ -1,11 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ParshaSelector } from '../parsha/ParshaSelector'
 import { ParshaHeader } from '../parsha/ParshaHeader'
 import { ParshaTextViewer } from '../parsha/ParshaTextViewer'
+import { useAppStore } from '../../store/useAppStore'
 import { Search } from 'lucide-react'
 
 export function Sidebar() {
   const [searchQuery, setSearchQuery] = useState('')
+  const [isScrolled, setIsScrolled] = useState(false)
+  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
+
+  // Reset scroll state when parsha changes
+  useEffect(() => {
+    setIsScrolled(false)
+  }, [selectedParshaId])
 
   return (
     <div className="flex flex-col h-full">
@@ -28,10 +36,10 @@ export function Sidebar() {
       </div>
 
       {/* Parsha header with name + dates */}
-      <ParshaHeader />
+      <ParshaHeader summaryCollapsed={isScrolled} />
 
       {/* Scrollable verse text */}
-      <ParshaTextViewer />
+      <ParshaTextViewer onScrollStart={() => setIsScrolled(true)} />
     </div>
   )
 }
