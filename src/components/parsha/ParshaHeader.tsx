@@ -3,10 +3,34 @@ import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { formatYearBCE } from '../../utils/yearUtils'
 import { useCurrentParsha } from '../../hooks/useCurrentParsha'
+import { useWikimediaImage } from '../../hooks/useWikimediaImage'
 import parshaList from '../../data/parshaList.json'
 import type { ParshaListItem } from '../../types/parsha'
 
 const parshas = parshaList as ParshaListItem[]
+
+function ParshaImage({ url, caption, name }: { url: string; caption?: string; name: string }) {
+  const { data: resolvedUrl } = useWikimediaImage(url)
+
+  // Fall back to the original Special:FilePath URL if the API lookup hasn't resolved yet
+  const src = resolvedUrl ?? url
+
+  return (
+    <div className="mt-3 -mx-4 relative">
+      <img
+        src={src}
+        alt={caption ?? `${name} illustration`}
+        className="w-full object-cover max-h-52 opacity-90"
+        onError={(e) => {
+          ;(e.currentTarget as HTMLImageElement).style.display = 'none'
+        }}
+      />
+      {caption && (
+        <p className="px-4 pt-1 text-[10px] text-stone-400 italic">{caption}</p>
+      )}
+    </div>
+  )
+}
 
 export function ParshaHeader() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
@@ -77,21 +101,11 @@ export function ParshaHeader() {
       )}
 
       {parsha.doreImageUrl && (
-        <div className="mt-3 -mx-4 relative">
-          <img
-            src={parsha.doreImageUrl}
-            alt={parsha.doreImageCaption ?? `${parsha.name} illustration`}
-            className="w-full object-cover max-h-52 opacity-90"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.display = 'none'
-            }}
-          />
-          {parsha.doreImageCaption && (
-            <p className="px-4 pt-1 text-[10px] text-stone-400 italic">
-              {parsha.doreImageCaption}
-            </p>
-          )}
-        </div>
+        <ParshaImage
+          url={parsha.doreImageUrl}
+          caption={parsha.doreImageCaption}
+          name={parsha.name}
+        />
       )}
 
       {parsha.commentaryUrl && (
