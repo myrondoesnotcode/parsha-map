@@ -14,25 +14,30 @@ L.Icon.Default.mergeOptions({
 })
 
 function createPlaceIcon(confidence: Place['confidence'], isHighlighted?: boolean) {
-  const colors: Record<Place['confidence'], string> = {
-    high: '#D97706',
-    medium: '#6B7280',
-    low: '#9CA3AF',
-  }
-  const color = colors[confidence]
   const size = isHighlighted ? 16 : 12
-  const border = isHighlighted ? 3 : 2
-  const shadow = isHighlighted
-    ? '0 0 0 5px rgba(251,191,36,0.5), 0 1px 4px rgba(0,0,0,0.4)'
-    : '0 1px 4px rgba(0,0,0,0.4)'
+  const highlightShadow = '0 0 0 5px rgba(251,191,36,0.5), 0 1px 4px rgba(0,0,0,0.4)'
+  const baseShadow = '0 1px 4px rgba(0,0,0,0.3)'
+  const shadow = isHighlighted ? highlightShadow : baseShadow
+
+  // high: filled amber; medium: filled blue; low: hollow (white fill, grey border)
+  let bg: string, borderColor: string, borderWidth: number
+  if (confidence === 'high') {
+    bg = '#D97706'; borderColor = 'white'; borderWidth = isHighlighted ? 3 : 2
+  } else if (confidence === 'medium') {
+    bg = '#60A5FA'; borderColor = 'white'; borderWidth = isHighlighted ? 3 : 2
+  } else {
+    bg = 'white'; borderColor = '#9CA3AF'; borderWidth = isHighlighted ? 3 : 2
+  }
+
   return L.divIcon({
     html: `<div style="
       width: ${size}px;
       height: ${size}px;
       border-radius: 50%;
-      background: ${color};
-      border: ${border}px solid white;
+      background: ${bg};
+      border: ${borderWidth}px solid ${borderColor};
       box-shadow: ${shadow};
+      opacity: ${confidence === 'low' ? 0.85 : 1};
     "></div>`,
     className: '',
     iconSize: [size, size],
@@ -139,8 +144,9 @@ export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
                     place.confidence === 'high'
                       ? '#D97706'
                       : place.confidence === 'medium'
-                      ? '#6B7280'
-                      : '#9CA3AF',
+                      ? '#60A5FA'
+                      : 'white',
+                  border: place.confidence === 'low' ? '1.5px solid #9CA3AF' : 'none',
                 }}
               />
               <span className="text-stone-400 capitalize">{place.confidence} confidence</span>

@@ -80,7 +80,7 @@ const STEPS: Step[] = [
     id: 'map',
     title: 'The Map',
     description:
-      'Pins appear right here in the center for every biblical location mentioned in the selected portion. Amber pins are high-confidence identifications; gray ones are uncertain. Click any pin to read its description and the exact verses that mention it.',
+      'Pins appear right here in the center for every biblical location mentioned in the selected portion. Amber pins are high-confidence identifications; blue pins are uncertain; hollow pins are unverified. Click any pin to read its description and the exact verses that mention it.',
     icon: <Map size={36} className="text-amber-500" />,
     tip: 'Clicking a pin opens a detail panel with Wikipedia summaries and links to other portions that mention the same place.',
     spotlight: { x: 48, y: 44, rx: '340px', ry: '280px' },
