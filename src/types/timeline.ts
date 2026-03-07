@@ -4,6 +4,20 @@ export interface HistoricalEvent {
   significance?: string
 }
 
+export interface WorldEvent {
+  region: string
+  description: string
+}
+
+export interface PrimarySource {
+  name: string
+  dateLabel: string
+  description: string
+  excerpt?: string
+  imageUrl?: string
+  wikiUrl?: string
+}
+
 export interface Era {
   id: string
   name: string
@@ -13,6 +27,8 @@ export interface Era {
   shortDesc: string
   biblicalContext: string
   events?: HistoricalEvent[]
+  worldEvents?: WorldEvent[]
+  primarySources?: PrimarySource[]
 }
 
 export interface MaterialCultureEntry {

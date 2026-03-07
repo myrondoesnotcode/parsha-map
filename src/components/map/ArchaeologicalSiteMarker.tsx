@@ -1,6 +1,8 @@
 import { Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
+import { ExternalLink } from 'lucide-react'
 import type { ArchaeologicalSite } from '../../hooks/useArchaeologicalSites'
+import { useAppStore } from '../../store/useAppStore'
 
 function createDiamondIcon() {
   return L.divIcon({
@@ -26,6 +28,8 @@ interface Props {
 }
 
 export function ArchaeologicalSiteMarker({ site }: Props) {
+  const openPlacePanel = useAppStore((s) => s.openPlacePanel)
+
   return (
     <Marker
       position={[site.latitude, site.longitude]}
@@ -54,17 +58,26 @@ export function ArchaeologicalSiteMarker({ site }: Props) {
             </div>
           )}
 
-          <div className="flex items-center gap-1 pt-0.5">
-            <div
-              style={{
-                width: 8,
-                height: 8,
-                background: '#7C3AED',
-                transform: 'rotate(45deg)',
-                flexShrink: 0,
-              }}
-            />
-            <span className="text-stone-400 text-[10px]">Archaeological Site</span>
+          <div className="flex items-center justify-between gap-1 pt-0.5">
+            <div className="flex items-center gap-1">
+              <div
+                style={{
+                  width: 8,
+                  height: 8,
+                  background: '#7C3AED',
+                  transform: 'rotate(45deg)',
+                  flexShrink: 0,
+                }}
+              />
+              <span className="text-stone-400 text-[10px]">Archaeological Site</span>
+            </div>
+            <button
+              onClick={() => openPlacePanel(site.id, 'site')}
+              className="flex items-center gap-1 text-[10px] text-amber-700 hover:text-amber-900 transition-colors"
+            >
+              <ExternalLink size={10} />
+              Details
+            </button>
           </div>
         </div>
       </Popup>

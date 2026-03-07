@@ -5,6 +5,7 @@ import { ParshaMap } from './components/map/ParshaMap'
 import { TimelineSlider } from './components/timeline/TimelineSlider'
 import { useAppStore } from './store/useAppStore'
 import { useAutoSelectParsha } from './hooks/useAutoSelectParsha'
+import { useAutoSelectParshaByYear } from './hooks/useAutoSelectParshaByYear'
 import { Map, BookOpen, Clock } from 'lucide-react'
 
 type MobileTab = 'map' | 'text' | 'context'
@@ -34,6 +35,7 @@ export default function App() {
   const [mobileTab, setMobileTab] = useState<MobileTab>('map')
 
   useAutoSelectParsha()
+  useAutoSelectParshaByYear()
 
   return (
     <div className="flex flex-col h-[100dvh] bg-stone-50 overflow-hidden">

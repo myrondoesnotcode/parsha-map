@@ -1,6 +1,9 @@
 import { Marker, Popup, Tooltip } from 'react-leaflet'
 import L from 'leaflet'
 import type { Place } from '../../types/places'
+import { useAppStore } from '../../store/useAppStore'
+import { getParshaById } from '../../utils/parshaUtils'
+import { ExternalLink } from 'lucide-react'
 
 // Fix Leaflet's default icon paths broken by bundlers
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl
@@ -46,6 +49,15 @@ interface Props {
 
 export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
   const icon = createPlaceIcon(place.confidence, isHighlighted)
+  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
+  const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
+  const openPlacePanel = useAppStore((s) => s.openPlacePanel)
+
+  // Resolve parsha IDs to names, excluding the currently selected one
+  const otherParshas = place.parshas
+    .filter((id) => id !== selectedParshaId)
+    .map((id) => getParshaById(id))
+    .filter(Boolean)
 
   return (
     <Marker
@@ -53,7 +65,7 @@ export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
       icon={icon}
       title={place.name}
     >
-      <Popup maxWidth={260}>
+      <Popup maxWidth={280}>
         <div className="text-xs space-y-1.5">
           <div>
             <p className="font-semibold text-stone-900 text-sm">{place.name}</p>
@@ -94,19 +106,52 @@ export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
             </div>
           )}
 
-          <div className="pt-1 flex items-center gap-1">
-            <span
-              className="w-2 h-2 rounded-full inline-block"
-              style={{
-                backgroundColor:
-                  place.confidence === 'high'
-                    ? '#D97706'
-                    : place.confidence === 'medium'
-                    ? '#6B7280'
-                    : '#9CA3AF',
-              }}
-            />
-            <span className="text-stone-400 capitalize">{place.confidence} confidence</span>
+          {otherParshas.length > 0 && (
+            <div className="pt-0.5 border-t border-stone-100">
+              <p className="font-medium text-stone-500 uppercase tracking-wide text-[10px] mb-1.5">
+                Also appears in
+              </p>
+              <div className="flex flex-wrap gap-1">
+                {otherParshas.slice(0, 8).map((p) => (
+                  <button
+                    key={p!.id}
+                    onClick={() => setSelectedParsha(p!.id)}
+                    className="px-1.5 py-0.5 bg-stone-100 text-stone-600 rounded text-[10px] hover:bg-amber-100 hover:text-amber-800 transition-colors text-left"
+                  >
+                    {p!.name}
+                  </button>
+                ))}
+                {otherParshas.length > 8 && (
+                  <span className="text-stone-400 text-[10px] self-center">
+                    +{otherParshas.length - 8} more
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
+          <div className="pt-1 flex items-center justify-between gap-1">
+            <div className="flex items-center gap-1">
+              <span
+                className="w-2 h-2 rounded-full inline-block"
+                style={{
+                  backgroundColor:
+                    place.confidence === 'high'
+                      ? '#D97706'
+                      : place.confidence === 'medium'
+                      ? '#6B7280'
+                      : '#9CA3AF',
+                }}
+              />
+              <span className="text-stone-400 capitalize">{place.confidence} confidence</span>
+            </div>
+            <button
+              onClick={() => openPlacePanel(place.id, 'place')}
+              className="flex items-center gap-1 text-[10px] text-amber-700 hover:text-amber-900 transition-colors"
+            >
+              <ExternalLink size={10} />
+              Details
+            </button>
           </div>
         </div>
       </Popup>

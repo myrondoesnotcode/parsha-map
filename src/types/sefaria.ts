@@ -27,3 +27,13 @@ export interface SefariaCalendarResponse {
   date: string
   timezone: string
 }
+
+export interface SefariaLink {
+  type: string
+  category: string
+  collectiveTitle: { en: string; he: string }
+  sourceRef: string
+  sourceHeRef: string
+  anchorRef: string
+  text: { en: string | string[]; he: string | string[] }
+}
