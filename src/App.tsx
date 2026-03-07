@@ -4,6 +4,7 @@ import { ContextPanel } from './components/layout/ContextPanel'
 import { ParshaMap } from './components/map/ParshaMap'
 import { TimelineSlider } from './components/timeline/TimelineSlider'
 import { TutorialOverlay } from './components/TutorialOverlay'
+import { NewsletterModal } from './components/NewsletterModal'
 import { useAppStore } from './store/useAppStore'
 import { useAutoSelectParsha } from './hooks/useAutoSelectParsha'
 import { useAutoSelectParshaByYear } from './hooks/useAutoSelectParshaByYear'
@@ -14,9 +15,19 @@ import {
   Clock,
   HelpCircle,
   X,
+  Mail,
   ChevronDown,
   ChevronUp,
 } from 'lucide-react'
+
+// Inline X (Twitter) logo SVG
+function XLogo({ size = 15 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.743l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  )
+}
 
 type MobileTab = 'map' | 'text' | 'context'
 
@@ -94,6 +105,7 @@ export default function App() {
   const [leftOpen, setLeftOpen] = useState(false)
   const [rightOpen, setRightOpen] = useState(false)
   const [showTutorial, setShowTutorial] = useState(false)
+  const [newsletterOpen, setNewsletterOpen] = useState(false)
 
   useAutoSelectParsha()
   useAutoSelectParshaByYear()
@@ -117,6 +129,7 @@ export default function App() {
         forceOpen={showTutorial}
         onDismiss={() => setShowTutorial(false)}
       />
+      <NewsletterModal open={newsletterOpen} onClose={() => setNewsletterOpen(false)} />
 
       {/* ══════════════════════════════════════════════════════
           DESKTOP  (md +)  — map fills full screen, panels overlay
@@ -176,7 +189,28 @@ export default function App() {
             {rightOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
           </button>
 
+          {/* Subscribe */}
+          <button
+            onClick={() => setNewsletterOpen(true)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-stone-400 hover:text-stone-200 hover:bg-stone-800 transition-all"
+            title="Get weekly parsha by email"
+          >
+            <Mail size={13} />
+            <span className="hidden lg:inline">Subscribe</span>
+          </button>
+
           <div className="w-px h-5 bg-stone-700 mx-1" />
+
+          {/* X / Twitter */}
+          <a
+            href="https://x.com/Mshneider"
+            target="_blank"
+            rel="noreferrer"
+            className="p-1.5 rounded-lg text-stone-500 hover:text-stone-200 hover:bg-stone-800 transition-colors"
+            title="@Mshneider on X"
+          >
+            <XLogo size={14} />
+          </a>
 
           {/* Help */}
           <button
@@ -213,12 +247,28 @@ export default function App() {
         <header className="shrink-0 h-11 flex items-center justify-between px-4
           bg-stone-900 border-b border-stone-800/60">
           <LogoLockup />
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             {parsha && (
-              <span className="text-xs text-amber-400/80 font-medium truncate max-w-[130px]">
+              <span className="text-xs text-amber-400/80 font-medium truncate max-w-[100px]">
                 {parsha.name}
               </span>
             )}
+            <button
+              onClick={() => setNewsletterOpen(true)}
+              className="p-1 rounded-lg text-stone-500 hover:text-stone-300 transition-colors"
+              title="Subscribe"
+            >
+              <Mail size={15} />
+            </button>
+            <a
+              href="https://x.com/Mshneider"
+              target="_blank"
+              rel="noreferrer"
+              className="p-1 rounded-lg text-stone-500 hover:text-stone-300 transition-colors"
+              title="@Mshneider on X"
+            >
+              <XLogo size={14} />
+            </a>
             <button
               onClick={reopenTutorial}
               className="p-1 rounded-lg text-stone-500 hover:text-stone-300 transition-colors"
