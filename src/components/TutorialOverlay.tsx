@@ -69,7 +69,7 @@ const STEPS: Step[] = [
     icon: <BookOpen size={36} className="text-amber-500" />,
     tip: 'On mobile, tap the "Text" tab at the bottom to open this panel.',
     spotlight: { x: 9, y: 46, rx: '200px', ry: '340px' },
-    spotlightMobile: { x: 33, y: 94, rx: '70px', ry: '44px' },
+    spotlightMobile: { x: 50, y: 94, rx: '70px', ry: '44px' },
     // card sits in the right half of the map so it doesn't cover the sidebar
     cardPos: { left: '42%', top: '50%', transform: 'translateY(-50%)' },
     cardPosMobile: CENTER,
@@ -85,9 +85,8 @@ const STEPS: Step[] = [
     tip: 'Clicking a pin opens a detail panel with Wikipedia summaries and links to other portions that mention the same place.',
     spotlight: { x: 48, y: 44, rx: '340px', ry: '280px' },
     spotlightMobile: { x: 50, y: 44, rx: '260px', ry: '240px' },
-    // card goes to bottom-left corner so it doesn't cover the map center
     cardPos: { left: '22%', bottom: '100px' },
-    cardPosMobile: { left: '8px', bottom: '90px' },
+    cardPosMobile: CENTER,
   },
 
   /* 3 — Timeline (BOTTOM of map area) */
@@ -100,9 +99,8 @@ const STEPS: Step[] = [
     tip: 'Use the era jump buttons to leap between major periods (Bronze Age, Iron Age, etc.) in one click.',
     spotlight: { x: 48, y: 91, rx: '460px', ry: '56px' },
     spotlightMobile: { x: 50, y: 87, rx: '320px', ry: '52px' },
-    // card goes near the top so it doesn't cover the timeline
     cardPos: { left: '42%', top: '80px' },
-    cardPosMobile: { left: '50%', top: '80px', transform: 'translateX(-50%)' },
+    cardPosMobile: CENTER,
   },
 
   /* 4 — Map controls (TOP-RIGHT corner of the map) */
@@ -121,9 +119,8 @@ const STEPS: Step[] = [
     tip: 'Purple diamond markers are real excavation sites — they appear and disappear as you move the timeline to match the current era.',
     spotlight: { x: 79, y: 20, rx: '120px', ry: '200px' },
     spotlightMobile: { x: 86, y: 20, rx: '80px', ry: '160px' },
-    // card goes to the center-left so it doesn't cover the controls in the top-right
     cardPos: { left: '22%', top: '50%', transform: 'translateY(-50%)' },
-    cardPosMobile: { left: '8px', top: '50%', transform: 'translateY(-50%)' },
+    cardPosMobile: CENTER,
   },
 
   /* 5 — Context panel (RIGHT side on desktop, "History" tab on mobile) */
@@ -136,7 +133,6 @@ const STEPS: Step[] = [
     tip: 'On mobile, tap the "History" tab at the bottom. Context updates automatically as you move the timeline.',
     spotlight: { x: 89, y: 44, rx: '200px', ry: '340px' },
     spotlightMobile: { x: 83, y: 94, rx: '70px', ry: '44px' },
-    // card goes to the center of the map area (left of the right panel)
     cardPos: { left: '22%', top: '50%', transform: 'translateY(-50%)' },
     cardPosMobile: CENTER,
   },
