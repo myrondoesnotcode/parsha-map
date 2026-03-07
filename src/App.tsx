@@ -12,7 +12,7 @@ import { getParshaById } from './utils/parshaUtils'
 import {
   Map,
   BookOpen,
-  Clock,
+  Globe,
   HelpCircle,
   X,
   Mail,
@@ -314,27 +314,31 @@ export default function App() {
         </div>
 
         {/* Bottom tab bar */}
-        <nav className="shrink-0 flex h-14 border-t border-stone-200 bg-white">
+        <nav className="shrink-0 flex h-16 border-t border-stone-200 bg-white">
           {(
             [
               { id: 'map' as MobileTab, label: 'Map', Icon: Map },
-              { id: 'text' as MobileTab, label: 'Text', Icon: BookOpen },
-              { id: 'context' as MobileTab, label: 'History', Icon: Clock },
+              { id: 'text' as MobileTab, label: 'Torah', Icon: BookOpen },
+              { id: 'context' as MobileTab, label: 'World', Icon: Globe },
             ] as const
           ).map(({ id, label, Icon }) => (
             <button
               key={id}
               onClick={() => setMobileTab(id)}
-              className={`flex-1 flex flex-col items-center justify-center gap-0.5
-                text-[10px] font-semibold uppercase tracking-wide transition-colors ${
-                  mobileTab === id ? 'text-amber-600' : 'text-stone-400'
-                }`}
+              className={`flex-1 flex flex-col items-center justify-center gap-1 relative transition-colors ${
+                mobileTab === id ? 'text-amber-600' : 'text-stone-400'
+              }`}
             >
+              {mobileTab === id && (
+                <span className="absolute top-0 left-4 right-4 h-0.5 rounded-full bg-amber-500" />
+              )}
               <Icon
-                size={20}
+                size={22}
                 strokeWidth={mobileTab === id ? 2.5 : 1.8}
               />
-              {label}
+              <span className={`text-[11px] font-semibold tracking-wide ${mobileTab === id ? 'text-amber-600' : 'text-stone-400'}`}>
+                {label}
+              </span>
             </button>
           ))}
         </nav>
