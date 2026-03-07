@@ -1,49 +1,57 @@
 import { Marker, Tooltip } from 'react-leaflet'
 import L from 'leaflet'
+import type { Place } from '../../types/places'
+import { getCentroidOfPlaces } from '../../utils/placeUtils'
 import { useAppStore } from '../../store/useAppStore'
-import { getParshaMapPos } from './MapPositionTracker'
+import { getParshaById } from '../../utils/parshaUtils'
 
 const youAreHereIcon = L.divIcon({
   html: `
-    <div style="position:relative;width:20px;height:20px;">
+    <div style="position:relative;width:24px;height:24px;">
       <div style="
         position:absolute;inset:0;border-radius:50%;
-        background:rgba(59,130,246,0.25);
-        animation:yah-pulse 2s ease-out infinite;
+        background:rgba(245,158,11,0.35);
+        animation:parsha-pulse 2s ease-out infinite;
       "></div>
       <div style="
         position:absolute;top:50%;left:50%;
         transform:translate(-50%,-50%);
-        width:12px;height:12px;border-radius:50%;
-        background:#3B82F6;
+        width:14px;height:14px;border-radius:50%;
+        background:#F59E0B;
         border:2.5px solid white;
-        box-shadow:0 1px 4px rgba(0,0,0,0.4);
+        box-shadow:0 1px 6px rgba(0,0,0,0.4);
       "></div>
     </div>
     <style>
-      @keyframes yah-pulse {
-        0%   { transform:scale(0.6); opacity:0.9; }
-        100% { transform:scale(2.2); opacity:0; }
+      @keyframes parsha-pulse {
+        0%   { transform:scale(0.5); opacity:1; }
+        100% { transform:scale(2.5); opacity:0; }
       }
     </style>
   `,
   className: '',
-  iconSize: [20, 20],
-  iconAnchor: [10, 10],
-  tooltipAnchor: [0, -12],
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+  tooltipAnchor: [0, -14],
 })
 
-export function YouAreHereMarker() {
-  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
+interface Props {
+  places: Place[]
+}
 
-  if (!selectedParshaId) return null
-  const pos = getParshaMapPos(selectedParshaId)
-  if (!pos) return null
+export function YouAreHereMarker({ places }: Props) {
+  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
+  const centroid = getCentroidOfPlaces(places)
+  const parsha = selectedParshaId ? getParshaById(selectedParshaId) : null
+
+  if (!centroid || !parsha) return null
 
   return (
-    <Marker position={[pos.lat, pos.lng]} icon={youAreHereIcon} zIndexOffset={500}>
-      <Tooltip direction="top" offset={[0, -12]} opacity={0.95} permanent={false}>
-        <span style={{ fontSize: 11, fontWeight: 600 }}>You were here</span>
+    <Marker position={[centroid.lat, centroid.lng]} icon={youAreHereIcon} zIndexOffset={600}>
+      <Tooltip direction="top" offset={[0, -14]} opacity={0.95}>
+        <span style={{ fontSize: 11, fontWeight: 600 }}>
+          {parsha.name} · you are here
+        </span>
       </Tooltip>
     </Marker>
   )

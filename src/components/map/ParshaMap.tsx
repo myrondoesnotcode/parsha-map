@@ -9,7 +9,6 @@ import { TerritoryLayer } from './TerritoryLayer'
 import { ArchaeologicalSiteMarker } from './ArchaeologicalSiteMarker'
 import { PlaceHighlightManager } from './PlaceHighlightManager'
 import { MapBoundsManager } from './MapBoundsManager'
-import { MapPositionTracker } from './MapPositionTracker'
 import { YouAreHereMarker } from './YouAreHereMarker'
 import { MapLegend } from './MapLegend'
 import { filterPlacesByType } from '../../utils/placeUtils'
@@ -171,8 +170,7 @@ export function ParshaMap() {
         ))}
 
         <MapBoundsManager places={places} parshaId={selectedParshaId} />
-        <MapPositionTracker />
-        <YouAreHereMarker />
+        <YouAreHereMarker places={places} />
         <PlaceHighlightManager />
       </MapContainer>
 

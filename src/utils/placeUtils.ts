@@ -48,6 +48,16 @@ export const PLACE_TYPE_FILTERS: PlaceTypeFilter[] = [
   },
 ]
 
+export function getCentroidOfPlaces(places: Place[]): { lat: number; lng: number } | null {
+  const relevant = places.filter((p) => p.confidence === 'high')
+  const pts = relevant.length > 0 ? relevant : places
+  if (pts.length === 0) return null
+  return {
+    lat: pts.reduce((s, p) => s + p.latitude, 0) / pts.length,
+    lng: pts.reduce((s, p) => s + p.longitude, 0) / pts.length,
+  }
+}
+
 export function filterPlacesByType(places: Place[], filterId: string): Place[] {
   if (filterId === 'all') return places
   const filter = PLACE_TYPE_FILTERS.find((f) => f.id === filterId)
