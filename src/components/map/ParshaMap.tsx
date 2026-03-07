@@ -11,7 +11,7 @@ import { PlaceHighlightManager } from './PlaceHighlightManager'
 import { MapBoundsManager } from './MapBoundsManager'
 import { MapLegend } from './MapLegend'
 import { filterPlacesByType } from '../../utils/placeUtils'
-import { Navigation, Eye, EyeOff, Layers, Pickaxe } from 'lucide-react'
+import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe } from 'lucide-react'
 
 // Center on ancient Near East
 const DEFAULT_CENTER: [number, number] = [31.5, 35.5]
@@ -30,6 +30,8 @@ export function ParshaMap() {
   const togglePlaceLabels = useAppStore((s) => s.togglePlaceLabels)
   const toggleTerritories = useAppStore((s) => s.toggleTerritories)
   const toggleArchaeologicalSites = useAppStore((s) => s.toggleArchaeologicalSites)
+  const basemapStyle = useAppStore((s) => s.basemapStyle)
+  const toggleBasemap = useAppStore((s) => s.toggleBasemap)
 
   const allPlaces = useParshaPlaces(selectedParshaId)
   const places = filterPlacesByType(allPlaces, placeTypeFilter)
@@ -77,6 +79,20 @@ export function ParshaMap() {
           <Pickaxe size={12} className={showArchaeologicalSites ? 'text-purple-600' : 'text-stone-400'} />
           <span className={`hidden sm:inline ${showArchaeologicalSites ? 'text-stone-700' : 'text-stone-400'}`}>Sites</span>
         </button>
+        <button
+          onClick={toggleBasemap}
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs border rounded-lg shadow-sm transition-colors ${
+            basemapStyle === 'satellite'
+              ? 'bg-stone-800 border-stone-700 hover:bg-stone-700'
+              : 'bg-white border-stone-200 hover:bg-stone-50'
+          }`}
+          title="Toggle satellite view"
+        >
+          <Globe size={12} className={basemapStyle === 'satellite' ? 'text-amber-400' : 'text-stone-400'} />
+          <span className={`hidden sm:inline ${basemapStyle === 'satellite' ? 'text-stone-200' : 'text-stone-400'}`}>
+            {basemapStyle === 'satellite' ? 'Satellite' : 'Satellite'}
+          </span>
+        </button>
       </div>
 
       <MapContainer
@@ -85,12 +101,20 @@ export function ParshaMap() {
         className="h-full w-full"
         zoomControl={false}
       >
-        <TileLayer
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-          maxZoom={18}
-          subdomains="abcd"
-        />
+        {basemapStyle === 'satellite' ? (
+          <TileLayer
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+            attribution="Tiles &copy; Esri &mdash; Source: Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community"
+            maxZoom={18}
+          />
+        ) : (
+          <TileLayer
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+            maxZoom={18}
+            subdomains="abcd"
+          />
+        )}
 
         {showTerritories && <TerritoryLayer />}
 

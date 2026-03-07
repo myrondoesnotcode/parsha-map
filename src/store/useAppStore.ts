@@ -7,6 +7,7 @@ const parshas = parshaList as ParshaListItem[]
 interface AppState {
   selectedParshaId: string | null
   currentYearBCE: number
+  yearSource: 'parsha' | 'slider'
   showTradeRoutes: boolean
   showPlaceLabels: boolean
   parshaInitialized: boolean
@@ -15,6 +16,7 @@ interface AppState {
   showArchaeologicalSites: boolean
   placeTypeFilter: string
   highlightedPlaceId: string | null
+  basemapStyle: 'voyager' | 'satellite'
 
   setSelectedParsha: (id: string) => void
   setCurrentYear: (year: number) => void
@@ -26,11 +28,13 @@ interface AppState {
   toggleArchaeologicalSites: () => void
   setPlaceTypeFilter: (filter: string) => void
   setHighlightedPlace: (id: string | null) => void
+  toggleBasemap: () => void
 }
 
 export const useAppStore = create<AppState>((set) => ({
   selectedParshaId: null,
   currentYearBCE: 1900,
+  yearSource: 'parsha',
   showTradeRoutes: true,
   showPlaceLabels: false,
   parshaInitialized: false,
@@ -39,6 +43,7 @@ export const useAppStore = create<AppState>((set) => ({
   showArchaeologicalSites: false,
   placeTypeFilter: 'all',
   highlightedPlaceId: null,
+  basemapStyle: 'voyager',
 
   setSelectedParsha: (id: string) => {
     const parsha = parshas.find((p) => p.id === id)
@@ -46,12 +51,13 @@ export const useAppStore = create<AppState>((set) => ({
     set({
       selectedParshaId: id,
       currentYearBCE: year,
+      yearSource: 'parsha',
       highlightedPlaceId: null,
     })
   },
 
   setCurrentYear: (year: number) => {
-    set({ currentYearBCE: year })
+    set({ currentYearBCE: year, yearSource: 'slider' })
   },
 
   toggleTradeRoutes: () => {
@@ -84,5 +90,11 @@ export const useAppStore = create<AppState>((set) => ({
 
   setHighlightedPlace: (id: string | null) => {
     set({ highlightedPlaceId: id })
+  },
+
+  toggleBasemap: () => {
+    set((state) => ({
+      basemapStyle: state.basemapStyle === 'voyager' ? 'satellite' : 'voyager',
+    }))
   },
 }))

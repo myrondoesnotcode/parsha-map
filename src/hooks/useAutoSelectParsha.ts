@@ -35,8 +35,7 @@ export function useAutoSelectParsha() {
 
     if (match) {
       setSelectedParsha(match.id)
+      setParshaInitialized()
     }
-
-    setParshaInitialized()
   }, [currentParsha, parshaInitialized, setSelectedParsha, setParshaInitialized])
 }
