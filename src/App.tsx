@@ -107,6 +107,16 @@ export default function App() {
   const [showTutorial, setShowTutorial] = useState(false)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
 
+  // Auto-show newsletter popup after 50s, once per session
+  useEffect(() => {
+    if (sessionStorage.getItem('newsletter-shown')) return
+    const timer = setTimeout(() => {
+      setNewsletterOpen(true)
+      sessionStorage.setItem('newsletter-shown', '1')
+    }, 50_000)
+    return () => clearTimeout(timer)
+  }, [])
+
   useAutoSelectParsha()
   useAutoSelectParshaByYear()
 
