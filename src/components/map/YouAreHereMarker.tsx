@@ -1,4 +1,4 @@
-import { Marker, Tooltip } from 'react-leaflet'
+import { Marker } from 'react-leaflet'
 import L from 'leaflet'
 import type { Place } from '../../types/places'
 import { getCentroidOfPlaces } from '../../utils/placeUtils'
