@@ -16,31 +16,35 @@ import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe } from 'lucide-react'
 const DEFAULT_CENTER: [number, number] = [31.5, 35.5]
 const DEFAULT_ZOOM = 6
 
-interface ControlButtonProps {
+// ─── Map control pill ─────────────────────────────────────────────────────────
+
+function Divider() {
+  return <div className="h-px bg-stone-200 mx-2" />
+}
+
+interface IconBtnProps {
   onClick: () => void
   active: boolean
   activeColor?: string
   title: string
   icon: React.ReactNode
-  label: string
 }
 
-function ControlButton({ onClick, active, activeColor = 'text-amber-500', title, icon, label }: ControlButtonProps) {
+function IconBtn({ onClick, active, activeColor = 'text-amber-500', title, icon }: IconBtnProps) {
   return (
     <button
       onClick={onClick}
       title={title}
-      className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg border transition-all duration-150 shadow-sm backdrop-blur-sm ${
-        active
-          ? 'bg-white/95 border-amber-200 shadow-amber-100/50'
-          : 'bg-white/80 border-white/60 hover:bg-white/95 hover:border-stone-200'
+      className={`p-2.5 transition-colors ${
+        active ? 'bg-stone-100/70' : 'hover:bg-stone-50'
       }`}
     >
       <span className={active ? activeColor : 'text-stone-400'}>{icon}</span>
-      <span className={`hidden sm:inline font-medium ${active ? 'text-stone-700' : 'text-stone-400'}`}>{label}</span>
     </button>
   )
 }
+
+// ─── Component ────────────────────────────────────────────────────────────────
 
 export function ParshaMap() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
@@ -60,59 +64,64 @@ export function ParshaMap() {
 
   const allPlaces = useParshaPlaces(selectedParshaId)
   const places = filterPlacesByType(allPlaces, placeTypeFilter)
-
   const { era } = useEraContext(currentYearBCE)
   const archaeologicalSites = useArchaeologicalSites(era?.id ?? null)
 
   return (
     <div className="relative h-full w-full">
-      {/* Map controls overlay */}
-      <div className="absolute top-10 right-3 z-[1000] flex flex-col gap-1.5">
-        <ControlButton
+
+      {/* ── Map layer controls — icon-only pill, top-right ── */}
+      {/* top-14 = 56px: clears the 44px header with a 12px gap */}
+      <div className="absolute top-14 right-3 z-[1000]
+        flex flex-col bg-white/90 backdrop-blur-md rounded-xl
+        border border-white/70 shadow-md overflow-hidden">
+
+        <IconBtn
           onClick={toggleTradeRoutes}
           active={showTradeRoutes}
           title="Toggle trade routes"
-          icon={<Navigation size={13} />}
-          label="Routes"
+          icon={<Navigation size={15} />}
         />
-        <ControlButton
+        <Divider />
+        <IconBtn
           onClick={togglePlaceLabels}
           active={showPlaceLabels}
           title="Toggle place labels"
-          icon={showPlaceLabels ? <Eye size={13} /> : <EyeOff size={13} />}
-          label="Labels"
+          icon={showPlaceLabels ? <Eye size={15} /> : <EyeOff size={15} />}
         />
-        <ControlButton
+        <Divider />
+        <IconBtn
           onClick={toggleTerritories}
           active={showTerritories}
           title="Toggle territory overlays"
-          icon={<Layers size={13} />}
-          label="Territories"
+          icon={<Layers size={15} />}
         />
-        <ControlButton
+        <Divider />
+        <IconBtn
           onClick={toggleArchaeologicalSites}
           active={showArchaeologicalSites}
           activeColor="text-purple-500"
           title="Toggle archaeological sites"
-          icon={<Pickaxe size={13} />}
-          label="Sites"
+          icon={<Pickaxe size={15} />}
         />
+        <Divider />
         <button
           onClick={toggleBasemap}
-          title="Toggle satellite view"
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg border transition-all duration-150 shadow-sm backdrop-blur-sm ${
+          title="Toggle satellite imagery"
+          className={`p-2.5 transition-colors ${
             basemapStyle === 'satellite'
-              ? 'bg-stone-800/90 border-stone-700 text-amber-400'
-              : 'bg-white/80 border-white/60 hover:bg-white/95 hover:border-stone-200 text-stone-400'
+              ? 'bg-stone-800 hover:bg-stone-700'
+              : 'hover:bg-stone-50'
           }`}
         >
-          <Globe size={13} />
-          <span className={`hidden sm:inline font-medium ${basemapStyle === 'satellite' ? 'text-stone-200' : 'text-stone-400'}`}>
-            Satellite
-          </span>
+          <Globe
+            size={15}
+            className={basemapStyle === 'satellite' ? 'text-amber-400' : 'text-stone-400'}
+          />
         </button>
       </div>
 
+      {/* ── Leaflet map ── */}
       <MapContainer
         center={DEFAULT_CENTER}
         zoom={DEFAULT_ZOOM}
@@ -155,11 +164,13 @@ export function ParshaMap() {
         <PlaceHighlightManager />
       </MapContainer>
 
+      {/* ── Legend ── */}
       <MapLegend />
 
+      {/* ── Empty state ── */}
       {!selectedParshaId && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[300]">
-          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl px-7 py-6 text-center max-w-xs border border-white/80">
+          <div className="bg-white/92 backdrop-blur-md rounded-2xl shadow-xl px-7 py-6 text-center max-w-xs border border-white/80">
             <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center mx-auto mb-3">
               <svg width="22" height="26" viewBox="0 0 20 24" fill="none" aria-hidden="true">
                 <path
@@ -171,7 +182,7 @@ export function ParshaMap() {
             </div>
             <p className="text-stone-700 font-semibold text-sm">Choose a Torah portion</p>
             <p className="text-stone-400 text-xs mt-1 leading-relaxed">
-              Biblical places mentioned in the text will appear on the map
+              Open <span className="font-medium text-stone-500">Torah Text</span> in the toolbar above to get started
             </p>
           </div>
         </div>

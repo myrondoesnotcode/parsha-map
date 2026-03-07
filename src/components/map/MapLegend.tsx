@@ -20,7 +20,7 @@ export function MapLegend() {
   if (!hasContent) return null
 
   return (
-    <div className="absolute bottom-6 left-3 z-[1000] bg-white/90 backdrop-blur-md rounded-xl shadow-md border border-white/70 px-3 py-2 text-xs min-w-[148px]">
+    <div className="absolute bottom-20 left-3 z-[1000] bg-white/90 backdrop-blur-md rounded-xl shadow-md border border-white/70 px-3 py-2 text-xs min-w-[148px]">
       <button
         onClick={() => setCollapsed((c) => !c)}
         className="flex items-center justify-between w-full gap-3"
