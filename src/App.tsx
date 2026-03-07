@@ -194,7 +194,7 @@ export default function App() {
                 : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
             }`}
           >
-            <Clock size={13} />
+            <Globe size={13} />
             <span>History</span>
             {rightOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
           </button>
