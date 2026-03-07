@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { BookOpen, ExternalLink } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
@@ -10,10 +11,18 @@ import type { ParshaListItem } from '../../types/parsha'
 const parshas = parshaList as ParshaListItem[]
 
 function ParshaImage({ url, caption, name }: { url: string; caption?: string; name: string }) {
-  const { data: resolvedUrl } = useWikimediaImage(url)
+  const { data: resolvedUrl, isLoading } = useWikimediaImage(url)
+  const [imgError, setImgError] = useState(false)
 
-  // Fall back to the original Special:FilePath URL if the API lookup hasn't resolved yet
+  // Use the resolved CDN URL; fall back to the original Special:FilePath URL while resolving
   const src = resolvedUrl ?? url
+
+  if (isLoading) return null
+
+  if (imgError) {
+    console.warn(`[ParshaImage] Failed to load image for "${name}":`, src)
+    return null
+  }
 
   return (
     <div className="mt-3 -mx-4 relative">
@@ -21,9 +30,7 @@ function ParshaImage({ url, caption, name }: { url: string; caption?: string; na
         src={src}
         alt={caption ?? `${name} illustration`}
         className="w-full object-cover max-h-52 opacity-90"
-        onError={(e) => {
-          ;(e.currentTarget as HTMLImageElement).style.display = 'none'
-        }}
+        onError={() => setImgError(true)}
       />
       {caption && (
         <p className="px-4 pt-1 text-[10px] text-stone-400 italic">{caption}</p>
