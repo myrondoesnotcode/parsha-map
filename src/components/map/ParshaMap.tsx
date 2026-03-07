@@ -13,9 +13,34 @@ import { MapLegend } from './MapLegend'
 import { filterPlacesByType } from '../../utils/placeUtils'
 import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe } from 'lucide-react'
 
-// Center on ancient Near East
 const DEFAULT_CENTER: [number, number] = [31.5, 35.5]
 const DEFAULT_ZOOM = 6
+
+interface ControlButtonProps {
+  onClick: () => void
+  active: boolean
+  activeColor?: string
+  title: string
+  icon: React.ReactNode
+  label: string
+}
+
+function ControlButton({ onClick, active, activeColor = 'text-amber-500', title, icon, label }: ControlButtonProps) {
+  return (
+    <button
+      onClick={onClick}
+      title={title}
+      className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg border transition-all duration-150 shadow-sm backdrop-blur-sm ${
+        active
+          ? 'bg-white/95 border-amber-200 shadow-amber-100/50'
+          : 'bg-white/80 border-white/60 hover:bg-white/95 hover:border-stone-200'
+      }`}
+    >
+      <span className={active ? activeColor : 'text-stone-400'}>{icon}</span>
+      <span className={`hidden sm:inline font-medium ${active ? 'text-stone-700' : 'text-stone-400'}`}>{label}</span>
+    </button>
+  )
+}
 
 export function ParshaMap() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
@@ -42,55 +67,48 @@ export function ParshaMap() {
   return (
     <div className="relative h-full w-full">
       {/* Map controls overlay */}
-      <div className="absolute top-3 right-3 z-[1000] flex flex-col gap-2">
-        <button
+      <div className="absolute top-10 right-3 z-[1000] flex flex-col gap-1.5">
+        <ControlButton
           onClick={toggleTradeRoutes}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white border border-stone-200 rounded-lg shadow-sm hover:bg-stone-50 transition-colors"
+          active={showTradeRoutes}
           title="Toggle trade routes"
-        >
-          <Navigation size={12} className={showTradeRoutes ? 'text-amber-600' : 'text-stone-400'} />
-          <span className={`hidden sm:inline ${showTradeRoutes ? 'text-stone-700' : 'text-stone-400'}`}>Routes</span>
-        </button>
-        <button
+          icon={<Navigation size={13} />}
+          label="Routes"
+        />
+        <ControlButton
           onClick={togglePlaceLabels}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white border border-stone-200 rounded-lg shadow-sm hover:bg-stone-50 transition-colors"
+          active={showPlaceLabels}
           title="Toggle place labels"
-        >
-          {showPlaceLabels ? (
-            <Eye size={12} className="text-amber-600" />
-          ) : (
-            <EyeOff size={12} className="text-stone-400" />
-          )}
-          <span className={`hidden sm:inline ${showPlaceLabels ? 'text-stone-700' : 'text-stone-400'}`}>Labels</span>
-        </button>
-        <button
+          icon={showPlaceLabels ? <Eye size={13} /> : <EyeOff size={13} />}
+          label="Labels"
+        />
+        <ControlButton
           onClick={toggleTerritories}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white border border-stone-200 rounded-lg shadow-sm hover:bg-stone-50 transition-colors"
+          active={showTerritories}
           title="Toggle territory overlays"
-        >
-          <Layers size={12} className={showTerritories ? 'text-amber-600' : 'text-stone-400'} />
-          <span className={`hidden sm:inline ${showTerritories ? 'text-stone-700' : 'text-stone-400'}`}>Territories</span>
-        </button>
-        <button
+          icon={<Layers size={13} />}
+          label="Territories"
+        />
+        <ControlButton
           onClick={toggleArchaeologicalSites}
-          className="flex items-center gap-1.5 px-2.5 py-1.5 text-xs bg-white border border-stone-200 rounded-lg shadow-sm hover:bg-stone-50 transition-colors"
+          active={showArchaeologicalSites}
+          activeColor="text-purple-500"
           title="Toggle archaeological sites"
-        >
-          <Pickaxe size={12} className={showArchaeologicalSites ? 'text-purple-600' : 'text-stone-400'} />
-          <span className={`hidden sm:inline ${showArchaeologicalSites ? 'text-stone-700' : 'text-stone-400'}`}>Sites</span>
-        </button>
+          icon={<Pickaxe size={13} />}
+          label="Sites"
+        />
         <button
           onClick={toggleBasemap}
-          className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs border rounded-lg shadow-sm transition-colors ${
-            basemapStyle === 'satellite'
-              ? 'bg-stone-800 border-stone-700 hover:bg-stone-700'
-              : 'bg-white border-stone-200 hover:bg-stone-50'
-          }`}
           title="Toggle satellite view"
+          className={`flex items-center gap-1.5 px-2.5 py-1.5 text-xs rounded-lg border transition-all duration-150 shadow-sm backdrop-blur-sm ${
+            basemapStyle === 'satellite'
+              ? 'bg-stone-800/90 border-stone-700 text-amber-400'
+              : 'bg-white/80 border-white/60 hover:bg-white/95 hover:border-stone-200 text-stone-400'
+          }`}
         >
-          <Globe size={12} className={basemapStyle === 'satellite' ? 'text-amber-400' : 'text-stone-400'} />
-          <span className={`hidden sm:inline ${basemapStyle === 'satellite' ? 'text-stone-200' : 'text-stone-400'}`}>
-            {basemapStyle === 'satellite' ? 'Satellite' : 'Satellite'}
+          <Globe size={13} />
+          <span className={`hidden sm:inline font-medium ${basemapStyle === 'satellite' ? 'text-stone-200' : 'text-stone-400'}`}>
+            Satellite
           </span>
         </button>
       </div>
@@ -117,7 +135,6 @@ export function ParshaMap() {
         )}
 
         {showTerritories && <TerritoryLayer />}
-
         {showTradeRoutes && <TradeRouteLayer />}
 
         {showArchaeologicalSites &&
@@ -142,10 +159,18 @@ export function ParshaMap() {
 
       {!selectedParshaId && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[300]">
-          <div className="bg-white bg-opacity-90 backdrop-blur-sm rounded-2xl shadow-lg px-6 py-5 text-center max-w-xs border border-stone-200">
-            <div className="text-4xl mb-3">🗺️</div>
-            <p className="text-stone-700 font-medium">Choose a Torah portion</p>
-            <p className="text-stone-400 text-sm mt-1">
+          <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl px-7 py-6 text-center max-w-xs border border-white/80">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-100 flex items-center justify-center mx-auto mb-3">
+              <svg width="22" height="26" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+                <path
+                  d="M10 0C4.477 0 0 4.477 0 10c0 7.5 10 14 10 14s10-6.5 10-14C20 4.477 15.523 0 10 0z"
+                  fill="#F59E0B"
+                />
+                <circle cx="10" cy="10" r="3.5" fill="#1C1917" />
+              </svg>
+            </div>
+            <p className="text-stone-700 font-semibold text-sm">Choose a Torah portion</p>
+            <p className="text-stone-400 text-xs mt-1 leading-relaxed">
               Biblical places mentioned in the text will appear on the map
             </p>
           </div>

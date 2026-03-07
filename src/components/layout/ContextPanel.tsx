@@ -17,9 +17,13 @@ export function ContextPanel() {
 
   return (
     <div className="flex flex-col h-full relative">
-      <div className="px-4 py-3 border-b border-stone-100 bg-stone-50/60 shrink-0">
-        <h2 className="text-sm font-semibold text-stone-800">Historical Context</h2>
-        <p className="text-xs text-stone-400 mt-0.5">{formatYearBCE(currentYearBCE)}</p>
+      <div className="px-4 py-3 border-b border-stone-100 bg-gradient-to-b from-stone-50 to-white shrink-0">
+        <div className="flex items-center justify-between">
+          <h2 className="text-sm font-semibold text-stone-800">Historical Context</h2>
+          <span className="text-[11px] font-medium text-amber-600 bg-amber-50 border border-amber-100 rounded-full px-2 py-0.5">
+            {formatYearBCE(currentYearBCE)}
+          </span>
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto scrollbar-thin p-4 space-y-4">

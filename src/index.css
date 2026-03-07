@@ -48,7 +48,7 @@
 
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: #cbd5e1 transparent;
+    scrollbar-color: #d1d5db transparent;
   }
 
   .scrollbar-thin::-webkit-scrollbar {
@@ -60,7 +60,36 @@
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: #cbd5e1;
+    background-color: #d1d5db;
     border-radius: 2px;
   }
+
+  /* Subtle panel header style */
+  .panel-header {
+    @apply px-4 py-3 border-b border-stone-100 bg-gradient-to-b from-stone-50 to-white shrink-0;
+  }
+
+  /* Card style used across context/sidebar panels */
+  .info-card {
+    @apply bg-white rounded-xl border border-stone-100 shadow-sm overflow-hidden;
+  }
+}
+
+/* Smooth panel transitions */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);   opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-100%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.25s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.25s ease-out;
 }
