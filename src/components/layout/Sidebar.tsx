@@ -10,7 +10,7 @@ export function Sidebar() {
   return (
     <div className="flex flex-col h-full">
       {/* Selector + search */}
-      <div className="p-3 border-b border-stone-100 shrink-0 space-y-2">
+      <div className="p-3 border-b border-stone-100 bg-gradient-to-b from-stone-50 to-white shrink-0 space-y-2">
         <div className="relative">
           <Search
             size={12}
@@ -21,7 +21,7 @@ export function Sidebar() {
             placeholder="Search portions…"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-7 pr-3 py-2 text-xs border border-stone-200 rounded-xl bg-white text-stone-700 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-400"
+            className="w-full pl-7 pr-3 py-2 text-xs border border-stone-200 rounded-xl bg-white text-stone-700 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-400 shadow-sm"
           />
         </div>
         <ParshaSelector filterQuery={searchQuery} />

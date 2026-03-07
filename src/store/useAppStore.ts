@@ -43,7 +43,7 @@ export const useAppStore = create<AppState>((set) => ({
   parshaInitialized: false,
   showTerritories: false,
   selectedPowerId: null,
-  showArchaeologicalSites: false,
+  showArchaeologicalSites: true,
   placeTypeFilter: 'all',
   highlightedPlaceId: null,
   basemapStyle: 'voyager',

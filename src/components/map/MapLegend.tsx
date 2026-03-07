@@ -20,78 +20,72 @@ export function MapLegend() {
   if (!hasContent) return null
 
   return (
-    <div className="absolute bottom-6 left-3 z-[1000] bg-white bg-opacity-90 backdrop-blur-sm rounded-lg shadow-md border border-stone-200 px-3 py-2 text-xs">
+    <div className="absolute bottom-6 left-3 z-[1000] bg-white/90 backdrop-blur-md rounded-xl shadow-md border border-white/70 px-3 py-2 text-xs min-w-[148px]">
       <button
         onClick={() => setCollapsed((c) => !c)}
-        className="flex items-center justify-between w-full gap-2"
+        className="flex items-center justify-between w-full gap-3"
       >
-        <p className="font-semibold text-stone-600 text-[10px] uppercase tracking-wide">
+        <p className="font-semibold text-stone-500 text-[10px] uppercase tracking-wider">
           Legend
         </p>
         {collapsed ? (
-          <ChevronDown size={12} className="text-stone-400" />
+          <ChevronDown size={11} className="text-stone-400" />
         ) : (
-          <ChevronUp size={12} className="text-stone-400" />
+          <ChevronUp size={11} className="text-stone-400" />
         )}
       </button>
 
-      {!collapsed && <div className="space-y-1.5 mt-1.5">
+      {!collapsed && (
+        <div className="space-y-1.5 mt-2">
+          {/* Archaeological sites */}
+          {showArchaeologicalSites && (
+            <div className="flex items-center gap-2">
+              <div
+                className="w-2.5 h-2.5 shrink-0"
+                style={{
+                  backgroundColor: '#7C3AED',
+                  transform: 'rotate(45deg)',
+                  boxShadow: '0 0 0 1.5px white',
+                }}
+              />
+              <span className="text-stone-500">Archaeological site</span>
+            </div>
+          )}
 
-      {/* Archaeological sites */}
-      {showArchaeologicalSites && (
-        <div className="pt-1 border-t border-stone-100">
-          <div className="flex items-center gap-2">
-            <div
-              className="w-2.5 h-2.5 border-2 border-white shadow-sm shrink-0"
-              style={{
-                backgroundColor: '#7C3AED',
-                transform: 'rotate(45deg)',
-              }}
-            />
-            <span className="text-stone-500">Archaeological site</span>
-          </div>
-        </div>
-      )}
-
-      {/* Trade routes */}
-      {routes.length > 0 && (
-        <div className="space-y-1 pt-1 border-t border-stone-100">
+          {/* Trade routes */}
           {routes.map((r) => (
             <div key={r.properties.id} className="flex items-center gap-2">
               <div
-                className="h-0.5 w-5 shrink-0"
-                style={{
-                  borderTop: `2px dashed ${r.properties.color}`,
-                }}
+                className="h-0 w-5 shrink-0"
+                style={{ borderTop: `2px dashed ${r.properties.color}` }}
               />
               <span className="text-stone-500">{r.properties.name}</span>
             </div>
           ))}
-        </div>
-      )}
 
-      {/* Territory colors */}
-      {showTerritories && territories.length > 0 && (
-        <div className="space-y-1 pt-1 border-t border-stone-100">
-          {territories.slice(0, 5).map((t) => (
-            <div key={t.properties.id} className="flex items-center gap-2">
-              <div
-                className="w-4 h-2.5 shrink-0 rounded-sm"
-                style={{
-                  backgroundColor: t.properties.fillColor,
-                  opacity: 0.8,
-                  border: `1px solid ${t.properties.strokeColor}`,
-                }}
-              />
-              <span className="text-stone-500 truncate max-w-[120px]">{t.properties.name}</span>
-            </div>
-          ))}
-          {territories.length > 5 && (
-            <p className="text-stone-400 text-[10px]">+{territories.length - 5} more territories</p>
+          {/* Territories */}
+          {showTerritories && territories.length > 0 && (
+            <>
+              {territories.slice(0, 5).map((t) => (
+                <div key={t.properties.id} className="flex items-center gap-2">
+                  <div
+                    className="w-4 h-2.5 shrink-0 rounded-sm"
+                    style={{
+                      backgroundColor: t.properties.fillColor,
+                      opacity: 0.85,
+                      border: `1px solid ${t.properties.strokeColor}`,
+                    }}
+                  />
+                  <span className="text-stone-500 truncate max-w-[120px]">{t.properties.name}</span>
+                </div>
+              ))}
+              {territories.length > 5 && (
+                <p className="text-stone-400 text-[10px]">+{territories.length - 5} more</p>
+              )}
+            </>
           )}
         </div>
       )}
-      </div>}
     </div>
   )
 }
