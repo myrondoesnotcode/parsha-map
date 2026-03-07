@@ -5,6 +5,7 @@ import { MaterialCultureCard } from '../context/MaterialCultureCard'
 import { HistoricalNote } from '../context/HistoricalNote'
 import { HistoricalEventsTicker } from '../context/HistoricalEventsTicker'
 import { PowerDetailPanel } from '../context/PowerDetailPanel'
+import { PlaceDetailPanel } from '../map/PlaceDetailPanel'
 import { formatYearBCE } from '../../utils/yearUtils'
 
 export function ContextPanel() {
@@ -37,8 +38,9 @@ export function ContextPanel() {
         <HistoricalNote />
       </div>
 
-      {/* PowerDetailPanel slides in as absolute overlay */}
+      {/* Slide-in overlays */}
       <PowerDetailPanel />
+      <PlaceDetailPanel />
     </div>
   )
 }

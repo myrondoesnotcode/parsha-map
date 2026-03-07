@@ -14,4 +14,6 @@ export interface ParshaListItem {
   approximateDateBCE: ApproximateDateBCE
   summary?: string
   commentaryUrl?: string
+  doreImageUrl?: string
+  doreImageCaption?: string
 }

@@ -17,6 +17,7 @@ interface AppState {
   placeTypeFilter: string
   highlightedPlaceId: string | null
   basemapStyle: 'voyager' | 'satellite'
+  selectedPlacePanel: { id: string; type: 'place' | 'site' } | null
 
   setSelectedParsha: (id: string) => void
   setCurrentYear: (year: number) => void
@@ -29,6 +30,8 @@ interface AppState {
   setPlaceTypeFilter: (filter: string) => void
   setHighlightedPlace: (id: string | null) => void
   toggleBasemap: () => void
+  openPlacePanel: (id: string, type: 'place' | 'site') => void
+  closePlacePanel: () => void
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -44,6 +47,7 @@ export const useAppStore = create<AppState>((set) => ({
   placeTypeFilter: 'all',
   highlightedPlaceId: null,
   basemapStyle: 'voyager',
+  selectedPlacePanel: null,
 
   setSelectedParsha: (id: string) => {
     const parsha = parshas.find((p) => p.id === id)
@@ -96,5 +100,13 @@ export const useAppStore = create<AppState>((set) => ({
     set((state) => ({
       basemapStyle: state.basemapStyle === 'voyager' ? 'satellite' : 'voyager',
     }))
+  },
+
+  openPlacePanel: (id: string, type: 'place' | 'site') => {
+    set({ selectedPlacePanel: { id, type }, selectedPowerId: null })
+  },
+
+  closePlacePanel: () => {
+    set({ selectedPlacePanel: null })
   },
 }))

@@ -76,6 +76,24 @@ export function ParshaHeader() {
         </p>
       )}
 
+      {parsha.doreImageUrl && (
+        <div className="mt-3 -mx-4 relative">
+          <img
+            src={parsha.doreImageUrl}
+            alt={parsha.doreImageCaption ?? `${parsha.name} illustration`}
+            className="w-full object-cover max-h-52 opacity-90"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = 'none'
+            }}
+          />
+          {parsha.doreImageCaption && (
+            <p className="px-4 pt-1 text-[10px] text-stone-400 italic">
+              {parsha.doreImageCaption}
+            </p>
+          )}
+        </div>
+      )}
+
       {parsha.commentaryUrl && (
         <a
           href={parsha.commentaryUrl}

@@ -8,7 +8,9 @@
     "number": 1,
     "narrativeEra": null,
     "approximateDateBCE": { "start": null, "end": null },
-    "summary": "God creates the world in six days and rests on the seventh. Adam and Eve live in Eden, eat the forbidden fruit, and are expelled. Cain murders Abel. The generations from Adam to Noah are listed as human corruption spreads across the earth."
+    "summary": "God creates the world in six days and rests on the seventh. Adam and Eve live in Eden, eat the forbidden fruit, and are expelled. Cain murders Abel. The generations from Adam to Noah are listed as human corruption spreads across the earth.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_Fall_of_Man.jpg",
+    "doreImageCaption": "The Fall of Man — Gustave Doré, 1866"
   },
   {
     "id": "noach",
@@ -19,7 +21,9 @@
     "number": 2,
     "narrativeEra": null,
     "approximateDateBCE": { "start": null, "end": null },
-    "summary": "God floods the earth to wipe out wickedness; Noah builds an ark and survives with his family and two of every animal. After the waters recede, God makes a covenant never to flood the earth again and sets a rainbow as its sign. Humanity spreads and then unites to build the Tower of Babel, which God scatters."
+    "summary": "God floods the earth to wipe out wickedness; Noah builds an ark and survives with his family and two of every animal. After the waters recede, God makes a covenant never to flood the earth again and sets a rainbow as its sign. Humanity spreads and then unites to build the Tower of Babel, which God scatters.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Gustave_Dore_-_The_Deluge.jpg",
+    "doreImageCaption": "The Deluge — Gustave Doré, 1866"
   },
   {
     "id": "lech-lecha",
@@ -74,7 +78,9 @@
     "number": 7,
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 1850, "end": 1650 },
-    "summary": "Jacob flees to Haran and on the way dreams of a ladder reaching heaven with angels ascending and descending. He arrives at his uncle Laban's home, falls in love with Rachel, and works seven years to marry her — but Laban tricks him into marrying Leah first. Jacob works another seven years for Rachel. His twelve sons and a daughter are born. After twenty years, Jacob outwits Laban and escapes with his family toward Canaan."
+    "summary": "Jacob flees to Haran and on the way dreams of a ladder reaching heaven with angels ascending and descending. He arrives at his uncle Laban's home, falls in love with Rachel, and works seven years to marry her — but Laban tricks him into marrying Leah first. Jacob works another seven years for Rachel. His twelve sons and a daughter are born. After twenty years, Jacob outwits Laban and escapes with his family toward Canaan.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jacob%27s_Ladder.jpg",
+    "doreImageCaption": "Jacob's Ladder — Gustave Doré, 1866"
   },
   {
     "id": "vayishlach",
@@ -86,7 +92,9 @@
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 1850, "end": 1650 },
     "summary": "Jacob prepares anxiously to meet his estranged brother Esau and wrestles through the night with a divine figure who renames him Israel. The brothers reconcile. Jacob's daughter Dinah is assaulted in Shechem; her brothers Simon and Levi take violent revenge. Rachel dies giving birth to Benjamin. Jacob reaches Canaan and reunites with his father Isaac, who then dies.",
-    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/sjczcxxgze"
+    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/sjczcxxgze",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Jacob_Wrestling_with_the_Angel.jpg",
+    "doreImageCaption": "Jacob Wrestling with the Angel — Gustave Doré, 1866"
   },
   {
     "id": "vayeshev",
@@ -98,7 +106,9 @@
     "narrativeEra": "middle-bronze",
     "approximateDateBCE": { "start": 1750, "end": 1550 },
     "summary": "Jacob favors Joseph, giving him a special coat, which breeds jealousy among his brothers. They throw Joseph in a pit and sell him to merchants heading to Egypt, then deceive their father into thinking he is dead. In Egypt, Joseph serves in Potiphar's house but is falsely accused and imprisoned. Meanwhile, Judah's story with Tamar is told. In prison, Joseph correctly interprets the dreams of Pharaoh's cupbearer and baker.",
-    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/skimbk00gbe"
+    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/skimbk00gbe",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Joseph_Sold_by_His_Brothers_Dore.jpg",
+    "doreImageCaption": "Joseph Sold by His Brothers — Gustave Doré, 1866"
   },
   {
     "id": "miketz",
@@ -144,7 +154,9 @@
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1300, "end": 1200 },
     "summary": "A new Pharaoh who doesn't know Joseph enslaves the Israelites and orders their infant boys drowned. Moses is born, hidden in a basket on the Nile, rescued by Pharaoh's daughter, and raised in the palace. He kills an Egyptian beating a Hebrew, flees to Midian, and marries. God appears to Moses in a burning bush, revealing the divine name and sending him back to Egypt to free the Israelites.",
-    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/hjnnnh2ezx"
+    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/hjnnnh2ezx",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moses_and_the_Burning_Bush.jpg",
+    "doreImageCaption": "Moses and the Burning Bush — Gustave Doré, 1866"
   },
   {
     "id": "vaera",
@@ -180,7 +192,9 @@
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1270, "end": 1200 },
     "summary": "Pharaoh changes his mind and pursues the Israelites with his army. God splits the Sea of Reeds, the Israelites cross on dry land, and the Egyptian army drowns as the waters return. Moses and Miriam lead the people in song. In the desert, the people complain about hunger and thirst; God provides manna, quail, and water from a rock. The Israelites fight and defeat the tribe of Amalek.",
-    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/h1cadafibg"
+    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/h1cadafibg",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Dore-Crossing-the-Red-Sea.jpg",
+    "doreImageCaption": "Crossing the Red Sea — Gustave Doré, 1866"
   },
   {
     "id": "yitro",
@@ -192,7 +206,9 @@
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1260, "end": 1200 },
     "summary": "Moses's father-in-law Jethro visits and wisely advises Moses to delegate judging disputes to appointed leaders instead of handling everything himself. The Israelites arrive at Mount Sinai and God descends on the mountain in thunder and fire. Moses ascends and receives the Ten Commandments, which are proclaimed to all the people.",
-    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/sjymlmzvwl"
+    "commentaryUrl": "https://www.ynetnews.com/jewish-world/article/sjymlmzvwl",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moses_on_Mount_Sinai.jpg",
+    "doreImageCaption": "Moses on Mount Sinai — Gustave Doré, 1866"
   },
   {
     "id": "mishpatim",
@@ -238,7 +254,9 @@
     "number": 21,
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1260, "end": 1200 },
-    "summary": "While Moses is on the mountain, the Israelites panic and pressure Aaron into making a Golden Calf to worship. God threatens to destroy the people; Moses pleads for them and descends, smashing the tablets in fury. He destroys the calf and thousands die in a plague. Moses returns to God and pleads again for forgiveness; God relents and renews the covenant. Moses descends with new tablets, his face radiating divine light."
+    "summary": "While Moses is on the mountain, the Israelites panic and pressure Aaron into making a Golden Calf to worship. God threatens to destroy the people; Moses pleads for them and descends, smashing the tablets in fury. He destroys the calf and thousands die in a plague. Moses returns to God and pleads again for forgiveness; God relents and renews the covenant. Moses descends with new tablets, his face radiating divine light.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Moses_Breaks_the_Tablets_of_the_Law.jpg",
+    "doreImageCaption": "Moses Breaks the Tablets — Gustave Doré, 1866"
   },
   {
     "id": "vayakhel",
@@ -447,7 +465,9 @@
     "number": 40,
     "narrativeEra": "late-bronze",
     "approximateDateBCE": { "start": 1240, "end": 1200 },
-    "summary": "Balak, king of Moab, terrified of Israel's march, hires the prophet Balaam to curse them. On the way, Balaam's donkey sees an angel blocking the road and miraculously speaks, rebuking its rider. Three times Balaam opens his mouth to curse Israel — and three times blessings pour out instead. The portion ends with Israelite men sinning with Moabite women at Baal Peor; the zealot Pinchas kills a flagrant offender and stops a plague."
+    "summary": "Balak, king of Moab, terrified of Israel's march, hires the prophet Balaam to curse them. On the way, Balaam's donkey sees an angel blocking the road and miraculously speaks, rebuking its rider. Three times Balaam opens his mouth to curse Israel — and three times blessings pour out instead. The portion ends with Israelite men sinning with Moabite women at Baal Peor; the zealot Pinchas kills a flagrant offender and stops a plague.",
+    "doreImageUrl": "https://commons.wikimedia.org/wiki/Special:FilePath/Balaam_and_the_Angel.jpg",
+    "doreImageCaption": "Balaam and the Angel — Gustave Doré, 1866"
   },
   {
     "id": "pinchas",
