@@ -11,7 +11,7 @@ import { PlaceHighlightManager } from './PlaceHighlightManager'
 import { MapBoundsManager } from './MapBoundsManager'
 import { MapLegend } from './MapLegend'
 import { filterPlacesByType } from '../../utils/placeUtils'
-import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe } from 'lucide-react'
+import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe, Crosshair } from 'lucide-react'
 
 const DEFAULT_CENTER: [number, number] = [31.5, 35.5]
 const DEFAULT_ZOOM = 6
@@ -61,6 +61,7 @@ export function ParshaMap() {
   const toggleArchaeologicalSites = useAppStore((s) => s.toggleArchaeologicalSites)
   const basemapStyle = useAppStore((s) => s.basemapStyle)
   const toggleBasemap = useAppStore((s) => s.toggleBasemap)
+  const triggerFitBounds = useAppStore((s) => s.triggerFitBounds)
 
   const allPlaces = useParshaPlaces(selectedParshaId)
   const places = filterPlacesByType(allPlaces, placeTypeFilter)
@@ -76,6 +77,13 @@ export function ParshaMap() {
         flex flex-col bg-white/90 backdrop-blur-md rounded-xl
         border border-white/70 shadow-md overflow-hidden">
 
+        <IconBtn
+          onClick={triggerFitBounds}
+          active={false}
+          title="Zoom to parsha area"
+          icon={<Crosshair size={15} />}
+        />
+        <Divider />
         <IconBtn
           onClick={toggleTradeRoutes}
           active={showTradeRoutes}

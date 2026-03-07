@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useMap } from 'react-leaflet'
 import type { Place } from '../../types/places'
 import { getBoundsForPlaces } from '../../utils/placeUtils'
+import { useAppStore } from '../../store/useAppStore'
 
 interface Props {
   places: Place[]
@@ -10,6 +11,7 @@ interface Props {
 
 export function MapBoundsManager({ places, parshaId }: Props) {
   const map = useMap()
+  const fitBoundsKey = useAppStore((s) => s.fitBoundsKey)
 
   useEffect(() => {
     if (!parshaId || places.length === 0) return
@@ -19,7 +21,7 @@ export function MapBoundsManager({ places, parshaId }: Props) {
 
     // Pad bounds and fit
     map.fitBounds(bounds, { padding: [50, 50], maxZoom: 8 })
-  }, [map, places, parshaId])
+  }, [map, places, parshaId, fitBoundsKey])
 
   return null
 }

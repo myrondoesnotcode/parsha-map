@@ -18,6 +18,7 @@ interface AppState {
   highlightedPlaceId: string | null
   basemapStyle: 'voyager' | 'satellite'
   selectedPlacePanel: { id: string; type: 'place' | 'site' } | null
+  fitBoundsKey: number
 
   setSelectedParsha: (id: string) => void
   setCurrentYear: (year: number) => void
@@ -32,6 +33,7 @@ interface AppState {
   toggleBasemap: () => void
   openPlacePanel: (id: string, type: 'place' | 'site') => void
   closePlacePanel: () => void
+  triggerFitBounds: () => void
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -48,6 +50,7 @@ export const useAppStore = create<AppState>((set) => ({
   highlightedPlaceId: null,
   basemapStyle: 'voyager',
   selectedPlacePanel: null,
+  fitBoundsKey: 0,
 
   setSelectedParsha: (id: string) => {
     const parsha = parshas.find((p) => p.id === id)
@@ -108,5 +111,9 @@ export const useAppStore = create<AppState>((set) => ({
 
   closePlacePanel: () => {
     set({ selectedPlacePanel: null })
+  },
+
+  triggerFitBounds: () => {
+    set((state) => ({ fitBoundsKey: state.fitBoundsKey + 1 }))
   },
 }))
