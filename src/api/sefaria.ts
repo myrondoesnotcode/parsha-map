@@ -42,13 +42,22 @@ export async function fetchCommentaryText(
 }
 
 /**
- * Flatten Sefaria text arrays (can be nested string[][]) into a flat string[].
+ * Flatten Sefaria text arrays (can be arbitrarily nested) into a flat string[].
  * Each element is one verse or chunk of text.
  */
-export function flattenSefariaText(raw: string | string[] | string[][]): string[] {
+export function flattenSefariaText(raw: unknown): string[] {
+  if (raw == null) return []
   if (typeof raw === 'string') return [raw]
-  if (raw.length === 0) return []
-  if (typeof raw[0] === 'string') return raw as string[]
-  // string[][]
-  return (raw as string[][]).flat()
+  if (Array.isArray(raw)) {
+    const result: string[] = []
+    for (const item of raw) {
+      if (typeof item === 'string') {
+        result.push(item)
+      } else if (Array.isArray(item)) {
+        result.push(...flattenSefariaText(item))
+      }
+    }
+    return result
+  }
+  return []
 }
