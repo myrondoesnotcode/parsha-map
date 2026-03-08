@@ -11,6 +11,8 @@ export interface ArchaeologicalSite {
   eraIds: string[]
   description: string
   significance: string
+  paperLinks?: Array<{ title: string; url: string }>
+  youtubeLinks?: Array<{ title: string; url: string }>
 }
 
 const allSites = sitesData as ArchaeologicalSite[]

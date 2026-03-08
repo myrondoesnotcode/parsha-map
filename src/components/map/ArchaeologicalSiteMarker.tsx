@@ -1,8 +1,15 @@
 import { Marker, Popup } from 'react-leaflet'
 import L from 'leaflet'
-import { ExternalLink } from 'lucide-react'
+import { ExternalLink, Navigation } from 'lucide-react'
 import type { ArchaeologicalSite } from '../../hooks/useArchaeologicalSites'
 import { useAppStore } from '../../store/useAppStore'
+
+function googleMapsUrl(site: ArchaeologicalSite) {
+  const query = site.alternateNames[0]
+    ? encodeURIComponent(`${site.name}, ${site.alternateNames[0]}`)
+    : `${site.latitude},${site.longitude}`
+  return `https://www.google.com/maps/search/?api=1&query=${query}`
+}
 
 function createDiamondIcon() {
   return L.divIcon({
@@ -58,7 +65,7 @@ export function ArchaeologicalSiteMarker({ site }: Props) {
             </div>
           )}
 
-          <div className="flex items-center justify-between gap-1 pt-0.5">
+          <div className="flex items-center justify-between gap-1 pt-0.5 flex-wrap">
             <div className="flex items-center gap-1">
               <div
                 style={{
@@ -71,13 +78,24 @@ export function ArchaeologicalSiteMarker({ site }: Props) {
               />
               <span className="text-stone-400 text-[10px]">Archaeological Site</span>
             </div>
-            <button
-              onClick={() => openPlacePanel(site.id, 'site')}
-              className="flex items-center gap-1 text-[10px] text-amber-700 hover:text-amber-900 transition-colors"
-            >
-              <ExternalLink size={10} />
-              Details
-            </button>
+            <div className="flex items-center gap-2">
+              <a
+                href={googleMapsUrl(site)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-[10px] text-blue-600 hover:text-blue-800 transition-colors"
+              >
+                <Navigation size={10} />
+                Directions
+              </a>
+              <button
+                onClick={() => openPlacePanel(site.id, 'site')}
+                className="flex items-center gap-1 text-[10px] text-amber-700 hover:text-amber-900 transition-colors"
+              >
+                <ExternalLink size={10} />
+                Details
+              </button>
+            </div>
           </div>
         </div>
       </Popup>
