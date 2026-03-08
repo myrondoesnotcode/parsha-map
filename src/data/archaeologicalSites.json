@@ -7,7 +7,13 @@
     "longitude": 35.183,
     "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
     "description": "Strategic city controlling the Jezreel Valley pass on the Via Maris trade route. 25+ layers of occupation make it one of the most excavated sites in the world.",
-    "significance": "UNESCO World Heritage Site; site of the Battle of Megiddo (1457 BCE); later gave its name to Armageddon"
+    "significance": "UNESCO World Heritage Site; site of the Battle of Megiddo (1457 BCE); later gave its name to Armageddon",
+    "paperLinks": [
+      { "title": "The Megiddo Expedition — Tel Aviv University", "url": "https://www.archaeology.tau.ac.il/megiddo/" }
+    ],
+    "youtubeLinks": [
+      { "title": "Megiddo: The Mount of Armageddon", "url": "https://www.youtube.com/results?search_query=Tel+Megiddo+archaeology+documentary" }
+    ]
   },
   {
     "id": "hazor",
@@ -17,7 +23,13 @@
     "longitude": 35.567,
     "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
     "description": "The largest Canaanite city in the Late Bronze Age, with a population of 20,000-40,000. Joshua burned it. Solomon later rebuilt it as a royal city. Destroyed by Assyrians in 732 BCE.",
-    "significance": "Head of all Canaanite kingdoms (Josh 11:10); Amarna letters document its kings; UNESCO World Heritage Site"
+    "significance": "Head of all Canaanite kingdoms (Josh 11:10); Amarna letters document its kings; UNESCO World Heritage Site",
+    "paperLinks": [
+      { "title": "Hazor Excavation Project — Hebrew University of Jerusalem", "url": "https://hazor.huji.ac.il/" }
+    ],
+    "youtubeLinks": [
+      { "title": "Tel Hazor — Israel's Largest Biblical City", "url": "https://www.youtube.com/results?search_query=Tel+Hazor+Canaanite+city+biblical+archaeology" }
+    ]
   },
   {
     "id": "lachish",
@@ -27,7 +39,13 @@
     "longitude": 34.847,
     "eraIds": ["late-bronze", "iron-age-1", "iron-age-2"],
     "description": "Judah's second most important city after Jerusalem. The Lachish Letters (586 BCE) are among the oldest Hebrew documents. Famous Assyrian reliefs in the British Museum depict Sennacherib's siege.",
-    "significance": "Key Judean fortress; Lachish reliefs in British Museum; Lachish Letters document final days of First Temple period"
+    "significance": "Key Judean fortress; Lachish reliefs in British Museum; Lachish Letters document final days of First Temple period",
+    "paperLinks": [
+      { "title": "Lachish Reliefs — British Museum Collection", "url": "https://www.britishmuseum.org/collection/search?keyword=lachish+reliefs" }
+    ],
+    "youtubeLinks": [
+      { "title": "The Siege of Lachish — Sennacherib's Reliefs", "url": "https://www.youtube.com/results?search_query=Lachish+reliefs+Sennacherib+British+Museum+siege" }
+    ]
   },
   {
     "id": "gezer",
@@ -67,7 +85,10 @@
     "longitude": 34.798,
     "eraIds": ["middle-bronze", "iron-age-1", "iron-age-2"],
     "description": "Southernmost city of biblical Israel ('from Dan to Beersheba'). Abraham dug a well and planted a tamarisk tree here. Isaac built an altar. Elijah fled here from Jezebel. A dismantled Iron Age altar was found, possibly from Hezekiah's reforms.",
-    "significance": "Marks southern extent of biblical Israel; Abraham's covenant with Abimelech (Gen 21); UNESCO World Heritage Site"
+    "significance": "Marks southern extent of biblical Israel; Abraham's covenant with Abimelech (Gen 21); UNESCO World Heritage Site",
+    "paperLinks": [
+      { "title": "Tel Beer-Sheba — UNESCO World Heritage Site", "url": "https://whc.unesco.org/en/list/1108/" }
+    ]
   },
   {
     "id": "dan",
@@ -87,7 +108,13 @@
     "longitude": 35.236,
     "eraIds": ["middle-bronze", "late-bronze", "iron-age-1", "iron-age-2"],
     "description": "The original settlement of Jerusalem on the southeastern ridge south of the Temple Mount. David conquered it from the Jebusites around 1000 BCE. Hezekiah's Tunnel (701 BCE) is still walkable — cut through solid rock to secure water supply during Sennacherib's siege.",
-    "significance": "David's capital; Hezekiah's Tunnel; Siloam Inscription; Pool of Siloam; ongoing excavations reveal 3000+ years of occupation"
+    "significance": "David's capital; Hezekiah's Tunnel; Siloam Inscription; Pool of Siloam; ongoing excavations reveal 3000+ years of occupation",
+    "paperLinks": [
+      { "title": "City of David Archaeological Park — Official Site", "url": "https://www.cityofdavid.org.il/en" }
+    ],
+    "youtubeLinks": [
+      { "title": "City of David: Archaeological Discoveries in Jerusalem", "url": "https://www.youtube.com/results?search_query=City+of+David+Jerusalem+biblical+archaeology+Hezekiah+tunnel" }
+    ]
   },
   {
     "id": "babylon",
@@ -97,7 +124,13 @@
     "longitude": 44.421,
     "eraIds": ["early-bronze", "middle-bronze", "babylonian-persian"],
     "description": "One of the ancient world's greatest cities. Under Nebuchadnezzar II, Babylon was rebuilt with massive walls, the Ishtar Gate, the ziggurat Etemenanki (possibly the Tower of Babel prototype), and legendary Hanging Gardens. The Jewish exile was centered here.",
-    "significance": "Tower of Babel tradition; site of Jewish exile; Ishtar Gate now in Berlin's Pergamon Museum; UNESCO World Heritage Site"
+    "significance": "Tower of Babel tradition; site of Jewish exile; Ishtar Gate now in Berlin's Pergamon Museum; UNESCO World Heritage Site",
+    "paperLinks": [
+      { "title": "The Babylon Project — Oriental Institute, Chicago", "url": "https://oi.uchicago.edu/research/projects/babylon" }
+    ],
+    "youtubeLinks": [
+      { "title": "Ancient Babylon — Nebuchadnezzar's City", "url": "https://www.youtube.com/results?search_query=ancient+Babylon+Nebuchadnezzar+archaeology+documentary" }
+    ]
   },
   {
     "id": "ur",
@@ -107,7 +140,13 @@
     "longitude": 46.104,
     "eraIds": ["chalcolithic", "early-bronze", "middle-bronze"],
     "description": "A major Sumerian city-state near the mouth of the Euphrates. The Royal Cemetery of Ur (c. 2600 BCE) contained extraordinary gold artifacts. The massive ziggurat of Ur-Nammu still stands. This is the city where Terah took his family before Abraham's call.",
-    "significance": "Abraham's hometown (Gen 11:28-31); Royal Cemetery of Ur with spectacular gold artifacts; well-preserved ziggurat"
+    "significance": "Abraham's hometown (Gen 11:28-31); Royal Cemetery of Ur with spectacular gold artifacts; well-preserved ziggurat",
+    "paperLinks": [
+      { "title": "Ur in Iraq — Penn Museum Excavations", "url": "https://www.penn.museum/sites/iraq/ur.php" }
+    ],
+    "youtubeLinks": [
+      { "title": "Ur of the Chaldees — The Royal Cemetery", "url": "https://www.youtube.com/results?search_query=Ur+Chaldees+Royal+Cemetery+Woolley+Sumer+documentary" }
+    ]
   },
   {
     "id": "eridu",
@@ -147,7 +186,10 @@
     "longitude": 52.891,
     "eraIds": ["babylonian-persian"],
     "description": "The ceremonial capital of the Achaemenid Persian Empire, built by Darius I and Xerxes. Its massive terrace held palaces, audience halls (apadanas), and treasury storehouses. Delegations from all 23 satrapies brought tribute — depicted in famous carved reliefs. Burned by Alexander the Great in 330 BCE.",
-    "significance": "Persian imperial capital; reliefs show delegations from all provinces; Xerxes (Ahasuerus of Esther) built the famous harem here"
+    "significance": "Persian imperial capital; reliefs show delegations from all provinces; Xerxes (Ahasuerus of Esther) built the famous harem here",
+    "youtubeLinks": [
+      { "title": "Persepolis — Capital of the Persian Empire", "url": "https://www.youtube.com/results?search_query=Persepolis+Achaemenid+Persian+Empire+Darius+Xerxes+documentary" }
+    ]
   },
   {
     "id": "tell-el-amarna",
@@ -157,7 +199,13 @@
     "longitude": 30.895,
     "eraIds": ["late-bronze"],
     "description": "Akhenaten's purpose-built capital for his monotheistic Aten religion, founded c. 1346 BCE and abandoned after his death. The Amarna Letters archive — 382 clay tablets — documents diplomatic correspondence between Egypt and Canaanite city-states, Mitanni, Babylon, Assyria, and Hatti.",
-    "significance": "Amarna Letters document Late Bronze Age international diplomacy; first experiment in state monotheism; abandoned within 20 years"
+    "significance": "Amarna Letters document Late Bronze Age international diplomacy; first experiment in state monotheism; abandoned within 20 years",
+    "paperLinks": [
+      { "title": "The Amarna Project — Archaeological Research", "url": "https://www.amarnaproject.com/" }
+    ],
+    "youtubeLinks": [
+      { "title": "Amarna: Akhenaten's Revolution in Egypt", "url": "https://www.youtube.com/results?search_query=Amarna+Akhenaten+ancient+Egypt+monotheism+documentary" }
+    ]
   },
   {
     "id": "ekron",
@@ -187,7 +235,13 @@
     "longitude": 35.291,
     "eraIds": ["late-bronze", "iron-age-1"],
     "description": "The central sanctuary of Israel during the period of the Judges — home of the Tabernacle and Ark of the Covenant for approximately 300 years. Hannah prayed here for a son; Samuel grew up here. Destroyed by Philistines around 1050 BCE.",
-    "significance": "Home of the Tabernacle and Ark (Josh 18); Samuel's childhood home; Hannah's prayer (1 Sam 1); destroyed before Jerusalem Temple"
+    "significance": "Home of the Tabernacle and Ark (Josh 18); Samuel's childhood home; Hannah's prayer (1 Sam 1); destroyed before Jerusalem Temple",
+    "paperLinks": [
+      { "title": "Shiloh: Where the Tabernacle Came to Rest (Associates for Biblical Research)", "url": "https://biblearchaeology.org/research/topics/conquest-of-canaan/4869-shiloh-where-the-tabernacle-came-to-rest" }
+    ],
+    "youtubeLinks": [
+      { "title": "Excavating Biblical Shiloh — The Tabernacle Site", "url": "https://www.youtube.com/results?search_query=Shiloh+biblical+tabernacle+archaeology+excavation" }
+    ]
   },
   {
     "id": "hebron",

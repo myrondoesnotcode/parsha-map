@@ -1,4 +1,4 @@
-import { X, ExternalLink, MapPin, Navigation, AlertTriangle } from 'lucide-react'
+import { X, ExternalLink, MapPin, Navigation, AlertTriangle, BookOpen, Youtube } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../../store/useAppStore'
 import { fetchWikipediaSummary } from '../../api/wikipedia'
@@ -168,6 +168,50 @@ export function PlaceDetailPanel() {
               <p className="text-xs text-stone-700 leading-relaxed">
                 {(item as ArchaeologicalSite).significance}
               </p>
+            </div>
+          )}
+
+          {/* Further Reading — academic / institutional links */}
+          {!isPlace && (item as ArchaeologicalSite).paperLinks && (item as ArchaeologicalSite).paperLinks!.length > 0 && (
+            <div className="border-t border-stone-100 pt-3 space-y-1.5">
+              <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide flex items-center gap-1.5">
+                <BookOpen size={10} />
+                Further Reading
+              </p>
+              {(item as ArchaeologicalSite).paperLinks!.map((paper, i) => (
+                <a
+                  key={i}
+                  href={paper.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 p-2 rounded-lg bg-stone-50 hover:bg-amber-50 transition-colors group"
+                >
+                  <ExternalLink size={11} className="text-stone-400 group-hover:text-amber-600 mt-0.5 shrink-0" />
+                  <span className="text-xs text-stone-600 group-hover:text-amber-800 leading-snug">{paper.title}</span>
+                </a>
+              ))}
+            </div>
+          )}
+
+          {/* Watch — YouTube links */}
+          {!isPlace && (item as ArchaeologicalSite).youtubeLinks && (item as ArchaeologicalSite).youtubeLinks!.length > 0 && (
+            <div className="border-t border-stone-100 pt-3 space-y-1.5">
+              <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide flex items-center gap-1.5">
+                <Youtube size={10} />
+                Watch
+              </p>
+              {(item as ArchaeologicalSite).youtubeLinks!.map((video, i) => (
+                <a
+                  key={i}
+                  href={video.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-2 p-2 rounded-lg bg-stone-50 hover:bg-red-50 transition-colors group"
+                >
+                  <Youtube size={11} className="text-stone-400 group-hover:text-red-600 mt-0.5 shrink-0" />
+                  <span className="text-xs text-stone-600 group-hover:text-red-700 leading-snug">{video.title}</span>
+                </a>
+              ))}
             </div>
           )}
 
