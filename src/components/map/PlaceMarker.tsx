@@ -3,14 +3,7 @@ import L from 'leaflet'
 import type { Place } from '../../types/places'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
-import { ExternalLink, Navigation } from 'lucide-react'
-
-function googleMapsUrl(place: Place) {
-  const query = place.modernName
-    ? encodeURIComponent(place.modernName)
-    : `${place.latitude},${place.longitude}`
-  return `https://www.google.com/maps/search/?api=1&query=${query}`
-}
+import { ExternalLink } from 'lucide-react'
 
 // Fix Leaflet's default icon paths broken by bundlers
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl
@@ -161,24 +154,13 @@ export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
               />
               <span className="text-stone-400 capitalize">{place.confidence} confidence</span>
             </div>
-            <div className="flex items-center gap-2">
-              <a
-                href={googleMapsUrl(place)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 text-[10px] text-blue-600 hover:text-blue-800 transition-colors"
-              >
-                <Navigation size={10} />
-                Directions
-              </a>
-              <button
-                onClick={() => openPlacePanel(place.id, 'place')}
-                className="flex items-center gap-1 text-[10px] text-amber-700 hover:text-amber-900 transition-colors"
-              >
-                <ExternalLink size={10} />
-                Details
-              </button>
-            </div>
+            <button
+              onClick={() => openPlacePanel(place.id, 'place')}
+              className="flex items-center gap-1 text-[10px] text-amber-700 hover:text-amber-900 transition-colors"
+            >
+              <ExternalLink size={10} />
+              Details
+            </button>
           </div>
         </div>
       </Popup>
