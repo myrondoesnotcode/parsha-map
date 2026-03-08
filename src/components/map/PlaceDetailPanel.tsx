@@ -88,13 +88,13 @@ export function PlaceDetailPanel() {
           </div>
 
           {/* Google Maps / directions */}
-          {place && (
+          {item && (
             <div className="bg-blue-50 rounded-lg p-3 space-y-1.5">
               <a
                 href={
-                  place.modernName
+                  place?.modernName
                     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.modernName)}`
-                    : `https://www.google.com/maps/search/?api=1&query=${place.latitude},${place.longitude}`
+                    : `https://www.google.com/maps/search/?api=1&query=${item.latitude},${item.longitude}`
                 }
                 target="_blank"
                 rel="noopener noreferrer"
