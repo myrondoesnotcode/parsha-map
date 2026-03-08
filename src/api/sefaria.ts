@@ -42,6 +42,22 @@ export async function fetchCommentaryText(
 }
 
 /**
+ * Fetch the English text of a single verse reference (e.g. "Numbers 27:12").
+ * Returns the plain-text string of the verse, or null if unavailable.
+ */
+export async function fetchVerseText(ref: string): Promise<string | null> {
+  // "Numbers 27:12" → "Numbers.27.12"
+  const sefariaRef = ref.replace(' ', '.').replace(':', '.')
+  const res = await fetch(`${BASE}/texts/${encodeURIComponent(sefariaRef)}?context=0&pad=0`)
+  if (!res.ok) return null
+  const data: SefariaTextResponse = await res.json()
+  const texts = flattenSefariaText(data.text)
+  if (!texts.length) return null
+  // Strip HTML tags returned by Sefaria
+  return texts[0].replace(/<[^>]+>/g, '').trim() || null
+}
+
+/**
  * Flatten Sefaria text arrays (can be arbitrarily nested) into a flat string[].
  * Each element is one verse or chunk of text.
  */

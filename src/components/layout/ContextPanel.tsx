@@ -30,7 +30,7 @@ export function ContextPanel() {
         {era ? (
           <>
             <EraCard era={era} />
-            {cultureEntry && <MaterialCultureCard entry={cultureEntry} />}
+            {cultureEntry && <MaterialCultureCard entry={cultureEntry} era={era} />}
             <HistoricalEventsTicker era={era} />
             <WorldContextCard era={era} />
             <PrimarySourcesCard era={era} />
