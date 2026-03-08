@@ -1,7 +1,8 @@
-import { X, ExternalLink, MapPin } from 'lucide-react'
+import { X, ExternalLink, MapPin, Navigation, AlertTriangle } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../../store/useAppStore'
 import { fetchWikipediaSummary } from '../../api/wikipedia'
+import { fetchVerseText } from '../../api/sefaria'
 import { queryKeys } from '../../api/queryKeys'
 import { getParshaById } from '../../utils/parshaUtils'
 import placesData from '../../data/places.json'
@@ -43,6 +44,16 @@ export function PlaceDetailPanel() {
         .filter(Boolean)
     : []
 
+  // Fetch text of first verse for this place
+  const firstVerse = place?.verses?.[0] ?? null
+  const { data: verseText } = useQuery({
+    queryKey: queryKeys.verseText(firstVerse ?? ''),
+    queryFn: () => fetchVerseText(firstVerse!),
+    enabled: !!firstVerse && !!selectedPlacePanel,
+    staleTime: 1000 * 60 * 60 * 24 * 7, // 7 days
+    retry: false,
+  })
+
   return (
     <div
       className={`absolute inset-y-0 right-0 left-8 bg-white z-10 overflow-y-auto transition-transform duration-300 rounded-tl-2xl rounded-bl-2xl shadow-xl ${
@@ -75,6 +86,39 @@ export function PlaceDetailPanel() {
               <X size={16} />
             </button>
           </div>
+
+          {/* Google Maps / directions */}
+          {place && (
+            <div className="bg-blue-50 rounded-lg p-3 space-y-1.5">
+              <a
+                href={
+                  place.modernName
+                    ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.modernName)}`
+                    : `https://www.google.com/maps/search/?api=1&query=${place.latitude},${place.longitude}`
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs text-blue-700 hover:text-blue-900 font-medium transition-colors"
+              >
+                <Navigation size={12} />
+                Open in Google Maps
+              </a>
+              <div className="flex items-start gap-1.5">
+                <AlertTriangle size={11} className="text-amber-500 mt-0.5 shrink-0" />
+                <p className="text-[10px] text-stone-500 leading-relaxed">
+                  Always check current travel advisories before visiting.{' '}
+                  <a
+                    href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:underline"
+                  >
+                    U.S. Travel Advisories
+                  </a>
+                </p>
+              </div>
+            </div>
+          )}
 
           {/* Wikipedia section */}
           {wikiLoading && (
@@ -152,10 +196,24 @@ export function PlaceDetailPanel() {
 
           {/* Verse references */}
           {place && place.verses.length > 0 && (
-            <div className="border-t border-stone-100 pt-3">
-              <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide mb-2">
-                Verse references
-              </p>
+            <div className="border-t border-stone-100 pt-3 space-y-2">
+              <div>
+                <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide mb-0.5">
+                  Verse references
+                </p>
+                <p className="text-[10px] text-stone-400 italic">
+                  All Torah references to this location — not just the current portion
+                </p>
+              </div>
+
+              {/* First verse quote */}
+              {verseText && firstVerse && (
+                <div className="bg-amber-50 rounded-lg p-3 border-l-2 border-amber-400">
+                  <p className="text-xs text-stone-700 leading-relaxed italic">"{verseText}"</p>
+                  <p className="text-[10px] text-amber-700 mt-1 font-medium">{firstVerse}</p>
+                </div>
+              )}
+
               <div className="flex flex-wrap gap-1">
                 {place.verses.slice(0, 12).map((v) => (
                   <span

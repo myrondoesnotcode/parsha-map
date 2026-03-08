@@ -1,11 +1,12 @@
 import * as Tabs from '@radix-ui/react-tabs'
 import { cn } from '../../utils/cn'
-import type { MaterialCultureEntry } from '../../types/timeline'
+import type { MaterialCultureEntry, Era } from '../../types/timeline'
 import { getPowerByLabel } from '../../utils/powerUtils'
 import { useAppStore } from '../../store/useAppStore'
 
 interface Props {
   entry: MaterialCultureEntry
+  era?: Era
 }
 
 const TABS = [
@@ -22,7 +23,7 @@ function getContent(entry: MaterialCultureEntry, tab: TabId): string {
   return entry[tab] ?? ''
 }
 
-export function MaterialCultureCard({ entry }: Props) {
+export function MaterialCultureCard({ entry, era }: Props) {
   const setSelectedPower = useAppStore((s) => s.setSelectedPower)
 
   return (
@@ -31,6 +32,11 @@ export function MaterialCultureCard({ entry }: Props) {
         <h4 className="text-xs font-semibold text-stone-500 uppercase tracking-wide">
           Material Culture
         </h4>
+        {era && (
+          <p className="text-[10px] text-stone-400 mt-0.5">
+            {era.name} · {era.endBCE}–{era.startBCE} BCE · Content reflects this era; multiple Torah portions may share it
+          </p>
+        )}
       </div>
 
       <Tabs.Root defaultValue="writing">

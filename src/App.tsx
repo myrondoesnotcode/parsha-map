@@ -107,12 +107,15 @@ export default function App() {
   const [showTutorial, setShowTutorial] = useState(false)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
 
-  // Auto-show newsletter popup after 50s, once per session
+  // Auto-show newsletter popup after 50s, once per 30 days
   useEffect(() => {
-    if (sessionStorage.getItem('newsletter-shown')) return
+    const NEWSLETTER_KEY = 'newsletter-last-shown'
+    const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000
+    const lastShown = localStorage.getItem(NEWSLETTER_KEY)
+    if (lastShown && Date.now() - Number(lastShown) < THIRTY_DAYS) return
     const timer = setTimeout(() => {
       setNewsletterOpen(true)
-      sessionStorage.setItem('newsletter-shown', '1')
+      localStorage.setItem(NEWSLETTER_KEY, String(Date.now()))
     }, 50_000)
     return () => clearTimeout(timer)
   }, [])
