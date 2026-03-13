@@ -156,7 +156,7 @@ export default function App() {
         <div className="flex-1 flex min-h-0">
 
           {/* Left: Sidebar */}
-          <div className="w-72 shrink-0 border-r border-stone-200 bg-white overflow-y-auto">
+          <div className="w-72 h-full shrink-0 border-r border-stone-200 bg-white overflow-y-auto">
             <Sidebar />
           </div>
 
@@ -171,7 +171,7 @@ export default function App() {
           </div>
 
           {/* Right: ContextPanel */}
-          <div className="w-80 shrink-0 border-l border-stone-200 bg-white overflow-y-auto">
+          <div className="w-80 h-full shrink-0 border-l border-stone-200 bg-white overflow-y-auto">
             <ContextPanel />
           </div>
         </div>

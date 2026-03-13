@@ -86,21 +86,3 @@
   border: 2px solid rgba(245, 158, 11, 0.55);
 }
 
-/* Smooth panel transitions */
-@keyframes slide-in-right {
-  from { transform: translateX(100%); opacity: 0; }
-  to   { transform: translateX(0);   opacity: 1; }
-}
-
-@keyframes slide-in-left {
-  from { transform: translateX(-100%); opacity: 0; }
-  to   { transform: translateX(0);     opacity: 1; }
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.25s ease-out;
-}
-
-.animate-slide-in-left {
-  animation: slide-in-left 0.25s ease-out;
-}
