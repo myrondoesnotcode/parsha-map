@@ -14,10 +14,7 @@ import {
   BookOpen,
   Globe,
   HelpCircle,
-  X,
   Mail,
-  ChevronDown,
-  ChevronUp,
 } from 'lucide-react'
 
 // Inline X (Twitter) logo SVG
@@ -53,48 +50,6 @@ function LogoLockup() {
   )
 }
 
-// ─── Panel wrapper with close button ──────────────────────────────────────────
-
-function PanelShell({
-  open,
-  side,
-  onClose,
-  children,
-}: {
-  open: boolean
-  side: 'left' | 'right'
-  onClose: () => void
-  children: React.ReactNode
-}) {
-  const translate = open
-    ? 'translate-x-0'
-    : side === 'left'
-    ? '-translate-x-full'
-    : 'translate-x-full'
-
-  return (
-    <div
-      className={`absolute top-11 ${side}-0 bottom-[72px] z-[1000] w-[340px] max-w-[calc(100vw-48px)]
-        bg-white shadow-2xl flex flex-col
-        transition-transform duration-300 ease-in-out ${translate}`}
-    >
-      {/* Close tab on the exposed edge */}
-      <button
-        onClick={onClose}
-        className={`absolute top-4 ${side === 'left' ? '-right-9' : '-left-9'} z-10
-          w-9 h-9 flex items-center justify-center
-          bg-white border border-stone-200 shadow-md
-          ${side === 'left' ? 'rounded-r-xl' : 'rounded-l-xl'}
-          text-stone-400 hover:text-stone-700 hover:bg-stone-50 transition-colors`}
-        aria-label="Close panel"
-      >
-        <X size={14} />
-      </button>
-      {children}
-    </div>
-  )
-}
-
 // ─── App ───────────────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -102,8 +57,6 @@ export default function App() {
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('map')
-  const [leftOpen, setLeftOpen] = useState(false)
-  const [rightOpen, setRightOpen] = useState(false)
   const [showTutorial, setShowTutorial] = useState(false)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
 
@@ -145,62 +98,26 @@ export default function App() {
       <NewsletterModal open={newsletterOpen} onClose={() => setNewsletterOpen(false)} />
 
       {/* ══════════════════════════════════════════════════════
-          DESKTOP  (md +)  — map fills full screen, panels overlay
+          DESKTOP  (md +)  — permanent three-column layout
           ══════════════════════════════════════════════════════ */}
-      <div className="hidden md:block h-full relative">
+      <div className="hidden md:flex md:flex-col h-full">
 
-        {/* Map — base layer, true full-screen */}
-        <div className="absolute inset-0">
-          <ParshaMap />
-        </div>
-
-        {/* ── Floating header ── */}
-        <header className="absolute top-0 inset-x-0 z-[1100] h-11 flex items-center gap-1 px-3
+        {/* ── Header ── */}
+        <header className="shrink-0 z-[1100] h-11 flex items-center gap-1 px-3
           bg-stone-900/95 backdrop-blur-sm border-b border-stone-800/60">
 
           <LogoLockup />
 
           <div className="w-px h-5 bg-stone-700 mx-2" />
 
-          {/* Text / Parsha panel toggle */}
-          <button
-            onClick={() => setLeftOpen((v) => !v)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              leftOpen
-                ? 'bg-stone-700 text-stone-100'
-                : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
-            }`}
-          >
-            <BookOpen size={13} />
-            <span className="hidden lg:inline">
-              {parsha ? parsha.name : 'Torah Text'}
-            </span>
-            <span className="lg:hidden">Text</span>
-            {leftOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
-          </button>
-
-          {/* Parsha name pill (when selected, visible at all widths) */}
-          {parsha && !leftOpen && (
-            <span className="hidden xl:inline text-xs text-amber-400/80 truncate max-w-[200px]">
+          {/* Parsha name pill */}
+          {parsha && (
+            <span className="text-xs text-amber-400/80 truncate max-w-[200px]">
               {parsha.hebrewName}
             </span>
           )}
 
           <div className="flex-1" />
-
-          {/* History panel toggle */}
-          <button
-            onClick={() => setRightOpen((v) => !v)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              rightOpen
-                ? 'bg-stone-700 text-stone-100'
-                : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
-            }`}
-          >
-            <Globe size={13} />
-            <span>History</span>
-            {rightOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
-          </button>
 
           {/* Subscribe */}
           <button
@@ -235,19 +152,28 @@ export default function App() {
           </button>
         </header>
 
-        {/* ── Slide-in panels ── */}
-        <PanelShell open={leftOpen} side="left" onClose={() => setLeftOpen(false)}>
-          <Sidebar />
-        </PanelShell>
+        {/* ── Three columns ── */}
+        <div className="flex-1 flex min-h-0">
 
-        <PanelShell open={rightOpen} side="right" onClose={() => setRightOpen(false)}>
-          <ContextPanel />
-        </PanelShell>
+          {/* Left: Sidebar */}
+          <div className="w-72 shrink-0 border-r border-stone-200 bg-white overflow-y-auto">
+            <Sidebar />
+          </div>
 
-        {/* ── Floating timeline bar ── */}
-        <div className="absolute bottom-0 inset-x-0 z-[900] bg-white/95 backdrop-blur-md
-          border-t border-stone-200/70 px-5 py-2.5 h-[72px]">
-          <TimelineSlider />
+          {/* Center: Map + Timeline */}
+          <div className="flex-1 flex flex-col min-w-0">
+            <div className="flex-1 relative min-h-0">
+              <ParshaMap />
+            </div>
+            <div className="shrink-0 bg-white/95 backdrop-blur-md border-t border-stone-200/70 px-5 py-2.5 h-[72px]">
+              <TimelineSlider />
+            </div>
+          </div>
+
+          {/* Right: ContextPanel */}
+          <div className="w-80 shrink-0 border-l border-stone-200 bg-white overflow-y-auto">
+            <ContextPanel />
+          </div>
         </div>
       </div>
 
