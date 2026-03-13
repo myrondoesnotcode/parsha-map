@@ -61,6 +61,8 @@ export const useAppStore = create<AppState>((set) => ({
       yearSource: 'parsha',
       highlightedPlaceId: null,
     })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(window as any).umami?.track('parsha-viewed', { parsha: id, name: parsha?.name })
   },
 
   setCurrentYear: (year: number) => {
