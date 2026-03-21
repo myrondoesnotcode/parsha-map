@@ -108,12 +108,13 @@ export function ParshaLibrary({ onSelect }: Props) {
                         isSelected ? 'opacity-100' : 'opacity-90 hover:opacity-100'
                       }`}
                     >
-                      {/* Thumbnail */}
-                      <div className="w-16 h-16 shrink-0 bg-surface-container overflow-hidden rounded">
+                      {/* Thumbnail — white bg required for mix-blend-multiply to render correctly */}
+                      <div className="w-16 h-16 shrink-0 bg-white overflow-hidden rounded">
                         {parsha.doreImageUrl ? (
                           <img
                             src={parsha.doreImageUrl}
                             alt={parsha.name}
+                            referrerPolicy="no-referrer"
                             className="w-full h-full object-cover mix-blend-multiply"
                           />
                         ) : (
