@@ -11,9 +11,11 @@
     margin: 0;
     padding: 0;
     font-family: 'Inter', system-ui, sans-serif;
+    background-color: #fcf9f0;
+    color: #1c1c17;
   }
 
-  /* Hebrew text styling */
+  /* Hebrew text */
   .font-hebrew {
     font-family: 'Frank Ruhl Libre', 'David', serif;
   }
@@ -29,11 +31,12 @@
 }
 
 @layer components {
+  /* Place name highlights in Torah text */
   button.place-highlight {
     background: none;
     border: none;
     padding: 0;
-    color: #b45309;
+    color: #6c2f00;
     font-weight: 500;
     text-decoration: underline;
     text-decoration-style: dotted;
@@ -41,14 +44,14 @@
   }
 
   button.place-highlight:hover {
-    color: #92400e;
-    background-color: #fef3c7;
+    color: #8b4513;
+    background-color: #ffdbc9;
     border-radius: 2px;
   }
 
   .scrollbar-thin {
     scrollbar-width: thin;
-    scrollbar-color: #d1d5db transparent;
+    scrollbar-color: #dac2b6 transparent;
   }
 
   .scrollbar-thin::-webkit-scrollbar {
@@ -60,29 +63,39 @@
   }
 
   .scrollbar-thin::-webkit-scrollbar-thumb {
-    background-color: #d1d5db;
+    background-color: #dac2b6;
     border-radius: 2px;
   }
 
-  /* Subtle panel header style */
+  /* Panel header — no border, tonal background only */
   .panel-header {
-    @apply px-4 py-3 border-b border-stone-100 bg-gradient-to-b from-stone-50 to-white shrink-0;
+    @apply px-4 py-3 bg-surface-container-low shrink-0;
   }
 
-  /* Card style used across context/sidebar panels */
+  /* Card style — no border, ambient shadow only */
   .info-card {
-    @apply bg-white rounded-xl border border-stone-100 shadow-sm overflow-hidden;
+    @apply bg-surface-container-lowest rounded overflow-hidden;
+    box-shadow: 0 8px 24px rgba(28, 28, 23, 0.06);
+  }
+
+  /* Manuscript scroll progress indicator */
+  .manuscript-scroll-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2px;
+    background-color: #934b19;
+    transition: height 0.1s linear;
   }
 }
 
 /* Tutorial spotlight ring */
 @keyframes tutorial-ring-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5), inset 0 0 0 2px rgba(245, 158, 11, 0.5); }
-  50%       { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0),   inset 0 0 0 2px rgba(245, 158, 11, 0.8); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(108, 47, 0, 0.5), inset 0 0 0 2px rgba(108, 47, 0, 0.5); }
+  50%       { box-shadow: 0 0 0 8px rgba(108, 47, 0, 0),   inset 0 0 0 2px rgba(108, 47, 0, 0.8); }
 }
 
 .tutorial-ring {
   animation: tutorial-ring-pulse 2s ease-in-out infinite;
-  border: 2px solid rgba(245, 158, 11, 0.55);
+  border: 2px solid rgba(108, 47, 0, 0.55);
 }
-
