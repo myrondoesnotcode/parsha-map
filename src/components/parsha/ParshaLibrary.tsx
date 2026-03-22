@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Search } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshasGroupedByBook, BOOKS_ORDER } from '../../utils/parshaUtils'
+import { useWikimediaImage } from '../../hooks/useWikimediaImage'
 import parshaList from '../../data/parshaList.json'
 import type { ParshaListItem } from '../../types/parsha'
 
@@ -30,6 +31,23 @@ function matchesQuery(parsha: ParshaListItem, query: string): boolean {
     parsha.name.toLowerCase().includes(q) ||
     parsha.hebrewName.includes(q) ||
     parsha.book.toLowerCase().includes(q)
+  )
+}
+
+function ParshaThumb({ doreImageUrl, name }: { doreImageUrl?: string; name: string }) {
+  const { data: resolvedUrl } = useWikimediaImage(doreImageUrl)
+  return (
+    <div className="w-16 h-16 shrink-0 bg-white overflow-hidden rounded">
+      {resolvedUrl ? (
+        <img
+          src={resolvedUrl}
+          alt={name}
+          className="w-full h-full object-cover mix-blend-multiply"
+        />
+      ) : (
+        <div className="w-full h-full bg-surface-container-high" />
+      )}
+    </div>
   )
 }
 
@@ -109,18 +127,7 @@ export function ParshaLibrary({ onSelect }: Props) {
                       }`}
                     >
                       {/* Thumbnail — white bg required for mix-blend-multiply to render correctly */}
-                      <div className="w-16 h-16 shrink-0 bg-white overflow-hidden rounded">
-                        {parsha.doreImageUrl ? (
-                          <img
-                            src={parsha.doreImageUrl}
-                            alt={parsha.name}
-                            referrerPolicy="no-referrer"
-                            className="w-full h-full object-cover mix-blend-multiply"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-surface-container-high" />
-                        )}
-                      </div>
+                      <ParshaThumb doreImageUrl={parsha.doreImageUrl} name={parsha.name} />
 
                       {/* Text */}
                       <div className="flex-1 min-w-0">

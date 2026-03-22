@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Scroll, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
+import { useWikimediaImage } from '../../hooks/useWikimediaImage'
 import type { Era, PrimarySource } from '../../types/timeline'
 
 interface Props {
@@ -8,12 +9,13 @@ interface Props {
 
 function SourceItem({ source }: { source: PrimarySource }) {
   const [expanded, setExpanded] = useState(false)
+  const { data: resolvedImageUrl } = useWikimediaImage(source.imageUrl)
 
   return (
     <div className="rounded overflow-hidden shadow-ambient-md bg-surface-container">
-      {source.imageUrl && (
+      {resolvedImageUrl && (
         <img
-          src={source.imageUrl}
+          src={resolvedImageUrl}
           alt={source.name}
           className="w-full h-28 object-cover object-top"
           onError={(e) => {

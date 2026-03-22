@@ -3,6 +3,7 @@ import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { formatYearBCE } from '../../utils/yearUtils'
 import { useCurrentParsha } from '../../hooks/useCurrentParsha'
+import { useWikimediaImage } from '../../hooks/useWikimediaImage'
 import parshaList from '../../data/parshaList.json'
 import type { ParshaListItem } from '../../types/parsha'
 
@@ -26,6 +27,12 @@ function ParshaImage({ url, caption, name }: { url: string; caption?: string; na
       )}
     </div>
   )
+}
+
+function ParshaImageFromWikimedia({ specialFilepathUrl, caption, name }: { specialFilepathUrl: string; caption?: string; name: string }) {
+  const { data: resolvedUrl } = useWikimediaImage(specialFilepathUrl)
+  if (!resolvedUrl) return null
+  return <ParshaImage url={resolvedUrl} caption={caption} name={name} />
 }
 
 export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: boolean }) {
@@ -98,8 +105,8 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
       </div>
 
       {parsha.doreImageUrl && (
-        <ParshaImage
-          url={parsha.doreImageUrl}
+        <ParshaImageFromWikimedia
+          specialFilepathUrl={parsha.doreImageUrl}
           caption={parsha.doreImageCaption}
           name={parsha.name}
         />
