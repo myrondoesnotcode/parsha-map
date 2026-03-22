@@ -6,7 +6,7 @@ const TOTAL_SPAN = 4500 - 400 // 4100 years
 
 export function TimelineTrack() {
   return (
-    <div className="relative h-2 rounded-full overflow-hidden bg-stone-200">
+    <div className="relative h-2 rounded-full overflow-hidden bg-surface-container-high">
       {eras.map((era) => {
         const leftPct = ((4500 - era.startBCE) / TOTAL_SPAN) * 100
         const widthPct = ((era.startBCE - era.endBCE) / TOTAL_SPAN) * 100

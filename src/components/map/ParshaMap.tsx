@@ -73,8 +73,7 @@ export function ParshaMap() {
     <div className="relative h-full w-full">
 
       {/* ── Map layer controls — icon-only pill, top-right ── */}
-      {/* top-14 = 56px: clears the 44px header with a 12px gap */}
-      <div className="absolute top-14 right-3 z-[1000]
+      <div className="absolute top-3 right-3 z-[1000]
         flex flex-col bg-white/90 backdrop-blur-md rounded-xl
         border border-white/70 shadow-md overflow-hidden">
 
@@ -192,7 +191,7 @@ export function ParshaMap() {
             </div>
             <p className="text-stone-700 font-semibold text-sm">Choose a Torah portion</p>
             <p className="text-stone-400 text-xs mt-1 leading-relaxed">
-              Open <span className="font-medium text-stone-500">Torah Text</span> in the toolbar above to get started
+              Select a portion in the <span className="font-medium text-stone-500">sidebar</span> to get started
             </p>
           </div>
         </div>

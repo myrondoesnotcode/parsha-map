@@ -17,10 +17,10 @@ export function ContextPanel() {
 
   return (
     <div className="flex flex-col h-full relative">
-      <div className="px-4 py-3 border-b border-stone-100 bg-gradient-to-b from-stone-50 to-white shrink-0">
+      <div className="px-4 py-3 bg-surface-container-low shrink-0">
         <div className="flex items-center justify-between">
-          <h2 className="text-sm font-semibold text-stone-800">Historical Context</h2>
-          <span className="text-[11px] font-medium text-amber-600 bg-amber-50 border border-amber-100 rounded-full px-2 py-0.5">
+          <h2 className="font-headline text-sm font-semibold text-on-surface">Historical Context</h2>
+          <span className="font-label text-[11px] font-medium text-primary bg-secondary-container px-2 py-0.5 rounded-full">
             {formatYearBCE(currentYearBCE)}
           </span>
         </div>
@@ -37,7 +37,7 @@ export function ContextPanel() {
             <ArtifactsCard era={era} />
           </>
         ) : (
-          <div className="flex items-center justify-center h-32 text-stone-300 text-sm">
+          <div className="flex items-center justify-center h-32 text-on-surface-variant font-label text-sm">
             <div className="text-center">
               <div className="text-3xl mb-2">🏺</div>
               <p>Select a Parsha to see its historical context</p>

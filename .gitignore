@@ -15,3 +15,7 @@ scripts/*.d.ts
 # Vite compiled config (not needed in repo)
 vite.config.js
 vite.config.d.ts
+
+# Git worktrees
+.worktrees/
+.worktree/

@@ -24,10 +24,10 @@ export function TimelineSlider() {
             style={{ backgroundColor: era.color }}
           />
         )}
-        <span className="text-xs font-semibold text-stone-700 truncate leading-none">
+        <span className="font-label text-xs font-semibold text-on-surface truncate leading-none">
           {era ? era.name : 'Unknown Period'}
         </span>
-        <span className="ml-auto text-xs text-stone-400 shrink-0 tabular-nums leading-none">
+        <span className="ml-auto font-label text-xs text-on-surface-variant shrink-0 tabular-nums leading-none">
           {currentYearBCE.toLocaleString()} BCE
         </span>
       </div>
@@ -85,9 +85,9 @@ export function TimelineSlider() {
             <Slider.Range className="bg-transparent" />
           </Slider.Track>
           <Slider.Thumb
-            className="block w-5 h-5 rounded-full bg-white border-[2.5px] border-amber-500
-              shadow-md hover:border-amber-600 cursor-grab active:cursor-grabbing
-              focus:outline-none focus:ring-2 focus:ring-amber-400 focus:ring-offset-1
+            className="block w-5 h-5 rounded-full bg-surface border-[2.5px] border-primary
+              shadow-ambient-md hover:border-primary/80 cursor-grab active:cursor-grabbing
+              focus:outline-none focus:ring-2 focus:ring-primary/30 focus:ring-offset-1
               transition-colors z-10"
           />
         </Slider.Root>

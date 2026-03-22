@@ -10,20 +10,20 @@ export function HistoricalEventsTicker({ era }: Props) {
   const sorted = [...era.events].sort((a, b) => b.yearBCE - a.yearBCE)
 
   return (
-    <div className="px-4 py-3 border-t border-stone-100">
-      <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide mb-2">
+    <div className="bg-surface-container rounded px-4 py-3">
+      <p className="font-label text-[10px] uppercase font-medium text-on-surface-variant tracking-widest mb-2">
         Historical Events
       </p>
       <div className="space-y-2">
         {sorted.map((event, i) => (
           <div key={i} className="flex gap-3 text-xs">
-            <span className="flex-shrink-0 w-16 text-right font-mono text-amber-600 font-medium">
+            <span className="flex-shrink-0 w-16 text-right font-label text-primary font-medium">
               {event.yearBCE} BCE
             </span>
             <div className="flex-1 min-w-0">
-              <p className="text-stone-700 leading-snug">{event.description}</p>
+              <p className="font-body text-on-surface leading-snug">{event.description}</p>
               {event.significance && (
-                <p className="text-stone-400 text-[11px] mt-0.5 leading-snug">
+                <p className="font-body text-on-surface-variant text-[11px] mt-0.5 leading-snug">
                   {event.significance}
                 </p>
               )}

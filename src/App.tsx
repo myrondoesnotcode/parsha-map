@@ -5,6 +5,7 @@ import { ParshaMap } from './components/map/ParshaMap'
 import { TimelineSlider } from './components/timeline/TimelineSlider'
 import { TutorialOverlay } from './components/TutorialOverlay'
 import { NewsletterModal } from './components/NewsletterModal'
+import { ParshaLibrary } from './components/parsha/ParshaLibrary'
 import { useAppStore } from './store/useAppStore'
 import { useAutoSelectParsha } from './hooks/useAutoSelectParsha'
 import { useAutoSelectParshaByYear } from './hooks/useAutoSelectParshaByYear'
@@ -14,10 +15,8 @@ import {
   BookOpen,
   Globe,
   HelpCircle,
-  X,
   Mail,
-  ChevronDown,
-  ChevronUp,
+  Library,
 } from 'lucide-react'
 
 // Inline X (Twitter) logo SVG
@@ -29,7 +28,7 @@ function XLogo({ size = 15 }: { size?: number }) {
   )
 }
 
-type MobileTab = 'map' | 'text' | 'context'
+type MobileTab = 'map' | 'text' | 'context' | 'library'
 
 const TUTORIAL_KEY = 'parshamap_tutorial_seen_v1'
 
@@ -41,56 +40,14 @@ function LogoLockup() {
       <svg width="16" height="20" viewBox="0 0 20 24" fill="none" aria-hidden="true">
         <path
           d="M10 0C4.477 0 0 4.477 0 10c0 7.5 10 14 10 14s10-6.5 10-14C20 4.477 15.523 0 10 0z"
-          fill="#F59E0B"
+          fill="#6c2f00"
         />
-        <circle cx="10" cy="10" r="3.5" fill="#1C1917" />
+        <circle cx="10" cy="10" r="3.5" fill="#fcf9f0" />
       </svg>
       <span className="flex items-baseline gap-1.5 leading-none">
-        <span className="font-hebrew font-medium text-stone-100 text-lg tracking-wide">Parsha</span>
-        <span className="font-sans font-light text-amber-400 text-[10px] tracking-widest uppercase">Map</span>
+        <span className="font-hebrew font-medium text-on-surface text-lg tracking-wide">Parsha</span>
+        <span className="font-label text-primary text-[10px] tracking-widest uppercase">Map</span>
       </span>
-    </div>
-  )
-}
-
-// ─── Panel wrapper with close button ──────────────────────────────────────────
-
-function PanelShell({
-  open,
-  side,
-  onClose,
-  children,
-}: {
-  open: boolean
-  side: 'left' | 'right'
-  onClose: () => void
-  children: React.ReactNode
-}) {
-  const translate = open
-    ? 'translate-x-0'
-    : side === 'left'
-    ? '-translate-x-full'
-    : 'translate-x-full'
-
-  return (
-    <div
-      className={`absolute top-11 ${side}-0 bottom-[72px] z-[1000] w-[340px] max-w-[calc(100vw-48px)]
-        bg-white shadow-2xl flex flex-col
-        transition-transform duration-300 ease-in-out ${translate}`}
-    >
-      {/* Close tab on the exposed edge */}
-      <button
-        onClick={onClose}
-        className={`absolute top-4 ${side === 'left' ? '-right-9' : '-left-9'} z-10
-          w-9 h-9 flex items-center justify-center
-          bg-white border border-stone-200 shadow-md
-          ${side === 'left' ? 'rounded-r-xl' : 'rounded-l-xl'}
-          text-stone-400 hover:text-stone-700 hover:bg-stone-50 transition-colors`}
-        aria-label="Close panel"
-      >
-        <X size={14} />
-      </button>
-      {children}
     </div>
   )
 }
@@ -99,13 +56,11 @@ function PanelShell({
 
 export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
-  const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('map')
-  const [leftOpen, setLeftOpen] = useState(false)
-  const [rightOpen, setRightOpen] = useState(false)
   const [showTutorial, setShowTutorial] = useState(false)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
+  const [showLibrary, setShowLibrary] = useState(false)
 
   // Auto-show newsletter popup after 50s, once per 30 days
   useEffect(() => {
@@ -123,11 +78,6 @@ export default function App() {
   useAutoSelectParsha()
   useAutoSelectParshaByYear()
 
-  // When a place panel opens, jump to the context tab on mobile
-  useEffect(() => {
-    if (selectedPlacePanel) setMobileTab('context')
-  }, [selectedPlacePanel])
-
   const parsha = selectedParshaId ? getParshaById(selectedParshaId) : null
 
   function reopenTutorial() {
@@ -136,7 +86,7 @@ export default function App() {
   }
 
   return (
-    <div className="h-[100dvh] overflow-hidden bg-stone-900">
+    <div className="h-[100dvh] overflow-hidden bg-surface">
       <TutorialOverlay
         key={showTutorial ? 'open' : 'auto'}
         forceOpen={showTutorial}
@@ -145,81 +95,58 @@ export default function App() {
       <NewsletterModal open={newsletterOpen} onClose={() => setNewsletterOpen(false)} />
 
       {/* ══════════════════════════════════════════════════════
-          DESKTOP  (md +)  — map fills full screen, panels overlay
+          DESKTOP  (md +)  — permanent three-column layout
           ══════════════════════════════════════════════════════ */}
-      <div className="hidden md:block h-full relative">
+      <div className="hidden md:flex md:flex-col h-full">
 
-        {/* Map — base layer, true full-screen */}
-        <div className="absolute inset-0">
-          <ParshaMap />
-        </div>
-
-        {/* ── Floating header ── */}
-        <header className="absolute top-0 inset-x-0 z-[1100] h-11 flex items-center gap-1 px-3
-          bg-stone-900/95 backdrop-blur-sm border-b border-stone-800/60">
+        {/* ── Header ── */}
+        <header className="shrink-0 z-[1100] h-11 flex items-center gap-1 px-3 bg-surface-container-low">
 
           <LogoLockup />
 
-          <div className="w-px h-5 bg-stone-700 mx-2" />
+          <div className="w-px h-5 bg-outline-variant mx-2" />
 
-          {/* Text / Parsha panel toggle */}
-          <button
-            onClick={() => setLeftOpen((v) => !v)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              leftOpen
-                ? 'bg-stone-700 text-stone-100'
-                : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
-            }`}
-          >
-            <BookOpen size={13} />
-            <span className="hidden lg:inline">
-              {parsha ? parsha.name : 'Torah Text'}
-            </span>
-            <span className="lg:hidden">Text</span>
-            {leftOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
-          </button>
-
-          {/* Parsha name pill (when selected, visible at all widths) */}
-          {parsha && !leftOpen && (
-            <span className="hidden xl:inline text-xs text-amber-400/80 truncate max-w-[200px]">
+          {/* Parsha name pill */}
+          {parsha && (
+            <span className="font-label text-xs text-primary truncate max-w-[200px]">
               {parsha.hebrewName}
             </span>
           )}
 
           <div className="flex-1" />
 
-          {/* History panel toggle */}
+          {/* Library */}
           <button
-            onClick={() => setRightOpen((v) => !v)}
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-              rightOpen
-                ? 'bg-stone-700 text-stone-100'
-                : 'text-stone-400 hover:text-stone-200 hover:bg-stone-800'
+            onClick={() => setShowLibrary((v) => !v)}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded font-label text-xs font-medium transition-all ${
+              showLibrary
+                ? 'text-primary bg-surface-container'
+                : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
             }`}
+            title="Parsha Library"
           >
-            <Globe size={13} />
-            <span>History</span>
-            {rightOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
+            <Library size={13} />
+            <span className="hidden lg:inline">Library</span>
           </button>
 
           {/* Subscribe */}
           <button
             onClick={() => setNewsletterOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-stone-400 hover:text-stone-200 hover:bg-stone-800 transition-all"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded font-label text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
             title="Get weekly parsha by email"
           >
             <Mail size={13} />
             <span className="hidden lg:inline">Subscribe</span>
           </button>
 
-          <div className="w-px h-5 bg-stone-700 mx-1" />
+          <div className="w-px h-5 bg-outline-variant mx-1" />
 
           {/* X / Twitter */}
           <a
             href="https://x.com/Mshneider"
             target="_blank"
             rel="noreferrer"
-            className="p-1.5 rounded-lg text-stone-500 hover:text-stone-200 hover:bg-stone-800 transition-colors"
+            className="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
             title="@Mshneider on X"
           >
             <XLogo size={14} />
@@ -228,26 +155,39 @@ export default function App() {
           {/* Help */}
           <button
             onClick={reopenTutorial}
-            className="p-1.5 rounded-lg text-stone-500 hover:text-stone-200 hover:bg-stone-800 transition-colors"
+            className="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
             title="Show tutorial"
           >
             <HelpCircle size={15} />
           </button>
         </header>
 
-        {/* ── Slide-in panels ── */}
-        <PanelShell open={leftOpen} side="left" onClose={() => setLeftOpen(false)}>
-          <Sidebar />
-        </PanelShell>
+        {/* ── Three columns ── */}
+        <div className="flex-1 flex min-h-0">
 
-        <PanelShell open={rightOpen} side="right" onClose={() => setRightOpen(false)}>
-          <ContextPanel />
-        </PanelShell>
+          {/* Left: Sidebar or Library */}
+          <div className="w-72 h-full shrink-0 bg-surface-container-low overflow-y-auto">
+            {showLibrary ? (
+              <ParshaLibrary onSelect={() => setShowLibrary(false)} />
+            ) : (
+              <Sidebar />
+            )}
+          </div>
 
-        {/* ── Floating timeline bar ── */}
-        <div className="absolute bottom-0 inset-x-0 z-[900] bg-white/95 backdrop-blur-md
-          border-t border-stone-200/70 px-5 py-2.5 h-[72px]">
-          <TimelineSlider />
+          {/* Center: Map + Timeline */}
+          <div className="flex-1 flex flex-col min-w-0">
+            <div className="flex-1 relative min-h-0">
+              <ParshaMap />
+            </div>
+            <div className="shrink-0 bg-surface px-5 py-2.5 h-[72px]">
+              <TimelineSlider />
+            </div>
+          </div>
+
+          {/* Right: ContextPanel */}
+          <div className="w-80 h-full shrink-0 bg-surface-container overflow-y-auto">
+            <ContextPanel />
+          </div>
         </div>
       </div>
 
@@ -257,18 +197,17 @@ export default function App() {
       <div className="flex md:hidden flex-col h-full">
 
         {/* Mobile header */}
-        <header className="shrink-0 h-11 flex items-center justify-between px-4
-          bg-stone-900 border-b border-stone-800/60">
+        <header className="shrink-0 h-11 flex items-center justify-between px-4 bg-surface-container-low">
           <LogoLockup />
           <div className="flex items-center gap-2">
             {parsha && (
-              <span className="text-xs text-amber-400/80 font-medium truncate max-w-[100px]">
+              <span className="font-label text-xs text-primary truncate max-w-[100px]">
                 {parsha.name}
               </span>
             )}
             <button
               onClick={() => setNewsletterOpen(true)}
-              className="p-1 rounded-lg text-stone-500 hover:text-stone-300 transition-colors"
+              className="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors"
               title="Subscribe"
             >
               <Mail size={15} />
@@ -277,14 +216,14 @@ export default function App() {
               href="https://x.com/Mshneider"
               target="_blank"
               rel="noreferrer"
-              className="p-1 rounded-lg text-stone-500 hover:text-stone-300 transition-colors"
+              className="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors"
               title="@Mshneider on X"
             >
               <XLogo size={14} />
             </a>
             <button
               onClick={reopenTutorial}
-              className="p-1 rounded-lg text-stone-500 hover:text-stone-300 transition-colors"
+              className="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors"
             >
               <HelpCircle size={15} />
             </button>
@@ -300,46 +239,52 @@ export default function App() {
               <ParshaMap />
             </div>
             {/* Slim timeline strip above tab bar */}
-            <div className="shrink-0 bg-white border-t border-stone-200 px-4 py-2.5">
+            <div className="shrink-0 bg-surface px-4 py-2.5">
               <TimelineSlider />
             </div>
           </div>
 
           {/* Text tab */}
-          <div className={`absolute inset-0 bg-white ${mobileTab === 'text' ? '' : 'hidden'}`}>
+          <div className={`absolute inset-0 bg-surface-container-low ${mobileTab === 'text' ? '' : 'hidden'}`}>
             <Sidebar />
           </div>
 
           {/* History tab */}
-          <div className={`absolute inset-0 bg-white ${mobileTab === 'context' ? '' : 'hidden'}`}>
+          <div className={`absolute inset-0 bg-surface-container ${mobileTab === 'context' ? '' : 'hidden'}`}>
             <ContextPanel />
+          </div>
+
+          {/* Library tab */}
+          <div className={`absolute inset-0 ${mobileTab === 'library' ? '' : 'hidden'}`}>
+            <ParshaLibrary onSelect={() => setMobileTab('map')} />
           </div>
         </div>
 
         {/* Bottom tab bar */}
-        <nav className="shrink-0 flex h-16 border-t border-stone-200 bg-white">
+        <nav className="shrink-0 flex h-16 bg-surface-container-low">
           {(
             [
-              { id: 'map' as MobileTab, label: 'Map', Icon: Map },
-              { id: 'text' as MobileTab, label: 'Torah', Icon: BookOpen },
-              { id: 'context' as MobileTab, label: 'World', Icon: Globe },
+              { id: 'map' as MobileTab, label: 'MAP', Icon: Map },
+              { id: 'text' as MobileTab, label: 'TEXT', Icon: BookOpen },
+              { id: 'context' as MobileTab, label: 'HISTORY', Icon: Globe },
+              { id: 'library' as MobileTab, label: 'LIBRARY', Icon: Library },
             ] as const
           ).map(({ id, label, Icon }) => (
             <button
               key={id}
               onClick={() => setMobileTab(id)}
               className={`flex-1 flex flex-col items-center justify-center gap-1 relative transition-colors ${
-                mobileTab === id ? 'text-amber-600' : 'text-stone-400'
+                mobileTab === id ? 'text-primary' : 'text-on-surface-variant'
               }`}
             >
               {mobileTab === id && (
-                <span className="absolute top-0 left-4 right-4 h-0.5 rounded-full bg-amber-500" />
+                <span className="absolute top-0 left-4 right-4 h-0.5 bg-primary" />
               )}
               <Icon
                 size={22}
                 strokeWidth={mobileTab === id ? 2.5 : 1.8}
               />
-              <span className={`text-[11px] font-semibold tracking-wide ${mobileTab === id ? 'text-amber-600' : 'text-stone-400'}`}>
+              <span className={`text-[10px] font-label font-semibold tracking-widest uppercase ${mobileTab === id ? 'text-primary' : 'text-on-surface-variant'}`}>
                 {label}
               </span>
             </button>

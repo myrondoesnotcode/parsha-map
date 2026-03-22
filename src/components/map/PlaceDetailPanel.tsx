@@ -56,7 +56,7 @@ export function PlaceDetailPanel() {
 
   return (
     <div
-      className={`absolute inset-y-0 right-0 left-8 bg-white z-10 overflow-y-auto transition-transform duration-300 rounded-tl-2xl rounded-bl-2xl shadow-xl ${
+      className={`absolute inset-y-0 right-0 left-8 bg-surface z-10 overflow-y-auto transition-transform duration-300 rounded-tl rounded-bl shadow-ambient ${
         item ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
@@ -65,22 +65,22 @@ export function PlaceDetailPanel() {
           {/* Header */}
           <div className="flex items-start justify-between gap-2">
             <div>
-              <h3 className="text-base font-semibold text-stone-900">{item.name}</h3>
+              <h3 className="font-headline text-base font-semibold text-on-surface">{item.name}</h3>
               {item.alternateNames.length > 0 && (
-                <p className="text-xs text-stone-400 mt-0.5">
+                <p className="font-label text-xs text-on-surface-variant mt-0.5">
                   Also: {item.alternateNames.slice(0, 4).join(', ')}
                 </p>
               )}
               {place?.modernName && (
                 <div className="flex items-center gap-1 mt-0.5">
-                  <MapPin size={10} className="text-amber-600" />
-                  <p className="text-xs text-stone-400">Modern: {place.modernName}</p>
+                  <MapPin size={10} className="text-primary" />
+                  <p className="font-label text-xs text-on-surface-variant">Modern: {place.modernName}</p>
                 </div>
               )}
             </div>
             <button
               onClick={closePlacePanel}
-              className="flex-shrink-0 p-1 rounded-lg hover:bg-stone-100 text-stone-400 hover:text-stone-700 transition-colors"
+              className="flex-shrink-0 p-1 rounded hover:bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors"
               aria-label="Close"
             >
               <X size={16} />
@@ -89,7 +89,7 @@ export function PlaceDetailPanel() {
 
           {/* Google Maps / directions */}
           {item && (
-            <div className="bg-blue-50 rounded-lg p-3 space-y-1.5">
+            <div className="bg-tertiary-container rounded p-3 space-y-1.5">
               <a
                 href={
                   place?.modernName
@@ -98,20 +98,20 @@ export function PlaceDetailPanel() {
                 }
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs text-blue-700 hover:text-blue-900 font-medium transition-colors"
+                className="inline-flex items-center gap-1.5 font-label text-xs text-on-tertiary-container hover:text-tertiary font-medium transition-colors"
               >
                 <Navigation size={12} />
                 Open in Google Maps
               </a>
               <div className="flex items-start gap-1.5">
-                <AlertTriangle size={11} className="text-amber-500 mt-0.5 shrink-0" />
-                <p className="text-[10px] text-stone-500 leading-relaxed">
+                <AlertTriangle size={11} className="text-primary mt-0.5 shrink-0" />
+                <p className="font-label text-[10px] text-on-tertiary-container/80 leading-relaxed">
                   Always check current travel advisories before visiting.{' '}
                   <a
                     href="https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline"
+                    className="text-tertiary hover:underline"
                   >
                     U.S. Travel Advisories
                   </a>
@@ -123,10 +123,10 @@ export function PlaceDetailPanel() {
           {/* Wikipedia section */}
           {wikiLoading && (
             <div className="animate-pulse space-y-2">
-              <div className="h-32 bg-stone-100 rounded-lg" />
-              <div className="h-3 bg-stone-100 rounded w-3/4" />
-              <div className="h-3 bg-stone-100 rounded w-full" />
-              <div className="h-3 bg-stone-100 rounded w-5/6" />
+              <div className="h-32 bg-surface-container rounded" />
+              <div className="h-3 bg-surface-container rounded w-3/4" />
+              <div className="h-3 bg-surface-container rounded w-full" />
+              <div className="h-3 bg-surface-container rounded w-5/6" />
             </div>
           )}
 
@@ -136,16 +136,16 @@ export function PlaceDetailPanel() {
                 <img
                   src={wiki.thumbnail.source}
                   alt={item.name}
-                  className="w-full rounded-lg object-cover max-h-48"
+                  className="w-full rounded object-cover max-h-48"
                 />
               )}
-              <p className="text-xs text-stone-600 leading-relaxed">{wiki.extract}</p>
+              <p className="font-body text-xs text-on-surface-variant leading-relaxed">{wiki.extract}</p>
               {wiki.content_urls?.desktop.page && (
                 <a
                   href={wiki.content_urls.desktop.page}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] text-amber-700 hover:text-amber-900 transition-colors"
+                  className="inline-flex items-center gap-1 font-label text-[11px] text-tertiary hover:text-tertiary/80 transition-colors"
                 >
                   <ExternalLink size={11} />
                   Read more on Wikipedia
@@ -156,16 +156,16 @@ export function PlaceDetailPanel() {
 
           {/* Local description (show if no Wikipedia extract or as supplement) */}
           {!wiki && !wikiLoading && item.description && (
-            <p className="text-xs text-stone-600 leading-relaxed">{item.description}</p>
+            <p className="font-body text-xs text-on-surface-variant leading-relaxed">{item.description}</p>
           )}
 
           {/* Archaeological site significance */}
           {!isPlace && (item as ArchaeologicalSite).significance && (
-            <div className="bg-purple-50 rounded-lg p-3">
-              <p className="text-[10px] uppercase font-medium text-purple-700 mb-1 tracking-wide">
+            <div className="bg-secondary-container/40 rounded p-3">
+              <p className="font-label text-[10px] uppercase font-medium text-primary mb-1 tracking-widest">
                 Archaeological Significance
               </p>
-              <p className="text-xs text-stone-700 leading-relaxed">
+              <p className="font-body text-xs text-on-surface leading-relaxed">
                 {(item as ArchaeologicalSite).significance}
               </p>
             </div>
@@ -173,8 +173,8 @@ export function PlaceDetailPanel() {
 
           {/* Further Reading — academic / institutional links */}
           {!isPlace && (item as ArchaeologicalSite).paperLinks && (item as ArchaeologicalSite).paperLinks!.length > 0 && (
-            <div className="border-t border-stone-100 pt-3 space-y-1.5">
-              <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide flex items-center gap-1.5">
+            <div className="pt-3 space-y-1.5">
+              <p className="font-label text-[10px] uppercase font-medium text-on-surface-variant tracking-widest flex items-center gap-1.5">
                 <BookOpen size={10} />
                 Further Reading
               </p>
@@ -184,10 +184,10 @@ export function PlaceDetailPanel() {
                   href={paper.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2 p-2 rounded-lg bg-stone-50 hover:bg-amber-50 transition-colors group"
+                  className="flex items-start gap-2 p-2 rounded bg-surface-container hover:bg-primary-container transition-colors group"
                 >
-                  <ExternalLink size={11} className="text-stone-400 group-hover:text-amber-600 mt-0.5 shrink-0" />
-                  <span className="text-xs text-stone-600 group-hover:text-amber-800 leading-snug">{paper.title}</span>
+                  <ExternalLink size={11} className="text-on-surface-variant group-hover:text-primary mt-0.5 shrink-0" />
+                  <span className="font-body text-xs text-on-surface-variant group-hover:text-on-primary-container leading-snug">{paper.title}</span>
                 </a>
               ))}
             </div>
@@ -195,8 +195,8 @@ export function PlaceDetailPanel() {
 
           {/* Watch — YouTube links */}
           {!isPlace && (item as ArchaeologicalSite).youtubeLinks && (item as ArchaeologicalSite).youtubeLinks!.length > 0 && (
-            <div className="border-t border-stone-100 pt-3 space-y-1.5">
-              <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide flex items-center gap-1.5">
+            <div className="pt-3 space-y-1.5">
+              <p className="font-label text-[10px] uppercase font-medium text-on-surface-variant tracking-widest flex items-center gap-1.5">
                 <Youtube size={10} />
                 Watch
               </p>
@@ -206,10 +206,10 @@ export function PlaceDetailPanel() {
                   href={video.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-2 p-2 rounded-lg bg-stone-50 hover:bg-red-50 transition-colors group"
+                  className="flex items-start gap-2 p-2 rounded bg-surface-container hover:bg-surface-container-high transition-colors group"
                 >
-                  <Youtube size={11} className="text-stone-400 group-hover:text-red-600 mt-0.5 shrink-0" />
-                  <span className="text-xs text-stone-600 group-hover:text-red-700 leading-snug">{video.title}</span>
+                  <Youtube size={11} className="text-on-surface-variant group-hover:text-primary mt-0.5 shrink-0" />
+                  <span className="font-body text-xs text-on-surface-variant leading-snug">{video.title}</span>
                 </a>
               ))}
             </div>
@@ -217,8 +217,8 @@ export function PlaceDetailPanel() {
 
           {/* Cross-parsha connections */}
           {otherParshas.length > 0 && (
-            <div className="border-t border-stone-100 pt-3">
-              <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide mb-2">
+            <div className="pt-3">
+              <p className="font-label text-[10px] uppercase font-medium text-on-surface-variant tracking-widest mb-2">
                 Also appears in
               </p>
               <div className="flex flex-wrap gap-1.5">
@@ -229,7 +229,7 @@ export function PlaceDetailPanel() {
                       setSelectedParsha(p!.id)
                       closePlacePanel()
                     }}
-                    className="px-2 py-1 bg-stone-100 text-stone-600 rounded text-[11px] hover:bg-amber-100 hover:text-amber-800 transition-colors"
+                    className="px-2 py-1 bg-surface-container font-label text-on-surface rounded text-[11px] hover:bg-primary-container hover:text-on-primary-container transition-colors"
                   >
                     {p!.name}
                   </button>
@@ -240,21 +240,21 @@ export function PlaceDetailPanel() {
 
           {/* Verse references */}
           {place && place.verses.length > 0 && (
-            <div className="border-t border-stone-100 pt-3 space-y-2">
+            <div className="pt-3 space-y-2">
               <div>
-                <p className="text-[10px] uppercase font-medium text-stone-400 tracking-wide mb-0.5">
+                <p className="font-label text-[10px] uppercase font-medium text-on-surface-variant tracking-widest mb-0.5">
                   Verse references
                 </p>
-                <p className="text-[10px] text-stone-400 italic">
+                <p className="font-body text-[10px] text-on-surface-variant/60 italic">
                   All Torah references to this location — not just the current portion
                 </p>
               </div>
 
               {/* First verse quote */}
               {verseText && firstVerse && (
-                <div className="bg-amber-50 rounded-lg p-3 border-l-2 border-amber-400">
-                  <p className="text-xs text-stone-700 leading-relaxed italic">"{verseText}"</p>
-                  <p className="text-[10px] text-amber-700 mt-1 font-medium">{firstVerse}</p>
+                <div className="bg-primary-container rounded p-3 border-l-2 border-primary/40">
+                  <p className="font-body text-xs text-on-primary-container leading-relaxed italic">"{verseText}"</p>
+                  <p className="font-label text-[10px] text-primary mt-1 font-medium">{firstVerse}</p>
                 </div>
               )}
 
@@ -262,13 +262,13 @@ export function PlaceDetailPanel() {
                 {place.verses.slice(0, 12).map((v) => (
                   <span
                     key={v}
-                    className="px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px]"
+                    className="px-1.5 py-0.5 bg-secondary-container font-label text-on-surface rounded text-[10px]"
                   >
                     {v}
                   </span>
                 ))}
                 {place.verses.length > 12 && (
-                  <span className="text-stone-400 text-[10px] self-center">
+                  <span className="font-label text-on-surface-variant text-[10px] self-center">
                     +{place.verses.length - 12} more
                   </span>
                 )}
