@@ -1,11 +1,12 @@
-import { BookOpen, ExternalLink } from 'lucide-react'
+import { useState } from 'react'
+import { BookOpen, ChevronDown, ChevronUp, ExternalLink, Lightbulb } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { formatYearBCE } from '../../utils/yearUtils'
 import { useCurrentParsha } from '../../hooks/useCurrentParsha'
 import { useWikimediaImage } from '../../hooks/useWikimediaImage'
 import parshaList from '../../data/parshaList.json'
-import type { ParshaListItem } from '../../types/parsha'
+import type { ParshaListItem, ParshaRichContent } from '../../types/parsha'
 
 const parshas = parshaList as ParshaListItem[]
 
@@ -35,9 +36,91 @@ function ParshaImageFromWikimedia({ specialFilepathUrl, caption, name }: { speci
   return <ParshaImage url={resolvedUrl} caption={caption} name={name} />
 }
 
+function ParshaChips({ richContent }: { richContent: ParshaRichContent }) {
+  return (
+    <div className="mt-3 flex flex-col gap-2">
+      {richContent.themes.length > 0 && (
+        <div>
+          <p className="font-label text-[10px] font-medium text-on-surface-variant uppercase tracking-widest mb-1.5">
+            Themes
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {richContent.themes.map((theme) => (
+              <span
+                key={theme}
+                className="px-2 py-0.5 font-label text-xs rounded-full bg-primary-container text-on-primary-container"
+              >
+                {theme}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      {richContent.keyFigures.length > 0 && (
+        <div>
+          <p className="font-label text-[10px] font-medium text-on-surface-variant uppercase tracking-widest mb-1.5">
+            Key Figures
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {richContent.keyFigures.map((figure) => (
+              <span
+                key={figure}
+                className="px-2 py-0.5 font-label text-xs rounded-full bg-surface-container-high text-on-surface"
+              >
+                {figure}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ParshaDeepDive({ richContent }: { richContent: ParshaRichContent }) {
+  return (
+    <div className="mt-3 flex flex-col gap-3">
+      {richContent.didYouKnow && (
+        <div className="flex gap-2 px-3 py-2.5 bg-tertiary-container rounded">
+          <Lightbulb size={14} className="text-on-tertiary-container shrink-0 mt-0.5" />
+          <div>
+            <p className="font-label text-[10px] font-medium text-on-tertiary-container uppercase tracking-widest mb-1">
+              Did You Know
+            </p>
+            <p className="font-body text-xs text-on-tertiary-container leading-relaxed">
+              {richContent.didYouKnow}
+            </p>
+          </div>
+        </div>
+      )}
+      {richContent.historicalContext && (
+        <div>
+          <p className="font-label text-[10px] font-medium text-on-surface-variant uppercase tracking-widest mb-1">
+            Historical Context
+          </p>
+          <p className="font-body text-xs text-on-surface-variant leading-relaxed">
+            {richContent.historicalContext}
+          </p>
+        </div>
+      )}
+      {richContent.jewishTradition && (
+        <div>
+          <p className="font-label text-[10px] font-medium text-on-surface-variant uppercase tracking-widest mb-1">
+            In Jewish Tradition
+          </p>
+          <p className="font-body text-xs text-on-surface-variant leading-relaxed">
+            {richContent.jewishTradition}
+          </p>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: boolean }) {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const { data: currentParsha } = useCurrentParsha()
+  const [deepDiveOpen, setDeepDiveOpen] = useState(false)
 
   const parsha = selectedParshaId ? getParshaById(selectedParshaId) : null
 
@@ -65,6 +148,8 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
       </div>
     )
   }
+
+  const richContent = parsha.richContent
 
   return (
     <div className="bg-surface-container-low shrink-0">
@@ -97,10 +182,20 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
           )}
         </div>
 
-        {parsha.summary && !summaryCollapsed && (
-          <p className="mt-2 font-body text-sm text-on-surface-variant leading-relaxed transition-all">
-            {parsha.summary}
-          </p>
+        {!summaryCollapsed && (
+          <>
+            {richContent ? (
+              <p className="mt-2 font-body text-sm text-on-surface-variant leading-relaxed">
+                {richContent.narrativeSummary}
+              </p>
+            ) : parsha.summary ? (
+              <p className="mt-2 font-body text-sm text-on-surface-variant leading-relaxed">
+                {parsha.summary}
+              </p>
+            ) : null}
+
+            {richContent && <ParshaChips richContent={richContent} />}
+          </>
         )}
       </div>
 
@@ -110,6 +205,21 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
           caption={parsha.doreImageCaption}
           name={parsha.name}
         />
+      )}
+
+      {richContent && !summaryCollapsed && (
+        <>
+          <div className="px-4 pt-1 pb-0">
+            {deepDiveOpen && <ParshaDeepDive richContent={richContent} />}
+          </div>
+          <button
+            onClick={() => setDeepDiveOpen((v) => !v)}
+            className="flex items-center gap-1 font-label text-xs text-primary hover:text-primary/80 font-medium px-4 py-2"
+          >
+            {deepDiveOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
+            {deepDiveOpen ? 'Show less' : 'Learn more'}
+          </button>
+        </>
       )}
 
       {parsha.commentaryUrl && (
