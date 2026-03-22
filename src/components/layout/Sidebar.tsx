@@ -18,18 +18,18 @@ export function Sidebar() {
   return (
     <div className="flex flex-col h-full">
       {/* Selector + search */}
-      <div className="p-3 border-b border-stone-100 bg-gradient-to-b from-stone-50 to-white shrink-0 space-y-2">
+      <div className="px-4 pt-4 pb-3 bg-surface-container-low shrink-0 space-y-3">
         <div className="relative">
           <Search
             size={12}
-            className="absolute left-2.5 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none"
+            className="absolute left-0 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none"
           />
           <input
             type="search"
             placeholder="Search portions…"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-7 pr-3 py-2 text-xs border border-stone-200 rounded-xl bg-white text-stone-700 placeholder-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-400 shadow-sm"
+            className="w-full pl-5 pr-3 py-2 font-label text-xs border-0 border-b border-outline/30 rounded-none bg-transparent text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-tertiary transition-colors"
           />
         </div>
         <ParshaSelector filterQuery={searchQuery} />

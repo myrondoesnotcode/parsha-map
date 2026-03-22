@@ -20,18 +20,18 @@ export function MapLegend() {
   if (!hasContent) return null
 
   return (
-    <div className="absolute bottom-20 left-3 z-[1000] bg-white/90 backdrop-blur-md rounded-xl shadow-md border border-white/70 px-3 py-2 text-xs min-w-[148px]">
+    <div className="absolute bottom-20 left-3 z-[1000] bg-surface/90 backdrop-blur-md rounded shadow-ambient px-3 py-2 text-xs min-w-[148px]">
       <button
         onClick={() => setCollapsed((c) => !c)}
         className="flex items-center justify-between w-full gap-3"
       >
-        <p className="font-semibold text-stone-500 text-[10px] uppercase tracking-wider">
+        <p className="font-label font-semibold text-on-surface-variant text-[10px] uppercase tracking-widest">
           Legend
         </p>
         {collapsed ? (
-          <ChevronDown size={11} className="text-stone-400" />
+          <ChevronDown size={11} className="text-on-surface-variant" />
         ) : (
-          <ChevronUp size={11} className="text-stone-400" />
+          <ChevronUp size={11} className="text-on-surface-variant" />
         )}
       </button>
 
@@ -43,12 +43,12 @@ export function MapLegend() {
               <div
                 className="w-2.5 h-2.5 shrink-0"
                 style={{
-                  backgroundColor: '#7C3AED',
+                  backgroundColor: '#2d6a4f',
                   transform: 'rotate(45deg)',
-                  boxShadow: '0 0 0 1.5px white',
+                  boxShadow: '0 0 0 1.5px #fcf9f0',
                 }}
               />
-              <span className="text-stone-500">Archaeological site</span>
+              <span className="font-label text-on-surface-variant">Archaeological site</span>
             </div>
           )}
 
@@ -59,7 +59,7 @@ export function MapLegend() {
                 className="h-0 w-5 shrink-0"
                 style={{ borderTop: `2px dashed ${r.properties.color}` }}
               />
-              <span className="text-stone-500">{r.properties.name}</span>
+              <span className="font-label text-on-surface-variant">{r.properties.name}</span>
             </div>
           ))}
 
@@ -76,11 +76,11 @@ export function MapLegend() {
                       border: `1px solid ${t.properties.strokeColor}`,
                     }}
                   />
-                  <span className="text-stone-500 truncate max-w-[120px]">{t.properties.name}</span>
+                  <span className="font-label text-on-surface-variant truncate max-w-[120px]">{t.properties.name}</span>
                 </div>
               ))}
               {territories.length > 5 && (
-                <p className="text-stone-400 text-[10px]">+{territories.length - 5} more</p>
+                <p className="font-label text-on-surface-variant/60 text-[10px]">+{territories.length - 5} more</p>
               )}
             </>
           )}

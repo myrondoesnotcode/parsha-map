@@ -16,9 +16,9 @@ function createDiamondIcon() {
     html: `<div style="
       width: 12px;
       height: 12px;
-      background: #7C3AED;
-      border: 2px solid white;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      background: #2d6a4f;
+      border: 2px solid #fcf9f0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.4);
       transform: rotate(45deg);
     "></div>`,
     className: '',
@@ -46,22 +46,22 @@ export function ArchaeologicalSiteMarker({ site }: Props) {
       <Popup maxWidth={280}>
         <div className="text-xs space-y-1.5">
           <div>
-            <p className="font-semibold text-stone-900 text-sm">{site.name}</p>
+            <p className="font-headline font-semibold text-on-surface text-sm">{site.name}</p>
             {site.alternateNames.length > 0 && (
-              <p className="text-stone-400">
+              <p className="font-label text-on-surface-variant">
                 Also: {site.alternateNames.join(', ')}
               </p>
             )}
           </div>
 
-          <p className="text-stone-600 leading-relaxed">{site.description}</p>
+          <p className="font-body text-on-surface-variant leading-relaxed">{site.description}</p>
 
           {site.significance && (
-            <div className="pt-1 border-t border-stone-100">
-              <p className="text-[10px] uppercase font-medium text-stone-400 mb-0.5">
+            <div className="pt-1">
+              <p className="font-label text-[10px] uppercase font-medium text-on-surface-variant tracking-widest mb-0.5">
                 Significance
               </p>
-              <p className="text-amber-700 text-[11px]">{site.significance}</p>
+              <p className="font-body text-primary text-[11px]">{site.significance}</p>
             </div>
           )}
 
@@ -71,26 +71,26 @@ export function ArchaeologicalSiteMarker({ site }: Props) {
                 style={{
                   width: 8,
                   height: 8,
-                  background: '#7C3AED',
+                  background: '#2d6a4f',
                   transform: 'rotate(45deg)',
                   flexShrink: 0,
                 }}
               />
-              <span className="text-stone-400 text-[10px]">Archaeological Site</span>
+              <span className="font-label text-on-surface-variant text-[10px]">Archaeological Site</span>
             </div>
             <div className="flex items-center gap-2">
               <a
                 href={googleMapsUrl(site)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-[10px] text-blue-600 hover:text-blue-800 transition-colors"
+                className="flex items-center gap-1 font-label text-[10px] text-tertiary hover:text-tertiary/80 transition-colors"
               >
                 <Navigation size={10} />
                 Directions
               </a>
               <button
                 onClick={() => openPlacePanel(site.id, 'site')}
-                className="flex items-center gap-1 text-[10px] text-amber-700 hover:text-amber-900 transition-colors"
+                className="flex items-center gap-1 font-label text-[10px] text-primary hover:text-primary/80 transition-colors"
               >
                 <ExternalLink size={10} />
                 Details

@@ -15,10 +15,10 @@ export function EraLabel() {
         />
       )}
       <div className="min-w-0">
-        <span className="text-sm font-medium text-stone-700 truncate block">
+        <span className="font-label text-sm font-medium text-on-surface truncate block">
           {era ? era.name : 'Unknown Period'}
         </span>
-        <span className="text-xs text-stone-400">{formatYearBCE(currentYearBCE)}</span>
+        <span className="font-label text-xs text-on-surface-variant">{formatYearBCE(currentYearBCE)}</span>
       </div>
     </div>
   )

@@ -15,18 +15,18 @@ L.Icon.Default.mergeOptions({
 
 function createPlaceIcon(confidence: Place['confidence'], isHighlighted?: boolean) {
   const size = isHighlighted ? 16 : 12
-  const highlightShadow = '0 0 0 5px rgba(251,191,36,0.5), 0 1px 4px rgba(0,0,0,0.4)'
+  const highlightShadow = '0 0 0 5px rgba(108,47,0,0.35), 0 1px 4px rgba(0,0,0,0.4)'
   const baseShadow = '0 1px 4px rgba(0,0,0,0.3)'
   const shadow = isHighlighted ? highlightShadow : baseShadow
 
-  // high: filled amber; medium: filled blue; low: hollow (white fill, grey border)
+  // high: primary (burnt sienna); medium: tertiary (deep blue); low: hollow (parchment fill, outline border)
   let bg: string, borderColor: string, borderWidth: number
   if (confidence === 'high') {
-    bg = '#D97706'; borderColor = 'white'; borderWidth = isHighlighted ? 3 : 2
+    bg = '#6c2f00'; borderColor = '#fcf9f0'; borderWidth = isHighlighted ? 3 : 2
   } else if (confidence === 'medium') {
-    bg = '#60A5FA'; borderColor = 'white'; borderWidth = isHighlighted ? 3 : 2
+    bg = '#00446c'; borderColor = '#fcf9f0'; borderWidth = isHighlighted ? 3 : 2
   } else {
-    bg = 'white'; borderColor = '#9CA3AF'; borderWidth = isHighlighted ? 3 : 2
+    bg = '#fcf9f0'; borderColor = '#877369'; borderWidth = isHighlighted ? 3 : 2
   }
 
   return L.divIcon({
@@ -73,40 +73,40 @@ export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
       <Popup maxWidth={280}>
         <div className="text-xs space-y-1.5">
           <div>
-            <p className="font-semibold text-stone-900 text-sm">{place.name}</p>
+            <p className="font-headline font-semibold text-on-surface text-sm">{place.name}</p>
             {place.alternateNames.length > 0 && (
-              <p className="text-stone-400">
+              <p className="font-label text-on-surface-variant">
                 Also: {place.alternateNames.join(', ')}
               </p>
             )}
             {place.modernName && (
-              <p className="text-stone-400">Modern: {place.modernName}</p>
+              <p className="font-label text-on-surface-variant">Modern: {place.modernName}</p>
             )}
           </div>
 
           {place.description && (
-            <p className="text-stone-600 leading-relaxed">{place.description}</p>
+            <p className="font-body text-on-surface-variant leading-relaxed">{place.description}</p>
           )}
 
           {place.verses.length > 0 && (
             <div>
-              <p className="font-medium text-stone-500 uppercase tracking-wide text-[10px] mb-0.5">
+              <p className="font-label font-medium text-on-surface-variant uppercase tracking-widest text-[10px] mb-0.5">
                 Verse references
               </p>
-              <p className="text-stone-400 text-[10px] mb-1 italic">
+              <p className="font-label text-on-surface-variant/60 text-[10px] mb-1 italic">
                 All Torah references to this location
               </p>
               <div className="flex flex-wrap gap-1">
                 {place.verses.slice(0, 6).map((v) => (
                   <span
                     key={v}
-                    className="px-1.5 py-0.5 bg-amber-50 text-amber-700 rounded text-[10px]"
+                    className="px-1.5 py-0.5 bg-secondary-container font-label text-on-surface rounded text-[10px]"
                   >
                     {v}
                   </span>
                 ))}
                 {place.verses.length > 6 && (
-                  <span className="text-stone-400 text-[10px]">
+                  <span className="font-label text-on-surface-variant text-[10px]">
                     +{place.verses.length - 6} more
                   </span>
                 )}
@@ -115,8 +115,8 @@ export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
           )}
 
           {otherParshas.length > 0 && (
-            <div className="pt-0.5 border-t border-stone-100">
-              <p className="font-medium text-stone-500 uppercase tracking-wide text-[10px] mb-1.5">
+            <div className="pt-0.5">
+              <p className="font-label font-medium text-on-surface-variant uppercase tracking-widest text-[10px] mb-1.5">
                 Also appears in
               </p>
               <div className="flex flex-wrap gap-1">
@@ -124,13 +124,13 @@ export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
                   <button
                     key={p!.id}
                     onClick={() => setSelectedParsha(p!.id)}
-                    className="px-1.5 py-0.5 bg-stone-100 text-stone-600 rounded text-[10px] hover:bg-amber-100 hover:text-amber-800 transition-colors text-left"
+                    className="px-1.5 py-0.5 bg-surface-container font-label text-on-surface rounded text-[10px] hover:bg-primary-container hover:text-on-primary-container transition-colors text-left"
                   >
                     {p!.name}
                   </button>
                 ))}
                 {otherParshas.length > 8 && (
-                  <span className="text-stone-400 text-[10px] self-center">
+                  <span className="font-label text-on-surface-variant text-[10px] self-center">
                     +{otherParshas.length - 8} more
                   </span>
                 )}
@@ -145,18 +145,18 @@ export function PlaceMarker({ place, showLabel, isHighlighted }: Props) {
                 style={{
                   backgroundColor:
                     place.confidence === 'high'
-                      ? '#D97706'
+                      ? '#6c2f00'
                       : place.confidence === 'medium'
-                      ? '#60A5FA'
-                      : 'white',
-                  border: place.confidence === 'low' ? '1.5px solid #9CA3AF' : 'none',
+                      ? '#00446c'
+                      : '#fcf9f0',
+                  border: place.confidence === 'low' ? '1.5px solid #877369' : 'none',
                 }}
               />
-              <span className="text-stone-400 capitalize">{place.confidence} confidence</span>
+              <span className="font-label text-on-surface-variant capitalize">{place.confidence} confidence</span>
             </div>
             <button
               onClick={() => openPlacePanel(place.id, 'place')}
-              className="flex items-center gap-1 text-[10px] text-amber-700 hover:text-amber-900 transition-colors"
+              className="flex items-center gap-1 font-label text-[10px] text-primary hover:text-primary/80 transition-colors"
             >
               <ExternalLink size={10} />
               Details
