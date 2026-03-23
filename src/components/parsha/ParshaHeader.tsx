@@ -32,8 +32,7 @@ function ParshaImage({ url, caption, name }: { url: string; caption?: string; na
 
 function ParshaImageFromWikimedia({ specialFilepathUrl, caption, name }: { specialFilepathUrl: string; caption?: string; name: string }) {
   const { data: resolvedUrl } = useWikimediaImage(specialFilepathUrl)
-  if (!resolvedUrl) return null
-  return <ParshaImage url={resolvedUrl} caption={caption} name={name} />
+  return <ParshaImage url={resolvedUrl ?? specialFilepathUrl} caption={caption} name={name} />
 }
 
 function ParshaChips({ richContent }: { richContent: ParshaRichContent }) {
