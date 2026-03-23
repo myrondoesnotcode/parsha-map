@@ -105,7 +105,7 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
 
   return (
     <div
-      className="flex-1 overflow-y-auto scrollbar-thin"
+      className="md:flex-1 md:min-h-0 md:overflow-y-auto md:scrollbar-thin"
       onScroll={(e) => { if (e.currentTarget.scrollTop > 0) onScrollStart?.() }}
     >
       {/* Controls bar */}

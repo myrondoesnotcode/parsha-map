@@ -32,8 +32,7 @@ function ParshaImage({ url, caption, name }: { url: string; caption?: string; na
 
 function ParshaImageFromWikimedia({ specialFilepathUrl, caption, name }: { specialFilepathUrl: string; caption?: string; name: string }) {
   const { data: resolvedUrl } = useWikimediaImage(specialFilepathUrl)
-  if (!resolvedUrl) return null
-  return <ParshaImage url={resolvedUrl} caption={caption} name={name} />
+  return <ParshaImage url={resolvedUrl ?? specialFilepathUrl} caption={caption} name={name} />
 }
 
 function ParshaChips({ richContent }: { richContent: ParshaRichContent }) {
@@ -193,8 +192,6 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
                 {parsha.summary}
               </p>
             ) : null}
-
-            {richContent && <ParshaChips richContent={richContent} />}
           </>
         )}
       </div>
@@ -233,6 +230,12 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
             Read commentary by Michael Eisenberg
             <ExternalLink size={10} />
           </a>
+        </div>
+      )}
+
+      {richContent && !summaryCollapsed && (
+        <div className="px-4 pb-3">
+          <ParshaChips richContent={richContent} />
         </div>
       )}
     </div>

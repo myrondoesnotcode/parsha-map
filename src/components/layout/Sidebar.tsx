@@ -16,7 +16,7 @@ export function Sidebar() {
   }, [selectedParshaId])
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col md:h-full">
       {/* Selector + search */}
       <div className="px-4 pt-4 pb-3 bg-surface-container-low shrink-0 space-y-3">
         <div className="relative">

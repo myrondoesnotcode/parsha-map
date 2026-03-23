@@ -245,7 +245,7 @@ export default function App() {
           </div>
 
           {/* Text tab */}
-          <div className={`absolute inset-0 bg-surface-container-low ${mobileTab === 'text' ? '' : 'hidden'}`}>
+          <div className={`absolute inset-0 overflow-y-auto bg-surface-container-low ${mobileTab === 'text' ? '' : 'hidden'}`}>
             <Sidebar />
           </div>
 
