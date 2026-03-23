@@ -37,6 +37,20 @@ interface Translations {
     selectParsha: string
   }
   library: { title: string; searchPlaceholder: string }
+  viewer: {
+    selectToRead: string
+    placesOnMap: string
+    loadError: string
+    hebrewMode: string
+    englishMode: string
+    commentary: string
+    showNext: (n: number) => string
+    showAll: string
+    allShown: (n: number) => string
+    noCommentary: (name: string) => string
+    showMoreComments: (n: number) => string
+    providedBy: string
+  }
 }
 
 const en: Translations = {
@@ -62,6 +76,20 @@ const en: Translations = {
     selectParsha: 'Select a Parsha to see its historical context',
   },
   library: { title: 'Parsha Library', searchPlaceholder: 'Search parshas…' },
+  viewer: {
+    selectToRead: 'Select a Torah portion to read',
+    placesOnMap: 'Places mentioned in the text will light up on the map',
+    loadError: 'Failed to load text. Check your connection.',
+    hebrewMode: 'Hebrew',
+    englishMode: 'English',
+    commentary: 'Commentary',
+    showNext: (n) => `Show next ${n} verses`,
+    showAll: 'Show all',
+    allShown: (n) => `All ${n} verses shown`,
+    noCommentary: (name) => `No ${name} commentary available for this portion.`,
+    showMoreComments: (n) => `Show ${n} more comments`,
+    providedBy: 'Text and commentary provided by',
+  },
 }
 
 const he: Translations = {
@@ -87,6 +115,20 @@ const he: Translations = {
     selectParsha: 'בחר פרשה לצפייה בהקשר ההיסטורי',
   },
   library: { title: 'ספריית פרשות', searchPlaceholder: 'חיפוש פרשות…' },
+  viewer: {
+    selectToRead: 'בחר פרשה לקריאה',
+    placesOnMap: 'מקומות המוזכרים בטקסט יודגשו על המפה',
+    loadError: 'שגיאה בטעינת הטקסט. בדוק את החיבור לאינטרנט.',
+    hebrewMode: 'עברית',
+    englishMode: 'אנגלית',
+    commentary: 'פירוש',
+    showNext: (n) => `הצג ${n} פסוקים נוספים`,
+    showAll: 'הצג הכל',
+    allShown: (n) => `כל ${n} הפסוקים מוצגים`,
+    noCommentary: (name) => `אין פירוש ${name} לפרשה זו.`,
+    showMoreComments: (n) => `הצג ${n} פירושים נוספים`,
+    providedBy: 'טקסט ופירוש מסופקים על ידי',
+  },
 }
 
 const es: Translations = {
@@ -112,6 +154,20 @@ const es: Translations = {
     selectParsha: 'Selecciona una Parshá para ver su contexto histórico',
   },
   library: { title: 'Biblioteca de Parshas', searchPlaceholder: 'Buscar parshas…' },
+  viewer: {
+    selectToRead: 'Selecciona una Parshá para leer',
+    placesOnMap: 'Los lugares mencionados en el texto se iluminarán en el mapa',
+    loadError: 'Error al cargar el texto. Verifica tu conexión.',
+    hebrewMode: 'Hebreo',
+    englishMode: 'Inglés',
+    commentary: 'Comentario',
+    showNext: (n) => `Mostrar los próximos ${n} versículos`,
+    showAll: 'Mostrar todo',
+    allShown: (n) => `Los ${n} versículos mostrados`,
+    noCommentary: (name) => `No hay comentario de ${name} para esta porción.`,
+    showMoreComments: (n) => `Mostrar ${n} comentarios más`,
+    providedBy: 'Texto y comentario proporcionados por',
+  },
 }
 
 const ru: Translations = {
@@ -137,6 +193,20 @@ const ru: Translations = {
     selectParsha: 'Выберите Парашу для просмотра исторического контекста',
   },
   library: { title: 'Библиотека Параш', searchPlaceholder: 'Поиск Параш…' },
+  viewer: {
+    selectToRead: 'Выберите Парашу для чтения',
+    placesOnMap: 'Места, упомянутые в тексте, будут выделены на карте',
+    loadError: 'Не удалось загрузить текст. Проверьте подключение.',
+    hebrewMode: 'Иврит',
+    englishMode: 'Английский',
+    commentary: 'Комментарий',
+    showNext: (n) => `Показать следующие ${n} стихов`,
+    showAll: 'Показать все',
+    allShown: (n) => `Все ${n} стихов показаны`,
+    noCommentary: (name) => `Комментарий ${name} недоступен для этой Параши.`,
+    showMoreComments: (n) => `Показать ещё ${n} комментариев`,
+    providedBy: 'Текст и комментарии предоставлены',
+  },
 }
 
 export const translations: Record<Language, Translations> = { en, he, es, ru }

@@ -1,5 +1,5 @@
 import { useCallback, useState, useEffect, useRef } from 'react'
-import { ScrollText, ChevronDown, BookOpen } from 'lucide-react'
+import { ScrollText, ChevronDown } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { useParshaText } from '../../hooks/useParshaText'
@@ -7,9 +7,11 @@ import { useParshaPlaces } from '../../hooks/useParshaPlaces'
 import { useCommentaryText } from '../../hooks/useCommentaryText'
 import { flattenSefariaText } from '../../api/sefaria'
 import { highlightPlaceNames } from '../../utils/textUtils'
+import { useTranslation } from '../../i18n/useTranslation'
 
 const COMMENTATORS = ['Rashi', 'Ramban', 'Ibn Ezra', 'Sforno'] as const
 type Commentator = (typeof COMMENTATORS)[number]
+type TextMode = 'english' | 'hebrew'
 
 const PAGE_SIZE = 20
 
@@ -19,9 +21,10 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
   const parsha = selectedParshaId ? getParshaById(selectedParshaId) : null
   const { data, isLoading, isError } = useParshaText(parsha?.seferiaUrl ?? null)
   const places = useParshaPlaces(selectedParshaId)
+  const t = useTranslation()
 
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
-  const [showHebrew, setShowHebrew] = useState(true)
+  const [textMode, setTextMode] = useState<TextMode>('english')
   const [commentaryOpen, setCommentaryOpen] = useState(false)
   const [selectedCommentator, setSelectedCommentator] = useState<Commentator>('Rashi')
   const [commentatorMenuOpen, setCommentatorMenuOpen] = useState(false)
@@ -69,8 +72,8 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
       <div className="flex-1 flex items-center justify-center text-on-surface-variant font-label text-sm p-4">
         <div className="text-center">
           <div className="text-4xl mb-3">📖</div>
-          <p>Select a Torah portion to read</p>
-          <p className="mt-1 font-label text-xs text-on-surface-variant/60">Places mentioned in the text will light up on the map</p>
+          <p>{t.viewer.selectToRead}</p>
+          <p className="mt-1 font-label text-xs text-on-surface-variant/60">{t.viewer.placesOnMap}</p>
         </div>
       </div>
     )
@@ -93,14 +96,15 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
   if (isError || !data) {
     return (
       <div className="flex-1 flex items-center justify-center p-4 font-label text-sm text-error">
-        Failed to load text. Check your connection.
+        {t.viewer.loadError}
       </div>
     )
   }
 
   const englishVerses = flattenSefariaText(data.text)
   const hebrewVerses = flattenSefariaText(data.he)
-  const totalVerses = Math.max(englishVerses.length, hebrewVerses.length)
+  const verses = textMode === 'hebrew' ? hebrewVerses : englishVerses
+  const totalVerses = verses.length
   const hasMore = visibleCount < totalVerses
 
   return (
@@ -110,19 +114,29 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
     >
       {/* Controls bar */}
       <div className="sticky top-0 z-10 bg-surface-container-low px-4 py-2 flex items-center justify-between gap-2">
-        {/* Hebrew toggle */}
-        <button
-          onClick={() => setShowHebrew((v) => !v)}
-          className={`flex items-center gap-1.5 font-label text-xs px-2.5 py-1 rounded transition-colors ${
-            showHebrew
-              ? 'bg-on-surface text-surface'
-              : 'bg-surface-container text-on-surface-variant hover:bg-surface-container-high'
-          }`}
-        >
-          <BookOpen size={12} />
-          <span className="font-hebrew">עב</span>
-          Hebrew
-        </button>
+        {/* Language mode toggle */}
+        <div className="flex items-center gap-1 bg-surface-container rounded p-0.5">
+          <button
+            onClick={() => setTextMode('english')}
+            className={`font-label text-xs px-2.5 py-1 rounded transition-colors ${
+              textMode === 'english'
+                ? 'bg-on-surface text-surface'
+                : 'text-on-surface-variant hover:text-on-surface'
+            }`}
+          >
+            {t.viewer.englishMode}
+          </button>
+          <button
+            onClick={() => setTextMode('hebrew')}
+            className={`font-label text-xs px-2.5 py-1 rounded transition-colors font-hebrew ${
+              textMode === 'hebrew'
+                ? 'bg-on-surface text-surface'
+                : 'text-on-surface-variant hover:text-on-surface'
+            }`}
+          >
+            {t.viewer.hebrewMode}
+          </button>
+        </div>
 
         <div className="flex items-center gap-2">
           {commentaryOpen && (
@@ -168,31 +182,32 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
             }`}
           >
             <ScrollText size={12} />
-            Commentary
+            {t.viewer.commentary}
           </button>
         </div>
       </div>
 
       <div className="p-4 space-y-4">
-        {/* Interleaved verse list: Hebrew + English together per verse */}
-        <div className="space-y-3" onClick={handleClick}>
+        {/* Verse list: single language at a time */}
+        <div
+          className="space-y-3"
+          onClick={handleClick}
+          dir={textMode === 'hebrew' ? 'rtl' : 'ltr'}
+        >
           {Array.from({ length: Math.min(visibleCount, totalVerses) }, (_, i) => {
-            const he = hebrewVerses[i] ?? ''
-            const en = englishVerses[i] ?? ''
+            const verse = verses[i] ?? ''
             return (
               <div key={i} className="space-y-0.5">
-                <span className="font-label text-[10px] text-on-surface-variant/40 select-none">{i + 1}</span>
-                {showHebrew && he && (
+                <span className="font-label text-[10px] text-on-surface-variant/40 select-none block">{i + 1}</span>
+                {textMode === 'hebrew' ? (
                   <p
-                    dir="rtl"
                     className="font-hebrew text-right text-sm text-on-surface leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: he }}
+                    dangerouslySetInnerHTML={{ __html: verse }}
                   />
-                )}
-                {en && (
+                ) : (
                   <p
                     className="font-body text-sm text-on-surface-variant leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: highlightPlaceNames(en, places) }}
+                    dangerouslySetInnerHTML={{ __html: highlightPlaceNames(verse, places) }}
                   />
                 )}
               </div>
@@ -207,7 +222,7 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
               onClick={() => setVisibleCount((n) => Math.min(n + PAGE_SIZE, totalVerses))}
               className="flex-1 font-label text-xs text-primary hover:text-primary/80 bg-primary-container hover:bg-primary-container/80 py-2 rounded transition-colors font-medium"
             >
-              Show next {Math.min(PAGE_SIZE, totalVerses - visibleCount)} verses
+              {t.viewer.showNext(Math.min(PAGE_SIZE, totalVerses - visibleCount))}
               <span className="text-on-surface-variant/50 font-normal ml-1">
                 ({visibleCount} of {totalVerses})
               </span>
@@ -216,14 +231,14 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
               onClick={() => setVisibleCount(totalVerses)}
               className="font-label text-xs text-on-surface-variant hover:text-on-surface transition-colors"
             >
-              Show all
+              {t.viewer.showAll}
             </button>
           </div>
         )}
 
         {!hasMore && totalVerses > PAGE_SIZE && (
           <p className="font-label text-xs text-on-surface-variant/40 text-center pt-1">
-            All {totalVerses} verses shown
+            {t.viewer.allShown(totalVerses)}
           </p>
         )}
 
@@ -249,7 +264,7 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
               </div>
             ) : commentaryPairs.length === 0 ? (
               <p className="font-body text-xs text-on-surface-variant italic">
-                No {selectedCommentator} commentary available for this portion.
+                {t.viewer.noCommentary(selectedCommentator)}
               </p>
             ) : (
               <div className="space-y-5">
@@ -258,7 +273,7 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
                     <span className="inline-block font-label text-primary font-medium text-[10px]">
                       {i + 1}
                     </span>
-                    {he && (
+                    {textMode === 'hebrew' && he && (
                       <p
                         dir="rtl"
                         className="font-hebrew text-right text-sm text-on-surface leading-relaxed"
@@ -266,8 +281,16 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
                         {he}
                       </p>
                     )}
-                    {en && (
+                    {textMode === 'english' && en && (
                       <p className="font-body text-xs text-on-surface-variant leading-relaxed">{en}</p>
+                    )}
+                    {textMode === 'english' && !en && he && (
+                      <p
+                        dir="rtl"
+                        className="font-hebrew text-right text-xs text-on-surface-variant leading-relaxed"
+                      >
+                        {he}
+                      </p>
                     )}
                   </div>
                 ))}
@@ -277,7 +300,7 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
                       onClick={() => setCommentaryLimit((n) => n + 40)}
                       className="flex-1 font-label text-xs text-primary hover:text-primary/80 bg-primary-container hover:bg-primary-container/80 py-2 rounded transition-colors font-medium"
                     >
-                      Show {Math.min(40, commentaryPairs.length - commentaryLimit)} more comments
+                      {t.viewer.showMoreComments(Math.min(40, commentaryPairs.length - commentaryLimit))}
                       <span className="text-on-surface-variant/50 font-normal ml-1">
                         ({commentaryLimit} of {commentaryPairs.length})
                       </span>
@@ -286,7 +309,7 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
                       onClick={() => setCommentaryLimit(commentaryPairs.length)}
                       className="font-label text-xs text-on-surface-variant hover:text-on-surface transition-colors"
                     >
-                      Show all
+                      {t.viewer.showAll}
                     </button>
                   </div>
                 )}
@@ -296,7 +319,7 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
         )}
 
         <p className="font-label text-xs text-on-surface-variant/40 text-center pt-2">
-          Text and commentary provided by{' '}
+          {t.viewer.providedBy}{' '}
           <a
             href="https://www.sefaria.org"
             target="_blank"

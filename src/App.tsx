@@ -66,15 +66,30 @@ export default function App() {
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('map')
   const [showTutorial, setShowTutorial] = useState(false)
+
+  function navigateTab(tab: MobileTab) {
+    setMobileTab(tab)
+    const url = new URL(window.location.href)
+    if (tab === 'map') {
+      url.searchParams.delete('tab')
+    } else {
+      url.searchParams.set('tab', tab)
+    }
+    window.history.replaceState(window.history.state, '', url.toString())
+  }
   const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [showLibrary, setShowLibrary] = useState(false)
   const [showLangMenu, setShowLangMenu] = useState(false)
 
-  // On load: read ?parsha= from URL and select it
+  // On load: read ?parsha= and ?tab= from URL
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const parshaId = params.get('parsha')
     if (parshaId) setSelectedParsha(parshaId)
+    const tab = params.get('tab') as MobileTab | null
+    if (tab && (['map', 'text', 'context', 'library'] as MobileTab[]).includes(tab)) {
+      setMobileTab(tab)
+    }
   }, [setSelectedParsha])
 
   // Browser back/forward navigation
@@ -83,6 +98,12 @@ export default function App() {
       const params = new URLSearchParams(window.location.search)
       const parshaId = params.get('parsha')
       if (parshaId) setSelectedParsha(parshaId)
+      const tab = params.get('tab') as MobileTab | null
+      if (tab && (['map', 'text', 'context', 'library'] as MobileTab[]).includes(tab)) {
+        setMobileTab(tab)
+      } else {
+        setMobileTab('map')
+      }
     }
     window.addEventListener('popstate', handlePop)
     return () => window.removeEventListener('popstate', handlePop)
@@ -222,7 +243,7 @@ export default function App() {
         <div className="flex-1 flex min-h-0">
 
           {/* Left: Sidebar or Library */}
-          <div className="w-72 h-full shrink-0 bg-surface-container-low overflow-y-auto">
+          <div className="w-72 h-full shrink-0 bg-surface-container-low overflow-hidden flex flex-col">
             {showLibrary ? (
               <ParshaLibrary onSelect={() => setShowLibrary(false)} />
             ) : (
@@ -312,7 +333,7 @@ export default function App() {
 
           {/* Library tab */}
           <div className={`absolute inset-0 ${mobileTab === 'library' ? '' : 'hidden'}`}>
-            <ParshaLibrary onSelect={() => setMobileTab('map')} />
+            <ParshaLibrary onSelect={() => navigateTab('map')} />
           </div>
         </div>
 
@@ -328,7 +349,7 @@ export default function App() {
           ).map(({ id, label, Icon }) => (
             <button
               key={id}
-              onClick={() => setMobileTab(id)}
+              onClick={() => navigateTab(id)}
               className={`flex-1 flex flex-col items-center justify-center gap-1 relative transition-colors ${
                 mobileTab === id ? 'text-primary' : 'text-on-surface-variant'
               }`}
