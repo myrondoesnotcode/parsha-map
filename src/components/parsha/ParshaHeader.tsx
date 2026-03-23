@@ -193,8 +193,6 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
                 {parsha.summary}
               </p>
             ) : null}
-
-            {richContent && <ParshaChips richContent={richContent} />}
           </>
         )}
       </div>
@@ -233,6 +231,12 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
             Read commentary by Michael Eisenberg
             <ExternalLink size={10} />
           </a>
+        </div>
+      )}
+
+      {richContent && !summaryCollapsed && (
+        <div className="px-4 pb-3">
+          <ParshaChips richContent={richContent} />
         </div>
       )}
     </div>
