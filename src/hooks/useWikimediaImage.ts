@@ -42,5 +42,8 @@ export function useWikimediaImage(specialFilepathUrl: string | null | undefined)
     enabled: !!filename,
     staleTime: 1000 * 60 * 60 * 24 * 7,
     retry: 1,
+    // Use the Special:FilePath URL immediately while the API resolves so images
+    // render right away instead of waiting for the API round-trip.
+    placeholderData: specialFilepathUrl ?? null,
   })
 }

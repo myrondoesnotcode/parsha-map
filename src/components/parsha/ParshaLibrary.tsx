@@ -36,13 +36,15 @@ function matchesQuery(parsha: ParshaListItem, query: string): boolean {
 
 function ParshaThumb({ doreImageUrl, name }: { doreImageUrl?: string; name: string }) {
   const { data: resolvedUrl } = useWikimediaImage(doreImageUrl)
+  const imgSrc = resolvedUrl ?? doreImageUrl
   return (
     <div className="w-16 h-16 shrink-0 bg-white overflow-hidden rounded">
-      {resolvedUrl ? (
+      {imgSrc ? (
         <img
-          src={resolvedUrl}
+          src={imgSrc}
           alt={name}
           className="w-full h-full object-cover mix-blend-multiply"
+          onError={(e) => { (e.currentTarget as HTMLImageElement).style.visibility = 'hidden' }}
         />
       ) : (
         <div className="w-full h-full bg-surface-container-high" />
