@@ -79,16 +79,6 @@ function ParshaChips({ richContent }: { richContent: ParshaRichContent }) {
 function ParshaDeepDive({ richContent }: { richContent: ParshaRichContent }) {
   return (
     <div className="mt-3 flex flex-col gap-3">
-      {richContent.narrativeSummary && (
-        <div className="border-l-2 border-primary/40 pl-3">
-          <p className="font-label text-[10px] font-medium text-on-surface-variant uppercase tracking-widest mb-1">
-            Full Narrative
-          </p>
-          <p className="font-body text-xs text-on-surface-variant leading-relaxed">
-            {richContent.narrativeSummary}
-          </p>
-        </div>
-      )}
       {richContent.didYouKnow && (
         <div className="flex gap-2 px-3 py-2.5 bg-tertiary-container rounded">
           <Lightbulb size={14} className="text-on-tertiary-container shrink-0 mt-0.5" />
