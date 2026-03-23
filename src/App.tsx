@@ -10,6 +10,8 @@ import { useAppStore } from './store/useAppStore'
 import { useAutoSelectParsha } from './hooks/useAutoSelectParsha'
 import { useAutoSelectParshaByYear } from './hooks/useAutoSelectParshaByYear'
 import { getParshaById } from './utils/parshaUtils'
+import { useTranslation } from './i18n/useTranslation'
+import { LANGUAGE_LABELS, type Language } from './i18n/translations'
 import {
   Map,
   BookOpen,
@@ -17,6 +19,7 @@ import {
   HelpCircle,
   Mail,
   Library,
+  Languages,
 } from 'lucide-react'
 
 // Inline X (Twitter) logo SVG
@@ -56,11 +59,34 @@ function LogoLockup() {
 
 export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
+  const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
+  const language = useAppStore((s) => s.language)
+  const setLanguage = useAppStore((s) => s.setLanguage)
+  const t = useTranslation()
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('map')
   const [showTutorial, setShowTutorial] = useState(false)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [showLibrary, setShowLibrary] = useState(false)
+  const [showLangMenu, setShowLangMenu] = useState(false)
+
+  // On load: read ?parsha= from URL and select it
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const parshaId = params.get('parsha')
+    if (parshaId) setSelectedParsha(parshaId)
+  }, [setSelectedParsha])
+
+  // Browser back/forward navigation
+  useEffect(() => {
+    const handlePop = () => {
+      const params = new URLSearchParams(window.location.search)
+      const parshaId = params.get('parsha')
+      if (parshaId) setSelectedParsha(parshaId)
+    }
+    window.addEventListener('popstate', handlePop)
+    return () => window.removeEventListener('popstate', handlePop)
+  }, [setSelectedParsha])
 
   // Auto-show newsletter popup after 50s, once per 30 days
   useEffect(() => {
@@ -123,10 +149,10 @@ export default function App() {
                 ? 'text-primary bg-surface-container'
                 : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
             }`}
-            title="Parsha Library"
+            title={t.library.title}
           >
             <Library size={13} />
-            <span className="hidden lg:inline">Library</span>
+            <span className="hidden lg:inline">{t.header.library}</span>
           </button>
 
           {/* Subscribe */}
@@ -136,8 +162,38 @@ export default function App() {
             title="Get weekly parsha by email"
           >
             <Mail size={13} />
-            <span className="hidden lg:inline">Subscribe</span>
+            <span className="hidden lg:inline">{t.header.subscribe}</span>
           </button>
+
+          {/* Language switcher */}
+          <div className="relative">
+            <button
+              onClick={() => setShowLangMenu((v) => !v)}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded font-label text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
+              title="Change language"
+            >
+              <Languages size={13} />
+              <span className="hidden lg:inline">{LANGUAGE_LABELS[language]}</span>
+            </button>
+            {showLangMenu && (
+              <>
+                <div className="fixed inset-0 z-[1200]" onClick={() => setShowLangMenu(false)} />
+                <div className="absolute right-0 top-full mt-1 z-[1201] bg-surface-container border border-outline-variant rounded shadow-lg overflow-hidden min-w-[100px]">
+                  {(Object.entries(LANGUAGE_LABELS) as [Language, string][]).map(([lang, label]) => (
+                    <button
+                      key={lang}
+                      onClick={() => { setLanguage(lang); setShowLangMenu(false) }}
+                      className={`w-full text-left px-3 py-2 font-label text-xs hover:bg-surface-container-high transition-colors ${
+                        language === lang ? 'text-primary font-medium' : 'text-on-surface'
+                      }`}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
 
           <div className="w-px h-5 bg-outline-variant mx-1" />
 
@@ -156,7 +212,7 @@ export default function App() {
           <button
             onClick={reopenTutorial}
             className="p-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors"
-            title="Show tutorial"
+            title={t.header.showTutorial}
           >
             <HelpCircle size={15} />
           </button>
@@ -264,11 +320,11 @@ export default function App() {
         <nav className="shrink-0 flex h-16 bg-surface-container-low">
           {(
             [
-              { id: 'map' as MobileTab, label: 'MAP', Icon: Map },
-              { id: 'text' as MobileTab, label: 'TEXT', Icon: BookOpen },
-              { id: 'context' as MobileTab, label: 'HISTORY', Icon: Globe },
-              { id: 'library' as MobileTab, label: 'LIBRARY', Icon: Library },
-            ] as const
+              { id: 'map' as MobileTab, label: t.tabs.map, Icon: Map },
+              { id: 'text' as MobileTab, label: t.tabs.text, Icon: BookOpen },
+              { id: 'context' as MobileTab, label: t.tabs.history, Icon: Globe },
+              { id: 'library' as MobileTab, label: t.tabs.library, Icon: Library },
+            ]
           ).map(({ id, label, Icon }) => (
             <button
               key={id}

@@ -3,12 +3,14 @@ import { ParshaSelector } from '../parsha/ParshaSelector'
 import { ParshaHeader } from '../parsha/ParshaHeader'
 import { ParshaTextViewer } from '../parsha/ParshaTextViewer'
 import { useAppStore } from '../../store/useAppStore'
+import { useTranslation } from '../../i18n/useTranslation'
 import { Search } from 'lucide-react'
 
 export function Sidebar() {
   const [searchQuery, setSearchQuery] = useState('')
   const [isScrolled, setIsScrolled] = useState(false)
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
+  const t = useTranslation()
 
   // Reset scroll state when parsha changes
   useEffect(() => {
@@ -26,7 +28,7 @@ export function Sidebar() {
           />
           <input
             type="search"
-            placeholder="Search portions…"
+            placeholder={t.sidebar.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-5 pr-3 py-2 font-label text-xs border-0 border-b border-outline/30 rounded-none bg-transparent text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-tertiary transition-colors"

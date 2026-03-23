@@ -1,11 +1,14 @@
 import { create } from 'zustand'
 import parshaList from '../data/parshaList.json'
 import type { ParshaListItem } from '../types/parsha'
+import type { Language } from '../i18n/translations'
+import { LANGUAGE_DIR } from '../i18n/translations'
 
 const parshas = parshaList as ParshaListItem[]
 
 interface AppState {
   selectedParshaId: string | null
+  language: Language
   currentYearBCE: number
   yearSource: 'parsha' | 'slider'
   showTradeRoutes: boolean
@@ -20,6 +23,7 @@ interface AppState {
   selectedPlacePanel: { id: string; type: 'place' | 'site' } | null
   fitBoundsKey: number
 
+  setLanguage: (lang: Language) => void
   setSelectedParsha: (id: string) => void
   setCurrentYear: (year: number) => void
   toggleTradeRoutes: () => void
@@ -38,6 +42,7 @@ interface AppState {
 
 export const useAppStore = create<AppState>((set) => ({
   selectedParshaId: null,
+  language: 'en',
   currentYearBCE: 1900,
   yearSource: 'parsha',
   showTradeRoutes: true,
@@ -52,6 +57,12 @@ export const useAppStore = create<AppState>((set) => ({
   selectedPlacePanel: null,
   fitBoundsKey: 0,
 
+  setLanguage: (lang: Language) => {
+    document.documentElement.dir = LANGUAGE_DIR[lang]
+    document.documentElement.lang = lang
+    set({ language: lang })
+  },
+
   setSelectedParsha: (id: string) => {
     const parsha = parshas.find((p) => p.id === id)
     const year = parsha?.approximateDateBCE?.start ?? 1900
@@ -61,6 +72,10 @@ export const useAppStore = create<AppState>((set) => ({
       yearSource: 'parsha',
       highlightedPlaceId: null,
     })
+    // Sync parsha to URL so it can be shared/bookmarked
+    const url = new URL(window.location.href)
+    url.searchParams.set('parsha', id)
+    window.history.pushState({ parsha: id }, '', url.toString())
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(window as any).umami?.track('parsha-viewed', { parsha: id, name: parsha?.name })
   },
