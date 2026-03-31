@@ -6,8 +6,10 @@ import { TimelineSlider } from './components/timeline/TimelineSlider'
 import { TutorialOverlay } from './components/TutorialOverlay'
 import { NewsletterModal } from './components/NewsletterModal'
 import { ParshaLibrary } from './components/parsha/ParshaLibrary'
+import { ParshaLoadingScreen } from './components/parsha/ParshaLoadingScreen'
 import { useAppStore } from './store/useAppStore'
 import { useAutoSelectParsha } from './hooks/useAutoSelectParsha'
+import { useCurrentParsha } from './hooks/useCurrentParsha'
 import { useAutoSelectParshaByYear } from './hooks/useAutoSelectParshaByYear'
 import { getParshaById } from './utils/parshaUtils'
 import { useTranslation } from './i18n/useTranslation'
@@ -64,7 +66,7 @@ export default function App() {
   const setLanguage = useAppStore((s) => s.setLanguage)
   const t = useTranslation()
 
-  const [mobileTab, setMobileTab] = useState<MobileTab>('map')
+  const [mobileTab, setMobileTab] = useState<MobileTab>('text')
   const [showTutorial, setShowTutorial] = useState(false)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [showLibrary, setShowLibrary] = useState(false)
@@ -103,6 +105,9 @@ export default function App() {
 
   useAutoSelectParsha()
   useAutoSelectParshaByYear()
+
+  const { isLoading: parshaLoading } = useCurrentParsha()
+  const showParshaLoading = mobileTab === 'text' && parshaLoading && !selectedParshaId
 
   const parsha = selectedParshaId ? getParshaById(selectedParshaId) : null
 
@@ -302,7 +307,7 @@ export default function App() {
 
           {/* Text tab */}
           <div className={`absolute inset-0 overflow-y-auto bg-surface-container-low ${mobileTab === 'text' ? '' : 'hidden'}`}>
-            <Sidebar />
+            {showParshaLoading ? <ParshaLoadingScreen /> : <Sidebar />}
           </div>
 
           {/* History tab */}
