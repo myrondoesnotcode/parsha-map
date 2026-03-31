@@ -1,4 +1,5 @@
-import { MapContainer, TileLayer } from 'react-leaflet'
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
+import { useEffect } from 'react'
 import { useAppStore } from '../../store/useAppStore'
 import { useParshaPlaces } from '../../hooks/useParshaPlaces'
 import { useEraContext } from '../../hooks/useEraContext'
@@ -13,6 +14,17 @@ import { YouAreHereMarker } from './YouAreHereMarker'
 import { MapLegend } from './MapLegend'
 import { filterPlacesByType } from '../../utils/placeUtils'
 import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe, Crosshair } from 'lucide-react'
+
+function MapResizeHandler() {
+  const map = useMap()
+  useEffect(() => {
+    const container = map.getContainer()
+    const observer = new ResizeObserver(() => { map.invalidateSize() })
+    observer.observe(container)
+    return () => observer.disconnect()
+  }, [map])
+  return null
+}
 
 const DEFAULT_CENTER: [number, number] = [31.5, 35.5]
 const DEFAULT_ZOOM = 6
@@ -171,6 +183,7 @@ export function ParshaMap() {
         <MapBoundsManager places={places} parshaId={selectedParshaId} />
         <YouAreHereMarker places={places} />
         <PlaceHighlightManager />
+        <MapResizeHandler />
       </MapContainer>
 
       {/* ── Legend ── */}
