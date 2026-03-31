@@ -13,7 +13,6 @@ import { useCurrentParsha } from './hooks/useCurrentParsha'
 import { useAutoSelectParshaByYear } from './hooks/useAutoSelectParshaByYear'
 import { getParshaById } from './utils/parshaUtils'
 import { useTranslation } from './i18n/useTranslation'
-import { LANGUAGE_LABELS, type Language } from './i18n/translations'
 import {
   Map,
   BookOpen,
@@ -21,7 +20,6 @@ import {
   HelpCircle,
   Mail,
   Library,
-  Languages,
 } from 'lucide-react'
 
 // Inline X (Twitter) logo SVG
@@ -62,15 +60,12 @@ function LogoLockup() {
 export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
-  const language = useAppStore((s) => s.language)
-  const setLanguage = useAppStore((s) => s.setLanguage)
   const t = useTranslation()
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('text')
   const [showTutorial, setShowTutorial] = useState(false)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [showLibrary, setShowLibrary] = useState(false)
-  const [showLangMenu, setShowLangMenu] = useState(false)
 
   // On load: read ?parsha= from URL and select it
   useEffect(() => {
@@ -169,36 +164,6 @@ export default function App() {
             <Mail size={13} />
             <span className="hidden lg:inline">{t.header.subscribe}</span>
           </button>
-
-          {/* Language switcher */}
-          <div className="relative">
-            <button
-              onClick={() => setShowLangMenu((v) => !v)}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded font-label text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
-              title="Change language"
-            >
-              <Languages size={13} />
-              <span className="hidden lg:inline">{LANGUAGE_LABELS[language]}</span>
-            </button>
-            {showLangMenu && (
-              <>
-                <div className="fixed inset-0 z-[1200]" onClick={() => setShowLangMenu(false)} />
-                <div className="absolute right-0 top-full mt-1 z-[1201] bg-surface-container border border-outline-variant rounded shadow-lg overflow-hidden min-w-[100px]">
-                  {(Object.entries(LANGUAGE_LABELS) as [Language, string][]).map(([lang, label]) => (
-                    <button
-                      key={lang}
-                      onClick={() => { setLanguage(lang); setShowLangMenu(false) }}
-                      className={`w-full text-left px-3 py-2 font-label text-xs hover:bg-surface-container-high transition-colors ${
-                        language === lang ? 'text-primary font-medium' : 'text-on-surface'
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
 
           <div className="w-px h-5 bg-outline-variant mx-1" />
 

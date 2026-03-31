@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { BookOpen, ChevronDown, ChevronUp, ExternalLink, Lightbulb } from 'lucide-react'
+import { BookOpen, ExternalLink, Lightbulb } from 'lucide-react'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { formatYearBCE } from '../../utils/yearUtils'
@@ -40,23 +39,6 @@ function ParshaChips({ richContent }: { richContent: ParshaRichContent }) {
   const t = useTranslation()
   return (
     <div className="mt-3 flex flex-col gap-2">
-      {richContent.themes.length > 0 && (
-        <div>
-          <p className="font-label text-[10px] font-medium text-on-surface-variant uppercase tracking-widest mb-1.5">
-            {t.parsha.themes}
-          </p>
-          <div className="flex flex-wrap gap-1.5">
-            {richContent.themes.map((theme) => (
-              <span
-                key={theme}
-                className="px-2 py-0.5 font-label text-xs rounded-full bg-primary-container text-on-primary-container"
-              >
-                {theme}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
       {richContent.keyFigures.length > 0 && (
         <div>
           <p className="font-label text-[10px] font-medium text-on-surface-variant uppercase tracking-widest mb-1.5">
@@ -122,7 +104,6 @@ function ParshaDeepDive({ richContent }: { richContent: ParshaRichContent }) {
 export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: boolean }) {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const { data: currentParsha } = useCurrentParsha()
-  const [deepDiveOpen, setDeepDiveOpen] = useState(false)
   const t = useTranslation()
 
   const parsha = selectedParshaId ? getParshaById(selectedParshaId) : null
@@ -204,19 +185,10 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
         />
       )}
 
-      {richContent && !summaryCollapsed && (
-        <>
-          <div className="px-4 pt-1 pb-0">
-            {deepDiveOpen && <ParshaDeepDive richContent={richContent} />}
-          </div>
-          <button
-            onClick={() => setDeepDiveOpen((v) => !v)}
-            className="flex items-center gap-1 font-label text-xs text-primary hover:text-primary/80 font-medium px-4 py-2"
-          >
-            {deepDiveOpen ? <ChevronUp size={11} /> : <ChevronDown size={11} />}
-            {deepDiveOpen ? t.parsha.showLess : t.parsha.learnMore}
-          </button>
-        </>
+      {richContent && (
+        <div className="px-4 pt-1 pb-0">
+          <ParshaDeepDive richContent={richContent} />
+        </div>
       )}
 
       {parsha.commentaryUrl && (
@@ -233,7 +205,7 @@ export function ParshaHeader({ summaryCollapsed = false }: { summaryCollapsed?: 
         </div>
       )}
 
-      {richContent && !summaryCollapsed && (
+      {richContent && (
         <div className="px-4 pb-3">
           <ParshaChips richContent={richContent} />
         </div>

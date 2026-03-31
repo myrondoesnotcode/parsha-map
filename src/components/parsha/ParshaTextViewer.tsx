@@ -21,7 +21,7 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
   const places = useParshaPlaces(selectedParshaId)
 
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE)
-  const [showHebrew, setShowHebrew] = useState(true)
+  const [showHebrew, setShowHebrew] = useState(false)
   const [commentaryOpen, setCommentaryOpen] = useState(false)
   const [selectedCommentator, setSelectedCommentator] = useState<Commentator>('Rashi')
   const [commentatorMenuOpen, setCommentatorMenuOpen] = useState(false)
@@ -182,18 +182,21 @@ export function ParshaTextViewer({ onScrollStart }: { onScrollStart?: () => void
             return (
               <div key={i} className="space-y-0.5">
                 <span className="font-label text-[10px] text-on-surface-variant/40 select-none">{i + 1}</span>
-                {showHebrew && he && (
-                  <p
-                    dir="rtl"
-                    className="font-hebrew text-right text-sm text-on-surface leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: he }}
-                  />
-                )}
-                {en && (
-                  <p
-                    className="font-body text-sm text-on-surface-variant leading-relaxed"
-                    dangerouslySetInnerHTML={{ __html: highlightPlaceNames(en, places) }}
-                  />
+                {showHebrew ? (
+                  he && (
+                    <p
+                      dir="rtl"
+                      className="font-hebrew text-right text-sm text-on-surface leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: he }}
+                    />
+                  )
+                ) : (
+                  en && (
+                    <p
+                      className="font-body text-sm text-on-surface-variant leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: highlightPlaceNames(en, places) }}
+                    />
+                  )
                 )}
               </div>
             )
