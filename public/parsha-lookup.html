@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Was Your Parsha? — Parshamap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Frank+Ruhl+Libre:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --surface:            #fcf9f0;
+    --surface-low:        #f6f3ea;
+    --surface-container:  #f1eee5;
+    --surface-high:       #ebe8df;
+    --surface-highest:    #e5e2da;
+    --on-surface:         #1c1c17;
+    --on-surface-variant: #54433a;
+    --primary:            #6c2f00;
+    --primary-container:  #8b4513;
+    --primary-fixed:      #ffdbc9;
+    --outline:            #877369;
+    --outline-variant:    #dac2b6;
+    --tertiary:           #00446c;
+    --error:              #ba1a1a;
+  }
+
+  html, body {
+    min-height: 100%;
+    background: var(--surface);
+    color: var(--on-surface);
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    background: var(--surface-low);
+    border-bottom: 1px solid var(--outline-variant);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .logo-lockup {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    line-height: 1;
+  }
+
+  .logo-name {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--on-surface);
+    letter-spacing: 0.02em;
+  }
+
+  .logo-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--outline-variant);
+  }
+
+  .header-crumb {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--on-surface-variant);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Main layout ── */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 16px 80px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  /* ── Page title ── */
+  .page-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--on-surface);
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 13px;
+    color: var(--on-surface-variant);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  /* ── Form elements ── */
+  .field-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: 6px;
+  }
+
+  input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    background: white;
+    border: 1px solid var(--outline-variant);
+    border-radius: 2px;
+    color: var(--on-surface);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="date"]:focus {
+    border-color: var(--primary);
+  }
+
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .toggle-label {
+    font-size: 13px;
+    color: var(--on-surface-variant);
+  }
+
+  .toggle {
+    display: flex;
+    background: var(--surface-high);
+    border: 1px solid var(--outline-variant);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .toggle button {
+    background: none;
+    border: none;
+    color: var(--on-surface-variant);
+    padding: 5px 14px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.12s, color 0.12s;
+  }
+
+  .toggle button.active {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+  }
+
+  .toggle button:not(.active):hover {
+    background: var(--surface-highest);
+    color: var(--on-surface);
+  }
+
+  button.lookup {
+    width: 100%;
+    padding: 11px 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  button.lookup:hover {
+    background: var(--primary-container);
+  }
+
+  /* ── Hebrew birthday row ── */
+  .hbirthday-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .hbirthday-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    white-space: nowrap;
+  }
+
+  .hbirthday-value {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.15rem;
+    color: var(--primary);
+    direction: ltr;
+    text-align: right;
+  }
+
+  /* ── Result card ── */
+  .result {
+    margin-top: 32px;
+    padding: 24px;
+    background: var(--surface-low);
+    border: 1px solid var(--outline-variant);
+    border-radius: 2px;
+    display: none;
+  }
+
+  .result.visible { display: block; }
+
+  .result-shabbat {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: 10px;
+  }
+
+  .result-name {
+    font-family: 'Noto Serif', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1.15;
+    margin-bottom: 4px;
+  }
+
+  .result-hebrew {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--on-surface-variant);
+    direction: rtl;
+    margin-bottom: 12px;
+  }
+
+  .combined-note {
+    font-size: 12px;
+    color: var(--on-surface-variant);
+    font-style: italic;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    background: var(--surface-container);
+    border-left: 2px solid var(--outline-variant);
+    display: none;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--outline-variant);
+    margin: 16px 0;
+  }
+
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .map-link:hover { color: var(--primary-container); }
+
+  .map-link svg {
+    transition: transform 0.15s;
+  }
+
+  .map-link:hover svg {
+    transform: translateX(2px);
+  }
+
+  /* ── Error ── */
+  .error {
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 10px;
+    display: none;
+  }
+
+  .error.visible { display: block; }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 11px;
+    color: var(--outline);
+    border-top: 1px solid var(--outline-variant);
+  }
+
+  footer a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 480px) {
+    main { padding: 32px 16px 60px; }
+    .page-title { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo-mark" title="Back to Parshamap">
+    <svg width="14" height="18" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+      <path d="M10 0C4.477 0 0 4.477 0 10c0 7.5 10 14 10 14s10-6.5 10-14C20 4.477 15.523 0 10 0z" fill="#6c2f00"/>
+      <circle cx="10" cy="10" r="3.5" fill="#fcf9f0"/>
+    </svg>
+    <span class="logo-lockup">
+      <span class="logo-name">Parsha</span>
+      <span class="logo-sub">Map</span>
+    </span>
+  </a>
+  <span class="header-divider"></span>
+  <span class="header-crumb">Date Lookup</span>
+</header>
+
+<main>
+  <div class="card">
+    <h1 class="page-title">What was your parsha?</h1>
+    <p class="page-subtitle">Enter any date — your bar or bat mitzvah, a birthday, an anniversary. We'll convert it to your Hebrew date and find which Torah portion was read that Shabbat.</p>
+
+    <label class="field-label" for="datepicker">Date</label>
+    <input type="date" id="datepicker" min="1900-01-01" max="2100-12-31" />
+
+    <div class="toggle-row">
+      <span class="toggle-label">Reading cycle</span>
+      <div class="toggle">
+        <button id="btn-diaspora" class="active" onclick="setRegion('diaspora')">Diaspora</button>
+        <button id="btn-israel" onclick="setRegion('israel')">Israel</button>
+      </div>
+    </div>
+
+    <button class="lookup" onclick="lookupParsha()">Find my parsha</button>
+    <div class="error" id="error-msg"></div>
+
+    <div class="result" id="result">
+      <div class="hbirthday-row">
+        <span class="hbirthday-label">Your Hebrew date</span>
+        <span class="hbirthday-value" id="hebrew-birthday"></span>
+      </div>
+      <div class="divider"></div>
+      <div class="result-shabbat" id="shabbat-date"></div>
+      <div class="result-name" id="parsha-name"></div>
+      <div class="result-hebrew" id="parsha-hebrew"></div>
+      <div class="combined-note" id="combined-note"></div>
+      <div class="divider"></div>
+      <a class="map-link" id="map-link" href="/" target="_blank">
+        Explore on Parshamap
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <a href="/">← Back to Parshamap</a>
+</footer>
+
+<script>
+const P = [
+  { n:"Bereishit",           h:"בְּרֵאשִׁית",              s:"bereishit" },
+  { n:"Noach",               h:"נֹחַ",                      s:"noach" },
+  { n:"Lech Lecha",          h:"לֶךְ-לְךָ",                s:"lech-lecha" },
+  { n:"Vayeira",             h:"וַיֵּרָא",                  s:"vayeira" },
+  { n:"Chayei Sara",         h:"חַיֵּי שָׂרָה",             s:"chayei-sara" },
+  { n:"Toldot",              h:"תּוֹלְדֹת",                s:"toldot" },
+  { n:"Vayeitzei",           h:"וַיֵּצֵא",                  s:"vayeitzei" },
+  { n:"Vayishlach",          h:"וַיִּשְׁלַח",              s:"vayishlach" },
+  { n:"Vayeishev",           h:"וַיֵּשֶׁב",                 s:"vayeishev" },
+  { n:"Miketz",              h:"מִקֵּץ",                    s:"miketz" },
+  { n:"Vayigash",            h:"וַיִּגַּשׁ",                s:"vayigash" },
+  { n:"Vayechi",             h:"וַיְחִי",                   s:"vayechi" },
+  { n:"Shemot",              h:"שְׁמוֹת",                   s:"shemot" },
+  { n:"Vaeira",              h:"וָאֵרָא",                   s:"vaeira" },
+  { n:"Bo",                  h:"בֹּא",                      s:"bo" },
+  { n:"Beshalach",           h:"בְּשַׁלַּח",               s:"beshalach" },
+  { n:"Yitro",               h:"יִתְרוֹ",                   s:"yitro" },
+  { n:"Mishpatim",           h:"מִשְׁפָּטִים",             s:"mishpatim" },
+  { n:"Terumah",             h:"תְּרוּמָה",               s:"terumah" },
+  { n:"Tetzaveh",            h:"תְּצַוֶּה",               s:"tetzaveh" },
+  { n:"Ki Tisa",             h:"כִּי תִשָּׂא",              s:"ki-tisa" },
+  { n:"Vayakhel",            h:"וַיַּקְהֵל",               s:"vayakhel" },
+  { n:"Pekudei",             h:"פְקוּדֵי",                  s:"pekudei" },
+  { n:"Vayakhel-Pekudei",    h:"וַיַּקְהֵל-פְקוּדֵי",      s:"vayakhel" },
+  { n:"Vayikra",             h:"וַיִּקְרָא",               s:"vayikra" },
+  { n:"Tzav",                h:"צַו",                       s:"tzav" },
+  { n:"Shemini",             h:"שְּׁמִינִי",               s:"shemini" },
+  { n:"Tazria",              h:"תַזְרִיעַ",               s:"tazria" },
+  { n:"Metzora",             h:"מְּצֹרָע",                s:"metzora" },
+  { n:"Tazria-Metzora",      h:"תַזְרִיעַ-מְּצֹרָע",      s:"tazria" },
+  { n:"Achrei Mot",          h:"אַחֲרֵי מוֹת",              s:"achrei-mot" },
+  { n:"Kedoshim",            h:"קְדֹשִׁים",               s:"kedoshim" },
+  { n:"Achrei Mot-Kedoshim", h:"אַחֲרֵי מוֹת-קְדֹשִׁים",   s:"achrei-mot" },
+  { n:"Emor",                h:"אֱמֹר",                    s:"emor" },
+  { n:"Behar",               h:"בְּהַר",                   s:"behar" },
+  { n:"Bechukotai",          h:"בְּחֻקֹּתַי",             s:"bechukotai" },
+  { n:"Behar-Bechukotai",    h:"בְּהַר-בְּחֻקֹּתַי",      s:"behar" },
+  { n:"Bamidbar",            h:"בְּמִדְבַּר",             s:"bamidbar" },
+  { n:"Nasso",               h:"נָשֹׂא",                   s:"nasso" },
+  { n:"Beha'alotcha",        h:"בְּהַעֲלֹתְךָ",            s:"behaalotcha" },
+  { n:"Shelach",             h:"שְׁלַח",                   s:"shelach" },
+  { n:"Korach",              h:"קֹרַח",                    s:"korach" },
+  { n:"Chukat",              h:"חֻקַּת",                   s:"chukat" },
+  { n:"Balak",               h:"בָּלָק",                   s:"balak" },
+  { n:"Chukat-Balak",        h:"חֻקַּת-בָּלָק",            s:"chukat" },
+  { n:"Pinchas",             h:"פִּינְחָס",                s:"pinchas" },
+  { n:"Matot",               h:"מַּטּוֹת",                 s:"matot" },
+  { n:"Masei",               h:"מַסְעֵי",                  s:"masei" },
+  { n:"Matot-Masei",         h:"מַּטּוֹת-מַסְעֵי",         s:"matot" },
+  { n:"Devarim",             h:"דְּבָרִים",               s:"devarim" },
+  { n:"Vaetchanan",          h:"וָאֶתְחַנַּן",             s:"vaetchanan" },
+  { n:"Eikev",               h:"עֵקֶב",                    s:"eikev" },
+  { n:"Re'eh",               h:"רְאֵה",                    s:"reeh" },
+  { n:"Shoftim",             h:"שֹׁפְטִים",               s:"shoftim" },
+  { n:"Ki Teitzei",          h:"כִּי-תֵצֵא",              s:"ki-teitzei" },
+  { n:"Ki Tavo",             h:"כִּי-תָבוֹא",             s:"ki-tavo" },
+  { n:"Nitzavim",            h:"נִצָּבִים",               s:"nitzavim" },
+  { n:"Vayeilech",           h:"וַיֵּלֶךְ",               s:"vayeilech" },
+  { n:"Nitzavim-Vayeilech",  h:"נִצָּבִים-וַיֵּלֶךְ",     s:"nitzavim" },
+  { n:"Ha'azinu",            h:"הַאֲזִינוּ",               s:"haazinu" },
+  { n:"Vezot HaBracha",      h:"וְזֹאת הַבְּרָכָה",        s:"vezot-habracha" },
+];
+
+function jewishNewYear(year) {
+  const months = Math.floor((235 * year - 234) / 19);
+  const parts = 12084 + 13753 * months;
+  let day = months * 29 + Math.floor(parts / 25920);
+  if ((3 * (day + 1)) % 7 < 3) day++;
+  return day;
+}
+
+function isLeapYear(year) { return (7 * year + 1) % 19 < 7; }
+function daysInYear(year) { return jewishNewYear(year + 1) - jewishNewYear(year); }
+
+function daysInMonth(month, year) {
+  switch (month) {
+    case 1: return 30; case 2: return 29; case 3: return 30; case 4: return 29;
+    case 5: return 30; case 6: return 29; case 7: return 30;
+    case 8: return daysInYear(year) % 10 === 5 ? 30 : 29;
+    case 9: return daysInYear(year) % 10 === 3 ? 29 : 30;
+    case 10: return 29; case 11: return 30;
+    case 12: return isLeapYear(year) ? 30 : 29;
+    case 13: return 29; default: return 0;
+  }
+}
+
+function gregorianToJD(y, m, d) {
+  return 367*y - Math.floor(7*(y + Math.floor((m+9)/12))/4)
+    - Math.floor(3*(Math.floor((y+(m-9)/7)/100)+1)/4)
+    + Math.floor(275*m/9) + d + 1721028.5;
+}
+
+function jdToHebrew(jd) {
+  jd = Math.floor(jd - 347996.5);
+  let year = Math.floor(jd * 19 / 6935) + 1;
+  while (jewishNewYear(year + 1) <= jd) year++;
+  while (jewishNewYear(year) > jd) year--;
+  const tishri1 = jewishNewYear(year);
+  let elapsed = jd - tishri1;
+  const months = 12 + (isLeapYear(year) ? 1 : 0);
+  const order = [];
+  for (let m = 7; m <= months + 6; m++) order.push(m > months ? m - months : m);
+  let month = 7, day = elapsed + 1;
+  for (let i = 0; i < order.length - 1; i++) {
+    const len = daysInMonth(order[i], year);
+    if (day <= len) { month = order[i]; break; }
+    day -= len; month = order[i + 1];
+  }
+  return { year, month, day };
+}
+
+const MONTH_NAMES = ['','Nisan','Iyyar','Sivan','Tammuz','Av','Elul','Tishri','Cheshvan','Kislev','Tevet','Shevat','Adar','Adar II'];
+function formatHebrewDate(hd) { return `${hd.day} ${MONTH_NAMES[hd.month]} ${hd.year}`; }
+
+function hDateToAbsolute(year, month, day) {
+  let abs = jewishNewYear(year) - 1 + day;
+  if (month < 7) {
+    const months = 12 + (isLeapYear(year) ? 1 : 0);
+    for (let m = 7; m <= months; m++) abs += daysInMonth(m, year);
+    for (let m = 1; m < month; m++) abs += daysInMonth(m, year);
+  } else {
+    for (let m = 7; m < month; m++) abs += daysInMonth(m, year);
+  }
+  return abs;
+}
+
+function buildSchedule(year, israel) {
+  const len = daysInYear(year);
+  const complete = len === 355 || len === 385;
+  const deficient = len === 353 || len === 383;
+  const leap = isLeapYear(year);
+  const rhDow = (jewishNewYear(year) + 1) % 7;
+
+  const allParshiyot = [
+    "Bereishit","Noach","Lech Lecha","Vayeira","Chayei Sara","Toldot",
+    "Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi",
+    "Shemot","Vaeira","Bo","Beshalach","Yitro","Mishpatim","Terumah",
+    "Tetzaveh","Ki Tisa","Vayakhel","Pekudei","Vayikra","Tzav","Shemini",
+    "Tazria","Metzora","Achrei Mot","Kedoshim","Emor","Behar","Bechukotai",
+    "Bamidbar","Nasso","Beha'alotcha","Shelach","Korach","Chukat","Balak",
+    "Pinchas","Matot","Masei","Devarim","Vaetchanan","Eikev","Re'eh",
+    "Shoftim","Ki Teitzei","Ki Tavo","Nitzavim","Vayeilech","Ha'azinu"
+  ];
+
+  const combineOptions = israel
+    ? ["Vayakhel-Pekudei","Tazria-Metzora","Achrei Mot-Kedoshim","Behar-Bechukotai","Chukat-Balak","Matot-Masei","Nitzavim-Vayeilech"]
+    : ["Vayakhel-Pekudei","Tazria-Metzora","Achrei Mot-Kedoshim","Behar-Bechukotai","Matot-Masei","Nitzavim-Vayeilech"];
+
+  const pairs = {
+    "Vayakhel-Pekudei":      ["Vayakhel","Pekudei"],
+    "Tazria-Metzora":        ["Tazria","Metzora"],
+    "Achrei Mot-Kedoshim":   ["Achrei Mot","Kedoshim"],
+    "Behar-Bechukotai":      ["Behar","Bechukotai"],
+    "Chukat-Balak":          ["Chukat","Balak"],
+    "Matot-Masei":           ["Matot","Masei"],
+    "Nitzavim-Vayeilech":    ["Nitzavim","Vayeilech"],
+  };
+
+  const table = {
+    "2-d-R-D":47,"2-d-R-IL":47,"2-r-R-D":47,"2-r-R-IL":47,
+    "3-c-R-D":49,"3-c-R-IL":49,"5-r-R-D":48,"5-r-R-IL":48,
+    "5-c-R-D":49,"5-c-R-IL":49,"7-d-R-D":47,"7-d-R-IL":47,
+    "7-r-R-D":48,"7-r-R-IL":48,
+    "2-d-L-D":51,"2-d-L-IL":52,"2-r-L-D":51,"2-r-L-IL":52,
+    "2-c-L-D":51,"2-c-L-IL":52,"3-r-L-D":51,"3-r-L-IL":52,
+    "3-c-L-D":51,"3-c-L-IL":52,"5-d-L-D":51,"5-d-L-IL":52,
+    "5-r-L-D":51,"5-r-L-IL":52,"5-c-L-D":51,"5-c-L-IL":52,
+    "7-d-L-D":51,"7-d-L-IL":52,"7-r-L-D":51,"7-r-L-IL":52,
+    "7-c-L-D":51,"7-c-L-IL":52,
+  };
+
+  const key = `${rhDow}-${complete?'c':deficient?'d':'r'}-${leap?'L':'R'}-${israel?'IL':'D'}`;
+  const numSedras = table[key] || (leap ? 51 : 48);
+  let needed = 53 - numSedras;
+  let sequence = [...allParshiyot];
+
+  for (const combo of combineOptions) {
+    if (needed <= 0) break;
+    const [a, b] = pairs[combo];
+    const ia = sequence.indexOf(a);
+    if (ia !== -1 && sequence[ia + 1] === b) { sequence.splice(ia, 2, combo); needed--; }
+  }
+
+  return sequence.map(n => P.find(x => x.n === n)).filter(Boolean);
+}
+
+let region = 'diaspora';
+
+function setRegion(r) {
+  region = r;
+  document.getElementById('btn-diaspora').classList.toggle('active', r === 'diaspora');
+  document.getElementById('btn-israel').classList.toggle('active', r === 'israel');
+}
+
+function getShabbatOnOrAfter(gy, gm, gd) {
+  const d = new Date(gy, gm - 1, gd);
+  const add = d.getDay() === 6 ? 0 : (6 - d.getDay());
+  d.setDate(d.getDate() + add);
+  return d;
+}
+
+function showError(msg) {
+  const el = document.getElementById('error-msg');
+  el.textContent = msg;
+  el.classList.add('visible');
+  document.getElementById('result').classList.remove('visible');
+}
+
+function lookupParsha() {
+  document.getElementById('error-msg').classList.remove('visible');
+  const val = document.getElementById('datepicker').value;
+  if (!val) { showError('Please select a date first.'); return; }
+
+  const [gy, gm, gd] = val.split('-').map(Number);
+
+  // Convert the entered date to its Hebrew equivalent (the actual Hebrew birthday)
+  const jdBirthday = gregorianToJD(gy, gm, gd);
+  const hdBirthday = jdToHebrew(jdBirthday);
+
+  // Find the Shabbat on or after the entered date for the parsha lookup
+  const shabbat = getShabbatOnOrAfter(gy, gm, gd);
+  const jd = gregorianToJD(shabbat.getFullYear(), shabbat.getMonth() + 1, shabbat.getDate());
+  const hd = jdToHebrew(jd);
+  const israel = region === 'israel';
+
+  const absShabbat = hDateToAbsolute(hd.year, hd.month, hd.day);
+  const absRH = jewishNewYear(hd.year);
+  const rhDow = (absRH + 1) % 7;
+  const absFirstShabbat = absRH + (rhDow === 6 ? 0 : 6 - rhDow);
+  const weekIdx = Math.round((absShabbat - absFirstShabbat) / 7);
+
+  let schedule, offset;
+  if (weekIdx < 0) {
+    const prevRH = jewishNewYear(hd.year - 1);
+    const prevRhDow = (prevRH + 1) % 7;
+    const prevFirstShabbat = prevRH + (prevRhDow === 6 ? 0 : 6 - prevRhDow);
+    schedule = buildSchedule(hd.year - 1, israel);
+    offset = Math.round((absShabbat - prevFirstShabbat) / 7);
+  } else {
+    schedule = buildSchedule(hd.year, israel);
+    offset = weekIdx;
+  }
+
+  let parsha = offset >= schedule.length
+    ? buildSchedule(hd.year + 1, israel)[offset - schedule.length]
+    : schedule[offset];
+
+  if (!parsha) { showError('This Shabbat falls on a major holiday — no regular parsha is read.'); return; }
+
+  document.getElementById('hebrew-birthday').textContent = formatHebrewDate(hdBirthday);
+  document.getElementById('shabbat-date').textContent =
+    'Shabbat · ' + shabbat.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+  document.getElementById('parsha-name').textContent = parsha.n;
+  document.getElementById('parsha-hebrew').textContent = parsha.h;
+
+  const noteEl = document.getElementById('combined-note');
+  if (parsha.n.includes('-')) {
+    noteEl.textContent = 'These two portions are combined into a double parsha this year.';
+    noteEl.style.display = 'block';
+  } else {
+    noteEl.style.display = 'none';
+  }
+
+  const link = document.getElementById('map-link');
+  link.href = 'https://parshamap.com/?parsha=' + parsha.s;
+
+  document.getElementById('result').classList.add('visible');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') lookupParsha(); });
+</script>
+</body>
+</html>

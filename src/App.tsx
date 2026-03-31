@@ -20,6 +20,7 @@ import {
   HelpCircle,
   Mail,
   Library,
+  CalendarSearch,
 } from 'lucide-react'
 
 // Inline X (Twitter) logo SVG
@@ -60,6 +61,7 @@ function LogoLockup() {
 export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
+  const setParshaInitialized = useAppStore((s) => s.setParshaInitialized)
   const t = useTranslation()
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('text')
@@ -67,12 +69,15 @@ export default function App() {
   const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [showLibrary, setShowLibrary] = useState(false)
 
-  // On load: read ?parsha= from URL and select it
+  // On load: read ?parsha= from URL and select it (mark initialized so auto-select doesn't override)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const parshaId = params.get('parsha')
-    if (parshaId) setSelectedParsha(parshaId)
-  }, [setSelectedParsha])
+    if (parshaId) {
+      setSelectedParsha(parshaId)
+      setParshaInitialized()
+    }
+  }, [setSelectedParsha, setParshaInitialized])
 
   // Browser back/forward navigation
   useEffect(() => {
@@ -155,6 +160,16 @@ export default function App() {
             <span className="hidden lg:inline">{t.header.library}</span>
           </button>
 
+          {/* Date Lookup */}
+          <a
+            href="/parsha-lookup.html"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded font-label text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
+            title="What was your Bar/Bat Mitzvah parsha?"
+          >
+            <CalendarSearch size={13} />
+            <span className="hidden lg:inline">Date Lookup</span>
+          </a>
+
           {/* Subscribe */}
           <button
             onClick={() => setNewsletterOpen(true)}
@@ -231,6 +246,13 @@ export default function App() {
                 {parsha.name}
               </span>
             )}
+            <a
+              href="/parsha-lookup.html"
+              className="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors"
+              title="Date Lookup"
+            >
+              <CalendarSearch size={15} />
+            </a>
             <button
               onClick={() => setNewsletterOpen(true)}
               className="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors"
