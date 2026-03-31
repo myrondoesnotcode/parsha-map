@@ -17,12 +17,21 @@ import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe, Crosshair } from 'luci
 
 function MapResizeHandler() {
   const map = useMap()
+  const triggerFitBounds = useAppStore((s) => s.triggerFitBounds)
   useEffect(() => {
     const container = map.getContainer()
-    const observer = new ResizeObserver(() => { map.invalidateSize() })
+    let wasHidden = container.offsetWidth === 0
+    const observer = new ResizeObserver(() => {
+      const isNowVisible = container.offsetWidth > 0
+      map.invalidateSize()
+      if (wasHidden && isNowVisible) {
+        triggerFitBounds()
+        wasHidden = false
+      }
+    })
     observer.observe(container)
     return () => observer.disconnect()
-  }, [map])
+  }, [map, triggerFitBounds])
   return null
 }
 
