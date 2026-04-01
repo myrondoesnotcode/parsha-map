@@ -1237,123 +1237,95 @@ async function generateShareCard() {
   const watchout  = document.getElementById('result-watchout').textContent;
   const thrive    = document.getElementById('result-thrive').textContent;
 
-  const CW = 1080;
-  const PAD = 68;
+  // Fixed IG story dimensions (9:16)
+  const CW = 1080, CH = 1920;
+  const PAD = 90;
   const W = CW - PAD * 2;
-  const MAX_H = 3600;
 
-  // Draw on an oversized canvas, then crop to content
-  const tmp = document.createElement('canvas');
-  tmp.width = CW;
-  tmp.height = MAX_H;
-  const ctx = tmp.getContext('2d');
+  const canvas = document.createElement('canvas');
+  canvas.width = CW;
+  canvas.height = CH;
+  const ctx = canvas.getContext('2d');
 
   // Background
   ctx.fillStyle = '#0f0d09';
-  ctx.fillRect(0, 0, CW, MAX_H);
-  const grad = ctx.createLinearGradient(0, 0, CW, MAX_H);
-  grad.addColorStop(0, 'rgba(108, 47, 0, 0.10)');
+  ctx.fillRect(0, 0, CW, CH);
+  const grad = ctx.createLinearGradient(0, 0, CW, CH);
+  grad.addColorStop(0, 'rgba(108, 47, 0, 0.12)');
   grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
   ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, CW, MAX_H);
+  ctx.fillRect(0, 0, CW, CH);
 
   let y = PAD;
 
-  // ── Header area ──
+  // ── Header ──
   ctx.fillStyle = '#6c2f00';
   ctx.fillRect(PAD, y, 40, 2);
-  y += 24;
+  y += 30;
 
   ctx.fillStyle = '#6c4a28';
-  ctx.font = '600 14px Inter, sans-serif';
+  ctx.font = '600 15px Inter, sans-serif';
   ctx.fillText('PARSHA HOROSCOPE', PAD, y);
-  y += 40;
+  y += 50;
 
   ctx.fillStyle = '#c9a052';
-  ctx.font = '600 26px Inter, sans-serif';
+  ctx.font = '600 28px Inter, sans-serif';
   ctx.fillText(parsha, PAD, y);
-  y += 14;
+  y += 16;
 
   ctx.fillStyle = '#f0ead6';
-  ctx.font = '600 58px "Noto Serif", Georgia, serif';
-  const archLines = wrapText(ctx, archetype, PAD, y + 56, W, 68);
-  y += archLines * 68 + 56 + 24;
+  ctx.font = '600 60px "Noto Serif", Georgia, serif';
+  const archLines = wrapText(ctx, archetype, PAD, y + 58, W, 72);
+  y += archLines * 72 + 58 + 36;
 
   // ── Divider ──
   drawDiv(ctx, PAD, y, CW - PAD);
-  y += 28;
+  y += 36;
 
   // ── Full reading ──
   ctx.fillStyle = '#d4c8b0';
   ctx.font = '20px "Noto Serif", Georgia, serif';
   const readLines = wrapText(ctx, reading, PAD, y, W, 33);
-  y += readLines * 33 + 28;
+  y += readLines * 33 + 36;
 
   // ── Divider ──
   drawDiv(ctx, PAD, y, CW - PAD);
-  y += 32;
+  y += 36;
 
-  // ── Question (slightly larger, quoted) ──
+  // ── Question ──
   ctx.fillStyle = '#6c4a28';
-  ctx.font = '600 12px Inter, sans-serif';
+  ctx.font = '600 13px Inter, sans-serif';
   ctx.fillText('YOUR LIFE\u2019S QUESTION', PAD, y);
-  y += 24;
+  y += 28;
 
   ctx.fillStyle = '#d4c8b0';
   ctx.font = 'italic 24px "Noto Serif", Georgia, serif';
   const qLines = wrapText(ctx, '\u201c' + question + '\u201d', PAD, y, W, 36);
-  y += qLines * 36 + 24;
+  y += qLines * 36 + 28;
 
-  // ── Shadow ──
+  // ── Sections ──
   y = drawSect(ctx, 'YOUR SHADOW', shadow, PAD, y, W, true);
-
-  // ── People ──
   y = drawSect(ctx, 'YOUR PEOPLE', people, PAD, y, W, true);
-
-  // ── Watch out for ──
   y = drawSect(ctx, 'WATCH OUT FOR', watchout, PAD, y, W, true);
-
-  // ── Where you thrive (not italic) ──
   y = drawSect(ctx, 'WHERE YOU THRIVE', thrive, PAD, y, W, false);
 
-  y += 12;
-
-  // ── Bottom divider + branding ──
-  drawDiv(ctx, PAD, y, CW - PAD);
-  y += 32;
+  // ── Branding anchored to bottom ──
+  const brandY = CH - PAD;
+  drawDiv(ctx, PAD, brandY - 40, CW - PAD);
 
   ctx.fillStyle = '#c9a052';
   ctx.font = '600 20px Inter, sans-serif';
-  ctx.fillText('parshamap.com/horoscope', PAD, y + 18);
+  ctx.fillText('parshamap.com/horoscope', PAD, brandY);
 
   // Pin mark
   ctx.fillStyle = '#c9a052';
-  const px = CW - PAD - 8, py = y + 12;
+  const px = CW - PAD - 8, py = brandY - 6;
   ctx.beginPath(); ctx.arc(px, py - 8, 7, 0, Math.PI * 2); ctx.fill();
   ctx.beginPath();
   ctx.moveTo(px - 7, py - 8);
   ctx.quadraticCurveTo(px, py + 4, px, py + 4);
   ctx.quadraticCurveTo(px + 7, py - 8, px + 7, py - 8);
   ctx.fill();
-
-  y += 18 + PAD;
-
-  // ── Crop to content height ──
-  const finalH = Math.ceil(y);
-  const canvas = document.createElement('canvas');
-  canvas.width = CW;
-  canvas.height = finalH;
-  const fctx = canvas.getContext('2d');
-  // Re-draw a clean background at the correct size
-  fctx.fillStyle = '#0f0d09';
-  fctx.fillRect(0, 0, CW, finalH);
-  const g2 = fctx.createLinearGradient(0, 0, CW, finalH);
-  g2.addColorStop(0, 'rgba(108, 47, 0, 0.10)');
-  g2.addColorStop(1, 'rgba(0, 0, 0, 0)');
-  fctx.fillStyle = g2;
-  fctx.fillRect(0, 0, CW, finalH);
-  // Copy content from tmp (skip tmp's background by using compositing)
-  fctx.drawImage(tmp, 0, 0, CW, finalH, 0, 0, CW, finalH);
 
   // ── Share or download ──
   const btn = document.querySelector('.share-btn');
