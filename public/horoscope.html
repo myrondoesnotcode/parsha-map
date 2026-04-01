@@ -494,7 +494,8 @@ function buildSchedule(year, israel) {
   const complete = len === 355 || len === 385;
   const deficient = len === 353 || len === 383;
   const leap = isLeapYear(year);
-  const rhDow = (jewishNewYear(year) + 1) % 7;
+  const rhJsDow = (jewishNewYear(year) + 1) % 7; // 0=Sun..6=Sat
+  const rhDow = rhJsDow + 1; // Hebrew day numbering: 2=Mon, 3=Tue, 5=Thu, 7=Sat
 
   const combineOptions = israel
     ? ["Vayakhel-Pekudei","Tazria-Metzora","Achrei Mot-Kedoshim","Behar-Bechukotai","Chukat-Balak","Matot-Masei","Nitzavim-Vayeilech"]
@@ -1150,18 +1151,23 @@ function revealPortion() {
   const hd = jdToHebrew(jd);
 
   const absShabbat = hDateToAbsolute(hd.year, hd.month, hd.day);
-  const absRH = jewishNewYear(hd.year);
-  const rhDow = (absRH + 1) % 7;
-  const absFirstShabbat = absRH + (rhDow === 6 ? 0 : 6 - rhDow);
-  const weekIdx = Math.round((absShabbat - absFirstShabbat) / 7);
+
+  // Bereishit is read the first Shabbat after Simchat Torah (Tishri 23, Diaspora).
+  // The schedule built by buildSchedule starts at Bereishit (index 0), so weekIdx
+  // must count from that Shabbat, not from the first Shabbat of the Hebrew year.
+  function bereishitShabbat(yr) {
+    const absSimchatTorah = hDateToAbsolute(yr, 7, 23);
+    const stDow = (absSimchatTorah + 1) % 7; // JS day-of-week
+    return absSimchatTorah + (stDow === 6 ? 7 : 6 - stDow);
+  }
+
+  const absBereishitShabbat = bereishitShabbat(hd.year);
+  const weekIdx = Math.round((absShabbat - absBereishitShabbat) / 7);
 
   let schedule, offset;
   if (weekIdx < 0) {
-    const prevRH = jewishNewYear(hd.year - 1);
-    const prevRhDow = (prevRH + 1) % 7;
-    const prevFirstShabbat = prevRH + (prevRhDow === 6 ? 0 : 6 - prevRhDow);
     schedule = buildSchedule(hd.year - 1, false);
-    offset = Math.round((absShabbat - prevFirstShabbat) / 7);
+    offset = Math.round((absShabbat - bereishitShabbat(hd.year - 1)) / 7);
   } else {
     schedule = buildSchedule(hd.year, false);
     offset = weekIdx;
