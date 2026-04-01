@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parsha Horoscope — Parshamap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&family=Frank+Ruhl+Libre:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --surface:            #fcf9f0;
+    --surface-low:        #f6f3ea;
+    --surface-container:  #f1eee5;
+    --surface-high:       #ebe8df;
+    --surface-highest:    #e5e2da;
+    --on-surface:         #1c1c17;
+    --on-surface-variant: #54433a;
+    --primary:            #6c2f00;
+    --primary-container:  #8b4513;
+    --primary-fixed:      #ffdbc9;
+    --outline:            #877369;
+    --outline-variant:    #dac2b6;
+    --tertiary:           #00446c;
+    --error:              #ba1a1a;
+  }
+
+  html, body {
+    min-height: 100%;
+    background: var(--surface);
+    color: var(--on-surface);
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* ── Header ── */
+  header {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 16px;
+    background: var(--surface-low);
+    border-bottom: 1px solid var(--outline-variant);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .logo-lockup {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    line-height: 1;
+  }
+
+  .logo-name {
+    font-family: 'Frank Ruhl Libre', serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--on-surface);
+    letter-spacing: 0.02em;
+  }
+
+  .logo-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--primary);
+  }
+
+  .header-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--outline-variant);
+  }
+
+  .header-crumb {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--on-surface-variant);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── Main layout ── */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 48px 16px 80px;
+  }
+
+  .page-content {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  /* ── Page title ── */
+  .page-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--on-surface);
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .page-subtitle {
+    font-size: 13px;
+    color: var(--on-surface-variant);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+
+  /* ── Form ── */
+  .field-label {
+    display: block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: 6px;
+  }
+
+  input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    background: white;
+    border: 1px solid var(--outline-variant);
+    border-radius: 2px;
+    color: var(--on-surface);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input[type="date"]:focus {
+    border-color: var(--primary);
+  }
+
+  button.reveal {
+    width: 100%;
+    padding: 11px 16px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 2px;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  button.reveal:hover { background: var(--primary-container); }
+
+  /* ── Error ── */
+  .error {
+    font-size: 12px;
+    color: var(--error);
+    margin-top: 10px;
+    display: none;
+  }
+
+  .error.visible { display: block; }
+
+  /* ── Result card ── */
+  .result {
+    margin-top: 32px;
+    padding: 32px;
+    background: var(--surface-low);
+    border: 1px solid var(--outline-variant);
+    border-radius: 2px;
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .result.visible { display: block; }
+
+  .result-parsha-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+
+  .result-archetype {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--on-surface);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+
+  .result-hebrew-date {
+    font-size: 12px;
+    color: var(--on-surface-variant);
+    margin-bottom: 0;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--outline-variant);
+    margin: 24px 0;
+  }
+
+  .result-reading {
+    font-family: 'Newsreader', serif;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--on-surface);
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 6px;
+    margin-top: 20px;
+  }
+
+  .section-text {
+    font-family: 'Newsreader', serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--on-surface-variant);
+    font-style: italic;
+  }
+
+  .section-thrive {
+    font-style: normal;
+    color: var(--on-surface);
+  }
+
+  .share-btn {
+    margin-top: 28px;
+    width: 100%;
+    padding: 11px 16px;
+    background: transparent;
+    border: 1px solid var(--outline-variant);
+    border-radius: 2px;
+    color: var(--on-surface-variant);
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .share-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-fixed);
+  }
+
+  .map-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--primary);
+    text-decoration: none;
+    transition: color 0.15s;
+    margin-bottom: 16px;
+    display: flex;
+  }
+
+  .map-link:hover { color: var(--primary-container); }
+
+  .map-link svg { transition: transform 0.15s; }
+  .map-link:hover svg { transform: translateX(2px); }
+
+  /* ── Footer ── */
+  footer {
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 11px;
+    color: var(--outline);
+    border-top: 1px solid var(--outline-variant);
+  }
+
+  footer a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 480px) {
+    main { padding: 32px 16px 60px; }
+    .page-title { font-size: 1.5rem; }
+    .result { padding: 24px 20px; }
+    .result-archetype { font-size: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo-mark" title="Back to Parshamap">
+    <svg width="14" height="18" viewBox="0 0 20 24" fill="none" aria-hidden="true">
+      <path d="M10 0C4.477 0 0 4.477 0 10c0 7.5 10 14 10 14s10-6.5 10-14C20 4.477 15.523 0 10 0z" fill="#6c2f00"/>
+      <circle cx="10" cy="10" r="3.5" fill="#fcf9f0"/>
+    </svg>
+    <span class="logo-lockup">
+      <span class="logo-name">Parsha</span>
+      <span class="logo-sub">Map</span>
+    </span>
+  </a>
+  <span class="header-divider"></span>
+  <span class="header-crumb">Horoscope</span>
+</header>
+
+<main>
+  <div class="page-content">
+    <h1 class="page-title">Your Parsha Horoscope</h1>
+    <p class="page-subtitle">Enter your birthday to discover the Torah portion of your birth week and what it reveals about you.</p>
+
+    <label class="field-label" for="datepicker">Birthday</label>
+    <input type="date" id="datepicker" min="1900-01-01" max="2025-12-31" />
+
+    <button class="reveal" onclick="revealPortion()">Reveal My Portion</button>
+    <div class="error" id="error-msg"></div>
+
+    <div class="result" id="result">
+      <div class="result-parsha-label" id="result-parsha"></div>
+      <div class="result-archetype" id="result-archetype"></div>
+      <div class="result-hebrew-date" id="result-hebrew-date"></div>
+      <div class="divider"></div>
+      <div class="result-reading" id="result-reading"></div>
+      <div class="divider"></div>
+      <div class="section-label">Your life's question</div>
+      <div class="section-text" id="result-question"></div>
+      <div class="section-label">Your shadow</div>
+      <div class="section-text" id="result-shadow"></div>
+      <div class="section-label">Your people</div>
+      <div class="section-text" id="result-people"></div>
+      <div class="section-label">Watch out for</div>
+      <div class="section-text" id="result-watchout"></div>
+      <div class="section-label">Where you thrive</div>
+      <div class="section-text section-thrive" id="result-thrive"></div>
+      <div class="divider"></div>
+      <a class="map-link" id="result-map-link" href="/" target="_blank">
+        Read this parsha on Parshamap
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <button class="share-btn" onclick="generateShareCard()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
+        </svg>
+        Save share image
+      </button>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <a href="/">← Back to Parshamap</a>
+</footer>
+
+<script>
+// ── Hebrew calendar (pure JS, no CDN) ─────────────────────────────────────────
+
+function jewishNewYear(year) {
+  const months = Math.floor((235 * year - 234) / 19);
+  const parts = 12084 + 13753 * months;
+  let day = months * 29 + Math.floor(parts / 25920);
+  if ((3 * (day + 1)) % 7 < 3) day++;
+  return day;
+}
+
+function isLeapYear(year) { return (7 * year + 1) % 19 < 7; }
+function daysInYear(year) { return jewishNewYear(year + 1) - jewishNewYear(year); }
+
+function daysInMonth(month, year) {
+  switch (month) {
+    case 1: return 30; case 2: return 29; case 3: return 30; case 4: return 29;
+    case 5: return 30; case 6: return 29; case 7: return 30;
+    case 8: return daysInYear(year) % 10 === 5 ? 30 : 29;
+    case 9: return daysInYear(year) % 10 === 3 ? 29 : 30;
+    case 10: return 29; case 11: return 30;
+    case 12: return isLeapYear(year) ? 30 : 29;
+    case 13: return 29; default: return 0;
+  }
+}
+
+function gregorianToJD(y, m, d) {
+  return 367*y - Math.floor(7*(y + Math.floor((m+9)/12))/4)
+    - Math.floor(3*(Math.floor((y+(m-9)/7)/100)+1)/4)
+    + Math.floor(275*m/9) + d + 1721028.5;
+}
+
+function jdToHebrew(jd) {
+  jd = Math.floor(jd - 347996.5);
+  let year = Math.floor(jd * 19 / 6935) + 1;
+  while (jewishNewYear(year + 1) <= jd) year++;
+  while (jewishNewYear(year) > jd) year--;
+  const tishri1 = jewishNewYear(year);
+  let elapsed = jd - tishri1;
+  const months = 12 + (isLeapYear(year) ? 1 : 0);
+  const order = [];
+  for (let m = 7; m <= months + 6; m++) order.push(m > months ? m - months : m);
+  let month = 7, day = elapsed + 1;
+  for (let i = 0; i < order.length - 1; i++) {
+    const len = daysInMonth(order[i], year);
+    if (day <= len) { month = order[i]; break; }
+    day -= len; month = order[i + 1];
+  }
+  return { year, month, day };
+}
+
+const MONTH_NAMES = ['','Nisan','Iyyar','Sivan','Tammuz','Av','Elul','Tishri','Cheshvan','Kislev','Tevet','Shevat','Adar','Adar II'];
+function formatHebrewDate(hd) { return `${hd.day} ${MONTH_NAMES[hd.month]} ${hd.year}`; }
+
+function hDateToAbsolute(year, month, day) {
+  let abs = jewishNewYear(year) - 1 + day;
+  if (month < 7) {
+    const months = 12 + (isLeapYear(year) ? 1 : 0);
+    for (let m = 7; m <= months; m++) abs += daysInMonth(m, year);
+    for (let m = 1; m < month; m++) abs += daysInMonth(m, year);
+  } else {
+    for (let m = 7; m < month; m++) abs += daysInMonth(m, year);
+  }
+  return abs;
+}
+
+// All parshiyot with display names
+const ALL_PARSHIYOT = [
+  "Bereishit","Noach","Lech Lecha","Vayeira","Chayei Sara","Toldot",
+  "Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi",
+  "Shemot","Vaeira","Bo","Beshalach","Yitro","Mishpatim","Terumah",
+  "Tetzaveh","Ki Tisa","Vayakhel","Pekudei","Vayikra","Tzav","Shemini",
+  "Tazria","Metzora","Achrei Mot","Kedoshim","Emor","Behar","Bechukotai",
+  "Bamidbar","Nasso","Beha'alotcha","Shelach","Korach","Chukat","Balak",
+  "Pinchas","Matot","Masei","Devarim","Vaetchanan","Eikev","Re'eh",
+  "Shoftim","Ki Teitzei","Ki Tavo","Nitzavim","Vayeilech","Ha'azinu"
+];
+
+function buildSchedule(year, israel) {
+  const len = daysInYear(year);
+  const complete = len === 355 || len === 385;
+  const deficient = len === 353 || len === 383;
+  const leap = isLeapYear(year);
+  const rhDow = (jewishNewYear(year) + 1) % 7;
+
+  const combineOptions = israel
+    ? ["Vayakhel-Pekudei","Tazria-Metzora","Achrei Mot-Kedoshim","Behar-Bechukotai","Chukat-Balak","Matot-Masei","Nitzavim-Vayeilech"]
+    : ["Vayakhel-Pekudei","Tazria-Metzora","Achrei Mot-Kedoshim","Behar-Bechukotai","Matot-Masei","Nitzavim-Vayeilech"];
+
+  const pairs = {
+    "Vayakhel-Pekudei":     ["Vayakhel","Pekudei"],
+    "Tazria-Metzora":       ["Tazria","Metzora"],
+    "Achrei Mot-Kedoshim":  ["Achrei Mot","Kedoshim"],
+    "Behar-Bechukotai":     ["Behar","Bechukotai"],
+    "Chukat-Balak":         ["Chukat","Balak"],
+    "Matot-Masei":          ["Matot","Masei"],
+    "Nitzavim-Vayeilech":   ["Nitzavim","Vayeilech"],
+  };
+
+  const table = {
+    "2-d-R-D":47,"2-d-R-IL":47,"2-r-R-D":47,"2-r-R-IL":47,
+    "3-c-R-D":49,"3-c-R-IL":49,"5-r-R-D":48,"5-r-R-IL":48,
+    "5-c-R-D":49,"5-c-R-IL":49,"7-d-R-D":47,"7-d-R-IL":47,
+    "7-r-R-D":48,"7-r-R-IL":48,
+    "2-d-L-D":51,"2-d-L-IL":52,"2-r-L-D":51,"2-r-L-IL":52,
+    "2-c-L-D":51,"2-c-L-IL":52,"3-r-L-D":51,"3-r-L-IL":52,
+    "3-c-L-D":51,"3-c-L-IL":52,"5-d-L-D":51,"5-d-L-IL":52,
+    "5-r-L-D":51,"5-r-L-IL":52,"5-c-L-D":51,"5-c-L-IL":52,
+    "7-d-L-D":51,"7-d-L-IL":52,"7-r-L-D":51,"7-r-L-IL":52,
+    "7-c-L-D":51,"7-c-L-IL":52,
+  };
+
+  const key = `${rhDow}-${complete?'c':deficient?'d':'r'}-${leap?'L':'R'}-D`;
+  const numSedras = table[key] || (leap ? 51 : 48);
+  let needed = 53 - numSedras;
+  let sequence = [...ALL_PARSHIYOT];
+
+  for (const combo of combineOptions) {
+    if (needed <= 0) break;
+    const [a, b] = pairs[combo];
+    const ia = sequence.indexOf(a);
+    if (ia !== -1 && sequence[ia + 1] === b) { sequence.splice(ia, 2, combo); needed--; }
+  }
+
+  return sequence;
+}
+
+function getShabbatOnOrAfter(gy, gm, gd) {
+  const d = new Date(gy, gm - 1, gd);
+  const add = d.getDay() === 6 ? 0 : (6 - d.getDay());
+  d.setDate(d.getDate() + add);
+  return d;
+}
+
+// ── Parshamap URL slugs (for "Read on Parshamap" link) ───────────────────────
+const PARSHA_SLUG = {
+  "Bereishit":"bereishit","Noach":"noach","Lech Lecha":"lech-lecha",
+  "Vayera":"vayeira","Chayei Sara":"chayei-sara","Toldot":"toldot",
+  "Vayetzei":"vayeitzei","Vayishlach":"vayishlach","Vayeshev":"vayeishev",
+  "Miketz":"miketz","Vayigash":"vayigash","Vayechi":"vayechi",
+  "Shemot":"shemot","Va'era":"vaeira","Bo":"bo","Beshalach":"beshalach",
+  "Yitro":"yitro","Mishpatim":"mishpatim","Terumah":"terumah",
+  "Tetzaveh":"tetzaveh","Ki Tisa":"ki-tisa","Vayakhel":"vayakhel",
+  "Pekudei":"pekudei","Vayikra":"vayikra","Tzav":"tzav","Shemini":"shemini",
+  "Tazria":"tazria","Metzora":"metzora","Achrei Mot":"achrei-mot",
+  "Kedoshim":"kedoshim","Emor":"emor","Behar":"behar","Bechukotai":"bechukotai",
+  "Bamidbar":"bamidbar","Naso":"nasso","Beha'alotcha":"behaalotcha",
+  "Shelach":"shelach","Korach":"korach","Chukat":"chukat","Balak":"balak",
+  "Pinchas":"pinchas","Matot":"matot","Masei":"masei","Devarim":"devarim",
+  "Vaetchanan":"vaetchanan","Ekev":"eikev","Re'eh":"reeh","Shoftim":"shoftim",
+  "Ki Teitzei":"ki-teitzei","Ki Tavo":"ki-tavo","Nitzavim":"nitzavim",
+  "Vayelech":"vayeilech","Ha'azinu":"haazinu","V'Zot HaBerachah":"vezot-habracha",
+};
+
+// ── Mapping from schedule names to parshaData keys ────────────────────────────
+const SCHEDULE_TO_DATA = {
+  "Bereishit":          "Bereishit",
+  "Noach":              "Noach",
+  "Lech Lecha":         "Lech Lecha",
+  "Vayeira":            "Vayera",
+  "Chayei Sara":        "Chayei Sara",
+  "Toldot":             "Toldot",
+  "Vayeitzei":          "Vayetzei",
+  "Vayishlach":         "Vayishlach",
+  "Vayeishev":          "Vayeshev",
+  "Miketz":             "Miketz",
+  "Vayigash":           "Vayigash",
+  "Vayechi":            "Vayechi",
+  "Shemot":             "Shemot",
+  "Vaeira":             "Va'era",
+  "Bo":                 "Bo",
+  "Beshalach":          "Beshalach",
+  "Yitro":              "Yitro",
+  "Mishpatim":          "Mishpatim",
+  "Terumah":            "Terumah",
+  "Tetzaveh":           "Tetzaveh",
+  "Ki Tisa":            "Ki Tisa",
+  "Vayakhel":           "Vayakhel",
+  "Pekudei":            "Pekudei",
+  "Vayakhel-Pekudei":   "Vayakhel",
+  "Vayikra":            "Vayikra",
+  "Tzav":               "Tzav",
+  "Shemini":            "Shemini",
+  "Tazria":             "Tazria",
+  "Metzora":            "Metzora",
+  "Tazria-Metzora":     "Tazria",
+  "Achrei Mot":         "Achrei Mot",
+  "Kedoshim":           "Kedoshim",
+  "Achrei Mot-Kedoshim":"Achrei Mot",
+  "Emor":               "Emor",
+  "Behar":              "Behar",
+  "Bechukotai":         "Bechukotai",
+  "Behar-Bechukotai":   "Behar",
+  "Bamidbar":           "Bamidbar",
+  "Nasso":              "Naso",
+  "Beha'alotcha":       "Beha'alotcha",
+  "Shelach":            "Shelach",
+  "Korach":             "Korach",
+  "Chukat":             "Chukat",
+  "Balak":              "Balak",
+  "Chukat-Balak":       "Chukat",
+  "Pinchas":            "Pinchas",
+  "Matot":              "Matot",
+  "Masei":              "Masei",
+  "Matot-Masei":        "Matot",
+  "Devarim":            "Devarim",
+  "Vaetchanan":         "Vaetchanan",
+  "Eikev":              "Ekev",
+  "Re'eh":              "Re'eh",
+  "Shoftim":            "Shoftim",
+  "Ki Teitzei":         "Ki Teitzei",
+  "Ki Tavo":            "Ki Tavo",
+  "Nitzavim":           "Nitzavim",
+  "Vayeilech":          "Vayelech",
+  "Nitzavim-Vayeilech": "Nitzavim",
+  "Ha'azinu":           "Ha'azinu",
+  "Vezot HaBracha":     "V'Zot HaBerachah",
+};
+
+// ── Parsha horoscope data ─────────────────────────────────────────────────────
+const parshaData = {
+  "Bereishit": {
+    archetype: "The Builder",
+    reading: "You think in legacy. Bereishit people are original thinkers — not in the trendy sense, but in the literal sense. You see blank space where others see nothing, and you feel the pull to fill it with something that matters. You're not afraid of starting from zero. In fact, you're most alive there. The challenge is that you can get so absorbed in creating the next thing that you forget to tend to what you've already built. Born in Tishrei, the month of judgment and balance, you carry an internal scales that's always weighing — what's worth building, what's worth keeping, what needs to go. In relationships you're generous with your vision but sometimes forget to ask what the other person is actually building toward. The ones worth keeping are the ones who have their own blueprint.",
+    question: "Am I building something that will outlast me?",
+    shadow: "You can be so focused on the vision that the people inside it feel like supporting characters.",
+    people: "Those who think in long arcs and care about legacy. And the ones who can sit with you in the chaos of something new and not need it to make sense yet.",
+    watchout: "People who want to live inside what you create without contributing to it."
+  },
+  "Noach": {
+    archetype: "The Survivor",
+    reading: "You have a quiet stubbornness that people underestimate until they really need it. Noach people are built for the long haul — not the dramatic gesture, but the daily showing up when everything around them is falling apart. You've weathered something. Maybe more than one something. And you came out the other side not bitter, just clearer. You don't need the world to validate your choices — you built the ark before anyone believed in the flood. Born in Cheshvan, the one month with no holidays, no celebrations, just the long dark stretch of early winter — you know how to exist in the quiet without falling apart. In relationships you're steadier than almost anyone, but you need a partner who doesn't confuse your calm for indifference. There's a whole ocean of feeling underneath.",
+    question: "How do I rebuild after everything changes?",
+    shadow: "You sometimes wait too long to speak up. By the time you do, the flood is already here.",
+    people: "Those who've reinvented themselves at least once and don't make a big deal about it. Quiet resilience recognizes quiet resilience.",
+    watchout: "People who only show up for the rainbow, not the rain."
+  },
+  "Lech Lecha": {
+    archetype: "The Pioneer",
+    reading: "You were born in the parsha of the great leap — the one where Avraham walks away from everything he's ever known on nothing but a promise and an instinct. That energy is in you. You move toward the unknown with a confidence that looks like recklessness from the outside but feels like clarity from the inside. You've probably already left something behind that other people thought you were crazy to leave. You were right. Born in Cheshvan, the long quiet month, your boldness isn't loud — it's decided. You don't announce your departures, you just go. In relationships you're fiercely loyal to the people who can keep up, and genuinely unbothered by the ones who can't. The one thing to watch: not every chapter of life requires a dramatic exit. Sometimes the brave thing is staying.",
+    question: "What am I being called toward that I haven't said yes to yet?",
+    shadow: "You can be so future-focused that people who love you feel left behind in the present.",
+    people: "Those who are also building something from scratch and don't need a map to start. And the ones who dream as specifically as you do.",
+    watchout: "People who admire your boldness but want you to dim it in practice."
+  },
+  "Vayera": {
+    archetype: "The Keeper",
+    reading: "You are the person people call. Not because you have all the answers — but because you make them feel like everything is going to be okay, and somehow, when you're involved, it usually is. Vayera people lead with hospitality, with warmth, with a radical openness to whoever shows up at the door. Like Avraham running toward the strangers in the heat of the day, you don't wait to be asked. You show up. Born in Cheshvan, the undecorated month, your warmth is not performative — it's just who you are when no one's watching. The complexity is that you give so freely that you sometimes don't notice when you're running on empty. And there's a part of you that's been asked to sacrifice something you loved. You made peace with it. That doesn't mean it didn't cost you.",
+    question: "How much can I give before I lose myself in the giving?",
+    shadow: "You can over-function for people who haven't asked you to, then feel unseen when they don't notice.",
+    people: "Those who give the way you do — not to be needed, but because it's just right. They'll recognize you immediately.",
+    watchout: "People who receive your warmth as a service rather than a gift."
+  },
+  "Chayei Sara": {
+    archetype: "The Keeper",
+    reading: "You are the one who holds things together after everyone else has fallen apart. Chayei Sara — the life of Sara — is a parsha about loss, continuity, and the quiet heroism of making sure the story goes on. You are not dramatic about what you carry. You just carry it. There's a deep practicality to you that coexists with genuine emotional depth — you can grieve and plan the funeral at the same time. Born in Cheshvan, the bare month, you don't need fanfare to do important things. In relationships you're the one who remembers, who follows through, who shows up on the hard days without being asked. The risk is that your competence makes people forget you need things too.",
+    question: "Who is taking care of me the way I take care of everyone else?",
+    shadow: "You sometimes martyr yourself so quietly that no one realizes they should be helping.",
+    people: "Those who notice the small things you do and say thank you like they mean it. That's rare. Hold onto them.",
+    watchout: "People who only come to you when something needs fixing."
+  },
+  "Toldot": {
+    archetype: "The Wrestler",
+    reading: "You came into the world in conflict and you've been navigating tension ever since. Toldot people carry the weight of high expectations — often from family, sometimes from themselves — and spend a good part of their lives figuring out which parts of that inheritance to keep and which to leave behind. You're more complex than people's first read of you. The one who seems straightforward is actually layered. The one who seems calculated is actually deeply feeling. Born in Kislev, the month of dreams and hidden light, there's something quietly visionary about you that only surfaces when you're given room. In relationships the push-pull is real — you love deeply but you know how to hold your cards. The ones who earn your full trust get something rare.",
+    question: "Which parts of what I inherited are actually mine?",
+    shadow: "You can be so focused on winning the moment that you lose sight of the relationship.",
+    people: "Those who've had to carve their own identity out from under someone else's expectations. They get it without explanation.",
+    watchout: "People who want to keep you in the role they first cast you in."
+  },
+  "Vayetzei": {
+    archetype: "The Transformer",
+    reading: "You left something behind to become who you are, and you know it. Vayetzei is the parsha of exile and transformation — Yaakov fleeing, working, building, being deceived, persisting, and returning changed. That arc is yours. You've had at least one period where you were completely outside your element, building something in conditions that weren't fair, and you did it anyway. Born in Kislev, the month of light breaking into darkness, there's a warmth and optimism in you that survives things that would break other people. In love you're capable of profound devotion — seven years felt like days kind of devotion. But you need to know it's real. You've been given the wrong thing before when you were expecting the right one, and you haven't fully forgotten it.",
+    question: "Is where I am now where I was always going, or just where I ended up?",
+    shadow: "You can work so hard building the external life that the internal one gets quietly neglected.",
+    people: "Those who've been through their own exile and came back knowing something they didn't before. You'll have the best conversations.",
+    watchout: "People who take advantage of your capacity to endure."
+  },
+  "Vayishlach": {
+    archetype: "The Wrestler",
+    reading: "You've met your angel and you have the limp to prove it. Vayishlach people don't avoid the hard thing — they walk toward it, wrestle it through the night, and refuse to let go until it gives them something. You are not easy to defeat. You're also not easy to live with, and you know it. There's an intensity to you that's magnetic until it's overwhelming, and you're still figuring out how to calibrate it. Born in Kislev, the month of hidden light and the beginning of Chanukah, you carry a fire that circumstances keep trying to extinguish. It doesn't extinguish. In relationships you want depth or nothing — small talk is almost physically painful. You'll have few relationships but they'll be defining.",
+    question: "Can I be both powerful and at peace?",
+    shadow: "You can turn everything into a battle that didn't need to be one.",
+    people: "Those who can handle your full intensity and bring their own. Anything less feels like a waste of time.",
+    watchout: "People who are drawn to your strength but want to manage it."
+  },
+  "Vayeshev": {
+    archetype: "The Transformer",
+    reading: "You have a vision of where you're going that other people can't see yet, and that gap has caused you real pain. Vayeshev people — born in the parsha of Yosef's dreams and his brothers' betrayal — know what it's like to be misread, sidelined, or thrown into a pit by people who should have been in your corner. You didn't become bitter. You became strategic. There's a patience in you that looks passive from the outside but is actually just long-game thinking. Born in Kislev, the month of Chanukah and hidden miracles, you believe things work out — not naively, but because you've seen your own life turn around in ways you couldn't have engineered. In relationships you're loyal to a fault, sometimes to people who've already shown you who they are.",
+    question: "Will the people who doubted me ever really see me?",
+    shadow: "You can hold onto old wounds longer than they deserve. The pit was real. You don't have to keep visiting it.",
+    people: "Those who believed in you before you proved anything. There are fewer of them than you think. Treasure them.",
+    watchout: "People who want access to where you're going without having been there for where you've been."
+  },
+  "Miketz": {
+    archetype: "The Visionary",
+    reading: "You've always been able to see what's coming — patterns, problems, opportunities — before anyone else in the room. Miketz people are the ones who give the interpretation nobody asked for that turns out to be exactly right. You're not always thanked in real time. Yosef sat in prison for two more years after correctly reading the cupbearer's dream. You know this feeling. Born in Tevet, the month of deep winter and sharp clarity, there's a cool precision to how you think that can read as detachment but is actually just focus. You've learned to package your vision in ways people can receive — you didn't always know how to do that. In relationships you need a partner who takes your instincts seriously, not one who waits for proof before they believe you.",
+    question: "What do I do with what I see when no one's ready to hear it?",
+    shadow: "You can get so far ahead in your thinking that you forget to bring people along.",
+    people: "Those who trust intuition as much as evidence. And the ones who were right about something important before it was obvious.",
+    watchout: "People who only value your vision once it's been validated by someone else."
+  },
+  "Vayigash": {
+    archetype: "The Keeper",
+    reading: "You are the one who breaks the silence. Vayigash opens with Yehuda stepping forward — the moment someone finally says the true thing out loud. You have that in you. You're not confrontational, but when something important is at stake, especially when it involves someone you love, you find words that cut through. You're fiercely protective. Born in Tevet, the month of internalized strength and winter clarity, your warmth runs deeper than your surface — people have to earn access to how much you actually feel. In relationships you're the one who holds the family together, who makes the call, who shows up when it counts. The risk is that you take on so much responsibility for other people's wellbeing that you make it hard for them to grow on their own.",
+    question: "Am I protecting the people I love or preventing them from finding their own strength?",
+    shadow: "You can step in so quickly that people never get the chance to step up themselves.",
+    people: "Those who match your loyalty and aren't afraid to tell you a hard truth when you need it. That combination is rare.",
+    watchout: "People who let you carry everything because it's easier than carrying their share."
+  },
+  "Vayechi": {
+    archetype: "The Builder",
+    reading: "You think in legacy. Vayechi people are the ones giving the blessing at the end — taking stock of what was built, who people really are, what will last. There's an old soul quality to you, even if you're young. You've always been comfortable with endings in a way that unsettles other people. Not because you're dark, but because you understand that things completing is part of them mattering. Born in Tevet, the lean winter month, you don't need abundance to feel rich — you know what actually counts. In relationships you're the one who sees people clearly, sometimes more clearly than they see themselves, and you love them anyway. That's not nothing. That's actually everything.",
+    question: "What do I want to have meant?",
+    shadow: "You can be so focused on how things end that you forget to be fully present in the middle.",
+    people: "Those who think about their life as a whole story, not just a series of moments. You'll talk for hours.",
+    watchout: "People who are uncomfortable with depth and try to keep things light when you need them to go there."
+  },
+  "Shemot": {
+    archetype: "The Awakener",
+    reading: "You were never the obvious choice — and that's exactly why you were the right one. Something in you has always known it. You have a way of showing up in situations that weren't designed for you and quietly changing them. Moshe didn't ask for the mission. Neither did you. Born in Tevet, the cold clear month of winter, there's a sharpness to your perception that cuts through noise. You see injustice quickly and it bothers you in a way you can't switch off. You've probably spent time feeling like you belong to two worlds and fully to neither. That in-between place used to feel like a flaw. It's actually your greatest asset — you understand more than one world from the inside.",
+    question: "Am I living the life I chose or the one that chose me?",
+    shadow: "You can talk yourself out of your own calling by focusing on everything you're not qualified for.",
+    people: "Those who've felt like outsiders in their own story and built something meaningful from that position anyway.",
+    watchout: "People who want to define you by where you came from rather than where you're going."
+  },
+  "Va'era": {
+    archetype: "The Wrestler",
+    reading: "You know what it's like to say the true thing and have nobody move. Va'era people have delivered the message, shown the signs, made the case — and watched Pharaoh harden his heart anyway. You haven't given up. That's the thing about you. There's a persistence underneath your frustration that even you sometimes underestimate. Born in Shevat, the month of renewal and the new year of the trees, you understand that change happens underground before it surfaces. You're not naive about how long transformation takes. In relationships you're not the easiest person to be with in the short term — you push, you challenge, you don't accept the first answer if you don't believe it. Long term, you're exactly who people want in their corner.",
+    question: "How many times do I have to say it before something finally shifts?",
+    shadow: "You can become so focused on changing someone else's mind that you lose sight of your own peace.",
+    people: "Those who are also in the middle of the long fight — not at the victory yet, still showing up anyway.",
+    watchout: "People whose hearts are already decided but who keep you engaged just enough to drain you."
+  },
+  "Bo": {
+    archetype: "The Transformer",
+    reading: "You've lived through at least one thing that permanently divided your life into before and after. Bo people carry the energy of the final plagues and the first exodus — the moment of irreversible departure. You know what it means to leave something behind that you can never go back to, and to walk out anyway. There's a freedom in you that was hard-won. Born in Shevat, the month of sap rising invisibly in the trees before any visible sign of spring, your transformations tend to happen quietly inside before anyone sees them on the outside. In relationships you're deeply present once you've decided someone is worth it, but the deciding takes time. You don't do casual well. You never really have.",
+    question: "What am I still waiting for permission to leave behind?",
+    shadow: "Once you're done, you're done. You can close doors on people faster than they realize what happened.",
+    people: "Those who've made at least one irreversible bet on themselves. You speak the same language.",
+    watchout: "People who want the new version of you without acknowledging what it cost to get here."
+  },
+  "Beshalach": {
+    archetype: "The Pioneer",
+    reading: "You do your best work with your back against the wall. Beshalach is the parsha of the sea splitting — the moment where there is literally nowhere to go except forward into the impossible, and the impossible opens up. You've been there. Maybe more than once. You have a relationship with last-minute miracles that other people find unnerving but you've quietly come to trust. Born in Shevat, the month of invisible renewal, your confidence doesn't come from certainty — it comes from having survived the uncertain enough times to stop being paralyzed by it. In relationships you're exciting to be around, genuinely — there's a momentum to you that pulls people in. The work is learning to slow down enough to let people catch up.",
+    question: "What would I do if I trusted that it would open up?",
+    shadow: "You can leap before the people who depend on you are ready, and call their hesitation a lack of faith.",
+    people: "Those who move toward things rather than away from them, even when the path isn't clear.",
+    watchout: "People who want to stand at the shore forever and debate whether the sea will actually split."
+  },
+  "Yitro": {
+    archetype: "The Visionary",
+    reading: "You see the system behind the situation. Yitro — Moshe's father-in-law, an outsider — looks at how an entire nation is being run and immediately identifies what's broken and how to fix it. That's you. You have an almost uncomfortable ability to walk into something new and see its structure, its gaps, its potential, faster than people who've been inside it for years. Born in Shevat, the month of deep roots and quiet nourishment, your insights are grounded — you're not just ideating, you're solving. In relationships you're generous with your thinking but you need someone who takes your observations seriously rather than feeling threatened by them. You've learned to read the room before you offer what you see. You shouldn't always have to.",
+    question: "Why do I see it so clearly when others can't, and what do I do with that?",
+    shadow: "You can skip the emotional layer of a situation because you're already at the solution. People need to feel heard before they're ready for the fix.",
+    people: "Those who are also systems thinkers — who find the architecture of things as interesting as the things themselves.",
+    watchout: "People who take your ideas and your framework and forget to credit where they came from."
+  },
+  "Mishpatim": {
+    archetype: "The Keeper",
+    reading: "You believe in doing things right. Not just getting them done — right. Mishpatim is the parsha of laws, of the detailed architecture of a just society, and you carry that energy personally. You have a strong moral core that isn't loud or preachy — it just quietly governs how you move. People notice that you're fair. That you mean what you say. That you follow through. Born in Shevat, the month of nourishment and roots, your integrity runs deep — it's not a posture, it's structural. In relationships you need consistency and honesty the way other people need affection. Actually, you need both. The person who keeps their word to you is the person you'll do anything for.",
+    question: "Is the world I'm living in as fair as the one I'm trying to build?",
+    shadow: "You can hold people to a standard you haven't fully communicated, then feel let down when they miss it.",
+    people: "Those who operate with the same quiet integrity — who do the right thing when no one's watching because that's just who they are.",
+    watchout: "People who admire your principles but don't actually share them."
+  },
+  "Terumah": {
+    archetype: "The Builder",
+    reading: "You build things that are meant to hold something sacred. Terumah people have a gift for creating containers: the structure, the team, the environment, the relationship architecture that allows something important to actually exist and function. You're not always the most visible person in what gets built, but without you it doesn't hold together. Born in Adar, the month of joy and reversal, there's a lightness in you that coexists with your seriousness about craft. You don't take yourself too seriously. You take the work seriously. In relationships you're a nester — you want to build something together, not just experience something together. That distinction matters to you more than most people realize.",
+    question: "Am I building the right container for the right things?",
+    shadow: "You can get so invested in the structure that you resist changing it even when what it's meant to hold has evolved.",
+    people: "Those who understand that the how of building something is as important as the what. Craftspeople in whatever field they're in.",
+    watchout: "People who want to inhabit what you build without caring how it got made."
+  },
+  "Tetzaveh": {
+    archetype: "The Builder",
+    reading: "You understand that how something looks is not vanity — it's communication. Tetzaveh is the parsha of the priestly garments, the precise and beautiful details of what the kohanim wore, and why every element meant something. You have an aesthetic intelligence that people either immediately respect or initially underestimate. You know that presentation is part of the message. Born in Adar, the joyful, playful month of Purim, you bring a warmth and a sense of ceremony to what you do — you make things feel like they matter, because to you they do. In relationships you notice details about people that they haven't noticed about themselves, and when you name them, it lands. That's a rare gift. Use it.",
+    question: "Am I being seen for what I'm actually expressing or just the surface of it?",
+    shadow: "You can invest so much in how something appears that the inner work gets quietly deferred.",
+    people: "Those who care about craft, beauty, and meaning in equal measure. Who understand that form and content are not separate.",
+    watchout: "People who call your attention to detail perfectionism, like that's a problem."
+  },
+  "Ki Tisa": {
+    archetype: "The Transformer",
+    reading: "You know what it's like to be at the top of the mountain and find out everything fell apart while you were gone. Ki Tisa people carry the golden calf — not as a shame, but as a reckoning. You've experienced the gap between the vision and the reality, between who you thought people were and who they turned out to be under pressure. It changed you. Not into a cynic — into someone more clear-eyed. Born in Adar, the month of hidden miracles and sudden reversals, you've seen things flip fast — in both directions. That's given you a resilience and a flexibility that people raised in more stable conditions genuinely don't have. In relationships you need to know that someone will hold their shape when things get hard. You're done rebuilding from the same rubble.",
+    question: "Can I trust again after I've seen what breaks?",
+    shadow: "You can hold a moment of someone's failure as the definitive truth about them, when it was really just a moment.",
+    people: "Those who've been through their own version of the broken tablets and came back to the mountain anyway.",
+    watchout: "People whose loyalty only shows up when it's convenient."
+  },
+  "Vayakhel": {
+    archetype: "The Builder",
+    reading: "You bring people together around something worth building. Vayakhel — the gathering — is the parsha where Moshe assembles the entire nation and they all contribute to the Mishkan together. You have that energy. You're not just a builder — you're a convener. You know how to make people feel that their contribution matters, which means they give more than they planned to. Born in Adar, the communal, celebratory month of Purim, you're at your best when there's a shared purpose in the room. You're the person who makes a group feel like a team. In relationships you're generous and inclusive — sometimes to the point where your partner has to remind you that they need you, not just the version of you that's hosting.",
+    question: "Am I building community or using it to avoid stillness?",
+    shadow: "You can fill every moment with people and projects and never quite get to the thing that's sitting quietly underneath.",
+    people: "Those who are also trying to build something that requires other people — who understand that the collaboration is part of the point.",
+    watchout: "People who show up for the energy you create but disappear when it's time to do the actual work."
+  },
+  "Pekudei": {
+    archetype: "The Builder",
+    reading: "You account for everything. Pekudei is the parsha of the final reckoning — every piece of gold, every thread, every contribution to the Mishkan counted and recorded. You have that precision. You finish what you start. You close the loop. In a world of people who are great at beginning things, you're the one who actually completes them, and you know how rare that is. Born in Adar, the month of joy at the end of a long winter, there's a deep satisfaction in you when things come together the way they were meant to. In relationships you're reliable in a way that's genuinely hard to find — you show up, you remember, you follow through. What you need in return is someone who doesn't mistake your reliability for inexhaustibility.",
+    question: "Am I finishing the right things, or just finishing things?",
+    shadow: "You can get so focused on completion that you lose the joy of the process somewhere in the middle.",
+    people: "Those who take their commitments seriously and don't need to be chased. Mutual reliability is your love language.",
+    watchout: "People who are endlessly starting things and need you to be the one who lands the plane every time."
+  },
+  "Vayikra": {
+    archetype: "The Witness",
+    reading: "You feel things more precisely than most people can articulate. Vayikra is the book of offerings — each one specific, each one intentional, each one a different way of closing the gap between where you are and where you want to be. You understand nuance in a way that can be lonely. You know that two things that look the same from the outside can mean completely different things depending on what's behind them. Born in Adar, the month of joy and hidden things revealed, there's a lightness you carry that masks real depth. People enjoy being around you before they realize how much you're actually taking in. In relationships you need someone who appreciates the difference between the gesture and the intention behind it. You always know the difference.",
+    question: "Am I being as precise about what I need as I am about everything else?",
+    shadow: "You can over-analyze your own feelings to the point where you lose access to them.",
+    people: "Those who operate with intentionality — who do things on purpose and can tell you why. You find carelessness genuinely hard to be around.",
+    watchout: "People who think your depth is a phase they can wait out."
+  },
+  "Tzav": {
+    archetype: "The Keeper",
+    reading: "You show up every single day. Tzav is the parsha of the daily flame — the fire on the altar that never goes out, tended to every morning without exception. That's your energy. You're not the person who shows up for the big moments and disappears in between. You're the person who does the quiet, unglamorous work consistently, and over time that consistency builds something nothing else can. Born in Nisan, the month of liberation and new beginnings, there's a freshness to you that your reliability can sometimes obscure — you're not just dependable, you're alive to possibility. In relationships you're the long game. People who choose you and mean it get something they didn't know they were looking for.",
+    question: "Am I tending to my own fire with the same care I give everything else?",
+    shadow: "You can be so committed to showing up for others that you don't notice when your own flame is getting low.",
+    people: "Those who understand that love is a daily practice, not a feeling you either have or don't.",
+    watchout: "People who want the warmth of the fire without ever adding wood."
+  },
+  "Shemini": {
+    archetype: "The Witness",
+    reading: "You understand that some thresholds change you permanently. Shemini is the parsha of the eighth day — the moment the Mishkan is inaugurated, and also the moment Nadav and Avihu bring an unauthorized fire and are consumed. Something sacred, something devastating, in the same breath. You've probably experienced that — the peak and the loss arriving together. It's given you a sobriety that runs underneath everything. Born in Nisan, the month of miracles and exodus, your depth coexists with real capacity for joy — you're not heavy, you're weighted. There's a difference. In relationships you're not easily impressed, but when something moves you it really moves you, and the people who witness that feel trusted in a way they don't take lightly.",
+    question: "How do I stay open after I've learned what's at stake?",
+    shadow: "You can become so careful after loss that you stop letting things matter the way they used to.",
+    people: "Those who've held joy and grief at the same time and didn't let one cancel the other out.",
+    watchout: "People who need you to be lighter than you actually are."
+  },
+  "Tazria": {
+    archetype: "The Witness",
+    reading: "You notice what's happening beneath the surface before anyone else names it. Tazria people have a diagnostic quality — not clinical, but perceptive. You read rooms, relationships, situations with an accuracy that sometimes unsettles people who'd rather not be read. Born in Nisan, the month of emergence and new growth, there's something quietly hopeful underneath your perceptiveness — you're not looking for what's wrong, you're trying to understand what's real. In relationships you give a lot, but there's a version of you that very few people ever actually meet. The ones who do don't forget you.",
+    question: "Can I be fully known without being judged?",
+    shadow: "You can withdraw when overwhelmed and go so quiet that people think you've left. You're just not ready yet.",
+    people: "Those who've been through something that changed them quietly — who carry it without making it their whole personality.",
+    watchout: "People who are uncomfortable with what you see and try to convince you that you're wrong."
+  },
+  "Metzora": {
+    archetype: "The Returner",
+    reading: "You know what it means to come back. Metzora is the parsha of re-entry — the one about what happens after the isolation, after the hard thing, after the period of being outside the camp. You've been there. Something separated you from the life you were living — by choice, by circumstance, by something you're still making sense of — and you came back changed in ways that are hard to explain to people who weren't there. Born in Nisan, the liberation month, your return always carries a kind of freedom in it. You're not the same person who left and you've stopped pretending to be. In relationships you've learned to be more selective than you used to be. That's not damage. That's wisdom.",
+    question: "Who am I now, after everything that changed me?",
+    shadow: "You can stay in the re-entry phase longer than necessary — still explaining yourself when you've already been welcomed back.",
+    people: "Those who understand that people change and love them for what they became, not what they were.",
+    watchout: "People who knew you before and keep trying to put you back in that version."
+  },
+  "Achrei Mot": {
+    archetype: "The Seeker",
+    reading: "You carry things you don't talk about. Acharei Mot — after the death — is the parsha that follows tragedy and moves into the sacred inner sanctum. You've learned to hold what's heavy without letting it spill everywhere. That's not repression — it's a kind of spiritual load-bearing. You go deep, you process honestly, and you come out the other side with something real. Born in Nisan, the month of going out and going forward, there's a momentum in you that your interior life can sometimes mask. You're moving even when you look still. In relationships you need someone who can sit in the serious conversation and not flinch. You have no patience for people who keep everything at surface level.",
+    question: "What would I do differently if I truly accepted that time is finite?",
+    shadow: "You can get so comfortable carrying things alone that asking for help starts to feel foreign.",
+    people: "Those who've also learned to hold the weight gracefully — who are serious about life without being heavy to be around.",
+    watchout: "People who interpret your depth as sadness and try to fix you out of it."
+  },
+  "Kedoshim": {
+    archetype: "The Seeker",
+    reading: "You have a strong sense of how things should be — and a real discomfort when the world doesn't match it. Kedoshim is the holiness code, the parsha of be holy because I am holy, the vision of a society where how you treat people is the whole point. You feel that. Ethics isn't abstract to you — it's personal. Born in Iyar, the month of healing, you're drawn to repair: relationships, systems, situations that are broken and shouldn't be. You're not an idealist who ignores reality — you're someone who takes reality seriously enough to think it can be better. In relationships you need to feel respected as much as you need to feel loved. For you, they're not separate things.",
+    question: "Am I living in a way I could actually defend?",
+    shadow: "You can be hard on yourself and others when the standard isn't met, even when grace would serve better.",
+    people: "Those who take how they live seriously — who think about the ethics of their choices and not just the outcomes.",
+    watchout: "People who admire your principles from a distance but don't actually apply them to how they treat you."
+  },
+  "Emor": {
+    archetype: "The Keeper",
+    reading: "You know the power of saying what you mean and meaning what you say. Emor — speak — is the parsha of sacred speech, of appointed times, of the calendar of meaning. You're someone who marks things. Anniversaries, milestones, the moment something shifted — you remember. Born in Iyar, the healing month, there's a gentleness in how you hold people — you know that words land, that timing matters, that how something is said is part of what it means. In relationships you're the one who says the thing that needed to be said, at the right moment, and it changes something. People remember what you said to them years later. That's not an accident.",
+    question: "Am I using my voice for what actually matters to me?",
+    shadow: "You can go quiet when you're hurt rather than saying so, and expect people to notice what you're not saying.",
+    people: "Those who communicate with intention — who understand that honesty delivered with care is an act of love.",
+    watchout: "People who use words carelessly and don't understand why that bothers you so much."
+  },
+  "Behar": {
+    archetype: "The Seeker",
+    reading: "You believe that systems need to be built with rest and release built in — that endless accumulation is not the point. Behar is the parsha of the sabbatical year and the jubilee — the radical idea that land rests, debts release, people return to where they started. You understand cycles in a way that makes you good at letting go when others can't. Born in Iyar, the month of patient healing, you're not in a rush in the way most people are. You play a longer game. In relationships you're not possessive — you understand that people need room to be themselves inside a relationship, not just alongside one. That's rare and the right person will know it.",
+    question: "What would I release if I truly trusted that there would be enough?",
+    shadow: "You can be so comfortable with cycles and release that you let go of things that actually needed tending.",
+    people: "Those who've made peace with impermanence without becoming detached. Who hold things lightly and deeply at the same time.",
+    watchout: "People who interpret your ease with letting go as not caring enough."
+  },
+  "Bechukotai": {
+    archetype: "The Wrestler",
+    reading: "You understand consequences. Not in a fatalistic way — in a clear-eyed way. Bechukotai lays out the blessings and the curses with unflinching directness, and you carry that same energy. You don't sugarcoat. You don't pretend things are fine when they're not. People find that uncomfortable until they need someone who will actually tell them the truth, and then you're the first person they call. Born in Iyar, the healing month, your directness comes from a place of care, not harshness — you say hard things because you believe people can handle them and deserve to hear them. In relationships you need honesty to be mutual. You've been lied to kindly before and it cost you more than the truth would have.",
+    question: "Am I living in alignment with what I say I believe?",
+    shadow: "You can deliver truth without enough warmth, and people receive the message but lose the relationship.",
+    people: "Those who can handle a straight answer and give one back. Mutual honesty is the foundation everything else is built on for you.",
+    watchout: "People who say they want honesty but punish you for it."
+  },
+  "Bamidbar": {
+    archetype: "The Pioneer",
+    reading: "You are most yourself when there's no map. Bamidbar — the wilderness — is the parsha of the census, the organizing of a nation in open desert, the moment of counting what you have before stepping into the unknown. You do that instinctively. Before the leap you take stock, you assess, you know exactly what you're working with. Then you go anyway. Born in Iyar, the healing month, there's a quiet restoration happening in you even when you look like you're in motion. You process on the move. In relationships you need someone who can handle the in-between — the not yet arrived, the still figuring it out. You're not lost. You're in transit. There's a difference.",
+    question: "What am I being prepared for in this wilderness period?",
+    shadow: "You can normalize the wilderness so completely that you stop moving toward anything in particular.",
+    people: "Those who are also between chapters and building something in the open air without a blueprint.",
+    watchout: "People who need you to have already arrived before they'll take you seriously."
+  },
+  "Naso": {
+    archetype: "The Witness",
+    reading: "You carry more than people know. Naso is the longest parsha in the Torah — full of individual counts, individual offerings, the Sotah, the Nazir, the priestly blessing. It's a parsha of being seen specifically, not just generally. You need that. Not attention — specificity. You don't want to be appreciated in the abstract. You want someone to notice the particular thing you did, the exact way you showed up. Born in Sivan, the month of receiving — of Shavuot and the giving of Torah — there's an openness in you that's looking for something worth taking in. You're receptive in a way that makes you a profound listener, and people tell you things they haven't told anyone else. That's a gift that also costs you something.",
+    question: "Who sees me as specifically as I see everyone else?",
+    shadow: "You can give so much attention to others that you forget to ask for it back, then wonder why you feel invisible.",
+    people: "Those who notice details — who remember what you said three conversations ago and bring it back. That's your love language whether you've named it or not.",
+    watchout: "People who receive your deep attention as their due and never think to return it."
+  },
+  "Beha'alotcha": {
+    archetype: "The Seeker",
+    reading: "You've had moments of real clarity followed by stretches of serious doubt, and you've learned that both are part of the same journey. Beha'alotcha is the parsha where the light is kindled, then the people complain, then Miriam and Aharon challenge Moshe — the honeymoon of the exodus is over and the long complicated middle begins. You know the long complicated middle. You're not someone who lives on inspiration alone — you've had to find your way through the unglamorous stretch where nothing feels certain. Born in Sivan, the month of receiving and revelation, you've had moments where things were suddenly, completely clear. You're always trying to get back to that clarity. The search itself is shaping you.",
+    question: "How do I stay faithful to the vision when I can't see it anymore?",
+    shadow: "You can spiral into doubt faster than the situation warrants, especially when you're tired.",
+    people: "Those who are honest about the hard middle — who don't perform certainty they don't have. Genuine seekers.",
+    watchout: "People who've never doubted anything. You don't trust them and you shouldn't have to explain why."
+  },
+  "Shelach": {
+    archetype: "The Transformer",
+    reading: "You know what it costs to be the minority voice in the room. Shelach is the parsha of the spies — ten who came back with fear, two who came back with faith. You've been Calev. You've seen the same situation everyone else saw and reached a completely different conclusion, and you've had to decide whether to say it out loud. You usually do. Born in Sivan, the month of communication and the receiving of Torah, you have a gift for articulating the thing people are afraid to say. That takes courage that looks like confidence from the outside but sometimes feels like stubbornness from the inside. In relationships you need someone who doesn't need you to soften your convictions to make them comfortable.",
+    question: "Am I willing to stand alone in what I know to be true?",
+    shadow: "You can dig into a position past the point of new information — conviction becoming rigidity without you noticing.",
+    people: "Those who've also held the minority view and been proven right. You recognize each other quickly.",
+    watchout: "People who go along with the room and call it being realistic."
+  },
+  "Korach": {
+    archetype: "The Wrestler",
+    reading: "You have a deep sensitivity to hierarchy and a genuine allergy to what feels like unearned authority. Korach's argument wasn't entirely wrong — the whole nation is holy, why should leadership concentrate in one place? What undid him was the pride behind the principle. You carry this tension. You can see exactly what's broken in a system and exactly who's benefiting from it staying broken, and it bothers you at a cellular level. Born in Sivan, the month of receiving, the question for you is always: what are you actually trying to receive — change, or credit for calling out the need for change? In relationships you're passionate and principled. You need a partner who can challenge you without you hearing it as an attack.",
+    question: "Am I fighting for the right thing or for being right?",
+    shadow: "The line between righteous anger and ego can get thin when you're in the middle of it.",
+    people: "Those who are also trying to change something real — who have the receipts and the staying power, not just the grievance.",
+    watchout: "People who validate your anger because it serves them, not because you're right."
+  },
+  "Chukat": {
+    archetype: "The Wrestler",
+    reading: "You've made peace with not always getting an explanation. Chukkat is the parsha of the red heifer — the ultimate unexplainable law, the one where you just do it because that's what's asked. You've had to do that. Accept something, carry something, move forward without the closure you deserved. Born in Tamuz, the month of vision and vulnerability, you see things with an intensity that makes the unexplained even harder — you're wired for understanding. But you've developed a muscle most people don't have: the ability to act in the absence of certainty. In relationships you're not demanding of reasons when you trust someone. When you don't trust them, you need everything explained. You know which mode you're in.",
+    question: "Can I make peace with what I'll never fully understand?",
+    shadow: "You can get stuck at the place where the explanation should have been, long after the moment has passed.",
+    people: "Those who've also had to act on faith at least once without a net — who know what that actually costs.",
+    watchout: "People who use mystery as a substitute for accountability."
+  },
+  "Balak": {
+    archetype: "The Visionary",
+    reading: "You've been sent to curse something and ended up blessing it. That's the Balaam story and it's yours too — you've been in situations where the expectation was one thing and what came out of you was something else entirely, something truer. You don't always control what you see or what you say when the real thing is present. Born in Tamuz, the month of raw vision and the vulnerability that comes with it, you have a sight that sometimes bypasses your own filters. That's disorienting and also one of the most important things about you. In relationships people sense that you're not performing — that what you give them is real. That draws people in deeply. It also means you can't fake it when something's wrong.",
+    question: "Am I seeing clearly or seeing what I've been paid to see?",
+    shadow: "You can be influenced by whoever is sending you — the context you're operating in shapes your vision more than you admit.",
+    people: "Those who are also truth-tellers in environments that would prefer a more convenient version. You need that solidarity.",
+    watchout: "People who hire your vision but want editorial control over what you find."
+  },
+  "Pinchas": {
+    archetype: "The Pioneer",
+    reading: "You act when others hesitate. Pinchas — the one who stepped forward in the moment of national crisis and did the thing no one else would do — that's your energy. You're not reckless. You're decided. There's a difference that matters to you even if it's not always visible from the outside. Born in Tamuz, the intense, vision-forward month, you operate with a clarity of purpose that can look like intensity to people who don't share it. You've been criticized for moving too fast, for being too certain. You've also been the person who moved when it mattered. In relationships you're all in when you're in. You don't do ambivalence well and you don't ask people to do it either.",
+    question: "Am I acting from conviction or from the need to be the one who acts?",
+    shadow: "You can move so fast in a decisive moment that you don't pause to consider what the action will cost.",
+    people: "Those who are also capable of the decisive move — who don't need consensus to do the right thing.",
+    watchout: "People who admire your decisiveness but resent it when it's directed somewhere they didn't approve."
+  },
+  "Matot": {
+    archetype: "The Wrestler",
+    reading: "Your word is your word. Matot opens with the laws of vows — what you commit to out loud becomes binding. You live that way. You don't make promises lightly and you don't respect people who do. There's a toughness in you that comes from having held your commitments in conditions where most people would have found a reason not to. Born in Av, the month of destruction and the seeds of rebuilding, you've been through something that tested your foundations and you came out still standing. In relationships the bond you form is serious. You're not casual about people. The ones you're in it with know exactly where you stand.",
+    question: "Am I holding myself to vows that still serve me, or ones I made in a different life?",
+    shadow: "You can hold others to a standard of commitment that doesn't leave room for the fact that people are human and imperfect.",
+    people: "Those who mean what they say and follow through quietly, without needing acknowledgment for it.",
+    watchout: "People who make grand commitments easily. That's not a good sign."
+  },
+  "Masei": {
+    archetype: "The Builder",
+    reading: "You know where you've been. Masei is the parsha of the journeys — every stop on the forty year journey through the desert listed by name. You're someone who traces the route. Who understands that the path mattered, not just the destination. Born in Av, the intense month of loss and latent renewal, you carry your history with you not as baggage but as a map. You know what each stop cost and what it gave you. In relationships you're not in a rush to get somewhere — you want to understand where you both are in the journey. The person who can tell you their story, all of it, is the person you want to know.",
+    question: "What does the full map of where I've been tell me about where I'm going?",
+    shadow: "You can spend so much time tracing the past that you slow down the present.",
+    people: "Those who know their own story and aren't ashamed of any chapter of it.",
+    watchout: "People who can't account for where they've been. The gaps are information."
+  },
+  "Devarim": {
+    archetype: "The Visionary",
+    reading: "You've lived enough to have something to say. Devarim is Moshe's final address — the whole Torah retold in his own words, from his own perspective, before he dies within sight of the promised land. You carry that energy. You're someone who synthesizes. Who takes the long view of things and can articulate what it all meant in a way that lands for other people. Born in Av, the month of destruction that contains the seeds of the deepest renewal, you've been through enough to know what actually matters and what just felt like it did. In relationships you're not interested in surface. You want to know what someone has learned, what they've changed their mind about, what they'd do differently. That's where the real conversation starts for you.",
+    question: "Am I saying the things that need to be said before the moment passes?",
+    shadow: "You can get so focused on the meaning of the journey that you grieve the destination you didn't reach instead of celebrating how far you came.",
+    people: "Those who have lived something real and can talk about it honestly. Who've updated their worldview at least once because experience demanded it.",
+    watchout: "People who've never revised a single opinion. That's not conviction — that's a closed door."
+  },
+  "Vaetchanan": {
+    archetype: "The Seeker",
+    reading: "You've asked for something with everything you had and been told no, and you kept going anyway. Va'etchanan opens with Moshe pleading to enter the land — God says no, firmly, and Moshe pivots to giving the greatest speech of his life. You know that pivot. You've had doors close that you wanted desperately to walk through, and what you built from that place of closed doors has been some of your most important work. Born in Av, the month that holds both the greatest loss and the promise of the greatest future, you carry a longing that never fully resolves — and you've learned to let it fuel you rather than drain you. In relationships you love with the same intensity you bring to everything. The person who receives that fully is the luckiest person in your life.",
+    question: "What becomes possible when I stop asking for the door to open and build something in front of it?",
+    shadow: "You can hold onto what could have been long enough that it casts a shadow over what actually is.",
+    people: "Those who've turned their deepest disappointment into their most meaningful work. You recognize each other in the subtext.",
+    watchout: "People who haven't processed their own closed doors and make their bitterness your problem."
+  },
+  "Ekev": {
+    archetype: "The Seeker",
+    reading: "You understand that the big things are built from small things. Ekev — the heel, the consequence — is the parsha about what happens when you follow through on the things that don't feel significant. The small steps, the quiet commitments, the habits of integrity when no one's watching. You live that way. Born in Av, the month of latent rebuilding, you're someone who plants things you won't see bloom for years and does it anyway. There's a faith in you that isn't loud but is load-bearing. In relationships you show love in the consistent small gestures more than the grand ones, and you need someone attentive enough to notice. The ones who do stay forever.",
+    question: "Am I honoring the small things with the same seriousness I give the big ones?",
+    shadow: "You can undervalue your own contributions because they don't feel dramatic enough to count.",
+    people: "Those who notice the details — who understand that showing up quietly every day is its own kind of devotion.",
+    watchout: "People who are only present for the milestone moments and absent for the ordinary ones that actually build something."
+  },
+  "Re'eh": {
+    archetype: "The Seeker",
+    reading: "You see clearly — and you know the seeing comes with responsibility. Re'eh opens with see, I place before you today blessing and curse. You feel that weight. You understand that vision is not passive — that once you've seen something you're accountable for what you do with it. Born in Av, the month of reckoning and renewal, you don't get to unknow what you know. That can be a burden and it can be a gift. You've made your peace with it being both. In relationships you're honest in a way that's rare — not harsh, but clear. You don't let things fester. You'd rather have the hard conversation now than the harder one later.",
+    question: "What am I seeing that I haven't yet acted on?",
+    shadow: "You can hold people accountable for what they should see before they're actually ready to see it.",
+    people: "Those who are also trying to live in alignment with what they know — who take their own clarity seriously.",
+    watchout: "People who've seen the same thing you have and chosen to look away. You'll never fully trust them."
+  },
+  "Shoftim": {
+    archetype: "The Seeker",
+    reading: "Justice, justice you shall pursue — and you do. Shoftim people have a finely tuned sense of fairness that operates even when it's inconvenient, even when it costs them something. You're not the person who lets things slide because it's easier. You're the person who says something. Born in Elul, the month of return and honest self-reckoning, there's a quality of rigorous self-examination in you that extends outward — you hold yourself to the same standard you hold everyone else, which is more than most people can say. In relationships you're deeply fair and you need that reciprocated. You don't ask for more than your share but you notice when you're getting less.",
+    question: "Am I pursuing justice in my own life with the same energy I pursue it everywhere else?",
+    shadow: "You can make every situation a matter of principle when sometimes it just needs to be let go.",
+    people: "Those who take fairness seriously as a lived practice — who don't just talk about values but make decisions based on them.",
+    watchout: "People who invoke fairness selectively — only when it benefits them."
+  },
+  "Ki Teitzei": {
+    archetype: "The Wrestler",
+    reading: "You fight for the things most people walk past. Ki Tetze is the parsha of countless laws — the lost object you must return, the bird's nest you must respect, the worker you must pay before sunset. The common thread is seeing what others overlook and responding to it. You do that. You're the person who notices the person on the edge of the room, the detail that doesn't add up, the situation that needs someone to say something. Born in Elul, the month of honest accounting, you're hard on yourself when you fall short of your own standards — which is often, because your standards are high. In relationships you're a fighter for the people you love in a way that makes them feel genuinely protected.",
+    question: "Am I fighting the right battles or just fighting because I can't help it?",
+    shadow: "You can exhaust yourself and the people around you by turning every situation into something that needs to be addressed.",
+    people: "Those who are also wired to notice and respond — who can't walk past the thing that needs doing.",
+    watchout: "People who let you do all the noticing and none of the acting themselves."
+  },
+  "Ki Tavo": {
+    archetype: "The Builder",
+    reading: "You know that arriving somewhere is not the end of the story — it's where the real story begins. Ki Tavo is the parsha of first fruits, of finally entering the land and immediately bringing what you've grown back as an offering. You understand gratitude as a practice not a feeling. Born in Elul, the reflective month of preparation and return, you're someone who takes stock seriously — not in an anxious way, but in a meaningful way. You mark what you've built. You don't just move on to the next thing without acknowledging what the last thing cost and gave you. In relationships you're present in a way that's increasingly rare. You don't just show up — you show up with attention.",
+    question: "Am I pausing long enough to receive what I've actually built?",
+    shadow: "You can skip the celebration and go straight to what needs to be done next, leaving the people who helped you feeling unseen.",
+    people: "Those who mark things — who understand that acknowledgment is not sentimentality, it's integrity.",
+    watchout: "People who take the fruits of what you've built together and forget to name your contribution."
+  },
+  "Nitzavim": {
+    archetype: "The Transformer",
+    reading: "You are standing here today — all of you. Nitzavim is the parsha of radical inclusion, of the covenant renewed with everyone present and everyone not yet born. You carry that energy. You think in terms of we, not just I. You understand that what you're building or becoming is connected to something larger than your own story. Born in Elul, the month of return and collective reckoning, there's a communal responsibility in you that runs deep. You feel the weight of what's been handed to you and what you'll hand forward. In relationships you're not just choosing a person — you're choosing a direction. That seriousness is not a burden. It's what makes everything you build with someone actually mean something.",
+    question: "What am I part of that's bigger than me, and am I showing up for it?",
+    shadow: "You can feel so responsible for the collective that your own individual needs get lost in the we.",
+    people: "Those who also think in terms of legacy and contribution — who are building toward something beyond their own comfort.",
+    watchout: "People who opt out of responsibility and call it freedom."
+  },
+  "Vayelech": {
+    archetype: "The Transformer",
+    reading: "You know how to hand things off. Vayelech is Moshe's final day — transferring leadership to Yehoshua, writing the Torah, making sure the story continues without him. You have that in you. You're not precious about credit. You're invested in the thing lasting, not in being the one who holds it forever. Born in Elul, the month of preparation and return, there's a maturity to how you approach endings — you don't cling. You complete. In relationships you give people room to become who they're becoming, even when it changes the dynamic. That generosity of spirit is something people only fully appreciate in retrospect.",
+    question: "What am I holding onto that I'm actually meant to pass forward?",
+    shadow: "You can let go of things — and people — before fully honoring what they meant to you.",
+    people: "Those who are also thinking about what they're building beyond themselves — who find meaning in contribution over ownership.",
+    watchout: "People who mistake your lack of possessiveness for lack of caring."
+  },
+  "Ha'azinu": {
+    archetype: "The Visionary",
+    reading: "You speak in patterns. Ha'azinu is Moshe's song — the whole of history compressed into poetry, the rise and fall and return laid out in verse. You think that way. You see the arc before others see the individual moments. You're the person who says I knew this would happen not to be right but because you genuinely saw it coming and couldn't stop watching it unfold. Born in Tishrei, the month of judgment and new beginning, you carry both the weight of what's been and the clarity of what's possible. In relationships you're a rare combination — emotionally present and intellectually far-seeing. The person who can meet you in both places is the one worth staying for.",
+    question: "Am I using my long view to serve others or to distance myself from the present?",
+    shadow: "You can get so absorbed in the pattern that you miss the person standing right in front of you.",
+    people: "Those who also think in arcs — historians, strategists, storytellers, anyone who finds meaning in the shape of things over time.",
+    watchout: "People who only live in the moment and have no interest in what the moment is part of."
+  },
+  "V'Zot HaBerachah": {
+    archetype: "The Keeper",
+    reading: "You end things well. V'zot Habracha is the final parsha — Moshe's last blessing to each tribe, his death, the closing of the Torah. You have a gift for the goodbye, the benediction, the parting word that stays with someone. People remember what you said at the end of things. Born in Tishrei, the month of judgment and sweet new beginnings, you hold both endings and starts with unusual grace. You don't rush either. In relationships you're the one who makes people feel genuinely seen and sent off well — whether that's ending a dinner, a chapter, or something harder. That's a rare and serious gift. The people who've experienced it don't forget it.",
+    question: "Am I blessing the people in my life with the same intention Moshe blessed the tribes?",
+    shadow: "You can be so good at endings that beginnings feel less natural — the blank page harder than the closing one.",
+    people: "Those who take their relationships seriously enough to tend to them at every stage — not just the exciting beginning but the meaningful middle and the graceful end.",
+    watchout: "People who leave things — and people — without a second thought. You feel that carelessness more than most."
+  }
+};
+
+// ── Main logic ────────────────────────────────────────────────────────────────
+
+// ── "Where you thrive" data ───────────────────────────────────────────────────
+const parshaThrive = {
+  "Bereishit": "Founding companies, architecture, creative direction, venture capital, urban planning — anywhere you get to make something from nothing and watch it take shape.",
+  "Noach": "Crisis management, emergency medicine, long-term investing, infrastructure, therapy — you build things that last through storms other people didn't see coming.",
+  "Lech Lecha": "Entrepreneurship, foreign correspondence, exploration-driven research, international development — wherever the frontier is, that's where you belong.",
+  "Vayera": "Hospitality, nursing, community organizing, social work, non-profit leadership — anywhere people need to feel held and you can show up without being asked.",
+  "Chayei Sara": "Operations leadership, estate planning, HR, archival work, caregiving — you keep the story going when everyone else has fallen apart.",
+  "Toldot": "Family business, law, diplomacy, competitive athletics, negotiation — anywhere tension is the raw material and complexity is an asset, not a problem.",
+  "Vayetzei": "International business, cross-cultural consulting, immigration work, translation, bridge-building roles — you thrive between worlds that don't naturally speak to each other.",
+  "Vayishlach": "Trial law, investigative journalism, competitive sports, crisis negotiation, leadership under pressure — you walk toward the thing everyone else avoids.",
+  "Vayeshev": "Strategic consulting, long-term investing, screenwriting, talent scouting — you see what others miss and you play the long game better than almost anyone.",
+  "Miketz": "Data science, economic forecasting, strategic planning, intelligence analysis, pattern recognition — you read the signals before they surface.",
+  "Vayigash": "Mediation, family therapy, executive leadership, advocacy, diplomacy — you step forward and say the true thing when the silence is killing everyone.",
+  "Vayechi": "Legacy planning, philanthropy, mentoring, memoir writing, end-of-life care — you help people make meaning of the whole story, not just the last chapter.",
+  "Shemot": "Civil rights law, investigative journalism, teaching, documentary filmmaking, activism — you see injustice quickly and you have the words to name it.",
+  "Va'era": "Advocacy, lobbying, public health, environmental activism, labor organizing — you deliver the message until something finally moves.",
+  "Bo": "Turnaround management, editorial work, exit strategy, addiction counseling — you know how to close one chapter so the next one can actually begin.",
+  "Beshalach": "Emergency response, performing arts, startup culture, expedition leadership — you move forward when everyone else is frozen at the shore.",
+  "Yitro": "Management consulting, systems engineering, organizational design, UX research — you see the structure behind the chaos faster than people who've been inside it for years.",
+  "Mishpatim": "Law, compliance, ethics boards, quality assurance, contract negotiation — you make sure things are done right, not just done fast.",
+  "Terumah": "Architecture, interior design, event production, institution building, product design — you create the containers where sacred things can actually happen.",
+  "Tetzaveh": "Fashion, branding, museum curation, liturgical design, art direction — you understand that how something looks is part of what it means.",
+  "Ki Tisa": "Post-crisis rebuilding, reform leadership, restorative justice, turnaround consulting — you know what breaks and you know how to build it back stronger.",
+  "Vayakhel": "Community building, fundraising, team leadership, festival production, cooperative ventures — you make the group greater than the sum of its parts.",
+  "Pekudei": "Accounting, project management, editing, logistics, quality control — you close the loop that other people leave open, and you know how rare that is.",
+  "Vayikra": "Clinical psychology, ritual design, precision medicine, fine art critique, wine and food — you notice distinctions that other people can't even name.",
+  "Tzav": "Teaching, nursing, religious leadership, maintenance engineering, daily journalism — you tend the flame that keeps everything else alive.",
+  "Shemini": "Chaplaincy, grief counseling, safety engineering, risk assessment, ceremonial work — you understand what's at stake when thresholds are crossed.",
+  "Tazria": "Diagnostics, therapy, editorial work, dermatology, quality assurance — you see what's happening beneath the surface before anyone else names it.",
+  "Metzora": "Rehabilitation, re-entry programs, addiction recovery, personal coaching, memoir — you know the path back and you can light it for others.",
+  "Achrei Mot": "Hospice care, depth psychology, spiritual direction, philosophy, investigative work — you go to the places other people won't, and you bring something real back.",
+  "Kedoshim": "Ethics consulting, social justice law, public policy, community health, education reform — you make the world match what it should be.",
+  "Emor": "Speechwriting, journalism, ceremony planning, therapeutic communication, calendar design — you know that timing and words change everything.",
+  "Behar": "Sustainable business, land trust management, conservation, debt counseling, sabbatical coaching — you build rest and release into systems that forgot they needed it.",
+  "Bechukotai": "Auditing, investigative journalism, executive coaching, parenting guidance, quality assurance — you deliver hard truths that people actually need to hear.",
+  "Bamidbar": "Field research, wilderness therapy, startup operations, military logistics, survey and census work — you organize the wilderness and find order in the open desert.",
+  "Naso": "Portrait photography, biography, bespoke services, concierge, personal styling — you see people specifically, not generally, and that changes everything for them.",
+  "Beha'alotcha": "Spiritual direction, long-form journalism, research, teaching, endurance athletics — you know how to navigate the long complicated middle when the clarity fades.",
+  "Shelach": "Independent analysis, whistleblowing, entrepreneurship, minority-report work, advocacy — you speak the truth the room doesn't want to hear, and you're usually right.",
+  "Korach": "Union organizing, reform politics, organizational psychology, disruptive innovation, advocacy — you challenge power structures that have stopped earning their authority.",
+  "Chukat": "Philosophy, abstract mathematics, chaplaincy, faith-based leadership, research at the edge of the known — you act without needing to understand everything first.",
+  "Balak": "Independent journalism, art, prophetic ministry, consulting where truth matters more than comfort — your vision can't be bought and people trust that about you.",
+  "Pinchas": "Emergency medicine, crisis response, startup founding, military leadership, decisive executive roles — you act when it counts and don't need consensus to move.",
+  "Matot": "Contract law, oath-bound professions, military service, marriage counseling, integrity-based leadership — your word is your bond and people build on that.",
+  "Masei": "Travel writing, cartography, genealogy, historical research, data visualization — you trace the route and find meaning in the journey that others skip over.",
+  "Devarim": "Teaching, keynote speaking, writing, cultural commentary, strategic advising — you synthesize a lifetime of experience into something others can actually use.",
+  "Vaetchanan": "Ministry, coaching, songwriting, teaching, writing — you turn closed doors into your most important work and people feel that in what you make.",
+  "Ekev": "Agriculture, compounding investments, physical therapy, habit coaching, craft work — you honor the small things that build the big ones over time.",
+  "Re'eh": "Investigative work, ethical consulting, transparency advocacy, prophetic ministry, whistleblowing — once you see it, you can't look away, and neither can anyone you tell.",
+  "Shoftim": "Judiciary, compliance, ethics consulting, investigative journalism, mediation — justice isn't abstract to you and you pursue it even when it costs you something.",
+  "Ki Teitzei": "Social work, public defense, animal welfare, labor rights, detail-oriented advocacy — you fight for the things most people walk right past.",
+  "Ki Tavo": "Donor relations, event planning, gratitude practices, acknowledgment work, harvest management — you pause long enough to mark what was built before moving on.",
+  "Nitzavim": "Constitutional law, movement building, community leadership, collective action, covenant-based organizations — you think in terms of we and build for everyone.",
+  "Vayelech": "Succession planning, mentorship, legacy projects, leadership transitions, ghostwriting — you hand things off with a grace that people only fully appreciate later.",
+  "Ha'azinu": "History, long-range strategy, poetry, musical composition, pattern recognition — you see the arc before others see the individual moments.",
+  "V'Zot HaBerachah": "Eulogy writing, ceremonial leadership, transitions coaching, hospice chaplaincy, closing work — you end things with an intention that stays with people forever.",
+};
+
+function showError(msg) {
+  const el = document.getElementById('error-msg');
+  el.textContent = msg;
+  el.classList.add('visible');
+  document.getElementById('result').classList.remove('visible');
+}
+
+function revealPortion() {
+  document.getElementById('error-msg').classList.remove('visible');
+  const val = document.getElementById('datepicker').value;
+  if (!val) { showError('Please select a date first.'); return; }
+
+  const [gy, gm, gd] = val.split('-').map(Number);
+
+  // Hebrew date of the birthday itself
+  const jdBirthday = gregorianToJD(gy, gm, gd);
+  const hdBirthday = jdToHebrew(jdBirthday);
+
+  // Shabbat on or after the birthday
+  const shabbat = getShabbatOnOrAfter(gy, gm, gd);
+  const jd = gregorianToJD(shabbat.getFullYear(), shabbat.getMonth() + 1, shabbat.getDate());
+  const hd = jdToHebrew(jd);
+
+  const absShabbat = hDateToAbsolute(hd.year, hd.month, hd.day);
+  const absRH = jewishNewYear(hd.year);
+  const rhDow = (absRH + 1) % 7;
+  const absFirstShabbat = absRH + (rhDow === 6 ? 0 : 6 - rhDow);
+  const weekIdx = Math.round((absShabbat - absFirstShabbat) / 7);
+
+  let schedule, offset;
+  if (weekIdx < 0) {
+    const prevRH = jewishNewYear(hd.year - 1);
+    const prevRhDow = (prevRH + 1) % 7;
+    const prevFirstShabbat = prevRH + (prevRhDow === 6 ? 0 : 6 - prevRhDow);
+    schedule = buildSchedule(hd.year - 1, false);
+    offset = Math.round((absShabbat - prevFirstShabbat) / 7);
+  } else {
+    schedule = buildSchedule(hd.year, false);
+    offset = weekIdx;
+  }
+
+  let scheduleName = offset >= schedule.length
+    ? buildSchedule(hd.year + 1, false)[offset - schedule.length]
+    : schedule[offset];
+
+  if (!scheduleName) {
+    showError('This date falls on a major holiday — no regular parsha is read. Try an adjacent date.');
+    return;
+  }
+
+  const dataKey = SCHEDULE_TO_DATA[scheduleName];
+  const data = dataKey ? parshaData[dataKey] : null;
+
+  if (!data) {
+    showError(`Parsha data not found for "${scheduleName}". Please try another date.`);
+    return;
+  }
+
+  const hebrewDateStr = formatHebrewDate(hdBirthday);
+
+  document.getElementById('result-parsha').textContent = (dataKey || scheduleName).toUpperCase();
+  document.getElementById('result-archetype').textContent = data.archetype;
+  document.getElementById('result-hebrew-date').textContent = hebrewDateStr + ' · ' + scheduleName;
+  document.getElementById('result-reading').textContent = data.reading;
+  document.getElementById('result-question').textContent = data.question;
+  document.getElementById('result-shadow').textContent = data.shadow;
+  document.getElementById('result-people').textContent = data.people;
+  document.getElementById('result-watchout').textContent = data.watchout;
+  document.getElementById('result-thrive').textContent = parshaThrive[dataKey] || '';
+
+  const slug = PARSHA_SLUG[dataKey] || dataKey.toLowerCase().replace(/\s+/g, '-').replace(/['']/g, '');
+  document.getElementById('result-map-link').href = 'https://parshamap.com/?parsha=' + slug;
+
+  const resultEl = document.getElementById('result');
+  resultEl.classList.add('visible');
+  resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
+  const words = text.split(' ');
+  let line = '';
+  let lineCount = 0;
+  for (const word of words) {
+    const test = line ? line + ' ' + word : word;
+    if (ctx.measureText(test).width > maxWidth && line) {
+      ctx.fillText(line, x, y + lineCount * lineHeight);
+      lineCount++;
+      line = word;
+    } else {
+      line = test;
+    }
+  }
+  if (line) { ctx.fillText(line, x, y + lineCount * lineHeight); lineCount++; }
+  return lineCount;
+}
+
+function truncate(text, max) {
+  return text.length > max ? text.slice(0, max).trimEnd() + '…' : text;
+}
+
+async function generateShareCard() {
+  await document.fonts.ready;
+
+  const parsha    = document.getElementById('result-parsha').textContent;
+  const archetype = document.getElementById('result-archetype').textContent;
+  const reading   = document.getElementById('result-reading').textContent;
+  const question  = document.getElementById('result-question').textContent;
+  const shadow    = document.getElementById('result-shadow').textContent;
+  const people    = document.getElementById('result-people').textContent;
+  const watchout  = document.getElementById('result-watchout').textContent;
+  const thrive    = document.getElementById('result-thrive').textContent;
+
+  const CW = 1080;
+  const PAD = 68;
+  const W = CW - PAD * 2;
+  const MAX_H = 3600;
+
+  // Draw on an oversized canvas, then crop to content
+  const tmp = document.createElement('canvas');
+  tmp.width = CW;
+  tmp.height = MAX_H;
+  const ctx = tmp.getContext('2d');
+
+  // Background
+  ctx.fillStyle = '#0f0d09';
+  ctx.fillRect(0, 0, CW, MAX_H);
+  const grad = ctx.createLinearGradient(0, 0, CW, MAX_H);
+  grad.addColorStop(0, 'rgba(108, 47, 0, 0.10)');
+  grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, CW, MAX_H);
+
+  let y = PAD;
+
+  // ── Header area ──
+  ctx.fillStyle = '#6c2f00';
+  ctx.fillRect(PAD, y, 40, 2);
+  y += 24;
+
+  ctx.fillStyle = '#6c4a28';
+  ctx.font = '600 14px Inter, sans-serif';
+  ctx.fillText('PARSHA HOROSCOPE', PAD, y);
+  y += 40;
+
+  ctx.fillStyle = '#c9a052';
+  ctx.font = '600 26px Inter, sans-serif';
+  ctx.fillText(parsha, PAD, y);
+  y += 14;
+
+  ctx.fillStyle = '#f0ead6';
+  ctx.font = '600 58px "Noto Serif", Georgia, serif';
+  const archLines = wrapText(ctx, archetype, PAD, y + 56, W, 68);
+  y += archLines * 68 + 56 + 24;
+
+  // ── Divider ──
+  drawDiv(ctx, PAD, y, CW - PAD);
+  y += 28;
+
+  // ── Full reading ──
+  ctx.fillStyle = '#d4c8b0';
+  ctx.font = '20px "Noto Serif", Georgia, serif';
+  const readLines = wrapText(ctx, reading, PAD, y, W, 33);
+  y += readLines * 33 + 28;
+
+  // ── Divider ──
+  drawDiv(ctx, PAD, y, CW - PAD);
+  y += 32;
+
+  // ── Question (slightly larger, quoted) ──
+  ctx.fillStyle = '#6c4a28';
+  ctx.font = '600 12px Inter, sans-serif';
+  ctx.fillText('YOUR LIFE\u2019S QUESTION', PAD, y);
+  y += 24;
+
+  ctx.fillStyle = '#d4c8b0';
+  ctx.font = 'italic 24px "Noto Serif", Georgia, serif';
+  const qLines = wrapText(ctx, '\u201c' + question + '\u201d', PAD, y, W, 36);
+  y += qLines * 36 + 24;
+
+  // ── Shadow ──
+  y = drawSect(ctx, 'YOUR SHADOW', shadow, PAD, y, W, true);
+
+  // ── People ──
+  y = drawSect(ctx, 'YOUR PEOPLE', people, PAD, y, W, true);
+
+  // ── Watch out for ──
+  y = drawSect(ctx, 'WATCH OUT FOR', watchout, PAD, y, W, true);
+
+  // ── Where you thrive (not italic) ──
+  y = drawSect(ctx, 'WHERE YOU THRIVE', thrive, PAD, y, W, false);
+
+  y += 12;
+
+  // ── Bottom divider + branding ──
+  drawDiv(ctx, PAD, y, CW - PAD);
+  y += 32;
+
+  ctx.fillStyle = '#c9a052';
+  ctx.font = '600 20px Inter, sans-serif';
+  ctx.fillText('parshamap.com/horoscope', PAD, y + 18);
+
+  // Pin mark
+  ctx.fillStyle = '#c9a052';
+  const px = CW - PAD - 8, py = y + 12;
+  ctx.beginPath(); ctx.arc(px, py - 8, 7, 0, Math.PI * 2); ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(px - 7, py - 8);
+  ctx.quadraticCurveTo(px, py + 4, px, py + 4);
+  ctx.quadraticCurveTo(px + 7, py - 8, px + 7, py - 8);
+  ctx.fill();
+
+  y += 18 + PAD;
+
+  // ── Crop to content height ──
+  const finalH = Math.ceil(y);
+  const canvas = document.createElement('canvas');
+  canvas.width = CW;
+  canvas.height = finalH;
+  const fctx = canvas.getContext('2d');
+  // Re-draw a clean background at the correct size
+  fctx.fillStyle = '#0f0d09';
+  fctx.fillRect(0, 0, CW, finalH);
+  const g2 = fctx.createLinearGradient(0, 0, CW, finalH);
+  g2.addColorStop(0, 'rgba(108, 47, 0, 0.10)');
+  g2.addColorStop(1, 'rgba(0, 0, 0, 0)');
+  fctx.fillStyle = g2;
+  fctx.fillRect(0, 0, CW, finalH);
+  // Copy content from tmp (skip tmp's background by using compositing)
+  fctx.drawImage(tmp, 0, 0, CW, finalH, 0, 0, CW, finalH);
+
+  // ── Download ──
+  const btn = document.querySelector('.share-btn');
+  const originalHTML = btn.innerHTML;
+  btn.textContent = 'Saving\u2026';
+  btn.disabled = true;
+
+  canvas.toBlob(blob => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'parsha-horoscope-' + parsha.toLowerCase().replace(/\s+/g, '-') + '.png';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    btn.innerHTML = originalHTML;
+    btn.disabled = false;
+  }, 'image/png');
+}
+
+function drawDiv(ctx, x1, y, x2) {
+  ctx.strokeStyle = '#2e2416';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(x1, y);
+  ctx.lineTo(x2, y);
+  ctx.stroke();
+}
+
+function drawSect(ctx, label, text, x, y, maxW, italic) {
+  ctx.fillStyle = '#6c4a28';
+  ctx.font = '600 12px Inter, sans-serif';
+  ctx.fillText(label, x, y);
+  y += 20;
+
+  ctx.fillStyle = italic ? '#a09080' : '#c8b898';
+  ctx.font = (italic ? 'italic ' : '') + '20px "Noto Serif", Georgia, serif';
+  const n = wrapText(ctx, text, x, y, maxW, 31);
+  return y + n * 31 + 20;
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Enter') revealPortion(); });
+</script>
+</body>
+</html>
