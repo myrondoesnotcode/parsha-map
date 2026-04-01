@@ -1239,7 +1239,9 @@ async function generateShareCard() {
 
   // Fixed IG story dimensions (9:16)
   const CW = 1080, CH = 1920;
-  const PAD = 90;
+  const PAD = 96;       // horizontal padding
+  const TOP = 260;      // top safe zone (IG UI overlays ~250px)
+  const BOTTOM = 220;   // bottom safe zone (IG reply bar)
   const W = CW - PAD * 2;
 
   const canvas = document.createElement('canvas');
@@ -1247,61 +1249,73 @@ async function generateShareCard() {
   canvas.height = CH;
   const ctx = canvas.getContext('2d');
 
+  // ── App color palette ──
+  const C = {
+    bg:        '#f7f0e4',  // warm off-white (slightly richer than screen bg)
+    primary:   '#6c2f00',  // burnt sienna
+    onSurface: '#1c1c17',  // near-black
+    variant:   '#54433a',  // warm brown-gray
+    muted:     '#877369',  // outline color
+    divider:   '#dac2b6',  // outline-variant
+  };
+
   // Background
-  ctx.fillStyle = '#0f0d09';
-  ctx.fillRect(0, 0, CW, CH);
-  const grad = ctx.createLinearGradient(0, 0, CW, CH);
-  grad.addColorStop(0, 'rgba(108, 47, 0, 0.12)');
-  grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
-  ctx.fillStyle = grad;
+  ctx.fillStyle = C.bg;
   ctx.fillRect(0, 0, CW, CH);
 
-  let y = PAD;
+  // Subtle warm vignette at top
+  const grad = ctx.createLinearGradient(0, 0, 0, 400);
+  grad.addColorStop(0, 'rgba(108, 47, 0, 0.05)');
+  grad.addColorStop(1, 'rgba(108, 47, 0, 0)');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, CW, 400);
+
+  // Top accent bar
+  ctx.fillStyle = C.primary;
+  ctx.fillRect(0, 0, CW, 10);
+
+  let y = TOP; // start in IG safe zone
 
   // ── Header ──
-  ctx.fillStyle = '#6c2f00';
-  ctx.fillRect(PAD, y, 40, 2);
-  y += 30;
-
-  ctx.fillStyle = '#6c4a28';
-  ctx.font = '600 15px Inter, sans-serif';
+  ctx.fillStyle = C.muted;
+  ctx.font = '600 16px Inter, sans-serif';
   ctx.fillText('PARSHA HOROSCOPE', PAD, y);
-  y += 50;
+  y += 52;
 
-  ctx.fillStyle = '#c9a052';
-  ctx.font = '600 28px Inter, sans-serif';
+  ctx.fillStyle = C.primary;
+  ctx.font = '600 34px Inter, sans-serif';
   ctx.fillText(parsha, PAD, y);
-  y += 16;
+  y += 20;
 
-  ctx.fillStyle = '#f0ead6';
-  ctx.font = '600 60px "Noto Serif", Georgia, serif';
-  const archLines = wrapText(ctx, archetype, PAD, y + 58, W, 72);
-  y += archLines * 72 + 58 + 36;
+  ctx.fillStyle = C.onSurface;
+  ctx.font = '600 68px "Noto Serif", Georgia, serif';
+  const archLines = wrapText(ctx, archetype, PAD, y + 66, W, 80);
+  y += archLines * 80 + 66 + 40;
 
   // ── Divider ──
   drawDiv(ctx, PAD, y, CW - PAD);
-  y += 36;
+  y += 40;
 
   // ── Full reading ──
-  ctx.fillStyle = '#d4c8b0';
-  ctx.font = '20px "Noto Serif", Georgia, serif';
-  const readLines = wrapText(ctx, reading, PAD, y, W, 33);
-  y += readLines * 33 + 36;
+  ctx.fillStyle = C.onSurface;
+  ctx.font = '24px "Noto Serif", Georgia, serif';
+  const readLines = wrapText(ctx, reading, PAD, y, W, 38);
+  y += readLines * 38 + 40;
 
   // ── Divider ──
   drawDiv(ctx, PAD, y, CW - PAD);
-  y += 36;
+  y += 40;
 
   // ── Question ──
-  ctx.fillStyle = '#6c4a28';
-  ctx.font = '600 13px Inter, sans-serif';
+  ctx.fillStyle = C.primary;
+  ctx.font = '600 15px Inter, sans-serif';
   ctx.fillText('YOUR LIFE\u2019S QUESTION', PAD, y);
-  y += 28;
+  y += 30;
 
-  ctx.fillStyle = '#d4c8b0';
-  ctx.font = 'italic 24px "Noto Serif", Georgia, serif';
-  const qLines = wrapText(ctx, '\u201c' + question + '\u201d', PAD, y, W, 36);
-  y += qLines * 36 + 28;
+  ctx.fillStyle = C.onSurface;
+  ctx.font = 'italic 28px "Noto Serif", Georgia, serif';
+  const qLines = wrapText(ctx, '\u201c' + question + '\u201d', PAD, y, W, 42);
+  y += qLines * 42 + 32;
 
   // ── Sections ──
   y = drawSect(ctx, 'YOUR SHADOW', shadow, PAD, y, W, true);
@@ -1309,23 +1323,25 @@ async function generateShareCard() {
   y = drawSect(ctx, 'WATCH OUT FOR', watchout, PAD, y, W, true);
   y = drawSect(ctx, 'WHERE YOU THRIVE', thrive, PAD, y, W, false);
 
-  // ── Branding anchored to bottom ──
-  const brandY = CH - PAD;
-  drawDiv(ctx, PAD, brandY - 40, CW - PAD);
+  // ── Branding anchored to bottom safe zone ──
+  const brandY = CH - BOTTOM;
+  drawDiv(ctx, PAD, brandY - 44, CW - PAD);
 
-  ctx.fillStyle = '#c9a052';
-  ctx.font = '600 20px Inter, sans-serif';
+  ctx.fillStyle = C.primary;
+  ctx.font = '600 22px Inter, sans-serif';
   ctx.fillText('parshamap.com/horoscope', PAD, brandY);
 
   // Pin mark
-  ctx.fillStyle = '#c9a052';
-  const px = CW - PAD - 8, py = brandY - 6;
-  ctx.beginPath(); ctx.arc(px, py - 8, 7, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = C.primary;
+  const px = CW - PAD - 9, py = brandY - 7;
+  ctx.beginPath(); ctx.arc(px, py - 9, 8, 0, Math.PI * 2); ctx.fill();
   ctx.beginPath();
-  ctx.moveTo(px - 7, py - 8);
-  ctx.quadraticCurveTo(px, py + 4, px, py + 4);
-  ctx.quadraticCurveTo(px + 7, py - 8, px + 7, py - 8);
+  ctx.moveTo(px - 8, py - 9);
+  ctx.quadraticCurveTo(px, py + 5, px, py + 5);
+  ctx.quadraticCurveTo(px + 8, py - 9, px + 8, py - 9);
   ctx.fill();
+  ctx.fillStyle = C.bg;
+  ctx.beginPath(); ctx.arc(px, py - 9, 3.5, 0, Math.PI * 2); ctx.fill();
 
   // ── Share or download ──
   const btn = document.querySelector('.share-btn');
@@ -1363,8 +1379,8 @@ async function generateShareCard() {
 }
 
 function drawDiv(ctx, x1, y, x2) {
-  ctx.strokeStyle = '#2e2416';
-  ctx.lineWidth = 1;
+  ctx.strokeStyle = '#dac2b6';
+  ctx.lineWidth = 1.5;
   ctx.beginPath();
   ctx.moveTo(x1, y);
   ctx.lineTo(x2, y);
@@ -1372,15 +1388,15 @@ function drawDiv(ctx, x1, y, x2) {
 }
 
 function drawSect(ctx, label, text, x, y, maxW, italic) {
-  ctx.fillStyle = '#6c4a28';
-  ctx.font = '600 12px Inter, sans-serif';
+  ctx.fillStyle = '#877369';
+  ctx.font = '600 15px Inter, sans-serif';
   ctx.fillText(label, x, y);
-  y += 20;
+  y += 26;
 
-  ctx.fillStyle = italic ? '#a09080' : '#c8b898';
-  ctx.font = (italic ? 'italic ' : '') + '20px "Noto Serif", Georgia, serif';
-  const n = wrapText(ctx, text, x, y, maxW, 31);
-  return y + n * 31 + 20;
+  ctx.fillStyle = italic ? '#54433a' : '#1c1c17';
+  ctx.font = (italic ? 'italic ' : '') + '24px "Noto Serif", Georgia, serif';
+  const n = wrapText(ctx, text, x, y, maxW, 36);
+  return y + n * 36 + 28;
 }
 
 document.addEventListener('keydown', e => { if (e.key === 'Enter') revealPortion(); });
