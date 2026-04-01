@@ -295,22 +295,27 @@
   }
 
   .map-link {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    font-size: 12px;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px 16px;
+    font-size: 13px;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--primary);
+    color: white;
+    background: var(--primary);
+    border: none;
+    border-radius: 2px;
     text-decoration: none;
-    transition: color 0.15s;
-    margin-bottom: 16px;
-    display: flex;
+    transition: background 0.15s;
+    margin-bottom: 12px;
   }
 
-  .map-link:hover { color: var(--primary-container); }
+  .map-link:hover { background: var(--primary-container); color: white; }
 
   .map-link svg { transition: transform 0.15s; }
   .map-link:hover svg { transform: translateX(2px); }
@@ -386,7 +391,7 @@
       <div class="section-text section-thrive" id="result-thrive"></div>
       <div class="divider"></div>
       <a class="map-link" id="result-map-link" href="/" target="_blank">
-        Read this parsha on Parshamap
+        Read more on Parshamap.com
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12h14M12 5l7 7-7 7"/>
         </svg>
