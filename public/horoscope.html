@@ -368,7 +368,7 @@
     <p class="page-subtitle">Enter your birthday to discover the Torah portion of your birth week and what it reveals about you.</p>
 
     <label class="field-label" for="datepicker">Birthday</label>
-    <input type="date" id="datepicker" min="1900-01-01" max="2025-12-31" />
+    <input type="date" id="datepicker" min="1900-01-01" />
 
     <button class="reveal" onclick="revealPortion()">Reveal My Portion</button>
     <div class="error" id="error-msg"></div>
@@ -412,138 +412,29 @@
 </footer>
 
 <script>
-// ── Hebrew calendar (pure JS, no CDN) ─────────────────────────────────────────
-
-function jewishNewYear(year) {
-  const months = Math.floor((235 * year - 234) / 19);
-  const parts = 12084 + 13753 * months;
-  let day = months * 29 + Math.floor(parts / 25920);
-  if ((3 * (day + 1)) % 7 < 3) day++;
-  return day;
-}
-
-function isLeapYear(year) { return (7 * year + 1) % 19 < 7; }
-function daysInYear(year) { return jewishNewYear(year + 1) - jewishNewYear(year); }
-
-function daysInMonth(month, year) {
-  switch (month) {
-    case 1: return 30; case 2: return 29; case 3: return 30; case 4: return 29;
-    case 5: return 30; case 6: return 29; case 7: return 30;
-    case 8: return daysInYear(year) % 10 === 5 ? 30 : 29;
-    case 9: return daysInYear(year) % 10 === 3 ? 29 : 30;
-    case 10: return 29; case 11: return 30;
-    case 12: return isLeapYear(year) ? 30 : 29;
-    case 13: return 29; default: return 0;
-  }
-}
-
-function gregorianToJD(y, m, d) {
-  return 367*y - Math.floor(7*(y + Math.floor((m+9)/12))/4)
-    - Math.floor(3*(Math.floor((y+(m-9)/7)/100)+1)/4)
-    + Math.floor(275*m/9) + d + 1721028.5;
-}
-
-function jdToHebrew(jd) {
-  jd = Math.floor(jd - 347996.5);
-  let year = Math.floor(jd * 19 / 6935) + 1;
-  while (jewishNewYear(year + 1) <= jd) year++;
-  while (jewishNewYear(year) > jd) year--;
-  const tishri1 = jewishNewYear(year);
-  let elapsed = jd - tishri1;
-  const months = 12 + (isLeapYear(year) ? 1 : 0);
-  const order = [];
-  for (let m = 7; m <= months + 6; m++) order.push(m > months ? m - months : m);
-  let month = 7, day = elapsed + 1;
-  for (let i = 0; i < order.length - 1; i++) {
-    const len = daysInMonth(order[i], year);
-    if (day <= len) { month = order[i]; break; }
-    day -= len; month = order[i + 1];
-  }
-  return { year, month, day };
-}
-
-const MONTH_NAMES = ['','Nisan','Iyyar','Sivan','Tammuz','Av','Elul','Tishri','Cheshvan','Kislev','Tevet','Shevat','Adar','Adar II'];
-function formatHebrewDate(hd) { return `${hd.day} ${MONTH_NAMES[hd.month]} ${hd.year}`; }
-
-function hDateToAbsolute(year, month, day) {
-  let abs = jewishNewYear(year) - 1 + day;
-  if (month < 7) {
-    const months = 12 + (isLeapYear(year) ? 1 : 0);
-    for (let m = 7; m <= months; m++) abs += daysInMonth(m, year);
-    for (let m = 1; m < month; m++) abs += daysInMonth(m, year);
-  } else {
-    for (let m = 7; m < month; m++) abs += daysInMonth(m, year);
-  }
-  return abs;
-}
-
-// All parshiyot with display names
-const ALL_PARSHIYOT = [
-  "Bereishit","Noach","Lech Lecha","Vayeira","Chayei Sara","Toldot",
-  "Vayeitzei","Vayishlach","Vayeishev","Miketz","Vayigash","Vayechi",
-  "Shemot","Vaeira","Bo","Beshalach","Yitro","Mishpatim","Terumah",
-  "Tetzaveh","Ki Tisa","Vayakhel","Pekudei","Vayikra","Tzav","Shemini",
-  "Tazria","Metzora","Achrei Mot","Kedoshim","Emor","Behar","Bechukotai",
-  "Bamidbar","Nasso","Beha'alotcha","Shelach","Korach","Chukat","Balak",
-  "Pinchas","Matot","Masei","Devarim","Vaetchanan","Eikev","Re'eh",
-  "Shoftim","Ki Teitzei","Ki Tavo","Nitzavim","Vayeilech","Ha'azinu"
-];
-
-function buildSchedule(year, israel) {
-  const len = daysInYear(year);
-  const complete = len === 355 || len === 385;
-  const deficient = len === 353 || len === 383;
-  const leap = isLeapYear(year);
-  const rhDow = (jewishNewYear(year) + 1) % 7;
-
-  const combineOptions = israel
-    ? ["Vayakhel-Pekudei","Tazria-Metzora","Achrei Mot-Kedoshim","Behar-Bechukotai","Chukat-Balak","Matot-Masei","Nitzavim-Vayeilech"]
-    : ["Vayakhel-Pekudei","Tazria-Metzora","Achrei Mot-Kedoshim","Behar-Bechukotai","Matot-Masei","Nitzavim-Vayeilech"];
-
-  const pairs = {
-    "Vayakhel-Pekudei":     ["Vayakhel","Pekudei"],
-    "Tazria-Metzora":       ["Tazria","Metzora"],
-    "Achrei Mot-Kedoshim":  ["Achrei Mot","Kedoshim"],
-    "Behar-Bechukotai":     ["Behar","Bechukotai"],
-    "Chukat-Balak":         ["Chukat","Balak"],
-    "Matot-Masei":          ["Matot","Masei"],
-    "Nitzavim-Vayeilech":   ["Nitzavim","Vayeilech"],
-  };
-
-  const table = {
-    "2-d-R-D":47,"2-d-R-IL":47,"2-r-R-D":47,"2-r-R-IL":47,
-    "3-c-R-D":49,"3-c-R-IL":49,"5-r-R-D":48,"5-r-R-IL":48,
-    "5-c-R-D":49,"5-c-R-IL":49,"7-d-R-D":47,"7-d-R-IL":47,
-    "7-r-R-D":48,"7-r-R-IL":48,
-    "2-d-L-D":51,"2-d-L-IL":52,"2-r-L-D":51,"2-r-L-IL":52,
-    "2-c-L-D":51,"2-c-L-IL":52,"3-r-L-D":51,"3-r-L-IL":52,
-    "3-c-L-D":51,"3-c-L-IL":52,"5-d-L-D":51,"5-d-L-IL":52,
-    "5-r-L-D":51,"5-r-L-IL":52,"5-c-L-D":51,"5-c-L-IL":52,
-    "7-d-L-D":51,"7-d-L-IL":52,"7-r-L-D":51,"7-r-L-IL":52,
-    "7-c-L-D":51,"7-c-L-IL":52,
-  };
-
-  const key = `${rhDow}-${complete?'c':deficient?'d':'r'}-${leap?'L':'R'}-D`;
-  const numSedras = table[key] || (leap ? 51 : 48);
-  let needed = 53 - numSedras;
-  let sequence = [...ALL_PARSHIYOT];
-
-  for (const combo of combineOptions) {
-    if (needed <= 0) break;
-    const [a, b] = pairs[combo];
-    const ia = sequence.indexOf(a);
-    if (ia !== -1 && sequence[ia + 1] === b) { sequence.splice(ia, 2, combo); needed--; }
-  }
-
-  return sequence;
-}
-
-function getShabbatOnOrAfter(gy, gm, gd) {
-  const d = new Date(gy, gm - 1, gd);
-  const add = d.getDay() === 6 ? 0 : (6 - d.getDay());
-  d.setDate(d.getDate() + add);
-  return d;
-}
+// ── Map Hebcal API parsha names → parshaData keys ────────────────────────────
+const HEBCAL_TO_DATA = {
+  "Bereshit":"Bereishit","Noach":"Noach","Lech-Lecha":"Lech Lecha",
+  "Vayera":"Vayera","Chayei Sara":"Chayei Sara","Toldot":"Toldot",
+  "Vayetzei":"Vayetzei","Vayishlach":"Vayishlach","Vayeshev":"Vayeshev",
+  "Miketz":"Miketz","Vayigash":"Vayigash","Vayechi":"Vayechi",
+  "Shemot":"Shemot","Vaera":"Va'era","Bo":"Bo","Beshalach":"Beshalach",
+  "Yitro":"Yitro","Mishpatim":"Mishpatim","Terumah":"Terumah",
+  "Tetzaveh":"Tetzaveh","Ki Tisa":"Ki Tisa","Vayakhel":"Vayakhel",
+  "Pekudei":"Pekudei","Vayakhel-Pekudei":"Vayakhel",
+  "Vayikra":"Vayikra","Tzav":"Tzav","Shmini":"Shemini",
+  "Tazria":"Tazria","Metzora":"Metzora","Tazria-Metzora":"Tazria",
+  "Achrei Mot":"Achrei Mot","Kedoshim":"Kedoshim","Achrei Mot-Kedoshim":"Achrei Mot",
+  "Emor":"Emor","Behar":"Behar","Bechukotai":"Bechukotai","Behar-Bechukotai":"Behar",
+  "Bamidbar":"Bamidbar","Nasso":"Naso","Beha'alotcha":"Beha'alotcha",
+  "Sh'lach":"Shelach","Korach":"Korach","Chukat":"Chukat","Balak":"Balak",
+  "Chukat-Balak":"Chukat","Pinchas":"Pinchas","Matot":"Matot","Masei":"Masei",
+  "Matot-Masei":"Matot","Devarim":"Devarim","Vaetchanan":"Vaetchanan",
+  "Eikev":"Ekev","Re'eh":"Re'eh","Shoftim":"Shoftim",
+  "Ki Teitzei":"Ki Teitzei","Ki Tavo":"Ki Tavo","Nitzavim":"Nitzavim",
+  "Vayeilech":"Vayelech","Nitzavim-Vayeilech":"Nitzavim",
+  "Ha'azinu":"Ha'azinu","Vezot Haberakhah":"V'Zot HaBerachah",
+};
 
 // ── Parshamap URL slugs (for "Read on Parshamap" link) ───────────────────────
 const PARSHA_SLUG = {
@@ -563,71 +454,6 @@ const PARSHA_SLUG = {
   "Vaetchanan":"vaetchanan","Ekev":"eikev","Re'eh":"reeh","Shoftim":"shoftim",
   "Ki Teitzei":"ki-teitzei","Ki Tavo":"ki-tavo","Nitzavim":"nitzavim",
   "Vayelech":"vayeilech","Ha'azinu":"haazinu","V'Zot HaBerachah":"vezot-habracha",
-};
-
-// ── Mapping from schedule names to parshaData keys ────────────────────────────
-const SCHEDULE_TO_DATA = {
-  "Bereishit":          "Bereishit",
-  "Noach":              "Noach",
-  "Lech Lecha":         "Lech Lecha",
-  "Vayeira":            "Vayera",
-  "Chayei Sara":        "Chayei Sara",
-  "Toldot":             "Toldot",
-  "Vayeitzei":          "Vayetzei",
-  "Vayishlach":         "Vayishlach",
-  "Vayeishev":          "Vayeshev",
-  "Miketz":             "Miketz",
-  "Vayigash":           "Vayigash",
-  "Vayechi":            "Vayechi",
-  "Shemot":             "Shemot",
-  "Vaeira":             "Va'era",
-  "Bo":                 "Bo",
-  "Beshalach":          "Beshalach",
-  "Yitro":              "Yitro",
-  "Mishpatim":          "Mishpatim",
-  "Terumah":            "Terumah",
-  "Tetzaveh":           "Tetzaveh",
-  "Ki Tisa":            "Ki Tisa",
-  "Vayakhel":           "Vayakhel",
-  "Pekudei":            "Pekudei",
-  "Vayakhel-Pekudei":   "Vayakhel",
-  "Vayikra":            "Vayikra",
-  "Tzav":               "Tzav",
-  "Shemini":            "Shemini",
-  "Tazria":             "Tazria",
-  "Metzora":            "Metzora",
-  "Tazria-Metzora":     "Tazria",
-  "Achrei Mot":         "Achrei Mot",
-  "Kedoshim":           "Kedoshim",
-  "Achrei Mot-Kedoshim":"Achrei Mot",
-  "Emor":               "Emor",
-  "Behar":              "Behar",
-  "Bechukotai":         "Bechukotai",
-  "Behar-Bechukotai":   "Behar",
-  "Bamidbar":           "Bamidbar",
-  "Nasso":              "Naso",
-  "Beha'alotcha":       "Beha'alotcha",
-  "Shelach":            "Shelach",
-  "Korach":             "Korach",
-  "Chukat":             "Chukat",
-  "Balak":              "Balak",
-  "Chukat-Balak":       "Chukat",
-  "Pinchas":            "Pinchas",
-  "Matot":              "Matot",
-  "Masei":              "Masei",
-  "Matot-Masei":        "Matot",
-  "Devarim":            "Devarim",
-  "Vaetchanan":         "Vaetchanan",
-  "Eikev":              "Ekev",
-  "Re'eh":              "Re'eh",
-  "Shoftim":            "Shoftim",
-  "Ki Teitzei":         "Ki Teitzei",
-  "Ki Tavo":            "Ki Tavo",
-  "Nitzavim":           "Nitzavim",
-  "Vayeilech":          "Vayelech",
-  "Nitzavim-Vayeilech": "Nitzavim",
-  "Ha'azinu":           "Ha'azinu",
-  "Vezot HaBracha":     "V'Zot HaBerachah",
 };
 
 // ── Parsha horoscope data ─────────────────────────────────────────────────────
@@ -1133,75 +959,70 @@ function showError(msg) {
   document.getElementById('result').classList.remove('visible');
 }
 
-function revealPortion() {
+async function revealPortion() {
   document.getElementById('error-msg').classList.remove('visible');
   const val = document.getElementById('datepicker').value;
   if (!val) { showError('Please select a date first.'); return; }
 
-  const [gy, gm, gd] = val.split('-').map(Number);
+  const btn = document.querySelector('button.reveal');
+  btn.disabled = true;
+  btn.textContent = 'Calculating…';
 
-  // Hebrew date of the birthday itself
-  const jdBirthday = gregorianToJD(gy, gm, gd);
-  const hdBirthday = jdToHebrew(jdBirthday);
+  try {
+    const [gy, gm, gd] = val.split('-').map(Number);
 
-  // Shabbat on or after the birthday
-  const shabbat = getShabbatOnOrAfter(gy, gm, gd);
-  const jd = gregorianToJD(shabbat.getFullYear(), shabbat.getMonth() + 1, shabbat.getDate());
-  const hd = jdToHebrew(jd);
+    // Fetch Hebrew date of birthday + parsha for that week in parallel
+    const [hDateRes, shabbatRes] = await Promise.all([
+      fetch(`https://www.hebcal.com/converter?cfg=json&gy=${gy}&gm=${gm}&gd=${gd}&g2h=1`),
+      fetch(`https://www.hebcal.com/shabbat/?cfg=json&geo=none&gy=${gy}&gm=${gm}&gd=${gd}`),
+    ]);
 
-  const absShabbat = hDateToAbsolute(hd.year, hd.month, hd.day);
-  const absRH = jewishNewYear(hd.year);
-  const rhDow = (absRH + 1) % 7;
-  const absFirstShabbat = absRH + (rhDow === 6 ? 0 : 6 - rhDow);
-  const weekIdx = Math.round((absShabbat - absFirstShabbat) / 7);
+    if (!hDateRes.ok || !shabbatRes.ok) throw new Error('API error');
 
-  let schedule, offset;
-  if (weekIdx < 0) {
-    const prevRH = jewishNewYear(hd.year - 1);
-    const prevRhDow = (prevRH + 1) % 7;
-    const prevFirstShabbat = prevRH + (prevRhDow === 6 ? 0 : 6 - prevRhDow);
-    schedule = buildSchedule(hd.year - 1, false);
-    offset = Math.round((absShabbat - prevFirstShabbat) / 7);
-  } else {
-    schedule = buildSchedule(hd.year, false);
-    offset = weekIdx;
+    const hDateData = await hDateRes.json();
+    const shabbatData = await shabbatRes.json();
+
+    // Find the parashat item in the week's events
+    const parshatItem = shabbatData.items?.find(item => item.category === 'parashat');
+    if (!parshatItem) {
+      showError('This date falls on a major holiday — no regular parsha is read. Try an adjacent date.');
+      return;
+    }
+
+    // "Parashat Lech-Lecha" → "Lech-Lecha"; normalize curly apostrophe → straight
+    const hebcalName = parshatItem.title.replace(/^Parashat\s+/i, '').replace(/\u2019/g, "'");
+    const dataKey = HEBCAL_TO_DATA[hebcalName];
+    const data = dataKey ? parshaData[dataKey] : null;
+
+    if (!data) {
+      showError(`Parsha data not found for "${hebcalName}". Please try another date.`);
+      return;
+    }
+
+    const hebrewDateStr = `${hDateData.hd} ${hDateData.hm} ${hDateData.hy}`;
+
+    document.getElementById('result-parsha').textContent = dataKey.toUpperCase();
+    document.getElementById('result-archetype').textContent = data.archetype;
+    document.getElementById('result-hebrew-date').textContent = hebrewDateStr + ' · ' + hebcalName;
+    document.getElementById('result-reading').textContent = data.reading;
+    document.getElementById('result-question').textContent = data.question;
+    document.getElementById('result-shadow').textContent = data.shadow;
+    document.getElementById('result-people').textContent = data.people;
+    document.getElementById('result-watchout').textContent = data.watchout;
+    document.getElementById('result-thrive').textContent = parshaThrive[dataKey] || '';
+
+    const slug = PARSHA_SLUG[dataKey] || dataKey.toLowerCase().replace(/\s+/g, '-').replace(/['']/g, '');
+    document.getElementById('result-map-link').href = 'https://parshamap.com/?parsha=' + slug;
+
+    const resultEl = document.getElementById('result');
+    resultEl.classList.add('visible');
+    resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (err) {
+    showError('Could not reach the calendar service. Please check your connection and try again.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Reveal My Portion';
   }
-
-  let scheduleName = offset >= schedule.length
-    ? buildSchedule(hd.year + 1, false)[offset - schedule.length]
-    : schedule[offset];
-
-  if (!scheduleName) {
-    showError('This date falls on a major holiday — no regular parsha is read. Try an adjacent date.');
-    return;
-  }
-
-  const dataKey = SCHEDULE_TO_DATA[scheduleName];
-  const data = dataKey ? parshaData[dataKey] : null;
-
-  if (!data) {
-    showError(`Parsha data not found for "${scheduleName}". Please try another date.`);
-    return;
-  }
-
-  const hebrewDateStr = formatHebrewDate(hdBirthday);
-
-  document.getElementById('result-parsha').textContent = (dataKey || scheduleName).toUpperCase();
-  document.getElementById('result-archetype').textContent = data.archetype;
-  document.getElementById('result-hebrew-date').textContent = hebrewDateStr + ' · ' + scheduleName;
-  document.getElementById('result-reading').textContent = data.reading;
-  document.getElementById('result-question').textContent = data.question;
-  document.getElementById('result-shadow').textContent = data.shadow;
-  document.getElementById('result-people').textContent = data.people;
-  document.getElementById('result-watchout').textContent = data.watchout;
-  document.getElementById('result-thrive').textContent = parshaThrive[dataKey] || '';
-
-  const slug = PARSHA_SLUG[dataKey] || dataKey.toLowerCase().replace(/\s+/g, '-').replace(/['']/g, '');
-  document.getElementById('result-map-link').href = 'https://parshamap.com/?parsha=' + slug;
-
-  const resultEl = document.getElementById('result');
-  resultEl.classList.add('visible');
-  resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -1400,6 +1221,7 @@ function drawSect(ctx, label, text, x, y, maxW, italic) {
   return y + n * 36 + 28;
 }
 
+document.getElementById('datepicker').max = new Date().toISOString().slice(0, 10);
 document.addEventListener('keydown', e => { if (e.key === 'Enter') revealPortion(); });
 </script>
 </body>
