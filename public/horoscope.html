@@ -400,7 +400,7 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/>
         </svg>
-        Save share image
+        Share image
       </button>
     </div>
   </div>
@@ -1355,18 +1355,36 @@ async function generateShareCard() {
   // Copy content from tmp (skip tmp's background by using compositing)
   fctx.drawImage(tmp, 0, 0, CW, finalH, 0, 0, CW, finalH);
 
-  // ── Download ──
+  // ── Share or download ──
   const btn = document.querySelector('.share-btn');
   const originalHTML = btn.innerHTML;
   btn.textContent = 'Saving\u2026';
   btn.disabled = true;
 
-  canvas.toBlob(blob => {
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'parsha-horoscope-' + parsha.toLowerCase().replace(/\s+/g, '-') + '.png';
-    a.click();
-    URL.revokeObjectURL(a.href);
+  const fileName = 'parsha-horoscope-' + parsha.toLowerCase().replace(/\s+/g, '-') + '.png';
+
+  canvas.toBlob(async blob => {
+    try {
+      // On mobile: use native share sheet (Save Image, Instagram, etc.)
+      const file = new File([blob], fileName, { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: 'My Parsha Horoscope',
+          text: parsha + ' \u2014 ' + archetype + '. Discover yours at parshamap.com/horoscope',
+        });
+      } else {
+        // Desktop fallback: download
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = fileName;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      }
+    } catch (e) {
+      // User cancelled share sheet — that's fine
+      if (e.name !== 'AbortError') console.error(e);
+    }
     btn.innerHTML = originalHTML;
     btn.disabled = false;
   }, 'image/png');
