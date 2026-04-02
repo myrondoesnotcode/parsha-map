@@ -54,12 +54,19 @@ export function MapLegend() {
 
           {/* Trade routes */}
           {routes.map((r) => (
-            <div key={r.properties.id} className="flex items-center gap-2">
+            <div key={r.properties.id} className="flex items-start gap-2">
               <div
-                className="h-0 w-5 shrink-0"
+                className="h-0 w-5 shrink-0 mt-[7px]"
                 style={{ borderTop: `2px dashed ${r.properties.color}` }}
               />
-              <span className="font-label text-on-surface-variant">{r.properties.name}</span>
+              <div>
+                <span className="font-label text-on-surface-variant">{r.properties.name}</span>
+                {r.properties.context && (
+                  <p className="font-body text-[9px] text-on-surface-variant/60 leading-snug mt-0.5 max-w-[160px]">
+                    {r.properties.context}
+                  </p>
+                )}
+              </div>
             </div>
           ))}
 

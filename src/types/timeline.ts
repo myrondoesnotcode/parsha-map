@@ -51,6 +51,7 @@ export interface TradeRouteProperties {
   activeTo: number
   color: string
   description: string
+  context?: string
   biblicalRef?: string
 }
 
