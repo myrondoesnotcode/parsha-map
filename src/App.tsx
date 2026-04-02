@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Sidebar } from './components/layout/Sidebar'
 import { ContextPanel } from './components/layout/ContextPanel'
 import { ParshaMap } from './components/map/ParshaMap'
@@ -75,6 +75,57 @@ export default function App() {
   const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [showLibrary, setShowLibrary] = useState(false)
 
+  // Desktop panel widths — persisted to localStorage
+  const [sidebarWidth, setSidebarWidth] = useState(() =>
+    parseInt(localStorage.getItem('sidebar-width') || '288')
+  )
+  const [contextWidth, setContextWidth] = useState(() =>
+    parseInt(localStorage.getItem('context-width') || '320')
+  )
+  const sidebarWidthRef = useRef(sidebarWidth)
+  sidebarWidthRef.current = sidebarWidth
+  const contextWidthRef = useRef(contextWidth)
+  contextWidthRef.current = contextWidth
+
+  useEffect(() => { localStorage.setItem('sidebar-width', String(sidebarWidth)) }, [sidebarWidth])
+  useEffect(() => { localStorage.setItem('context-width', String(contextWidth)) }, [contextWidth])
+
+  function startSidebarResize(e: React.MouseEvent) {
+    e.preventDefault()
+    const startX = e.clientX
+    const startWidth = sidebarWidthRef.current
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+    const onMove = (ev: MouseEvent) =>
+      setSidebarWidth(Math.max(180, Math.min(560, startWidth + (ev.clientX - startX))))
+    const onUp = () => {
+      document.body.style.cursor = ''
+      document.body.style.userSelect = ''
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseup', onUp)
+    }
+    window.addEventListener('mousemove', onMove)
+    window.addEventListener('mouseup', onUp)
+  }
+
+  function startContextResize(e: React.MouseEvent) {
+    e.preventDefault()
+    const startX = e.clientX
+    const startWidth = contextWidthRef.current
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+    const onMove = (ev: MouseEvent) =>
+      setContextWidth(Math.max(220, Math.min(560, startWidth - (ev.clientX - startX))))
+    const onUp = () => {
+      document.body.style.cursor = ''
+      document.body.style.userSelect = ''
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('mouseup', onUp)
+    }
+    window.addEventListener('mousemove', onMove)
+    window.addEventListener('mouseup', onUp)
+  }
+
   // On load: read ?parsha= from URL and select it (mark initialized so auto-select doesn't override)
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -145,9 +196,10 @@ export default function App() {
 
           {/* Parsha name pill */}
           {parsha && (
-            <span className="font-label text-xs text-primary truncate max-w-[200px]">
-              {parsha.hebrewName}
-            </span>
+            <div className="flex items-center gap-1.5 min-w-0">
+              <span className="font-label text-xs text-primary truncate">{parsha.name}</span>
+              <span className="font-hebrew text-xs text-on-surface-variant shrink-0">{parsha.hebrewName}</span>
+            </div>
           )}
 
           <div className="flex-1" />
@@ -213,13 +265,22 @@ export default function App() {
         <div className="flex-1 flex min-h-0">
 
           {/* Left: Sidebar or Library */}
-          <div className="w-72 h-full shrink-0 bg-surface-container-low overflow-y-auto">
+          <div
+            className="h-full shrink-0 bg-surface-container-low overflow-y-auto"
+            style={{ width: sidebarWidth }}
+          >
             {showLibrary ? (
               <ParshaLibrary onSelect={() => setShowLibrary(false)} />
             ) : (
               <Sidebar />
             )}
           </div>
+
+          {/* Sidebar resize handle */}
+          <div
+            className="w-1 h-full shrink-0 bg-outline-variant/30 hover:bg-primary/50 cursor-col-resize transition-colors"
+            onMouseDown={startSidebarResize}
+          />
 
           {/* Center: Map + Timeline */}
           <div className="flex-1 flex flex-col min-w-0">
@@ -231,8 +292,17 @@ export default function App() {
             </div>
           </div>
 
+          {/* Context panel resize handle */}
+          <div
+            className="w-1 h-full shrink-0 bg-outline-variant/30 hover:bg-primary/50 cursor-col-resize transition-colors"
+            onMouseDown={startContextResize}
+          />
+
           {/* Right: ContextPanel */}
-          <div className="w-80 h-full shrink-0 bg-surface-container overflow-y-auto">
+          <div
+            className="h-full shrink-0 bg-surface-container overflow-y-auto"
+            style={{ width: contextWidth }}
+          >
             <ContextPanel />
           </div>
         </div>
