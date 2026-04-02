@@ -25,6 +25,7 @@ interface AppState {
 
   setLanguage: (lang: Language) => void
   setSelectedParsha: (id: string) => void
+  setParshaIdOnly: (id: string) => void
   setCurrentYear: (year: number) => void
   toggleTradeRoutes: () => void
   togglePlaceLabels: () => void
@@ -78,6 +79,10 @@ export const useAppStore = create<AppState>((set) => ({
     window.history.pushState({ parsha: id }, '', url.toString())
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(window as any).umami?.track('parsha-viewed', { parsha: id, name: parsha?.name })
+  },
+
+  setParshaIdOnly: (id: string) => {
+    set({ selectedParshaId: id })
   },
 
   setCurrentYear: (year: number) => {

@@ -3,32 +3,16 @@ import { useAppStore } from '../../store/useAppStore'
 import { useEraContext } from '../../hooks/useEraContext'
 import { SLIDER_MIN, SLIDER_MAX } from '../../utils/yearUtils'
 import timeline from '../../data/timeline.json'
-import parshaList from '../../data/parshaList.json'
 import type { Era } from '../../types/timeline'
-import type { ParshaListItem } from '../../types/parsha'
 
 const eras = timeline as Era[]
-const parshas = parshaList as ParshaListItem[]
-
-const PARSHA_PADDING = 150 // years of padding around the parsha's date range
 
 export function TimelineSlider() {
   const currentYearBCE = useAppStore((s) => s.currentYearBCE)
   const setCurrentYear = useAppStore((s) => s.setCurrentYear)
-  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const { era } = useEraContext(currentYearBCE)
 
-  const selectedParsha = parshas.find((p) => p.id === selectedParshaId) ?? null
-  const dateRange = selectedParsha?.approximateDateBCE
-  const sliderMin =
-    dateRange?.end != null
-      ? Math.max(SLIDER_MIN, dateRange.end - PARSHA_PADDING)
-      : SLIDER_MIN
-  const sliderMax =
-    dateRange?.start != null
-      ? Math.min(SLIDER_MAX, dateRange.start + PARSHA_PADDING)
-      : SLIDER_MAX
-  const visibleSpan = sliderMax - sliderMin
+  const visibleSpan = SLIDER_MAX - SLIDER_MIN
 
   return (
     <div className="space-y-1.5 select-none">
@@ -52,13 +36,10 @@ export function TimelineSlider() {
       {/* Row 2: Era bands (clickable) with slider overlaid */}
       <div className="relative h-7">
 
-        {/* Colored era bands — clipped to slider's active range */}
+        {/* Colored era bands — visual background */}
         <div className="absolute inset-x-0 top-1.5 bottom-1.5 flex gap-px rounded-full overflow-hidden pointer-events-none">
           {eras.map((e) => {
-            const clampedStart = Math.min(e.startBCE, sliderMax)
-            const clampedEnd = Math.max(e.endBCE, sliderMin)
-            if (clampedStart <= clampedEnd) return null
-            const widthPct = ((clampedStart - clampedEnd) / visibleSpan) * 100
+            const widthPct = ((e.startBCE - e.endBCE) / visibleSpan) * 100
             return (
               <div
                 key={e.id}
@@ -73,14 +54,11 @@ export function TimelineSlider() {
           })}
         </div>
 
-        {/* Era click zones — clipped to slider's active range */}
+        {/* Era click zones — invisible, let you jump to an era */}
         <div className="absolute inset-0 flex gap-px">
           {eras.map((e) => {
-            const clampedStart = Math.min(e.startBCE, sliderMax)
-            const clampedEnd = Math.max(e.endBCE, sliderMin)
-            if (clampedStart <= clampedEnd) return null
-            const widthPct = ((clampedStart - clampedEnd) / visibleSpan) * 100
-            const midpoint = Math.round((clampedStart + clampedEnd) / 2)
+            const widthPct = ((e.startBCE - e.endBCE) / visibleSpan) * 100
+            const midpoint = Math.round((e.startBCE + e.endBCE) / 2)
             return (
               <button
                 key={e.id}
@@ -96,9 +74,9 @@ export function TimelineSlider() {
         {/* Slider — transparent track, amber thumb rides on top */}
         <Slider.Root
           className="absolute inset-0 flex items-center touch-none"
-          value={[Math.min(sliderMax, Math.max(sliderMin, currentYearBCE))]}
-          min={sliderMin}
-          max={sliderMax}
+          value={[currentYearBCE]}
+          min={SLIDER_MIN}
+          max={SLIDER_MAX}
           step={50}
           inverted
           onValueChange={([val]) => setCurrentYear(val)}

@@ -14,15 +14,12 @@ import { getParshaForYear } from '../utils/parshaUtils'
 export function useAutoSelectParshaByYear() {
   const currentYearBCE = useAppStore((s) => s.currentYearBCE)
   const yearSource = useAppStore((s) => s.yearSource)
-  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
-  const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
+  const setParshaIdOnly = useAppStore((s) => s.setParshaIdOnly)
 
-  // Track latest values in refs so the debounce callback reads them at
-  // fire-time rather than at schedule-time.
+  // Track latest yearSource in a ref so the debounce callback reads the
+  // value at fire-time rather than at schedule-time.
   const yearSourceRef = useRef(yearSource)
   yearSourceRef.current = yearSource
-  const selectedParshaIdRef = useRef(selectedParshaId)
-  selectedParshaIdRef.current = selectedParshaId
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -34,15 +31,13 @@ export function useAutoSelectParshaByYear() {
       if (yearSourceRef.current !== 'slider') return
 
       const parsha = getParshaForYear(currentYearBCE)
-      // Skip if already on this parsha — avoids resetting currentYearBCE
-      // back to the parsha's start date while the user is dragging
-      if (parsha && parsha.id !== selectedParshaIdRef.current) {
-        setSelectedParsha(parsha.id)
-      }
+      // Update parsha label without resetting currentYearBCE — lets the
+      // slider thumb stay exactly where the user dragged it
+      if (parsha) setParshaIdOnly(parsha.id)
     }, 350)
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current)
     }
-  }, [currentYearBCE, setSelectedParsha])
+  }, [currentYearBCE, setParshaIdOnly])
 }
