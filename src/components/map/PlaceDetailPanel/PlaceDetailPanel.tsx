@@ -11,6 +11,7 @@ import placesData from '../../../data/places.json'
 import sitesData from '../../../data/archaeologicalSites.json'
 import type { Place } from '../../../types/places'
 import type { ArchaeologicalSite } from '../../../hooks/useArchaeologicalSites'
+import type { ParshaListItem } from '../../../types/parsha'
 import { PlaceTab } from './PlaceTab'
 import { PeopleEventsTab } from './PeopleEventsTab'
 
@@ -66,7 +67,7 @@ export function PlaceDetailPanel() {
     ? place.parshas
         .filter((id) => id !== selectedParshaId)
         .map((id) => getParshaById(id))
-        .filter(Boolean)
+        .filter((p): p is ParshaListItem => p !== undefined)
     : []
 
   const { data: wiki, isLoading: wikiLoading } = useQuery({

@@ -15,7 +15,7 @@ interface Props {
   wiki: WikipediaSummary | null | undefined
   wikiLoading: boolean
   verseText: string | null | undefined
-  otherParshas: (ParshaListItem | null)[]
+  otherParshas: ParshaListItem[]
   onNavigateParsha: (id: string) => void
 }
 
@@ -211,11 +211,11 @@ export function PlaceTab({
           <div className="flex flex-wrap gap-1.5">
             {otherParshas.map((p) => (
               <button
-                key={p!.id}
-                onClick={() => onNavigateParsha(p!.id)}
+                key={p.id}
+                onClick={() => onNavigateParsha(p.id)}
                 className="px-2 py-1 bg-surface-container font-label text-on-surface rounded text-[11px] hover:bg-primary-container hover:text-on-primary-container transition-colors"
               >
-                {p!.name}
+                {p.name}
               </button>
             ))}
           </div>
