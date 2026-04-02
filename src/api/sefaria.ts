@@ -58,7 +58,7 @@ export async function fetchVerseText(ref: string): Promise<string | null> {
 }
 
 export async function fetchSefariaTopicBySlug(slug: string): Promise<SefariaTopicResponse | null> {
-  const res = await fetch(`${BASE}/topics/${encodeURIComponent(slug)}?with_refs=1`)
+  const res = await fetch(`${BASE}/topics/${encodeURIComponent(slug)}?with_refs=1&with_links=1`)
   if (res.status === 404) return null
   if (!res.ok) throw new Error(`Sefaria topics error: ${res.status}`)
   return res.json()

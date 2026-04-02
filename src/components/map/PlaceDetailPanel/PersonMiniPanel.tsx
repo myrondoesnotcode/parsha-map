@@ -2,14 +2,26 @@ import { X, ExternalLink } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
 import { fetchSefariaTopicBySlug } from '../../../api/sefaria'
 import { queryKeys } from '../../../api/queryKeys'
-import type { SefariaTopicLink } from '../../../types/sefaria'
 
-const FAMILY_TYPES = ['child-of', 'parent-of', 'spouse-of', 'sibling-of']
+const FAMILY_LINK_TYPES = ['child-of', 'parent-of', 'spouse-of', 'sibling-of']
 const FAMILY_LABELS: Record<string, string> = {
   'child-of': 'Child of',
   'parent-of': 'Parent of',
   'spouse-of': 'Spouse of',
   'sibling-of': 'Sibling of',
+}
+
+function slugToTitle(slug: string): string {
+  return slug
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ')
+}
+
+interface FamilyRelation {
+  label: string
+  name: string
+  slug: string
 }
 
 interface Props {
@@ -26,8 +38,20 @@ export function PersonMiniPanel({ slug, onClose }: Props) {
     retry: false,
   })
 
-  const familyLinks =
-    person?.links?.filter((l: SefariaTopicLink) => FAMILY_TYPES.includes(l.type)) ?? []
+  const familyRelations: FamilyRelation[] = []
+  if (person?.links) {
+    for (const [linkType, linkGroup] of Object.entries(person.links)) {
+      if (FAMILY_LINK_TYPES.includes(linkType)) {
+        for (const entry of linkGroup.links) {
+          familyRelations.push({
+            label: FAMILY_LABELS[linkType] ?? linkType,
+            name: slugToTitle(entry.topic),
+            slug: entry.topic,
+          })
+        }
+      }
+    }
+  }
 
   return (
     <div
@@ -50,6 +74,11 @@ export function PersonMiniPanel({ slug, onClose }: Props) {
                   <p className="font-hebrew text-xs text-on-surface-variant mt-0.5" dir="rtl">
                     {person.primaryTitle.he}
                   </p>
+                  {person.numSources != null && person.numSources > 0 && (
+                    <p className="font-label text-[10px] text-on-surface-variant/70 mt-0.5">
+                      {person.numSources} sources on Sefaria
+                    </p>
+                  )}
                 </>
               )}
             </div>
@@ -62,22 +91,16 @@ export function PersonMiniPanel({ slug, onClose }: Props) {
             </button>
           </div>
 
-          {person?.description?.en?.value && (
-            <p className="font-body text-xs text-on-surface-variant leading-relaxed">
-              {person.description.en.value}
-            </p>
-          )}
-
-          {familyLinks.length > 0 && (
+          {familyRelations.length > 0 && (
             <div className="pt-1">
               <p className="font-label text-[10px] uppercase font-medium text-on-surface-variant tracking-widest mb-1.5">
                 Family
               </p>
               <div className="flex flex-wrap gap-x-3 gap-y-1">
-                {familyLinks.map((link: SefariaTopicLink, i: number) => (
+                {familyRelations.map((rel, i) => (
                   <span key={i} className="font-label text-xs text-on-surface-variant">
-                    <span className="text-primary">{FAMILY_LABELS[link.type] ?? link.type}</span>{' '}
-                    {link.toTopic.primaryTitle.en}
+                    <span className="text-primary">{rel.label}</span>{' '}
+                    {rel.name}
                   </span>
                 ))}
               </div>

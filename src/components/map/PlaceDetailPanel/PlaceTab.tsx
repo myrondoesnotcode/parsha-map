@@ -72,7 +72,7 @@ export function PlaceTab({
           <div className="h-2.5 bg-surface-container rounded w-4/5" />
         </div>
       )}
-      {topicData?.description?.en?.value && (
+      {topicData && (
         <div className="space-y-2 border-l-2 border-primary/30 pl-3">
           <div className="flex items-baseline gap-2 flex-wrap">
             <p className="font-headline text-sm font-semibold text-on-surface">
@@ -81,10 +81,12 @@ export function PlaceTab({
             <p className="font-hebrew text-xs text-on-surface-variant" dir="rtl">
               {topicData.primaryTitle.he}
             </p>
+            {topicData.numSources != null && topicData.numSources > 0 && (
+              <p className="font-label text-[10px] text-on-surface-variant/70">
+                {topicData.numSources} sources
+              </p>
+            )}
           </div>
-          <p className="font-body text-xs text-on-surface-variant leading-relaxed">
-            {topicData.description.en.value}
-          </p>
           {topicData.refs && topicData.refs.length > 0 && (
             <div className="space-y-0.5">
               <p className="font-label text-[10px] uppercase font-medium text-on-surface-variant tracking-widest">

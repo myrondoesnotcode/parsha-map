@@ -45,8 +45,6 @@ function deriveSefariaSlug(name: string): string {
   return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
 }
 
-const PERSON_TYPES = ['people', 'biblical-figures', 'person']
-
 export function PlaceDetailPanel() {
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
   const closePlacePanel = useAppStore((s) => s.closePlacePanel)
@@ -95,11 +93,27 @@ export function PlaceDetailPanel() {
     retry: false,
   })
 
-  const peopleAndEvents =
-    topicData?.links?.filter(
-      (l) => PERSON_TYPES.includes(l.toTopic.type) || l.toTopic.type === 'biblical-event'
-    ) ?? []
-  const showPeopleTab = peopleAndEvents.length > 0
+  // Collect people and event slugs from the dict-based links structure
+  // e.g. links = { "person-participates-in-event": { links: [{topic: "moses"}] }, ... }
+  const PEOPLE_LINK_TYPES = ['person-participates-in-event', 'has-leader', 'leader-of', 'lived-in', 'born-in', 'died-in', 'buried-in']
+  const EVENT_LINK_TYPES = ['has-event', 'biblical-event']
+
+  const peopleTopicSlugs: string[] = []
+  const eventTopicSlugs: string[] = []
+
+  if (topicData?.links) {
+    for (const [linkType, linkGroup] of Object.entries(topicData.links)) {
+      for (const entry of linkGroup.links) {
+        if (PEOPLE_LINK_TYPES.includes(linkType)) {
+          peopleTopicSlugs.push(entry.topic)
+        } else if (EVENT_LINK_TYPES.includes(linkType)) {
+          eventTopicSlugs.push(entry.topic)
+        }
+      }
+    }
+  }
+
+  const showPeopleTab = peopleTopicSlugs.length > 0 || eventTopicSlugs.length > 0
 
   function handleNavigateParsha(id: string) {
     setSelectedParsha(id)
@@ -190,7 +204,7 @@ export function PlaceDetailPanel() {
                 value="people"
                 className="flex-1 overflow-y-auto scrollbar-thin p-4 relative"
               >
-                <PeopleEventsTab links={peopleAndEvents} />
+                <PeopleEventsTab peopleSlugs={peopleTopicSlugs} eventSlugs={eventTopicSlugs} />
               </Tabs.Content>
             )}
           </Tabs.Root>
