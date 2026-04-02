@@ -9,7 +9,7 @@ import type { ParshaListItem } from '../../types/parsha'
 
 const eras = timeline as Era[]
 const parshas = parshaList as ParshaListItem[]
-const TOTAL_SPAN = SLIDER_MAX - SLIDER_MIN
+
 const PARSHA_PADDING = 150 // years of padding around the parsha's date range
 
 export function TimelineSlider() {
