@@ -37,3 +37,26 @@ export interface SefariaLink {
   anchorRef: string
   text: { en: string | string[]; he: string | string[] }
 }
+
+export interface SefariaTopicRef {
+  ref: string
+  heRef?: string
+}
+
+export interface SefariaTopicLink {
+  toTopic: {
+    slug: string
+    primaryTitle: { en: string; he: string }
+    type: string
+  }
+  type: string
+  ref?: string
+}
+
+export interface SefariaTopicResponse {
+  slug: string
+  primaryTitle: { en: string; he: string }
+  description?: { en?: { value: string }; he?: { value: string } }
+  refs?: SefariaTopicRef[]
+  links?: SefariaTopicLink[]
+}
