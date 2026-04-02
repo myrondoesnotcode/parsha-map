@@ -7,4 +7,6 @@ export const queryKeys = {
   wikimediaImage: (filename: string) => ['wikimediaImage', filename] as const,
   metArtifacts: (eraId: string) => ['metArtifacts', eraId] as const,
   verseText: (ref: string) => ['verseText', ref] as const,
+  sefariaTopics: (slug: string) => ['sefariaTopics', slug] as const,
+  verseLinks: (ref: string) => ['verseLinks', ref] as const,
 }
