@@ -1,14 +1,14 @@
 import { X, ExternalLink, MapPin, Navigation, AlertTriangle, BookOpen, Youtube } from 'lucide-react'
 import { useQuery } from '@tanstack/react-query'
-import { useAppStore } from '../../store/useAppStore'
-import { fetchWikipediaSummary } from '../../api/wikipedia'
-import { fetchVerseText } from '../../api/sefaria'
-import { queryKeys } from '../../api/queryKeys'
-import { getParshaById } from '../../utils/parshaUtils'
-import placesData from '../../data/places.json'
-import sitesData from '../../data/archaeologicalSites.json'
-import type { Place } from '../../types/places'
-import type { ArchaeologicalSite } from '../../hooks/useArchaeologicalSites'
+import { useAppStore } from '../../../store/useAppStore'
+import { fetchWikipediaSummary } from '../../../api/wikipedia'
+import { fetchVerseText } from '../../../api/sefaria'
+import { queryKeys } from '../../../api/queryKeys'
+import { getParshaById } from '../../../utils/parshaUtils'
+import placesData from '../../../data/places.json'
+import sitesData from '../../../data/archaeologicalSites.json'
+import type { Place } from '../../../types/places'
+import type { ArchaeologicalSite } from '../../../hooks/useArchaeologicalSites'
 
 const allPlaces = placesData as Place[]
 const allSites = sitesData as ArchaeologicalSite[]
