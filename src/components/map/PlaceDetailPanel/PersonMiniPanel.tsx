@@ -66,7 +66,7 @@ export function PersonMiniPanel({ slug, onClose }: Props) {
               {isLoading && (
                 <div className="animate-pulse h-4 bg-surface-container rounded w-32" />
               )}
-              {person && (
+              {person && person.primaryTitle && (
                 <>
                   <h4 className="font-headline text-sm font-semibold text-on-surface">
                     {person.primaryTitle.en}

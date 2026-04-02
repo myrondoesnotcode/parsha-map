@@ -72,7 +72,7 @@ export function PlaceTab({
           <div className="h-2.5 bg-surface-container rounded w-4/5" />
         </div>
       )}
-      {topicData && (
+      {topicData && topicData.primaryTitle && (
         <div className="space-y-2 border-l-2 border-primary/30 pl-3">
           <div className="flex items-baseline gap-2 flex-wrap">
             <p className="font-headline text-sm font-semibold text-on-surface">
