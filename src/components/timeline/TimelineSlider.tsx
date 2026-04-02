@@ -3,15 +3,31 @@ import { useAppStore } from '../../store/useAppStore'
 import { useEraContext } from '../../hooks/useEraContext'
 import { SLIDER_MIN, SLIDER_MAX } from '../../utils/yearUtils'
 import timeline from '../../data/timeline.json'
+import parshaList from '../../data/parshaList.json'
 import type { Era } from '../../types/timeline'
+import type { ParshaListItem } from '../../types/parsha'
 
 const eras = timeline as Era[]
+const parshas = parshaList as ParshaListItem[]
 const TOTAL_SPAN = SLIDER_MAX - SLIDER_MIN
+const PARSHA_PADDING = 150 // years of padding around the parsha's date range
 
 export function TimelineSlider() {
   const currentYearBCE = useAppStore((s) => s.currentYearBCE)
   const setCurrentYear = useAppStore((s) => s.setCurrentYear)
+  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const { era } = useEraContext(currentYearBCE)
+
+  const selectedParsha = parshas.find((p) => p.id === selectedParshaId) ?? null
+  const dateRange = selectedParsha?.approximateDateBCE
+  const sliderMin =
+    dateRange?.end != null
+      ? Math.max(SLIDER_MIN, dateRange.end - PARSHA_PADDING)
+      : SLIDER_MIN
+  const sliderMax =
+    dateRange?.start != null
+      ? Math.min(SLIDER_MAX, dateRange.start + PARSHA_PADDING)
+      : SLIDER_MAX
 
   return (
     <div className="space-y-1.5 select-none">
@@ -73,9 +89,9 @@ export function TimelineSlider() {
         {/* Slider — transparent track, amber thumb rides on top */}
         <Slider.Root
           className="absolute inset-0 flex items-center touch-none"
-          value={[currentYearBCE]}
-          min={SLIDER_MIN}
-          max={SLIDER_MAX}
+          value={[Math.min(sliderMax, Math.max(sliderMin, currentYearBCE))]}
+          min={sliderMin}
+          max={sliderMax}
           step={50}
           inverted
           onValueChange={([val]) => setCurrentYear(val)}
