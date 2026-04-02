@@ -28,6 +28,7 @@ export function TimelineSlider() {
     dateRange?.start != null
       ? Math.min(SLIDER_MAX, dateRange.start + PARSHA_PADDING)
       : SLIDER_MAX
+  const visibleSpan = sliderMax - sliderMin
 
   return (
     <div className="space-y-1.5 select-none">
@@ -51,10 +52,13 @@ export function TimelineSlider() {
       {/* Row 2: Era bands (clickable) with slider overlaid */}
       <div className="relative h-7">
 
-        {/* Colored era bands — visual background */}
+        {/* Colored era bands — clipped to slider's active range */}
         <div className="absolute inset-x-0 top-1.5 bottom-1.5 flex gap-px rounded-full overflow-hidden pointer-events-none">
           {eras.map((e) => {
-            const widthPct = ((e.startBCE - e.endBCE) / TOTAL_SPAN) * 100
+            const clampedStart = Math.min(e.startBCE, sliderMax)
+            const clampedEnd = Math.max(e.endBCE, sliderMin)
+            if (clampedStart <= clampedEnd) return null
+            const widthPct = ((clampedStart - clampedEnd) / visibleSpan) * 100
             return (
               <div
                 key={e.id}
@@ -69,11 +73,14 @@ export function TimelineSlider() {
           })}
         </div>
 
-        {/* Era click zones — invisible, let you jump to an era */}
+        {/* Era click zones — clipped to slider's active range */}
         <div className="absolute inset-0 flex gap-px">
           {eras.map((e) => {
-            const widthPct = ((e.startBCE - e.endBCE) / TOTAL_SPAN) * 100
-            const midpoint = Math.round((e.startBCE + e.endBCE) / 2)
+            const clampedStart = Math.min(e.startBCE, sliderMax)
+            const clampedEnd = Math.max(e.endBCE, sliderMin)
+            if (clampedStart <= clampedEnd) return null
+            const widthPct = ((clampedStart - clampedEnd) / visibleSpan) * 100
+            const midpoint = Math.round((clampedStart + clampedEnd) / 2)
             return (
               <button
                 key={e.id}
