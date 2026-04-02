@@ -14,12 +14,15 @@ import { getParshaForYear } from '../utils/parshaUtils'
 export function useAutoSelectParshaByYear() {
   const currentYearBCE = useAppStore((s) => s.currentYearBCE)
   const yearSource = useAppStore((s) => s.yearSource)
+  const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
 
-  // Track latest yearSource in a ref so the debounce callback reads the
-  // value at fire-time rather than at schedule-time.
+  // Track latest values in refs so the debounce callback reads them at
+  // fire-time rather than at schedule-time.
   const yearSourceRef = useRef(yearSource)
   yearSourceRef.current = yearSource
+  const selectedParshaIdRef = useRef(selectedParshaId)
+  selectedParshaIdRef.current = selectedParshaId
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
@@ -31,7 +34,9 @@ export function useAutoSelectParshaByYear() {
       if (yearSourceRef.current !== 'slider') return
 
       const parsha = getParshaForYear(currentYearBCE)
-      if (parsha) {
+      // Skip if already on this parsha — avoids resetting currentYearBCE
+      // back to the parsha's start date while the user is dragging
+      if (parsha && parsha.id !== selectedParshaIdRef.current) {
         setSelectedParsha(parsha.id)
       }
     }, 350)
