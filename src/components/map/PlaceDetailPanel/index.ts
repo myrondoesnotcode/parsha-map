@@ -1,0 +1,1 @@
+export { PlaceDetailPanel } from './PlaceDetailPanel'

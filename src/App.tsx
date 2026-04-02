@@ -62,9 +62,15 @@ export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
   const setParshaInitialized = useAppStore((s) => s.setParshaInitialized)
+  const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
   const t = useTranslation()
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('text')
+
+  // On mobile: auto-switch to context tab when a place is selected from the map
+  useEffect(() => {
+    if (selectedPlacePanel) setMobileTab('context')
+  }, [selectedPlacePanel])
   const [showTutorial, setShowTutorial] = useState(false)
   const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [showLibrary, setShowLibrary] = useState(false)

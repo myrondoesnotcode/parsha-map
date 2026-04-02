@@ -7,11 +7,12 @@
         "id": "via-maris",
         "name": "Via Maris",
         "nameHe": "דֶּרֶךְ הַיָּם",
+        "context": "\"Way of the Sea\" — Israel deliberately avoided this road fleeing Egypt (Exod 13:17); Abraham traveled it to Egypt (Gen 12)",
         "activeFrom": 3000,
         "activeTo": 400,
         "color": "#E67E22",
         "description": "The coastal highway from Egypt to Mesopotamia; the primary international road of the ancient Near East, running along the Mediterranean coast through Canaan.",
-        "biblicalRef": "Isaiah 9:1"
+        "biblicalRef": "Exodus 13:17"
       },
       "geometry": {
         "type": "LineString",
@@ -34,6 +35,7 @@
         "id": "kings-highway",
         "name": "King's Highway",
         "nameHe": "דֶּרֶךְ הַמֶּלֶךְ",
+        "context": "Moses asked Edom for permission to cross this road during the Exodus (Num 20:17)",
         "activeFrom": 2500,
         "activeTo": 400,
         "color": "#8E44AD",
@@ -61,6 +63,7 @@
         "id": "incense-route",
         "name": "Incense Route",
         "nameHe": "דֶּרֶךְ הַבְּשָׂמִים",
+        "context": "Arabia-to-Mediterranean spice road; the Queen of Sheba traveled a version of this to visit Solomon (1 Kgs 10)",
         "activeFrom": 1000,
         "activeTo": 400,
         "color": "#F39C12",
@@ -89,6 +92,7 @@
         "id": "great-trunk-road",
         "name": "Euphrates Route",
         "nameHe": "דֶּרֶךְ הַנָּהָר",
+        "context": "Abraham's migration path from Ur through Haran down to Canaan (Gen 11–12)",
         "activeFrom": 3000,
         "activeTo": 400,
         "color": "#1ABC9C",

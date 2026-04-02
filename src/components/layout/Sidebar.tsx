@@ -4,13 +4,35 @@ import { ParshaHeader } from '../parsha/ParshaHeader'
 import { ParshaTextViewer } from '../parsha/ParshaTextViewer'
 import { useAppStore } from '../../store/useAppStore'
 import { useTranslation } from '../../i18n/useTranslation'
+import { useCurrentParsha } from '../../hooks/useCurrentParsha'
 import { Search } from 'lucide-react'
+import parshaList from '../../data/parshaList.json'
+import type { ParshaListItem } from '../../types/parsha'
+
+function normalize(s: string) {
+  return s.toLowerCase().replace(/[^a-z]/g, '')
+}
+const parshas = parshaList as ParshaListItem[]
 
 export function Sidebar() {
   const [searchQuery, setSearchQuery] = useState('')
   const [isScrolled, setIsScrolled] = useState(false)
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const t = useTranslation()
+  const { data: currentParsha } = useCurrentParsha()
+
+  const thisWeeksId = (() => {
+    if (!currentParsha) return null
+    const norm = normalize(currentParsha.displayValue?.en ?? '')
+    const match = parshas.find(
+      (p) =>
+        normalize(p.name) === norm ||
+        normalize(p.name).includes(norm) ||
+        norm.includes(normalize(p.name))
+    )
+    return match?.id ?? null
+  })()
+  const isThisWeek = !!thisWeeksId && selectedParshaId === thisWeeksId
 
   // Reset scroll state when parsha changes
   useEffect(() => {
@@ -35,6 +57,14 @@ export function Sidebar() {
           />
         </div>
         <ParshaSelector filterQuery={searchQuery} />
+        {isThisWeek && (
+          <div className="flex items-center">
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary-container text-on-primary-container font-label text-[11px] rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              This week's portion
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Parsha header with name + dates */}

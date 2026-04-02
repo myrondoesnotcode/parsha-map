@@ -1,4 +1,4 @@
-import type { SefariaCalendarItem, SefariaCalendarResponse, SefariaTextResponse, SefariaLink } from '../types/sefaria'
+import type { SefariaCalendarItem, SefariaCalendarResponse, SefariaTextResponse, SefariaLink, SefariaTopicResponse } from '../types/sefaria'
 
 const BASE = 'https://www.sefaria.org/api'
 
@@ -55,6 +55,19 @@ export async function fetchVerseText(ref: string): Promise<string | null> {
   if (!texts.length) return null
   // Strip HTML tags returned by Sefaria
   return texts[0].replace(/<[^>]+>/g, '').trim() || null
+}
+
+export async function fetchSefariaTopicBySlug(slug: string): Promise<SefariaTopicResponse | null> {
+  const res = await fetch(`${BASE}/topics/${encodeURIComponent(slug)}?with_refs=1&with_links=1`)
+  if (res.status === 404) return null
+  if (!res.ok) throw new Error(`Sefaria topics error: ${res.status}`)
+  return res.json()
+}
+
+export async function fetchVerseLinks(ref: string): Promise<SefariaLink[]> {
+  const res = await fetch(`${BASE}/links/${encodeURIComponent(ref)}`)
+  if (!res.ok) throw new Error(`Sefaria links error: ${res.status}`)
+  return res.json()
 }
 
 /**

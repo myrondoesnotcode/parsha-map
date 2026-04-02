@@ -37,3 +37,26 @@ export interface SefariaLink {
   anchorRef: string
   text: { en: string | string[]; he: string | string[] }
 }
+
+export interface SefariaTopicRef {
+  ref: string
+  heRef?: string
+}
+
+// Actual Sefaria API: links is a dict keyed by link type
+// e.g. { "child-of": { links: [{ topic: "terach", isInverse: false }] }, ... }
+export interface SefariaTopicLinkEntry {
+  topic: string
+  isInverse: boolean
+  dataSource?: string
+}
+
+export type SefariaTopicLinks = Record<string, { links: SefariaTopicLinkEntry[] }>
+
+export interface SefariaTopicResponse {
+  slug: string
+  primaryTitle: { en: string; he: string }
+  numSources?: number
+  refs?: SefariaTopicRef[]
+  links?: SefariaTopicLinks
+}
