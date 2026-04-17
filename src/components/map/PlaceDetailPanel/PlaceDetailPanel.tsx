@@ -122,7 +122,7 @@ export function PlaceDetailPanel() {
 
   return (
     <div
-      className={`absolute inset-y-0 right-0 left-8 bg-surface z-10 transition-transform duration-300 rounded-tl rounded-bl shadow-ambient flex flex-col ${
+      className={`absolute inset-y-0 right-0 left-0 sm:left-8 bg-surface z-10 transition-transform duration-300 sm:rounded-tl sm:rounded-bl shadow-ambient flex flex-col ${
         item ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
