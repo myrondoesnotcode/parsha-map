@@ -10,7 +10,7 @@ export function MapLegend() {
   const showArchaeologicalSites = useAppStore((s) => s.showArchaeologicalSites)
   const currentYearBCE = useAppStore((s) => s.currentYearBCE)
   const territories = useTerritories(currentYearBCE)
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(() => window.innerWidth < 768)
 
   const hasContent =
     showArchaeologicalSites ||
