@@ -15,6 +15,14 @@ import { MapLegend } from './MapLegend'
 import { filterPlacesByType } from '../../utils/placeUtils'
 import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe, Crosshair } from 'lucide-react'
 
+function ClearAttributionPrefix() {
+  const map = useMap()
+  useEffect(() => {
+    map.attributionControl.setPrefix('')
+  }, [map])
+  return null
+}
+
 function MapResizeHandler() {
   const map = useMap()
   const triggerFitBounds = useAppStore((s) => s.triggerFitBounds)
@@ -157,6 +165,7 @@ export function ParshaMap() {
         className="h-full w-full"
         zoomControl={false}
       >
+        <ClearAttributionPrefix />
         {basemapStyle === 'satellite' ? (
           <TileLayer
             url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
