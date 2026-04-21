@@ -314,7 +314,7 @@ export default function App() {
       <div className="flex md:hidden flex-col h-full">
 
         {/* Mobile header */}
-        <header className="shrink-0 h-11 flex items-center justify-between px-4 bg-surface-container-low">
+        <header className="shrink-0 flex items-center justify-between px-4 bg-surface-container-low" style={{ paddingTop: 'env(safe-area-inset-top)', minHeight: 'calc(44px + env(safe-area-inset-top))' }}>
           <LogoLockup />
           <div className="flex items-center gap-2">
             {parsha && (
@@ -385,7 +385,7 @@ export default function App() {
         </div>
 
         {/* Bottom tab bar */}
-        <nav className="shrink-0 flex h-16 bg-surface-container-low">
+        <nav className="shrink-0 flex bg-surface-container-low" style={{ paddingBottom: 'env(safe-area-inset-bottom)', minHeight: 'calc(64px + env(safe-area-inset-bottom))' }}>
           {(
             [
               { id: 'map' as MobileTab, label: t.tabs.map, Icon: Map },
