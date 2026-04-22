@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>What Was Your Parsha? — Parshamap</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,11 +42,11 @@
 
   /* ── Header ── */
   header {
-    height: 44px;
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 0 16px;
+    padding: env(safe-area-inset-top) 16px 0;
+    min-height: calc(44px + env(safe-area-inset-top));
     background: var(--surface-low);
     border-bottom: 1px solid var(--outline-variant);
     position: sticky;

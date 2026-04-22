@@ -131,7 +131,7 @@ const STEPS: Step[] = [
     icon: <Clock size={36} className="text-primary" />,
     tip: 'On mobile, tap the "History" tab at the bottom. Context updates automatically as you move the timeline.',
     spotlight: { x: 89, y: 44, rx: '200px', ry: '340px' },
-    spotlightMobile: { x: 83, y: 94, rx: '70px', ry: '44px' },
+    spotlightMobile: { x: 62, y: 94, rx: '70px', ry: '44px' },
     cardPos: CENTER,
     cardPosMobile: CENTER,
   },
