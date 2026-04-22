@@ -69,7 +69,7 @@ const STEPS: Step[] = [
     icon: <BookOpen size={36} className="text-primary" />,
     tip: 'On mobile, tap the "Text" tab at the bottom to open this panel.',
     spotlight: { x: 9, y: 46, rx: '200px', ry: '340px' },
-    spotlightMobile: { x: 50, y: 94, rx: '70px', ry: '44px' },
+    spotlightMobile: { x: 37, y: 94, rx: '70px', ry: '44px' },
     cardPos: CENTER,
     cardPosMobile: CENTER,
   },
