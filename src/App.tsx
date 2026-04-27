@@ -4,6 +4,7 @@ import { ContextPanel } from './components/layout/ContextPanel'
 import { ParshaMap } from './components/map/ParshaMap'
 import { TimelineSlider } from './components/timeline/TimelineSlider'
 import { TutorialOverlay } from './components/TutorialOverlay'
+import { NotificationPrompt } from './components/NotificationPrompt'
 import { SplashScreen } from './components/SplashScreen'
 import { ParshaLibrary } from './components/parsha/ParshaLibrary'
 import { ParshaLoadingScreen } from './components/parsha/ParshaLoadingScreen'
@@ -334,6 +335,7 @@ export default function App() {
 
         {/* Tab content */}
         <div className="flex-1 min-h-0 relative overflow-hidden">
+          <NotificationPrompt />
 
           {/* Map tab */}
           <div className={`absolute inset-0 flex flex-col ${mobileTab === 'map' ? '' : 'hidden'}`}>
