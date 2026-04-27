@@ -4,6 +4,7 @@ import { ContextPanel } from './components/layout/ContextPanel'
 import { ParshaMap } from './components/map/ParshaMap'
 import { TimelineSlider } from './components/timeline/TimelineSlider'
 import { TutorialOverlay } from './components/TutorialOverlay'
+import { AppStoreBanner } from './components/AppStoreBanner'
 import { ParshaLibrary } from './components/parsha/ParshaLibrary'
 import { ParshaLoadingScreen } from './components/parsha/ParshaLoadingScreen'
 import { useAppStore } from './store/useAppStore'
@@ -323,6 +324,7 @@ export default function App() {
 
         {/* Tab content */}
         <div className="flex-1 min-h-0 relative overflow-hidden">
+          <AppStoreBanner />
 
           {/* Map tab */}
           <div className={`absolute inset-0 flex flex-col ${mobileTab === 'map' ? '' : 'hidden'}`}>
