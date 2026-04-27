@@ -29,7 +29,7 @@ export function AppStoreBanner() {
         <p className="font-label text-[10px] text-on-surface-variant">Better on the iPhone app</p>
       </div>
       <a
-        href="https://apps.apple.com/app/idYOUR_APP_STORE_ID"
+        href="https://apps.apple.com/app/id6762464493"
         target="_blank"
         rel="noreferrer"
         className="shrink-0 px-3 py-1.5 bg-primary text-on-primary rounded-lg font-label text-xs font-semibold"
