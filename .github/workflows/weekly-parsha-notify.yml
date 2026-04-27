@@ -1,0 +1,43 @@
+name: Weekly Parsha Push Notification
+
+on:
+  schedule:
+    - cron: '0 8 * * 5'   # Every Friday at 8:00 AM UTC
+  workflow_dispatch:         # Allow manual trigger for testing
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get current parsha from Sefaria
+        id: parsha
+        run: |
+          RESPONSE=$(curl -s "https://www.sefaria.org/api/calendars?diaspora=1")
+          PARSHA=$(echo "$RESPONSE" | python3 -c "
+          import json, sys
+          data = json.load(sys.stdin)
+          items = data.get('calendar_items', [])
+          for item in items:
+              if item.get('title', {}).get('en') == 'Parashat Hashavua':
+                  print(item['displayValue']['en'])
+                  break
+          ")
+          echo "name=$PARSHA" >> $GITHUB_OUTPUT
+
+      - name: Send OneSignal push notification
+        env:
+          PARSHA_NAME: ${{ steps.parsha.outputs.name }}
+          ONESIGNAL_APP_ID: ${{ secrets.ONESIGNAL_APP_ID }}
+          ONESIGNAL_REST_API_KEY: ${{ secrets.ONESIGNAL_REST_API_KEY }}
+        run: |
+          BODY=$(jq -n \
+            --arg app_id "$ONESIGNAL_APP_ID" \
+            --arg name "$PARSHA_NAME" \
+            '{app_id: $app_id, included_segments: ["All"],
+              headings: {en: ("Shabbat Shalom! Parashat " + $name + " is here")},
+              contents: {en: "Read the summary, explore the map, follow the journey"},
+              url: "https://parshamap.com"}')
+          curl -X POST "https://onesignal.com/api/v1/notifications" \
+            -H "Authorization: Basic $ONESIGNAL_REST_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d "$BODY"

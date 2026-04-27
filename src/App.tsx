@@ -4,7 +4,8 @@ import { ContextPanel } from './components/layout/ContextPanel'
 import { ParshaMap } from './components/map/ParshaMap'
 import { TimelineSlider } from './components/timeline/TimelineSlider'
 import { TutorialOverlay } from './components/TutorialOverlay'
-import { NewsletterModal } from './components/NewsletterModal'
+import { NotificationPrompt } from './components/NotificationPrompt'
+import { SplashScreen } from './components/SplashScreen'
 import { ParshaLibrary } from './components/parsha/ParshaLibrary'
 import { ParshaLoadingScreen } from './components/parsha/ParshaLoadingScreen'
 import { useAppStore } from './store/useAppStore'
@@ -18,7 +19,6 @@ import {
   BookOpen,
   Globe,
   HelpCircle,
-  Mail,
   Library,
   CalendarSearch,
 } from 'lucide-react'
@@ -65,6 +65,10 @@ export default function App() {
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
   const t = useTranslation()
 
+  const [showSplash, setShowSplash] = useState(
+    () => sessionStorage.getItem('splashed') !== '1'
+  )
+
   const [mobileTab, setMobileTab] = useState<MobileTab>('text')
 
   // On mobile: auto-switch to context tab when a place is selected from the map
@@ -72,7 +76,6 @@ export default function App() {
     if (selectedPlacePanel) setMobileTab('context')
   }, [selectedPlacePanel])
   const [showTutorial, setShowTutorial] = useState(false)
-  const [newsletterOpen, setNewsletterOpen] = useState(false)
   const [showLibrary, setShowLibrary] = useState(false)
 
   // Desktop panel widths — persisted to localStorage
@@ -147,18 +150,6 @@ export default function App() {
     return () => window.removeEventListener('popstate', handlePop)
   }, [setSelectedParsha])
 
-  // Auto-show newsletter popup after 50s, once per 30 days
-  useEffect(() => {
-    const NEWSLETTER_KEY = 'newsletter-last-shown'
-    const THIRTY_DAYS = 30 * 24 * 60 * 60 * 1000
-    const lastShown = localStorage.getItem(NEWSLETTER_KEY)
-    if (lastShown && Date.now() - Number(lastShown) < THIRTY_DAYS) return
-    const timer = setTimeout(() => {
-      setNewsletterOpen(true)
-      localStorage.setItem(NEWSLETTER_KEY, String(Date.now()))
-    }, 50_000)
-    return () => clearTimeout(timer)
-  }, [])
 
   useAutoSelectParsha()
   useAutoSelectParshaByYear()
@@ -173,14 +164,19 @@ export default function App() {
     setShowTutorial((v) => !v)
   }
 
+  function handleSplashDone() {
+    sessionStorage.setItem('splashed', '1')
+    setShowSplash(false)
+  }
+
   return (
     <div className="h-[100dvh] overflow-hidden bg-surface">
+      {showSplash && <SplashScreen onDone={handleSplashDone} />}
       <TutorialOverlay
         key={showTutorial ? 'open' : 'auto'}
         forceOpen={showTutorial}
         onDismiss={() => setShowTutorial(false)}
       />
-      <NewsletterModal open={newsletterOpen} onClose={() => setNewsletterOpen(false)} />
 
       {/* ══════════════════════════════════════════════════════
           DESKTOP  (md +)  — permanent three-column layout
@@ -227,16 +223,6 @@ export default function App() {
             <CalendarSearch size={13} />
             <span className="hidden lg:inline">Date Lookup</span>
           </a>
-
-          {/* Subscribe */}
-          <button
-            onClick={() => setNewsletterOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded font-label text-xs font-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
-            title="Get weekly parsha by email"
-          >
-            <Mail size={13} />
-            <span className="hidden lg:inline">{t.header.subscribe}</span>
-          </button>
 
           <div className="w-px h-5 bg-outline-variant mx-1" />
 
@@ -329,13 +315,6 @@ export default function App() {
             >
               <CalendarSearch size={15} />
             </a>
-            <button
-              onClick={() => setNewsletterOpen(true)}
-              className="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors"
-              title="Subscribe"
-            >
-              <Mail size={15} />
-            </button>
             <a
               href="https://x.com/Mshneider"
               target="_blank"
@@ -356,6 +335,7 @@ export default function App() {
 
         {/* Tab content */}
         <div className="flex-1 min-h-0 relative overflow-hidden">
+          <NotificationPrompt />
 
           {/* Map tab */}
           <div className={`absolute inset-0 flex flex-col ${mobileTab === 'map' ? '' : 'hidden'}`}>
@@ -369,7 +349,7 @@ export default function App() {
           </div>
 
           {/* Text tab */}
-          <div className={`absolute inset-0 overflow-y-auto overflow-x-hidden bg-surface-container-low ${mobileTab === 'text' ? '' : 'hidden'}`}>
+          <div className={`absolute inset-0 overflow-y-auto overflow-x-hidden bg-surface-container-low ${mobileTab === 'text' ? '' : 'hidden'}`} style={{ touchAction: 'pan-y' }}>
             {showParshaLoading ? <ParshaLoadingScreen /> : <Sidebar />}
           </div>
 
