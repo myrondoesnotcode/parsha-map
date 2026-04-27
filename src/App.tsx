@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import OneSignal from 'onesignal-cordova-plugin'
 import { Sidebar } from './components/layout/Sidebar'
 import { ContextPanel } from './components/layout/ContextPanel'
 import { ParshaMap } from './components/map/ParshaMap'
@@ -144,19 +143,6 @@ export default function App() {
     window.addEventListener('popstate', handlePop)
     return () => window.removeEventListener('popstate', handlePop)
   }, [setSelectedParsha])
-
-  useEffect(() => {
-    OneSignal.initialize('bf551fe6-a3b9-4d4e-b36f-bd45ae2e2db5')
-    OneSignal.Notifications.addEventListener('click', (e) => {
-      console.log('OneSignal notification clicked:', e)
-    })
-    const timer = setTimeout(() => {
-      OneSignal.Notifications.requestPermission(false).then((accepted) => {
-        console.log('Push notification permission:', accepted)
-      })
-    }, 5000)
-    return () => clearTimeout(timer)
-  }, [])
 
   useAutoSelectParsha()
   useAutoSelectParshaByYear()

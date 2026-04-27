@@ -12,7 +12,6 @@ const config: CapacitorConfig = {
   ios: {
     statusBarStyle: 'dark',
     backgroundColor: '#0f172a',
-    handleApplicationNotifications: false,
   },
   plugins: {
     SplashScreen: {
