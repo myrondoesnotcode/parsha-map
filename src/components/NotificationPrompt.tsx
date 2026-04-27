@@ -16,7 +16,8 @@ export function NotificationPrompt() {
   function handleEnable() {
     setVisible(false)
     localStorage.setItem(PROMPT_KEY, '1')
-    window.OneSignalDeferred?.push((OneSignal) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(window as any).OneSignalDeferred?.push((OneSignal: { showNativePrompt: () => void }) => {
       OneSignal.showNativePrompt()
     })
   }
