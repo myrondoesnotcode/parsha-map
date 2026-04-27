@@ -13,6 +13,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     background-color: #fcf9f0;
     color: #1c1c17;
+    overflow-x: hidden;
   }
 
   /* Hebrew text */
