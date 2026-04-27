@@ -4,6 +4,7 @@ import { ContextPanel } from './components/layout/ContextPanel'
 import { ParshaMap } from './components/map/ParshaMap'
 import { TimelineSlider } from './components/timeline/TimelineSlider'
 import { TutorialOverlay } from './components/TutorialOverlay'
+import { SplashScreen } from './components/SplashScreen'
 import { ParshaLibrary } from './components/parsha/ParshaLibrary'
 import { ParshaLoadingScreen } from './components/parsha/ParshaLoadingScreen'
 import { useAppStore } from './store/useAppStore'
@@ -62,6 +63,10 @@ export default function App() {
   const setParshaInitialized = useAppStore((s) => s.setParshaInitialized)
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
   const t = useTranslation()
+
+  const [showSplash, setShowSplash] = useState(
+    () => sessionStorage.getItem('splashed') !== '1'
+  )
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('text')
 
@@ -158,8 +163,14 @@ export default function App() {
     setShowTutorial((v) => !v)
   }
 
+  function handleSplashDone() {
+    sessionStorage.setItem('splashed', '1')
+    setShowSplash(false)
+  }
+
   return (
     <div className="h-[100dvh] overflow-hidden bg-surface">
+      {showSplash && <SplashScreen onDone={handleSplashDone} />}
       <TutorialOverlay
         key={showTutorial ? 'open' : 'auto'}
         forceOpen={showTutorial}
