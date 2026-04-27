@@ -34,8 +34,8 @@ jobs:
             --arg app_id "$ONESIGNAL_APP_ID" \
             --arg name "$PARSHA_NAME" \
             '{app_id: $app_id, included_segments: ["All"],
-              headings: {en: "This week'\''s Parsha 📖"},
-              contents: {en: ("Parashat " + $name + " — Open the map to explore")},
+              headings: {en: ("Shabbat Shalom! Parashat " + $name + " is here")},
+              contents: {en: "Read the summary, explore the map, follow the journey"},
               url: "https://parshamap.com"}')
           curl -X POST "https://onesignal.com/api/v1/notifications" \
             -H "Authorization: Basic $ONESIGNAL_REST_API_KEY" \
