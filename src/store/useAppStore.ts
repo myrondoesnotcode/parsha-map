@@ -23,6 +23,7 @@ interface AppState {
   basemapStyle: 'voyager' | 'satellite'
   selectedPlacePanel: { id: string; type: 'place' | 'site' } | null
   fitBoundsKey: number
+  isIsrael: boolean
 
   setLanguage: (lang: Language) => void
   setSelectedParsha: (id: string) => void
@@ -41,6 +42,7 @@ interface AppState {
   openPlacePanel: (id: string, type: 'place' | 'site') => void
   closePlacePanel: () => void
   triggerFitBounds: () => void
+  toggleRegion: () => void
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -60,6 +62,7 @@ export const useAppStore = create<AppState>((set) => ({
   basemapStyle: 'voyager',
   selectedPlacePanel: null,
   fitBoundsKey: 0,
+  isIsrael: localStorage.getItem('parsha_region') === 'israel',
 
   setLanguage: (lang: Language) => {
     document.documentElement.dir = LANGUAGE_DIR[lang]
@@ -148,5 +151,13 @@ export const useAppStore = create<AppState>((set) => ({
 
   triggerFitBounds: () => {
     set((state) => ({ fitBoundsKey: state.fitBoundsKey + 1 }))
+  },
+
+  toggleRegion: () => {
+    set((state) => {
+      const next = !state.isIsrael
+      localStorage.setItem('parsha_region', next ? 'israel' : 'diaspora')
+      return { isIsrael: next, parshaInitialized: false }
+    })
   },
 }))

@@ -63,6 +63,8 @@ export default function App() {
   const isIsrael = useAppStore((s) => s.isIsrael)
   const toggleRegion = useAppStore((s) => s.toggleRegion)
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
+  const isIsrael = useAppStore((s) => s.isIsrael)
+  const toggleRegion = useAppStore((s) => s.toggleRegion)
   const t = useTranslation()
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('text')
@@ -325,6 +327,13 @@ export default function App() {
             >
               <CalendarSearch size={15} />
             </a>
+            <button
+              onClick={toggleRegion}
+              className={`p-1 rounded transition-colors ${isIsrael ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}
+              title={isIsrael ? 'Israel readings — tap for Diaspora' : 'Diaspora readings — tap for Israel'}
+            >
+              <Globe size={15} />
+            </button>
             <a
               href="https://x.com/Mshneider"
               target="_blank"
