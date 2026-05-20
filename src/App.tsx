@@ -60,7 +60,6 @@ function LogoLockup() {
 export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
-  const setParshaInitialized = useAppStore((s) => s.setParshaInitialized)
   const isIsrael = useAppStore((s) => s.isIsrael)
   const toggleRegion = useAppStore((s) => s.toggleRegion)
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
@@ -133,7 +132,7 @@ export default function App() {
     if (parshaId) {
       setSelectedParsha(parshaId)
     }
-  }, [setSelectedParsha, setParshaInitialized])
+  }, [setSelectedParsha])
 
   // Browser back/forward navigation
   useEffect(() => {
