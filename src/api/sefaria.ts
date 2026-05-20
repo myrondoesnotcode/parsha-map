@@ -10,9 +10,10 @@ function upcomingShabbatDate(): string {
   return shabbat.toISOString().split('T')[0]
 }
 
-export async function fetchCurrentParsha(): Promise<SefariaCalendarItem | null> {
+export async function fetchCurrentParsha(isIsrael = false): Promise<SefariaCalendarItem | null> {
   const date = upcomingShabbatDate()
-  const res = await fetch(`${BASE}/calendars?diaspora=1&date=${date}`)
+  const diaspora = isIsrael ? 0 : 1
+  const res = await fetch(`${BASE}/calendars?diaspora=${diaspora}&date=${date}`)
   if (!res.ok) throw new Error(`Sefaria calendars error: ${res.status}`)
   const data: SefariaCalendarResponse = await res.json()
   const item = data.calendar_items.find(

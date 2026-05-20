@@ -61,6 +61,8 @@ export default function App() {
   const selectedParshaId = useAppStore((s) => s.selectedParshaId)
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
   const setParshaInitialized = useAppStore((s) => s.setParshaInitialized)
+  const isIsrael = useAppStore((s) => s.isIsrael)
+  const toggleRegion = useAppStore((s) => s.toggleRegion)
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
   const t = useTranslation()
 
@@ -212,6 +214,20 @@ export default function App() {
             <span className="hidden lg:inline">Date Lookup</span>
           </a>
 
+          {/* Israel / Diaspora toggle */}
+          <button
+            onClick={toggleRegion}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded font-label text-xs font-medium transition-all ${
+              isIsrael
+                ? 'text-primary bg-surface-container'
+                : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'
+            }`}
+            title={isIsrael ? 'Israel readings — click for Diaspora' : 'Diaspora readings — click for Israel'}
+          >
+            <Globe size={13} />
+            <span className="hidden lg:inline">{isIsrael ? 'Israel' : 'Diaspora'}</span>
+          </button>
+
           <div className="w-px h-5 bg-outline-variant mx-1" />
 
           {/* X / Twitter */}
@@ -296,6 +312,13 @@ export default function App() {
                 {parsha.name}
               </span>
             )}
+            <button
+              onClick={toggleRegion}
+              className={`p-1 rounded transition-colors ${isIsrael ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}
+              title={isIsrael ? 'Israel readings — tap for Diaspora' : 'Diaspora readings — tap for Israel'}
+            >
+              <Globe size={15} />
+            </button>
             <a
               href="/parsha-lookup.html"
               className="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors"
