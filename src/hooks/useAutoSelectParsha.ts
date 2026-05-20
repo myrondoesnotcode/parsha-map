@@ -56,8 +56,7 @@ export function useAutoSelectParsha() {
           if (!p.seferiaUrl || p.book !== calRef.book) return false
           const parshaRange = parseSefariaUrlRange(p.seferiaUrl)
           if (!parshaRange) return false
-          return calRef.startChapter >= parshaRange.startChapter &&
-                 calRef.startChapter <= parshaRange.endChapter
+          return calRef.startChapter === parshaRange.startChapter
         })
       }
     }
