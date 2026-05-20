@@ -124,13 +124,12 @@ export default function App() {
     window.addEventListener('mouseup', onUp)
   }
 
-  // On load: read ?parsha= from URL and select it (mark initialized so auto-select doesn't override)
+  // On load: read ?parsha= from URL for instant display; auto-select will still run and update to current week
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const parshaId = params.get('parsha')
     if (parshaId) {
       setSelectedParsha(parshaId)
-      setParshaInitialized()
     }
   }, [setSelectedParsha, setParshaInitialized])
 
