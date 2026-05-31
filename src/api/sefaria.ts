@@ -2,8 +2,18 @@ import type { SefariaCalendarItem, SefariaCalendarResponse, SefariaTextResponse,
 
 const BASE = 'https://www.sefaria.org/api'
 
-export async function fetchCurrentParsha(): Promise<SefariaCalendarItem | null> {
-  const res = await fetch(`${BASE}/calendars?diaspora=1`)
+function upcomingShabbatDate(): string {
+  const today = new Date()
+  const daysUntilShabbat = today.getDay() === 6 ? 0 : 6 - today.getDay()
+  const shabbat = new Date(today)
+  shabbat.setDate(today.getDate() + daysUntilShabbat)
+  return shabbat.toISOString().split('T')[0]
+}
+
+export async function fetchCurrentParsha(isIsrael = false): Promise<SefariaCalendarItem | null> {
+  const date = upcomingShabbatDate()
+  const diaspora = isIsrael ? 0 : 1
+  const res = await fetch(`${BASE}/calendars?diaspora=${diaspora}&date=${date}`)
   if (!res.ok) throw new Error(`Sefaria calendars error: ${res.status}`)
   const data: SefariaCalendarResponse = await res.json()
   const item = data.calendar_items.find(

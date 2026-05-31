@@ -11,6 +11,7 @@ interface AppState {
   language: Language
   currentYearBCE: number
   yearSource: 'parsha' | 'slider'
+  isIsrael: boolean
   showTradeRoutes: boolean
   showPlaceLabels: boolean
   parshaInitialized: boolean
@@ -36,6 +37,7 @@ interface AppState {
   setPlaceTypeFilter: (filter: string) => void
   setHighlightedPlace: (id: string | null) => void
   toggleBasemap: () => void
+  toggleRegion: () => void
   openPlacePanel: (id: string, type: 'place' | 'site') => void
   closePlacePanel: () => void
   triggerFitBounds: () => void
@@ -44,6 +46,7 @@ interface AppState {
 export const useAppStore = create<AppState>((set) => ({
   selectedParshaId: null,
   language: 'en',
+  isIsrael: localStorage.getItem('parsha_region') === 'israel',
   currentYearBCE: 1900,
   yearSource: 'parsha',
   showTradeRoutes: true,
@@ -125,6 +128,14 @@ export const useAppStore = create<AppState>((set) => ({
     set((state) => ({
       basemapStyle: state.basemapStyle === 'voyager' ? 'satellite' : 'voyager',
     }))
+  },
+
+  toggleRegion: () => {
+    set((state) => {
+      const next = !state.isIsrael
+      localStorage.setItem('parsha_region', next ? 'israel' : 'diaspora')
+      return { isIsrael: next, parshaInitialized: false }
+    })
   },
 
   openPlacePanel: (id: string, type: 'place' | 'site') => {
