@@ -1,7 +1,7 @@
 # Mobile Optimization & Push Notifications Design
 
 **Date:** 2026-04-21  
-**Status:** Approved
+**Status:** ✅ Implemented and shipped (iOS app v1.6/6). Splash, safe-area insets, and OneSignal native push are all live.
 
 ## Context
 
