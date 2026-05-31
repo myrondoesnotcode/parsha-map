@@ -1,5 +1,7 @@
 # iPhone Fixes Implementation Plan
 
+> **Status: ✅ Implemented and shipped.** The cross-cutting fixes (x-axis scroll lock) shipped to web. The iOS-specific parts (email popup removal, native push notifications, splash) shipped via the Capacitor iOS app — see `/Users/myrons/parsha-map`. Kept here for historical reference only; do not re-implement.
+
 > **For Claude:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
 **Goal:** Fix four iPhone/mobile issues: x-axis scroll lock, remove email popup, add weekly push notifications via OneSignal, add splash screen.
