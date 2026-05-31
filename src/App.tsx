@@ -63,8 +63,6 @@ export default function App() {
   const isIsrael = useAppStore((s) => s.isIsrael)
   const toggleRegion = useAppStore((s) => s.toggleRegion)
   const selectedPlacePanel = useAppStore((s) => s.selectedPlacePanel)
-  const isIsrael = useAppStore((s) => s.isIsrael)
-  const toggleRegion = useAppStore((s) => s.toggleRegion)
   const t = useTranslation()
 
   const [mobileTab, setMobileTab] = useState<MobileTab>('text')
@@ -308,31 +306,13 @@ export default function App() {
         <header className="shrink-0 h-11 flex items-center justify-between px-4 bg-surface-container-low">
           <LogoLockup />
           <div className="flex items-center gap-2">
-            {parsha && (
-              <span className="font-label text-xs text-primary truncate max-w-[100px]">
-                {parsha.name}
-              </span>
-            )}
             <button
               onClick={toggleRegion}
-              className={`p-1 rounded transition-colors ${isIsrael ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}
+              className={`flex items-center gap-1 px-2 py-1 rounded transition-colors ${isIsrael ? 'text-primary bg-surface-container' : 'text-on-surface-variant hover:text-on-surface hover:bg-surface-container'}`}
               title={isIsrael ? 'Israel readings — tap for Diaspora' : 'Diaspora readings — tap for Israel'}
             >
-              <Globe size={15} />
-            </button>
-            <a
-              href="/parsha-lookup.html"
-              className="p-1 rounded text-on-surface-variant hover:text-on-surface transition-colors"
-              title="Date Lookup"
-            >
-              <CalendarSearch size={15} />
-            </a>
-            <button
-              onClick={toggleRegion}
-              className={`p-1 rounded transition-colors ${isIsrael ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'}`}
-              title={isIsrael ? 'Israel readings — tap for Diaspora' : 'Diaspora readings — tap for Israel'}
-            >
-              <Globe size={15} />
+              <Globe size={13} />
+              <span className="font-label text-[10px] font-medium">{isIsrael ? 'Israel' : 'Diaspora'}</span>
             </button>
             <a
               href="https://x.com/Mshneider"
