@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
+import { isNativeApp } from '../platform'
 
 const BANNER_KEY = 'app-banner-dismissed'
 
@@ -7,6 +8,7 @@ export function AppStoreBanner() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
+    if (isNativeApp) return // already in the app
     if (localStorage.getItem(BANNER_KEY)) return
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent)
     if (!isMobile) return
