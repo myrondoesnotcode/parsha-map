@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useMap } from 'react-leaflet'
+import { useMap } from 'react-map-gl/maplibre'
 import { useAppStore } from '../../store/useAppStore'
 import placesData from '../../data/places.json'
 import type { Place } from '../../types/places'
@@ -7,16 +7,21 @@ import type { Place } from '../../types/places'
 const allPlaces = placesData as Place[]
 
 export function PlaceHighlightManager() {
-  const map = useMap()
+  const { current: map } = useMap()
   const highlightedPlaceId = useAppStore((s) => s.highlightedPlaceId)
 
   useEffect(() => {
-    if (!highlightedPlaceId) return
+    if (!map || !highlightedPlaceId) return
 
     const place = allPlaces.find((p) => p.id === highlightedPlaceId)
     if (!place) return
 
-    map.flyTo([place.latitude, place.longitude], 9, { duration: 1.2 })
+    map.flyTo({
+      center: [place.longitude, place.latitude],
+      zoom: 9,
+      duration: 1200,
+      essential: true,
+    })
   }, [highlightedPlaceId, map])
 
   return null

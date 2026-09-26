@@ -1,43 +1,42 @@
-import { GeoJSON, Tooltip } from 'react-leaflet'
+import { Source, Layer } from 'react-map-gl/maplibre'
+import { useMemo } from 'react'
 import { useAppStore } from '../../store/useAppStore'
 import { useTerritories } from '../../hooks/useTerritories'
-import type { Territory } from '../../types/timeline'
-import type { PathOptions } from 'leaflet'
-import type { GeoJsonObject } from 'geojson'
+
+export const TERRITORY_FILL_LAYER_ID = 'territories-fill'
 
 export function TerritoryLayer() {
   const currentYearBCE = useAppStore((s) => s.currentYearBCE)
   const territories = useTerritories(currentYearBCE)
 
-  return (
-    <>
-      {territories.map((territory) => (
-        <TerritoryPolygon key={territory.properties.id} territory={territory} />
-      ))}
-    </>
+  const featureCollection = useMemo(
+    () => ({
+      type: 'FeatureCollection' as const,
+      features: territories,
+    }),
+    [territories]
   )
-}
-
-function TerritoryPolygon({ territory }: { territory: Territory }) {
-  const { fillColor, strokeColor, opacity, name } = territory.properties
-
-  const style: PathOptions = {
-    fillColor,
-    fillOpacity: opacity,
-    color: strokeColor,
-    weight: 1.5,
-    dashArray: '4 3',
-    opacity: 0.8,
-  }
 
   return (
-    <GeoJSON
-      data={territory as unknown as GeoJsonObject}
-      style={style}
-    >
-      <Tooltip sticky>
-        <span className="text-xs font-medium">{name}</span>
-      </Tooltip>
-    </GeoJSON>
+    <Source id="territories-src" type="geojson" data={featureCollection}>
+      <Layer
+        id={TERRITORY_FILL_LAYER_ID}
+        type="fill"
+        paint={{
+          'fill-color': ['get', 'fillColor'],
+          'fill-opacity': ['get', 'opacity'],
+        }}
+      />
+      <Layer
+        id="territories-outline"
+        type="line"
+        paint={{
+          'line-color': ['get', 'strokeColor'],
+          'line-width': 1.5,
+          'line-opacity': 0.8,
+          'line-dasharray': [2.5, 2],
+        }}
+      />
+    </Source>
   )
 }

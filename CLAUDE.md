@@ -6,8 +6,8 @@
 
 | Repo | Path | Branch | Ships to |
 |---|---|---|---|
-| **Website** (this repo) | `/Users/myrons/Claude Projects/Parsha` | `main` | parshamap.com (GitHub Pages) |
-| **iOS app** | `/Users/myrons/parsha-map` | `claude/app-store-submission-35YJ5` | App Store (Capacitor wrap) |
+| **Website** (this repo) | `/Users/myronshneider/parsha/website` | `main` | parshamap.com (GitHub Pages) |
+| **iOS app** | `/Users/myronshneider/parsha/ios` | `claude/app-store-submission-35YJ5` | App Store (Capacitor wrap) |
 
 The iOS repo is a **separate clone with diverged source** — not a submodule. When a fix affects both, apply it to each repo individually. Intentional iOS divergences live there (no React Query devtools, no AppStoreBanner, iOS safe-area padding in the mobile header).
 
@@ -105,7 +105,7 @@ Push to `main` → GitHub Action builds and deploys to GitHub Pages → parshama
 
 ## iOS app — in brief
 
-Separate Capacitor wrapper at `/Users/myrons/parsha-map` on branch `claude/app-store-submission-35YJ5`. To ship a parsha/data/UI fix to iOS users, you must also apply it to that repo and submit a new App Store build. See that repo's `CLAUDE.md` for the build/submit flow.
+Separate Capacitor wrapper at `/Users/myronshneider/parsha/ios` on branch `claude/app-store-submission-35YJ5`. To ship a parsha/data/UI fix to iOS users, you must also apply it to that repo and submit a new App Store build. See that repo's `CLAUDE.md` for the build/submit flow.
 
 ## Historical plans
 

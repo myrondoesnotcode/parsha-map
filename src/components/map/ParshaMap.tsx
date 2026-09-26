@@ -1,50 +1,32 @@
-import { MapContainer, TileLayer, useMap } from 'react-leaflet'
-import { useEffect } from 'react'
+import { useCallback, useMemo, useState } from 'react'
+import Map from 'react-map-gl/maplibre'
+import type { MapLayerMouseEvent } from 'react-map-gl/maplibre'
+import 'maplibre-gl/dist/maplibre-gl.css'
 import { useAppStore } from '../../store/useAppStore'
 import { useParshaPlaces } from '../../hooks/useParshaPlaces'
 import { useEraContext } from '../../hooks/useEraContext'
 import { useArchaeologicalSites } from '../../hooks/useArchaeologicalSites'
 import { PlaceMarker } from './PlaceMarker'
-import { TradeRouteLayer } from './TradeRouteLayer'
-import { TerritoryLayer } from './TerritoryLayer'
+import { TradeRouteLayer, TRADE_ROUTE_LAYER_ID } from './TradeRouteLayer'
+import { TerritoryLayer, TERRITORY_FILL_LAYER_ID } from './TerritoryLayer'
 import { ArchaeologicalSiteMarker } from './ArchaeologicalSiteMarker'
 import { PlaceHighlightManager } from './PlaceHighlightManager'
-import { MapBoundsManager } from './MapBoundsManager'
+import { MapBoundsManager, MapResizeHandler } from './MapBoundsManager'
 import { YouAreHereMarker } from './YouAreHereMarker'
 import { MapLegend } from './MapLegend'
+import { MapHoverPopup } from './MapHoverPopup'
+import type { HoverInfo } from './MapHoverPopup'
 import { filterPlacesByType } from '../../utils/placeUtils'
+import { parchmentStyle, satelliteStyle } from '../../map/mapStyles'
 import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe, Crosshair } from 'lucide-react'
 
-function ClearAttributionPrefix() {
-  const map = useMap()
-  useEffect(() => {
-    map.attributionControl.setPrefix('')
-  }, [map])
-  return null
-}
-
-function MapResizeHandler() {
-  const map = useMap()
-  const triggerFitBounds = useAppStore((s) => s.triggerFitBounds)
-  useEffect(() => {
-    const container = map.getContainer()
-    let wasHidden = container.offsetWidth === 0
-    const observer = new ResizeObserver(() => {
-      const isNowVisible = container.offsetWidth > 0
-      map.invalidateSize()
-      if (wasHidden && isNowVisible) {
-        triggerFitBounds()
-        wasHidden = false
-      }
-    })
-    observer.observe(container)
-    return () => observer.disconnect()
-  }, [map, triggerFitBounds])
-  return null
-}
-
-const DEFAULT_CENTER: [number, number] = [31.5, 35.5]
+const DEFAULT_CENTER = { longitude: 35.5, latitude: 31.5 }
 const DEFAULT_ZOOM = 6
+
+export interface OpenPopup {
+  kind: 'place' | 'site'
+  id: string
+}
 
 // ─── Map control pill ─────────────────────────────────────────────────────────
 
@@ -97,6 +79,37 @@ export function ParshaMap() {
   const places = filterPlacesByType(allPlaces, placeTypeFilter)
   const { era } = useEraContext(currentYearBCE)
   const archaeologicalSites = useArchaeologicalSites(era?.id ?? null)
+
+  const [openPopup, setOpenPopup] = useState<OpenPopup | null>(null)
+  const [hoverInfo, setHoverInfo] = useState<HoverInfo | null>(null)
+
+  const interactiveLayerIds = useMemo(() => {
+    const ids: string[] = []
+    if (showTradeRoutes) ids.push(TRADE_ROUTE_LAYER_ID)
+    if (showTerritories) ids.push(TERRITORY_FILL_LAYER_ID)
+    return ids
+  }, [showTradeRoutes, showTerritories])
+
+  const onMouseMove = useCallback((e: MapLayerMouseEvent) => {
+    const feature = e.features?.[0]
+    if (!feature) {
+      setHoverInfo(null)
+      e.target.getCanvas().style.cursor = ''
+      return
+    }
+    e.target.getCanvas().style.cursor = 'pointer'
+    setHoverInfo({
+      longitude: e.lngLat.lng,
+      latitude: e.lngLat.lat,
+      layerId: feature.layer.id,
+      properties: feature.properties as Record<string, string>,
+    })
+  }, [])
+
+  const onMouseLeave = useCallback((e: MapLayerMouseEvent) => {
+    setHoverInfo(null)
+    e.target.getCanvas().style.cursor = ''
+  }, [])
 
   return (
     <div className="relative h-full w-full">
@@ -158,51 +171,52 @@ export function ParshaMap() {
         </button>
       </div>
 
-      {/* ── Leaflet map ── */}
-      <MapContainer
-        center={DEFAULT_CENTER}
-        zoom={DEFAULT_ZOOM}
-        className="h-full w-full"
-        zoomControl={false}
+      {/* ── MapLibre map ── */}
+      <Map
+        initialViewState={{ ...DEFAULT_CENTER, zoom: DEFAULT_ZOOM }}
+        mapStyle={basemapStyle === 'satellite' ? satelliteStyle : parchmentStyle}
+        style={{ height: '100%', width: '100%' }}
+        attributionControl={{ compact: true }}
+        interactiveLayerIds={interactiveLayerIds}
+        onMouseMove={interactiveLayerIds.length > 0 ? onMouseMove : undefined}
+        onMouseLeave={interactiveLayerIds.length > 0 ? onMouseLeave : undefined}
+        onClick={() => setOpenPopup(null)}
       >
-        <ClearAttributionPrefix />
-        {basemapStyle === 'satellite' ? (
-          <TileLayer
-            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-            attribution="Tiles &copy; Esri &mdash; Source: Esri, DigitalGlobe, GeoEye, Earthstar Geographics, CNES/Airbus DS, USDA, USGS, AeroGRID, IGN, and the GIS User Community"
-            maxZoom={18}
-          />
-        ) : (
-          <TileLayer
-            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-            maxZoom={18}
-            subdomains="abcd"
-          />
-        )}
-
         {showTerritories && <TerritoryLayer />}
         {showTradeRoutes && <TradeRouteLayer />}
 
         {showArchaeologicalSites &&
           archaeologicalSites.map((site) => (
-            <ArchaeologicalSiteMarker key={site.id} site={site} />
+            <ArchaeologicalSiteMarker
+              key={site.id}
+              site={site}
+              isOpen={openPopup?.kind === 'site' && openPopup.id === site.id}
+              onOpen={() => setOpenPopup({ kind: 'site', id: site.id })}
+              onClose={() => setOpenPopup(null)}
+            />
           ))}
 
-        {places.map((place) => (
+        {places.map((place, i) => (
           <PlaceMarker
             key={place.id}
             place={place}
+            entranceIndex={i}
+            entranceKey={selectedParshaId ?? 'none'}
             showLabel={showPlaceLabels}
             isHighlighted={place.id === highlightedPlaceId}
+            isOpen={openPopup?.kind === 'place' && openPopup.id === place.id}
+            onOpen={() => setOpenPopup({ kind: 'place', id: place.id })}
+            onClose={() => setOpenPopup(null)}
           />
         ))}
+
+        {hoverInfo && <MapHoverPopup info={hoverInfo} />}
 
         <MapBoundsManager places={places} parshaId={selectedParshaId} />
         <YouAreHereMarker places={places} />
         <PlaceHighlightManager />
         <MapResizeHandler />
-      </MapContainer>
+      </Map>
 
       {/* ── Legend ── */}
       <MapLegend />

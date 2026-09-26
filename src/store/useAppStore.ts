@@ -20,7 +20,7 @@ interface AppState {
   showArchaeologicalSites: boolean
   placeTypeFilter: string
   highlightedPlaceId: string | null
-  basemapStyle: 'voyager' | 'satellite'
+  basemapStyle: 'parchment' | 'satellite'
   selectedPlacePanel: { id: string; type: 'place' | 'site' } | null
   fitBoundsKey: number
 
@@ -57,7 +57,7 @@ export const useAppStore = create<AppState>((set) => ({
   showArchaeologicalSites: true,
   placeTypeFilter: 'all',
   highlightedPlaceId: null,
-  basemapStyle: 'voyager',
+  basemapStyle: 'parchment',
   selectedPlacePanel: null,
   fitBoundsKey: 0,
 
@@ -126,7 +126,7 @@ export const useAppStore = create<AppState>((set) => ({
 
   toggleBasemap: () => {
     set((state) => ({
-      basemapStyle: state.basemapStyle === 'voyager' ? 'satellite' : 'voyager',
+      basemapStyle: state.basemapStyle === 'parchment' ? 'satellite' : 'parchment',
     }))
   },
 
