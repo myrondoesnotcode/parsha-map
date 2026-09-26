@@ -1,0 +1,225 @@
+import { useState } from 'react'
+import { motion } from 'motion/react'
+import { Lightbulb, Landmark, Sparkles, Check } from 'lucide-react'
+import { useAppStore } from '../store/useAppStore'
+import { useEraContext } from '../hooks/useEraContext'
+import { eraYear } from './placeText'
+import { getParshaById, getParshasGroupedByBook, BOOKS_ORDER } from '../utils/parshaUtils'
+import { ParshaTextViewer } from '../components/parsha/ParshaTextViewer'
+import { useDaylight, haptic } from './useDaylight'
+import { getStory } from './stories'
+import { verseRange } from './TodaySheet'
+import { C, FONT, SPRING, SHADOW } from './theme'
+import { parshaDisplayName } from './placeText'
+import { isStoryComplete, completedCount } from './progress'
+
+const screen = {
+  initial: { opacity: 0, y: 24 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 24 },
+  transition: SPRING.soft,
+}
+
+const rise = (i: number) => ({
+  initial: { opacity: 0, y: 18 },
+  animate: { opacity: 1, y: 0 },
+  transition: { ...SPRING.soft, delay: 0.06 * i },
+})
+
+type Segment = 'overview' | 'text' | 'history'
+
+function Segmented<T extends string>({ value, options, onChange, id }: { value: T; options: [T, string][]; onChange: (v: T) => void; id: string }) {
+  return (
+    <div className="dl-chips" role="tablist" style={{ padding: 0 }}>
+      {options.map(([v, label]) => {
+        const active = v === value
+        return (
+          <button
+            key={v}
+            type="button"
+            role="tab"
+            aria-selected={active}
+            onClick={() => {
+              haptic('light')
+              onChange(v)
+            }}
+            style={{ color: active ? C.sand : C.ink }}
+          >
+            {active && <motion.span layoutId={id} className="dl-filter-pill" transition={SPRING.snappy} />}
+            <span style={{ position: 'relative' }}>{label}</span>
+          </button>
+        )
+      })}
+    </div>
+  )
+}
+
+export function ReadScreen() {
+  const parshaId = useAppStore((s) => s.selectedParshaId)
+  const parsha = parshaId ? getParshaById(parshaId) : undefined
+  const { era } = useEraContext(eraYear(parsha))
+  const [seg, setSeg] = useState<Segment>('overview')
+  if (!parsha) return null
+  const rc = parsha.richContent
+
+  return (
+    <motion.main className="dl-screen" {...screen}>
+      <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 12 }}>
+        <div>
+          <div style={{ font: `600 13px ${FONT.display}`, color: C.muted }}>{verseRange(parsha.seferiaUrl)}</div>
+          <h1 className="dl-h1">{parshaDisplayName(parsha.name)}</h1>
+        </div>
+        <div lang="he" style={{ font: `34px/1 ${FONT.hebrew}`, color: C.blue }}>
+          {parsha.hebrewName.replace('-', '־')}
+        </div>
+      </header>
+
+      <Segmented<Segment>
+        id="dl-read-seg"
+        value={seg}
+        onChange={setSeg}
+        options={[
+          ['overview', 'Overview'],
+          ['text', 'Text'],
+          ['history', 'History'],
+        ]}
+      />
+
+      {seg === 'overview' && (
+        <div key="overview" className="dl-stack">
+          <motion.article {...rise(0)} className="dl-card">
+            <p style={{ margin: 0, font: `400 19px/1.55 ${FONT.reading}`, color: '#2a2c42' }}>{rc?.narrativeSummary ?? parsha.summary}</p>
+          </motion.article>
+          {rc?.didYouKnow && (
+            <motion.article {...rise(1)} className="dl-card" style={{ background: C.warm }}>
+              <div className="dl-eyebrow">
+                <Lightbulb size={16} strokeWidth={2.4} /> Did you know
+              </div>
+              <p style={{ margin: '8px 0 0', font: `600 18px/1.35 ${FONT.display}`, color: C.ink }}>{rc.didYouKnow}</p>
+            </motion.article>
+          )}
+          {rc?.jewishTradition && (
+            <motion.article {...rise(2)} className="dl-card">
+              <div className="dl-eyebrow" style={{ color: C.blue }}>
+                <Sparkles size={16} strokeWidth={2.4} /> In Jewish tradition
+              </div>
+              <p style={{ margin: '8px 0 0', font: `400 16px/1.5 ${FONT.display}`, color: C.body }}>{rc.jewishTradition}</p>
+            </motion.article>
+          )}
+          {rc?.themes && rc.themes.length > 0 && (
+            <motion.div {...rise(3)} className="dl-row-chips">
+              {rc.themes.map((t) => (
+                <span key={t} className="dl-mini-chip" style={{ background: C.white }}>
+                  {t}
+                </span>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      )}
+
+      {seg === 'text' && (
+        <motion.div key="text" {...rise(0)} className="dl-card dl-text-host">
+          <ParshaTextViewer />
+        </motion.div>
+      )}
+
+      {seg === 'history' && (
+        <div key="history" className="dl-stack">
+          {rc?.historicalContext && (
+            <motion.article {...rise(0)} className="dl-card" style={{ background: C.blue, color: C.sand }}>
+              <div className="dl-eyebrow" style={{ color: C.blueSoft }}>
+                <Landmark size={16} strokeWidth={2.2} /> The world around it
+              </div>
+              <p style={{ margin: '8px 0 0', font: `400 16px/1.5 ${FONT.display}` }}>{rc.historicalContext}</p>
+            </motion.article>
+          )}
+          {era && (
+            <motion.article {...rise(1)} className="dl-card">
+              <div className="dl-eyebrow" style={{ color: C.blue }}>
+                {era.name} · {era.startBCE}–{era.endBCE} BCE
+              </div>
+              <p style={{ margin: '8px 0 12px', font: `400 16px/1.5 ${FONT.display}`, color: C.body }}>{era.shortDesc}</p>
+              <ol className="dl-timeline">
+                {(era.events ?? []).map((e) => (
+                  <li key={e.description}>
+                    <span style={{ font: `800 13px ${FONT.display}`, color: C.blue }}>{e.yearBCE} BCE</span>
+                    <span style={{ font: `500 15px/1.35 ${FONT.display}`, color: C.ink }}>{e.description}</span>
+                  </li>
+                ))}
+              </ol>
+            </motion.article>
+          )}
+        </div>
+      )}
+    </motion.main>
+  )
+}
+
+const grouped = getParshasGroupedByBook()
+
+export function LibraryScreen() {
+  const parshaId = useAppStore((s) => s.selectedParshaId)
+  const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
+  const setTab = useDaylight((s) => s.setTab)
+  const current = parshaId ? getParshaById(parshaId) : undefined
+  const [book, setBook] = useState<string>(current?.book ?? 'Genesis')
+  const done = completedCount()
+
+  return (
+    <motion.main className="dl-screen" {...screen}>
+      <header>
+        <h1 className="dl-h1">All 54</h1>
+        <div style={{ font: `500 15px ${FONT.display}`, color: C.muted, marginTop: 4 }}>
+          {done} {done === 1 ? 'story' : 'stories'} finished · stories arrive weekly
+        </div>
+      </header>
+
+      <Segmented<string>
+        id="dl-book-seg"
+        value={book}
+        onChange={setBook}
+        options={BOOKS_ORDER.map((b) => [b, b === 'Deuteronomy' ? 'Deut.' : b === 'Leviticus' ? 'Lev.' : b === 'Numbers' ? 'Num.' : b] as [string, string])}
+      />
+
+      <div key={book} className="dl-grid">
+        {(grouped[book] ?? []).map((p, i) => {
+          const hasStory = !!getStory(p.id)
+          const isCurrent = p.id === parshaId
+          const complete = hasStory && isStoryComplete(p.id)
+          const bg = isCurrent ? C.warm : hasStory ? C.blue : C.white
+          const fg = hasStory && !isCurrent ? C.sand : C.ink
+          return (
+            <motion.button
+              key={p.id}
+              type="button"
+              initial={{ opacity: 0, scale: 0.85, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ ...SPRING.snappy, delay: i * 0.025 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                haptic('light')
+                setSelectedParsha(p.id)
+                setTab('today')
+              }}
+              className="dl-tile"
+              style={{ background: bg, color: fg, boxShadow: bg === C.white ? SHADOW.float : 'none' }}
+            >
+              <span lang="he" className="dl-tile-glyph" style={{ color: hasStory && !isCurrent ? 'rgba(244,236,220,0.18)' : 'rgba(23,24,43,0.08)' }}>
+                {p.hebrewName.replace(/[֑-ׇ]/g, '').charAt(0)}
+              </span>
+              {complete && (
+                <span className="dl-tile-check">
+                  <Check size={11} strokeWidth={3.5} color={C.sand} />
+                </span>
+              )}
+              {hasStory && !complete && <span className="dl-tile-badge">Story</span>}
+              <span style={{ position: 'relative', font: `600 11px ${FONT.display}`, opacity: 0.7 }}>{String(p.number).padStart(2, '0')}</span>
+              <span style={{ position: 'relative', font: `800 15px/1.05 ${FONT.display}`, letterSpacing: '-0.01em' }}>{parshaDisplayName(p.name)}</span>
+            </motion.button>
+          )
+        })}
+      </div>
+    </motion.main>
+  )
+}
