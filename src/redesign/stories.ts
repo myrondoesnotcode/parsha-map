@@ -1,6 +1,7 @@
 // Parsha Stories — tap-through cards that drive the map camera.
-// Text is paraphrased from the verses cited on each card (checked against
-// Sefaria's English of Genesis 12–17).
+// Text is paraphrased from the sources cited on each card, checked against Sefaria.
+// Lech Lecha: Genesis 12–17. Vayikra: Leviticus 1–5, 7:38; Exodus 26–27, 40;
+// Numbers 1:1, 23:4; Kitzur Baal HaTurim on Leviticus 1:1; Rashi on Exodus 26:32, 27:18.
 
 export type LngLat = [number, number]
 
@@ -11,7 +12,24 @@ export interface StoryCamera {
   bearing?: number
 }
 
-export type StoryCardKind = 'cover' | 'chapter' | 'stars' | 'name' | 'talk'
+export type StoryCardKind =
+  | 'cover'
+  | 'chapter'
+  | 'stars'
+  | 'name'
+  | 'talk'
+  // Card types that don't need a route (weeks with 0–2 places).
+  | 'letter'
+  | 'plan'
+  | 'offerings'
+  | 'scale'
+  | 'quote'
+
+export interface StoryItem {
+  he?: string
+  en: string
+  note?: string
+}
 
 export interface StoryCard {
   kind: StoryCardKind
@@ -25,6 +43,14 @@ export interface StoryCard {
   stop?: number
   /** Extra place (not a numbered stop) to spotlight. */
   spot?: { name: string; at: LngLat }
+  /** Rows for list-style cards (offerings, scale). */
+  items?: StoryItem[]
+  /** Hebrew line for quote and letter cards. */
+  hebrew?: string
+  /** Small print shown on the card: sources for a drawing, what is illustrative. */
+  note?: string
+  /** Full-bleed art behind the cover (public domain). */
+  image?: string
 }
 
 export interface RouteStop {
@@ -35,8 +61,10 @@ export interface RouteStop {
 export interface ParshaStory {
   parshaId: string
   tagline: string
-  /** Numbered journey stops, in travel order. */
+  /** Numbered journey stops, in travel order. Empty for weeks with no journey. */
   route: RouteStop[]
+  /** Where the story stays when there is no journey (e.g. the camp at Sinai). */
+  anchor?: RouteStop
   cards: StoryCard[]
 }
 
@@ -162,8 +190,107 @@ const lechLecha: ParshaStory = {
   ],
 }
 
+// ─── Vayikra: no journey. The camp stays at Sinai; the story is about the
+// Tabernacle and what people bring to it. Sources: see the file header.
+
+/** Jebel Musa summit (OSM peak, ~2264 m SRTM). One of several proposed sites for Sinai. */
+const SINAI: LngLat = [33.9752, 28.5388]
+/** Illustrative spot on the flat er-Raha plain (~1545 m, SRTM) NW of Jebel Musa, for the to-scale plan. */
+export const MISHKAN_AT: LngLat = [33.958, 28.562]
+
+const vayikra: ParshaStory = {
+  parshaId: 'vayikra',
+  tagline: 'He called.',
+  route: [],
+  anchor: { name: 'Mount Sinai', at: SINAI },
+  cards: [
+    {
+      kind: 'cover',
+      title: 'Vayikra',
+      body: 'He called.',
+      ref: 'Leviticus 1:1 – 5:26',
+      // No cover art yet: the parsha's current image is a 15th-century Christian
+      // typological panel (with Cain and Abel), not right for this cover.
+      camera: { center: [34.2, 29.6], zoom: 5.6, pitch: 0, bearing: 0 },
+      routeTo: 0,
+    },
+    {
+      kind: 'chapter',
+      title: 'Still at Sinai',
+      body: 'No journey this week. The people are camped in the wilderness of Sinai, the Tabernacle has just been set up, and God calls to Moses from the Tent of Meeting. (The pin marks Jebel Musa, one of several proposed sites; no one knows for sure where Sinai was.)',
+      ref: 'Leviticus 1:1, 7:38 · Exodus 40:17',
+      camera: { center: SINAI, zoom: 9.2, pitch: 58, bearing: -20 },
+      routeTo: 0,
+      spot: { name: 'Jebel Musa (a proposed Mount Sinai)', at: SINAI },
+    },
+    {
+      kind: 'letter',
+      title: 'A small aleph',
+      hebrew: 'וַיִּקְרָא',
+      body: 'The book’s first word, “He called,” ends with an aleph that, by scribal tradition, is written small in the Torah scroll. The Baal HaTurim explains: Moses wanted to write וַיִּקָּר, “He happened upon,” as if God had met him only by chance, the word used for Bilaam. God told him to include the aleph, a sign of His love, so Moses wrote it small.',
+      ref: 'Leviticus 1:1 · Kitzur Baal HaTurim',
+      camera: { center: SINAI, zoom: 10.4, pitch: 62, bearing: 10 },
+      routeTo: 0,
+    },
+    {
+      kind: 'plan',
+      title: 'The Tabernacle courtyard, to scale',
+      body: 'A courtyard 100 cubits by 50: about 50 by 25 metres if a cubit is half a metre, roughly an Olympic pool. The altar of burnt offering stands at the Tabernacle’s entrance, and offerings are brought there.',
+      ref: 'Exodus 27:1, 18; 40:29–30 · Leviticus 1:3',
+      note: 'Tent placement and the 10 × 10 cubit Holy of Holies follow Rashi (Exodus 26:32, 27:18). The altar’s exact spot is schematic and the laver (Exodus 40:30) is not shown. Where it all stood is unknown; the location is illustrative.',
+      // Camera is set per ground treatment in DaylightMap's cameraFor().
+      camera: { center: MISHKAN_AT, zoom: 18.4, pitch: 48, bearing: -24 },
+      routeTo: 0,
+    },
+    {
+      kind: 'offerings',
+      title: 'Five kinds of offering',
+      ref: 'Leviticus 1–5',
+      note: 'Plan to scale; location illustrative.',
+      items: [
+        { he: 'עוֹלָה', en: 'Burnt offering', note: 'An animal is skinned, and the rest goes up in smoke on the altar.' },
+        { he: 'מִנְחָה', en: 'Grain offering', note: 'Usually choice flour with oil and frankincense. Always salted.' },
+        { he: 'שְׁלָמִים', en: 'Well-being offering', note: 'From the herd or the flock, male or female.' },
+        { he: 'חַטָּאת', en: 'Purgation offering', note: 'Mostly for a wrong done without meaning to.' },
+        { he: 'אָשָׁם', en: 'Guilt offering', note: 'For misusing holy things by mistake, or cheating someone and swearing falsely: pay it back, plus a fifth.' },
+      ],
+      camera: { center: MISHKAN_AT, zoom: 17.9, pitch: 40, bearing: 20 },
+      routeTo: 0,
+    },
+    {
+      kind: 'scale',
+      title: 'A price for every purse',
+      body: 'For some purgation offerings, the Torah sets a sliding scale: if a sheep or goat is too much, bring two birds, one as a purgation offering and one as a burnt offering. If birds are too much, a tenth of an ephah of flour is enough.',
+      ref: 'Leviticus 5:6–7, 5:11',
+      items: [
+        { en: 'A ewe', note: 'or a she-goat' },
+        { en: 'Two birds', note: 'turtledoves or pigeons' },
+        { en: 'A tenth of an ephah', note: 'of choice flour' },
+      ],
+      camera: { center: MISHKAN_AT, zoom: 16.8, pitch: 34, bearing: 0 },
+      routeTo: 0,
+    },
+    {
+      kind: 'quote',
+      title: 'Do not leave out the salt of your covenant with God.',
+      hebrew: 'וְלֹא תַשְׁבִּית מֶלַח בְּרִית אֱלֹהֶיךָ…',
+      body: 'Salt goes with every offering, grain and animal alike.',
+      ref: 'Leviticus 2:13',
+      camera: { center: SINAI, zoom: 11.5, pitch: 70, bearing: 40 },
+      routeTo: 0,
+    },
+    {
+      kind: 'talk',
+      title: 'Vayikra makes room for a little flour when even two birds are out of reach. What small thing has someone given you that meant a lot?',
+      camera: { center: SINAI, zoom: 8, pitch: 30, bearing: 0 },
+      routeTo: 0,
+    },
+  ],
+}
+
 const STORIES: Record<string, ParshaStory> = {
   [lechLecha.parshaId]: lechLecha,
+  [vayikra.parshaId]: vayikra,
 }
 
 export function getStory(parshaId: string | null): ParshaStory | null {

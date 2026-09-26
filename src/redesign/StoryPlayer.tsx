@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, AnimatePresence, animate, useMotionValue, useTransform } from 'motion/react'
 import type { MotionValue } from 'motion/react'
 import { X, Share2, Check } from 'lucide-react'
@@ -14,6 +14,22 @@ import { markStoryComplete } from './progress'
 
 const CARD_SECONDS = 9
 
+/** Cards that carry their own content rather than pointing at the map. */
+const PAGE_KINDS = new Set(['letter', 'offerings', 'scale', 'quote'])
+
+/**
+ * Design exploration: how a card with no map subject uses the screen.
+ * a = panel over the live map · b = paper page · c = map in a window above the card
+ * s = stage: the card's hero visual rises into the space above, over the terrain
+ * f = full page: the card fills the screen and everything scales up to match.
+ */
+type Frame = 'a' | 'b' | 'c' | 's' | 'f'
+/** Review links: ?hold=1 stops auto-advance so a card can be inspected. */
+const HOLD = new URLSearchParams(window.location.search).has('hold')
+const FRAME: Frame = ((new URLSearchParams(window.location.search).get('frame') ?? 's') as Frame)
+/** Which layout the page cards use: text-only card with a hero above it, full page, or everything in the card. */
+const LAYOUT: 'stage' | 'full' | 'card' = FRAME === 's' ? 'stage' : FRAME === 'f' ? 'full' : 'card'
+
 export function StoryPlayer() {
   const parshaId = useAppStore((s) => s.selectedParshaId)
   const { storyIndex, setStoryIndex, closeStory } = useDaylight()
@@ -22,6 +38,24 @@ export function StoryPlayer() {
   const [dir, setDir] = useState(1)
   const [paused, setPaused] = useState(false)
   const progress = useMotionValue(0)
+  // Frame c sizes the map window to whatever space the card leaves above it.
+  const rootRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root) return
+    const ro = new ResizeObserver(() => {
+      const wrap = root.querySelector('.dl-story-card-wrap') as HTMLElement | null
+      if (wrap) root.style.setProperty('--card-top', `${wrap.getBoundingClientRect().top - root.getBoundingClientRect().top}px`)
+    })
+    const watch = () => root.querySelectorAll('.dl-story-card-wrap').forEach((el) => ro.observe(el))
+    watch()
+    const mo = new MutationObserver(watch)
+    mo.observe(root, { childList: true, subtree: true })
+    return () => {
+      ro.disconnect()
+      mo.disconnect()
+    }
+  }, [])
 
   const count = story?.cards.length ?? 0
   const card = story?.cards[storyIndex]
@@ -42,7 +76,7 @@ export function StoryPlayer() {
   // Auto-advance; the last card (table talk) waits for the reader.
   useEffect(() => {
     progress.set(0)
-    if (isLast || paused) return
+    if (isLast || paused || HOLD) return
     const controls = animate(progress, 1, {
       duration: CARD_SECONDS,
       ease: 'linear',
@@ -65,7 +99,29 @@ export function StoryPlayer() {
   const holdEnd = () => setPaused(false)
 
   return (
-    <motion.div className="dl-story" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+    <motion.div ref={rootRef} className="dl-story" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
+      <AnimatePresence>
+        {PAGE_KINDS.has(card.kind) && (FRAME === 'b' || FRAME === 'c') && (
+          <motion.div
+            key="page"
+            className={FRAME === 'b' ? 'dl-page-paper' : 'dl-page-window'}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          />
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {LAYOUT === 'stage' && PAGE_KINDS.has(card.kind) && card.kind !== 'offerings' && (
+          <motion.div key={`stage-${storyIndex}`} className="dl-stage" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+            <Hero card={card} size="stage" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <AnimatePresence>
+        {card.kind === 'cover' && card.image && <CoverArt key="art" src={card.image} />}
+      </AnimatePresence>
       <div className="dl-story-scrim-top" />
       <AnimatePresence>{card.kind === 'stars' && <StarSky key="sky" />}</AnimatePresence>
       <AnimatePresence>
@@ -127,6 +183,7 @@ export function StoryPlayer() {
           exit="exit"
           transition={SPRING.soft}
           className="dl-story-card-wrap"
+          data-page={PAGE_KINDS.has(card.kind) ? (FRAME === 'b' ? 'paper' : LAYOUT === 'full' ? 'full' : undefined) : undefined}
         >
           <CardBody card={card} story={story} hebrew={parsha.hebrewName} onClose={closeStory} />
         </motion.div>
@@ -170,7 +227,7 @@ function CardBody({ card, story, hebrew, onClose }: { card: StoryCard; story: Pa
             {card.body}
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="dl-cover-meta">
-            {card.ref} · {story.route.length} stops · tap to begin
+            {card.ref} · {story.route.length ? `${story.route.length} stops` : `at ${story.anchor?.name ?? 'home'}`} · tap to begin
           </motion.div>
         </div>
       )
@@ -193,6 +250,23 @@ function CardBody({ card, story, hebrew, onClose }: { card: StoryCard; story: Pa
           <p style={{ margin: '10px 0 0', font: `400 17px/1.45 ${FONT.display}`, color: C.body }}>{card.body}</p>
         </div>
       )
+    case 'letter':
+    case 'offerings':
+    case 'scale':
+    case 'quote':
+      return <PageCard card={card} />
+    case 'plan':
+      return (
+        <div className="dl-story-panel">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center', font: `600 13px ${FONT.display}`, color: C.blue }}>
+            <span style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', background: C.ink, color: C.sand, padding: '3px 7px', borderRadius: 7, whiteSpace: 'nowrap' }}>COURTYARD TO SCALE</span>
+            {card.ref}
+          </div>
+          <div style={{ font: `800 30px/1.02 ${FONT.display}`, letterSpacing: '-0.035em', color: C.ink, marginTop: 10 }}>{card.title}</div>
+          <p style={{ margin: '10px 0 0', font: `400 17px/1.45 ${FONT.display}`, color: C.body }}>{card.body}</p>
+          {card.note && <p style={{ margin: '10px 0 0', font: `500 12px/1.4 ${FONT.display}`, color: C.muted }}>{card.note}</p>}
+        </div>
+      )
     case 'talk':
       return <TalkCard card={card} story={story} onClose={onClose} />
     default:
@@ -211,6 +285,156 @@ function CardBody({ card, story, hebrew, onClose }: { card: StoryCard; story: Pa
         </div>
       )
   }
+}
+
+/** Full-bleed public-domain art with a slow Ken Burns drift. */
+function CoverArt({ src }: { src: string }) {
+  return (
+    <motion.div className="dl-cover-art" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.8 }}>
+      <motion.img
+        src={src}
+        alt=""
+        initial={{ scale: 1.08, x: 0, y: 0 }}
+        animate={{ scale: 1.22, x: -14, y: 10 }}
+        transition={{ duration: CARD_SECONDS + 2, ease: 'linear' }}
+      />
+    </motion.div>
+  )
+}
+
+type HeroSize = 'card' | 'stage' | 'full'
+
+/**
+ * The visual half of a page card. In the card layout it sits inside the panel;
+ * on the stage it rises into the space above the card; on a full page it fills the middle.
+ */
+function Hero({ card, size }: { card: StoryCard; size: HeroSize }) {
+  switch (card.kind) {
+    case 'letter':
+      return <SmallAleph word={card.hebrew ?? ''} size={size} />
+    case 'scale':
+      return <Staircase card={card} size={size} />
+    case 'quote':
+      return (
+        <motion.div
+          lang="he"
+          dir="rtl"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...SPRING.soft, delay: 0.2 }}
+          className={size === 'stage' ? 'dl-hero-halo' : undefined}
+          style={{
+            font: `${size === 'card' ? 34 : size === 'stage' ? 50 : 54}px/1.2 ${FONT.hebrew}`,
+            color: size === 'stage' ? C.ink : C.warm,
+            textAlign: size === 'card' ? 'right' : 'center',
+            margin: size === 'card' ? '12px 0 0' : 0,
+          }}
+        >
+          {card.hebrew}
+        </motion.div>
+      )
+    default:
+      return null
+  }
+}
+
+/** Page cards: letter, offerings, scale, quote. The layout decides where the hero goes. */
+function PageCard({ card }: { card: StoryCard }) {
+  const dark = card.kind === 'quote'
+  const full = LAYOUT === 'full'
+  const heroInCard = LAYOUT !== 'stage'
+  const head = (
+    <>
+      <div style={{ font: `600 13px ${FONT.display}`, color: dark ? C.blueSoft : C.blue }}>{card.ref}</div>
+      {card.kind !== 'quote' && (
+        <div style={{ font: `800 ${full ? 34 : 30}px/1.02 ${FONT.display}`, letterSpacing: '-0.035em', color: C.ink, marginTop: 8 }}>{card.title}</div>
+      )}
+    </>
+  )
+  const body =
+    card.kind === 'quote' ? (
+      <>
+        <RevealText text={`“${card.title}”`} delay={0.8} style={{ font: `italic 400 ${full ? 28 : 24}px/1.25 ${FONT.reading}`, color: C.sand, marginTop: 14 }} />
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2 }} style={{ margin: '14px 0 0', font: `500 15px/1.4 ${FONT.display}`, color: C.blueSoft }}>
+          {card.body}
+        </motion.p>
+      </>
+    ) : card.kind === 'offerings' ? (
+      <ol className="dl-offerings" data-full={full || undefined}>
+        {card.items?.map((it, i) => (
+          <motion.li key={it.en} initial={{ opacity: 0, x: -14 }} animate={{ opacity: 1, x: 0 }} transition={{ ...SPRING.soft, delay: 0.35 + i * 0.22 }}>
+            <span className="dl-off-num">{i + 1}</span>
+            <span style={{ minWidth: 0, flexGrow: 1 }}>
+              <span style={{ display: 'block', font: `700 ${full ? 18 : 16}px/1.2 ${FONT.display}`, color: C.ink }}>{it.en}</span>
+              <span style={{ display: 'block', font: `400 14px/1.35 ${FONT.display}`, color: C.body, marginTop: 1 }}>{it.note}</span>
+            </span>
+            <span lang="he" dir="rtl" style={{ font: `${full ? 28 : 22}px/1 ${FONT.hebrew}`, color: C.blue, flexShrink: 0 }}>{it.he}</span>
+          </motion.li>
+        ))}
+      </ol>
+    ) : (
+      <p style={{ margin: '10px 0 0', font: `400 ${full ? 18 : 17}px/1.45 ${FONT.display}`, color: C.body }}>{card.body}</p>
+    )
+  return (
+    <div className={`dl-story-panel${dark ? ' dl-quote' : ''}`}>
+      {head}
+      {heroInCard && card.kind !== 'offerings' && (full ? <div className="dl-hero"><Hero card={card} size="full" /></div> : <Hero card={card} size="card" />)}
+      {body}
+      {card.note && <p style={{ margin: '10px 0 0', font: `500 12px/1.4 ${FONT.display}`, color: dark ? C.blueSoft : C.muted }}>{card.note}</p>}
+    </div>
+  )
+}
+
+/** The word written out, then its final letter shrinks to the size it has in the scroll. */
+function SmallAleph({ word, size }: { word: string; size: HeroSize }) {
+  const [small, setSmall] = useState(false)
+  useEffect(() => {
+    const t = setTimeout(() => {
+      setSmall(true)
+      haptic('light')
+    }, 1300)
+    return () => clearTimeout(t)
+  }, [])
+  const big = size === 'card' ? 76 : 132
+  // Split off the final aleph so it can be sized on its own.
+  const base = word.slice(0, -1)
+  const last = word.slice(-1)
+  return (
+    <div
+      lang="he"
+      dir="rtl"
+      className={size === 'stage' ? 'dl-hero-halo' : undefined}
+      style={{ display: 'flex', alignItems: 'baseline', justifyContent: size === 'card' ? 'flex-end' : 'center', margin: size === 'card' ? '12px 0 14px' : 0, font: `${big}px/1.1 ${FONT.hebrew}`, color: C.ink }}
+    >
+      <span>{base}</span>
+      <span style={{ display: 'inline-block', fontSize: small ? big * 0.4 : big, color: small ? C.warm : C.ink, transition: 'font-size 0.7s cubic-bezier(0.3, 1.4, 0.5, 1), color 0.4s' }}>
+        {last}
+      </span>
+    </div>
+  )
+}
+
+/** A descending staircase: each step is what you can bring if the one above is too much. */
+function Staircase({ card, size }: { card: StoryCard; size: HeroSize }) {
+  const items = card.items ?? []
+  const fill = size !== 'card'
+  return (
+    <div style={{ display: 'flex', alignItems: 'flex-end', gap: 8, marginTop: fill ? 0 : 16, height: size === 'stage' ? 'min(100%, 300px)' : fill ? '100%' : 176, width: '100%', maxWidth: size === 'stage' ? 330 : undefined }}>
+      {items.map((it, i) => (
+        <motion.div
+          key={it.en}
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: `${100 - i * (fill ? 28 : 23)}%`, opacity: 1 }}
+          transition={{ ...SPRING.soft, delay: 0.4 + i * 0.35 }}
+          className="dl-step"
+          style={{ background: [C.blue, '#5563d6', C.warm][i] ?? C.warm, color: i === 2 ? C.ink : C.white, boxShadow: size === 'stage' ? '0 10px 30px rgba(23,24,43,0.18)' : undefined }}
+        >
+          <span style={{ font: `800 ${fill ? 19 : 16}px/1.1 ${FONT.display}` }}>{it.en}</span>
+          <span style={{ font: `500 ${fill ? 13 : 12}px/1.2 ${FONT.display}`, opacity: 0.8, marginTop: 3 }}>{it.note}</span>
+        </motion.div>
+      ))}
+    </div>
+  )
 }
 
 /** אברם → אברהם: the hei slides into the name. */

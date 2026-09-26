@@ -19,3 +19,6 @@ vite.config.d.ts
 # Git worktrees
 .worktrees/
 .worktree/
+
+# Claude Code worktrees
+.claude/worktrees/

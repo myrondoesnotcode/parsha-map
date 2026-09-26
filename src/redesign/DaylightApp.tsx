@@ -25,6 +25,9 @@ export default function DaylightApp() {
     const fromUrl = new URLSearchParams(window.location.search).get('parsha')
     setSelectedParsha(fromUrl ?? PROTOTYPE_START)
     setParshaInitialized()
+    // Prototype review links: ?card=N opens the story on card N.
+    const card = new URLSearchParams(window.location.search).get('card')
+    if (card !== null) setTimeout(() => useDaylight.getState().openStory(Number(card)), 900)
   }, [setSelectedParsha, setParshaInitialized])
 
   // Still honours the Israel/Diaspora toggle, which re-arms weekly auto-selection.
