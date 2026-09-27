@@ -377,7 +377,7 @@ function CardBody({ card, story, hebrew, onClose, onSources }: { card: StoryCard
     case 'name':
       return (
         <div className="dl-story-panel">
-          <RefButton card={card} onSources={onSources} />
+          <RefButton card={card} onSources={onSources} stop={card.stop} />
           <div style={{ font: `800 30px/1.05 ${FONT.display}`, letterSpacing: '-0.03em', color: C.ink, marginTop: 8 }}>{card.title}</div>
           <p style={{ margin: '10px 0 0', font: `400 17px/1.45 ${FONT.display}`, color: C.body }}>{card.body}</p>
         </div>
