@@ -74,7 +74,7 @@
     "shortDesc": "Amorite kingdoms; Old Babylonian Empire; Hyksos in Egypt; Canaanite city-state system",
     "biblicalContext": "Abraham, Isaac, Jacob, Joseph — the Patriarchal period",
     "events": [
-      { "yearBCE": 1800, "description": "Earliest known alphabetic writing, by Canaanite speakers in Egypt and Sinai (date debated)", "significance": "Ancestor of the Hebrew, Greek, Latin and Arabic alphabets" },
+      { "yearBCE": 1850, "description": "Earliest securely identified alphabetic writing, by Canaanite speakers in Egypt and Sinai (dates debated)", "significance": "Ancestor of the Hebrew, Greek, Latin and Arabic alphabets" },
       { "yearBCE": 1792, "description": "Hammurabi becomes king of Babylon", "significance": "His law code is among the best preserved of the ancient Near East; older codes, such as Ur-Nammu’s, also survive" },
       { "yearBCE": 1650, "description": "Hyksos kings of Canaanite origin come to rule northern Egypt from Avaris", "significance": "Egypt’s first foreign dynasty, ruling for about a century (c. 1650–1550 BCE)" }
     ],
@@ -111,7 +111,7 @@
     "shortDesc": "Egyptian New Kingdom; Hittite Empire; Amarna international system; widespread trade networks",
     "biblicalContext": "Moses, the Exodus, wilderness wanderings",
     "events": [
-      { "yearBCE": 1457, "description": "Battle of Megiddo: Thutmose III defeats a Canaanite coalition", "significance": "Egypt establishes dominance over Canaan" },
+      { "yearBCE": 1457, "description": "Battle of Megiddo: Thutmose III defeats Canaanite and Syrian rulers led by the king of Kadesh", "significance": "Egypt establishes dominance over Canaan" },
       { "yearBCE": 1353, "description": "Akhenaten becomes pharaoh and promotes worship of the Aten, the sun disk, above all other gods", "significance": "Often called an early move toward worshipping one god; scholars debate whether it was true monotheism" },
       { "yearBCE": 1274, "description": "Battle of Kadesh: Egypt against the Hittites", "significance": "About 16 years later (c. 1258 BCE) Ramesses II and Hattusili III make one of the earliest peace treaties whose text survives" },
       { "yearBCE": 1200, "description": "Late Bronze Age collapse: widespread destruction across the eastern Mediterranean", "significance": "Palace economies collapse; Ugarit, the Hittite capital Hattusa and Mycenae fall in the decades around 1200–1180 BCE" }

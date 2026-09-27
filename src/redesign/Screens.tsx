@@ -167,7 +167,7 @@ export function ReadScreen() {
           {era && (
             <motion.article {...rise(1)} className="dl-card">
               <div className="dl-eyebrow" style={{ color: C.blue }}>
-                Across the {era.name} · {era.startBCE}–{era.endBCE} BCE
+                Across the {era.name} · c. {era.startBCE}–{era.endBCE} BCE
               </div>
               <p style={{ margin: '8px 0 12px', font: `400 16px/1.5 ${FONT.display}`, color: C.body }}>{era.shortDesc}</p>
               <ol className="dl-timeline">
