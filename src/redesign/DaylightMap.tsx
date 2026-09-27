@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import type { CSSProperties } from 'react'
 import Map, { Source, Layer, Marker } from 'react-map-gl/maplibre'
 import type { MapLayerMouseEvent, MapRef } from 'react-map-gl/maplibre'
 import type { GeoJSONSource } from 'maplibre-gl'
@@ -12,7 +13,7 @@ import { TradeRouteLayer } from '../components/map/TradeRouteLayer'
 import { TerritoryLayer } from '../components/map/TerritoryLayer'
 import { daylightStyle } from './daylightMapStyle'
 import { getStory, isPageCard, MISHKAN_AT } from './stories'
-import type { LngLat } from './stories'
+import type { LngLat, ParshaStory } from './stories'
 import { useDaylight, mapHandle, haptic, EMPIRES_LAYER_ENABLED } from './useDaylight'
 import { C, FONT, SPRING, SHADOW } from './theme'
 import { displayName } from './placeText'
@@ -277,6 +278,72 @@ function offsetFor(p: { top: number; bottom: number; left: number; right: number
   return [(p.left - p.right) / 2, (p.top - p.bottom) / 2]
 }
 
+type LabelSide = 'right' | 'left' | 'below' | 'above'
+/** Overrides on .dl-stop-label (which sits right of the pin, centred) for the other sides. */
+const LABEL_SIDE_STYLE: Record<LabelSide, CSSProperties | undefined> = {
+  right: undefined,
+  left: { left: 'auto', right: 'calc(100% + 6px)' },
+  below: { left: 0, top: 'calc(100% + 4px)' },
+  above: { left: 0, bottom: 'calc(100% + 4px)' },
+}
+
+let textCtx: CanvasRenderingContext2D | null | undefined
+/** Width of a label line in .dl-stop-label's font (600 13px), from the canvas; a rough estimate without one. */
+function textWidth(t: string, weight = 600, size = 13): number {
+  if (textCtx === undefined) textCtx = typeof document !== 'undefined' ? document.createElement('canvas').getContext('2d') : null
+  if (!textCtx) return t.length * size * 0.58
+  textCtx.font = `${weight} ${size}px ${FONT.display}`
+  return textCtx.measureText(t).width
+}
+
+type Box = { x0: number; y0: number; x1: number; y1: number }
+const hits = (a: Box, b: Box) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1
+
+/**
+ * Overview labels, placed greedily in route order: each cluster's label goes right of its pin unless that
+ * box would cover another pin, an earlier label or the screen edge; then left, below, above. Sizes mirror
+ * .dl-stop-pin and .dl-stop-label (13px text, 9px side padding, 170px max width).
+ */
+function placeLabels(story: ParshaStory, pts: { x: number; y: number }[], cluster: number[], finale: boolean, el: HTMLElement): LabelSide[] {
+  const leads = pts.map((_, i) => i).filter((i) => cluster[i] === i)
+  const pinBox = (i: number): Box => {
+    const n = story.route.map((_, j) => j).filter((j) => cluster[j] === i)
+    const w = Math.max(32, textWidth(n.map((j) => j + 1).join('·'), 800) + 22)
+    // The marker is centred on the point; a merged pin widens both ways.
+    return { x0: pts[i].x - w / 2, y0: pts[i].y - 16, x1: pts[i].x + w / 2, y1: pts[i].y + 16 }
+  }
+  const pins: [number, Box][] = leads.map((i) => [i, pinBox(i)])
+  const placed: Box[] = []
+  const sides: LabelSide[] = []
+  // The story card (and the finale's "Story complete" bar above it) covers the lower screen: labels stay above it.
+  const top = el.getBoundingClientRect().top
+  const cover = [...document.querySelectorAll('.dl-complete, .dl-story-card-wrap')].map((e) => e.getBoundingClientRect().top - top)
+  const screen = { w: el.clientWidth, h: Math.min(el.clientHeight, ...cover) }
+  for (const i of leads) {
+    const names = story.route.filter((_, j) => cluster[j] === i).filter((s, k, all) => all.findIndex((t) => t.name === s.name) === k)
+    const lines = names.map((s) => s.name)
+    // A lone stop off the finale also shows its hedge (wrapped at the label's max width).
+    const hedge = names.length === 1 && !finale ? names[0].hedge : undefined
+    const w = Math.min(170, Math.max(...lines.map((l) => textWidth(l)), hedge ? textWidth(hedge, 600, 11) : 0) + 18)
+    const hedgeLines = hedge ? Math.ceil((textWidth(hedge, 600, 11) + 18) / 170) : 0
+    const h = lines.length * 17 + hedgeLines * 15 + 6
+    const pin = pinBox(i)
+    const cy = (pin.y0 + pin.y1) / 2
+    const boxes: [LabelSide, Box][] = [
+      ['right', { x0: pin.x1 + 6, y0: cy - h / 2, x1: pin.x1 + 6 + w, y1: cy + h / 2 }],
+      ['left', { x0: pin.x0 - 6 - w, y0: cy - h / 2, x1: pin.x0 - 6, y1: cy + h / 2 }],
+      ['below', { x0: pin.x0, y0: pin.y1 + 4, x1: pin.x0 + w, y1: pin.y1 + 4 + h }],
+      ['above', { x0: pin.x0, y0: pin.y0 - 4 - h, x1: pin.x0 + w, y1: pin.y0 - 4 }],
+    ]
+    const free = (b: Box) =>
+      !placed.some((p) => hits(p, b)) && !pins.some(([j, p]) => j !== i && hits(p, b)) && b.x0 >= 4 && b.x1 <= screen.w - 4 && b.y0 >= 4 && b.y1 <= screen.h - 4
+    const [side, box] = boxes.find(([, b]) => free(b)) ?? boxes[0]
+    sides[i] = side
+    placed.push(box)
+  }
+  return sides
+}
+
 export function DaylightMap() {
   const mapRef = useRef<MapRef | null>(null)
   const [loaded, setLoaded] = useState(false)
@@ -308,6 +375,10 @@ export function DaylightMap() {
   const [nearAny, setNearAny] = useState<boolean[]>([])
   // Overview (no stop in the spotlight): stops that overlap on screen share one pin, led by the earliest.
   const [clusterOf, setClusterOf] = useState<number[]>([])
+  // Overview: which side of its pin each cluster's label goes, so labels don't cover other pins or labels.
+  const [labelSide, setLabelSide] = useState<LabelSide[]>([])
+  const cardKindRef = useRef(card?.kind)
+  cardKindRef.current = card?.kind
   const measure = useCallback(() => {
     const map = mapRef.current
     if (!map || !story) return
@@ -325,7 +396,9 @@ export function DaylightMap() {
         }
       })
     )
-    setClusterOf(pts.map((_, i) => root(i)))
+    const cluster = pts.map((_, i) => root(i))
+    setClusterOf(cluster)
+    setLabelSide(placeLabels(story, pts, cluster, cardKindRef.current === 'talk', map.getContainer()))
   }, [story])
   useEffect(() => measure(), [measure, loaded])
 
@@ -643,6 +716,7 @@ export function DaylightMap() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.15 }}
                       className="dl-stop-label"
+                      style={LABEL_SIDE_STYLE[labelSide[i] ?? 'right']}
                     >
                       {labels.map((s) => (
                         <span key={s.name}>
