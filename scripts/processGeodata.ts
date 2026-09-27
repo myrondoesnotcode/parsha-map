@@ -331,6 +331,9 @@ const DESCRIBED: Record<string, { name: string; description: string }> = {
   a874951: { name: 'Asshur', description: 'the city of Assur, on the west bank of the Tigris; Genesis 2:14 says the Tigris flows east of Asshur, which may mean the city or the land of Assyria' },
   // Genesis 10:10: JPS notes that "and Calneh" (we-khalneh) is better vocalized we-khullanah, "all of them being".
   aee80af: { name: 'Calneh 1', description: 'Nippur, a proposed site; JPS notes that "and Calneh" (Genesis 10:10) may be better read "all of them being", so it may not be a place name' },
+  // Genesis 26:22: Easton's Bible Dictionary (1890s) put Isaac's Rehoboth at Ruheibeh; modern archaeology rejects this
+  // (Wikipedia "Rehovot-in-the-Negev": no remains older than the Roman period). Toldot's story keeps it as an illustrative pin.
+  ab1d954: { name: 'Rehoboth 1', description: 'Ruheibeh (Rehovot-in-the-Negev), an 1890s proposal for Isaac\'s well (Genesis 26:22) that archaeologists reject: nothing there is older than the Roman period. The real site is unknown' },
   a38ebfd: { name: 'Tigris', description: 'the Tigris, Hebrew Hiddekel (Genesis 2:14); the pin marks al-Qurnah, where it meets the Euphrates today. It does not mark Eden' },
 }
 

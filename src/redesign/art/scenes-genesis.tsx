@@ -511,6 +511,7 @@ export function ChayeiSarah() {
 }
 
 // ——— Toldot: the red lentil stew and bread; the quiver and bow beside them ———————
+// Two scenes in one picture (the caption says so): the stew of 25:29–34 and the hunting gear of 27:3.
 
 export function Toldot() {
   const { tilt, still } = useArtMotion()
