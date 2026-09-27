@@ -1,6 +1,6 @@
 # Daylight redesign — roadmap
 
-Status: prototype built on branch `redesign/daylight` (local, not pushed). Agreed direction: **Daylight** (sand / ultramarine / apricot, Bricolage Grotesque + Suez One), map-first, weekly Parsha Stories. Design canvas: https://claude.ai/artifact/Mdo1vGyta9wqJTDrhRTDDG
+Status: prototype built on branch `redesign/daylight` (pushed to origin 2026-09-27). **Daylight will replace the live site** (Myron, 2026-09-27): no more fixes go to `main`; `main` gets Daylight when it ships. Agreed direction: **Daylight** (sand / ultramarine / apricot, Bricolage Grotesque + Suez One), map-first, weekly Parsha Stories. Design canvas: https://claude.ai/artifact/Mdo1vGyta9wqJTDrhRTDDG
 
 ## What the product is for
 
@@ -91,30 +91,32 @@ Checked against the code on `redesign/daylight` (latest commit `df80a25`) and th
   - Vayikra: 216 of 228 confirmed, 12 flagged.
   - The story cards are nearly clean. The problems are in the Read tab (`parshaList.json`, which is **live**), the date bar and the era card. Findings are listed under "Fact-check findings to apply" below. **None applied yet.**
 
+### 2026-09-27 (third session): parallel work merged, live site frozen
+
+- **Decision (Myron):** forget the live site; Daylight replaces it. Nothing more is fixed on `main`. The "Wrong on the live site now" list below is kept only as a record; the pin, text and push fixes already live on `redesign/daylight`.
+- Merged onto `redesign/daylight` and pushed: pin fixes (Hobah, Bered, four more pins the verses contradict), Empires layer hidden in Daylight, iOS push asks once (`AppDelegate.swift`), Lech Lecha and Vayikra text fact-check fixes (Read tab, story notes, era card events, "c." on the era eyebrow), and papercut emblem covers for all 54 parshiot (`src/redesign/art/`, see `2026-09-27-emblem-covers.md`). Build passes; `npm run check:week` 40/40.
+- Duplicate branches and worktrees deleted (`fix/ios-push-prompt*`, `art/emblem-covers`, `fix/content-factcheck`, `redesign/real-this-week`, `fix/map-pins-empires`).
+- Because Daylight replaces parshamap.com on every screen, **0.7 Desktop** is no longer "keep classic on desktop": Daylight needs its own desktop layout before it ships.
+
 ### Next session — do these first
 
-1. **Get Myron's yes on the Empires plan** (see decisions), then **fix the live site** on `main` in its own worktree. Show him the diff before pushing, because pushing deploys. The fixes:
-   - image captions
-   - the Hobah pin
-   - the Bered / Beer-lahai-roi pin (new)
-   - the Read-tab text fixes for Lech Lecha and Vayikra below
-   - hide the Empires layer
-2. **Apply the story wording fixes** on `redesign/daylight` (Lech Lecha card 12 note; Vayikra sources header).
-3. **Date bar:** show both dates, each labeled (decided). Fix the Lech Lecha and Vayikra ranges, and the Vayikra/Deuteronomy overlap.
-4. **"World around it":** dated events per parsha, with the era list as the fallback (decided).
-5. **Audit the live summaries and facts for the other 52 parshiot** with the fact-check workflow.
-6. Then **0.3 story-writing pipeline** and the Genesis stories. Bereshit is the next real week and has no story.
+1. **Date bar:** show both dates, each labeled (decided). Fix the Lech Lecha and Vayikra ranges and the Vayikra/Deuteronomy overlap.
+2. **"World around it":** dated events per parsha, with the era list as the fallback (decided). Fixes the Hyksos and Megiddo/Akhenaten timing problems.
+3. **0.3 story-writing pipeline**, then the Genesis stories. Bereshit (Sat Oct 10) is the next real week and has no story. Each story opens with its emblem cover.
+4. **0.2 thin-week templates** (Mishkan build-up for Terumah–Pekudei, the camp for Bamidbar and Nasso), so place-less weeks work.
+5. **0.7 Desktop layout** for Daylight (now a ship blocker, see above).
+6. **Audit the facts for the other 52 parshiot** with the fact-check workflow before they go into stories.
 
 ### Decisions
 
 | Decision | Status |
 |---|---|
-| **Empires & borders layer** | Myron thinks it adds an interesting layer and wants it redone correctly. Claude's recommendation: hide it on live now, then redraw it as soft zones of influence per era, with sources, an "approximate" label and a fact-check. **Waiting on Myron's yes to hide now** |
+| **Empires & borders layer** | Myron thinks it adds an interesting layer and wants it redone correctly. Hidden in Daylight (`1104287`). Redraw later as soft zones of influence per era, with sources, an "approximate" label and a fact-check |
 | **Map date bar** | **Decided:** show both, labeled (scholarly range and traditional date) |
 | **"World around it"** | **Decided:** dated events per parsha, with the era list as the fallback |
 | **Home** | Myron unsure. Claude recommends map-first: the map is the differentiator, and the week card lives as a strip over it. Try it in the simulator and confirm |
 
-### Wrong on the live site now (fix on `main`)
+### Wrong on the live site (record only; not fixing `main`, Daylight replaces it)
 
 - **Image captions:** the wrong artist is credited on nearly all 54 parshiot, and some images are photos (clouds, a wheat field). Task chip exists.
 - **Hobah** is pinned on Damascus; Genesis 14:15 says north of it. The error is in the generated `places.json`. Task chip exists.
@@ -177,7 +179,7 @@ Full results: workflow runs `wf_e606146c-7d0` (Lech Lecha) and `wf_aa891ac1-8f0`
 | 1.1 3D terrain | **Done** (whole map, true height) |
 | 1.2 Globe opening | Not started |
 | 1.3 Traveller | Partly built: a dot rides the route; no caravan glyph or dust trail |
-| 1.4 Art covers with a slow zoom | The zoom is built (`CoverArt` in `StoryPlayer.tsx`), but neither story has art. Vayikra's was pulled for being the wrong artwork; Lech Lecha needs one |
+| 1.4 Art covers with a slow zoom | **Art done:** papercut emblem cover for all 54 (`src/redesign/art/`), animated in code, no images. Lech Lecha and Vayikra stories open with theirs; wire the rest in as stories are written |
 | 1.5 Map quiz | Partly built: one guess card per story, answered from a list with the options as pins |
 | 1.6 Sound | Not started (deferred) |
 | 1.7 Share as an image | Not started; sharing is plain text |
