@@ -144,3 +144,33 @@ Story: `src/redesign/stories/vayetze.ts` (Genesis 28:10 – 32:3), 23 cards. Che
 | Missed: Rashi on 28:17, Jacob had reached Haran and turned back | Not an error | Not needed: the note now gives Rashi's main comment (Moriah moved to Luz) |
 | Missed: Euphrates dot at Carchemish on the Map tab | places.json data | Out of scope: reported by the coordinator; not changed |
 | R5–R77, parshaList / timeline / parshaDates / Screens / MapChrome items | Read-tab data | Out of scope for this lane: not edited |
+
+## Second pass (workflow wf_d1178d60-9c9)
+
+243 claims checked, 213 verified. Rebased on `lane/name-letter-cards` (a merged overview pin now sits on its first stop).
+
+**Map change.** Mizpah is no longer a numbered stop. The route is Beersheba → Bethel → Haran → Mahanaim (4 stops). The mound is an unnumbered spot "Gal-ed / Mizpah (site unknown)", `place` a694ea2, at [35.8708, 32.3369]. The spot's note says it differs from the gazetteer's pin on purpose, and why. Why the move:
+- The gazetteer pin (32.119 N) lies south of the Zarqa (the Jabbok), which runs at about 32.19 N here (Wikipedia "Zarqa River" 32.19 N, 35.80 E; "King Talal Dam" 32.19 N).
+- Mahanaim's pin (Tell edh-Dhahab el-Gharbi) is on the north side of the Zarqa's meander (Wikipedia "Tulul adh-Dhahab").
+- Jacob crosses the Jabbok only in 32:23 ("he crossed the ford of the Jabbok", JPS), so the old line crossed twice.
+
+The new point:
+- It is in the hills of Gilead: Wikipedia "Gilead" puts the region in the Irbid, Ajloun, Jerash and Balqa governorates. It is about 6 km north-west of Jerash (32.28 N, 35.90 E) and some 16 km north of the river.
+- It lies on the drawn Haran → Mahanaim arc at `routeTo` 2.96 (computed from DaylightMap's `arc`, bow 0.14), so the head of the line ends on the spot.
+- The flight card and all four Gilead cards use `routeTo` 2.96. The Mahanaim card is stop 4 with `routeTo` 3.
+
+Option (a), moving the numbered stop, was not clearly right. The river runs about 8 km north of the a694ea2 pin, so a stop kept within the checker's 10 km could sit only a kilometre or two north of the bank, not clearly in the hills. So option (b) was taken.
+
+| Finding | What it said | Done |
+|---|---|---|
+| c127 / c149 / missed (history, visual) | Mizpah pin south of the Jabbok; route crosses it twice before 32:23 | Applied as option (b), above. Card 17's note now says the spot is drawn north of the river because Jacob crosses the Jabbok only later (32:23), that it is illustrative and differs from the Map tab's Mizpah pin, and that the line stops short of Mahanaim. Card 21's note says the verses tell of one crossing of the Jabbok, after Mahanaim. Screenshots 16–22 checked |
+| c128 | Name the mound as the text does | Applied: the spot is "Gal-ed / Mizpah (site unknown)" (31:47–49) |
+| c35 | 28:12 does mention the sky | Applied: "but mention no stars" |
+| c47 | "Corrected" Rashi text | Applied: "marked as found in an accurate Rashi text (עַ״כַּ פֵּרַשִׁ״י מְדֻיָּק)", checked against the Sefaria Hebrew of Rashi on 28:17 |
+| Missed: Rashi "I say" | Rashi frames the Moriah point as his own suggestion | Applied: "Rashi on 28:17 suggests (“I say”)…", checked against the Hebrew (אֲנִי אוֹמֵר שֶׁנֶּעֱקַר הַר הַמּוֹרִיָה) |
+| c90 | "Only daughter" is loaded (37:35, 46:7 mention daughters) | Applied: "Dinah, the only daughter the Torah names" |
+| Missed: Kitzur Baal HaTurim | Introduced with י״א, "some say" | Applied: "brings a reason some give (י״א)", checked against Sefaria |
+| c152 / c156 / missed (finale) | "One of two proposals" is wrong; the finale merges pins | Applied. Mahanaim's hedge and notes say "one of several proposed sites": OpenBible.info lists six possible identifications (Tell edh-Dhahab el-Gharbi 65%, the rest under 10%). Wikipedia says "two possible sites", so "several" covers both. The talk note says stops close together share one pin, drawn on the first of them (1·2·4 on Beersheba, confirmed in the card 22 screenshot); each stop's card shows its own pin; the mound isn't shown in the finale |
+| Missed: card 3 / 15 "GOD" may be an angel (JPS notes) | Optional | Not needed: the text matches JPS |
+| c48, c73, c118, c119, c156 | Descriptions only | Not needed |
+| R*, parshaList, parshaDates, Luz confidence (places.json), Screens, MapChrome, timeline | Read-tab and gazetteer data | Out of scope for this lane: not edited |
