@@ -9,7 +9,7 @@
 // the wrestling Peniel (32:31); the verses don't say how far it was from the ford. The wrestling cards use the
 // Penuel stop, and no trek between a ford and Penuel is drawn. The river spot is an illustrative point on the
 // Zarqa beside the Penuel pin, not the gazetteer's point (which marks the river's mouth). Where the brothers met isn't said; it comes after
-// Penuel (32:32) and before Succoth (33:17), so the map stays at Penuel. Migdal-eder (35:21) is not a stop: its site is unknown, and the
+// Penuel (32:32) and before Succoth (33:17), so the map stays near Penuel with no pin lit. Migdal-eder (35:21) is not a stop: its site is unknown, and the
 // places.json pin (Khirbet el-Bira) is OpenBible's least-favoured proposal. Allon-bacuth has no pin of its own.
 // Verses quote THE JPS TANAKH: Gender-Sensitive Edition (Sefaria); Hebrew is Miqra according to the Masorah
 // without cantillation marks. Chapter 32 uses the Hebrew verse numbers (English Bibles number it one lower).
@@ -65,7 +65,7 @@ const vayishlach: ParshaStory = {
     'Sifrei Bamidbar 69:2',
     'Mishnah Chullin 7:1, 7:6',
     'Berakhot 13a',
-    'Wikipedia, “Penuel”, “Deir Alla”, “Zarqa River” (Jabbok), “Tell Balata”, “Bethel”, “Rachel’s Tomb”, “Tel Rumeida”, “Mamre”, “Mount Seir”',
+    'Wikipedia, “Penuel”, “Deir Alla”, “Zarqa River” (Jabbok), “Tell Balata”, “Bethel”, “Rachel’s Tomb”, “Tel Rumeida”, “Mamre”, “Mount Seir”, “Migdal Eder (biblical location)”',
   ],
   route: [
     { name: 'Penuel', at: PENUEL, place: 'a8a9ff9', hedge: 'proposed: Tell edh-Dhahab' },
@@ -189,21 +189,19 @@ const vayishlach: ParshaStory = {
       title: 'Esau runs to meet him',
       body: 'Jacob sees Esau coming with four hundred men. He puts the maids and their children in front, Leah and her children next, Rachel and Joseph last, and goes ahead himself, bowing to the ground seven times. Esau runs to greet him, embraces him, falls on his neck and kisses him, and they weep.',
       ref: 'Genesis 33:1–7 · Sifrei Bamidbar 69:2 · Rashi',
-      note: 'In the Hebrew text the word וַיִּשָּׁקֵהוּ, “and kissed him” (33:4), has a dot over each letter. Sifrei Bamidbar 69:2, quoted by Rashi on 33:4, records two views of what the dots mean: one says Esau didn’t kiss him with all his heart; Rabbi Shimon bar Yoḥai says that Esau hated Jacob, but at that moment his compassion was stirred and he kissed him with all his heart. Where they met isn’t said; it was after Penuel (32:32) and before Succoth (33:17), so the map stays at Penuel.',
+      note: 'In the Hebrew text the word וַיִּשָּׁקֵהוּ, “and kissed him” (33:4), has a dot over each letter. Sifrei Bamidbar 69:2, quoted by Rashi on 33:4, records two views of what the dots mean: one says Esau didn’t kiss him with all his heart; Rabbi Shimon bar Yoḥai says that Esau hated Jacob, but at that moment his compassion was stirred and he kissed him with all his heart. Where they met isn’t said; it was after Penuel (32:32) and before Succoth (33:17), so the map stays near Penuel with no pin lit.',
       act: 'Two brothers',
       camera: onPin(PENUEL, 10.0, 56, 15),
       routeTo: 0,
-      stop: 1,
     },
     {
       kind: 'chapter',
       title: '“I have enough, my brother”',
       body: '“What do you mean by all this company that I have met?” Esau asks. “To gain my lord’s favor,” says Jacob. “I have enough, my brother; let what you have remain yours.” Jacob urges him, “to see your face is like seeing the face of God,” and Esau accepts.',
       ref: 'Genesis 33:8–11 · Bereshit Rabbah 77:3',
-      note: 'In Bereshit Rabbah 77:3, Rabbi Ḥama bar Ḥanina says the one Jacob wrestled was Esau’s guardian angel, and brings these very words about seeing Esau’s face as his proof.',
+      note: 'In Bereshit Rabbah 77:3, Rabbi Ḥama son of Rabbi Ḥanina says the one Jacob wrestled was Esau’s guardian angel, and brings these very words about seeing Esau’s face as his proof.',
       camera: onPin(PENUEL, 10.4, 60, -10),
       routeTo: 0,
-      stop: 1,
     },
     {
       kind: 'chapter',
@@ -262,7 +260,7 @@ const vayishlach: ParshaStory = {
       title: 'The oak of weeping',
       body: 'Deborah, Rebekah’s nurse, dies and is buried under the oak below Bethel. It is named Allon-bacuth, understood as “the oak of the weeping.”',
       ref: 'Genesis 35:8 · Rashi · Bereshit Rabbah 81:5',
-      note: 'The Torah doesn’t say how Rebekah’s nurse came to be with Jacob; Rashi on 35:8 brings a teaching that Rebekah had sent her to tell Jacob to come home. In Bereshit Rabbah 81:5, Rabbi Shmuel bar Naḥman says allon means “another” in Greek: while mourning Deborah, Jacob heard that his mother had died. The Torah never tells of Rebekah’s death; 49:31 mentions only her burial. Allon-bacuth’s site isn’t known; the pin marks Bethel.',
+      note: 'The Torah doesn’t say how Rebekah’s nurse came to be with Jacob; Rashi on 35:8, citing Rabbi Moses Ha-darshan, says Rebekah had sent her to tell Jacob to come home. In Bereshit Rabbah 81:5, Rabbi Shmuel bar Naḥman says allon means “another” in Greek: while mourning Deborah, Jacob heard that his mother had died. The Torah never tells of Rebekah’s death; 49:31 mentions only her burial. Allon-bacuth’s site isn’t known; the pin marks Bethel.',
       camera: onPin(BETHEL, 10.4, 60, -25),
       routeTo: 3,
       stop: 4,
@@ -274,8 +272,8 @@ const vayishlach: ParshaStory = {
       body: 'At Bethel God gives the name a second time. Yet the Torah goes on calling him Jacob too; the Talmud (Berakhot 13a) says Israel became his main name, and Jacob a second one.',
       ref: 'Genesis 35:9–15 · Berakhot 13a',
       note: 'God blesses him: “I am El Shaddai. Be fertile and increase,” and gives him the land promised to Abraham and Isaac (35:11–12). Jacob sets up a stone pillar, pours a libation and oil on it, and names the place Bethel (35:14–15). A few verses on, “Israel journeyed on” (35:21), and “Jacob came to his father Isaac” (35:27). Berakhot 13a notes that God Himself later calls him “Jacob! Jacob!” (46:2).',
-      // Page card: terrain south of Bethel as a backdrop, the pins kept out from under the Hebrew.
-      camera: { center: [35.24, 31.77], zoom: 10.5, pitch: 35, bearing: 0 },
+      // Page card: terrain just south of Bethel as a backdrop, with the Bethel pin in view above the card.
+      camera: { center: [35.24, 31.88], zoom: 10.5, pitch: 35, bearing: 0 },
       routeTo: 3,
     },
     {
@@ -292,7 +290,7 @@ const vayishlach: ParshaStory = {
       kind: 'offerings',
       title: 'Now the sons of Jacob were twelve',
       ref: 'Genesis 35:21–26 · Ibn Ezra · Radak',
-      note: 'Israel journeyed on and pitched his tent beyond Migdal-eder (35:21); where that was isn’t known, so it isn’t on the map, and no pin is lit here. The list ends “These are the sons of Jacob who were born to him in Paddan-aram” (35:26), though Benjamin has just been born near Ephrath; Ibn Ezra and Radak on 35:26 say the verse speaks of most of them.',
+      note: 'Israel journeyed on and pitched his tent beyond Migdal-eder (35:21). The story puts it after Rachel’s grave near Bethlehem, but early sources differ on where it stood, so it isn’t on the map, and no pin is lit here. The list ends “These are the sons of Jacob who were born to him in Paddan-aram” (35:26), though Benjamin has just been born near Ephrath; Ibn Ezra and Radak on 35:26 say the verse speaks of most of them.',
       items: [
         { he: 'לֵאָה', en: 'Leah’s sons', note: 'Reuben, Jacob’s first-born; Simeon, Levi, Judah, Issachar and Zebulun' },
         { he: 'רָחֵל', en: 'Rachel’s sons', note: 'Joseph and Benjamin' },
@@ -327,7 +325,7 @@ const vayishlach: ParshaStory = {
     {
       kind: 'talk',
       title: 'Esau, who had once resolved to kill Jacob, ran to meet him, and the brothers embraced and wept. What helps people make peace after a long rift?',
-      note: 'Numbered pins mark usual or proposed identifications: Penuel = Tell edh-Dhahab el-Sharqi, Succoth = Tell Deir Alla, Shechem = Tell Balata, Bethel = Beitin, Ephrath = Bethlehem, Hebron = Tel Rumeida. None of these sites is certain. The Jabbok is today’s Zarqa River; where Jacob crossed it isn’t known, and it is shown only as a river. Seir is a region. Migdal-eder and Allon-bacuth can’t be located and aren’t pinned. Stops close together on screen share one numbered pin, drawn on the first of them (so 1·2 sits on Penuel). Lines join the stops in order; Jacob’s roads aren’t known.',
+      note: 'Numbered pins mark usual or proposed identifications: Penuel = Tell edh-Dhahab el-Sharqi, Succoth = Tell Deir Alla, Shechem = Tell Balata, Bethel = Beitin, Ephrath = Bethlehem, Hebron = Tel Rumeida. None of these sites is certain. The Jabbok is today’s Zarqa River; where Jacob crossed it isn’t known, and it is shown only as a river. Seir is a region. Migdal-eder (somewhere past Rachel’s grave; early sources differ on where) and Allon-bacuth (“below Bethel,” 35:8) can’t be located exactly and aren’t pinned. Stops close together on screen share one numbered pin, drawn on the first of them (so 1·2 sits on Penuel). Lines join the stops in order; Jacob’s roads aren’t known.',
       camera: { center: [35.42, 31.85], zoom: 7.9, pitch: 30, bearing: 0 },
       routeTo: 5,
     },

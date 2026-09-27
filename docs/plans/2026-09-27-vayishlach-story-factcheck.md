@@ -174,3 +174,17 @@ Checks after the changes: `npm run check:stories -- vayishlach --strict` ✓ 24 
 | R3–R91; parshaList, Screens, timeline, parshaDates "missed" items | Read-tab and History-tab text and data | **Out of scope for this lane.** Reported to the coordinator |
 
 Checks: `npm run check:stories -- vayishlach --strict` ✓ 24 cards, 0 errors, 0 warnings; `npm run build` ✓. Re-screenshotted at 390×844: cards 3, 5, 6, 8, 20 and the finale (23).
+
+## Third pass (workflow wf_556c3881-ca1)
+
+392 claims, 363 verified, status NOTES (no story errors). Applied, each checked against the source:
+
+| Finding | Change |
+|---|---|
+| c123 / c290 | "Esau runs to meet him" and "“I have enough, my brother”" no longer light the Penuel pin: 33:1 names no place. The pin shows unlit with its hedge; the note and header say the map stays near Penuel with no pin lit |
+| c240 / c278 | Migdal-eder: "The story puts it after Rachel's grave near Bethlehem, but early sources differ on where it stood" (Wikipedia "Migdal Eder (biblical location)": "The biblical record locates it near the present-day city of Bethlehem … early sources differ on the location"; Mishnah Shekalim 7:4 uses it only as a distance from Jerusalem). Finale note: Migdal-eder and Allon-bacuth ("below Bethel," 35:8) can't be located exactly |
+| Missed, card 18 camera | Centred just south of Bethel ([35.24, 31.88]) so the Bethel pin shows above the Hebrew; it had been centred on Jerusalem |
+| Missed, card 17 | "Rashi on 35:8, citing Rabbi Moses Ha-darshan, says…" (Rashi: "I learnt this from a comment of R. Moses Ha-darshan") |
+| Missed, card 11 | "Rabbi Ḥama son of Rabbi Ḥanina", as Bereshit Rabbah 77:3 on Sefaria spells it |
+
+Not changed: card 7's lit pin sits under the dawn sky (not a false claim; the stop badge shows the place). Out of scope, reported to Myron: the cover brief (c005, "ford at dawn"; the crossing was at night, 32:23, and the sunrise came at Penuel, 32:32); the Map tab still pins Migdal-eder (Eder 1, Khirbet el-Bira) and Allon-bacuth from places.json; all Read-tab items.
