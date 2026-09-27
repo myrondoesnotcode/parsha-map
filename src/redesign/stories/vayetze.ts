@@ -21,7 +21,7 @@ const HARAN: LngLat = [39.032778, 36.864444]
  * Gal-ed / Mizpah, the mound of 31:47–49 (places.json a694ea2 "Mizpah 4"). Site unknown. Deliberately NOT the
  * gazetteer's pin (35.777, 32.119), which is south of the Zarqa (the Jabbok, at about 32.19 N here): Jacob,
  * coming from Haran, crosses the Jabbok only in 32:23. This illustrative point is in the hills of Gilead
- * north of the river: about 6 km north-west of Jerash (Wikipedia 32.28 N, 35.90 E) and some 16 km north of
+ * north of the river: about 7 km north-north-west of Jerash (Wikipedia 32.28 N, 35.90 E) and some 16 km north of
  * the Zarqa at the King Talal Dam (32.19 N). It sits on the drawn Haran → Mahanaim arc at routeTo 2.96, so
  * the head of the line ends on it. Not a location claim.
  */
@@ -41,7 +41,7 @@ const vayetze: ParshaStory = {
     'Kitzur Baal HaTurim on Genesis 28:10',
     'Talmud, Chullin 91b; Megillah 13b; Berakhot 60a (as cited by Rashi on Genesis 28:11, 29:25, 30:21)',
     'Bereshit Rabbah 68:12, 74:3, 74:9 (as cited by Rashi on Genesis 28:12, 31:7, 31:32)',
-    'Pirkei DeRabbi Eliezer 35 (as cited by Rashi on Genesis 28:17)',
+    'Pirkei DeRabbi Eliezer 35',
     'Wikipedia, “Bethel”, “Harran”, “Mahanaim”, “Tulul adh-Dhahab”, “Zarqa River”, “King Talal Dam”, “Gilead”, “Jerash”',
     'OpenBible.info, “Mahanaim” (six possible identifications)',
   ],
@@ -84,7 +84,7 @@ const vayetze: ParshaStory = {
     {
       kind: 'stars',
       title: 'A stairway was set on the ground and its top reached to the sky, and angels of God were going up and down on it.',
-      body: 'God, beside him, promises: “I am with you… and will bring you back to this land.”',
+      body: 'God, standing beside him (so JPS; Rashi reads “above him”), promises: “I am with you… and will bring you back to this land.”',
       ref: 'Genesis 28:12–15 · Rashi',
       note: 'The Hebrew סֻלָּם is often translated “ladder”; the JPS translation used here says “stairway,” and its note offers “ramp.” “Angels” is literally “messengers.” Rashi on 28:12 asks why they go up before they come down: the angels who had escorted Jacob in the Land could not leave it and went up, and the angels for outside the Land came down to escort him (Bereshit Rabbah 68:12). JPS reads God as “standing beside him”; Rashi on 28:13 reads “stood above him,” to guard him. God also promises him the land he is lying on and offspring as many as the dust of the earth (28:13–14). The stars are an illustration: the verses say the sun had set and he stayed the night (28:11), but mention no stars.',
       camera: { center: BETHEL, zoom: 7.6, pitch: 76, bearing: 0 },
@@ -97,7 +97,7 @@ const vayetze: ParshaStory = {
       hebrew: 'מַה־נּוֹרָא הַמָּקוֹם הַזֶּה אֵין זֶה כִּי אִם־בֵּית אֱלֹהִים וְזֶה שַׁעַר הַשָּׁמָיִם',
       body: 'Jacob wakes: “Surely GOD is present in this place, and I did not know it!” Shaken, he says this. Rashi on 28:17 reads “gateway to heaven” as a place of prayer, where prayers go up to heaven.',
       ref: 'Genesis 28:16–17 · Rashi',
-      note: '“GOD” is how the JPS Gender-Sensitive Edition renders God’s four-letter name. Rashi brings his reading from Pirkei DeRabbi Eliezer 35.',
+      note: '“GOD” (in some phrases “the ETERNAL”) is how the JPS Gender-Sensitive Edition renders God’s four-letter name. A similar reading appears in Pirkei DeRabbi Eliezer 35: the gate of heaven is there, open to hear prayers.',
       camera: { center: [BETHEL[0] + 0.02, BETHEL[1] + 0.19], zoom: 10.2, pitch: 40, bearing: 0 },
       routeTo: 1,
     },
@@ -106,7 +106,7 @@ const vayetze: ParshaStory = {
       title: 'A pillar at Bethel',
       body: 'Early in the morning Jacob sets up the stone that was under his head as a pillar and pours oil on it. He names the place Bethel, “house of God”; the town had been called Luz.',
       ref: 'Genesis 28:18–19 · Rashi',
-      note: '“House of God” is the JPS note on the name. Most scholars identify Bethel with the village of Beitin, north of Jerusalem; that is where the pin sits. Rashi on 28:17 suggests (“I say”) that Mount Moriah, the site of the Temple, was moved from its place to meet Jacob here at Luz, and that this is what the Talmud (Chullin 91b) means by the ground “shrinking” for him. A passage in his comment, marked as found in an accurate Rashi text (עַ״כַּ פֵּרַשִׁ״י מְדֻיָּק), adds that this Bethel was not the one near Ai but one near Jerusalem.',
+      note: '“House of God” is the JPS note on the name. Most scholars identify Bethel with the village of Beitin, north of Jerusalem; that is where the pin sits. Rashi on 28:17 suggests (“I say”) that Mount Moriah, the site of the Temple, was moved from its place to meet Jacob here at Luz, and that this is what the Talmud (Chullin 91b) means by the ground “shrinking” for him. His comment goes on to say that this Bethel was not the one near Ai but one near Jerusalem.',
       camera: { center: eastOf(BETHEL, 0.06), zoom: 10, pitch: 58, bearing: -20 },
       routeTo: 1,
       stop: 2,
@@ -137,7 +137,7 @@ const vayetze: ParshaStory = {
       title: 'Seven years for Rachel',
       body: 'Laban runs to greet his sister’s son and takes him home. After a month he asks what Jacob’s wages should be. Jacob loves Rachel, the younger daughter, and offers seven years’ work for her; “they seemed to him but a few days because of his love for her.”',
       ref: 'Genesis 29:12–20 · Rashi',
-      note: 'Laban has two daughters: Leah, the older, and Rachel, the younger (29:16). JPS says “Leah had weak eyes” (29:17). Rashi on 29:17 reads the Hebrew, rakkot, as “tender”: they were so from weeping, because people said the older daughter would marry Rebekah’s older son, Esau.',
+      note: 'Laban has two daughters: Leah, the older, and Rachel, the younger (29:16). JPS says “Leah had weak eyes” (29:17). Rashi on 29:17 explains why Leah’s eyes were rakkot (“weak” or “tender”): they were so from weeping, because people said the older daughter would marry Rebekah’s older son, Esau.',
       camera: { center: eastOf(HARAN, 0.12), zoom: 9.4, pitch: 55, bearing: 15 },
       routeTo: 2,
       stop: 3,
@@ -198,7 +198,7 @@ const vayetze: ParshaStory = {
       title: 'Children of Zilpah, Leah and Rachel',
       numberFrom: 7,
       ref: 'Genesis 30:9–24, 35:16–19 · Rashi',
-      note: 'The sons are numbered in the order the verses tell of their births, across both cards; Dinah, the only daughter the Torah names, is in Zebulun’s row, since she was born after him and before Joseph (30:21). Zilpah was Leah’s maid, and Leah named her sons. Gad follows the qere, the way the verse is read (בָּא גָד, “luck has come”); it is written בגד, which JPS renders “What luck!” Issachar was born after Rachel traded Leah a night with Jacob for Reuben’s mandrakes (30:14–16). The verse gives no reason for Dinah’s name. Rashi on 30:21 brings the Talmud’s reading (Berakhot 60a): Leah passed judgment (dan) on herself and prayed, so that Rachel would not have fewer sons than a maid, and the child became a girl. Benjamin, Jacob’s twelfth son, is born next week (35:16–19).',
+      note: 'The sons are numbered in the order the verses tell of their births, across both cards; Dinah, the only one of Jacob’s daughters the Torah names, is in Zebulun’s row, since she was born after him and before Joseph (30:21). Zilpah was Leah’s maid, and Leah named her sons. Gad follows the qere, the way the verse is read (בָּא גָד, “luck has come”); it is written בגד, which JPS renders “What luck!” Issachar was born after Rachel traded Leah a night with Jacob for Reuben’s mandrakes (30:14–16). The verse gives no reason for Dinah’s name. Rashi on 30:21 brings the Talmud’s reading (Berakhot 60a): Leah passed judgment (dan) on herself and prayed, so that Rachel would not have fewer sons than a maid, and the child became a girl. Benjamin, Jacob’s twelfth son, is born next week (35:16–19).',
       items: [
         { he: 'גָּד', en: 'Gad · Zilpah', note: 'Leah: “Luck has come”' },
         { he: 'אָשֵׁר', en: 'Asher · Zilpah', note: 'Leah: “What fortune!”' },
@@ -294,6 +294,7 @@ const vayetze: ParshaStory = {
       kind: 'talk',
       title: 'Jacob woke and said, “Surely GOD is present in this place, and I did not know it!” When have you found something special in a place you didn’t expect?',
       note: 'Numbered pins mark usual or proposed identifications: Beersheba = Tel Be’er Sheva, Bethel = Beitin, Haran = Harran, Mahanaim = Tell edh-Dhahab el-Gharbi (one of several proposed sites). Zoomed out this far, stops close together share one numbered pin, drawn on the first of them (so 1·2·4 sits on Beersheba); each stop’s own card shows its own pin. Where the mound of Gal-ed and Mizpah stood is unknown; it is not shown here, and on its cards it is an illustrative spot. Lines join the stops in order; Jacob’s roads aren’t known, nor where he crossed the Euphrates.',
+      // Not used on screen: the finale fits the whole route into the strip above the card (DaylightMap fitBounds).
       camera: { center: [37.1, 34.1], zoom: 4.6, pitch: 20, bearing: 0 },
       routeTo: 3,
     },
