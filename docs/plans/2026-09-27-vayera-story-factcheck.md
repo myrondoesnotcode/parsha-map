@@ -2,7 +2,7 @@
 
 Story: `src/redesign/stories/vayera.ts` (17 cards). Checked 2026-09-27 by the story author, before review.
 
-**Sources fetched.** Verses: Sefaria API v3, `Genesis.18`–`Genesis.22`, plus Genesis 12:4, 13:10, 14:3, 17:17, 17:19, 21:31, 22:13–14 and II Chronicles 3:1 (THE JPS TANAKH: Gender-Sensitive Edition; Hebrew: Miqra according to the Masorah; JPS footnotes read with the text). Rashi on Genesis 18:1, 18:2, 18:32, 21:33, 22:2, 22:8, 25:20 (Rosenbaum–Silbermann, English and Hebrew). Talmud, Shabbat 127a, Rosh Hashanah 16a, Megillah 31a (William Davidson edition, English and vocalized Aramaic). Scholarship on sites: Wikipedia pages "Mamre", "Gerar", "Sodom and Gomorrah", "Tall el-Hammam", "Bab edh-Dhra", "Tel Be'er Sheva". Pins: `src/data/places.json`. Traditional date: `src/data/parshaDates.json` (vayera: AM 2048 = c. 1713 BCE, Isaac born).
+**Sources fetched.** Verses: Sefaria API v3, `Genesis.18`–`Genesis.22`, plus Genesis 12:4, 13:10, 14:3, 17:17, 17:19, 21:31, 22:13–14 and II Chronicles 3:1 (THE JPS TANAKH: Gender-Sensitive Edition; Hebrew: Miqra according to the Masorah; JPS footnotes read with the text). Rashi on Genesis 18:1, 18:2, 18:3, 18:32, 21:33, 22:2, 22:8, 25:20 (Rosenbaum–Silbermann, English and Hebrew). Talmud, Shabbat 127a, Rosh Hashanah 16a, Megillah 31a (William Davidson edition, English and vocalized Aramaic). Scholarship on sites: Wikipedia pages "Mamre", "Gerar", "Sodom and Gomorrah", "Tall el-Hammam", "Bab edh-Dhra", "Tel Be'er Sheva". Pins: `src/data/places.json`. Traditional date: `src/data/parshaDates.json` (vayera: AM 2048 = c. 1713 BCE, Isaac born).
 
 **Honoured from the Genesis fact-check** (`factcheck-genesis-1.md`, Vayera section): the meal is cakes, a tender calf, curds and milk, not "roasted"; the Akedah is "on one of the heights" in "the land of Moriah", not "Mount Moriah" (the Temple Mount is given only as tradition, with 2 Chronicles 3:1); the angel's words are "now I know that you fear God"; Rashi's reason for stopping at ten is Noah's eight (not Lot's household); the shofar link is sourced to Rosh Hashanah 16a; the retracted 2021 Tall el-Hammam airburst paper is not mentioned at all, and no Sodom site is pinned or implied.
 
@@ -16,7 +16,7 @@ Verdicts: **verified** = matches the fetched source; **fixed** = was wrong or lo
 | 0.2 | Route: Mamre → Gerar → Beersheba → Moriah → Beersheba | 18:1; 20:1–2; 21:31–33; 22:2–9; 22:19 | verified; the departure point for Moriah is not stated, the note says so (see 11.6) |
 | 0.3 | Mamre pin = Ramat el-Khalil, about 4 km north of old Hebron, "traditional site"; tradition goes back to Herod's time | places.json aeb9e97; Wikipedia "Mamre" ("4 km north of historical Hebron"; Christian tradition "connects to a tradition from the time of Herod") | verified |
 | 0.4 | Gerar pin = Tel Haror, "usual site", not certain | places.json a3f5814; Wikipedia "Gerar" ("Most commentators see the mound of Tel Haror … as representing the ancient Gerar"; alternatives listed) | verified |
-| 0.5 | Beersheba pin = Tel Be'er Sheva, east of the modern city, usually identified with biblical Beersheba | places.json a075d61; Wikipedia "Tel Be'er Sheva" ("east of modern Beersheba"; "believed to be the site of … Beer-sheba") | verified |
+| 0.5 | Beersheba pin = Tel Be'er Sheva, east of the modern city, usually identified with biblical Beersheba; where Abraham's well was isn't known | places.json a075d61; Wikipedia "Tel Be'er Sheva" ("east of modern Beersheba"; "believed to be the site of … Beer-sheba") | verified |
 | 0.6 | Moriah pin = Temple Mount, labelled "traditional site" | places.json adaf385; 2 Chronicles 3:1; Rashi on 22:2 | verified |
 | 0.7 | Sodom, Gomorrah not pinned; no Sodom spot | places.json a0aa664, aa572e2 (latitude null) | verified |
 
@@ -32,6 +32,7 @@ Verdicts: **verified** = matches the fetched source; **fixed** = was wrong or lo
 | 1 note | Rashi on 18:1 (Bava Metzia 86b): God came to visit the sick, third day after the circumcision | Rashi on 18:1 | verified |
 | 1 note | Circumcision in 17:24–26 | Genesis 17:24–26 | verified |
 | 1 note | Shabbat 127a: hospitality is greater than receiving the Divine Presence, learned from 18:3 (Abraham asked God to wait) | Shabbat 127a (Rav Yehuda in the name of Rav) | verified |
+| 1 note | Rashi on 18:3 gives both readings: spoken to the guests, or asking God to wait | Rashi on 18:3 ("Both these explanations … Genesis Rabbah 48:10") | verified (added after review) |
 | 1 note | The Torah calls them men (18:2); two are called angels in 19:1 | 18:2 אֲנָשִׁים; 19:1 "The two angels" | verified |
 | 2 | "Where is your wife Sarah?" | 18:9 | verified |
 | 2 | One says she will have a son by this time next year | 18:10 ("I will return to you next year… your wife Sarah shall have a son"), 18:14 ("at the same season next year") | verified |
@@ -52,13 +53,13 @@ Verdicts: **verified** = matches the fetched source; **fixed** = was wrong or lo
 | 5 | Two angels reach Sodom in the evening; Lot takes them into his house | 19:1–3 | verified |
 | 5 | That night the men of the city surround it | 19:4 | verified |
 | 5 | At dawn the angels lead Lot, his wife and two daughters out | 19:15–16 | verified |
-| 5 | Sulfurous fire rains on Sodom and Gomorrah | 19:24 | verified |
+| 5 | As the sun rises and Lot reaches Zoar, sulfurous fire rains on Sodom and Gomorrah | 19:23–24 | verified. **Fixed** (review): draft put the fire straight after the dawn departure |
 | 5 | Lot's wife looks back and becomes a pillar of salt | 19:26 | verified |
 | 5 | Next morning Abraham looks toward the Plain, sees smoke rising like the smoke of a kiln | 19:27–28 | verified |
 | 5 note | Little town spared, called Zoar | 19:20–23 | verified |
 | 5 note | God was mindful of Abraham and removed Lot from the upheaval | 19:29 | verified |
 | 5 note | Southern theory: Early Bronze Age ruins near the south-east of the Dead Sea, such as Bab edh-Dhra; northern: Tall el-Hammam, north-east of the Dead Sea; neither accepted as proven | Wikipedia "Bab edh-Dhra" (EB, near the Dead Sea, "Other archaeologists disagree"); "Tall el-Hammam" (12.6 km NE of the Dead Sea; identification rejected by mainstream); "Sodom and Gomorrah" ("archaeological evidence is inconclusive") | verified. **Fixed**: "by the south-east shore" softened to "near the south-east of" |
-| 5 note | Chapter ends with Lot and daughters in a cave; births of Moab and Ben-ammi, fathers of the Moabites and Ammonites | 19:30, 37–38 | verified (told without the details, for a family audience) |
+| 5 note | Later Lot and his daughters live in a cave in the hill country; the chapter ends with the births of Moab and Ben-ammi, fathers of the Moabites and Ammonites | 19:30, 37–38 | verified (told without the details, for a family audience). **Fixed** (review): draft said the chapter ends with the cave |
 | 5 note | Abraham looked from "the place where he had stood before God" | 19:27 | verified |
 | 6 | Abraham moves to the Negeb, stays for a time in Gerar | 20:1 | verified |
 | 6 | Says of Sarah "She is my sister"; King Abimelech has her brought to him | 20:2 | verified |
@@ -81,14 +82,16 @@ Verdicts: **verified** = matches the fetched source; **fixed** = was wrong or lo
 | 8 note | Birthplace not stated; last place named Gerar; lived in land of the Philistines a long time | 20:1; 21:34 | verified |
 | 9 | Sarah sees Hagar's son playing, tells Abraham to send them away | 21:9–10 | verified |
 | 9 | Name Ishmael | 16:15 (ch. 21 doesn't use it; the note says so) | verified. **Fixed**: added the note |
+| 9 note | Ch. 21 calls him Hagar's son, the slave-woman's son, the child or the boy | 21:9 (בֶּן־הָגָר), 21:10, 13 (בֶּן־הָאָמָה), 21:14–16 (הַיֶּלֶד), 21:12, 17 (הַנַּעַר) | verified. **Fixed** (review): draft said "only Hagar's son or the boy" |
+| 9 spot | "Wilderness of Beersheba (a region, not a point)" at Tel Be'er Sheva | 21:14 ("wilderness of Beer-sheba", a region) | verified. **Fixed** (review): label had no on-map hedge |
 | 9 | Abraham deeply distressed; God: listen to Sarah; a nation of Ishmael too | 21:11–13 | verified |
 | 9 | Wilderness of Beersheba; water runs out; Hagar weeps | 21:14–16 | verified |
 | 9 | God hears the boy's cry; Hagar sees a well of water | 21:17, 19 | verified |
 | 9 note | Bread and a skin of water; angel of God calls from heaven, "Fear not"; Ishmael in the wilderness of Paran, a bowman | 21:14, 17, 20–21 | verified |
-| 9 note | The Torah uses the name Beersheba before telling how it got it | 21:14 vs 21:31 | verified |
+| 9 note | The Torah uses the name Beersheba before the naming story in 21:31 | 21:14 vs 21:31 | verified. **Fixed** (review): Genesis has a second naming story (26:33), so not "the story" |
 | 10 | Abimelech and Phicol, his army chief, ask for a pact | 21:22–23 | verified |
 | 10 | Seven ewes as proof he dug the well; the two swear an oath | 21:28–31 | verified |
-| 10 | Place called Beersheba; tamarisk; calls on the name of the Everlasting God | 21:31, 33 | verified |
+| 10 | Place called Beersheba; tamarisk; calls on the name of GOD, the Everlasting God | 21:31, 33 (בְּשֵׁם יְהֹוָה אֵל עוֹלָם; JPS "the ETERNAL, the Everlasting God") | verified. **Fixed** (review): draft dropped the four-letter name |
 | 10 note | Beersheba = "well of seven" or "well of oath" | JPS note on 21:31 | verified |
 | 10 note | Rashi on 21:33 (Sotah 10a): אֵשֶׁל an orchard for guests, or an inn | Rashi on 21:33 | verified |
 | 10 note | Abraham complained the servants seized the well | 21:25 | verified |
@@ -99,14 +102,14 @@ Verdicts: **verified** = matches the fetched source; **fixed** = was wrong or lo
 | 11 note | Rashi on 22:2 (Bereshit Rabbah 56:8): "bring him up", not "slay him"; God did not desire that he slay him | Rashi on 22:2 | verified |
 | 11 note | Rashi on 25:20, following Seder Olam, counts Isaac 37 | Rashi on 25:20 | verified (an age, not a date; the date bar is untouched) |
 | 11 note | 2 Chronicles 3:1: Solomon built the Temple on Mount Moriah; Rashi on 22:2: the land of Moriah is Jerusalem | 2 Chr 3:1 (JPS "the House of GOD in Jerusalem on Mount Moriah"); Rashi on 22:2 | verified |
-| 11 note | Departure point not stated; line starts at Beersheba, last place named (21:33) | 21:33–34; 22:1–3 | verified |
+| 11 note | Departure point not stated; line starts at Beersheba, where he planted the tamarisk (21:33) and where he returned afterward (22:19) | 21:33; 22:1–3; 22:19 | verified. **Fixed** (review): Beersheba is not the last place named; 21:34 names the land of the Philistines |
 | 12 | "And the two of them walked on together." / וַיֵּלְכוּ שְׁנֵיהֶם יַחְדָּו | 22:8 (JPS, Hebrew) | verified |
 | 12 | Isaac: "Where is the sheep for the burnt offering?"; Abraham: "It is God who will see to the sheep for this burnt offering, my son." | 22:7–8 | verified |
 | 12 | Rashi: "with the same ready heart" | Rashi on 22:8 (Rosenbaum–Silbermann; Hebrew בְּלֵב שָׁוֶה) | verified |
 | 12 note | Same Hebrew words twice (22:6, 22:8); JPS renders 22:6 "and the two walked off together" | 22:6, 22:8 | verified. **Fixed**: draft said "the same words" (English differs) |
 | 12 note | Rashi reads the answer as hinting "my son" would be the offering if there were no sheep; though Isaac understood, they went on together | Rashi on 22:8 (Hebrew ואף על פי שהבין יצחק שהוא הולך להשחט) | verified |
 | 13 | Builds an altar, lays out the wood, binds Isaac and lays him on the altar | 22:9 | verified. **Fixed**: draft "binds Isaac upon it" |
-| 13 | As he takes up the knife, an angel of God calls from heaven, "Abraham! Abraham!" | 22:10–11 | verified |
+| 13 | As he takes up the knife, an angel of GOD calls from heaven, "Abraham! Abraham!" | 22:10–11 (מַלְאַךְ יְהֹוָה; JPS "an angel of GOD") | verified. **Fixed** (review): draft wrote "God", which in JPS stands for אֱלֹהִים |
 | 13 | "Do not raise your hand against the boy." | 22:12 | verified (JPS) |
 | 13 | Ram caught in a thicket by its horns, offered in place of his son | 22:13 | verified |
 | 13 note | "now I know that you fear God" | 22:12 | verified |
@@ -119,6 +122,8 @@ Verdicts: **verified** = matches the fetched source; **fixed** = was wrong or lo
 | 15 | "Sound a blast before Me with a shofar made from a ram's horn, so that I will remember for you the binding of Isaac" | Rosh Hashanah 16a (Davidson), Rabbi Abbahu | verified (shortened; note gives the rest) |
 | 15 | Hebrew שֶׁאֶזְכּוֹר לָכֶם עֲקֵידַת יִצְחָק | RH 16a vocalized text | verified (the note says the Hebrew is the last words) |
 | 15 | Second day of Rosh Hashanah reads Genesis 22; first day Genesis 21 | Megillah 31a | verified |
+| 15 note | The Talmud goes on "…son of Abraham, and I will ascribe it to you as if you had bound yourselves before Me"; the translation adds words; "to recall the merit of the binding" is the translation's addition in Megillah 31a | RH 16a and Megillah 31a Aramaic (bolded Davidson text) | verified. **Fixed** (review): the draft quoted the translator's unbolded explanations as the Talmud's words |
+| 15 camera | Camera about 24 km west of the Temple Mount, no pin in view; no place claim | camera [34.98, 31.8] | verified. **Fixed** (review): this row replaces the author's "just west of Jerusalem" |
 | 16 | Talk: Abraham spoke up for the people of Sodom; quote 18:25 | 18:23–25 | verified |
 | 16 note | Pins are usual/traditional identifications; Sodom and Gomorrah unpinned; Beersheba is stops 3 and 5; roads unknown | as 0.3–0.7 | verified |
 
@@ -126,7 +131,7 @@ Verdicts: **verified** = matches the fetched source; **fixed** = was wrong or lo
 
 | Audience | Claim | Source | Verdict |
 |---|---|---|---|
-| Kids | Abraham ran to bring water, bread and a meal to three strangers on a hot day | 18:1–8 | verified |
+| Kids | Abraham ran to greet three strangers on a hot day, offered them water and bread, and hurried to make them a meal | 18:1–8 (ran to greet 18:2; water and bread offered 18:4–5; hurried 18:6–7) | verified. **Fixed** (review): he ran to greet them and to the herd, not to bring water |
 | Everyone | as card 16 | 18:23–25 | verified |
 | Deeper | Hebrew "and the two of them walked on together" twice, before and after Isaac's question; Rashi "with the same ready heart" | 22:6–8; Rashi on 22:8 | verified |
 
@@ -136,6 +141,21 @@ Verdicts: **verified** = matches the fetched source; **fixed** = was wrong or lo
 - No date other than the automatic traditional date bar (c. 1713 BCE, Isaac born).
 - No depiction of God or angels; the Tetragrammaton appears in no Hebrew line.
 - The retracted Tall el-Hammam airburst study is not mentioned.
+
+## Map camera notes (from review)
+
+- Card 4 (the offerings list) keeps the camera looking east toward the Dead Sea; the Mamre pin is off-screen behind the card.
+- Card 15 (the shofar quote): see the 15 camera row above.
+
+## Independent fact-check, 2026-09-27
+
+A 4-lens fact-check (text, visual, tradition, history) found 18 problems and 13 missed claims. Each was re-checked against Sefaria (Genesis 18–22 JPS Gender-Sensitive Edition and Masoretic Hebrew; Rosh Hashanah 16a, Megillah 31a, Shabbat 127a Davidson English and Aramaic; Rashi on 18:2–3) before any change. Applied: the rows marked **Fixed** (review) above; the cover emblem (the thicket's branches now wind through the curled horns and the face is clear of the bush, 22:13); the Read tab's "In brief", "In Jewish tradition", summary and key figures in `parshaList.json`.
+
+Not applied:
+- A via to bow the binding legs clear of the Mamre pin: tried at three points; each either left a line on the pin or put a sharp unnumbered corner in the line (reads as a stop). Needs a map-code fix (a per-leg bow, or lines kept clear of pins).
+- `approximateDateBCE` 2000–1800 → 2000–1550: the classic UI uses these ranges to map a year to a parsha in sequence; widening one would overlap its neighbours. Daylight's date bar uses `parshaDates.json`.
+- History-tab note on the Philistines as an anachronism: optional; a new claim, left for Myron.
+- Execration Texts wording in `timeline.json`: shared middle-bronze era text shown only in the classic UI, outside this story.
 
 ## Unverified
 
