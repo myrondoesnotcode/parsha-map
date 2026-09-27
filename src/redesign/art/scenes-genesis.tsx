@@ -677,9 +677,11 @@ export function Vayetze() {
             </motion.g>
           )
         })}
-        {/* the stone at its foot */}
-        <path d="M112 508 C106 496 116 484 134 484 C150 484 160 492 158 504 C156 510 118 512 112 508 Z" fill={C.land} />
-        <path d="M140 485 C152 487 160 494 158 504 C156 508 146 510 138 510 C146 500 146 492 140 485 Z" fill="#d9ccb1" />
+        {/* the stone Jacob put under his head (28:11), on the ground apart from the stairway */}
+        <g transform="translate(-50 0)">
+          <path d="M112 508 C106 496 116 484 134 484 C150 484 160 492 158 504 C156 510 118 512 112 508 Z" fill={C.land} />
+          <path d="M140 485 C152 487 160 494 158 504 C156 508 146 510 138 510 C146 500 146 492 140 485 Z" fill="#d9ccb1" />
+        </g>
       </Layer>
     </>
   )
@@ -913,7 +915,7 @@ export function Miketz() {
   )
 }
 
-// ——— Vayigash: the wagons Joseph sent, loaded for the way ——————————————————————————
+// ——— Vayigash: the wagons Joseph sent to bring Jacob and the families ————————————————
 
 function Wagon({ still }: { still: boolean }) {
   const wheel = (cx: number) => (
@@ -930,14 +932,9 @@ function Wagon({ still }: { still: boolean }) {
       <ellipse cx="0" cy="1" rx="74" ry="5" fill={C.ink} opacity="0.13" />
       {/* the pole, resting forward */}
       <path d="M-58 -34 L-104 -20 L-104 -15 L-58 -28 Z" fill="#8a5a3c" />
-      {/* the load: sacks, a jar, a bundle */}
-      <path d="M-56 -56 C-60 -76 -44 -86 -30 -80 C-18 -86 -6 -76 -10 -56 Z" fill="#f6f0e2" />
-      <path d="M-26 -82 C-18 -86 -6 -76 -10 -56 L-22 -56 C-20 -66 -20 -76 -26 -82 Z" fill="#e6cfa8" />
-      <path d="M-12 -56 C-16 -80 4 -92 18 -84 C30 -76 30 -64 26 -56 Z" fill="#e6cfa8" />
-      <path d="M22 -56 C18 -70 24 -80 30 -84 L38 -84 C44 -80 50 -70 46 -56 Z" fill="#c9773f" />
-      <rect x="28" y="-88" width="12" height="5" rx="2" fill="#b0612f" />
-      <path d="M44 -56 C44 -70 56 -74 66 -68 C70 -64 68 -58 66 -56 Z" fill="#e2d2b2" />
-      <path d="M-50 -70 C-20 -62 20 -62 64 -64" fill="none" stroke="#8a5a3c" strokeWidth="1.4" />
+      {/* sent empty, to carry the children, the wives and Jacob (45:19): no load drawn */}
+      <rect x="-62" y="-66" width="3" height="10" fill="#8a5a3c" />
+      <rect x="63" y="-66" width="3" height="10" fill="#8a5a3c" />
       {/* the bed */}
       <rect x="-62" y="-58" width="128" height="22" rx="2" fill="#c9773f" />
       <rect x="-62" y="-58" width="128" height="4" fill="#e59b62" />
