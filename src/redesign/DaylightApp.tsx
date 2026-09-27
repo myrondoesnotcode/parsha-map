@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { AnimatePresence } from 'motion/react'
 import { useAppStore } from '../store/useAppStore'
-import { useAutoSelectParsha } from '../hooks/useAutoSelectParsha'
 import { useDaylight } from './useDaylight'
 import { DaylightMap } from './DaylightMap'
 import { TabBar, TopBar } from './Chrome'
@@ -9,10 +8,10 @@ import { TodaySheet } from './TodaySheet'
 import { MapChrome, PlaceCard } from './MapChrome'
 import { StoryPlayer } from './StoryPlayer'
 import { ReadScreen, LibraryScreen } from './Screens'
-import { OPENING_PARSHA, hasTodayParam, usePrototypeToday, useYear, parshaForWeek } from './week'
+import { useToday, useYear, parshaForWeek, upcomingShabbat, ymd } from './week'
 import './daylight.css'
 
-const NAMED_IN_LINK = new URLSearchParams(window.location.search).has('parsha')
+const LINKED_PARSHA = new URLSearchParams(window.location.search).get('parsha')
 
 export default function DaylightApp() {
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
@@ -22,8 +21,11 @@ export default function DaylightApp() {
   const searchRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    setSelectedParsha(OPENING_PARSHA)
-    setParshaInitialized()
+    // A shared link (?parsha=<id>) opens that parsha instead of this week's.
+    if (LINKED_PARSHA) {
+      setSelectedParsha(LINKED_PARSHA)
+      setParshaInitialized()
+    }
     // Prototype review links: ?tab=map|read|library opens that tab; ?card=N opens the story on card N.
     const params = new URLSearchParams(window.location.search)
     const reviewTab = params.get('tab')
@@ -32,18 +34,28 @@ export default function DaylightApp() {
     if (card !== null) setTimeout(() => useDaylight.getState().openStory(Number(card)), 900)
   }, [setSelectedParsha, setParshaInitialized, setTab])
 
-  // Still honours the Israel/Diaspora toggle, which re-arms weekly auto-selection.
-  useAutoSelectParsha()
-
-  // Review links with ?today= (and no ?parsha=) open on that week's parsha, or the next one after a holiday week.
+  // This week's parsha, from Hebcal (rules in weekRules.ts): on launch, again when the
+  // Israel/Diaspora toggle re-arms `parshaInitialized`, and when the week rolls over
+  // (local midnight Saturday→Sunday) if the reader is still on the week's own parsha.
   const { data: year } = useYear()
-  const today = usePrototypeToday()
+  const today = useToday()
+  const parshaInitialized = useAppStore((s) => s.parshaInitialized)
+  const auto = useRef<{ shabbat: string; id: string } | null>(null)
+  const shabbat = ymd(upcomingShabbat(today))
   useEffect(() => {
-    if (!hasTodayParam || NAMED_IN_LINK || !year || !today) return
+    if (!year) return
+    const rolledOver = auto.current && auto.current.shabbat !== shabbat && auto.current.id === useAppStore.getState().selectedParshaId
+    // Read the store, not the render value: the link effect above may have just set it.
+    if (useAppStore.getState().parshaInitialized && !rolledOver) return
     const id = parshaForWeek(year, today)
-    if (id) setSelectedParsha(id)
+    if (id) {
+      // Not written to the URL: a reload after the week rolls over must pick the new week.
+      setSelectedParsha(id, { syncUrl: false })
+      auto.current = { shabbat, id }
+    }
+    setParshaInitialized()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [year])
+  }, [year, shabbat, parshaInitialized])
 
   const overMap = tab === 'today' || tab === 'map'
 

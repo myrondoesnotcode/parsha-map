@@ -1,106 +1,123 @@
 // The week around Shabbat: which parsha is read when, candle lighting, holiday weeks.
 // Every date, time and holiday name comes from the Hebcal API (hebcal.com, CC BY 4.0);
-// nothing here is computed by hand.
+// nothing here is computed by hand. The rules themselves (rollover, double parshiot,
+// holiday weeks) live in ./weekRules.ts and are checked by scripts/check-this-week.ts.
+import { useEffect } from 'react'
+import { create } from 'zustand'
 import { useQuery } from '@tanstack/react-query'
 import { useAppStore } from '../store/useAppStore'
-import parshaList from '../data/parshaList.json'
-import type { ParshaListItem } from '../types/parsha'
+import { getStory } from './stories'
+import {
+  PLACES,
+  addDays,
+  buildYear,
+  dayDiff,
+  fromYmd,
+  hebcalWindow,
+  hebcalYearUrl,
+  nextParshaSaturday,
+  parshaForWeek as parshaForWeekRule,
+  pickParsha,
+  upcomingShabbat,
+  weekPlan,
+  ymd,
+  type HebcalItem,
+  type YearData,
+} from './weekRules'
 
-const parshas = parshaList as ParshaListItem[]
-
-/** Prototype locations until the app asks for the reader's own: one city per calendar. */
-export const PLACES = {
-  diaspora: { geonameid: 5128581, city: 'New York' },
-  israel: { geonameid: 281184, city: 'Jerusalem' },
-} as const
-
-const norm = (s: string) => s.toLowerCase().replace(/[^a-z]/g, '')
-// Hebcal spells a few names differently from parshaList.
-const ALIAS: Record<string, string> = {
-  chayeisara: 'chayeisarah',
-  vayetzei: 'vayetze',
-  shmini: 'shemini',
-  achreimot: 'achareimot',
-  behaalotcha: 'behaalotecha',
-  shlach: 'shelach',
-  eikev: 'ekev',
-}
-const BY_NAME = new Map(parshas.map((p) => [norm(p.name), p.id]))
-const idFor = (name: string) => BY_NAME.get(ALIAS[norm(name)] ?? norm(name))
-
-/** "Parashat Lech-Lecha" → ['lech-lecha']; "Parashat Vayakhel-Pekudei" → both halves. */
-export function parshaIdsFromTitle(title: string): string[] {
-  const full = title.replace(/^Parashat\s+/, '')
-  const whole = idFor(full)
-  if (whole) return [whole]
-  return full.split('-').map(idFor).filter((x): x is string => !!x)
-}
-
-// ── Dates (all as local calendar days, YYYY-MM-DD) ──
-
-const pad = (n: number) => String(n).padStart(2, '0')
-export const ymd = (d: Date) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
-export const fromYmd = (s: string) => {
-  const [y, m, d] = s.slice(0, 10).split('-').map(Number)
-  return new Date(y, m - 1, d)
-}
-export const addDays = (d: Date, n: number) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n)
-const dayDiff = (a: Date, b: Date) => Math.round((fromYmd(ymd(b)).getTime() - fromYmd(ymd(a)).getTime()) / 86400000)
-
-/** The coming Saturday (today, if today is Saturday). */
-export const upcomingShabbat = (today: Date) => addDays(today, (6 - today.getDay() + 7) % 7)
+export { PLACES, addDays, fromYmd, upcomingShabbat, ymd, parshaIdsFromTitle, holidayName, mainReading } from './weekRules'
+export type { YearData, WeekPlan } from './weekRules'
 
 export function formatDay(s: string, withYear = false) {
   return fromYmd(s).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', ...(withYear ? { year: 'numeric' } : {}) })
 }
 
-// ── Prototype clock ──
-// Review links: ?today=YYYY-MM-DD pretends it is that day. Without it, the prototype
-// pretends it is the Monday of the week the opening parsha is read, so the weekly loop reads naturally.
+/** A parsha has a finished story: used to pick the half of a double week (rule 2 in weekRules). */
+const hasStory = (id: string) => !!getStory(id)
+export const parshaForWeek = (data: YearData, today: Date) => parshaForWeekRule(data, today, hasStory)
+export const pickForShabbat = (ids: string[]) => pickParsha(ids, hasStory)
+
+// ── The clock ──
+// "Today" is the reader's local calendar day. It is re-read every minute and whenever the
+// app comes back to the foreground, so the week rolls over at local midnight Saturday→Sunday
+// even if the app stays open. Review links: ?today=YYYY-MM-DD pins it to that day.
 const PARAMS = new URLSearchParams(window.location.search)
 const TODAY_PARAM = PARAMS.get('today')
 export const hasTodayParam = !!TODAY_PARAM
-/** Prototype: open on the parsha that has a finished story, unless a link names one. */
-export const OPENING_PARSHA = PARAMS.get('parsha') ?? 'lech-lecha'
 
-interface HebcalItem {
-  title: string
-  date: string
-  category: string
-  subcat?: string
-  memo?: string
+const useClock = create<{ day: string; tick: () => void }>((set, get) => ({
+  day: TODAY_PARAM ?? ymd(new Date()),
+  tick: () => {
+    if (TODAY_PARAM) return
+    const d = ymd(new Date())
+    if (d !== get().day) set({ day: d })
+  },
+}))
+let clockStarted = false
+function startClock() {
+  if (clockStarted || TODAY_PARAM) return
+  clockStarted = true
+  const tick = () => useClock.getState().tick()
+  window.setInterval(tick, 60_000)
+  document.addEventListener('visibilitychange', tick)
+  window.addEventListener('focus', tick)
 }
 
-interface YearData {
-  /** parsha id → every Shabbat in the window it is read (a double parsha lists both ids). */
-  readOn: Record<string, string[]>
-  /** Saturday → parsha ids read that day (empty on holiday Shabbatot). */
-  bySaturday: Record<string, string[]>
-  /** date → holiday titles (major holidays). */
-  holidays: Record<string, string[]>
+/** Today's local date (or the ?today= review date). Re-renders when the day changes. */
+export function useToday(): Date {
+  useEffect(startClock, [])
+  const day = useClock((s) => s.day)
+  return fromYmd(day)
 }
 
-async function fetchYear(isIsrael: boolean): Promise<YearData> {
-  const place = isIsrael ? PLACES.israel : PLACES.diaspora
-  const url = `https://www.hebcal.com/hebcal?v=1&cfg=json&s=on&maj=on&min=off&mod=off&nx=off&ss=off&mf=off&c=off&start=2026-03-01&end=2027-10-31&i=${isIsrael ? 'on' : 'off'}&geonameid=${place.geonameid}`
-  const res = await fetch(url)
-  if (!res.ok) throw new Error(`Hebcal ${res.status}`)
-  const items: HebcalItem[] = (await res.json()).items
-  const readOn: YearData['readOn'] = {}
-  const bySaturday: YearData['bySaturday'] = {}
-  const holidays: YearData['holidays'] = {}
-  for (const it of items) {
-    const day = it.date.slice(0, 10)
-    if (it.category === 'parashat') {
-      const ids = parshaIdsFromTitle(it.title)
-      bySaturday[day] = ids
-      for (const id of ids) (readOn[id] ??= []).push(day)
-    } else if (it.category === 'holiday') {
-      ;(holidays[day] ??= []).push(it.title)
-    }
+// ── Hebcal year data ──
+
+// Cache the last good calendar per region so the app still opens on the right week offline.
+const cacheKey = (isIsrael: boolean) => `dl-hebcal-${isIsrael ? 'israel' : 'diaspora'}`
+function readCache(isIsrael: boolean, today: Date): YearData | undefined {
+  try {
+    const raw = localStorage.getItem(cacheKey(isIsrael))
+    if (!raw) return undefined
+    const data = JSON.parse(raw) as YearData
+    // Only trust a cache that still covers this week.
+    const sat = ymd(upcomingShabbat(today))
+    return data.range && sat >= data.range.start && sat <= data.range.end ? data : undefined
+  } catch {
+    return undefined
   }
-  return { readOn, bySaturday, holidays }
 }
+function writeCache(isIsrael: boolean, data: YearData) {
+  try {
+    localStorage.setItem(cacheKey(isIsrael), JSON.stringify(data))
+  } catch {
+    /* storage full or blocked: the live fetch still works */
+  }
+}
+
+async function fetchYear(isIsrael: boolean, today: Date): Promise<YearData> {
+  const res = await fetch(hebcalYearUrl(isIsrael, today))
+  if (!res.ok) throw new Error(`Hebcal ${res.status}`)
+  const json = (await res.json()) as { items: HebcalItem[]; range?: { start: string; end: string } }
+  const data = buildYear(json.items, json.range)
+  writeCache(isIsrael, data)
+  return data
+}
+
+export function useYear() {
+  const isIsrael = useAppStore((s) => s.isIsrael)
+  const today = useToday()
+  const { start, end } = hebcalWindow(today)
+  return useQuery({
+    queryKey: ['dl-year', isIsrael, start, end],
+    queryFn: () => fetchYear(isIsrael, today),
+    initialData: () => readCache(isIsrael, today),
+    // A cached calendar is shown at once, then refreshed from Hebcal.
+    initialDataUpdatedAt: 0,
+    staleTime: Infinity,
+  })
+}
+
+// ── Shabbat times ──
 
 interface ShabbatTimes {
   candles?: { date: string; time: string }
@@ -116,31 +133,25 @@ async function fetchShabbat(isIsrael: boolean, day: Date): Promise<ShabbatTimes>
   // First candle lighting of the week (Friday, or a holiday eve) and the last havdalah.
   const candles = items.find((i) => i.category === 'candles')
   const havdalah = [...items].reverse().find((i) => i.category === 'havdalah')
-  const time = (i: HebcalItem) => new Date(i.date).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: isIsrael ? 'Asia/Jerusalem' : 'America/New_York' }).replace(' ', ' ').toLowerCase()
+  const time = (i: HebcalItem) => new Date(i.date).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', timeZone: isIsrael ? 'Asia/Jerusalem' : 'America/New_York' }).replace(' ', ' ').toLowerCase()
   return {
     candles: candles ? { date: candles.date.slice(0, 10), time: time(candles) } : undefined,
     havdalah: havdalah ? { date: havdalah.date.slice(0, 10), time: time(havdalah) } : undefined,
   }
 }
 
-export function useYear() {
-  const isIsrael = useAppStore((s) => s.isIsrael)
-  return useQuery({ queryKey: ['dl-year', isIsrael], queryFn: () => fetchYear(isIsrael), staleTime: Infinity })
-}
-
-/** The prototype's "today": the ?today link, or the Monday of the opening parsha's Shabbat. */
-export function usePrototypeToday(): Date | null {
-  const { data } = useYear()
-  if (TODAY_PARAM) return fromYmd(TODAY_PARAM)
-  if (!data) return null
-  const first = data.readOn[OPENING_PARSHA]?.find((d) => d >= '2026-09-01')
-  return first ? addDays(fromYmd(first), -5) : new Date()
-}
-
 export type WeekState =
   | { kind: 'loading' }
-  | { kind: 'this-week'; shabbat: string; daysToFriday: number; times?: ShabbatTimes; city: string }
-  | { kind: 'other-week'; shabbat: string; past: boolean }
+  | {
+      kind: 'this-week'
+      shabbat: string
+      daysToFriday: number
+      times?: ShabbatTimes
+      city: string
+      /** Every parsha read this Shabbat, in order: two on a double week. */
+      parshaIds: string[]
+    }
+  | { kind: 'other-week'; shabbat: string; past: boolean; parshaIds: string[] }
   | { kind: 'unscheduled' }
 
 /** Where the selected parsha sits relative to this week. */
@@ -148,7 +159,8 @@ export function useWeek(parshaId: string | null, today: Date | null): WeekState 
   const isIsrael = useAppStore((s) => s.isIsrael)
   const { data } = useYear()
   const sat = today ? upcomingShabbat(today) : null
-  const thisWeek = !!(data && sat && parshaId && data.bySaturday[ymd(sat)]?.includes(parshaId))
+  const thisWeekIds = (data && sat && data.bySaturday[ymd(sat)]) || []
+  const thisWeek = !!parshaId && thisWeekIds.includes(parshaId)
   const times = useQuery({
     queryKey: ['dl-shabbat', isIsrael, sat && ymd(sat)],
     queryFn: () => fetchShabbat(isIsrael, sat!),
@@ -157,7 +169,7 @@ export function useWeek(parshaId: string | null, today: Date | null): WeekState 
   })
   if (!data || !today || !sat || !parshaId) return { kind: 'loading' }
   const city = (isIsrael ? PLACES.israel : PLACES.diaspora).city
-  if (thisWeek) return { kind: 'this-week', shabbat: ymd(sat), daysToFriday: dayDiff(today, addDays(sat, -1)), times: times.data, city }
+  if (thisWeek) return { kind: 'this-week', shabbat: ymd(sat), daysToFriday: dayDiff(today, addDays(sat, -1)), times: times.data, city, parshaIds: thisWeekIds }
   const days = data.readOn[parshaId] ?? []
   if (days.length === 0) return { kind: 'unscheduled' }
   // The reading nearest to today, before or after.
@@ -165,29 +177,16 @@ export function useWeek(parshaId: string | null, today: Date | null): WeekState 
   const next = days.find((d) => d >= t)
   const prev = [...days].reverse().find((d) => d < t)
   const pick = !prev ? next! : !next ? prev : dayDiff(fromYmd(prev), today) <= dayDiff(today, fromYmd(next)) ? prev : next
-  return { kind: 'other-week', shabbat: pick, past: pick < t }
+  return { kind: 'other-week', shabbat: pick, past: pick < t, parshaIds: data.bySaturday[pick] ?? [parshaId] }
 }
 
-/** If the coming Shabbat has no weekly parsha, what it is instead and what comes next. */
+/** If the coming Shabbat has no weekly parsha: the holiday, its Torah reading, and the next weekly parsha. */
 export function useHolidayWeek(today: Date | null) {
   const { data } = useYear()
   if (!data || !today) return null
-  const sat = ymd(upcomingShabbat(today))
-  if (data.bySaturday[sat]?.length) return null
-  const nextSat = Object.keys(data.bySaturday).sort().find((d) => d > sat && data.bySaturday[d].length)
-  return {
-    shabbat: sat,
-    holiday: data.holidays[sat]?.[0] ?? null,
-    next: nextSat ? { date: nextSat, parshaId: data.bySaturday[nextSat][0] } : null,
-  }
-}
-
-/** The weekly parsha for a given day (first half of a double), or the next one after a holiday week. */
-export function parshaForWeek(data: YearData, today: Date): string | null {
-  const sat = ymd(upcomingShabbat(today))
-  if (data.bySaturday[sat]?.length) return data.bySaturday[sat][0]
-  const nextSat = Object.keys(data.bySaturday).sort().find((d) => d > sat && data.bySaturday[d].length)
-  return nextSat ? data.bySaturday[nextSat][0] : null
+  const plan = weekPlan(data, today)
+  if (plan.parshaIds.length || !plan.known) return null
+  return { shabbat: plan.shabbat, holiday: plan.holiday, next: plan.next }
 }
 
 export function daysLabel(n: number) {
@@ -197,11 +196,10 @@ export function daysLabel(n: number) {
   return `In ${n} days`
 }
 
-/** The parsha after this one in the reading order, with the day it is read. */
+/** The next weekly reading after the Shabbat this parsha is read, with the day it is read. */
 export function useNextReading(parshaId: string | null, readOnDay: string | null) {
   const { data } = useYear()
   if (!data || !parshaId || !readOnDay) return null
-  const mine = readOnDay
-  const nextSat = Object.keys(data.bySaturday).sort().find((d) => d > mine && data.bySaturday[d].length && !data.bySaturday[d].includes(parshaId))
-  return nextSat ? { date: nextSat, parshaId: data.bySaturday[nextSat][0] } : null
+  const next = nextParshaSaturday(data, readOnDay)
+  return next ? { date: next.date, parshaId: pickForShabbat(next.parshaIds)!, parshaIds: next.parshaIds } : null
 }

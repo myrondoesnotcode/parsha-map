@@ -17,6 +17,11 @@ export function parshaDisplayName(name: string): string {
   return name.replace(/-/g, ' ')
 }
 
+/** The name of one Shabbat's reading: "Lech Lecha", or both halves of a double, "Vayakhel–Pekudei". */
+export function readingName(names: string[]): string {
+  return names.map(parshaDisplayName).join('–')
+}
+
 /** The middle of a parsha's date range, for picking its archaeological era. */
 export function eraYear(parsha: ParshaListItem | undefined): number {
   const d = parsha?.approximateDateBCE

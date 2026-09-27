@@ -12,7 +12,7 @@ import { getStory } from './stories'
 import { C, FONT, SPRING, SHADOW } from './theme'
 import { parshaDisplayName, verseRange } from './placeText'
 import { isStoryComplete, completedCount, useWeekProgress } from './progress'
-import { useYear, usePrototypeToday, upcomingShabbat, ymd, formatDay } from './week'
+import { useYear, useToday, upcomingShabbat, ymd, fromYmd, formatDay } from './week'
 
 const screen = {
   initial: { opacity: 0, y: 24 },
@@ -196,14 +196,14 @@ export function LibraryScreen() {
   const [book, setBook] = useState<string>(current?.book ?? 'Genesis')
   const done = completedCount()
   const { data: year } = useYear()
-  const today = usePrototypeToday()
+  const today = useToday()
   const thisSat = today ? ymd(upcomingShabbat(today)) : null
   /** The reading nearest to today, before or after, for each parsha. */
   const readingFor = (id: string) => {
     const days = year?.readOn[id]
     if (!days?.length || !today) return null
     const t = today.getTime()
-    return days.reduce((best, d) => (Math.abs(new Date(d).getTime() - t) < Math.abs(new Date(best).getTime() - t) ? d : best))
+    return days.reduce((best, d) => (Math.abs(fromYmd(d).getTime() - t) < Math.abs(fromYmd(best).getTime() - t) ? d : best))
   }
 
   return (

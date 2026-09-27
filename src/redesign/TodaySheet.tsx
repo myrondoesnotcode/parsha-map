@@ -9,9 +9,9 @@ import { useDaylight, haptic } from './useDaylight'
 import { getStory, storyMinutes } from './stories'
 import { RevealText } from './Chrome'
 import { C, FONT, SPRING } from './theme'
-import { parshaDisplayName, verseRange } from './placeText'
+import { parshaDisplayName, readingName, verseRange } from './placeText'
 import { useSteps, useWeekProgress } from './progress'
-import { useWeek, useHolidayWeek, usePrototypeToday, useYear, parshaForWeek, formatDay, daysLabel } from './week'
+import { useWeek, useHolidayWeek, useToday, useYear, parshaForWeek, formatDay, daysLabel, mainReading } from './week'
 
 const parshas = parshaList as ParshaListItem[]
 const PEEK = 250 // visible height when collapsed, including the tab bar zone
@@ -200,7 +200,7 @@ function ShabbatStrip({ parshaId, ready }: { parshaId: string; ready: boolean })
   const isIsrael = useAppStore((s) => s.isIsrael)
   const toggleRegion = useAppStore((s) => s.toggleRegion)
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
-  const today = usePrototypeToday()
+  const today = useToday()
   const week = useWeek(parshaId, today)
   const holiday = useHolidayWeek(today)
   const { data: year } = useYear()
@@ -220,16 +220,23 @@ function ShabbatStrip({ parshaId, ready }: { parshaId: string; ready: boolean })
     </motion.button>
   )
 
-  // A holiday week: no weekly parsha this Shabbat, and this is the one after it.
-  if (holiday && holiday.next?.parshaId === parshaId) {
+  // A holiday week (rule 3 in weekRules): Hebcal lists no weekly parsha this Shabbat, and this is the next one.
+  if (holiday && holiday.next?.parshaIds.includes(parshaId)) {
+    const reading = mainReading(holiday.holiday?.torah)
     return (
       <div className="dl-strip">
         <div style={{ minWidth: 0 }}>
           <div className="dl-strip-eyebrow">This Shabbat · {formatDay(holiday.shabbat)}</div>
           <div className="dl-strip-line" style={{ display: 'block' }}>
-            <b>{holiday.holiday ?? 'A holiday'}</b>, so no weekly parsha.
+            {holiday.holiday ? <b>{holiday.holiday.name}</b> : 'This Shabbat'}: no weekly parsha.
+            {reading && (
+              <>
+                <br />
+                Torah reading: {reading.replace(/-/g, '–')}
+              </>
+            )}
             <br />
-            Next parsha: <b>{formatDay(holiday.next.date)}</b>
+            Next parsha: <b>{readingName(holiday.next.parshaIds.map(nameOf))}</b>, {formatDay(holiday.next.date)}
           </div>
         </div>
         {place}
@@ -262,6 +269,7 @@ function ShabbatStrip({ parshaId, ready }: { parshaId: string; ready: boolean })
             )}
             <span className="dl-countdown">{daysLabel(week.daysToFriday)}</span>
           </div>
+          <DoubleNote ids={week.parshaIds} current={parshaId} />
         </div>
         {place}
       </div>
@@ -276,6 +284,7 @@ function ShabbatStrip({ parshaId, ready }: { parshaId: string; ready: boolean })
           <div className="dl-strip-eyebrow" style={{ color: C.muted }}>
             {week.past ? 'Read on' : 'Coming up'} · {formatDay(week.shabbat, true)}
           </div>
+          <DoubleNote ids={week.parshaIds} current={parshaId} />
           {thisWeeks && thisWeeks !== parshaId && (
             <button
               type="button"
@@ -305,3 +314,34 @@ function ShabbatStrip({ parshaId, ready }: { parshaId: string; ready: boolean })
   )
 }
 
+
+const nameOf = (id: string) => getParshaById(id)?.name ?? id
+
+/**
+ * On a double week (rule 2 in weekRules) the strip names both parshiot read that Shabbat
+ * and offers the other half, since the map and story show one half at a time.
+ */
+function DoubleNote({ ids, current }: { ids: string[]; current: string }) {
+  const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
+  if (ids.length < 2) return null
+  const others = ids.filter((id) => id !== current)
+  return (
+    <div className="dl-strip-line" style={{ display: 'block' }}>
+      Read together: <b>{readingName(ids.map(nameOf))}</b>
+      {others.map((id) => (
+        <button
+          key={id}
+          type="button"
+          className="dl-link"
+          style={{ marginLeft: 8 }}
+          onClick={() => {
+            haptic('light')
+            setSelectedParsha(id)
+          }}
+        >
+          Show {parshaDisplayName(nameOf(id))} <ChevronRight size={13} strokeWidth={2.6} />
+        </button>
+      ))}
+    </div>
+  )
+}

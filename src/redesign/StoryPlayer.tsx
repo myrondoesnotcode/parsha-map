@@ -9,9 +9,9 @@ import { getStory, isStageCard, isPageCard, cardSeconds } from './stories'
 import type { StoryCard, ParshaStory, TableQuestion } from './stories'
 import { RevealText } from './Chrome'
 import { C, FONT, SPRING } from './theme'
-import { parshaDisplayName, verseRange } from './placeText'
+import { parshaDisplayName, readingName, verseRange } from './placeText'
 import { markStoryComplete, useWeekProgress, useSteps } from './progress'
-import { useWeek, usePrototypeToday, useNextReading, formatDay } from './week'
+import { useWeek, useToday, useNextReading, formatDay } from './week'
 
 /** How long an act title holds before its first card takes over. */
 const ACT_MS = 1500
@@ -684,7 +684,7 @@ function Finale({ story, card, onClose, onSources }: { story: ParshaStory; card:
   const update = useWeekProgress((s) => s.update)
   const { setTab } = useDaylight()
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
-  const today = usePrototypeToday()
+  const today = useToday()
   const week = useWeek(story.parshaId, today)
   const readOn = week.kind === 'this-week' || week.kind === 'other-week' ? week.shabbat : null
   const next = useNextReading(story.parshaId, readOn)
@@ -785,7 +785,7 @@ function Finale({ story, card, onClose, onSources }: { story: ParshaStory; card:
             >
               <ArrowRight size={17} />
               <span>
-                <b>Next: {parshaDisplayName(nextParsha.name)}</b>
+                <b>Next: {readingName(next.parshaIds.map((id) => getParshaById(id)?.name ?? id))}</b>
                 <small>{formatDay(next.date)}</small>
               </span>
             </motion.button>

@@ -25,7 +25,8 @@ interface AppState {
   fitBoundsKey: number
 
   setLanguage: (lang: Language) => void
-  setSelectedParsha: (id: string) => void
+  /** `syncUrl: false` selects without writing ?parsha= (used for the automatic weekly pick). */
+  setSelectedParsha: (id: string, opts?: { syncUrl?: boolean }) => void
   setParshaIdOnly: (id: string) => void
   setCurrentYear: (year: number) => void
   toggleTradeRoutes: () => void
@@ -67,7 +68,7 @@ export const useAppStore = create<AppState>((set) => ({
     set({ language: lang })
   },
 
-  setSelectedParsha: (id: string) => {
+  setSelectedParsha: (id: string, opts?: { syncUrl?: boolean }) => {
     const parsha = parshas.find((p) => p.id === id)
     const year = parsha?.approximateDateBCE?.start ?? 1900
     set({
@@ -78,8 +79,16 @@ export const useAppStore = create<AppState>((set) => ({
     })
     // Sync parsha to URL so it can be shared/bookmarked
     const url = new URL(window.location.href)
-    url.searchParams.set('parsha', id)
-    window.history.pushState({ parsha: id }, '', url.toString())
+    if (opts?.syncUrl === false) {
+      // Automatic pick: drop any ?parsha= so a reload picks the week again instead of pinning this one.
+      if (url.searchParams.has('parsha')) {
+        url.searchParams.delete('parsha')
+        window.history.replaceState(window.history.state, '', url.toString())
+      }
+    } else {
+      url.searchParams.set('parsha', id)
+      window.history.pushState({ parsha: id }, '', url.toString())
+    }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ;(window as any).umami?.track('parsha-viewed', { parsha: id, name: parsha?.name })
   },
