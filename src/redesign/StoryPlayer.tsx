@@ -83,11 +83,15 @@ export function StoryPlayer() {
   }, [story, storyIndex, isLast, updateSteps])
 
   // Act titles: a short beat when a new part of the story begins (going forward only).
+  // Leaving a card always clears its title, so tapping on before the timer ends can't strand it over the next card.
   useEffect(() => {
     if (!card?.act || dir < 0) return
     setActShowing(card.act)
     const t = setTimeout(() => setActShowing(null), ACT_MS)
-    return () => clearTimeout(t)
+    return () => {
+      clearTimeout(t)
+      setActShowing(null)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [storyIndex])
 
@@ -132,6 +136,19 @@ export function StoryPlayer() {
     if (swiped.current) return
     go(delta)
   }
+
+  // Keyboard: ← and → step through the cards (the tap zones are invisible, so they carry no focus ring).
+  const goRef = useRef(go)
+  goRef.current = go
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (sourcesOpen || e.altKey || e.ctrlKey || e.metaKey) return
+      if (e.key === 'ArrowRight') goRef.current(1)
+      else if (e.key === 'ArrowLeft') goRef.current(-1)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [sourcesOpen])
 
   if (!story || !card || !parsha) return null
   const emblem = card.kind === 'cover' && hasEmblem(parsha.id)

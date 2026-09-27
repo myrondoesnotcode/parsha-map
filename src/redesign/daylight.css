@@ -24,6 +24,8 @@
 .dl-root button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 .dl-root button:disabled { opacity: 0.35; cursor: default; }
 .dl-root :focus-visible { outline: 3px solid var(--warm); outline-offset: 2px; }
+/* The story's tap zones are invisible full-height halves of the screen; a ring on them reads as a stray line (arrow keys navigate instead). */
+.dl-root .dl-story-taps button:focus-visible { outline: none; }
 
 /* Phone-shaped on desktop, full-bleed on phones. */
 .dl-device {
