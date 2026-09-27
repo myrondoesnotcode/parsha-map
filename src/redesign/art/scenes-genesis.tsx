@@ -410,19 +410,21 @@ export function Vayera() {
           <rect x="-38" y="-92" width="76" height="11" rx="5.5" fill="#b0612f" />
           {[[-52, -66.5], [-46, -76.5], [-38, -86.5]].map(([x, y]) => <circle key={y} cx={x + 5.5} cy={y} r="4" fill="#e59b62" />)}
         </g>
-        {/* the thicket */}
-        <motion.g style={at(236, 480)} animate={still ? undefined : { rotate: [0, -2.2, 0, -1.4, 0] }} transition={tug}>
-          <path d="M236 486 C200 488 188 458 198 438 C190 412 212 390 234 398 C246 380 276 386 280 404 C298 414 296 440 280 452 C286 474 262 490 236 486 Z" fill="#5f7d45" />
-          <path d="M204 438 C206 416 224 406 236 414 C246 402 268 408 266 426 C252 422 226 428 204 438 Z" fill="#7d9a5a" />
+        {/* the thicket: a bush rising behind the ram, above and behind its head, so the face stays clear */}
+        <motion.g style={at(290, 420)} animate={still ? undefined : { rotate: [0, -2.2, 0, -1.4, 0] }} transition={tug}>
+          <path d="M236 398 C222 380 234 352 258 352 C266 334 296 330 310 344 C330 340 346 360 338 378 C350 394 338 416 318 414 C300 426 256 424 236 398 Z" fill="#5f7d45" />
+          <path d="M246 372 C250 352 270 344 284 352 C296 340 318 346 318 362 C302 358 272 362 246 372 Z" fill="#7d9a5a" />
+          {/* a branch passing behind the horn, so the thicket weaves over and under it */}
+          <path d="M232 374 C256 380 282 390 314 398" stroke="#8a5a3c" strokeWidth="3.2" strokeLinecap="round" fill="none" />
         </motion.g>
         {/* the ram, pulling back */}
         <motion.g animate={still ? undefined : { x: [0, 5, 0, 3, 0] }} transition={tug}>
           <g transform="translate(318 452) scale(1.45)"><Ram /></g>
         </motion.g>
-        {/* branches wound through the horn */}
-        <motion.g style={at(236, 480)} animate={still ? undefined : { rotate: [0, -2.2, 0, -1.4, 0] }} transition={tug}>
-          <path d="M214 426 C230 414 248 396 262 384 M226 396 C240 402 252 414 262 430 M204 410 L236 420 M246 390 L240 372" stroke="#8a5a3c" strokeWidth="3.2" strokeLinecap="round" fill="none" />
-          {[[214, 426], [262, 384], [262, 430], [204, 410], [240, 372], [232, 402]].map(([x, y]) => <ellipse key={`${x}${y}`} cx={x} cy={y} rx="4" ry="2.6" fill="#a9bf7e" transform={`rotate(-30 ${x} ${y})`} />)}
+        {/* branches wound through the curled horn only (Genesis 22:13, "caught in the thicket by its horns") */}
+        <motion.g style={at(290, 420)} animate={still ? undefined : { rotate: [0, -2.2, 0, -1.4, 0] }} transition={tug}>
+          <path d="M308 346 C298 362 286 378 274 392 M338 384 C320 396 300 408 284 420 M290 340 C288 360 285 380 280 398" stroke="#8a5a3c" strokeWidth="3.2" strokeLinecap="round" fill="none" />
+          {[[308, 346], [338, 384], [290, 340], [232, 374]].map(([x, y]) => <ellipse key={`${x}${y}`} cx={x} cy={y} rx="4" ry="2.6" fill="#a9bf7e" transform={`rotate(-30 ${x} ${y})`} />)}
         </motion.g>
       </Layer>
     </>
