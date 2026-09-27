@@ -66,6 +66,18 @@ export interface StoryCard {
   items?: StoryItem[]
   /** Hebrew line for quote and letter cards. */
   hebrew?: string
+  /**
+   * Letter cards: which letter of `hebrew` the scroll writes differently, counting letters from the
+   * start of the line (0-based; vowel marks don't count). Defaults to the last letter.
+   */
+  letterAt?: number
+  /** Letter cards: whether the scroll writes that letter small (the default) or large. */
+  letterSize?: 'small' | 'large'
+  /**
+   * Name cards: the name before and after, in Hebrew (Lech Lecha: אברם → אברהם). Letters the two
+   * share stay in place; the rest fall away and the new ones drop in.
+   */
+  names?: { from: string; to: string }
   /** Small print shown on the card: sources for a drawing, what is illustrative. */
   note?: string
   /** Full-bleed art behind the cover (public domain). */
@@ -104,6 +116,14 @@ export interface ParshaStory {
   cards: StoryCard[]
   /** Questions to bring to the table; the reader picks one at the end. */
   questions: TableQuestion[]
+}
+
+/**
+ * A Hebrew line split into letters, each with its vowel and cantillation marks. Anything that isn't a
+ * Hebrew letter (a space, a maqaf) comes back as its own piece with `letter: false`.
+ */
+export function hebrewLetters(line: string): { text: string; letter: boolean }[] {
+  return (line.match(/\P{M}\p{M}*/gu) ?? []).map((text) => ({ text, letter: /[\u05D0-\u05EA]/.test(text) }))
 }
 
 /** Cards whose visual rises into the space above the card instead of pointing at the map. */

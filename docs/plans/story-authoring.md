@@ -55,12 +55,12 @@ Note `at` is `[longitude, latitude]`; places.json stores latitude first. A place
 | `chapter` | title, body, ref | A card over the map, pointing at the camera's subject | The workhorse: one event at one place. With a route, set `stop`/`routeTo`; add a `spot` for an extra place. |
 | `stars` | title, body, ref | A night sky over the map; the title is set as a quotation | A night scene the verses describe (Lech Lecha 15:5). |
 | `quote` | title, hebrew, body, ref | The Hebrew verse large on the stage, the English as a quotation | A key verse. `title` is the English (quote the translation you cite), `hebrew` the Hebrew, `body` a line on why it matters. |
-| `letter` | title, hebrew, body, ref | The Hebrew word with its **last letter shrinking** | Only for a small (or large) letter the scribal tradition records. The drawing always shrinks the final letter of `hebrew`. |
+| `letter` | title, hebrew, body, ref; optional `letterAt`, `letterSize` | The Hebrew word, then **one letter shrinks (or grows)**, "size illustrative" | Only for a small or large letter the scribal tradition records. `letterAt` picks the letter: 0-based, counted from the start of `hebrew`, vowel marks not counted; default the last letter. `letterSize: 'large'` grows it instead (default `'small'`). |
 | `guess` | title, ref, options (2–4, exactly one `correct`) | A question; the story waits for an answer | One per story. With `at` on every option it is a map guess (pins); with none, tokens on the stage (`he` optional). `reveal` quotes the verse that answers it. |
 | `offerings` | title, ref, items | A numbered list (Hebrew term, English, note) | Lists of laws, offerings, gifts, tribes, stages: anything the text itself enumerates. |
 | `scale` | title, body, ref, items (2–3) | A descending staircase, "step heights illustrative" | A graded rule: if you can't afford this, bring that. |
 | `plan` | title, body, ref | **The Tabernacle courtyard to scale** at `MISHKAN_AT`, with its own camera | The Tabernacle only (e.g. Terumah–Pekudei, Vayikra). It always draws the same plan. |
-| `name` | title, body, ref | **Always** אברם → אברהם | Lech Lecha only until NameMorph takes its letters from data (Vayera's Sarai → Sarah, Vayishlach's Jacob → Israel would need that). The checker blocks it elsewhere. |
+| `name` | title, body, ref, `names: { from, to }` | The Hebrew name `from` turning into `to`: letters both spellings share (in order) stay put, the others drop out and the new ones drop in, in apricot | A renaming the verses narrate (Lech Lecha: `{ from: 'אברם', to: 'אברהם' }`; Vayishlach: Jacob → Israel). One word each, letters only, no vowel marks. |
 | `talk` | title | The finale: the three questions, share, "Ready for Shabbat" | Always last, once. No ref needed; a `note` becomes "About the map". |
 
 `act` on a card starts a named part of the story ("The journey", "The covenant"); the progress bar leaves a gap there.
@@ -107,7 +107,7 @@ Errors (fail the run):
 - cover first, talk last, one of each; the cover's title, body (= tagline) and ref (= the parsha's range) match the parsha record; cover `routeTo` is 0
 - every kind but `talk` has a `ref` with at least one book-chapter-verse reference; every book reference in a `ref` is covered, chapter by chapter, by `sources`, and every named work in a `ref` appears in `sources`
 - required fields per kind (body, hebrew with Hebrew letters, items, 2–4 guess options with exactly one correct, pins on all options or none, distinct labels); `options`/`reveal` only on guess cards
-- `name` only in Lech Lecha; `scale` with 2–3 items
+- `name` cards have `names: { from, to }`, each one Hebrew word; `letterAt` is a letter of the letter card's `hebrew`, `letterSize` is `small` or `large`; `scale` with 2–3 items
 - coordinates are `[lng, lat]` inside the region the stories cover; camera zoom 0–22, pitch 0–85, bearing ±360; `routeTo` within the route; `stop` is a real stop
 - route stops and the anchor have a `place` id that exists, is pinned and lies within 10 km of `at` (the stop's name must match the place's name); spot and option `place` ids exist
 - exactly three questions: Kids, Everyone, Deeper
@@ -115,6 +115,6 @@ Errors (fail the run):
 Warnings (`--strict` fails on them):
 - a place not linked to this parsha in `places.json`
 - a book reference (e.g. "Judges 18:29") or named work (Rashi, Ramban, Seder Olam…) in a body, note or reveal that `sources` doesn't carry
-- a `plan` card that isn't about the Tabernacle; `hebrew`, `items` or `image` on a kind that doesn't show them
+- a `plan` card that isn't about the Tabernacle; `hebrew`, `items`, `names`, `letterAt`/`letterSize` or `image` on a kind that doesn't show them
 
 It does not judge whether anything is true. That is the fact-check workflow's job and Myron's.

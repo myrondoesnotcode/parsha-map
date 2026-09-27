@@ -140,6 +140,7 @@ const lechLecha: ParshaStory = {
     {
       kind: 'name',
       title: 'Abram becomes Abraham',
+      names: { from: 'אברם', to: 'אברהם' },
       body: 'When Abram is 99, God makes a covenant with him and gives him a new name, Abraham, for “I make you the father of a multitude of nations” (17:5). Circumcision becomes the sign of the covenant.',
       ref: 'Genesis 17:1–11',
       note: 'God first made a covenant with Abram in Genesis 15:18; here He makes a covenant with him again, this time with the new name and circumcision as its sign.',

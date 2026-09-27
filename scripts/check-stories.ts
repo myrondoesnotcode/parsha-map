@@ -14,6 +14,7 @@ import { pathToFileURL } from 'node:url'
 import parshaList from '../src/data/parshaList.json'
 import { BRIEF_BY_ID } from '../src/redesign/art/briefs'
 import { displayName, parshaDisplayName, verseRange } from '../src/redesign/placeText'
+import { hebrewLetters } from '../src/redesign/story'
 import type { LngLat, ParshaStory, StoryCard, StoryCardKind } from '../src/redesign/story'
 import { STORY_DIR, allStoryDirFiles, isStoryFile } from './storyFiles'
 
@@ -34,11 +35,12 @@ const NEEDS_ITEMS = new Set<StoryCardKind>(['offerings', 'scale'])
 const AUDIENCES = ['Kids', 'Everyone', 'Deeper'] as const
 
 const STORY_KEYS = ['parshaId', 'tagline', 'sources', 'route', 'anchor', 'cards', 'questions']
-const CARD_KEYS = ['kind', 'title', 'body', 'ref', 'camera', 'routeTo', 'stop', 'spot', 'items', 'hebrew', 'note', 'image', 'act', 'options', 'reveal']
+const CARD_KEYS = ['kind', 'title', 'body', 'ref', 'camera', 'routeTo', 'stop', 'spot', 'items', 'hebrew', 'letterAt', 'letterSize', 'names', 'note', 'image', 'act', 'options', 'reveal']
 const CAMERA_KEYS = ['center', 'zoom', 'pitch', 'bearing']
 const STOP_KEYS = ['name', 'at', 'place', 'via', 'hedge']
 const SPOT_KEYS = ['name', 'at', 'place']
 const ITEM_KEYS = ['he', 'en', 'note']
+const NAMES_KEYS = ['from', 'to']
 const OPTION_KEYS = ['label', 'he', 'at', 'place', 'correct']
 const QUESTION_KEYS = ['audience', 'text']
 
@@ -304,8 +306,23 @@ function checkStory(file: string, story: ParshaStory, source: string, hasEmblem:
     if (NEEDS_HEBREW.has(c.kind) && !(text(c.hebrew) && HEBREW.test(c.hebrew!))) err(where, `the ${c.kind} card needs a Hebrew line (hebrew)`)
     if (c.hebrew !== undefined && !NEEDS_HEBREW.has(c.kind)) warn(where, '`hebrew` is only shown on letter and quote cards')
     if (NEEDS_ITEMS.has(c.kind) && !(Array.isArray(c.items) && c.items.length)) err(where, `the ${c.kind} card needs items`)
+    if (c.kind === 'name') {
+      if (!isObj(c.names)) err(where, 'the name card needs names: { from, to } (the Hebrew name before and after)')
+      else {
+        keys(`${where} names`, c.names as unknown as Record<string, unknown>, NAMES_KEYS)
+        for (const k of NAMES_KEYS as ('from' | 'to')[])
+          if (!(text(c.names[k]) && hebrewLetters(c.names[k]).every((p) => p.letter))) err(where, `names.${k} must be one Hebrew word, letters only`)
+        if (text(c.names.from) && c.names.from === c.names.to) err(where, 'names.from and names.to are the same')
+      }
+    } else if (c.names !== undefined) warn(where, '`names` is only shown on name cards')
+    if (c.kind === 'letter' && text(c.hebrew)) {
+      const count = hebrewLetters(c.hebrew!).filter((p) => p.letter).length
+      if (c.letterAt !== undefined && (!Number.isInteger(c.letterAt) || c.letterAt < 0 || c.letterAt >= count))
+        err(where, `letterAt ${c.letterAt} must be 0–${count - 1} (a letter of "${c.hebrew}", counted from the start, marks not counted)`)
+      if (c.letterSize !== undefined && c.letterSize !== 'small' && c.letterSize !== 'large') err(where, `letterSize must be 'small' or 'large'`)
+    }
+    if (c.kind !== 'letter' && (c.letterAt !== undefined || c.letterSize !== undefined)) warn(where, '`letterAt` and `letterSize` are only used on letter cards')
     // Kinds whose drawing is still built for one story (StoryPlayer / DaylightMap), not from the card's data.
-    if (c.kind === 'name' && story.parshaId !== 'lech-lecha') err(where, 'the name card always draws אברם → אברהם (NameMorph in StoryPlayer.tsx); make it data-driven before using it here')
     if (c.kind === 'plan' && !/Tabernacle|Mishkan|Tent of Meeting/i.test(`${c.title} ${c.body ?? ''}`)) warn(where, 'the plan card always draws the Tabernacle courtyard at MISHKAN_AT (DaylightMap.tsx); use it only for the Tabernacle')
     if (c.kind === 'scale' && Array.isArray(c.items) && (c.items.length < 2 || c.items.length > 3)) err(where, 'the scale card draws 2–3 steps')
     if (c.items !== undefined && !NEEDS_ITEMS.has(c.kind)) warn(where, '`items` are only shown on offerings and scale cards')

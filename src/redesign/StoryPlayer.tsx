@@ -5,7 +5,7 @@ import { X, Share2, Check, Pause, Info, BookOpen, ArrowRight } from 'lucide-reac
 import { useAppStore } from '../store/useAppStore'
 import { getParshaById } from '../utils/parshaUtils'
 import { useDaylight, haptic } from './useDaylight'
-import { getStory, isStageCard, isPageCard, cardSeconds } from './stories'
+import { getStory, isStageCard, isPageCard, cardSeconds, hebrewLetters } from './stories'
 import type { StoryCard, ParshaStory, TableQuestion } from './stories'
 import { RevealText } from './Chrome'
 import { C, FONT, SPRING } from './theme'
@@ -435,7 +435,7 @@ function Hero({ card, size }: { card: StoryCard; size: HeroSize }) {
     case 'letter':
       return (
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
-          <SmallAleph word={card.hebrew ?? ''} size={size} />
+          <ScribalLetter line={card.hebrew ?? ''} at={card.letterAt} large={card.letterSize === 'large'} size={size} />
           {size !== 'card' && <span style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', color: C.muted }}>SIZE ILLUSTRATIVE</span>}
         </div>
       )
@@ -447,7 +447,7 @@ function Hero({ card, size }: { card: StoryCard; size: HeroSize }) {
         </div>
       )
     case 'name':
-      return <NameMorph size={size} />
+      return card.names ? <NameMorph from={card.names.from} to={card.names.to} size={size} /> : null
     case 'guess':
       return <GuessTokens card={card} />
     case 'quote':
@@ -613,31 +613,39 @@ function GuessTokens({ card }: { card: StoryCard }) {
   )
 }
 
-/** The word written out, then its final letter shrinks to show it is written small in the scroll (ratio illustrative). */
-function SmallAleph({ word, size }: { word: string; size: HeroSize }) {
-  const [small, setSmall] = useState(false)
+/**
+ * The line written out, then one letter (`at`, counted in letters; default the last) shrinks or grows
+ * to show how the scroll writes it (ratio illustrative).
+ */
+function ScribalLetter({ line, at, large, size }: { line: string; at?: number; large: boolean; size: HeroSize }) {
+  const [changed, setChanged] = useState(false)
   useEffect(() => {
     const t = setTimeout(() => {
-      setSmall(true)
+      setChanged(true)
       haptic('light')
     }, 1300)
     return () => clearTimeout(t)
   }, [])
   const big = size === 'card' ? 76 : 132
-  // Split off the final aleph so it can be sized on its own.
-  const base = word.slice(0, -1)
-  const last = word.slice(-1)
+  // Split the line at the marked letter so it can be sized on its own.
+  const pieces = hebrewLetters(line)
+  const letterIdx = pieces.flatMap((p, i) => (p.letter ? [i] : []))
+  const k = letterIdx[at ?? letterIdx.length - 1] ?? pieces.length - 1
+  const before = pieces.slice(0, k).map((p) => p.text).join('')
+  const mark = pieces[k]?.text ?? ''
+  const after = pieces.slice(k + 1).map((p) => p.text).join('')
   return (
     <div
       lang="he"
       dir="rtl"
       className={size === 'stage' ? 'dl-hero-halo' : undefined}
-      style={{ display: 'flex', alignItems: 'baseline', justifyContent: size === 'card' ? 'flex-end' : 'center', margin: size === 'card' ? '12px 0 14px' : 0, font: `${big}px/1.1 ${FONT.hebrew}`, color: C.ink }}
+      style={{ display: 'flex', alignItems: 'baseline', justifyContent: size === 'card' ? 'flex-end' : 'center', margin: size === 'card' ? '12px 0 14px' : 0, font: `${big}px/1.1 ${FONT.hebrew}`, color: C.ink, whiteSpace: 'pre' }}
     >
-      <span>{base}</span>
-      <span style={{ display: 'inline-block', fontSize: small ? big * 0.4 : big, color: small ? C.warm : C.ink, transition: 'font-size 0.7s cubic-bezier(0.3, 1.4, 0.5, 1), color 0.4s' }}>
-        {last}
+      {before && <span>{before}</span>}
+      <span style={{ display: 'inline-block', fontSize: changed ? big * (large ? 1.45 : 0.4) : big, color: changed ? C.warm : C.ink, transition: 'font-size 0.7s cubic-bezier(0.3, 1.4, 0.5, 1), color 0.4s' }}>
+        {mark}
       </span>
+      {after && <span>{after}</span>}
     </div>
   )
 }
@@ -665,17 +673,46 @@ function Staircase({ card, size }: { card: StoryCard; size: HeroSize }) {
   )
 }
 
-/** אברם → אברהם: the hei slides into the name. */
-function NameMorph({ size }: { size: HeroSize }) {
-  const [added, setAdded] = useState(false)
+const FINAL_FORMS: Record<string, string> = { ך: 'כ', ם: 'מ', ן: 'נ', ף: 'פ', ץ: 'צ' }
+const sameLetter = (a: string, b: string) => (FINAL_FORMS[a] ?? a) === (FINAL_FORMS[b] ?? b)
+
+/**
+ * Keys for the two spellings of a name: letters they share, in order (longest common subsequence),
+ * get the same key so they hold their place; the others get their own and swap out or in.
+ */
+function morphKeys(from: string[], to: string[]): { fromKeys: string[]; toKeys: string[] } {
+  const n = from.length
+  const m = to.length
+  const lcs = Array.from({ length: n + 1 }, () => new Array<number>(m + 1).fill(0))
+  for (let i = n - 1; i >= 0; i--)
+    for (let j = m - 1; j >= 0; j--) lcs[i][j] = sameLetter(from[i], to[j]) ? lcs[i + 1][j + 1] + 1 : Math.max(lcs[i + 1][j], lcs[i][j + 1])
+  const fromKeys = from.map((_, i) => `old-${i}`)
+  const toKeys = to.map((_, j) => `new-${j}`)
+  for (let i = 0, j = 0; i < n && j < m; ) {
+    if (sameLetter(from[i], to[j])) toKeys[j++] = fromKeys[i++]
+    else if (lcs[i + 1][j] >= lcs[i][j + 1]) i++
+    else j++
+  }
+  return { fromKeys, toKeys }
+}
+
+/** One name becomes another (אברם → אברהם, יעקב → ישראל): shared letters stay, the rest drop out and in. */
+function NameMorph({ from, to, size }: { from: string; to: string; size: HeroSize }) {
+  const [changed, setChanged] = useState(false)
   useEffect(() => {
     const t = setTimeout(() => {
-      setAdded(true)
+      setChanged(true)
       haptic('medium')
     }, 1100)
     return () => clearTimeout(t)
   }, [])
-  const letters = added ? ['א', 'ב', 'ר', 'ה', 'ם'] : ['א', 'ב', 'ר', 'ם']
+  const { before, after, fromKeys, toKeys } = useMemo(() => {
+    const before = hebrewLetters(from).map((p) => p.text)
+    const after = hebrewLetters(to).map((p) => p.text)
+    return { before, after, ...morphKeys(before, after) }
+  }, [from, to])
+  const letters = changed ? after : before
+  const keys = changed ? toKeys : fromKeys
   return (
     <div
       lang="he"
@@ -683,18 +720,24 @@ function NameMorph({ size }: { size: HeroSize }) {
       className={size === 'stage' ? 'dl-hero-halo' : undefined}
       style={{ display: 'flex', justifyContent: 'center', gap: 2, font: `${size === 'card' ? 72 : 118}px/1 ${FONT.hebrew}` }}
     >
-      {letters.map((l, i) => (
-        <motion.span
-          key={l === 'ה' ? 'hei' : `${l}-${i < 3 ? i : 'end'}`}
-          layout
-          initial={l === 'ה' ? { scale: 0, y: -60, opacity: 0 } : false}
-          animate={{ scale: 1, y: 0, opacity: 1 }}
-          transition={SPRING.snappy}
-          style={{ color: l === 'ה' ? C.warm : C.ink, display: 'inline-block' }}
-        >
-          {l}
-        </motion.span>
-      ))}
+      <AnimatePresence mode="popLayout" initial={false}>
+        {letters.map((l, i) => {
+          const fresh = keys[i].startsWith('new-')
+          return (
+            <motion.span
+              key={keys[i]}
+              layout
+              initial={{ scale: 0, y: -60, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0, y: 50, opacity: 0 }}
+              transition={SPRING.snappy}
+              style={{ color: fresh ? C.warm : C.ink, display: 'inline-block' }}
+            >
+              {l}
+            </motion.span>
+          )
+        })}
+      </AnimatePresence>
     </div>
   )
 }
