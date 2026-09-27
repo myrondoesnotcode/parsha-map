@@ -1,4 +1,5 @@
 import type { ParshaListItem } from '../types/parsha'
+import { getParshaDate } from './parshaDates'
 
 // The gazetteer disambiguates homonyms with a numeric suffix ("Bethel 1");
 // readers should only ever see the name itself.
@@ -22,11 +23,15 @@ export function readingName(names: string[]): string {
   return names.map(parshaDisplayName).join('–')
 }
 
-/** The middle of a parsha's date range, for picking its archaeological era. */
-export function eraYear(parsha: ParshaListItem | undefined): number {
-  const d = parsha?.approximateDateBCE
-  if (d?.start == null) return 1900
-  return d.end == null ? d.start : Math.round((d.start + d.end) / 2)
+/**
+ * The middle of the scholarly range historians use for a parsha (src/data/parshaDates.json), for picking
+ * its archaeological era. Null when historians give it no date (Creation, the Flood): those parshiot
+ * get no era card rather than being pinned to an arbitrary age.
+ */
+export function eraYear(parsha: ParshaListItem | undefined): number | null {
+  const s = getParshaDate(parsha?.id)?.scholarly
+  if (s?.startBCE == null || s.endBCE == null) return null
+  return Math.round((s.startBCE + s.endBCE) / 2)
 }
 
 /** "Genesis.12.1-17.27" → "Genesis 12:1 – 17:27". */
