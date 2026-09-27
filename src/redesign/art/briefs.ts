@@ -50,7 +50,7 @@ export const BRIEFS: Brief[] = [
   { id: 'behar', refs: 'Leviticus 25:3–4, 25:9', tone: 'day', draw: 'The land resting in the seventh year: an unsown field and an unpruned vineyard; the horn sounded.', plain: 'Horn drawn as a ram’s horn (shofar).' },
   { id: 'bechukotai', refs: 'Leviticus 26:4–5, 26:13', tone: 'day', draw: 'Rain in its season over land yielding produce and trees heavy with fruit; the bars of a yoke broken on the ground.', plain: 'Yoke design.' },
   // ——— Numbers
-  { id: 'bamidbar', refs: 'Numbers 2:2', tone: 'day', draw: 'Tents camped around the Tent of Meeting at a distance, each group with its banner.', plain: 'Banner colours and emblems are not in the text; drawn plain in the palette.' },
+  { id: 'bamidbar', refs: 'Numbers 2:2', tone: 'day', draw: 'Tents camped around the Tent of Meeting at a distance, each group with its banner.', plain: 'Four groups, after the four camps of Numbers 2. Banner colours and emblems are not in the text; all drawn plain orange.' },
   { id: 'nasso', refs: 'Numbers 7:3', tone: 'day', draw: 'Before the Tabernacle: exactly six carts and twelve oxen, two oxen to each cart.', plain: 'Cart design.' },
   { id: 'behaalotecha', refs: 'Numbers 9:17 · 10:2', tone: 'day', draw: 'Two trumpets of hammered silver; the cloud lifting from the Tent, the signal to set out.', plain: 'Trumpet shape.' },
   { id: 'shelach', refs: 'Numbers 13:23', tone: 'day', draw: 'In the wadi Eshcol: a branch with a single huge cluster of grapes on a carrying frame, with pomegranates and figs.', plain: 'The frame is shown resting; no people.' },
@@ -62,14 +62,14 @@ export const BRIEFS: Brief[] = [
   { id: 'masei', refs: 'Numbers 33:5–49', tone: 'night', draw: 'The journey as a dotted route: Rameses and the 41 camps listed after it (42 stops), ending at the steppes of Moab by the Jordan.', plain: 'The route’s shape is symbolic, not a map.' },
   // ——— Deuteronomy
   { id: 'devarim', refs: 'Deuteronomy 1:1, 1:5', tone: 'day', draw: 'On the other side of the Jordan, in the land of Moab: the river with the land beyond it.', plain: 'Landscape look.' },
-  { id: 'vaetchanan', refs: 'Deuteronomy 6:9', tone: 'day', draw: 'A house doorpost and a gate with the words inscribed on them.', plain: 'The small case on the right doorpost follows Jewish practice (mezuzah); the text says only “inscribe them”.' },
+  { id: 'vaetchanan', refs: 'Deuteronomy 6:9', tone: 'day', draw: 'A house doorpost and a gate with the words inscribed on them.', plain: 'The small cases on the right doorpost and the gate follow Jewish practice (mezuzah); the text says only “inscribe them”. No writing is shown.' },
   { id: 'ekev', refs: 'Deuteronomy 8:7–8', tone: 'day', draw: 'A land of streams and springs; wheat, barley, vines, figs, pomegranates, olive trees and honey.', plain: 'Honey drawn as a jar (tradition reads it as date honey).' },
   { id: 'reeh', refs: 'Deuteronomy 11:29–30', tone: 'day', draw: 'Mount Gerizim and Mount Ebal facing each other, the terebinths of Moreh between.', plain: 'Mountain shapes.' },
   { id: 'shoftim', refs: 'Deuteronomy 20:19', tone: 'day', draw: 'Fruit trees left standing outside a besieged city’s walls.', plain: 'City and tree look.' },
   { id: 'ki-teitzei', refs: 'Deuteronomy 22:6–7', tone: 'day', draw: 'A bird’s nest in a tree by the road, with eggs; the mother bird flying away.', plain: 'Bird species.' },
-  { id: 'ki-tavo', refs: 'Deuteronomy 26:2', tone: 'day', draw: 'A basket of first fruits of the soil.', plain: 'Which fruits: drawn from the land’s produce in 8:8.' },
+  { id: 'ki-tavo', refs: 'Deuteronomy 26:2', tone: 'day', draw: 'A basket of first fruits of the soil.', plain: 'Which fruits: drawn from the land’s produce in 8:8 (wheat, grapes, figs, pomegranates, olives); dates stand for its “honey”, as tradition reads it.' },
   { id: 'nitzavim', refs: 'Deuteronomy 30:11–14, 30:19', tone: 'day', draw: 'Not in the heavens, not beyond the sea: a wide sky and a sea horizon, and close at hand a young green shoot (“choose life”).', plain: 'Symbolic.' },
-  { id: 'vayeilech', refs: 'Deuteronomy 31:24', tone: 'day', draw: 'The written book of Teaching, finished to the end, rolled as a scroll.', plain: 'Scroll form follows tradition.' },
+  { id: 'vayeilech', refs: 'Deuteronomy 31:24', tone: 'day', draw: 'The written book of Teaching, finished to the end, rolled as a scroll.', plain: 'Scroll form follows tradition: a Torah scroll is wound on two rollers (Bava Batra 14a). Writing shown as abstract lines.' },
   { id: 'haazinu', refs: 'Deuteronomy 32:1–2, 32:11', tone: 'day', draw: 'Rain and dew on young growth; an eagle spreading its wings over its nest of young.', plain: 'Poetic images, drawn literally.' },
   { id: 'vzot-habracha', refs: 'Deuteronomy 34:1–3', tone: 'day', draw: 'The view from Mount Nebo, opposite Jericho: the land spread out, the Valley of Jericho with its palm trees, the Western Sea in the far distance.', plain: 'Landscape simplified. No figure.' },
 ]
