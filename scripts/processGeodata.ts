@@ -426,6 +426,9 @@ const DESCRIBED: Record<string, { name: string; description: string }> = {
   aff43ac: { name: 'Nahor', description: '"the city of Nahor" (Genesis 24:10): probably Haran itself, where Laban lives (27:43), or the nearby town of Nahur' },
   a98e4d7: { name: 'Sidon', description: 'Saida, Lebanon' },
   // Genesis 2:14: the Tigris "flows east of Asshur". Assur lies on the Tigris's west bank, so the verse is tied to it (below).
+  // Genesis 26:22: Easton's Bible Dictionary (1890s) put Isaac's Rehoboth at Ruheibeh; modern archaeology rejects this
+  // (Wikipedia "Rehovot-in-the-Negev": no remains older than the Roman period). Toldot's story keeps it as an illustrative pin.
+  ab1d954: { name: 'Rehoboth 1', description: 'Ruheibeh (Rehovot-in-the-Negev), an 1890s proposal for Isaac\'s well (Genesis 26:22) that archaeologists reject: nothing there is older than the Roman period. The real site is unknown' },
   a38ebfd: { name: 'Tigris', description: 'the Tigris, Hebrew Hiddekel (Genesis 2:14); the pin marks al-Qurnah, where it meets the Euphrates today. It does not mark Eden' },
   // Exodus 19; Leviticus 7:38; 25:1; Numbers 3:1; 28:6; Deuteronomy 33:2. Jebel Musa is the traditional site, not an established one. [EXO-75, LEV-66, DEU-86, P2-16]
   abfba2a: { name: 'Mount Sinai', description: 'location disputed; the pin marks the traditional site, Jebel Musa in southern Sinai, where Saint Catherine\'s Monastery was built in the 6th century CE. Other proposals are in northern Sinai, the Negev (Har Karkom) and north-west Arabia' },
