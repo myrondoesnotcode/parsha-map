@@ -162,12 +162,26 @@ function getParshasForOsises(osises: string[]): string[] {
 const ANCIENT_JSONL_URL =
   'https://raw.githubusercontent.com/openbibleinfo/Bible-Geocoding-Data/master/data/ancient.jsonl'
 
+// ---------------------------------------------------------------------------
+// Places whose site is unknown: listed with no pin.
+// OpenBible resolves these to another place's exact point, which the verse
+// contradicts. Keyed by OpenBible id; `note` replaces the description.
+// ---------------------------------------------------------------------------
+const UNPINNED: Record<string, { name: string; note: string }> = {
+  // Genesis 14:15: "Hobah, which is on the left hand (north) of Damascus". OpenBible pins it on Damascus itself.
+  a6779cd: { name: 'Hobah', note: 'north of Damascus; site unknown' },
+  // Genesis 16:14: Beer-lahai-roi is "between Kadesh and Bered", so Bered can't share the well's point.
+  aa3ff18: { name: 'Bered', note: 'site unknown' },
+}
+
 interface PlaceOutput {
   id: string
   name: string
   alternateNames: string[]
-  latitude: number
-  longitude: number
+  /** null when the site is unknown (no pin); see locationNote. */
+  latitude: number | null
+  longitude: number | null
+  locationNote?: string
   confidence: 'high' | 'medium' | 'low'
   type: string
   verses: string[]
@@ -287,6 +301,17 @@ async function main() {
       place.description = modernDescription
     }
 
+    const unpinned = UNPINNED[entry.id]
+    if (unpinned) {
+      if (entry.friendly_id !== unpinned.name) {
+        throw new Error(`UNPINNED id ${entry.id} is now "${entry.friendly_id}", expected "${unpinned.name}"`)
+      }
+      place.latitude = null
+      place.longitude = null
+      place.locationNote = unpinned.note
+      place.description = unpinned.note
+    }
+
     // Only include places in the broader Near East / biblical region
     const inRegion = lat > 15 && lat < 50 && lng > 20 && lng < 60
     if (!inRegion && parshas.length === 0) {
@@ -303,6 +328,9 @@ async function main() {
     `Places with Parsha links: ${places.filter((p) => p.parshas.length > 0).length}`
   )
 
+  const missing = Object.keys(UNPINNED).filter((id) => !places.some((p) => p.id === id))
+  if (missing.length) throw new Error(`UNPINNED ids not found in the data: ${missing.join(', ')}`)
+
   // Sort: places with parsha links first
   places.sort((a, b) => {
     if (a.parshas.length > 0 && b.parshas.length === 0) return -1
@@ -312,6 +340,8 @@ async function main() {
 
   fs.writeFileSync(OUT_PATH, JSON.stringify(places, null, 2))
   console.log(`Written ${places.length} places to ${OUT_PATH}`)
+
+  reportSharedCoordinates(places)
 
   // Print parsha coverage stats
   const parshaStats: Record<string, number> = {}
@@ -326,6 +356,23 @@ async function main() {
   console.log('\nTop parshas by place count:')
   for (const [id, count] of topParshas) {
     console.log(`  ${id}: ${count} places`)
+  }
+}
+
+// Pins that sit exactly on another pin. Often an alias (Luz = Bethel), but sometimes
+// OpenBible falling back to a nearby known site, which the verse may contradict.
+// Printed for review only; check the verse before changing anything.
+function reportSharedCoordinates(places: PlaceOutput[]) {
+  const groups = new Map<string, PlaceOutput[]>()
+  for (const p of places) {
+    if (p.latitude == null || p.longitude == null) continue
+    const key = `${p.latitude},${p.longitude}`
+    groups.set(key, [...(groups.get(key) ?? []), p])
+  }
+  const shared = [...groups.entries()].filter(([, g]) => g.length > 1 && g.some((p) => p.parshas.length > 0))
+  console.log(`\nShared coordinates involving a parsha-linked place: ${shared.length} points`)
+  for (const [key, g] of shared) {
+    console.log(`  ${key}: ${g.map((p) => `${p.name}${p.parshas.length ? '' : ' (no parsha)'}`).join(' | ')}`)
   }
 }
 

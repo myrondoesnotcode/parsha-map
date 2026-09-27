@@ -1,11 +1,11 @@
-import type { Place } from '../types/places'
+import type { Place, PinnedPlace } from '../types/places'
 
 export function getPlacesForParsha(places: Place[], parshaId: string): Place[] {
   return places.filter((p) => p.parshas.includes(parshaId))
 }
 
 export function getBoundsForPlaces(
-  places: Place[]
+  places: PinnedPlace[]
 ): [[number, number], [number, number]] | null {
   if (places.length === 0) return null
 
@@ -48,7 +48,7 @@ export const PLACE_TYPE_FILTERS: PlaceTypeFilter[] = [
   },
 ]
 
-export function getCentroidOfPlaces(places: Place[]): { lat: number; lng: number } | null {
+export function getCentroidOfPlaces(places: PinnedPlace[]): { lat: number; lng: number } | null {
   const relevant = places.filter((p) => p.confidence === 'high')
   const pts = relevant.length > 0 ? relevant : places
   if (pts.length === 0) return null

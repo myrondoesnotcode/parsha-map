@@ -17,6 +17,7 @@ import { MapLegend } from './MapLegend'
 import { MapHoverPopup } from './MapHoverPopup'
 import type { HoverInfo } from './MapHoverPopup'
 import { filterPlacesByType } from '../../utils/placeUtils'
+import { isPinned } from '../../types/places'
 import { parchmentStyle, satelliteStyle } from '../../map/mapStyles'
 import { Navigation, Eye, EyeOff, Layers, Pickaxe, Globe, Crosshair } from 'lucide-react'
 
@@ -76,7 +77,8 @@ export function ParshaMap() {
   const triggerFitBounds = useAppStore((s) => s.triggerFitBounds)
 
   const allPlaces = useParshaPlaces(selectedParshaId)
-  const places = filterPlacesByType(allPlaces, placeTypeFilter)
+  // Places with an unknown site stay in the text highlights but get no marker.
+  const places = filterPlacesByType(allPlaces, placeTypeFilter).filter(isPinned)
   const { era } = useEraContext(currentYearBCE)
   const archaeologicalSites = useArchaeologicalSites(era?.id ?? null)
 

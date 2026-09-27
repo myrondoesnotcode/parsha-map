@@ -1,11 +1,11 @@
 import { Marker } from 'react-map-gl/maplibre'
-import type { Place } from '../../types/places'
+import type { PinnedPlace } from '../../types/places'
 import { getCentroidOfPlaces } from '../../utils/placeUtils'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 
 interface Props {
-  places: Place[]
+  places: PinnedPlace[]
 }
 
 export function YouAreHereMarker({ places }: Props) {

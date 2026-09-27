@@ -6,6 +6,7 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { animate, motion, AnimatePresence } from 'motion/react'
 import { useAppStore } from '../store/useAppStore'
 import { useParshaPlaces } from '../hooks/useParshaPlaces'
+import { isPinned } from '../types/places'
 import { filterPlacesByType } from '../utils/placeUtils'
 import { TradeRouteLayer } from '../components/map/TradeRouteLayer'
 import { TerritoryLayer } from '../components/map/TerritoryLayer'
@@ -289,7 +290,9 @@ export function DaylightMap() {
   const card = storyOpen && story ? story.cards[storyIndex] : null
 
   const allPlaces = useParshaPlaces(parshaId)
-  const places = useMemo(() => filterPlacesByType(allPlaces, placeTypeFilter), [allPlaces, placeTypeFilter])
+  // Places whose site is unknown (Hobah, Bered) are listed but never pinned.
+  const pinned = useMemo(() => allPlaces.filter(isPinned), [allPlaces])
+  const places = useMemo(() => filterPlacesByType(pinned, placeTypeFilter), [pinned, placeTypeFilter])
   const selectedPlace = allPlaces.find((p) => p.id === selectedPlaceId) ?? null
 
   const geometry = useMemo(() => (story && story.route.length > 1 ? densify(story.route) : null), [story])
@@ -387,7 +390,7 @@ export function DaylightMap() {
         : story.anchor
           ? [story.anchor.at]
           : []
-      : (allPlaces.filter((p) => p.confidence !== 'low').length ? allPlaces.filter((p) => p.confidence !== 'low') : allPlaces).map(
+      : (pinned.filter((p) => p.confidence !== 'low').length ? pinned.filter((p) => p.confidence !== 'low') : pinned).map(
           (p) => [p.longitude, p.latitude] as LngLat
         )
     if (pts.length === 0) return null
@@ -397,7 +400,7 @@ export function DaylightMap() {
       [Math.min(...lngs), Math.min(...lats)],
       [Math.max(...lngs), Math.max(...lats)],
     ] as [LngLat, LngLat]
-  }, [story, allPlaces])
+  }, [story, pinned])
 
   useEffect(() => {
     const map = mapRef.current
@@ -433,6 +436,8 @@ export function DaylightMap() {
       return
     }
     if (selectedPlace) {
+      // An unpinned place has nowhere to fly to; leave the camera where it is.
+      if (!isPinned(selectedPlace)) return
       map.flyTo({
         center: [selectedPlace.longitude, selectedPlace.latitude],
         zoom: Math.max(map.getZoom(), 8.2),

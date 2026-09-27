@@ -1,12 +1,12 @@
 import { useEffect } from 'react'
 import { useMap } from 'react-map-gl/maplibre'
 import type { LngLatBoundsLike } from 'maplibre-gl'
-import type { Place } from '../../types/places'
+import type { PinnedPlace } from '../../types/places'
 import { getBoundsForPlaces } from '../../utils/placeUtils'
 import { useAppStore } from '../../store/useAppStore'
 
 interface Props {
-  places: Place[]
+  places: PinnedPlace[]
   parshaId: string | null
 }
 

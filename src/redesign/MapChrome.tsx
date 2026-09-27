@@ -214,7 +214,7 @@ export function PlaceCard() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
         <div style={{ minWidth: 0 }}>
           <div style={{ font: `700 12px ${FONT.display}`, color: C.blue, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-            {prettyType(place.type)} · {place.confidence} confidence
+            {prettyType(place.type)} · {place.locationNote ? 'not on the map' : `${place.confidence} confidence`}
           </div>
           <h2 style={{ margin: 0, font: `800 32px ${FONT.display}`, letterSpacing: '-0.03em', lineHeight: 1.05, color: C.ink }}>
             {displayName(place.name)}

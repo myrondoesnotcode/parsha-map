@@ -1267,8 +1267,8 @@
     "id": "aa3ff18",
     "name": "Bered",
     "alternateNames": [],
-    "latitude": 31.097,
-    "longitude": 34.652,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -1277,7 +1277,8 @@
     "parshas": [
       "lech-lecha"
     ],
-    "description": "Haluza"
+    "description": "site unknown",
+    "locationNote": "site unknown"
   },
   {
     "id": "a4590cd",
@@ -4117,8 +4118,8 @@
     "id": "a6779cd",
     "name": "Hobah",
     "alternateNames": [],
-    "latitude": 33.511112,
-    "longitude": 36.30639,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -4127,7 +4128,8 @@
     "parshas": [
       "lech-lecha"
     ],
-    "description": "another name for Upu"
+    "description": "north of Damascus; site unknown",
+    "locationNote": "north of Damascus; site unknown"
   },
   {
     "id": "a5e36e6",

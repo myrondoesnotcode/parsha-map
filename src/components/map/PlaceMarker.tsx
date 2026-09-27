@@ -1,5 +1,5 @@
 import { Marker, Popup } from 'react-map-gl/maplibre'
-import type { Place } from '../../types/places'
+import type { Place, PinnedPlace } from '../../types/places'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { ExternalLink } from 'lucide-react'
@@ -32,7 +32,7 @@ function dotStyle(confidence: Place['confidence'], isHighlighted?: boolean): Rea
 }
 
 interface Props {
-  place: Place
+  place: PinnedPlace
   showLabel?: boolean
   isHighlighted?: boolean
   isOpen: boolean
