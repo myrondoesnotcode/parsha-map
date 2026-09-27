@@ -33,7 +33,16 @@ const EXODUS_CHAIN = [SOR(1), SOR(3), CHABAD_EXODUS]
 const GEN_CHAIN = [SOR(1), CHABAD_TIMELINE]
 
 const parshiot = {
-  bereshit: { scholarly: 'primeval' },
+  // Year 1 is the Hebrew calendar's epoch (6 Oct 3761 BCE), so it is set explicitly rather than by 3761 − AM.
+  bereshit: {
+    scholarly: 'primeval',
+    traditional: {
+      am: 1,
+      yearBCE: 3761,
+      event: 'Creation, year 1 of the Hebrew calendar',
+      sources: [SOR(1), { title: 'Wikipedia, "Anno Mundi" (Hebrew calendar epoch: 6 October 3761 BCE)', url: 'https://en.wikipedia.org/wiki/Anno_Mundi' }],
+    },
+  },
   noach: { scholarly: 'primeval', traditional: t(FLOOD, 'The Flood (Noah is 600)', [SEF('Genesis 7:11'), SOR(1), CHABAD_TIMELINE]) },
   'lech-lecha': { scholarly: 'patriarchs', traditional: t(ABRAHAM + 75, 'Abram leaves Haran, aged 75', [SEF('Genesis 12:4'), ...GEN_CHAIN]) },
   vayera: { scholarly: 'patriarchs', traditional: t(ISAAC, 'Isaac is born; Abraham is 100', [SEF('Genesis 21:5'), SOR(1), CHABAD_PATRIARCHS]) },
@@ -99,7 +108,10 @@ parshiot['vzot-habracha'] = { scholarly: 'exodus', traditional: t(YEAR40 + 1, 'M
 const scholarly = {
   primeval: {
     label: 'Not datable by historians',
-    sources: [{ title: 'Wikipedia, "Genesis flood narrative" (historicity)', url: 'https://en.wikipedia.org/wiki/Genesis_flood_narrative' }],
+    sources: [
+      { title: 'Wikipedia, "Genesis creation narrative" (scholars read Genesis 1–2 as a creation account drawn from two sources, shaped by ancient Near Eastern cosmology)', url: 'https://en.wikipedia.org/wiki/Genesis_creation_narrative' },
+      { title: 'Wikipedia, "Genesis flood narrative" (historicity)', url: 'https://en.wikipedia.org/wiki/Genesis_flood_narrative' },
+    ],
   },
   patriarchs: {
     label: 'Date unknown · often placed c. 2000–1550 BCE',

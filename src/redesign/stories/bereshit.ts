@@ -30,7 +30,7 @@ const bereshit: ParshaStory = {
     'Siddur Edot HaMizrach, Shabbat Evening, Kiddush',
   ],
   route: [],
-  anchor: { name: 'the Tigris and Euphrates (2:14)', at: RIVERS_MEET, place: TIGRIS_PLACE },
+  anchor: { name: 'map: two rivers named in 2:14', at: RIVERS_MEET, place: TIGRIS_PLACE },
   cards: [
     {
       kind: 'cover',
@@ -43,7 +43,7 @@ const bereshit: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Before any map',
-      body: 'No journey this week, and hardly a map. Bereshit begins with heaven and earth themselves. It puts the garden of Eden only “in the east,” and no one knows where Cain’s land of Nod was. But two rivers it names still flow today.',
+      body: 'No journey this week, and hardly a map. Bereshit begins with heaven and earth themselves. It puts the garden of Eden “in the east” and names four rivers that flow from it, but no one knows where the garden was, or where Cain’s land of Nod was. Two of those rivers still flow today.',
       ref: 'Genesis 1:1, 2:8, 2:14, 4:16',
       note: 'The map is a backdrop for the region of the two named rivers, the Tigris and the Euphrates (2:14); it doesn’t mark where anything in the story happened. Genesis 2:14 also names Asshur (Assyria), saying the Tigris flows east of it.',
       act: 'Creation',
@@ -68,7 +68,7 @@ const bereshit: ParshaStory = {
       kind: 'quote',
       title: 'When God began to create heaven and earth—',
       hebrew: 'בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ',
-      body: 'Seven Hebrew words. Rashi on Genesis 1:1 reads the first as “at the beginning of God’s creating,” and says the verse doesn’t come to teach what was created first.',
+      body: 'Seven Hebrew words. Rashi on Genesis 1:1, explaining its plain sense, reads the first as “at the beginning of God’s creating,” and says the verse doesn’t come to teach what was created first.',
       ref: 'Genesis 1:1 · Rashi on Genesis 1:1',
       note: 'The English is THE JPS TANAKH: Gender-Sensitive Edition. Rashi’s commentary actually opens with another question, from Rabbi Isaac: why does the Torah begin with creation and not with the first commandment given to Israel (Exodus 12:2)? His answer: the whole earth is God’s, to give to whom God pleases.',
       camera: { center: REGION, zoom: 5.6, pitch: 55, bearing: 10 },
@@ -113,9 +113,9 @@ const bereshit: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Two rivers you can still find',
-      body: 'A river flows out of Eden to water the garden, then branches into four. Two of them are the Tigris and the Euphrates, which still meet today in southern Iraq. The Torah puts the garden “in the east” and no more; no one knows where it was.',
+      body: 'A river flows out of Eden to water the garden, then branches into four. Two of them bear the names of the Tigris and the Euphrates, which still meet today in southern Iraq. Beyond “in the east” and these rivers, the Torah gives no location, and no one knows where the garden was.',
       ref: 'Genesis 2:8–14',
-      note: 'In Hebrew the Tigris is חִדֶּקֶל (Hiddekel) and the Euphrates פְרָת (Perat). The other two rivers, the Pishon and the Gihon, and the lands they wind through, Havilah and Cush, can’t be identified with certainty; Rashi on Genesis 2:11 says the Pishon is the Nile. The pin marks al-Qurnah, where the two rivers join to form the Shatt al-Arab. Local folklore there says the garden was at al-Qurnah; the Torah doesn’t say so, and the pin does not mark Eden.',
+      note: 'In Hebrew the Tigris is חִדֶּקֶל (Hiddekel) and the Euphrates פְּרָת (Perat). The other two rivers, the Pishon and the Gihon, and the lands they wind through, Havilah and Cush, can’t be identified with certainty; Rashi on Genesis 2:11 says the Pishon is the Nile. The pin marks al-Qurnah, where the two rivers join to form the Shatt al-Arab. Local folklore there says the garden was at al-Qurnah; the Torah doesn’t say so, and the pin does not mark Eden.',
       act: 'The garden',
       camera: { center: RIVERS_MEET, zoom: 6.4, pitch: 45, bearing: -15 },
       routeTo: 0,
@@ -124,7 +124,7 @@ const bereshit: ParshaStory = {
     {
       kind: 'chapter',
       title: '“Where are you?”',
-      body: 'God settles the first human in the garden to till it and tend it, and forbids the fruit of the tree of knowledge of good and bad. The serpent persuades the woman to eat it; she gives some to her husband, and he eats too. They hide, and God calls out, “Where are you?” In the end, they are sent out of the garden.',
+      body: 'God settles the first human in the garden to till it and tend it, and forbids the fruit of the tree of knowledge of good and bad. The serpent persuades the woman to eat it; she gives some to her husband, and he eats too. They hide, and God calls out to the man, “Where are you?” In the end, they are sent out of the garden.',
       ref: 'Genesis 2:15–17, 3:1–24',
       note: '“Good and bad” is the JPS rendering; many translations say “good and evil.” The Torah doesn’t say what kind of fruit it was. After they leave, cherubim and a fiery ever-turning sword guard the way to the tree of life (3:24). The map is a backdrop only.',
       camera: { center: REGION, zoom: 5.6, pitch: 50, bearing: 20 },
@@ -161,7 +161,7 @@ const bereshit: ParshaStory = {
     {
       kind: 'talk',
       title: 'When God asked Cain where his brother was, Cain answered, “Am I my brother’s keeper?” Who do you look out for, and who looks out for you?',
-      note: 'No journey this week, so no route is drawn. The one pin in the story marks where the Tigris and Euphrates meet today, not Eden; the other places Bereshit names can’t be located.',
+      note: 'No journey this week, so no route is drawn. The one pin in the story marks where the Tigris and Euphrates meet today, not Eden. Eden, Nod, the Pishon and the Gihon can’t be located.',
       camera: { center: REGION, zoom: 4.6, pitch: 25, bearing: 0 },
       routeTo: 0,
     },

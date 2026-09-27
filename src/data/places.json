@@ -698,15 +698,17 @@
     "confidence": "medium",
     "type": "settlement",
     "verses": [
+      "Genesis 2:14",
       "Numbers 24:22",
       "Numbers 24:24",
       "Psalms 83:8",
       "Ezekiel 27:23"
     ],
     "parshas": [
+      "bereshit",
       "balak"
     ],
-    "description": "Assur"
+    "description": "the city of Assur, on the west bank of the Tigris; Genesis 2:14 says the Tigris flows east of Asshur, which may mean the city or the land of Assyria"
   },
   {
     "id": "a3d1321",
@@ -717,7 +719,6 @@
     "confidence": "medium",
     "type": "region",
     "verses": [
-      "Genesis 2:14",
       "Genesis 10:11",
       "Genesis 25:18",
       "2 Kings 15:19",
@@ -860,7 +861,6 @@
       "Zechariah 10:11"
     ],
     "parshas": [
-      "bereshit",
       "noach",
       "chayei-sarah"
     ]
@@ -7634,7 +7634,7 @@
     "parshas": [
       "bereshit"
     ],
-    "description": "Tigris River"
+    "description": "the Tigris, Hebrew Hiddekel (Genesis 2:14); the pin marks al-Qurnah, where it meets the Euphrates today. It does not mark Eden"
   },
   {
     "id": "a17c178",

@@ -14,7 +14,7 @@ export type Brief = {
 
 export const BRIEFS: Brief[] = [
   // ——— Genesis
-  { id: 'bereshit', refs: 'Genesis 1:10–11, 1:16', tone: 'day', draw: 'The two great lights: the sun (greater light) and the moon (lesser light) with stars, over land with seed-bearing plants and fruit trees, and the sea.', plain: 'Sun and moon shown together in one sky.' },
+  { id: 'bereshit', refs: 'Genesis 1:10–11, 1:16', tone: 'day', draw: 'The two great lights, drawn as sun and moon (the text calls them the greater and the lesser light, 1:16), with stars, over land with seed-bearing plants and fruit trees, and the sea.', plain: 'Sun, moon and stars shown together in one sky; the scene joins day three (plants, 1:11–12) and day four (the lights, 1:16). The text gives no fruit colour or tree species.' },
   { id: 'noach', refs: 'Genesis 6:15–16 · 8:4 · 8:11 · 9:13', tone: 'day', draw: 'The ark as a long box, 300 × 30 cubits in side view (10 : 1), with an opening for daylight near the top and an entrance in its side, resting on the mountains of Ararat. A rainbow in the clouds. A dove with a plucked olive leaf in its bill.', plain: 'Ark roof shape and how the daylight opening looks. The scene combines moments from 8:4 to 9:13.' },
   { id: 'lech-lecha', refs: 'Genesis 12:8 · 15:5', tone: 'night', draw: 'Tent pitched and an altar built; a night sky full of stars.', plain: 'Tent shape, altar stones; the altar is not shown burning. The dotted route line is the app’s map style, not a road.' },
   { id: 'vayera', refs: 'Genesis 22:2, 22:9, 22:13', tone: 'day', draw: 'A ram caught in a thicket by its horns, on a mountain; an altar with the wood laid out.', plain: 'No people, no knife. Thicket plant and altar construction.' },

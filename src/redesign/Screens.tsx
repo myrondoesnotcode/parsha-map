@@ -162,7 +162,8 @@ export function ReadScreen() {
           {rc?.historicalContext && (
             <motion.article {...rise(0)} className="dl-card" style={{ background: C.blue, color: C.sand }}>
               <div className="dl-eyebrow" style={{ color: C.blueSoft }}>
-                <Landmark size={16} strokeWidth={2.2} /> The world around it
+                <Landmark size={16} strokeWidth={2.2} />{' '}
+                {eraYear(parsha) === null ? 'Other ancient stories' : 'The world around it'}
               </div>
               <p style={{ margin: '8px 0 0', font: `400 16px/1.5 ${FONT.display}` }}>{rc.historicalContext}</p>
             </motion.article>

@@ -326,6 +326,9 @@ const DESCRIBED: Record<string, { name: string; description: string }> = {
   ab89be9: { name: 'Ararat', description: 'Urartu: Genesis 8:4 names only "the mountains of Ararat"; the pin shows the peak now called Mount Ararat' },
   aff43ac: { name: 'Nahor', description: '"the city of Nahor" (Genesis 24:10): probably Haran itself, where Laban lives (27:43), or the nearby town of Nahur' },
   a98e4d7: { name: 'Sidon', description: 'Saida, Lebanon' },
+  // Genesis 2:14: the Tigris "flows east of Asshur". Assur lies on the Tigris's west bank, so the verse is tied to it (below).
+  a874951: { name: 'Asshur', description: 'the city of Assur, on the west bank of the Tigris; Genesis 2:14 says the Tigris flows east of Asshur, which may mean the city or the land of Assyria' },
+  a38ebfd: { name: 'Tigris', description: 'the Tigris, Hebrew Hiddekel (Genesis 2:14); the pin marks al-Qurnah, where it meets the Euphrates today. It does not mark Eden' },
 }
 
 // ---------------------------------------------------------------------------
@@ -334,11 +337,14 @@ const DESCRIBED: Record<string, { name: string; description: string }> = {
 const EXTRA_VERSES: Record<string, { name: string; osises: string[] }> = {
   // "the terebinths of Mamre, which are in Hebron" (Genesis 13:18); "by the terebinths of Mamre" (18:1), Vayera's opening verse.
   aeb9e97: { name: 'Mamre', osises: ['Gen.13.18', 'Gen.18.1'] },
+  a874951: { name: 'Asshur', osises: ['Gen.2.14'] },
 }
 const DROPPED_VERSES: Record<string, { name: string; osises: string[] }> = {
   // Genesis 49:10 "until Shiloh comes" is read by Rashi and Onkelos as a title of the Messiah, and by JPS as
   // "tribute to him" — not usually as the town.
   aa4680a: { name: 'Shiloh', osises: ['Gen.49.10'] },
+  // OpenBible's Assyria pin is Nineveh, on the Tigris's EAST bank, which contradicts "flows east of Asshur"; 2:14 moves to Asshur (Assur).
+  a3d1321: { name: 'Assyria', osises: ['Gen.2.14'] },
 }
 
 // ---------------------------------------------------------------------------

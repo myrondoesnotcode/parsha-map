@@ -15,6 +15,10 @@
       "label": "Not datable by historians",
       "sources": [
         {
+          "title": "Wikipedia, \"Genesis creation narrative\" (scholars read Genesis 1–2 as a creation account drawn from two sources, shaped by ancient Near Eastern cosmology)",
+          "url": "https://en.wikipedia.org/wiki/Genesis_creation_narrative"
+        },
+        {
           "title": "Wikipedia, \"Genesis flood narrative\" (historicity)",
           "url": "https://en.wikipedia.org/wiki/Genesis_flood_narrative"
         }
@@ -53,7 +57,22 @@
   },
   "parshiot": {
     "bereshit": {
-      "scholarly": "primeval"
+      "scholarly": "primeval",
+      "traditional": {
+        "am": 1,
+        "yearBCE": 3761,
+        "event": "Creation, year 1 of the Hebrew calendar",
+        "sources": [
+          {
+            "title": "Seder Olam Rabbah 1",
+            "url": "https://www.sefaria.org/Seder_Olam_Rabbah.1"
+          },
+          {
+            "title": "Wikipedia, \"Anno Mundi\" (Hebrew calendar epoch: 6 October 3761 BCE)",
+            "url": "https://en.wikipedia.org/wiki/Anno_Mundi"
+          }
+        ]
+      }
     },
     "noach": {
       "scholarly": "primeval",
