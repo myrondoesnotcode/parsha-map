@@ -322,13 +322,13 @@ export function Noach() {
         <path d="M70 386 C60 420 50 470 30 560 L-40 560 L-40 470 C0 440 30 408 70 386 Z" fill="#f1e6d0" />
         <path d="M330 386 C370 404 410 440 460 460 L460 560 L300 560 C320 500 330 440 330 386 Z" fill="#e2d2b2" />
         <path d="M70 386 C40 420 10 450 -40 470 L-40 560 L10 560 C20 480 50 420 70 386 Z" fill="#e6cfa8" />
-        {/* the ark: a long box, a daylight opening a cubit below the top, the door in its side */}
+        {/* the ark: a long box, a daylight opening ending within a cubit of the top (6:16), the door in its side */}
         <ellipse cx={W / 2} cy={ay + ah + 2} rx={aw / 2 + 8} ry="7" fill={C.ink} opacity="0.12" />
         <rect x={ax} y={ay} width={aw} height={ah} fill="#c9773f" />
         <rect x={ax} y={ay + ah * 0.55} width={aw} height={ah * 0.45} fill="#b0612f" />
-        <rect x={ax} y={ay} width={aw} height="3" fill="#8a5a3c" />
-        <rect x={ax + 10} y={ay + 5} width={aw - 20} height="4.5" fill="#3b2a24" />
-        {Array.from({ length: 13 }, (_, i) => <rect key={i} x={ax + 10 + i * ((aw - 22) / 12)} y={ay + 5} width="2" height="4.5" fill="#c9773f" />)}
+        <rect x={ax} y={ay} width={aw} height="1" fill="#8a5a3c" />
+        <rect x={ax + 10} y={ay + 1} width={aw - 20} height="4.5" fill="#3b2a24" />
+        {Array.from({ length: 13 }, (_, i) => <rect key={i} x={ax + 10 + i * ((aw - 22) / 12)} y={ay + 1} width="2" height="4.5" fill="#c9773f" />)}
         {[0.42, 0.72].map((f) => <rect key={f} x={ax} y={ay + ah * f} width={aw} height="1" fill="#8a5a3c" opacity="0.6" />)}
         <rect x={ax + 196} y={ay + 12} width="16" height="18" fill="#3b2a24" />
         <rect x={ax + aw - 18} y={ay} width="18" height={ah} fill="#8a5a3c" opacity="0.35" />

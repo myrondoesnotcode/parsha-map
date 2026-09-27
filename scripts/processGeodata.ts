@@ -426,6 +426,8 @@ const DESCRIBED: Record<string, { name: string; description: string }> = {
   aff43ac: { name: 'Nahor', description: '"the city of Nahor" (Genesis 24:10): probably Haran itself, where Laban lives (27:43), or the nearby town of Nahur' },
   a98e4d7: { name: 'Sidon', description: 'Saida, Lebanon' },
   // Genesis 2:14: the Tigris "flows east of Asshur". Assur lies on the Tigris's west bank, so the verse is tied to it (below).
+  // Genesis 10:10: JPS notes that "and Calneh" (we-khalneh) is better vocalized we-khullanah, "all of them being".
+  aee80af: { name: 'Calneh 1', description: 'Nippur, a proposed site; JPS notes that "and Calneh" (Genesis 10:10) may be better read "all of them being", so it may not be a place name' },
   a38ebfd: { name: 'Tigris', description: 'the Tigris, Hebrew Hiddekel (Genesis 2:14); the pin marks al-Qurnah, where it meets the Euphrates today. It does not mark Eden' },
   // Exodus 19; Leviticus 7:38; 25:1; Numbers 3:1; 28:6; Deuteronomy 33:2. Jebel Musa is the traditional site, not an established one. [EXO-75, LEV-66, DEU-86, P2-16]
   abfba2a: { name: 'Mount Sinai', description: 'location disputed; the pin marks the traditional site, Jebel Musa in southern Sinai, where Saint Catherine\'s Monastery was built in the 6th century CE. Other proposals are in northern Sinai, the Negev (Har Karkom) and north-west Arabia' },
@@ -570,6 +572,8 @@ const TYPED: Record<string, { name: string; type: string }> = {
   // "island" is OpenBible's first type, from the Pharaoh's Island proposal; the pins are on the mainland (Tell el-Kheleifeh; Aqaba). [DEU-94, P1-16]
   a8e53d5: { name: 'Ezion-geber', type: 'settlement' },
   af0ac29: { name: 'Elath', type: 'settlement' },
+  // "Ur of the Chaldeans" (Genesis 11:28, 31) is a city; OpenBible lists it as ['region', 'settlement'].
+  a6cf75c: { name: 'Ur 1', type: 'settlement' },
 }
 
 // ---------------------------------------------------------------------------

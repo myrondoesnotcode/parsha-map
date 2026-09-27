@@ -159,3 +159,32 @@ Verdicts: **verified** = matches the fetched text; **fixed** = was wrong or loos
 - The date bar (traditional c. 2105 BCE, "Not datable by historians") is automatic; the story adds no dates.
 - Left out for lack of a fetched source: metric conversion of the cubit, the "seventy nations" count, the Zohar's critique of Noah, and Yoma 10a's Calneh = Nippur.
 - The parsha-fact-check workflow (`.claude/workflows/parsha-fact-check.js`) was not run from this session (no workflow tool available to the authoring agent); it should be run before merge, per `docs/plans/story-authoring.md` step 5.
+
+## Round 2: independent fact-check (4 lenses), applied 2026-09-27
+
+Each finding was re-checked against Sefaria (JPS + Masoretic Hebrew for Genesis 6:6–7, 6:9–22, 8:1–14, 8:18, 9:24–27, 10:5, 10:10, 10:20, 10:31, 11:1–9, 11:26–32, 12:4, 18:23–33; Rashi on 6:16, 7:7, 8:3, 8:4, 8:5, 11:28, 11:32; Sanhedrin 56b; Zohar, Vayikra 31:235–236 = 3:14b–15a) and Wikipedia (*Genesis flood narrative*, *Shuruppak*, *Gilgamesh flood myth*). Rows 2, 6, 91, 94 and 99 above are superseded by these fixes.
+
+**Story (`noach.ts`)**
+- Cover place line: "the mountains of Ararat (8:4)" → "Ararat · Shinar · Ur · Haran" (the places the parsha names; the old line read as the parsha's one setting).
+- Card 1: dropped "No journey this week" (11:2 and 11:31 are journeys); note no longer lists places the phone view can't show.
+- Card 2: פֶתַח → פֶּתַח (citation form; the verse has וּפֶתַח without dagesh only after the vav).
+- Card 6 note: Rashi on 8:4–5 counts the seventh month from when the rain stopped and the tenth from when it began; the list keeps the verses' numbering.
+- Card 7: "The Torah names a range" → "The Torah doesn't say which peak" (8:4 says "the mountains of Ararat", mountains of a land).
+- Card 8: camera pulled back from the peak (zoom 7.4 → 6.0); note: the ark had rested on the mountains of Ararat, the Torah doesn't say which peak; Gilgamesh line now says most scholars think Genesis draws on older Mesopotamian flood traditions (Wikipedia: "Scholars generally believe it was adapted…").
+- Card 12 note: Noah says "Blessed be the ETERNAL, the God of Shem" and "May God enlarge Japheth" (9:26–27), not a direct blessing of Shem and Japheth.
+- Card 13: the 10:5 wording is Japheth's line only; now "by their clans, languages, lands and nations (10:5, 20, 31)".
+- Card 15 note: Rashi on 11:28 tells the furnace midrash to explain Haran's death in his father's lifetime (Terah accused Abram; Haran sided with Abram and died); Rashi also brings Menachem ben Saruk's "valley" reading of Ur.
+- Card 16: Terah's death in Haran came after Abram left by Rashi's count (Rashi on 11:32: 70 + 75 = 145 of 205 years); sources now include 11:26, 12:1–4 and Rashi on 11:32. Harran is "southeastern" Turkey.
+- Talk note: no route because the Torah doesn't give the roads (11:2, 11:31); "the story's pins"; Ararat wording as card 7.
+
+**Read tab (`parshaList.json` noach)**
+- In brief: God's regret (6:6–7) is in Bereshit and is about humankind, not "creation itself" → the earth filled with lawlessness, God resolves to end all flesh (6:11–13). Birds are sent when the mountaintops appear (8:5–8), not when dry land appears. Babel order: confounds speech, then scatters (11:7–8).
+- Did you know: "exactly five months of 150 days" → five months, matching 7:24 with 30-day months; Rashi on 8:3 counts the 150 days from the end of the rain.
+- History: Gilgamesh bird order (dove, swallow return; raven doesn't) and "recalling" instead of "strikingly close"; "scholars debate" → most scholars think Genesis draws on these traditions; the 2900 BCE flood is a flood-deposit layer at Shuruppak, not a region-wide catastrophe.
+- Tradition: Rashi located (on 7:7); the Zohar (3:14b–15a) compares Noah with Moses, and the Abraham contrast is now the app's own, with Genesis 18:23–32; the Noahide derivation is Rabbi Yochanan's view (Sanhedrin 56b records others).
+
+**Art and places**
+- Emblem: the daylight opening now ends within a cubit of the top on the drawing's 1 cubit = 1 unit scale; the caption says "Several moments in one picture" (the bow comes after Noah leaves the ark, 8:18, 9:13).
+- places.json: Ur of the Chaldeans typed settlement (new `RETYPED` table); Calneh's description carries the JPS note on 10:10.
+
+**Not applied:** Chaldea's confidence (a region's rough location is better known than which Ur is meant; not a contradiction); unpinning Calneh (the Talmud, Yoma 10a, identifies it, "Nofer Ninefi"); the optional Hebrew label for "Three decks" (the long phrase squeezed the item on a phone); the optional northern-Ur sentence (not needed for the hedge already on screen).
