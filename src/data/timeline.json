@@ -72,11 +72,11 @@
     "endBCE": 1550,
     "color": "#DAA520",
     "shortDesc": "Amorite kingdoms; Old Babylonian Empire; Hyksos in Egypt; Canaanite city-state system",
-    "biblicalContext": "Abraham, Isaac, Jacob, Joseph — the Patriarchal period",
+    "biblicalContext": "Where the patriarchal stories — Abraham to Joseph — are often placed",
     "events": [
       { "yearBCE": 1850, "description": "Earliest securely identified alphabetic writing, by Canaanite speakers in Egypt and Sinai (dates debated)", "significance": "Ancestor of the Hebrew, Greek, Latin and Arabic alphabets" },
       { "yearBCE": 1792, "description": "Hammurabi becomes king of Babylon", "significance": "His law code is among the best preserved of the ancient Near East; older codes, such as Ur-Nammu’s, also survive" },
-      { "yearBCE": 1650, "description": "Hyksos kings of Canaanite origin come to rule northern Egypt from Avaris", "significance": "Egypt’s first foreign dynasty, ruling for about a century (c. 1650–1550 BCE)" }
+      { "yearBCE": 1650, "description": "Hyksos kings of Canaanite origin come to rule northern Egypt from Avaris", "significance": "The first foreign dynasty to rule much of Egypt, governing Lower and Middle Egypt for about a century (c. 1650–1550 BCE)" }
     ],
     "worldEvents": [
       { "region": "Aegean", "description": "Minoan civilization reaches its height on Crete — the palace of Knossos is built, Linear A script developed, and Minoan merchants trade across the Mediterranean" },
