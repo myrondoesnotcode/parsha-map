@@ -288,6 +288,8 @@ export function DaylightMap() {
   const story = getStory(parshaId)
   const planMode = planModeFor(parshaId)
   const card = storyOpen && story ? story.cards[storyIndex] : null
+  // Before the story reaches its first stop (Toldot's opening cards have no place), no route pin is shown yet.
+  const routeStarted = !card || !story || story.cards.slice(0, storyIndex + 1).some((c) => !!c.stop || !!c.routeTo)
 
   const allPlaces = useParshaPlaces(parshaId)
   // Places whose site is unknown (Hobah, Bered) are listed but never pinned.
@@ -616,7 +618,7 @@ export function DaylightMap() {
             .map((j) => story.route[j])
             .filter((s, k, all) => all.findIndex((t) => t.name === s.name) === k)
           const withHedge = labels.length === 1 && card?.kind !== 'talk'
-          const visible = clusterOf[i] === i && drawn >= i - 0.02 && card?.kind !== 'guess' && card?.kind !== 'cover'
+          const visible = routeStarted && clusterOf[i] === i && drawn >= i - 0.02 && card?.kind !== 'guess' && card?.kind !== 'cover'
           return (
             <Marker key={`${stop.name}-${i}`} longitude={stop.at[0]} latitude={stop.at[1]} anchor="center">
               <AnimatePresence>
@@ -652,7 +654,7 @@ export function DaylightMap() {
         const firstVisit = story.route.findIndex((s) => s.at === stop.at)
         const laterVisits = story.route.map((s, j) => (j > i && s.at === stop.at && drawn >= j - 0.02 ? j + 1 : 0)).filter(Boolean)
         const revisitActive = laterVisits.some((n) => card?.stop === n)
-        const visible = drawn >= i - 0.02 && card?.kind !== 'guess' && card?.kind !== 'cover' && (firstVisit === i ? !revisitActive : active)
+        const visible = routeStarted && drawn >= i - 0.02 && card?.kind !== 'guess' && card?.kind !== 'cover' && (firstVisit === i ? !revisitActive : active)
         // The merged pin for a stop visited twice stays full size so its numbers can be read.
         const small = !!crowded[i] && !active && laterVisits.length === 0
         const last = i === (story?.route.length ?? 0) - 1

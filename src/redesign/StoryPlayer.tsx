@@ -197,8 +197,8 @@ export function StoryPlayer() {
         </div>
       </div>
 
-      {/* A drawn route is a sketch of the order of places, not the roads: say so while it's on screen. */}
-      {story.route.length > 0 && card.kind !== 'cover' && card.kind !== 'guess' && card.kind !== 'stars' && (
+      {/* A drawn route is a sketch of the order of places, not the roads: say so while a line is on screen, and on the finale. */}
+      {story.route.length > 0 && (card.kind === 'talk' || ((card.routeTo ?? 0) > 0 && card.kind !== 'cover' && card.kind !== 'guess' && card.kind !== 'stars')) && (
         <div className="dl-route-tag">
           {card.kind === 'talk' ? 'Route illustrative · pin sites are uncertain' : 'Route illustrative · lines join the stops in order'}
         </div>
@@ -552,7 +552,7 @@ function GuessCard({ card, onSources }: { card: StoryCard; onSources: () => void
       <AnimatePresence>
         {answered && (
           <motion.p key="reveal" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} style={{ margin: '12px 0 0', font: `600 16px/1.4 ${FONT.display}`, color: C.ink }}>
-            <span style={{ color: right ? C.blue : '#c2491d' }}>{right ? 'Right.' : `It was ${answer ? answer.label.charAt(0).toLowerCase() + answer.label.slice(1) : ''}.`}</span> {card.reveal ?? 'Tap to see what happens.'}
+            <span style={{ color: right ? C.blue : '#c2491d' }}>{right ? 'Right.' : `Answer: ${answer ? answer.label : ''}.`}</span> {card.reveal ?? 'Tap to see what happens.'}
           </motion.p>
         )}
       </AnimatePresence>
