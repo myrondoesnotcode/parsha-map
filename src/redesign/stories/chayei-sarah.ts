@@ -3,8 +3,9 @@
 // Sources: see `sources` below. Authoring guide: docs/plans/story-authoring.md.
 //
 // A journey, but not Abraham's: his servant goes from Canaan to "the city of Nahor" in Aram-naharaim
-// and brings Rebekah back to Isaac in the Negev. The verse names no city (Nahor is a person); the pin
-// sits on Harran because Laban later lives in Haran (27:43; 29:4–5). Genesis 24 doesn't say where Abraham
+// and brings Rebekah back to Isaac in the Negev. The verse says only "the city of Nahor": the town where
+// Abraham's brother Nahor lived, or possibly a town of that name (Nahur); the pin sits on Harran because
+// Laban later lives in Haran (27:43; 29:4–5). Genesis 24 doesn't say where Abraham
 // sent the servant from; the line starts at Hebron, where chapter 23 leaves him. Verses quote THE JPS
 // TANAKH: Gender-Sensitive Edition (Sefaria). Claim table: docs/plans/2026-09-27-chayei-sarah-story-factcheck.md.
 import type { LngLat, ParshaStory } from '../story'
@@ -15,7 +16,8 @@ const HEBRON: LngLat = [35.10222, 31.525087]
 const MACHPELAH: LngLat = [35.110758, 31.524672]
 /**
  * Nahor (places.json aff43ac): "the city of Nahor" (24:10), pinned at Harran, on the reading that it was
- * Haran, where Laban lives (27:43). The verse itself names no town.
+ * Haran, where Laban lives (27:43). The verse says only "the city of Nahor", which may mean Nahor's town
+ * or a town of that name.
  */
 const NAHOR: LngLat = [39.032778, 36.864444]
 /** The Negeb (places.json a1cb244), a region; the point is illustrative. Where Isaac met Rebekah isn't said. */
@@ -34,6 +36,8 @@ const chayeiSarah: ParshaStory = {
     'Rashi on Genesis 24:57',
     'Rashi on Genesis 24:67',
     'Rashi on Genesis 23:1, 23:2, 23:16, 24:10, 24:39, 24:42, 25:1, 25:9',
+    'Rashbam on Genesis 25:1',
+    'Ibn Ezra on Genesis 25:1',
     'Bereshit Rabbah 58:1, 58:6, 59:9, 60:8, 60:12, 60:16 (as quoted by Rashi)',
     'Pirkei DeRabbi Eliezer 32 (as quoted by Rashi on Genesis 23:2)',
     'Bava Metzia 87a (as quoted by Rashi on Genesis 23:16)',
@@ -61,7 +65,7 @@ const chayeiSarah: ParshaStory = {
       title: 'The life of Sarah',
       body: 'Sarah lives to 127. She dies in Kiriath-arba, now Hebron, in the land of Canaan, and Abraham mourns and weeps for her. The parsha called “the life of Sarah” begins with her death.',
       ref: 'Genesis 23:1–2',
-      note: 'The Hebrew counts her years as “a hundred years and twenty years and seven years.” Rashi on 23:1, from Bereshit Rabbah 58:1, reads each part on its own: at 100 she was as free of sin as at 20, and at 20 as beautiful as at 7. On 23:2 Rashi says Abraham came from Beer-sheba (where 22:19 last left him), and, following Pirkei DeRabbi Eliezer 32, that her death is told right after the binding of Isaac because the news of it was too great a shock for her. The pin marks Tel Rumeida, the tell usually identified with ancient Hebron.',
+      note: 'The Hebrew counts her years as “a hundred years and twenty years and seven years.” Rashi on 23:1, from Bereshit Rabbah 58:1, reads each part on its own: at 100 she was as free of sin as at 20, and at 20 as beautiful as at 7. On 23:2 Rashi says Abraham came from Beer-sheba (where 22:19 last left him). He also says her death is told right after the binding of Isaac because the news of it was too great a shock for her, a teaching found in Pirkei DeRabbi Eliezer 32. The pin marks Tel Rumeida, the tell usually identified with ancient Hebron.',
       act: 'Sarah',
       camera: { center: HEBRON, zoom: 9.6, pitch: 55, bearing: -12 },
       routeTo: 0,
@@ -104,7 +108,7 @@ const chayeiSarah: ParshaStory = {
       title: 'Ten camels to the city of Nahor',
       body: 'The servant sets out with ten of his master’s camels and “all the bounty of his master,” to Aram-naharaim, to the city of Nahor. At evening, when the women come out to draw water, he makes the camels kneel by the well outside the city, and prays.',
       ref: 'Genesis 24:10–12',
-      note: 'Aram-naharaim means “Aram of the two rivers” (Rashi on 24:10: between the Euphrates and the Tigris). The verse doesn’t name the city; it calls it by the name of Nahor, Abraham’s brother (11:27). Later, Rebekah’s brother Laban lives in Haran (27:43; 29:4–5), so the pin marks Harran in southern Turkey, the usual site of Haran. From Hebron that is about 700 km in a straight line; the verses don’t say how long the trip took. Rashi on 24:42, following Sanhedrin 95a, reads the servant’s “I came today” as: he set out and arrived the same day, the road shrinking for him. Lines join the stops in order; the road he took isn’t known.',
+      note: 'Aram-naharaim means “Aram of the two rivers” (Rashi on 24:10: it lies between two rivers). The verse calls it only “the city of Nahor”: the town where Abraham’s brother Nahor (11:27) lived, or possibly a town named Nahor. Later, Rebekah’s brother Laban lives in Haran (27:43; 29:4–5), so the pin marks Harran in southern Turkey, the usual site of Haran. From Hebron that is about 700 km in a straight line; the verses don’t say how long the trip took. Rashi on 24:42, following Sanhedrin 95a, reads the servant’s “I came today” as: he set out and arrived the same day, the road shrinking for him. Lines join the stops in order; the road he took isn’t known.',
       camera: { center: [39.6, 36.8], zoom: 6.4, pitch: 45, bearing: -15 },
       routeTo: 1,
       stop: 2,
@@ -137,7 +141,7 @@ const chayeiSarah: ParshaStory = {
       title: 'The story told twice',
       body: 'Her brother Laban welcomes the servant in. Food is set before him, but he won’t eat until he has told his tale, and he tells the whole story over again, from Abraham’s oath to the well. Laban and Bethuel answer: “The matter was decreed by GOD.”',
       ref: 'Genesis 24:28–51',
-      note: 'Rashi on 24:42 quotes Rabbi Acha (Bereshit Rabbah 60:8): the ordinary conversation of the patriarchs’ servants is more pleasing to God than even the Torah of their children, for the servant’s story is told twice in the Torah, while many important laws are given only by a hint. “GOD” is how the JPS Gender-Sensitive Edition renders God’s four-letter name.',
+      note: 'Rashi on 24:42 quotes Rabbi Acha (Bereshit Rabbah 60:8): the ordinary conversation of the patriarchs’ servants is more pleasing to God than even the Torah of their children, for the servant’s story is told twice in the Torah, while many important laws are given only by a hint. “GOD” is one of the ways the JPS Gender-Sensitive Edition renders God’s four-letter name (it also uses “the ETERNAL”).',
       camera: { center: [39.25, 36.84], zoom: 8.0, pitch: 50, bearing: 20 },
       routeTo: 1,
       stop: 2,
@@ -146,9 +150,9 @@ const chayeiSarah: ParshaStory = {
       kind: 'quote',
       title: 'Will you go with this man? And she said, ‘I will.’',
       hebrew: 'הֲתֵלְכִי עִם־הָאִישׁ הַזֶּה וַתֹּאמֶר אֵלֵךְ',
-      body: 'Her family wanted her to stay ten more days; the servant asked to leave at once. So they asked Rebekah herself. Rashi on 24:57 learns from this that a woman may be married only with her consent.',
+      body: 'Her family wanted her to stay some ten days; the servant asked to leave at once. So they asked Rebekah herself. Rashi on 24:57 learns from this that a woman may be married only with her consent.',
       ref: 'Genesis 24:52–61 · Rashi on Genesis 24:57',
-      note: 'Rashi’s source is Bereshit Rabbah 60:12, which says it of a girl whose father has died. As she leaves with her nurse and her maids, her family blesses her: “O sister! May you grow into thousands of myriads” (24:59–61).',
+      note: 'Rashi’s source is Bereshit Rabbah 60:12, which says it of a girl whose father has died: the same midrash, asking why only her brother and mother speak in 24:55, says Bethuel was struck down in the night. As she leaves with her nurse and her maids, her family blesses her: “O sister! May you grow into thousands of myriads” (24:59–61).',
       camera: { center: NAHOR, zoom: 7.6, pitch: 60, bearing: -8 },
       routeTo: 1,
     },
@@ -170,8 +174,8 @@ const chayeiSarah: ParshaStory = {
       hebrew: 'וַיֶּאֱהָבֶהָ וַיִּנָּחֵם יִצְחָק אַחֲרֵי אִמּוֹ',
       body: 'Isaac brings Rebekah into his mother Sarah’s tent. Rashi on 24:67 says that while Sarah lived, a light burned in her tent from one Shabbat eve to the next; it stopped when she died, and came back with Rebekah.',
       ref: 'Genesis 24:67 · Rashi on Genesis 24:67',
-      note: 'The Hebrew says literally “after his mother.” Rashi, from Bereshit Rabbah 60:16, adds a blessing in the dough and a cloud over the tent: all three stopped at her death and returned when Rebekah came.',
-      camera: { center: NEGEB, zoom: 9.2, pitch: 60, bearing: -10 },
+      note: 'The Hebrew says literally “after his mother.” Rashi, from Bereshit Rabbah 60:16, adds a blessing in the dough and a cloud over the tent: all three stopped at her death and returned when Rebekah came. The verses don’t say where the tent stood; the numbered pin marks the Negev, a region, where Isaac was living (24:62).',
+      camera: { center: [34.98, 31.3], zoom: 9.0, pitch: 60, bearing: -10 },
       routeTo: 2,
     },
     {
@@ -179,7 +183,7 @@ const chayeiSarah: ParshaStory = {
       title: 'Abraham is gathered to his kin',
       body: 'Abraham marries Keturah, who bears him six sons. He leaves all he owns to Isaac and sends his other sons east with gifts. He dies at 175, “old and contented,” and his sons Isaac and Ishmael bury him in the cave of Machpelah, with Sarah.',
       ref: 'Genesis 25:1–11',
-      note: 'Rashi on 25:1, following Bereshit Rabbah, says Keturah is Hagar. On 25:9 he says Isaac is named before Ishmael because Ishmael had repented and let Isaac go first. After Abraham’s death God blesses Isaac, who settles near Beer-lahai-roi (25:11). The parsha ends with Ishmael’s line: twelve chieftains, and his death at 137 (25:12–18). Later the Torah says Isaac, Rebekah and Leah were buried in the same cave (49:31), and Jacob too (50:13).',
+      note: 'Rashi on 25:1, following Bereshit Rabbah, says Keturah is Hagar; Rashbam and Ibn Ezra on 25:1 say she was not. On 25:9 he says Isaac is named before Ishmael because Ishmael had repented and let Isaac go first. After Abraham’s death God blesses Isaac, who settles near Beer-lahai-roi (25:11). The parsha ends with Ishmael’s line: twelve chieftains, and his death at 137 (25:12–18). Later the Torah says Isaac, Rebekah and Leah were buried in the same cave (49:31), and Jacob too (50:13).',
       act: 'Abraham',
       camera: { center: [35.1065, 31.5249], zoom: 13.6, pitch: 35, bearing: 90 },
       routeTo: 2,
@@ -188,7 +192,7 @@ const chayeiSarah: ParshaStory = {
     {
       kind: 'talk',
       title: 'Rebekah was asked, “Will you go with this man?” She said, “I will.” When have you said yes to something new without knowing how it would turn out?',
-      note: 'Numbered pins: Hebron (usual site, Tel Rumeida); the city of Nahor, pinned at Harran on the reading that it was Haran, though the verse doesn’t name the town; and the Negev, a region. Lines join the stops in order; the servant’s road isn’t known, and Genesis 24 doesn’t say where Abraham sent him from.',
+      note: 'Numbered pins: Hebron (usual site, Tel Rumeida); the city of Nahor, pinned at Harran on the reading that it was Haran (it may instead have been a town named Nahor); and the Negev, a region. Lines join the stops in order; the servant’s road isn’t known, and Genesis 24 doesn’t say where Abraham sent him from.',
       camera: { center: REGION, zoom: 4.8, pitch: 25, bearing: 0 },
       routeTo: 2,
     },

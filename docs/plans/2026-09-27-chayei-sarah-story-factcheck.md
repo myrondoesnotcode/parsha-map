@@ -18,7 +18,7 @@ Hebrew on quote cards is the Masoretic text with cantillation removed; no quoted
 | 4 | 1 note | Hebrew counts "a hundred years and twenty years and seven years" | 23:1 Hebrew | Verified |
 | 5 | 1 note | Rashi (from Bereshit Rabbah 58:1): at 100 as free of sin as at 20, at 20 as beautiful as at 7 | Rashi 23:1; BR 58:1 | Verified |
 | 6 | 1 note | Rashi: Abraham came from Beer-sheba; 22:19 last left him there | Rashi 23:2; 22:19 | Verified |
-| 7 | 1 note | Rashi, following PdRE 32: death told after the binding because the news shocked her | Rashi 23:2 (Rosenbaum cites PdRE 32); PdRE 32 tells it | Verified |
+| 7 | 1 note | Rashi: death told after the binding because the news shocked her, a teaching found in PdRE 32 | Rashi 23:2 (Hebrew names no source; Rosenbaum's English cites PdRE 32); PdRE 32 tells it (but has Abraham come from Mount Moriah, so it is now a separate sentence from Beer-sheba) | Verified (reworded 2nd pass) |
 | 8 | 1 note | Pin at Tel Rumeida, the tell usually identified with ancient Hebron | places.json a85151a; Wikipedia "Tel Rumeida" | Verified |
 | 9 | 2 | Quote "I am a resident alien among you; sell me a burial site among you" | 23:4 JPS | Verified (exact) |
 | 10 | 2 | Hebrew גֵּר־וְתוֹשָׁב … עִמָּכֶם | 23:4 Hebrew | Verified |
@@ -43,8 +43,8 @@ Hebrew on quote cards is the Masoretic text with cantillation removed; no quoted
 | 29 | 4 note | Genesis 24 doesn't say where Abraham was living; line starts at Hebron | 24:1–10 (no place named) | Verified |
 | 30 | 5 | Ten of his master's camels and "all the bounty of his master," to Aram-naharaim, the city of Nahor | 24:10 JPS | Verified (quote exact) |
 | 31 | 5 | At evening, when women come to draw water, camels kneel by the well outside the city; he prays | 24:11–12 | Verified |
-| 32 | 5 note | Aram-naharaim "Aram of the two rivers"; Rashi: between Euphrates and Tigris | Rashi 24:10 | Verified |
-| 33 | 5 note | The verse doesn't name the city; it bears the name of Nahor, Abraham's brother | 24:10; 11:27 | Verified |
+| 32 | 5 note | Aram-naharaim "Aram of the two rivers"; Rashi: it lies between two rivers | Rashi 24:10 Hebrew בֵּין שְׁתֵּי נְהָרוֹת יוֹשֶׁבֶת (the rivers' names are only in the English translation) | Fixed 2nd pass (was "between the Euphrates and the Tigris") |
+| 33 | 5 note | The verse calls it only "the city of Nahor": Nahor's town (11:27), or possibly a town named Nahor | 24:10 אֶל־עִיר נָחוֹר; places.json aff43ac ("or the nearby town of Nahur"); Wikipedia "Lech-Lecha" (city name Nahur) | Fixed 2nd pass (was "the verse doesn't name the city"); same fix in the talk note and file comments |
 | 34 | 5 note | Laban later lives in Haran | 27:43; 29:4–5 | Verified |
 | 35 | 5 note | Pin at Harran in southern Turkey, usual site of Haran | places.json aff43ac (low; description "probably Haran itself…"); same point as lech-lecha's Haran | Verified; hedged "probably Haran" on screen |
 | 36 | 5 note | About 700 km from Hebron in a straight line | Haversine between places.json pins: 695 km | Verified |
@@ -58,11 +58,11 @@ Hebrew on quote cards is the Masoretic text with cantillation removed; no quoted
 | 44 | 8 | Laban welcomes him in; won't eat until he has told his tale; retells from the oath to the well | 24:29–49 | Verified |
 | 45 | 8 | Laban and Bethuel: "The matter was decreed by GOD" | 24:50 JPS | Verified (exact) |
 | 46 | 8 note | Rashi quotes R. Acha (BR 60:8): servants' conversation more pleasing than the children's Torah; story told twice, many laws only hinted | Rashi 24:42; BR 60:8 | Verified |
-| 47 | 8 note | "GOD" renders the four-letter name in the JPS Gender-Sensitive Edition | JPS usage (ETERNAL/GOD) | Verified |
+| 47 | 8 note | "GOD" is one of the ways the JPS Gender-Sensitive Edition renders the four-letter name; it also uses "the ETERNAL" | JPS GS 24:50 "GOD"; 24:3, 7, 12, 27 "the ETERNAL" | Fixed 2nd pass (was "is how") |
 | 48 | 9 | Quote "Will you go with this man? And she said, 'I will.'" + Hebrew | 24:58 | Verified (JPS wording; inner quotation marks adapted to the card's own quote marks) |
-| 49 | 9 | Family wanted ten more days; servant asked to leave at once; they asked Rebekah | 24:55–57 | Verified |
+| 49 | 9 | Family wanted her to stay some ten days; servant asked to leave at once; they asked Rebekah | 24:55–57 (JPS "some ten days", note: lit. "days or ten") | Fixed 2nd pass (was "ten more days") |
 | 50 | 9 | Rashi 24:57: a woman is married only with her consent | Rashi 24:57 | Verified |
-| 51 | 9 note | Rashi's source BR 60:12 says it of a fatherless girl | BR 60:12: "an orphan girl only with her consent" | Verified |
+| 51 | 9 note | Rashi's source BR 60:12 says it of a fatherless girl; the same midrash, asking why only her brother and mother speak in 24:55, says Bethuel was struck down in the night | BR 60:12: "an orphan girl only with her consent"; "Where was Betuel? … stricken down overnight" (וְנִגַּף בַּלַּיְלָה) | Verified; Bethuel clause added 2nd pass |
 | 52 | 9 note | Nurse and maids; blessing "O sister! May you grow into thousands of myriads" | 24:59–61 | Verified |
 | 53 | 10 | Isaac lives in the Negev, has just come back from near Beer-lahai-roi | 24:62 | Verified |
 | 54 | 10 | Toward evening walks in the field, sees camels; Rebekah alights; "That is my master"; she veils | 24:63–65 | Verified |
@@ -75,11 +75,12 @@ Hebrew on quote cards is the Masoretic text with cantillation removed; no quoted
 | 61 | 11 | Rashi: while Sarah lived a light burned from one Shabbat eve to the next; stopped at her death; came back with Rebekah | Rashi 24:67; BR 60:16 ("lamp kindled from Shabbat night until Shabbat night") | Verified |
 | 62 | 11 note | Hebrew literally "after his mother" | אַחֲרֵי אִמּוֹ | Verified |
 | 63 | 11 note | Also blessing in the dough and cloud over the tent; all stopped, all returned | Rashi 24:67 | Verified |
+| 63a | 11 note | The verses don't say where the tent stood; the pin marks the Negev, a region, where Isaac was living | 24:62, 24:67 | Added 2nd pass; camera moved to [34.98, 31.3] z9.0 so both pins show with hedges |
 | 64 | 12 | Keturah bears six sons | 25:1–2 | Verified |
 | 65 | 12 | Leaves all to Isaac; other sons sent east with gifts | 25:5–6 | Verified |
 | 66 | 12 | Dies at 175, "old and contented" | 25:7–8 JPS | Verified |
 | 67 | 12 | Isaac and Ishmael bury him in the cave of Machpelah, with Sarah | 25:9–10 | Verified |
-| 68 | 12 note | Rashi 25:1 (from Bereshit Rabbah): Keturah is Hagar | Rashi 25:1 | Verified |
+| 68 | 12 note | Rashi 25:1 (from Bereshit Rabbah): Keturah is Hagar; Rashbam and Ibn Ezra on 25:1 say she was not | Rashi 25:1; Rashbam 25:1 "לפי הפשט אין זו הגר"; Ibn Ezra 25:1 "איננה הגר" | Verified; other view added 2nd pass |
 | 69 | 12 note | Rashi 25:9: Ishmael repented and let Isaac go first | Rashi 25:9 | Verified |
 | 70 | 12 note | God blesses Isaac; he settles near Beer-lahai-roi | 25:11 | Verified |
 | 71 | 12 note | Ishmael: twelve chieftains; dies at 137 | 25:16–17 | Verified |
@@ -91,3 +92,19 @@ Hebrew on quote cards is the Masoretic text with cantillation removed; no quoted
 **Route pins.** Hebron a85151a (medium, Tel Rumeida, "usual site"); Nahor aff43ac (low, at Harran, "probably Haran"); Negeb a1cb244 (medium, region, "a region"). Spots: Machpelah ae00861 (low, "traditional site"); Beer-lahai-roi a70e842 (low, "site unknown"). All points equal their places.json pins.
 
 **Unverified.** Nothing left on the cards. Bereshit Rabbah section numbers are those of Sefaria's 2022 edition, which match the numbers Rashi's translators give.
+
+## Second pass (independent 4-lens fact-check, 2026-09-27)
+
+Every finding was re-checked against Sefaria (Hebrew and English) or the named source before any change.
+
+**Story, fixed:** rows 7, 32, 33, 47, 49, 51, 63a, 68 above; talk-card note and file comments on "the city of Nahor".
+
+**Read tab (`parshaList.json`), fixed:** "so that no one could dispute the title" removed (no motive in 23:9–16); "first real estate transaction in the Bible" → "first purchase of land the Torah tells of"; "deep into Mesopotamia" → "to Aram-naharaim, in northern Mesopotamia" (Wikipedia "Aram-Naharaim": the great bend of the Euphrates); "answers exactly as he asked" → "does just what he prayed for" (24:14 vs 24:18–19); "sees her approaching across the field" → he sees the camels (24:63), then brings her in; "is ironic" → takes its name from its opening words; Machpelah "all the patriarchs and matriarchs" → three of the four matriarchs, Rachel buried on the road to Ephrath (35:19; 49:31; 50:13); "told twice in full" → "told twice … at length".
+
+**Era card (`timeline.json`, shared by the Middle Bronze parshiot):** Hyksos kings "of Canaanite origin" → "of Levantine (West Semitic) origin" (Wikipedia "Hyksos").
+
+**Map tab (`processGeodata.ts` DESCRIBED):** a43f60f "Mesopotamia" now reads as a region whose point at Harran is illustrative.
+
+**Map hedges:** after ccbb023, cards 2, 9, 11 and 12 show "usual site", "probably Haran" and "a region" (screenshots). The finale shows names only by design.
+
+**Not changed:** `approximateDateBCE` 1900–1700 (drives the classic UI's year-to-parsha mapping across all Genesis parshiot; changing one entry would break it); the History tab's era-card label and date hedge, and the finale's "pin sites are approximate" tag (app code); a `worldEvents.json` window (not in scope); Hammurabi's chronology (optional; shown with "c."); moving access history out of "In Jewish tradition" (a heading choice, not a factual error). The Read tab's "first time the Torah tells of anyone mourning" and "first time the Torah uses 'love' for a marriage" were not flagged and not re-verified here.

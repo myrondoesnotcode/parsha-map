@@ -423,6 +423,7 @@ const DESCRIBED: Record<string, { name: string; description: string }> = {
   a60f092: { name: 'Goshen 1', description: 'a region in the eastern Nile Delta; exact extent uncertain' },
   a079b21: { name: 'Rameses', description: "Pi-Ramesses, Ramesses II's Delta capital (13th century BCE), at Qantir beside Tell el-Dab'a (ancient Avaris); Genesis 47:11 speaks of \"the region of Rameses\"" },
   ab89be9: { name: 'Ararat', description: 'Urartu: Genesis 8:4 names only "the mountains of Ararat"; the pin shows the peak now called Mount Ararat' },
+  a43f60f: { name: 'Mesopotamia', description: 'Aram-naharaim, "Aram of the two rivers" (Genesis 24:10): a region along the great bend of the Euphrates, not one site; the point, at Harran, is illustrative' },
   aff43ac: { name: 'Nahor', description: '"the city of Nahor" (Genesis 24:10): probably Haran itself, where Laban lives (27:43), or the nearby town of Nahur' },
   a98e4d7: { name: 'Sidon', description: 'Saida, Lebanon' },
   // Genesis 2:14: the Tigris "flows east of Asshur". Assur lies on the Tigris's west bank, so the verse is tied to it (below).
