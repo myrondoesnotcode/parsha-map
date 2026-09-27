@@ -57,8 +57,8 @@
     "id": "a7560c2",
     "name": "Abronah",
     "alternateNames": [],
-    "latitude": 29.6131,
-    "longitude": 34.84979,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -68,7 +68,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "in Qa’an Naqb"
+    "description": "a camp between Jotbathah and Ezion-geber (Numbers 33:34-35); site unknown",
+    "locationNote": "a camp between Jotbathah and Ezion-geber (Numbers 33:34-35); site unknown"
   },
   {
     "id": "a8b7a6b",
@@ -251,8 +252,8 @@
     "id": "a32397f",
     "name": "Alush",
     "alternateNames": [],
-    "latitude": 28.770311,
-    "longitude": 33.767493,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -262,7 +263,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "along Wadi el Esh"
+    "description": "a camp between Dophkah and Rephidim (Numbers 33:13-14); site unknown",
+    "locationNote": "a camp between Dophkah and Rephidim (Numbers 33:13-14); site unknown"
   },
   {
     "id": "ab95484",
@@ -270,7 +272,7 @@
     "alternateNames": [],
     "latitude": 30.648333,
     "longitude": 34.422222,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "region",
     "verses": [
       "Exodus 17:8",
@@ -281,8 +283,10 @@
       "Exodus 17:14",
       "Exodus 17:16",
       "Numbers 13:29",
+      "Numbers 14:25",
+      "Numbers 14:43",
+      "Numbers 14:45",
       "Numbers 24:20",
-      "Numbers 24:24",
       "Deuteronomy 25:17",
       "Deuteronomy 25:19",
       "Judges 3:13",
@@ -307,7 +311,8 @@
       "shelach",
       "balak",
       "ki-teitzei"
-    ]
+    ],
+    "description": "the Amalekites, a people of the Negeb (Numbers 13:29), not one place; the pin marks only the general area, on the same point as Kadesh-barnea"
   },
   {
     "id": "ac5cab3",
@@ -323,7 +328,7 @@
     "parshas": [
       "balak"
     ],
-    "description": "between Aleppo and Carchemish"
+    "description": "Amaw, a land between Aleppo and Carchemish known from the Idrimi inscription; some translations (RSV, NRSV) read it in Numbers 22:5, where the Hebrew is usually translated \"the land of his kinsfolk\""
   },
   {
     "id": "a6046fa",
@@ -529,31 +534,24 @@
       "chukat",
       "masei"
     ],
-    "description": "Tel Malhata"
+    "description": "the Canaanite city of Arad in the Negeb (Numbers 21:1); site debated — Tel Arad has no Middle or Late Bronze Age remains, so some place Canaanite Arad at Tel Malhata, shown here"
   },
   {
-    "id": "a3e66cd",
-    "name": "Aram",
+    "id": "a3c7b44",
+    "name": "Aram-naharaim",
     "alternateNames": [],
-    "latitude": 33.511112,
-    "longitude": 36.30639,
+    "latitude": 36.864444,
+    "longitude": 39.032778,
     "confidence": "medium",
     "type": "region",
     "verses": [
       "Numbers 23:7",
-      "Judges 18:7",
-      "Judges 18:28",
-      "2 Samuel 8:6",
-      "2 Samuel 15:8",
-      "2 Kings 5:18",
-      "2 Kings 6:14",
-      "2 Kings 8:15",
-      "1 Chronicles 2:23",
-      "Hosea 12:12",
-      "Zechariah 9:1"
+      "Deuteronomy 23:5",
+      "Psalms 60:1"
     ],
     "parshas": [
-      "balak"
+      "balak",
+      "ki-teitzei"
     ]
   },
   {
@@ -708,7 +706,7 @@
       "bereshit",
       "balak"
     ],
-    "description": "the city of Assur, on the west bank of the Tigris; Genesis 2:14 says the Tigris flows east of Asshur, which may mean the city or the land of Assyria"
+    "description": "the city of Assur, on the west bank of the Tigris, for a time the capital of Assyria. Genesis 2:14 says the Tigris flows east of Asshur, which may mean the city or the land of Assyria; in Balaam's oracle (Numbers 24:22, 24) Asshur is the nation, Assyria"
   },
   {
     "id": "a3d1321",
@@ -1001,14 +999,14 @@
     "parshas": [
       "vaetchanan"
     ],
-    "description": "another name for Peor"
+    "description": "the Baal of Peor, the god Israel worshipped at Peor (Numbers 25:3), and the affair there, which Deuteronomy 4:3 recalls; the pin marks the Peor area"
   },
   {
     "id": "a22663b",
     "name": "Baal-zephon",
     "alternateNames": [],
-    "latitude": 31.044722,
-    "longitude": 32.66,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -1020,7 +1018,8 @@
       "beshalach",
       "masei"
     ],
-    "description": "Al Mahamdiyah"
+    "description": "faced the camp by the sea before the crossing (Exodus 14:2; Numbers 33:7); site unknown. Proposals range from the Mediterranean coast to the Gulf of Suez, depending on the route assumed",
+    "locationNote": "faced the camp by the sea before the crossing (Exodus 14:2; Numbers 33:7); site unknown. Proposals range from the Mediterranean coast to the Gulf of Suez, depending on the route assumed"
   },
   {
     "id": "ab8fdbc",
@@ -1062,7 +1061,7 @@
     "alternateNames": [],
     "latitude": 31.731791,
     "longitude": 35.740891,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 22:41",
@@ -1185,8 +1184,8 @@
     "id": "a280f83",
     "name": "Beeroth Bene-jaakan",
     "alternateNames": [],
-    "latitude": 30.791764,
-    "longitude": 34.472522,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -1195,7 +1194,8 @@
     "parshas": [
       "ekev"
     ],
-    "description": "another name for Bene-jaakan"
+    "description": "\"the wells of Bene-jaakan\", the camp before Moserah (Deuteronomy 10:6; Numbers 33:31-32); site unknown",
+    "locationNote": "\"the wells of Bene-jaakan\", the camp before Moserah (Deuteronomy 10:6; Numbers 33:31-32); site unknown"
   },
   {
     "id": "a075d61",
@@ -1228,8 +1228,8 @@
     "id": "a0fe2be",
     "name": "Bene-jaakan",
     "alternateNames": [],
-    "latitude": 30.791764,
-    "longitude": 34.472522,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -1239,7 +1239,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Birein"
+    "description": "a camp between Moseroth and Hor-haggidgad (Numbers 33:31-32); Deuteronomy 10:6 calls it Beeroth-bene-jaakan. Site unknown",
+    "locationNote": "a camp between Moseroth and Hor-haggidgad (Numbers 33:31-32); Deuteronomy 10:6 calls it Beeroth-bene-jaakan. Site unknown"
   },
   {
     "id": "a882ef5",
@@ -1247,7 +1248,7 @@
     "alternateNames": [],
     "latitude": 31.679501,
     "longitude": 35.735321,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 32:3"
@@ -1289,7 +1290,7 @@
     "parshas": [
       "matot"
     ],
-    "description": "Tall er Rama"
+    "description": "Beth-haran (Numbers 32:36), called Beth-haram in Joshua 13:27; site uncertain — the pin marks Tall er-Rama; Tall Iktanu is the other proposal"
   },
   {
     "id": "a30f37b",
@@ -1669,7 +1670,6 @@
       "Numbers 35:10",
       "Numbers 35:14",
       "Deuteronomy 1:7",
-      "Deuteronomy 2:12",
       "Deuteronomy 32:49",
       "Joshua 5:12",
       "Joshua 11:3",
@@ -1888,7 +1888,7 @@
     "parshas": [
       "devarim"
     ],
-    "description": "Tel Kinrot"
+    "description": "Kinneret: in Deuteronomy 3:17 the Sea of Galilee or the town on its shore; the pin marks the town's mound, Tel Kinrot"
   },
   {
     "id": "a529e92",
@@ -2007,6 +2007,7 @@
     "type": "settlement",
     "verses": [
       "Genesis 14:14",
+      "Deuteronomy 34:1",
       "Joshua 19:47",
       "Judges 18:7",
       "Judges 18:14",
@@ -2033,7 +2034,8 @@
       "Amos 8:14"
     ],
     "parshas": [
-      "lech-lecha"
+      "lech-lecha",
+      "vzot-habracha"
     ],
     "description": "Tel Dan"
   },
@@ -2068,8 +2070,8 @@
     "id": "afcb77d",
     "name": "Dizahab",
     "alternateNames": [],
-    "latitude": 31.806601,
-    "longitude": 36.050752,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -2078,7 +2080,8 @@
     "parshas": [
       "devarim"
     ],
-    "description": "Ad Duhaybah"
+    "description": "Di-zahab (Deuteronomy 1:1); site unknown. Onkelos and Rashi read the name (\"enough gold\") as an allusion to the golden calf",
+    "locationNote": "Di-zahab (Deuteronomy 1:1); site unknown. Onkelos and Rashi read the name (\"enough gold\") as an allusion to the golden calf"
   },
   {
     "id": "a070c7b",
@@ -2095,7 +2098,7 @@
     "parshas": [
       "masei"
     ],
-    "description": "Serabit el Khadim"
+    "description": "a camp between the wilderness of Sin and Alush (Numbers 33:12-13); site unknown — the pin marks one proposal, the Egyptian turquoise mines at Serabit el-Khadim, which assumes a southern route through Sinai"
   },
   {
     "id": "ab635e4",
@@ -2356,6 +2359,32 @@
     "confidence": "medium",
     "type": "region",
     "verses": [
+      "Jude 1:5",
+      "Acts 2:10",
+      "Matt 2:13",
+      "Matt 2:14",
+      "Matt 2:15",
+      "Matt 2:19",
+      "Heb 3:16",
+      "Acts 7:9",
+      "Acts 7:10",
+      "Acts 7:11",
+      "Acts 7:12",
+      "Acts 7:14",
+      "Acts 7:15",
+      "Acts 7:17",
+      "Acts 7:18",
+      "Acts 7:34",
+      "Acts 7:36",
+      "Acts 7:39",
+      "Acts 7:40",
+      "Heb 8:9",
+      "Rev 11:8",
+      "Heb 11:22",
+      "Heb 11:26",
+      "Heb 11:27",
+      "Acts 13:17",
+      "Acts 18:24",
       "Genesis 12:10",
       "Genesis 12:11",
       "Genesis 12:14",
@@ -2584,12 +2613,9 @@
       "Numbers 3:13",
       "Numbers 8:17",
       "Numbers 9:1",
-      "Numbers 10:11",
-      "Numbers 11:4",
       "Numbers 11:5",
       "Numbers 11:18",
       "Numbers 11:20",
-      "Numbers 11:34",
       "Numbers 13:22",
       "Numbers 14:2",
       "Numbers 14:3",
@@ -2611,9 +2637,9 @@
       "Numbers 26:59",
       "Numbers 32:11",
       "Numbers 33:1",
+      "Numbers 33:3",
       "Numbers 33:4",
       "Numbers 33:38",
-      "Deuteronomy 1:3",
       "Deuteronomy 1:27",
       "Deuteronomy 1:30",
       "Deuteronomy 4:20",
@@ -2630,12 +2656,10 @@
       "Deuteronomy 7:8",
       "Deuteronomy 7:15",
       "Deuteronomy 7:18",
-      "Deuteronomy 7:19",
       "Deuteronomy 8:14",
       "Deuteronomy 9:7",
       "Deuteronomy 9:12",
       "Deuteronomy 9:26",
-      "Deuteronomy 9:29",
       "Deuteronomy 10:19",
       "Deuteronomy 10:22",
       "Deuteronomy 11:3",
@@ -2987,33 +3011,7 @@
       "Zechariah 10:10",
       "Zechariah 10:11",
       "Zechariah 14:18",
-      "Zechariah 14:19",
-      "Matt 2:13",
-      "Matt 2:14",
-      "Matt 2:15",
-      "Matt 2:19",
-      "Acts 2:10",
-      "Acts 7:9",
-      "Acts 7:10",
-      "Acts 7:11",
-      "Acts 7:12",
-      "Acts 7:14",
-      "Acts 7:15",
-      "Acts 7:17",
-      "Acts 7:18",
-      "Acts 7:34",
-      "Acts 7:36",
-      "Acts 7:39",
-      "Acts 7:40",
-      "Acts 13:17",
-      "Acts 18:24",
-      "Heb 3:16",
-      "Heb 8:9",
-      "Heb 11:22",
-      "Heb 11:26",
-      "Heb 11:27",
-      "Jude 1:5",
-      "Rev 11:8"
+      "Zechariah 14:19"
     ],
     "parshas": [
       "lech-lecha",
@@ -3127,7 +3125,7 @@
     "latitude": 29.530676,
     "longitude": 34.999999,
     "confidence": "low",
-    "type": "island",
+    "type": "settlement",
     "verses": [
       "Deuteronomy 2:8",
       "1 Kings 9:26",
@@ -3179,7 +3177,7 @@
       "beshalach",
       "masei"
     ],
-    "description": "along Wadi Gharandal"
+    "description": "an oasis with twelve springs and seventy palms (Exodus 15:27); site uncertain — the pin marks the usual identification, Wadi Gharandal in western Sinai"
   },
   {
     "id": "a6f4a6d",
@@ -3272,8 +3270,8 @@
     "id": "a27d0e0",
     "name": "Etham",
     "alternateNames": [],
-    "latitude": 30.85,
-    "longitude": 32.316667,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -3286,7 +3284,8 @@
       "beshalach",
       "masei"
     ],
-    "description": "Al Qantarah"
+    "description": "a camp \"on the edge of the wilderness\" (Exodus 13:20; Numbers 33:6); site unknown",
+    "locationNote": "a camp \"on the edge of the wilderness\" (Exodus 13:20; Numbers 33:6); site unknown"
   },
   {
     "id": "a62dec4",
@@ -3356,10 +3355,10 @@
     "id": "a8e53d5",
     "name": "Ezion-geber",
     "alternateNames": [],
-    "latitude": 29.530676,
-    "longitude": 34.999999,
+    "latitude": 29.547181,
+    "longitude": 34.980258,
     "confidence": "low",
-    "type": "island",
+    "type": "settlement",
     "verses": [
       "Numbers 33:35",
       "Numbers 33:36",
@@ -3373,7 +3372,7 @@
       "masei",
       "devarim"
     ],
-    "description": "another name for Elath"
+    "description": "a port at the head of the Gulf of Aqaba, listed beside Elath (Deuteronomy 2:8) and \"near Eloth\" (1 Kings 9:26); site debated — the pin marks Tell el-Kheleifeh; Pharaoh's Island is another proposal"
   },
   {
     "id": "aa8edd2",
@@ -3474,7 +3473,6 @@
       "Numbers 32:29",
       "Numbers 32:39",
       "Numbers 32:40",
-      "Numbers 32:41",
       "Deuteronomy 2:36",
       "Deuteronomy 3:10",
       "Deuteronomy 3:12",
@@ -3565,8 +3563,8 @@
     "id": "a84a509",
     "name": "Gilgal 4",
     "alternateNames": [],
-    "latitude": 32.030556,
-    "longitude": 35.225,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -3574,7 +3572,9 @@
     ],
     "parshas": [
       "reeh"
-    ]
+    ],
+    "locationNote": "the Gilgal near Mount Gerizim and Mount Ebal, \"by the terebinths of Moreh\" (Deuteronomy 11:29-30); site unknown",
+    "description": "the Gilgal near Mount Gerizim and Mount Ebal, \"by the terebinths of Moreh\" (Deuteronomy 11:29-30); site unknown"
   },
   {
     "id": "a9796ee",
@@ -3760,8 +3760,8 @@
     "id": "a73af5f",
     "name": "Haradah",
     "alternateNames": [],
-    "latitude": 30.359167,
-    "longitude": 34.4425,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -3771,7 +3771,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Jebel Araif en Nakah"
+    "description": "a camp between Mount Shepher and Makheloth (Numbers 33:24-25); site unknown",
+    "locationNote": "a camp between Mount Shepher and Makheloth (Numbers 33:24-25); site unknown"
   },
   {
     "id": "a6d9af3",
@@ -3807,8 +3808,8 @@
     "id": "aaa8a88",
     "name": "Hashmonah",
     "alternateNames": [],
-    "latitude": 30.832057,
-    "longitude": 35.056872,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -3818,7 +3819,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Moseroth"
+    "description": "a camp between Mithkah and Moseroth (Numbers 33:29-30); site unknown",
+    "locationNote": "a camp between Mithkah and Moseroth (Numbers 33:29-30); site unknown"
   },
   {
     "id": "ad7e819",
@@ -3859,7 +3861,7 @@
     "alternateNames": [],
     "latitude": 32.5876,
     "longitude": 35.7256,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "region",
     "verses": [
       "Numbers 32:41",
@@ -3872,7 +3874,8 @@
     "parshas": [
       "matot",
       "devarim"
-    ]
+    ],
+    "description": "the villages of Jair, in Gilead (Numbers 32:40-41); Deuteronomy 3:14 links them with Argob in Bashan. Exact area uncertain"
   },
   {
     "id": "a3f301c",
@@ -3936,7 +3939,6 @@
     "type": "settlement",
     "verses": [
       "Numbers 11:35",
-      "Numbers 12:1",
       "Numbers 12:16",
       "Numbers 33:17",
       "Numbers 33:18",
@@ -4127,8 +4129,8 @@
     "id": "a5e36e6",
     "name": "Hor-haggidgad",
     "alternateNames": [],
-    "latitude": 29.85878,
-    "longitude": 35.0965,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -4140,7 +4142,8 @@
       "masei",
       "ekev"
     ],
-    "description": "Et Taba"
+    "description": "a camp between Bene-jaakan and Jotbathah (Numbers 33:32-33), called Gudgod in Deuteronomy 10:7; site unknown",
+    "locationNote": "a camp between Bene-jaakan and Jotbathah (Numbers 33:32-33), called Gudgod in Deuteronomy 10:7; site unknown"
   },
   {
     "id": "ada25df",
@@ -4261,7 +4264,6 @@
     "confidence": "low",
     "type": "settlement",
     "verses": [
-      "Numbers 21:24",
       "Numbers 21:32",
       "Numbers 32:1",
       "Numbers 32:3",
@@ -4365,27 +4367,6 @@
     "description": "Tell es Sultan"
   },
   {
-    "id": "ad41f6e",
-    "name": "Jeshimon",
-    "alternateNames": [],
-    "latitude": 31.4703,
-    "longitude": 35.2228,
-    "confidence": "medium",
-    "type": "region",
-    "verses": [
-      "Numbers 21:20",
-      "Numbers 23:28",
-      "1 Samuel 23:19",
-      "1 Samuel 23:24",
-      "1 Samuel 26:1",
-      "1 Samuel 26:3"
-    ],
-    "parshas": [
-      "chukat",
-      "balak"
-    ]
-  },
-  {
     "id": "acf6e00",
     "name": "Jogbehah",
     "alternateNames": [],
@@ -4422,7 +4403,6 @@
       "Numbers 32:5",
       "Numbers 32:19",
       "Numbers 32:21",
-      "Numbers 32:22",
       "Numbers 32:29",
       "Numbers 32:32",
       "Numbers 33:48",
@@ -4440,13 +4420,9 @@
       "Deuteronomy 2:29",
       "Deuteronomy 3:8",
       "Deuteronomy 3:17",
-      "Deuteronomy 3:18",
       "Deuteronomy 3:20",
-      "Deuteronomy 3:21",
       "Deuteronomy 3:25",
       "Deuteronomy 3:27",
-      "Deuteronomy 3:28",
-      "Deuteronomy 4:14",
       "Deuteronomy 4:21",
       "Deuteronomy 4:22",
       "Deuteronomy 4:26",
@@ -4454,10 +4430,7 @@
       "Deuteronomy 4:46",
       "Deuteronomy 4:47",
       "Deuteronomy 4:49",
-      "Deuteronomy 6:1",
       "Deuteronomy 9:1",
-      "Deuteronomy 11:8",
-      "Deuteronomy 11:11",
       "Deuteronomy 11:30",
       "Deuteronomy 11:31",
       "Deuteronomy 12:10",
@@ -4673,7 +4646,7 @@
       "masei",
       "ekev"
     ],
-    "description": "Ein Yotvata"
+    "description": "a camp between Hor-haggidgad and Abronah (Numbers 33:33-34), \"a region of running brooks\" (Deuteronomy 10:7); site uncertain — the pin marks Ein Yotvata in the Arabah; Taba is another proposal"
   },
   {
     "id": "ac2cef0",
@@ -4720,24 +4693,7 @@
       "devarim",
       "ekev"
     ],
-    "description": "Ain el Qudeirat"
-  },
-  {
-    "id": "a765bd8",
-    "name": "Kain",
-    "alternateNames": [],
-    "latitude": 31.49627,
-    "longitude": 35.15154,
-    "confidence": "low",
-    "type": "settlement",
-    "verses": [
-      "Numbers 24:22",
-      "Joshua 15:57"
-    ],
-    "parshas": [
-      "balak"
-    ],
-    "description": "Khirbet Bani Dar"
+    "description": "Kadesh, also Kadesh-barnea; the pin marks the most common identification, the oasis of Ain el-Qudeirat in north-eastern Sinai. The site is not certain, and a minority think the Bible speaks of two places named Kadesh"
   },
   {
     "id": "a416b43",
@@ -4762,8 +4718,8 @@
     "id": "a32d25a",
     "name": "Kehelathah",
     "alternateNames": [],
-    "latitude": 30.193056,
-    "longitude": 34.421111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -4773,7 +4729,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Kuntillet Ajrud"
+    "description": "a camp between Rissah and Mount Shepher (Numbers 33:22-23); site unknown",
+    "locationNote": "a camp between Rissah and Mount Shepher (Numbers 33:22-23); site unknown"
   },
   {
     "id": "a4f650b",
@@ -4796,8 +4753,8 @@
     "id": "ae7836a",
     "name": "Kibroth-hattaavah",
     "alternateNames": [],
-    "latitude": 28.70667,
-    "longitude": 34.04194,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -4812,7 +4769,8 @@
       "masei",
       "ekev"
     ],
-    "description": "along Wadi Sa’l"
+    "description": "\"the graves of craving\", a camp between the wilderness of Sinai and Hazeroth (Numbers 11:34-35; 33:16-17); site unknown",
+    "locationNote": "\"the graves of craving\", a camp between the wilderness of Sinai and Hazeroth (Numbers 11:34-35; 33:16-17); site unknown"
   },
   {
     "id": "a057d59",
@@ -4851,8 +4809,8 @@
     "id": "aeb19d6",
     "name": "Kiriath-huzoth",
     "alternateNames": [],
-    "latitude": 31.502236,
-    "longitude": 35.776574,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -4861,7 +4819,8 @@
     "parshas": [
       "balak"
     ],
-    "description": "within 10 km of Dibon"
+    "description": "a town of Moab where Balak brought Balaam (Numbers 22:39); site unknown",
+    "locationNote": "a town of Moab where Balak brought Balaam (Numbers 22:39); site unknown"
   },
   {
     "id": "ad54201",
@@ -4898,14 +4857,14 @@
     "parshas": [
       "balak"
     ],
-    "description": "another name for Cyprus"
+    "description": "Kition on Cyprus, and by extension Cyprus and the western coastlands; Onkelos and Rashi read Kittim in Numbers 24:24 as Rome"
   },
   {
     "id": "ad763b1",
     "name": "Laban",
     "alternateNames": [],
-    "latitude": 31.23194,
-    "longitude": 34.10667,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -4914,7 +4873,8 @@
     "parshas": [
       "devarim"
     ],
-    "description": "Tel Abu Seleimeh"
+    "description": "named in Deuteronomy 1:1; site unknown. Rashi, following the Sifrei and Onkelos, reads the names in this verse as allusions to Israel's sins",
+    "locationNote": "named in Deuteronomy 1:1; site unknown. Rashi, following the Sifrei and Onkelos, reads the names in this verse as allusions to Israel's sins"
   },
   {
     "id": "adaef13",
@@ -5037,8 +4997,8 @@
     "id": "a3e94bd",
     "name": "Libnah 2",
     "alternateNames": [],
-    "latitude": 31.23194,
-    "longitude": 34.10667,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5048,7 +5008,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "another name for Laban"
+    "description": "a camp between Rimmon-perez and Rissah (Numbers 33:20-21); site unknown",
+    "locationNote": "a camp between Rimmon-perez and Rissah (Numbers 33:20-21); site unknown"
   },
   {
     "id": "a397042",
@@ -5130,8 +5091,8 @@
     "id": "ac1fbba",
     "name": "Makheloth",
     "alternateNames": [],
-    "latitude": 30.193056,
-    "longitude": 34.421111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5141,7 +5102,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Kuntillet Ajrud"
+    "description": "a camp between Haradah and Tahath (Numbers 33:25-26); site unknown",
+    "locationNote": "a camp between Haradah and Tahath (Numbers 33:25-26); site unknown"
   },
   {
     "id": "aeb9e97",
@@ -5174,14 +5136,13 @@
     "id": "ad3970d",
     "name": "Marah",
     "alternateNames": [],
-    "latitude": 29.876944,
-    "longitude": 32.658333,
+    "latitude": 29.34604,
+    "longitude": 32.94284,
     "confidence": "low",
     "type": "body of water",
     "verses": [
       "Exodus 15:23",
       "Exodus 15:25",
-      "Exodus 15:27",
       "Numbers 33:8",
       "Numbers 33:9"
     ],
@@ -5189,7 +5150,7 @@
       "beshalach",
       "masei"
     ],
-    "description": "Uyun Musa"
+    "description": "where the water was bitter, three days into the wilderness after the sea (Exodus 15:23; Numbers 33:8); site unknown — the pin marks the traditional identification, Ain Hawarah in western Sinai"
   },
   {
     "id": "a57e0a0",
@@ -5274,14 +5235,13 @@
     "alternateNames": [],
     "latitude": 30.648333,
     "longitude": 34.422222,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 20:13",
       "Numbers 20:24",
       "Numbers 27:14",
       "Deuteronomy 32:51",
-      "Deuteronomy 33:2",
       "Psalms 81:7",
       "Psalms 106:32",
       "Ezekiel 47:19",
@@ -5290,10 +5250,9 @@
     "parshas": [
       "chukat",
       "pinchas",
-      "haazinu",
-      "vzot-habracha"
+      "haazinu"
     ],
-    "description": "another name for Kadesh-barnea"
+    "description": "the waters of Meribah at Kadesh, in the wilderness of Zin (Numbers 20:13; 27:14); shown at the Kadesh-barnea pin, Ain el-Qudeirat, the most common identification"
   },
   {
     "id": "a65db0f",
@@ -5301,7 +5260,7 @@
     "alternateNames": [],
     "latitude": 28.623056,
     "longitude": 33.880278,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "campsite",
     "verses": [
       "Exodus 17:7",
@@ -5312,7 +5271,7 @@
       "beshalach",
       "vzot-habracha"
     ],
-    "description": "within 500 m of Rephidim"
+    "description": "the waters of Meribah at Rephidim, the place also named Massah (Exodus 17:7); site unknown, shown at the Rephidim pin. Rashi also reads Deuteronomy 33:8 as the Meribah at Kadesh"
   },
   {
     "id": "a6b4fb2",
@@ -5427,8 +5386,8 @@
     "id": "a411283",
     "name": "Migdol 1",
     "alternateNames": [],
-    "latitude": 30.18333,
-    "longitude": 32.51667,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -5439,14 +5398,15 @@
       "beshalach",
       "masei"
     ],
-    "description": "Jebel Abu Hasa"
+    "description": "near the camp by the sea before the crossing (Exodus 14:2; Numbers 33:7); site unknown. \"Migdol\" means a fort, and several Egyptian border forts had the name",
+    "locationNote": "near the camp by the sea before the crossing (Exodus 14:2; Numbers 33:7); site unknown. \"Migdol\" means a fort, and several Egyptian border forts had the name"
   },
   {
     "id": "aa5f658",
     "name": "Mithkah",
     "alternateNames": [],
-    "latitude": 30.640556,
-    "longitude": 34.411111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5456,7 +5416,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Hashmonah"
+    "description": "a camp between Terah and Hashmonah (Numbers 33:28-29); site unknown",
+    "locationNote": "a camp between Terah and Hashmonah (Numbers 33:28-29); site unknown"
   },
   {
     "id": "a694ea2",
@@ -5505,7 +5466,6 @@
       "Numbers 23:17",
       "Numbers 24:17",
       "Numbers 25:1",
-      "Numbers 25:2",
       "Numbers 33:44",
       "Deuteronomy 1:5",
       "Deuteronomy 2:8",
@@ -5727,8 +5687,8 @@
     "id": "a88331e",
     "name": "Moseroth",
     "alternateNames": [],
-    "latitude": 30.832057,
-    "longitude": 35.056872,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5740,7 +5700,8 @@
       "masei",
       "ekev"
     ],
-    "description": "within 50 km of Mount Hor"
+    "description": "a camp between Hashmonah and Bene-jaakan (Numbers 33:30-31); Deuteronomy 10:6 calls it Moserah and says Aaron died there. Site unknown",
+    "locationNote": "a camp between Hashmonah and Bene-jaakan (Numbers 33:30-31); Deuteronomy 10:6 calls it Moserah and says Aaron died there. Site unknown"
   },
   {
     "id": "aa5cc66",
@@ -5817,8 +5778,8 @@
     "id": "ad8027f",
     "name": "Mount Hor 1",
     "alternateNames": [],
-    "latitude": 30.832057,
-    "longitude": 35.056872,
+    "latitude": 30.317,
+    "longitude": 35.407,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -5838,14 +5799,14 @@
       "masei",
       "haazinu"
     ],
-    "description": "Har Zin"
+    "description": "where Aaron died, \"on the boundary of the land of Edom\" (Numbers 20:23); location disputed — the pin marks the traditional site, Jebel Harun near Petra; others propose Jebel Madurah (Har Zin) in the Negev"
   },
   {
     "id": "a62fa2d",
     "name": "Mount Hor 2",
     "alternateNames": [],
-    "latitude": 34.3075,
-    "longitude": 35.69167,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -5855,7 +5816,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Ras Shaqqa"
+    "description": "a mountain on the northern border, between the Great Sea and Lebo-hamath (Numbers 34:7-8); site unknown. Second Temple and rabbinic tradition identifies it with the Amanus (Amanah)",
+    "locationNote": "a mountain on the northern border, between the Great Sea and Lebo-hamath (Numbers 34:7-8); site unknown. Second Temple and rabbinic tradition identifies it with the Amanus (Amanah)"
   },
   {
     "id": "a9bb03e",
@@ -5894,7 +5856,7 @@
       "shoftim",
       "ki-tavo"
     ],
-    "description": "another name for Mount Sinai"
+    "description": "another name for Mount Sinai; the pin marks the traditional site, Jebel Musa. Location disputed"
   },
   {
     "id": "aefaa2d",
@@ -5918,8 +5880,8 @@
     "id": "af693b8",
     "name": "Mount Paran",
     "alternateNames": [],
-    "latitude": 28.539722,
-    "longitude": 33.973333,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -5929,7 +5891,8 @@
     "parshas": [
       "vzot-habracha"
     ],
-    "description": "another name for Mount Sinai"
+    "description": "named beside Sinai and Seir in Moses's blessing (Deuteronomy 33:2; also Habakkuk 3:3); site unknown",
+    "locationNote": "named beside Sinai and Seir in Moses's blessing (Deuteronomy 33:2; also Habakkuk 3:3); site unknown"
   },
   {
     "id": "ae981db",
@@ -5988,8 +5951,8 @@
     "id": "a39fe14",
     "name": "Mount Shepher",
     "alternateNames": [],
-    "latitude": 30.50662,
-    "longitude": 34.30356,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -5999,7 +5962,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Haradah"
+    "description": "a camp between Kehelathah and Haradah (Numbers 33:23-24); site unknown",
+    "locationNote": "a camp between Kehelathah and Haradah (Numbers 33:23-24); site unknown"
   },
   {
     "id": "abfba2a",
@@ -6029,7 +5993,6 @@
       "Numbers 3:1",
       "Numbers 28:6",
       "Deuteronomy 33:2",
-      "Deuteronomy 33:16",
       "Judges 5:5",
       "Nehemiah 9:13",
       "Psalms 68:8",
@@ -6053,7 +6016,7 @@
       "pinchas",
       "vzot-habracha"
     ],
-    "description": "Jebel Musa"
+    "description": "location disputed; the pin marks the traditional site, Jebel Musa in southern Sinai, where Saint Catherine's Monastery was built in the 6th century CE. Other proposals are in northern Sinai, the Negev (Har Karkom) and north-west Arabia"
   },
   {
     "id": "a8dafd6",
@@ -6243,7 +6206,7 @@
     "alternateNames": [],
     "latitude": 31.909106,
     "longitude": 35.63872,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 32:3"
@@ -6303,7 +6266,7 @@
     "alternateNames": [],
     "latitude": 32.75616,
     "longitude": 36.61899,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 32:42"
@@ -6317,8 +6280,8 @@
     "id": "aed6b0e",
     "name": "Nophah",
     "alternateNames": [],
-    "latitude": 31.180556,
-    "longitude": 35.701389,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -6327,14 +6290,15 @@
     "parshas": [
       "chukat"
     ],
-    "description": "in Moab"
+    "description": "named in the song over Moab, \"hard by Medeba\" (Numbers 21:30); the verse's meaning is uncertain and the site unknown",
+    "locationNote": "named in the song over Moab, \"hard by Medeba\" (Numbers 21:30); the verse's meaning is uncertain and the site unknown"
   },
   {
     "id": "a0ef1e1",
     "name": "Oboth",
     "alternateNames": [],
-    "latitude": 30.82991,
-    "longitude": 35.41082,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -6347,7 +6311,8 @@
       "chukat",
       "masei"
     ],
-    "description": "Telah"
+    "description": "a camp between Punon and Iye-abarim (Numbers 21:10-11; 33:43-44); site unknown",
+    "locationNote": "a camp between Punon and Iye-abarim (Numbers 21:10-11; 33:43-44); site unknown"
   },
   {
     "id": "a8ec7ba",
@@ -6448,7 +6413,7 @@
     "alternateNames": [],
     "latitude": 31.777021,
     "longitude": 35.738498,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "mountain",
     "verses": [
       "Numbers 23:28",
@@ -6466,7 +6431,7 @@
       "matot",
       "vaetchanan"
     ],
-    "description": "within 1 km of Beth-peor"
+    "description": "the peak of Peor, near Beth-peor (Numbers 23:28); site uncertain. In Numbers 25 and 31:16 \"Peor\" is the Baal of Peor and the affair there"
   },
   {
     "id": "aa9e754",
@@ -6495,6 +6460,7 @@
     "confidence": "medium",
     "type": "region",
     "verses": [
+      "Exodus 13:17",
       "Exodus 15:14",
       "Judges 10:6",
       "1 Samuel 31:9",
@@ -6526,10 +6492,10 @@
     "id": "ababfd2",
     "name": "Pi-hahiroth",
     "alternateNames": [],
-    "latitude": 30.860556,
-    "longitude": 32.171389,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
-    "type": "mountain",
+    "type": "campsite",
     "verses": [
       "Exodus 14:2",
       "Exodus 14:9",
@@ -6540,7 +6506,8 @@
       "beshalach",
       "masei"
     ],
-    "description": "within 1 km of Baal-zephon"
+    "description": "where Israel camped by the sea before the crossing, \"between Migdol and the sea, before Baal-zephon\" (Exodus 14:2; Numbers 33:7); site unknown",
+    "locationNote": "where Israel camped by the sea before the crossing, \"between Migdol and the sea, before Baal-zephon\" (Exodus 14:2; Numbers 33:7); site unknown"
   },
   {
     "id": "afd9259",
@@ -6600,7 +6567,7 @@
     "parshas": [
       "shemot"
     ],
-    "description": "Tell er Retaba"
+    "description": "one of the cities built for Pharaoh by Israelite labor (Exodus 1:11); the pin marks Tell er-Retaba in Wadi Tumilat, one of two proposed sites (the other is Tell el-Maskhuta)"
   },
   {
     "id": "a9ecc26",
@@ -6729,7 +6696,7 @@
       "masei",
       "ekev"
     ],
-    "description": "Bitter Lakes"
+    "description": "Yam Suf, the \"Sea of Reeds\" Israel crossed (Exodus 13:18; 15:4); site unknown — the pin marks one proposal, the Bitter Lakes; others include Lake Timsah, the Ballah Lakes and the Gulf of Suez"
   },
   {
     "id": "ad64d75",
@@ -6774,8 +6741,8 @@
     "id": "ae4cd38",
     "name": "Rehob 1",
     "alternateNames": [],
-    "latitude": 32.901389,
-    "longitude": 35.169444,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -6784,7 +6751,9 @@
     ],
     "parshas": [
       "shelach"
-    ]
+    ],
+    "locationNote": "Rehob, at Lebo-hamath, the northern limit of the scouts' route (Numbers 13:21); site unknown",
+    "description": "Rehob, at Lebo-hamath, the northern limit of the scouts' route (Numbers 13:21); site unknown"
   },
   {
     "id": "ab1d954",
@@ -6841,8 +6810,8 @@
     "id": "a05ebb7",
     "name": "Rephidim",
     "alternateNames": [],
-    "latitude": 28.699444,
-    "longitude": 33.681667,
+    "latitude": 28.623056,
+    "longitude": 33.880278,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -6857,7 +6826,7 @@
       "yitro",
       "masei"
     ],
-    "description": "along Wadi el Sheikh"
+    "description": "the last camp before the wilderness of Sinai, where there was no water (Exodus 17:1; 19:2); site unknown — the pin marks one proposal on the traditional route, Wadi Rufaiyil near Jebel Musa; Wadi Feiran is another"
   },
   {
     "id": "abd8ada",
@@ -6912,8 +6881,8 @@
     "id": "af04ad9",
     "name": "Rissah",
     "alternateNames": [],
-    "latitude": 28.026,
-    "longitude": 35.248,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -6923,7 +6892,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Sharma"
+    "description": "a camp between Libnah and Kehelathah (Numbers 33:21-22); site unknown",
+    "locationNote": "a camp between Libnah and Kehelathah (Numbers 33:21-22); site unknown"
   },
   {
     "id": "a2e73ba",
@@ -7176,8 +7146,8 @@
     "id": "a9ba60c",
     "name": "Shepham",
     "alternateNames": [],
-    "latitude": 34.39674,
-    "longitude": 36.38715,
+    "latitude": null,
+    "longitude": null,
     "confidence": "medium",
     "type": "settlement",
     "verses": [
@@ -7188,7 +7158,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 100 km of Riblah"
+    "description": "on the eastern border, between Hazar-enan and Riblah (Numbers 34:10-11); site unknown",
+    "locationNote": "on the eastern border, between Hazar-enan and Riblah (Numbers 34:10-11); site unknown"
   },
   {
     "id": "af084cf",
@@ -7251,8 +7222,8 @@
     "id": "af64fb3",
     "name": "Shittim",
     "alternateNames": [],
-    "latitude": 31.84161,
-    "longitude": 35.68404,
+    "latitude": 31.84018,
+    "longitude": 35.67368,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -7265,7 +7236,7 @@
     "parshas": [
       "balak"
     ],
-    "description": "Tell Matabi"
+    "description": "Abel-shittim, the last camp in the steppes of Moab (Numbers 25:1; 33:49); site uncertain — the pin marks Tall el-Hammam, the usual identification; Tall Kafrayn is another proposal"
   },
   {
     "id": "acdbce0",
@@ -7295,8 +7266,8 @@
     "id": "aa10f27",
     "name": "Sibmah",
     "alternateNames": [],
-    "latitude": 31.81688,
-    "longitude": 35.771417,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -7310,7 +7281,8 @@
     "parshas": [
       "matot"
     ],
-    "description": "Sumia"
+    "description": "a town rebuilt by Reuben, listed with Heshbon and Nebo (Numbers 32:3, 38); site unknown",
+    "locationNote": "a town rebuilt by Reuben, listed with Heshbon and Nebo (Numbers 32:3, 38); site unknown"
   },
   {
     "id": "a98e4d7",
@@ -7383,7 +7355,7 @@
       "beshalach",
       "masei"
     ],
-    "description": "Debbet er Ramleh"
+    "description": "the wilderness \"between Elim and Sinai\" (Exodus 16:1); location depends on the route — the pin marks one proposal on the traditional route, Debbet er-Ramleh; the coastal plain of el-Markha is another"
   },
   {
     "id": "aa454f7",
@@ -7522,8 +7494,8 @@
     "id": "af725bb",
     "name": "Suph",
     "alternateNames": [],
-    "latitude": 31.665609,
-    "longitude": 35.81749,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "body of water",
     "verses": [
@@ -7532,7 +7504,8 @@
     "parshas": [
       "devarim"
     ],
-    "description": "another name for Suphah"
+    "description": "\"near Suph\" (Deuteronomy 1:1); site unknown. Onkelos renders it \"the Sea of Reeds\"",
+    "locationNote": "\"near Suph\" (Deuteronomy 1:1); site unknown. Onkelos renders it \"the Sea of Reeds\""
   },
   {
     "id": "a88bcb2",
@@ -7554,8 +7527,8 @@
     "id": "a028191",
     "name": "Taberah",
     "alternateNames": [],
-    "latitude": 28.788667,
-    "longitude": 34.275439,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -7566,14 +7539,15 @@
       "behaalotecha",
       "ekev"
     ],
-    "description": "within 50 km of Kibroth-hattaavah"
+    "description": "where a fire of the LORD broke out against the people (Numbers 11:1-3; Deuteronomy 9:22); site unknown",
+    "locationNote": "where a fire of the LORD broke out against the people (Numbers 11:1-3; Deuteronomy 9:22); site unknown"
   },
   {
     "id": "abe40d1",
     "name": "Tahath",
     "alternateNames": [],
-    "latitude": 30.640556,
-    "longitude": 34.411111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -7583,14 +7557,15 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Terah"
+    "description": "a camp between Makheloth and Terah (Numbers 33:26-27); site unknown",
+    "locationNote": "a camp between Makheloth and Terah (Numbers 33:26-27); site unknown"
   },
   {
     "id": "a944b90",
     "name": "Terah",
     "alternateNames": [],
-    "latitude": 30.640556,
-    "longitude": 34.411111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "medium",
     "type": "campsite",
     "verses": [
@@ -7600,7 +7575,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Mithkah"
+    "description": "a camp between Tahath and Mithkah (Numbers 33:27-28); site unknown",
+    "locationNote": "a camp between Tahath and Mithkah (Numbers 33:27-28); site unknown"
   },
   {
     "id": "a559399",
@@ -7657,8 +7633,8 @@
     "id": "a7ecf6c",
     "name": "Tophel",
     "alternateNames": [],
-    "latitude": 30.939606,
-    "longitude": 35.458842,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -7667,7 +7643,8 @@
     "parshas": [
       "devarim"
     ],
-    "description": "in the region between Punon and Zered"
+    "description": "named in Deuteronomy 1:1; site unknown (Tafila in Edom has been proposed). Rashi, following the Sifrei and Onkelos, reads the names in this verse as allusions to Israel's sins",
+    "locationNote": "named in Deuteronomy 1:1; site unknown (Tafila in Edom has been proposed). Rashi, following the Sifrei and Onkelos, reads the names in this verse as allusions to Israel's sins"
   },
   {
     "id": "a6cf75c",
@@ -7837,8 +7814,8 @@
     "id": "adec54b",
     "name": "Waheb",
     "alternateNames": [],
-    "latitude": 31.665609,
-    "longitude": 35.81749,
+    "latitude": null,
+    "longitude": null,
     "confidence": "medium",
     "type": "campsite",
     "verses": [
@@ -7847,7 +7824,8 @@
     "parshas": [
       "chukat"
     ],
-    "description": "within 50 km of Suphah"
+    "description": "\"Waheb in Suphah\", quoted from the Book of the Wars of the LORD (Numbers 21:14); site unknown. Rashi reads the words as \"what He gave\", not a place name",
+    "locationNote": "\"Waheb in Suphah\", quoted from the Book of the Wars of the LORD (Numbers 21:14); site unknown. Rashi reads the words as \"what He gave\", not a place name"
   },
   {
     "id": "a55c970",
@@ -7876,7 +7854,7 @@
     "alternateNames": [],
     "latitude": 28.539722,
     "longitude": 33.973333,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "region",
     "verses": [
       "Exodus 19:1",
@@ -7901,14 +7879,14 @@
       "pinchas",
       "masei"
     ],
-    "description": "about 50 km around Mount Sinai"
+    "description": "the wilderness around Mount Sinai, where Israel camped (Exodus 19:1-2; Numbers 1:1); shown around the traditional site, Jebel Musa. Location disputed"
   },
   {
     "id": "a1c6a50",
     "name": "Zalmonah",
     "alternateNames": [],
-    "latitude": 30.4136,
-    "longitude": 35.5677,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -7918,7 +7896,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Rujm Talat az Zalma"
+    "description": "a camp between Mount Hor and Punon (Numbers 33:41-42); site unknown",
+    "locationNote": "a camp between Mount Hor and Punon (Numbers 33:41-42); site unknown"
   },
   {
     "id": "abfbfb9",
@@ -8008,8 +7987,8 @@
     "id": "a190097",
     "name": "Zin 2",
     "alternateNames": [],
-    "latitude": 30.971,
-    "longitude": 35.325,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -8018,14 +7997,16 @@
     ],
     "parshas": [
       "masei"
-    ]
+    ],
+    "locationNote": "a point on the southern border between the ascent of Akrabbim and Kadesh-barnea (Numbers 34:4); site unknown",
+    "description": "a point on the southern border between the ascent of Akrabbim and Kadesh-barnea (Numbers 34:4); site unknown"
   },
   {
     "id": "adf05b8",
     "name": "Ziphron",
     "alternateNames": [],
-    "latitude": 33.871861,
-    "longitude": 36.814639,
+    "latitude": 34.266667,
+    "longitude": 37.066667,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -8034,7 +8015,7 @@
     "parshas": [
       "masei"
     ],
-    "description": "Zifran"
+    "description": "on the northern border, between Zedad and Hazar-enan (Numbers 34:8-9); site uncertain — the pin marks one proposal, Huwwarin"
   },
   {
     "id": "ac31fee",
@@ -9094,15 +9075,24 @@
     "parshas": []
   },
   {
-    "id": "a3c7b44",
-    "name": "Aram-naharaim",
+    "id": "a3e66cd",
+    "name": "Aram",
     "alternateNames": [],
-    "latitude": 36.864444,
-    "longitude": 39.032778,
+    "latitude": 33.511112,
+    "longitude": 36.30639,
     "confidence": "medium",
     "type": "region",
     "verses": [
-      "Psalms 60:1"
+      "Judges 18:7",
+      "Judges 18:28",
+      "2 Samuel 8:6",
+      "2 Samuel 15:8",
+      "2 Kings 5:18",
+      "2 Kings 6:14",
+      "2 Kings 8:15",
+      "1 Chronicles 2:23",
+      "Hosea 12:12",
+      "Zechariah 9:1"
     ],
     "parshas": []
   },
@@ -17633,6 +17623,22 @@
     "description": "Burj el Isaneh"
   },
   {
+    "id": "ad41f6e",
+    "name": "Jeshimon",
+    "alternateNames": [],
+    "latitude": 31.4703,
+    "longitude": 35.2228,
+    "confidence": "medium",
+    "type": "region",
+    "verses": [
+      "1 Samuel 23:19",
+      "1 Samuel 23:24",
+      "1 Samuel 26:1",
+      "1 Samuel 26:3"
+    ],
+    "parshas": []
+  },
+  {
     "id": "ab8473d",
     "name": "Jeshua",
     "alternateNames": [],
@@ -17972,6 +17978,20 @@
     ],
     "parshas": [],
     "description": "Tell Nebi Mend"
+  },
+  {
+    "id": "a765bd8",
+    "name": "Kain",
+    "alternateNames": [],
+    "latitude": 31.49627,
+    "longitude": 35.15154,
+    "confidence": "low",
+    "type": "settlement",
+    "verses": [
+      "Joshua 15:57"
+    ],
+    "parshas": [],
+    "description": "Khirbet Bani Dar"
   },
   {
     "id": "a804aeb",
