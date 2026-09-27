@@ -13,7 +13,7 @@ import { TerritoryLayer } from '../components/map/TerritoryLayer'
 import { daylightStyle } from './daylightMapStyle'
 import { getStory, isPageCard, MISHKAN_AT } from './stories'
 import type { LngLat } from './stories'
-import { useDaylight, mapHandle, haptic } from './useDaylight'
+import { useDaylight, mapHandle, haptic, EMPIRES_LAYER_ENABLED } from './useDaylight'
 import { C, FONT, SPRING, SHADOW } from './theme'
 import { displayName } from './placeText'
 
@@ -555,7 +555,7 @@ export function DaylightMap() {
       keyboard={!storyOpen}
       boxZoom={!storyOpen}
     >
-      {showEmpires && <TerritoryLayer />}
+      {EMPIRES_LAYER_ENABLED && showEmpires && <TerritoryLayer />}
       {showTrade && <TradeRouteLayer />}
 
       <Source id="dl-dots-src" type="geojson" data={dots}>

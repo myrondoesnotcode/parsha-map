@@ -9,7 +9,7 @@ import { PLACE_TYPE_FILTERS } from '../utils/placeUtils'
 import { getParshaById } from '../utils/parshaUtils'
 import placesData from '../data/places.json'
 import type { Place } from '../types/places'
-import { useDaylight, haptic } from './useDaylight'
+import { useDaylight, haptic, EMPIRES_LAYER_ENABLED } from './useDaylight'
 import { C, FONT, SPRING } from './theme'
 import { displayName, prettyType, parshaDisplayName } from './placeText'
 
@@ -114,7 +114,7 @@ export function MapChrome({ searchRef }: { searchRef: React.RefObject<HTMLInputE
             transition={SPRING.snappy}
           >
             <Toggle label="Trade routes" on={showTrade} onClick={toggleTrade} />
-            <Toggle label="Empires & borders" on={showEmpires} onClick={toggleEmpires} />
+            {EMPIRES_LAYER_ENABLED && <Toggle label="Empires & borders" on={showEmpires} onClick={toggleEmpires} />}
           </motion.div>
         )}
       </AnimatePresence>

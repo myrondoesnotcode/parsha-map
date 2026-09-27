@@ -1,6 +1,12 @@
 import { create } from 'zustand'
 import type { MapRef } from 'react-map-gl/maplibre'
 
+/**
+ * The Empires & borders layer is hidden until the territories are redrawn.
+ * Set to true to bring back the toggle and the layer; the code is kept as is.
+ */
+export const EMPIRES_LAYER_ENABLED = false
+
 export type Tab = 'today' | 'map' | 'read' | 'library'
 export type ReadSegment = 'overview' | 'text' | 'history'
 
