@@ -610,7 +610,12 @@ export function DaylightMap() {
         const overview = !card?.stop && clusterOf.length === story.route.length
         if (overview) {
           const members = story.route.map((_, j) => j).filter((j) => clusterOf[j] === i && drawn >= j - 0.02)
-          const names = [...new Set(members.map((j) => story.route[j].name))]
+          // One line per place (a revisited stop is listed once). A lone pin mid-story keeps its hedge, so it never reads as more
+          // certain than its stop card; merged pins and the finale (which has the "approximate" banner) stay names-only to fit.
+          const labels = members
+            .map((j) => story.route[j])
+            .filter((s, k, all) => all.findIndex((t) => t.name === s.name) === k)
+          const withHedge = labels.length === 1 && card?.kind !== 'talk'
           const visible = clusterOf[i] === i && drawn >= i - 0.02 && card?.kind !== 'guess' && card?.kind !== 'cover'
           return (
             <Marker key={`${stop.name}-${i}`} longitude={stop.at[0]} latitude={stop.at[1]} anchor="center">
@@ -630,8 +635,11 @@ export function DaylightMap() {
                       transition={{ delay: 0.15 }}
                       className="dl-stop-label"
                     >
-                      {names.map((n) => (
-                        <span key={n}>{n}</span>
+                      {labels.map((s) => (
+                        <span key={s.name}>
+                          {s.name}
+                          {withHedge && s.hedge && <span style={{ display: 'block', font: `600 11px ${FONT.display}`, color: C.muted }}>{s.hedge}</span>}
+                        </span>
                       ))}
                     </motion.span>
                   </motion.div>
