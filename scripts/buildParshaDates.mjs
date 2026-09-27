@@ -91,12 +91,13 @@ const parshiot = {
   nasso: { scholarly: 'exodus', traditional: t(YEAR2, "The chieftains' gifts, from the day the Tabernacle was set up", [SEF('Numbers 7:1'), SEF('Exodus 40:17')]) },
   behaalotecha: { scholarly: 'exodus', traditional: t(YEAR2, 'Leaving Sinai, 20 Iyar of the second year', [SEF('Numbers 10:11'), CHABAD_EXODUS]) },
   shelach: { scholarly: 'exodus', traditional: t(YEAR2, 'The spies, in the second year', [SEF('Taanit 29a'), SEF('Numbers 10:11'), CHABAD_EXODUS]) },
-  korach: { scholarly: 'exodus', note: 'The Torah does not date the rebellion; no traditional year given.' },
-  chukat: { scholarly: 'exodus', traditional: t(YEAR40, 'Miriam and Aaron die, in the 40th year', [SEF('Numbers 20:1'), SEF('Numbers 33:38'), CHABAD_EXODUS]) },
-  balak: { scholarly: 'exodus', traditional: t(YEAR40, 'On the plains of Moab, in the 40th year', [SEF('Numbers 33:38'), SEF('Deuteronomy 1:3'), CHABAD_EXODUS]) },
-  pinchas: { scholarly: 'exodus', traditional: t(YEAR40, 'On the plains of Moab, in the 40th year', [SEF('Numbers 33:38'), SEF('Deuteronomy 1:3'), CHABAD_EXODUS]) },
-  matot: { scholarly: 'exodus', traditional: t(YEAR40, 'On the plains of Moab, in the 40th year', [SEF('Numbers 33:38'), SEF('Deuteronomy 1:3'), CHABAD_EXODUS]) },
-  masei: { scholarly: 'exodus', traditional: t(YEAR40, 'On the plains of Moab, in the 40th year', [SEF('Numbers 33:38'), SEF('Deuteronomy 1:3'), CHABAD_EXODUS]) },
+  korach: { scholarly: 'exodus', note: 'The Torah does not date the rebellion. Seder Olam Rabbah 8 places it after the spies ("After the spies was the strife of Korah") but gives no year; no traditional year given.' },
+  chukat: { scholarly: 'exodus', traditional: t(YEAR40, 'Miriam and Aaron die, in the 40th year', [SEF('Numbers 20:1'), SOR(9), SEF('Numbers 33:38'), CHABAD_EXODUS]) },
+  // Year 40 runs Nisan to Nisan: Aaron dies 1 Av (33:38), Moses speaks on 1 Shevat (Deut 1:3), so the plains of Moab span AM 2487–2488.
+  balak: { scholarly: 'exodus', traditional: t(YEAR40, 'On the plains of Moab, in the 40th year', [SEF('Numbers 33:38'), SOR(9), SEF('Deuteronomy 1:3'), CHABAD_EXODUS], YEAR40 + 1) },
+  pinchas: { scholarly: 'exodus', traditional: t(YEAR40, 'On the plains of Moab, in the 40th year', [SEF('Numbers 33:38'), SOR(9), SEF('Deuteronomy 1:3'), CHABAD_EXODUS], YEAR40 + 1) },
+  matot: { scholarly: 'exodus', traditional: t(YEAR40, 'On the plains of Moab, in the 40th year', [SEF('Numbers 33:38'), SOR(9), SEF('Deuteronomy 1:3'), CHABAD_EXODUS], YEAR40 + 1) },
+  masei: { scholarly: 'exodus', traditional: t(YEAR40, 'On the plains of Moab, in the 40th year', [SEF('Numbers 33:38'), SOR(9), SEF('Deuteronomy 1:3'), CHABAD_EXODUS], YEAR40 + 1) },
 }
 
 const DEUT = ['devarim', 'vaetchanan', 'ekev', 'reeh', 'shoftim', 'ki-teitzei', 'ki-tavo', 'nitzavim', 'vayeilech', 'haazinu']
