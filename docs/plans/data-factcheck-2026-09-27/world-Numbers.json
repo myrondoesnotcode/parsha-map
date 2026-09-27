@@ -1,0 +1,700 @@
+{
+  "bamidbar": {
+    "windowStartBCE": 1321,
+    "windowEndBCE": 1279,
+    "note": "Tradition dates the census to c. 1312 BCE, in the second year after the Exodus. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1321 to 1279 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1321,
+        "approx": true,
+        "description": "Mursili II becomes king of the Hittites. His annals record his enemies' taunt: “your infantry and chariotry are few. Against your infantry, I have many infantry.”",
+        "significance": "Kings measured their strength in soldiers. Bamidbar opens by counting Israel's men “from the age of twenty years up… who are able to bear arms” (1:3).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Mursili II\" (\"In 1321 BC Mursili II assumed the Hittite throne\"; the taunt quoted from his Annals)",
+            "url": "https://en.wikipedia.org/wiki/Mursili_II"
+          },
+          {
+            "title": "Numbers 1:3",
+            "url": "https://www.sefaria.org/Numbers.1.3"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1290,
+        "approx": true,
+        "description": "In Seti I's first year, towns near Beth-Shean in Canaan rebel. His stela there says he sent three divisions of his army, named for the gods Amun, Re and Seth.",
+        "significance": "Bamidbar also arranges Israel in divisions: the tribes camp “each under its standard” around the Tent of Meeting (1:52; 2:2).",
+        "sources": [
+          {
+            "title": "Israel Museum, Pharaoh in Canaan catalogue, \"Stela ('First Stela') of Seti I\" (\"Year 1\"; \"the king dispatched three divisions of his army to put down the revolt – the division of Amun… the division of Re… and the division of Sutekh (Seth)\")",
+            "url": "https://museum.imj.org.il/en/exhibitions/2016/pharaoh-in-canaan/pdf/seti-stela-en.pdf"
+          },
+          {
+            "title": "Wikipedia, \"Seti I\" (ruling 1290 BC to 1279 BC; \"A stele in Beth-Shan testifies to that reconquest\")",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          },
+          {
+            "title": "Numbers 1:52",
+            "url": "https://www.sefaria.org/Numbers.1.52"
+          },
+          {
+            "title": "Numbers 2:2",
+            "url": "https://www.sefaria.org/Numbers.2.2"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1290,
+        "endBCE": 1279,
+        "approx": true,
+        "description": "Seti I's decree at Nauri, in Nubia, protects the workers of his temple at Abydos: they may not be conscripted for other labor, and their animals may not be taken.",
+        "significance": "Bamidbar also sets sanctuary workers apart: the Levites are not counted with the fighting men (1:49) but put in charge of the Tabernacle (1:50).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Temple of Seti I (Abydos)\" (the Nauri decree: \"the workers were unable to be conscripted for labor or have their animals taken\")",
+            "url": "https://en.wikipedia.org/wiki/Temple_of_Seti_I_(Abydos)"
+          },
+          {
+            "title": "Wikipedia, \"Seti I\" (ruling 1290 BC to 1279 BC)",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          },
+          {
+            "title": "Numbers 1:49-50",
+            "url": "https://www.sefaria.org/Numbers.1.49-50"
+          }
+        ]
+      }
+    ]
+  },
+  "nasso": {
+    "windowStartBCE": 1313,
+    "windowEndBCE": 1279,
+    "note": "Tradition dates the chieftains' gifts to c. 1312 BCE, when the Tabernacle was set up. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1313 to 1279 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1313,
+        "approx": true,
+        "description": "In his seventh year, Pharaoh Horemheb reorganizes the workforce of Deir el-Medina, the village of the craftsmen who cut and decorate the royal tombs.",
+        "significance": "Nasso finishes counting the Levite clans and gives each man “his service and porterage” in carrying the Tabernacle (4:49).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Horemheb\" (ruled \"between 1319 BC and 1292 BC\"; \"reorganized the Deir el-Medina workforce in his 7th year\")",
+            "url": "https://en.wikipedia.org/wiki/Horemheb"
+          },
+          {
+            "title": "Wikipedia, \"Deir el-Medina\" (workers \"involved in the administration and decoration of the royal tombs\")",
+            "url": "https://en.wikipedia.org/wiki/Deir_el-Medina"
+          },
+          {
+            "title": "Numbers 4:49",
+            "url": "https://www.sefaria.org/Numbers.4.49"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1311,
+        "approx": true,
+        "description": "About ten years into his reign, Hittite king Mursili II demotes and banishes his stepmother, a Babylonian princess, after an oracle finds her guilty of causing his wife's death.",
+        "significance": "Nasso's sotah law also leaves a hidden wrong, where “there is no witness” (5:13), to a divine test. The charge differs: a wife suspected of adultery.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Šuppiluliuma I\" (the Babylonian Tawananna \"would survive a decade into the reign\" of Muršili II, \"who would demote and banish her after an oracle confirmed that she was guilty of causing the death of the king's wife\")",
+            "url": "https://en.wikipedia.org/wiki/Šuppiluliuma_I"
+          },
+          {
+            "title": "Wikipedia, \"Mursili II\" (throne in 1321 BC)",
+            "url": "https://en.wikipedia.org/wiki/Mursili_II"
+          },
+          {
+            "title": "Numbers 5:13",
+            "url": "https://www.sefaria.org/Numbers.5.13"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1279,
+        "approx": true,
+        "description": "Seti I dies and is buried in the Valley of the Kings. The wine jars in his tomb are labeled by year of his reign, none later than year 8.",
+        "significance": "Wine went with a king to his grave. In Nasso, a Nazirite vows to “abstain from wine” and to eat no grapes, “fresh or dried” (6:3).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Seti I\" (ruling 1290 BC to 1279 BC; \"no wine labels higher than Seti I's 8th regnal year were found in his KV17 tomb\")",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          },
+          {
+            "title": "Numbers 6:3",
+            "url": "https://www.sefaria.org/Numbers.6.3"
+          }
+        ]
+      }
+    ]
+  },
+  "behaalotecha": {
+    "windowStartBCE": 1332,
+    "windowEndBCE": 1292,
+    "note": "Tradition dates the departure from Sinai to c. 1312 BCE, in the second year. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1332 to 1292 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1332,
+        "endBCE": 1323,
+        "approx": true,
+        "description": "Huy serves as Tutankhamun's viceroy of Kush. His tomb at Thebes shows envoys and chiefs of Kush bringing animal skins, giraffe tails and captives.",
+        "significance": "Behaalotecha tells of Moses' “Cushite” wife (12:1). In the Bible, Cush is usually the land south of Egypt, Nubia; who she was is debated.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Amenhotep called Huy\" (\"Viceroy of Kush under 18th Dynasty King Tutankhamen\"; \"chieftains from Wawat and Kush presenting offerings to Huy, including animal skins, giraffes' tails, and captives\")",
+            "url": "https://en.wikipedia.org/wiki/Amenhotep_called_Huy"
+          },
+          {
+            "title": "Wikipedia, \"Tutankhamun\" (ruled c. 1332 – 1323 BC)",
+            "url": "https://en.wikipedia.org/wiki/Tutankhamun"
+          },
+          {
+            "title": "Wikipedia, \"Cush (Bible)\" (Cush \"generally understood in biblical geography to lie south of Egypt, corresponding to Nubia\"; the woman's identity \"has been widely debated\")",
+            "url": "https://en.wikipedia.org/wiki/Cush_(Bible)"
+          },
+          {
+            "title": "Numbers 12:1",
+            "url": "https://www.sefaria.org/Numbers.12.1"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1323,
+        "approx": true,
+        "description": "Tutankhamun is buried with a pair of trumpets, one silver and one bronze or copper, the oldest working trumpets known. They were likely used for military signals.",
+        "significance": "Behaalotecha orders “two silver trumpets” to summon the community and “set the divisions in motion” (10:2).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Tutankhamun's trumpets\" (\"a pair of trumpets\", \"one of sterling silver and one of bronze or copper\", \"the oldest operational trumpets in the world\"; \"likely played on a single note for military signalling\")",
+            "url": "https://en.wikipedia.org/wiki/Tutankhamun's_trumpets"
+          },
+          {
+            "title": "Wikipedia, \"Tutankhamun\" (c. 1342 BC – c. 1323 BC)",
+            "url": "https://en.wikipedia.org/wiki/Tutankhamun"
+          },
+          {
+            "title": "Numbers 10:2",
+            "url": "https://www.sefaria.org/Numbers.10.2"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1319,
+        "endBCE": 1292,
+        "approx": true,
+        "description": "Pharaoh Horemheb restores the priesthood of Amun, but appoints priests who mostly come from the army, men whose loyalty he can rely on.",
+        "significance": "Behaalotecha sets the Levites apart to serve at the Tabernacle, taken by God “in place of” Israel's firstborn (8:16).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Horemheb\" (ruled between 1319 BC and 1292 BC; \"reappointing priests who mostly came from the Egyptian army since he could rely on their personal loyalty\")",
+            "url": "https://en.wikipedia.org/wiki/Horemheb"
+          },
+          {
+            "title": "Numbers 8:16",
+            "url": "https://www.sefaria.org/Numbers.8.16"
+          }
+        ]
+      }
+    ]
+  },
+  "shelach": {
+    "windowStartBCE": 1332,
+    "windowEndBCE": 1213,
+    "note": "Tradition dates the spies' mission to c. 1312 BCE, in the second year. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1332 to 1213 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1332,
+        "endBCE": 1323,
+        "approx": true,
+        "description": "In the tomb of Huy, Tutankhamun's viceroy, chiefs of Retjenu, Egypt's name for Canaan and Syria, bring horses, lapis, gold, silver and copper, which Huy delivers to the king.",
+        "significance": "Canaan was then under Egyptian rule. In Shelach the spies bring back the land's own produce: grapes, pomegranates and figs (13:23).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Amenhotep called Huy\" (\"Retenu chiefs present horses, lapis, gold, silver, and copper which Huy is later depicted delivering to King Tutankhamun\")",
+            "url": "https://en.wikipedia.org/wiki/Amenhotep_called_Huy"
+          },
+          {
+            "title": "Wikipedia, \"Retjenu\" (\"the Ancient Egyptian name for the wider Syrian region, where the Semitic-speaking Canaanites lived\")",
+            "url": "https://en.wikipedia.org/wiki/Retjenu"
+          },
+          {
+            "title": "Wikipedia, \"Beit She'an\" (\"When Canaan came under Imperial Egyptian rule in the Late Bronze Age\")",
+            "url": "https://en.wikipedia.org/wiki/Beit_She'an"
+          },
+          {
+            "title": "Numbers 13:23",
+            "url": "https://www.sefaria.org/Numbers.13.23"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1269,
+        "approx": true,
+        "description": "Ramesses II besieges Dapur in Syria. Reliefs in his temple at Thebes show a hilltop town with inner and outer walls, and Egyptian soldiers climbing scaling ladders.",
+        "significance": "The spies report that “the cities are fortified and very large” (13:28).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Dapur\" (siege \"in 1269 BC\"; \"a heavily fortified settlement with both inner and outer walls and situated on a rocky hill\"; \"soldiers climbing scale ladders\")",
+            "url": "https://en.wikipedia.org/wiki/Dapur"
+          },
+          {
+            "title": "Wikipedia, \"Ramesses II\" (sieges of Dapur in his eighth and tenth years)",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          },
+          {
+            "title": "Numbers 13:28",
+            "url": "https://www.sefaria.org/Numbers.13.28"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1279,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "An Egyptian scribe's satirical letter, composed under Ramesses II, warns a colleague of a narrow pass hiding Shasu nomads “of four cubits or of five cubits,” “fierce of face.”",
+        "significance": "The spies say they saw giants, “and we looked like grasshoppers to ourselves” (13:33). The letter is satire; its editor, Alan Gardiner, allowed for “Egyptian exaggeration.”",
+        "sources": [
+          {
+            "title": "Alan H. Gardiner, Egyptian Hieratic Texts I: Literary Texts of the New Kingdom (1911), Papyrus Anastasi I (\"written certainly not earlier, but probably also not later, than the reign of Rameses II\"; Shosu \"of four cubits or of five cubits… fierce of face\"; \"with due allowance for Egyptian exaggeration\")",
+            "url": "https://archive.org/stream/egyptianhieratic00garduoft/egyptianhieratic00garduoft_djvu.txt"
+          },
+          {
+            "title": "Wikipedia, \"Papyrus Anastasi I\" (satirical letter of the scribe Hori to Amenemope)",
+            "url": "https://en.wikipedia.org/wiki/Papyrus_Anastasi_I"
+          },
+          {
+            "title": "Numbers 13:33",
+            "url": "https://www.sefaria.org/Numbers.13.33"
+          }
+        ]
+      }
+    ]
+  },
+  "korach": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1200,
+    "note": "The Torah does not date Korach's rebellion, and tradition gives it no year (Seder Olam places it after the spies). Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1279 to 1200 BCE, inside that range.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "approx": true,
+        "description": "Ramesses II names Nebwenenef High Priest of Amun. The king says he read out names of courtiers and priests before the god, who accepted none until he named Nebwenenef.",
+        "significance": "In Korach, the choice of priest is also left to God: “The staff of the man whom I choose shall sprout” (17:20; 17:5 in many English Bibles).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Nebwenenef\" (appointed \"in Year 1, III Akhet of Ramesses II\"; \"he was not satisfied with any of them, until I mentioned your name to him\")",
+            "url": "https://en.wikipedia.org/wiki/Nebwenenef"
+          },
+          {
+            "title": "Wikipedia, \"Ramesses II\" (accession \"31 May 1279 BC\")",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          },
+          {
+            "title": "Numbers 17:20",
+            "url": "https://www.sefaria.org/Numbers.17.20"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1267,
+        "approx": true,
+        "description": "Hattusili rebels against his nephew, Hittite king Urhi-Teshub, and takes the throne. He says he wrote to him: “Istar of Samuha and the Storm God of Nerik shall decide the case for us!”",
+        "significance": "Moses also leaves the decision to God: “Come morning, GOD will make known who is to serve” (16:5).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Hattusili III\" (king c. 1267–1237 BC (short chronology); \"He served his brother Muwatalli II and his nephew Mursili III before rebelling and taking the throne\")",
+            "url": "https://en.wikipedia.org/wiki/Hattusili_III"
+          },
+          {
+            "title": "Wikipedia, \"Mursili III\" (Urhi-Teshub; the Apology: \"Since I wrote to Urhi-Tesub in this manner\"; \"Istar of Samuha and the Storm God of Nerik shall decide the case for us!\")",
+            "url": "https://en.wikipedia.org/wiki/Mursili_III"
+          },
+          {
+            "title": "Numbers 16:5",
+            "url": "https://www.sefaria.org/Numbers.16.5"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1203,
+        "endBCE": 1200,
+        "approx": true,
+        "description": "Amenmesse seizes power in southern Egypt, probably as a rival to Pharaoh Seti II. After Seti II wins back Thebes, his agents erase Amenmesse's name from his tomb.",
+        "significance": "Korach and his allies also challenge those in power: “Why then do you raise yourselves above GOD's congregation?” (16:3).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Amenmesse\" (reign \"1203 BC–1200 BC\" in one dating; \"a rival king who usurped power\" in Upper Egypt; in his tomb \"No mention of Amenmesse was spared\")",
+            "url": "https://en.wikipedia.org/wiki/Amenmesse"
+          },
+          {
+            "title": "Numbers 16:3",
+            "url": "https://www.sefaria.org/Numbers.16.3"
+          }
+        ]
+      }
+    ]
+  },
+  "chukat": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1213,
+    "note": "Tradition dates the deaths of Miriam and Aaron to the 40th year, c. 1274 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1279 to 1213 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "endBCE": 1269,
+        "approx": true,
+        "description": "Early in Ramesses II’s reign, a stela found near Kuban, in Nubia, tells of the search for water on the desert road to the gold mines.",
+        "significance": "In Chukat the people cry, “There is not even water to drink!” (20:5), and later sing of “the well that the chieftains dug” (21:18).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Wadi Allaqi\" (\"A stela attributed to... Ramesses II discovered near Quban references the search and discovery of water for gold laborers\")",
+            "url": "https://en.wikipedia.org/wiki/Wadi_Allaqi"
+          },
+          {
+            "title": "Wikipedia, \"Seti I\" (the Kuban Stela is one of the inscriptions \"from the first decade of Ramesses' reign\")",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          },
+          {
+            "title": "Wikipedia, \"Ramesses II\" (gold mining \"in Akuyati (modern day Wadi Allaqi)\")",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          },
+          {
+            "title": "A. Krol, D. Kuznetsov, I. Ladynin, \"The Quban Stela,\" Vostok (Oriens) 2026, no. 1 (abstract, in Russian: from the start of the reign; officials report to the king at Memphis that there are no wells on the road to the land of Ikait)",
+            "url": "https://vostokoriens.jes.su/s086919080037375-9-1/"
+          },
+          {
+            "title": "Numbers 20:5",
+            "url": "https://www.sefaria.org/Numbers.20.5"
+          },
+          {
+            "title": "Numbers 21:18",
+            "url": "https://www.sefaria.org/Numbers.21.18"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1279,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "Ramesses II sets up a basalt stela in Bashan, at Sheikh Saad in today's southern Syria, to mark a campaign. Local people later called it the “Rock of Job.”",
+        "significance": "Chukat ends with Israel meeting “King Og of Bashan” in battle at Edrei (21:33).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Ash-Shaykh Saad\" (\"An Egyptian stele, commemorating a campaign of Pharaoh Ramesses II, is locally venerated... as the 'Rock of Job'\"; \"basalt monolith\")",
+            "url": "https://en.wikipedia.org/wiki/Ash-Shaykh_Saad"
+          },
+          {
+            "title": "K. A. Kitchen, \"The Egyptian Evidence on Ancient Jordan,\" in Early Edom and Moab, ed. Piotr Bienkowski (1992), as reproduced at bible.ca (\"Ramesses II also left a stela up in Bashan, at Sheikh Said\")",
+            "url": "https://www.bible.ca/archeology/bible-archeology-edomites-early-edom-and-moab-piotr-bienkowski-1992ad.htm"
+          },
+          {
+            "title": "Wikipedia, \"Ramesses II\" (c. 1279–1213 BC)",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          },
+          {
+            "title": "Numbers 21:33",
+            "url": "https://www.sefaria.org/Numbers.21.33"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1279,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "Ramesses II twice calls himself the one “who plunders the mountain of Seir with his valiant arm.” Seir is the hill country the Bible links with Edom.",
+        "significance": "In Chukat, Edom refuses to let Israel pass: “You shall not pass through us, else we will go out against you with the sword” (20:18).",
+        "sources": [
+          {
+            "title": "K. A. Kitchen, \"The Egyptian Evidence on Ancient Jordan,\" in Early Edom and Moab, ed. Piotr Bienkowski (1992), as reproduced at bible.ca (Ramesses II \"twice describes himself as one 'who plunders the mountain of Seir with his valiant arm\"; \"reminiscent of the Hebrew phrase Mount Seir\")",
+            "url": "https://www.bible.ca/archeology/bible-archeology-edomites-early-edom-and-moab-piotr-bienkowski-1992ad.htm"
+          },
+          {
+            "title": "Wikipedia, \"Edom\" (\"It was also called the land of Seir\")",
+            "url": "https://en.wikipedia.org/wiki/Edom"
+          },
+          {
+            "title": "Numbers 20:18",
+            "url": "https://www.sefaria.org/Numbers.20.18"
+          }
+        ]
+      }
+    ]
+  },
+  "balak": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1213,
+    "note": "Tradition puts Israel on the plains of Moab in the 40th year, c. 1274–1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1279 to 1213 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "Ramesses II boasts that he “plunders the mountain of Seir with his valiant arm.” Seir is the hill country the Bible links with Edom, Moab's neighbor.",
+        "significance": "Balaam's oracle foresees: “Edom becomes a possession, yea, Seir a possession of its enemies” (24:18).",
+        "sources": [
+          {
+            "title": "K. A. Kitchen, \"The Egyptian Evidence on Ancient Jordan,\" in Early Edom and Moab, ed. Piotr Bienkowski (1992), as reproduced at bible.ca (Ramesses II \"twice describes himself as one 'who plunders the mountain of Seir with his valiant arm\")",
+            "url": "https://www.bible.ca/archeology/bible-archeology-edomites-early-edom-and-moab-piotr-bienkowski-1992ad.htm"
+          },
+          {
+            "title": "Wikipedia, \"Edom\" (\"It was also called the land of Seir\"; \"The boundary between Moab and Edom was the Zered\")",
+            "url": "https://en.wikipedia.org/wiki/Edom"
+          },
+          {
+            "title": "Numbers 24:18",
+            "url": "https://www.sefaria.org/Numbers.24.18"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1273,
+        "approx": true,
+        "description": "Shalmaneser I becomes king of Assyria. In his second year he defeats Mitanni and its Hittite allies. He is among the first Assyrian kings known to deport defeated enemies.",
+        "significance": "Balaam's last oracle speaks of Asshur, Assyria, taking a people captive (24:22).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Shalmaneser I\" (\"1273–1244 BC or 1265–1235 BC\"; \"In his second year he defeated Shattuara, king of Hanilgalbat (Mitanni), and his Hittite and Ahlamu allies\"; \"one of the first Assyrian kings known to deport his defeated enemies\")",
+            "url": "https://en.wikipedia.org/wiki/Shalmaneser_I"
+          },
+          {
+            "title": "Numbers 24:22",
+            "url": "https://www.sefaria.org/Numbers.24.22"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1270,
+        "approx": true,
+        "description": "Ramesses II's reliefs at Luxor show him capturing a town “in the land of Moab.” The campaign is undated, probably after his ninth year.",
+        "significance": "Balak is “king of Moab” (22:4). Kenneth Kitchen holds that this is the same Moab; Nadav Na'aman argues the Egyptian name meant a land further north.",
+        "sources": [
+          {
+            "title": "K. A. Kitchen, \"The Egyptian Evidence on Ancient Jordan,\" in Early Edom and Moab, ed. Piotr Bienkowski (1992), as reproduced at bible.ca (\"Town (dmi) that Pharaoh's arm captured in the land of Moab: Btrt (Butartu)\"; \"probably best dated after Year 9\")",
+            "url": "https://www.bible.ca/archeology/bible-archeology-edomites-early-edom-and-moab-piotr-bienkowski-1992ad.htm"
+          },
+          {
+            "title": "Wikipedia, \"Moab\" (a colossal statue at Luxor \"lists Mu'ab among a series of nations conquered\"; Na'aman: the land \"was more likely well to the north\"; Kitchen's reply)",
+            "url": "https://en.wikipedia.org/wiki/Moab"
+          },
+          {
+            "title": "Numbers 22:4",
+            "url": "https://www.sefaria.org/Numbers.22.4"
+          }
+        ]
+      }
+    ]
+  },
+  "pinchas": {
+    "windowStartBCE": 1300,
+    "windowEndBCE": 1200,
+    "note": "Tradition puts Israel on the plains of Moab in the 40th year, c. 1274–1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1300 to 1200 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1300,
+        "endBCE": 1200,
+        "approx": true,
+        "description": "At Emar, on the Euphrates in Syria, most tablets from this century are private records, including wills. There a daughter could be treated like a son and inherit from her father.",
+        "significance": "Zelophehad's daughters ask, “Give us a holding among our father's kinsmen!” (27:4), and God agrees (27:7).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Emar\" (tablets \"most of them in Akkadian and of the thirteenth century BC\" record \"marriages, last wills, formal adoptions\")",
+            "url": "https://en.wikipedia.org/wiki/Emar"
+          },
+          {
+            "title": "\"Property and Succession,\" World Eras, via Encyclopedia.com (\"in some peripheral areas such as Nuzi… and Emar in Syria, a daughter was treated the same as a son in the eyes of the law and could inherit a share of her father's estate\")",
+            "url": "https://www.encyclopedia.com/history/news-wires-white-papers-and-books/property-and-succession"
+          },
+          {
+            "title": "Numbers 27:4",
+            "url": "https://www.sefaria.org/Numbers.27.4"
+          },
+          {
+            "title": "Numbers 27:7",
+            "url": "https://www.sefaria.org/Numbers.27.7"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1282,
+        "approx": true,
+        "description": "Around the ninth year of his reign, Pharaoh Seti I names his son Ramesses as crown prince and his chosen successor.",
+        "significance": "Pinchas has Moses commission Joshua as his successor “before Eleazar the priest and before the whole community” (27:19).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Seti I\" (ruling 1290 BC to 1279 BC; \"Around Year 9 of his reign, Seti appointed his son Ramesses II as the crown prince and his chosen successor\")",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          },
+          {
+            "title": "Numbers 27:19",
+            "url": "https://www.sefaria.org/Numbers.27.19"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1279,
+        "endBCE": 1259,
+        "approx": true,
+        "description": "Ramesses II builds his memorial temple, the Ramesseum, over about 20 years. Ramesses III later copies much of its calendar of offerings for daily, monthly and yearly feasts.",
+        "significance": "Pinchas also sets offerings by the calendar: every day (28:3), every sabbath (28:10), each new moon (28:11), and the yearly festivals.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Ramesseum\" (work \"began shortly after the start of his reign and continued for 20 years\")",
+            "url": "https://en.wikipedia.org/wiki/Ramesseum"
+          },
+          {
+            "title": "Wikipedia, \"Medinet Habu (temple)\" (calendar of \"offerings to be prepared for daily, monthly, and annual feasts\"; \"The Ramesseum of Ramesses II was used as a source for much of the text\")",
+            "url": "https://en.wikipedia.org/wiki/Medinet_Habu_(temple)"
+          },
+          {
+            "title": "Numbers 28:3",
+            "url": "https://www.sefaria.org/Numbers.28.3"
+          },
+          {
+            "title": "Numbers 28:10-11",
+            "url": "https://www.sefaria.org/Numbers.28.10-11"
+          }
+        ]
+      }
+    ]
+  },
+  "matot": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1208,
+    "note": "Tradition puts Israel on the plains of Moab in the 40th year, c. 1274–1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1279 to 1208 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "Ramesses II sets up a basalt stela at Sheikh Saad, in Bashan, to mark a campaign. It is kept in a village mosque as the “Rock of Job.”",
+        "significance": "In Matot, Moses gives “the kingdom of King Og of Bashan” to the half-tribe of Manasseh (32:33).",
+        "sources": [
+          {
+            "title": "K. A. Kitchen, \"The Egyptian Evidence on Ancient Jordan,\" in Early Edom and Moab, ed. Piotr Bienkowski (1992), as reproduced at bible.ca (\"Ramesses II also left a stela up in Bashan, at Sheikh Said\")",
+            "url": "https://www.bible.ca/archeology/bible-archeology-edomites-early-edom-and-moab-piotr-bienkowski-1992ad.htm"
+          },
+          {
+            "title": "Wikipedia, \"Ash-Shaykh Saad\" (stele \"commemorating a campaign of Pharaoh Ramesses II\", \"housed inside a mosque dedicated to Nabi Ayyub\")",
+            "url": "https://en.wikipedia.org/wiki/Ash-Shaykh_Saad"
+          },
+          {
+            "title": "Numbers 32:33",
+            "url": "https://www.sefaria.org/Numbers.32.33"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1270,
+        "approx": true,
+        "description": "Ramesses II's reliefs at Luxor show towns captured in Moab. Kenneth Kitchen reads one label, Tibunu, as Dibon; Shmuel Ahituv placed it in Galilee.",
+        "significance": "In Matot, the tribe of Gad rebuilds “Dibon, Ataroth, Aroer” (32:34).",
+        "sources": [
+          {
+            "title": "K. A. Kitchen, \"The Egyptian Evidence on Ancient Jordan,\" in Early Edom and Moab, ed. Piotr Bienkowski (1992), as reproduced at bible.ca (\"Town (dmi) that Pharaoh's arm [captur]ed: Tibunu. In this strictly Moabite context, this name is, and can only be, Dibon\"; Ahituv \"wrongly locating Tibunu in Galilee\"; campaign \"probably best dated after Year 9\")",
+            "url": "https://www.bible.ca/archeology/bible-archeology-edomites-early-edom-and-moab-piotr-bienkowski-1992ad.htm"
+          },
+          {
+            "title": "Numbers 32:34",
+            "url": "https://www.sefaria.org/Numbers.32.34"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1208,
+        "approx": true,
+        "description": "Pharaoh Merneptah defeats an invading coalition of Libyans and Sea Peoples at Perire. Egypt's lists of the spoils go into great detail, down to arrowheads.",
+        "significance": "Matot counts the spoil of Midian, “675,000 sheep” and more, and divides it between the fighters and the rest of the community (31:27, 31:32).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Battle of Perire\" (\"fought around 1208 BC\"; \"the Egyptian records describe the spoils in extensive detail, including even minor items such as arrowheads\")",
+            "url": "https://en.wikipedia.org/wiki/Battle_of_Perire"
+          },
+          {
+            "title": "Numbers 31:27",
+            "url": "https://www.sefaria.org/Numbers.31.27"
+          },
+          {
+            "title": "Numbers 31:32",
+            "url": "https://www.sefaria.org/Numbers.31.32"
+          }
+        ]
+      }
+    ]
+  },
+  "masei": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1209,
+    "note": "Tradition puts Israel on the plains of Moab in the 40th year, c. 1274–1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1279 to 1209 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "An Egyptian scribe's satirical letter, composed under Ramesses II, quizzes a colleague on the forts along the road from Egypt to Gaza: “Where is Raphia? What is its wall like?”",
+        "significance": "Masei lists Israel's wilderness journey stage by stage, “by starting points” (33:2).",
+        "sources": [
+          {
+            "title": "Alan H. Gardiner, Egyptian Hieratic Texts I: Literary Texts of the New Kingdom (1911), Papyrus Anastasi I (\"written certainly not earlier, but probably also not later, than the reign of Rameses II\"; \"places on the high-road to Gaza\"; \"where is Raphia\" (footnote mark in the scan) \"What is its wall like?\")",
+            "url": "https://archive.org/stream/egyptianhieratic00garduoft/egyptianhieratic00garduoft_djvu.txt"
+          },
+          {
+            "title": "Numbers 33:2",
+            "url": "https://www.sefaria.org/Numbers.33.2"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1267,
+        "endBCE": 1259,
+        "approx": true,
+        "description": "The deposed Hittite king Urhi-Teshub flees to Egypt. Hattusili III demands that Ramesses II hand him over, and the two empires come close to war before making peace.",
+        "significance": "Masei sets up cities of refuge, where a manslayer can flee from “the avenger” until he is tried (35:11–12).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Mursili III\" (\"escaped and fled to Egypt\"; Hattusili demanded \"that Ramesses II extradite his nephew\"; \"the two empires came dangerously close to war\"; peace \"in Year 21 of Ramesses II\")",
+            "url": "https://en.wikipedia.org/wiki/Mursili_III"
+          },
+          {
+            "title": "Wikipedia, \"Hattusili III\" (c. 1267–1237 BC (short chronology))",
+            "url": "https://en.wikipedia.org/wiki/Hattusili_III"
+          },
+          {
+            "title": "Numbers 35:11-12",
+            "url": "https://www.sefaria.org/Numbers.35.11-12"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1237,
+        "approx": true,
+        "description": "Hittite king Tudhaliya IV confirms his cousin Kurunta as king of Tarhuntassa in a treaty on a bronze tablet, which sets out the kingdom's borders in detail.",
+        "significance": "Masei traces the borders of Canaan point by point, from the wilderness of Zin to the Jordan and the Dead Sea (34:2–12).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Hattusa Bronze Tablet\" (\"a detailed description of the boundaries of the kingdom of Tarhuntassa\"; \"the only Hittite metal tablet discovered so far\")",
+            "url": "https://en.wikipedia.org/wiki/Hattusa_Bronze_Tablet"
+          },
+          {
+            "title": "\"The Treaty of Tudhaliya with Kuruntas of Tarhuntassa,\" Early Indo-European Online, University of Texas at Austin (\"circa 1260-1240 B.C.\"; \"goes on at length to specify the boundaries of that land in detail\")",
+            "url": "https://lrc.la.utexas.edu/eieol/hitol/70"
+          },
+          {
+            "title": "Wikipedia, \"Tudḫaliya IV\" (\"He reigned c. 1245–1215 BC\")",
+            "url": "https://en.wikipedia.org/wiki/Tudḫaliya_IV"
+          },
+          {
+            "title": "Numbers 34:2-12",
+            "url": "https://www.sefaria.org/Numbers.34.2-12"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (Society of Biblical Literature, 2002): Tudhaliya IV \"(c. 1237–1209)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          }
+        ],
+        "endBCE": 1209
+      }
+    ]
+  }
+}
