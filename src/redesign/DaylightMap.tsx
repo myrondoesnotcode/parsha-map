@@ -611,7 +611,7 @@ export function DaylightMap() {
         if (overview) {
           const members = story.route.map((_, j) => j).filter((j) => clusterOf[j] === i && drawn >= j - 0.02)
           // One line per place (a revisited stop is listed once). A lone pin mid-story keeps its hedge, so it never reads as more
-          // certain than its stop card; merged pins and the finale (which has the "approximate" banner) stay names-only to fit.
+          // certain than its stop card; merged pins and the finale (which has the "uncertain" banner) stay names-only to fit.
           const labels = members
             .map((j) => story.route[j])
             .filter((s, k, all) => all.findIndex((t) => t.name === s.name) === k)
