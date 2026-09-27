@@ -87,7 +87,7 @@ Checked against the code on `redesign/daylight` (latest commit `53be97d`) and th
 
 1. **Get Myron's answers to the four open decisions below.** Two of them concern things that are wrong on the live site.
 2. **Fix the live site** (`main` → parshamap.com): image captions, the Hobah pin, and hide the Empires layer if Myron agrees. These are wrong in production today, so they come before prototype work.
-3. **0.4 Real "this week" on launch.** Remove the Lech Lecha hard-code (`OPENING_PARSHA` and the "pretend it's Monday" logic in `src/redesign/week.ts`). Handle double parshiot (which story plays) and holiday weeks. Extend the Hebcal window past Oct 2027. This blocks shipping.
+3. ~~**0.4 Real "this week" on launch.**~~ Done on `redesign/real-this-week`; merge into `redesign/daylight` after review. Review links now need `?today=YYYY-MM-DD` or `?parsha=lech-lecha` to open on a story week.
 4. **Show Myron the prototype in the iOS simulator** (roadmap step 2).
 5. **Run the fact-check workflow once more on the final wording** (`.claude/workflows/parsha-fact-check.js`). The last round of fixes was only checked by hand.
 6. Then move on to **0.3 story-writing pipeline** and Genesis stories.
@@ -114,7 +114,7 @@ Checked against the code on `redesign/daylight` (latest commit `53be97d`) and th
 | 0.1 One codebase | **Done** (`3bf19d1`). Both CLAUDE.md files still describe the two-repo setup; retiring `/parsha/ios` is Myron's call |
 | 0.2 Card types for weeks with few places | Partly built. `cover, chapter, stars, letter, name, quote, scale, plan, offerings, guess, talk` exist; no template for all 54 yet |
 | 0.3 Story-writing pipeline | Not started. Stories are hand-written in `src/redesign/stories.ts` (Lech Lecha and Vayikra only) |
-| 0.4 Real "this week" | **Blocks shipping.** See Next session |
+| 0.4 Real "this week" | **Done** (branch `redesign/real-this-week`). Opens on this Shabbat's parsha from Hebcal; rolls over at local midnight Sat→Sun; double weeks name both halves and open on the half with a story, else the first; holiday Shabbatot name the holiday and its reading and point to the next parsha; Hebcal window moves with the clock (last year → 3 years ahead). Rules in `src/redesign/weekRules.ts`, checked by `npm run check:week` |
 | 0.5 App Store polish | Haptics done; Reduce Motion partial. Fonts not bundled, no offline tiles, no VoiceOver labels, no chunk splitting |
 | 0.6 Pin grouping | **Done** 2026-09-27. Overlapping stops merge into one pin ("2·3·5·6") and separate again when you zoom in |
 | 0.7 Desktop decision | **Blocks shipping** |

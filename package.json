@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "geodata": "tsx scripts/processGeodata.ts",
+    "check:week": "tsx scripts/check-this-week.ts",
     "build:ios": "tsc -b && vite build --mode native && cap sync ios",
     "open:ios": "cap open ios"
   },
