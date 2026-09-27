@@ -110,8 +110,8 @@ Checked against the code on `redesign/daylight` (latest commit `df80a25`) and th
 
 1. **Myron reviews** Noach, Vayera, Chayei Sarah, Toldot → merge the approved ones.
 2. **Lane 1, rest of Genesis stories** (own files, no conflicts): Vayetze, Vayishlach, Vayeshev, Miketz, Vayigash, Vayechi. Their Read-tab data is already fact-checked. First make the `name` card data-driven (it is hard-coded to Abram → Abraham; Vayishlach needs Jacob → Israel) and give the `letter` card a letter position (Toldot's small kuf is mid-word). Then each story: write → independent fact-check → fix → Myron review.
-3. **Lane 2, fact-check the other 42 parshiot' data** (report-only, one agent per book: Exodus, Leviticus, Numbers, Deuteronomy), then one fixer per book. Include the ~20 image captions outside Genesis that wrongly credit Doré.
-4. **Lane 3, "World around it" events** per parsha in `src/data/worldEvents.json` (sourced), one book at a time.
+3. ~~**Lane 2, fact-check the other 42 parshiot' data**~~ **Done** (`lane/data-factcheck`, 2026-09-28): Read tab, captions, pins and date bar for Exodus–Deuteronomy, every finding re-verified by a second agent; see `docs/plans/data-factcheck-2026-09-27/STATUS.md` (includes image swaps and two decisions left for Myron).
+4. ~~**Lane 3, "World around it" events**~~ **Done**: all 42 Exodus–Deuteronomy parshiot now have sourced events in `src/data/worldEvents.json` (125 new events).
 5. **Lane 4, app code** (one agent at a time; shares StoryPlayer/DaylightMap): route legs that run over pins (Vayera's Beersheba→Moriah over Mamre) and through labels (Gerar on the finale); thin-week formats (0.2: the Mishkan build-up for Terumah–Pekudei, the camp for Bamidbar and Nasso) before the Exodus–Numbers stories.
 6. **Lane 5, 0.7 desktop layout** (ship blocker: Daylight replaces parshamap.com on every screen). Start with a mockup for Myron.
 7. Later, mostly serial: 0.5 native basics (bundle fonts, offline tiles, VoiceOver labels, chunk splitting), 0.8 analytics, remove the classic UI and `approximateDateBCE`, merge to `main`, App Store build.
