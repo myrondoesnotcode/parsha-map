@@ -369,7 +369,7 @@ function CardBody({ card, story, hebrew, onClose, onSources }: { card: StoryCard
         <div className="dl-story-stars">
           <RefButton card={card} onSources={onSources} dark stop={card.stop} />
           <RevealText text={`“${card.title}”`} delay={0.3} style={{ font: `800 36px/1.05 ${FONT.display}`, letterSpacing: '-0.03em', color: C.sand, marginTop: 12 }} />
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.8 }} style={{ font: `600 22px ${FONT.display}`, color: C.warm, marginTop: 14 }}>
+          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.8 }} style={{ font: `600 22px ${FONT.display}`, color: card.sky === 'dawn' ? C.sand : C.warm, marginTop: 14 }}>
             {card.body}
           </motion.div>
         </div>
@@ -893,7 +893,7 @@ function Burst() {
   )
 }
 
-/** Night sky over the map; at dawn the lower sky warms and only a few stars are left, high up. */
+/** Night sky over the map; at dawn the sky warms below the card's text and only a few stars are left, high up. */
 function StarSky({ dawn }: { dawn: boolean }) {
   const stars = useMemo(
     () =>
@@ -907,7 +907,7 @@ function StarSky({ dawn }: { dawn: boolean }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1.2 }}
-      style={dawn ? { background: 'linear-gradient(#0e1554 0%, #3b3fa6 34%, #c9788a 58%, #f4b27c 76%, rgba(244, 178, 124, 0) 100%)' } : undefined}
+      style={dawn ? { background: 'linear-gradient(#0e1554 0%, #26309a 50%, #4b3f9e 70%, #d98a78 84%, #f4b27c 92%, rgba(244, 178, 124, 0) 100%)' } : undefined}
     >
       {stars.map((s, i) => (
         <motion.span
