@@ -817,7 +817,9 @@ export function DaylightMap() {
               style={{
                 position: 'absolute',
                 left: 28,
-                whiteSpace: 'nowrap',
+                // Wide enough for a place name; a long hedge wraps instead of running off a phone screen.
+                width: 'max-content',
+                maxWidth: 170,
                 background: 'rgba(255,255,255,0.92)',
                 padding: '3px 9px',
                 borderRadius: 10,

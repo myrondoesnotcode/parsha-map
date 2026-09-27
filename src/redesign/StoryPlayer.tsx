@@ -561,6 +561,12 @@ function GuessCard({ card, onSources }: { card: StoryCard; onSources: () => void
 }
 
 /** Stage visual for a guess with no map: the choices as big tokens that react to the answer. */
+/** Hebrew on a guess token: 40px for short words, smaller for longer ones so they stay inside the 96px token. */
+function tokenHeSize(he: string | undefined): number {
+  const letters = (he ?? '').replace(/[\u0591-\u05C7]/g, '').length
+  return letters <= 4 ? 40 : Math.max(20, Math.floor(160 / letters))
+}
+
 function GuessTokens({ card }: { card: StoryCard }) {
   const guessPick = useDaylight((s) => s.guessPick)
   const options = card.options ?? []
@@ -579,7 +585,7 @@ function GuessTokens({ card }: { card: StoryCard }) {
             className="dl-token"
             data-lit={lit || undefined}
           >
-            <span lang="he" dir="rtl" style={{ font: `40px/1 ${FONT.hebrew}` }}>
+            <span lang="he" dir="rtl" style={{ font: `${tokenHeSize(o.he)}px/1 ${FONT.hebrew}`, whiteSpace: 'nowrap' }}>
               {o.he}
             </span>
             <span style={{ font: `700 13px ${FONT.display}`, marginTop: 8 }}>{answered ? o.label : '?'}</span>
