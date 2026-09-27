@@ -304,6 +304,10 @@ function checkStory(file: string, story: ParshaStory, source: string, hasEmblem:
     if (NEEDS_HEBREW.has(c.kind) && !(text(c.hebrew) && HEBREW.test(c.hebrew!))) err(where, `the ${c.kind} card needs a Hebrew line (hebrew)`)
     if (c.hebrew !== undefined && !NEEDS_HEBREW.has(c.kind)) warn(where, '`hebrew` is only shown on letter and quote cards')
     if (NEEDS_ITEMS.has(c.kind) && !(Array.isArray(c.items) && c.items.length)) err(where, `the ${c.kind} card needs items`)
+    // Kinds whose drawing is still built for one story (StoryPlayer / DaylightMap), not from the card's data.
+    if (c.kind === 'name' && story.parshaId !== 'lech-lecha') err(where, 'the name card always draws אברם → אברהם (NameMorph in StoryPlayer.tsx); make it data-driven before using it here')
+    if (c.kind === 'plan' && !/Tabernacle|Mishkan|Tent of Meeting/i.test(`${c.title} ${c.body ?? ''}`)) warn(where, 'the plan card always draws the Tabernacle courtyard at MISHKAN_AT (DaylightMap.tsx); use it only for the Tabernacle')
+    if (c.kind === 'scale' && Array.isArray(c.items) && (c.items.length < 2 || c.items.length > 3)) err(where, 'the scale card draws 2–3 steps')
     if (c.items !== undefined && !NEEDS_ITEMS.has(c.kind)) warn(where, '`items` are only shown on offerings and scale cards')
     ;(c.items ?? []).forEach((it, k) => {
       if (!isObj(it)) return err(`${where} item ${k}`, 'must be an object')
