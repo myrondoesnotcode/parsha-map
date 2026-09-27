@@ -3,8 +3,7 @@ import { motion, AnimatePresence } from 'motion/react'
 import { Search, Layers, X, Clock } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 import { useParshaPlaces } from '../hooks/useParshaPlaces'
-import { useEraContext } from '../hooks/useEraContext'
-import { eraYear } from './placeText'
+import { getParshaDate, formatBCE } from './parshaDates'
 import { PLACE_TYPE_FILTERS } from '../utils/placeUtils'
 import { getParshaById } from '../utils/parshaUtils'
 import placesData from '../data/places.json'
@@ -23,8 +22,7 @@ export function MapChrome({ searchRef }: { searchRef: React.RefObject<HTMLInputE
   const placeTypeFilter = useAppStore((s) => s.placeTypeFilter)
   const setPlaceTypeFilter = useAppStore((s) => s.setPlaceTypeFilter)
   const { layersOpen, toggleLayers, showTrade, showEmpires, toggleTrade, toggleEmpires, selectPlace } = useDaylight()
-  const parsha = parshaId ? getParshaById(parshaId) : undefined
-  const { era } = useEraContext(eraYear(parsha))
+  const date = getParshaDate(parshaId)
 
   const [q, setQ] = useState('')
   const results = useMemo(() => {
@@ -41,11 +39,16 @@ export function MapChrome({ searchRef }: { searchRef: React.RefObject<HTMLInputE
     searchRef.current?.blur()
   }
 
-  const d = parsha?.approximateDateBCE
-  const range = d && d.start != null && d.end != null ? { start: d.start, end: d.end } : null
+  // The bar shows both dates, each labelled: the hedged range historians use (a band) and the
+  // traditional Jewish date (a dot). Values and sources live in src/data/parshaDates.json.
   const span = TIMELINE_START - TIMELINE_END
-  const left = range ? ((TIMELINE_START - range.start) / span) * 100 : 0
-  const width = range ? Math.max(3, ((range.start - range.end) / span) * 100) : 0
+  const pct = (y: number) => ((TIMELINE_START - y) / span) * 100
+  const sch = date?.scholarly
+  const band = sch?.startBCE != null && sch.endBCE != null ? { left: pct(sch.startBCE), width: Math.max(3, pct(sch.endBCE) - pct(sch.startBCE)) } : null
+  const trad = date?.traditional
+  const tradText = trad ? `Tradition: ${formatBCE(trad.yearBCE, trad.endBCE)}` : null
+  const tradYear = trad ? (trad.endBCE != null ? (trad.yearBCE + trad.endBCE) / 2 : trad.yearBCE) : null
+  const dot = tradYear != null && tradYear <= TIMELINE_START && tradYear >= TIMELINE_END ? pct(tradYear) : null
 
   return (
     <motion.div
@@ -141,24 +144,42 @@ export function MapChrome({ searchRef }: { searchRef: React.RefObject<HTMLInputE
         })}
       </div>
 
-      {range && (
-        <div className="dl-era">
-          <Clock size={18} color={C.blue} strokeWidth={2.2} />
-          <div style={{ flexGrow: 1 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', font: `600 12px ${FONT.display}` }}>
-              <span>
-                c. {range.start}–{range.end} BCE
-              </span>
-              <span style={{ color: C.muted }}>{era?.name ?? ''}</span>
+      {sch && (
+        <div
+          className="dl-era"
+          role="group"
+          aria-label={[sch.label, tradText && trad ? `${tradText}, ${trad.event}` : null].filter(Boolean).join('. ')}
+        >
+          <Clock size={18} color={C.blue} strokeWidth={2.2} style={{ flexShrink: 0 }} />
+          <div style={{ flexGrow: 1, minWidth: 0 }}>
+            <div className="dl-era-line" style={{ font: `600 12px ${FONT.display}`, color: C.ink }}>
+              {sch.label}
             </div>
-            <div style={{ position: 'relative', height: 5, borderRadius: 3, background: C.land, marginTop: 7 }}>
-              <motion.div
-                initial={false}
-                animate={{ left: `${left}%`, width: `${width}%` }}
-                transition={SPRING.soft}
-                style={{ position: 'absolute', top: 0, bottom: 0, borderRadius: 3, background: C.blue }}
-              />
-            </div>
+            {tradText && trad && (
+              <div style={{ font: `500 12px/1.3 ${FONT.display}`, color: C.muted, marginTop: 2 }}>
+                <span style={{ fontWeight: 700, color: C.ink }}>{tradText}</span> · {trad.event}
+              </div>
+            )}
+            {(band || dot != null) && (
+              <div aria-hidden style={{ position: 'relative', height: 5, borderRadius: 3, background: C.land, marginTop: 7 }}>
+                {band && (
+                  <motion.div
+                    initial={false}
+                    animate={{ left: `${band.left}%`, width: `${band.width}%` }}
+                    transition={SPRING.soft}
+                    style={{ position: 'absolute', top: 0, bottom: 0, borderRadius: 3, background: C.blue, opacity: 0.35 }}
+                  />
+                )}
+                {dot != null && (
+                  <motion.div
+                    initial={false}
+                    animate={{ left: `${dot}%` }}
+                    transition={SPRING.soft}
+                    style={{ position: 'absolute', top: -2.5, width: 10, height: 10, marginLeft: -5, borderRadius: 5, background: C.blue, boxShadow: `0 0 0 2px ${C.white}` }}
+                  />
+                )}
+              </div>
+            )}
           </div>
         </div>
       )}

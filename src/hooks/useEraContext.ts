@@ -6,9 +6,10 @@ import type { Era, MaterialCultureEntry } from '../types/timeline'
 const eras = timeline as Era[]
 const culture = materialCulture as Record<string, MaterialCultureEntry>
 
-export function useEraContext(yearBCE: number) {
+/** The archaeological era for a year; no era for null (an undated parsha). */
+export function useEraContext(yearBCE: number | null) {
   return useMemo(() => {
-    const era = eras.find((e) => yearBCE <= e.startBCE && yearBCE >= e.endBCE) ?? null
+    const era = yearBCE == null ? null : eras.find((e) => yearBCE <= e.startBCE && yearBCE >= e.endBCE) ?? null
     const cultureEntry = era ? (culture[era.id] ?? null) : null
     return { era, cultureEntry }
   }, [yearBCE])

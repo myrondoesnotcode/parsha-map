@@ -11,6 +11,7 @@ import type { ReadSegment } from './useDaylight'
 import { getStory } from './stories'
 import { C, FONT, SPRING, SHADOW } from './theme'
 import { parshaDisplayName, verseRange } from './placeText'
+import { getParshaDate, getParshaWorld, formatBCE } from './parshaDates'
 import { isStoryComplete, completedCount, useWeekProgress } from './progress'
 import { useYear, useToday, upcomingShabbat, ymd, fromYmd, formatDay } from './week'
 
@@ -76,6 +77,8 @@ export function ReadScreen() {
   const parshaId = useAppStore((s) => s.selectedParshaId)
   const parsha = parshaId ? getParshaById(parshaId) : undefined
   const { era } = useEraContext(eraYear(parsha))
+  const world = getParshaWorld(parshaId)
+  const date = getParshaDate(parshaId)
   const seg = useDaylight((s) => s.readSeg)
   const setReadSeg = useDaylight((s) => s.setReadSeg)
   const markRead = useWeekProgress((s) => s.update)
@@ -164,7 +167,24 @@ export function ReadScreen() {
               <p style={{ margin: '8px 0 0', font: `400 16px/1.5 ${FONT.display}` }}>{rc.historicalContext}</p>
             </motion.article>
           )}
-          {era && (
+          {world ? (
+            // Dated events chosen for this parsha's own window (src/data/worldEvents.json).
+            <motion.article {...rise(1)} className="dl-card">
+              <div className="dl-eyebrow" style={{ color: C.blue }}>
+                Around this time · {formatBCE(world.windowStartBCE, world.windowEndBCE)}
+              </div>
+              <p style={{ margin: '8px 0 12px', font: `400 15px/1.5 ${FONT.display}`, color: C.muted }}>{world.note}</p>
+              <ol className="dl-timeline">
+                {[...world.events].sort((a, b) => b.yearBCE - a.yearBCE).map((e) => (
+                  <li key={e.description}>
+                    <span style={{ font: `800 13px ${FONT.display}`, color: C.blue }}>{formatBCE(e.yearBCE, e.endBCE, e.approx)}</span>
+                    <span style={{ font: `500 15px/1.35 ${FONT.display}`, color: C.ink }}>{e.description}</span>
+                    <span style={{ font: `400 14px/1.4 ${FONT.display}`, color: C.body }}>{e.significance}</span>
+                  </li>
+                ))}
+              </ol>
+            </motion.article>
+          ) : era ? (
             <motion.article {...rise(1)} className="dl-card">
               <div className="dl-eyebrow" style={{ color: C.blue }}>
                 Across the {era.name} · c. {era.startBCE}–{era.endBCE} BCE
@@ -179,6 +199,19 @@ export function ReadScreen() {
                 ))}
               </ol>
             </motion.article>
+          ) : (
+            date && (
+              // No historical date (Creation, the Flood): no era card, only the two labelled dates.
+              <motion.article {...rise(1)} className="dl-card">
+                <div className="dl-eyebrow" style={{ color: C.blue }}>When</div>
+                <p style={{ margin: '8px 0 0', font: `600 16px/1.45 ${FONT.display}`, color: C.ink }}>{date.scholarly.label}</p>
+                {date.traditional && (
+                  <p style={{ margin: '4px 0 0', font: `400 15px/1.45 ${FONT.display}`, color: C.body }}>
+                    Traditional Jewish chronology: {formatBCE(date.traditional.yearBCE, date.traditional.endBCE)} · {date.traditional.event}
+                  </p>
+                )}
+              </motion.article>
+            )
           )}
         </div>
       )}
