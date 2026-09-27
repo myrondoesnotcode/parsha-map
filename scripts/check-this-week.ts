@@ -23,11 +23,15 @@ import {
   type YearData,
 } from '../src/redesign/weekRules'
 import parshaList from '../src/data/parshaList.json'
+import { storyFileIds } from './storyFiles'
 
 const TODAY = fromYmd(process.env.CHECK_TODAY ?? '2026-09-27')
-// The parshiot with finished stories (src/redesign/stories.ts), for rule 2.
-const STORIES = new Set(['lech-lecha', 'vayikra'])
+// The parshiot with stories (one file each in src/redesign/stories/, as the app registers them), for rule 2.
+const STORIES = new Set(storyFileIds())
 const hasStory = (id: string) => STORIES.has(id)
+// Rule 2 unit checks use a fixed set, so they don't change as stories are added.
+const FIXED_STORIES = new Set(['lech-lecha', 'vayikra'])
+const fixedHasStory = (id: string) => FIXED_STORIES.has(id)
 
 type Region = 'diaspora' | 'israel'
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms))
@@ -138,8 +142,8 @@ async function main() {
     [['lech-lecha'], 'lech-lecha'],
     [[], null],
   ]
-  for (const [ids, want] of pickCases) if (pickParsha(ids, hasStory) !== want) (failures++, console.log(`FAIL pickParsha ${ids}`))
-  if (pickParsha(['vayikra-x', 'vayikra'], hasStory) !== 'vayikra') (failures++, console.log('FAIL pickParsha prefers story half'))
+  for (const [ids, want] of pickCases) if (pickParsha(ids, fixedHasStory) !== want) (failures++, console.log(`FAIL pickParsha ${ids}`))
+  if (pickParsha(['vayikra-x', 'vayikra'], fixedHasStory) !== 'vayikra') (failures++, console.log('FAIL pickParsha prefers story half'))
 
   // Named cases. Dates chosen from Hebcal's own calendar output; the oracle re-checks each.
   const D = fromYmd

@@ -15,5 +15,5 @@
     "resolveJsonModule": true,
     "types": ["node"]
   },
-  "include": ["vite.config.ts", "scripts", "src/redesign/weekRules.ts", "src/types/parsha.ts", "src/data/parshaList.json"]
+  "include": ["vite.config.ts", "scripts", "src/redesign/weekRules.ts", "src/types/parsha.ts", "src/data/parshaList.json", "src/redesign/story.ts", "src/redesign/placeText.ts", "src/redesign/art/briefs.ts"]
 }
