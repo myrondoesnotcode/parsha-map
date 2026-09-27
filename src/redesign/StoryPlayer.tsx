@@ -200,7 +200,7 @@ export function StoryPlayer() {
       {/* A drawn route is a sketch of the order of places, not the roads: say so while it's on screen. */}
       {story.route.length > 0 && card.kind !== 'cover' && card.kind !== 'guess' && card.kind !== 'stars' && (
         <div className="dl-route-tag">
-          {card.kind === 'talk' ? 'Route illustrative · pins are usual sites, none certain' : 'Route illustrative · lines join the stops in order'}
+          {card.kind === 'talk' ? 'Route illustrative · pin sites are approximate' : 'Route illustrative · lines join the stops in order'}
         </div>
       )}
 
@@ -756,7 +756,7 @@ function Finale({ story, card, onClose, onSources }: { story: ParshaStory; card:
             {q?.text}
           </motion.div>
         </AnimatePresence>
-        <motion.button whileTap={{ scale: 0.97 }} type="button" onClick={share} className="dl-primary" style={{ width: '100%', flexGrow: 0, marginTop: 12 }}>
+        <motion.button whileTap={{ scale: 0.97 }} type="button" onClick={share} className="dl-primary" style={{ width: '100%', flexGrow: 0, flexShrink: 0, marginTop: 12 }}>
           {sent ? <Check size={18} /> : <Share2 size={18} />}
           {sent ? 'Sent' : 'Send to the family chat'}
         </motion.button>
