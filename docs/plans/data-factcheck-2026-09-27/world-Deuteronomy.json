@@ -1,0 +1,781 @@
+{
+  "devarim": {
+    "windowStartBCE": 1300,
+    "windowEndBCE": 1200,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1300 to 1200 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1300,
+        "endBCE": 1200,
+        "approx": true,
+        "description": "A clay tablet from Ugarit, in Syria, praises Rapiu, “King of Eternity”, a god “enthroned in Ashtarat” who “rules in Edrei”.",
+        "significance": "Deuteronomy 1:4 places Og, king of Bashan, at Ashtaroth and Edrei, and 3:11 calls him the last of the Rephaim. Some scholars link the two; whether Og existed is disputed.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Og\" (Ugaritic tablet KTU 1.108 \"from the 13th century B.C.\"; \"the god enthroned in Ashtarat, the god who rules in Edrei\"; Og's existence \"is disputed\")",
+            "url": "https://en.wikipedia.org/wiki/Og"
+          },
+          {
+            "title": "Deuteronomy 1:4",
+            "url": "https://www.sefaria.org/Deuteronomy.1.4"
+          },
+          {
+            "title": "Deuteronomy 3:11",
+            "url": "https://www.sefaria.org/Deuteronomy.3.11"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1272,
+        "approx": true,
+        "description": "Late in his seventh year, Ramesses II marches north again; by one reconstruction, part of his army passes through Edom-Seir and Moab. His statue at Luxor lists Mu'ab among conquered lands.",
+        "significance": "Deuteronomy 2 has Israel skirt Seir and Moab. Moab's existence before Israel's kingdoms has been deduced from this statue; the order of Ramesses' campaigns is uncertain.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Ramesses II\" (\"Late in the seventh year of his reign (April/May 1272 BC)\"; chronology of these campaigns \"is not clear\"; army captures Edom-Seir and Moab)",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          },
+          {
+            "title": "Wikipedia, \"Moab\" (colossal statue at Luxor by Ramesses II \"lists Mu'ab among a series of nations conquered\")",
+            "url": "https://en.wikipedia.org/wiki/Moab"
+          },
+          {
+            "title": "Deuteronomy 2:8",
+            "url": "https://www.sefaria.org/Deuteronomy.2.8"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1237,
+        "endBCE": 1209,
+        "approx": true,
+        "description": "Hittite king Tudhaliya IV has his treaty with his cousin Kurunta cast on a bronze tablet. It recalls the past, then spells out the borders of Kurunta's kingdom in detail.",
+        "significance": "Deuteronomy 1–3 also retells the past and then sets out borders east of the Jordan (3:12–17). Scholars who compare Hittite treaties call 1:6–4:40 Deuteronomy's “historical prologue”.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Hattusa Bronze Tablet\" (treaty of Tudhaliya IV and Kurunta; \"a detailed description of the boundaries\")",
+            "url": "https://en.wikipedia.org/wiki/Hattusa_Bronze_Tablet"
+          },
+          {
+            "title": "Wikipedia, \"Tudḫaliya IV\" (reigned c. 1245–1215 BC; the treaty \"recorded on a bronze tablet\")",
+            "url": "https://en.wikipedia.org/wiki/Tud%E1%B8%ABaliya_IV"
+          },
+          {
+            "title": "Sara E. Kimball, Winfred P. Lehmann, Jonathan Slocum, \"The Treaty of Tudhaliya with Kuruntas of Tarhuntassa\", Early Indo-European Online, University of Texas at Austin (found 1986; recalls Hattusili III's reign; specifies \"the boundaries of that land in detail\")",
+            "url": "https://lrc.la.utexas.edu/eieol/hitol/70"
+          },
+          {
+            "title": "Aaron Koller, \"Deuteronomy and Hittite Treaties\", Bible and Interpretation (2014) (\"Historical prologue: 1:6-4:40\")",
+            "url": "https://bibleinterp.arizona.edu/articles/2014/09/kol388003"
+          },
+          {
+            "title": "Deuteronomy 3:12",
+            "url": "https://www.sefaria.org/Deuteronomy.3.12"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (Society of Biblical Literature, 2002): Tudhaliya IV \"(c. 1237–1209)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  "vaetchanan": {
+    "windowStartBCE": 1295,
+    "windowEndBCE": 1200,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1295 to 1200 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1295,
+        "endBCE": 1272,
+        "approx": true,
+        "description": "Hittite king Muwatalli II moves his capital to a new city, Tarhuntassa, as the peak of a religious reform that raises the Storm-god of Lightning above the other great gods.",
+        "significance": "The reform collapsed after his death. The Shema goes further: “The ETERNAL is our God, the ETERNAL alone” (6:4). Itamar Singer compares Muwatalli's reform to Akhenaten's in Egypt.",
+        "sources": [
+          {
+            "title": "Itamar Singer, \"The failed reforms of Akhenaten and Muwatalli\", British Museum Studies in Ancient Egypt and Sudan 6 (2006), abstract (new capital at Tarhuntassa \"as the apex of a religious reform promoting the cult of the Storm-god of Lightning\"; \"Both reforms collapsed\")",
+            "url": "https://www.historyoftheancientworld.com/2013/04/the-failed-reforms-of-akhenaten-and-muwatalli/"
+          },
+          {
+            "title": "Wikipedia, \"Muwatalli II\" (reigned 1295–1272 BC in the short chronology; moved the capital \"not long after he came into power\")",
+            "url": "https://en.wikipedia.org/wiki/Muwatalli_II"
+          },
+          {
+            "title": "Deuteronomy 6:4",
+            "url": "https://www.sefaria.org/Deuteronomy.6.4"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1237,
+        "endBCE": 1209,
+        "approx": true,
+        "description": "Hittite king Tudhaliya IV binds Shaushgamuwa of Amurru by treaty to take the Hittite king's side: Assyria is to be his enemy too, and closed to his merchants.",
+        "significance": "Scholars who compare Deuteronomy to such treaties call chapters 5–11 its “basic stipulation of allegiance”: “You shall have no other gods beside Me” (5:7). Many scholars point instead to 7th-century Assyrian treaties.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Tudḫaliya IV\" (reigned c. 1245–1215 BC; after defeat at Nihriya, c. 1237 BC, his treaty with Šaušgamuwa: \"if he is My Majesty's enemy, he shall also be your enemy\"; \"Your merchant shall not enter into Assyria\")",
+            "url": "https://en.wikipedia.org/wiki/Tud%E1%B8%ABaliya_IV"
+          },
+          {
+            "title": "Aaron Koller, \"Deuteronomy and Hittite Treaties\", Bible and Interpretation (2014) (\"Basic stipulation of allegiance: 5-11\"; the case for a later date and the Vassal Treaties of Esarhaddon)",
+            "url": "https://bibleinterp.arizona.edu/articles/2014/09/kol388003"
+          },
+          {
+            "title": "Deuteronomy 5:7",
+            "url": "https://www.sefaria.org/Deuteronomy.5.7"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (Society of Biblical Literature, 2002): Tudhaliya IV \"(c. 1237–1209)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1237,
+        "endBCE": 1200,
+        "approx": true,
+        "description": "At Yazılıkaya, a rock sanctuary near the Hittite capital, 64 gods are carved in procession: gods on one wall, goddesses on the other. Most carvings date to the late 13th century.",
+        "significance": "Deuteronomy 4:16 forbids making any sculptured image, “the form of a man or a woman” (literally “a male or a female”).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Yazılıkaya\" (\"relief of 64 deities in procession\"; male deities on the left wall, female on the right; most carvings from Tudhaliya IV and Suppiluliuma II, \"late 13th century BCE\")",
+            "url": "https://en.wikipedia.org/wiki/Yaz%C4%B1l%C4%B1kaya"
+          },
+          {
+            "title": "Deuteronomy 4:16",
+            "url": "https://www.sefaria.org/Deuteronomy.4.16"
+          }
+        ]
+      }
+    ]
+  },
+  "ekev": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1194,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1279 to 1194 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "In the tomb of Ipuy, a sculptor at Deir el-Medina under Ramesses II, a painting shows a garden watered with a shaduf: a counterweighted pole with a bucket for lifting water.",
+        "significance": "Deuteronomy 11:10–11 contrasts Egypt, where sown land was watered by labour (literally “by your foot”), with a land that “soaks up its water from the rains of heaven.”",
+        "sources": [
+          {
+            "title": "Norman de Garis Davies, \"Garden Scene, Tomb of Ipuy\", facsimile, Metropolitan Museum of Art 30.4.115 (TT 217; \"garden, house, shadduf\"; reign of Ramesses II)",
+            "url": "https://www.metmuseum.org/art/collection/search/557816"
+          },
+          {
+            "title": "Wikipedia, \"TT217\" (Ipuy, \"a sculptor active in the reign of Ramesses II\")",
+            "url": "https://en.wikipedia.org/wiki/TT217"
+          },
+          {
+            "title": "Wikipedia, \"Shadoof\" (\"a long counterbalanced pole on a pivot, with a bucket attached\")",
+            "url": "https://en.wikipedia.org/wiki/Shadoof"
+          },
+          {
+            "title": "Deuteronomy 11:10–11",
+            "url": "https://www.sefaria.org/Deuteronomy.11.10-11"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1237,
+        "approx": true,
+        "description": "After a drought, Hittite king Tudhaliya IV builds a series of dams. One, near Alaca Höyük, was dedicated to the goddess Hepat; restored in the 2000s, it holds water again.",
+        "significance": "Deuteronomy 11:13–17 ties rain in its season to keeping the commandments, and warns of God “shutting up the skies so that there will be no rain.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Gölpınar Dam\" (Tudhaliya IV \"had ten dams built ... around 1240 BC after a period of drought\"; dedicated to Ḫepat; excavated and repaired 2002–2007)",
+            "url": "https://en.wikipedia.org/wiki/G%C3%B6lp%C4%B1nar_Dam"
+          },
+          {
+            "title": "Turkish Archaeological News, \"Alacahöyük\" (under Tudhaliya IV, c. 1245–1215, \"a severe drought ... leading to the construction of a series of dams\")",
+            "url": "https://turkisharchaeonews.net/site/alacah%C3%B6y%C3%BCk"
+          },
+          {
+            "title": "Deuteronomy 11:13–17",
+            "url": "https://www.sefaria.org/Deuteronomy.11.13-17"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (Society of Biblical Literature, 2002): Tudhaliya IV \"(c. 1237–1209)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          }
+        ],
+        "endBCE": 1209
+      },
+      {
+        "yearBCE": 1213,
+        "endBCE": 1194,
+        "approx": true,
+        "description": "Ugarit's king begs Egypt's pharaoh: “In the land of Ugarit there is a severe hunger… may the king give grain.” Sources differ on whether this was Merneptah or Seti II.",
+        "significance": "Food shortages spread across the eastern Mediterranean at this time. Deuteronomy 8:9 promises “a land where you may eat food without stint.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Ugarit\" (late 13th–early 12th century food shortages; letter of Merneptah (r. 1213–1203) quoting Ugarit: \"there is a severe hunger\")",
+            "url": "https://en.wikipedia.org/wiki/Ugarit"
+          },
+          {
+            "title": "Roger Atwood, \"The Ugarit Archives\", Archaeology (July/August 2021) (Ammurapi to \"Seti II, who ruled from about 1200 to 1194 B.C.\")",
+            "url": "https://archaeology.org/issues/july-august-2021/features/ugarit-bronze-age-archive/"
+          },
+          {
+            "title": "Deuteronomy 8:9",
+            "url": "https://www.sefaria.org/Deuteronomy.8.9"
+          }
+        ]
+      }
+    ]
+  },
+  "reeh": {
+    "windowStartBCE": 1273,
+    "windowEndBCE": 1207,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1273 to 1207 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1273,
+        "endBCE": 1235,
+        "approx": true,
+        "description": "Assyrian king Shalmaneser I restores the “world-temple”, Ehursagkurkurra, at Assur. His reign is dated 1273–1244 or 1265–1235 BCE.",
+        "significance": "Deuteronomy 12:13–14 limits burnt offerings to “the place that GOD will choose”, not “any place you like.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Shalmaneser I\" (1273–1244 BC or 1265–1235 BC; \"restored the 'world-temple' at Assur (Ehursagkurkurra)\")",
+            "url": "https://en.wikipedia.org/wiki/Shalmaneser_I"
+          },
+          {
+            "title": "Deuteronomy 12:13–14",
+            "url": "https://www.sefaria.org/Deuteronomy.12.13-14"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1267,
+        "endBCE": 1237,
+        "approx": true,
+        "description": "Hittite king Hattusili III writes the story of his life. It tells how the goddess Ishtar came to his father in a dream, and credits her with guiding him ever after.",
+        "significance": "Deuteronomy 13:2–4 warns that even if a “dream-diviner” gives a sign that comes true, no one may follow him to another god.",
+        "sources": [
+          {
+            "title": "Sara E. Kimball and Jonathan Slocum, \"The Apology of Hattusilis III\", Early Indo-European Online, University of Texas at Austin (Ishtar \"appears to his father in a dream\"; \"she also guides the major events of his personal life\")",
+            "url": "https://lrc.la.utexas.edu/eieol/hitol/60"
+          },
+          {
+            "title": "Wikipedia, \"Ḫattušili III\" (king c. 1275–1245 BC (middle chronology) or 1267–1237 BC (short); the Apology \"written on a stone tablet during his reign\")",
+            "url": "https://en.wikipedia.org/wiki/%E1%B8%AAattu%C5%A1ili_III"
+          },
+          {
+            "title": "Deuteronomy 13:2–4",
+            "url": "https://www.sefaria.org/Deuteronomy.13.2-4"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1243,
+        "endBCE": 1207,
+        "approx": true,
+        "description": "Shalmaneser's son Tukulti-Ninurta I builds a new cult city, Kar-Tukulti-Ninurta, near Assur, and moves the god Ashur's cult image there.",
+        "significance": "It did not last: after he was murdered, the image went back to Assur and the city was largely abandoned. Deuteronomy 12:5 speaks of the one “site that the ETERNAL your God will choose.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kar-Tukulti-Ninurta\" (founded by Tukulti-Ninurta I (about 1243–1207 BC); \"the cult image of the god was moved from Assur to this temple\"; abandoned after his death, image \"brought back to Assur\")",
+            "url": "https://en.wikipedia.org/wiki/Kar-Tukulti-Ninurta"
+          },
+          {
+            "title": "Wikipedia, \"Tukulti-Ninurta I\" (reigned c. 1243–1207 BC; his sons besieged him in Kar-Tukulti-Ninurta, where \"he was murdered\")",
+            "url": "https://en.wikipedia.org/wiki/Tukulti-Ninurta_I"
+          },
+          {
+            "title": "Deuteronomy 12:5",
+            "url": "https://www.sefaria.org/Deuteronomy.12.5"
+          }
+        ]
+      }
+    ]
+  },
+  "shoftim": {
+    "windowStartBCE": 1307,
+    "windowEndBCE": 1225,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1307 to 1225 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1307,
+        "endBCE": 1282,
+        "approx": true,
+        "description": "Babylonian scholars compile for Kassite king Nazi-Maruttash an almanac of which days of each month are favourable, unfavourable or dangerous for the king's affairs.",
+        "significance": "Deuteronomy 18:10 bans the meʿonen. Rashi cites Rabbi Akiva: people who say “This time is auspicious to begin some work.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Nazi-Maruttash\" (king of Babylon c. 1307–1282 BC; the hemerology lists \"which days of each month were favorable, unfavorable, or dangerous\")",
+            "url": "https://en.wikipedia.org/wiki/Nazi-Maruttash"
+          },
+          {
+            "title": "Deuteronomy 18:10",
+            "url": "https://www.sefaria.org/Deuteronomy.18.10"
+          },
+          {
+            "title": "Rashi on Deuteronomy 18:10",
+            "url": "https://www.sefaria.org/Rashi_on_Deuteronomy.18.10.3"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1246,
+        "endBCE": 1245,
+        "approx": true,
+        "description": "In Ramesses II's 34th year, a Hittite princess reaches his capital, Pi-Ramesses, to marry him, with a dowry caravan of gold, silver, bronze, cattle, sheep and slaves.",
+        "significance": "Deuteronomy 17:16–17 forbids Israel's king many horses and many wives, and says he shall not “amass silver and gold to excess.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Maathorneferure\" (married Ramesses II \"in his Year 34\"; arrived at Pi-Ramesse \"between December 1246 and January or February 1245 BC\"; dowry of \"gold, silver, bronze, cattle and sheep, and slaves\")",
+            "url": "https://en.wikipedia.org/wiki/Maathorneferure"
+          },
+          {
+            "title": "Deuteronomy 17:16–17",
+            "url": "https://www.sefaria.org/Deuteronomy.17.16-17"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1232,
+        "endBCE": 1225,
+        "approx": true,
+        "description": "Babylon's king Kashtiliash IV confirms an old grant of farmland on a kudurru, a stone land-grant record. Kudurrus call on the gods to curse anyone who violates them.",
+        "significance": "Deuteronomy 19:14: “You shall not move your neighbor's landmarks, set up by previous generations.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kudurru of Kaštiliašu\" (Kaštiliašu IV (c. 1232–1225 BC); land grant \"reconfirmed by Kaštiliašu\")",
+            "url": "https://en.wikipedia.org/wiki/Kudurru_of_Ka%C5%A1tilia%C5%A1u"
+          },
+          {
+            "title": "Wikipedia, \"Kudurru\" (a boundary stone and land-grant record; \"A call upon the gods ... to curse anyone who violates the intent or damages the stone\")",
+            "url": "https://en.wikipedia.org/wiki/Kudurru"
+          },
+          {
+            "title": "Deuteronomy 19:14",
+            "url": "https://www.sefaria.org/Deuteronomy.19.14"
+          }
+        ]
+      }
+    ]
+  },
+  "ki-teitzei": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1200,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1279 to 1200 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "Inscriptions of Ramesses II name Mw-i-bw, perhaps Moab, as a rebel land that raided Egyptian territory together with the Shasu of Mount Seir.",
+        "significance": "Deuteronomy 23:4–8 bars Moabites from the congregation, but says: “You shall not abhor an Edomite, for they are your kin.” Edom's land is Seir (2:8).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Moab\" (four inscriptions from the time of Ramesses II \"mention Mw-i-bw as a rebellious place\" that \"together with the Shasu of Mount Seir, conducted raids\"; \"if it was indeed the land of Moab\")",
+            "url": "https://en.wikipedia.org/wiki/Moab"
+          },
+          {
+            "title": "Deuteronomy 23:4–8",
+            "url": "https://www.sefaria.org/Deuteronomy.23.4-8"
+          },
+          {
+            "title": "Deuteronomy 2:8",
+            "url": "https://www.sefaria.org/Deuteronomy.2.8"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1260,
+        "endBCE": 1235,
+        "approx": true,
+        "description": "Ugarit's king Ammistamru II divorces his wife, a niece of the Hittite king, over unspecified “trouble”. She is sent back to Amurru, then ordered returned for punishment.",
+        "significance": "Deuteronomy 24:1–4 regulates divorce: the husband “writes her a bill of divorcement, hands it to her, and sends her away.”",
+        "sources": [
+          {
+            "title": "Roger Atwood, \"The Ugarit Archives\", Archaeology (July/August 2021) (\"the scandalous divorce of Ammistamru II (r. 1260–1235 B.C.)\"; \"banished from the city, and then ordered back\")",
+            "url": "https://archaeology.org/issues/july-august-2021/features/ugarit-bronze-age-archive/"
+          },
+          {
+            "title": "Wikipedia, \"Ammittamru II\" (ruled 1260–1235 BC; sent his wife back to Amurru; a Hittite ruling ordered her extradited)",
+            "url": "https://en.wikipedia.org/wiki/Ammittamru_II"
+          },
+          {
+            "title": "Deuteronomy 24:1",
+            "url": "https://www.sefaria.org/Deuteronomy.24.1"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1259,
+        "approx": true,
+        "description": "Ramesses II and the Hittite king Hattusili III agree that each will send back the other's political refugees and criminals.",
+        "significance": "Deuteronomy 23:16–17 goes the other way for a runaway slave: “You shall not turn over to his master” one who seeks refuge; he may live wherever he chooses.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Egyptian–Hittite peace treaty\" (around 1259 BC; \"they would repatriate each other's political refugees and criminals\")",
+            "url": "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"
+          },
+          {
+            "title": "Deuteronomy 23:16–17",
+            "url": "https://www.sefaria.org/Deuteronomy.23.16-17"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1200,
+        "approx": true,
+        "description": "A merchant ship sinks off Cape Gelidonya, southern Turkey. Excavators found copper and tin ingots, scrap copper and a merchant's set of weights.",
+        "significance": "Deuteronomy 25:13–15 demands “completely honest weights”: no “alternate weights, larger and smaller.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Cape Gelidonya\" (\"late Bronze Age shipwreck (c. 1200 BC)\"; finds include \"copper and tin ingots, and merchant weights\")",
+            "url": "https://en.wikipedia.org/wiki/Cape_Gelidonya"
+          },
+          {
+            "title": "Deuteronomy 25:13–15",
+            "url": "https://www.sefaria.org/Deuteronomy.25.13-15"
+          }
+        ]
+      }
+    ]
+  },
+  "ki-tavo": {
+    "windowStartBCE": 1307,
+    "windowEndBCE": 1225,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1307 to 1225 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1307,
+        "endBCE": 1282,
+        "approx": true,
+        "description": "Babylon's king Nazi-Maruttash grants land to Marduk's temple, recorded on a clay stele set before the god. A later stone copy calls on nineteen gods to curse anyone who desecrates it.",
+        "significance": "The curses of Deuteronomy 27 include 27:17: “Cursed be the one who moves a neighbor's landmark.—And all the people shall say, Amen.”",
+        "sources": [
+          {
+            "title": "Musée du Louvre, \"Kudurru de Nazimaruttash\", SB 21 (Nazimarutash, -1307 to -1282; land given to Marduk's temple; the stone is a copy, made under Marduk-apla-iddina I, of the clay stele placed before the god)",
+            "url": "https://collections.louvre.fr/en/ark:/53355/cl010174451"
+          },
+          {
+            "title": "Wikipedia, \"Nazimaruttaš kudurru stone\" (\"Nineteen deities are invoked to curse the foolhardy individual who seeks to desecrate it\")",
+            "url": "https://en.wikipedia.org/wiki/Nazimarutta%C5%A1_kudurru_stone"
+          },
+          {
+            "title": "Deuteronomy 27:17",
+            "url": "https://www.sefaria.org/Deuteronomy.27.17"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1263,
+        "endBCE": 1255,
+        "approx": true,
+        "description": "Babylon's king Kadashman-Enlil II tells the Hittite king Hattusili III why his envoys stopped coming: “Since the Ahlamu are hostile I have stopped sending my messengers.”",
+        "significance": "The Ahlamu were semi-nomads of the Syrian steppe; later texts call such groups Arameans. The first-fruits declaration begins: “My father was a fugitive Aramean” (26:5).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kadashman-Enlil II\" (c. 1263–1255 BC; \"Since the Ahlamu are hostile I have stopped sending my messengers\")",
+            "url": "https://en.wikipedia.org/wiki/Kadashman-Enlil_II"
+          },
+          {
+            "title": "Wikipedia, \"Ahlamu\" (\"Semitic semi-nomads\" west of the Euphrates; \"One of the tribes of the Ahlamu were the Arameans\"; from the 12th century the same groups increasingly called \"Arameans\")",
+            "url": "https://en.wikipedia.org/wiki/Ahlamu"
+          },
+          {
+            "title": "Deuteronomy 26:5",
+            "url": "https://www.sefaria.org/Deuteronomy.26.5"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1225,
+        "approx": true,
+        "description": "Assyria's Tukulti-Ninurta I defeats Babylon's king Kashtiliash IV, carries off the statue of the god Marduk, and sends the captive king into exile.",
+        "significance": "Deuteronomy 28:36 warns that God “will drive you, and the king you have set over you, to a nation unknown to you or your ancestors.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kaštiliašu IV\" (king c. 1232–1225 BC; his war with Assyria ended in \"his abject defeat\"; a Babylonian king \"on his way to exile\")",
+            "url": "https://en.wikipedia.org/wiki/Ka%C5%A1tilia%C5%A1u_IV"
+          },
+          {
+            "title": "Wikipedia, \"Tukulti-Ninurta I\" (Kashtiliash \"deported ... in chains to Assyria\"; \"made off with the Statue of Marduk\")",
+            "url": "https://en.wikipedia.org/wiki/Tukulti-Ninurta_I"
+          },
+          {
+            "title": "Deuteronomy 28:36",
+            "url": "https://www.sefaria.org/Deuteronomy.28.36"
+          }
+        ]
+      }
+    ]
+  },
+  "nitzavim": {
+    "windowStartBCE": 1273,
+    "windowEndBCE": 1235,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1273 to 1235 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1273,
+        "endBCE": 1235,
+        "approx": true,
+        "description": "Assyrian king Shalmaneser I absorbs what is left of the kingdom of Mitanni. He is one of the first Assyrian kings known to deport defeated enemies to other lands.",
+        "significance": "Deuteronomy 29:27 pictures a people uprooted “from their soil” and cast “into another land” for abandoning the covenant.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Shalmaneser I\" (1273–1244 BC or 1265–1235 BC; \"incorporated the remains of the Mittanni kingdom\"; \"one of the first Assyrian kings known to deport his defeated enemies\")",
+            "url": "https://en.wikipedia.org/wiki/Shalmaneser_I"
+          },
+          {
+            "title": "Deuteronomy 29:27",
+            "url": "https://www.sefaria.org/Deuteronomy.29.27"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1267,
+        "endBCE": 1237,
+        "approx": true,
+        "description": "Early in his reign, Hittite king Hattusili III makes his nephew Kurunta king of Tarhuntassa. The treaty promises that Kurunta's son and grandson will keep the throne if loyal.",
+        "significance": "The treaty calls on divine and human witnesses. Moses says: “I call heaven and earth to witness against you this day” (30:19).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kurunta (king)\" (treaty \"concluded early in Ḫattušili's reign\"; guaranteed \"the rights of his son and grandson\"; \"calls upon divine and human witnesses\")",
+            "url": "https://en.wikipedia.org/wiki/Kurunta_(king)"
+          },
+          {
+            "title": "Wikipedia, \"Ḫattušili III\" (king c. 1275–1245 BC (middle chronology) or 1267–1237 BC (short))",
+            "url": "https://en.wikipedia.org/wiki/%E1%B8%AAattu%C5%A1ili_III"
+          },
+          {
+            "title": "Shalom E. Holtz, \"YHWH's Covenant: Why Moses Calls Heaven and Earth as Witnesses\", TheTorah.com (\"comparable to the invocations of divine witnesses\" in ancient treaties)",
+            "url": "https://www.thetorah.com/article/yhwhs-covenant-why-moses-calls-heaven-and-earth-as-witnesses"
+          },
+          {
+            "title": "Deuteronomy 30:19",
+            "url": "https://www.sefaria.org/Deuteronomy.30.19"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1259,
+        "approx": true,
+        "description": "Ramesses II and the Hittite king Hattusili III make a peace treaty that binds not only themselves but their children and grandchildren.",
+        "significance": "Deuteronomy 29:13–14 makes the covenant “not with you alone” but also “with those who are not with us here this day.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Egyptian–Hittite peace treaty\" (around 1259 BC; \"bound the children and grandchildren of the parties\")",
+            "url": "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"
+          },
+          {
+            "title": "Deuteronomy 29:13–14",
+            "url": "https://www.sefaria.org/Deuteronomy.29.13-14"
+          }
+        ]
+      }
+    ]
+  },
+  "vayeilech": {
+    "windowStartBCE": 1280,
+    "windowEndBCE": 1225,
+    "note": "Tradition dates Moses' last speeches, from the first of Shevat in the fortieth year, to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1280 to 1225 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1280,
+        "approx": true,
+        "description": "Hittite king Muwatalli II makes a treaty with Alaksandu, king of Wilusa in western Anatolia. It says the tablet “shall be read out before you three times yearly.”",
+        "significance": "Deuteronomy 31:10–12 orders the Teaching read aloud every seventh year, at Sukkot, to men, women, children and strangers. Aaron Demsky compares the two.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Alaksandu\" (king of Wilusa \"who sealed a treaty with Hittite king Muwatalli II ca. 1280 BC\")",
+            "url": "https://en.wikipedia.org/wiki/Alaksandu"
+          },
+          {
+            "title": "Aaron Demsky, \"Historical Hakhel Ceremonies and the Origin of Public Torah Reading\", TheTorah.com (quotes the treaty: \"shall be read out before you three times yearly\"; the Torah reading \"envisioned along these same lines\")",
+            "url": "https://www.thetorah.com/article/historical-hakhel-ceremonies-and-the-origin-of-public-torah-reading"
+          },
+          {
+            "title": "Deuteronomy 31:10–12",
+            "url": "https://www.sefaria.org/Deuteronomy.31.10-12"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1267,
+        "endBCE": 1237,
+        "approx": true,
+        "description": "Puduhepa, queen of Hittite king Hattusili III, orders the chief scribe to recopy older religious rituals, probably ones gathered long before from Kizzuwatna.",
+        "significance": "Deuteronomy 31:24–26 has Moses write the Teaching “to the very end” and give the book to the Levites, to be kept beside the Ark.",
+        "sources": [
+          {
+            "title": "Sara E. Kimball and Jonathan Slocum, \"The Apology of Hattusilis III\", Early Indo-European Online, University of Texas at Austin (Puduhepa \"ordered the chief scribe to have recopied earlier religious rituals\")",
+            "url": "https://lrc.la.utexas.edu/eieol/hitol/60"
+          },
+          {
+            "title": "Wikipedia, \"Ḫattušili III\" (king c. 1275–1245 BC (middle chronology) or 1267–1237 BC (short); married Puduhepa)",
+            "url": "https://en.wikipedia.org/wiki/%E1%B8%AAattu%C5%A1ili_III"
+          },
+          {
+            "title": "Deuteronomy 31:24–26",
+            "url": "https://www.sefaria.org/Deuteronomy.31.24-26"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1225,
+        "approx": true,
+        "description": "Ramesses II's crown prince Khaemweset dies in his father's 55th year. His brother Merneptah, the 13th son, becomes crown prince and acts as regent for Ramesses' last twelve years.",
+        "significance": "Deuteronomy 31:7 has Moses, still alive, charge Joshua “in the sight of all Israel” to lead the people into the land.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Merneptah\" (\"In Year 55 of Ramesses II, his brother Khaemwaset died, and Merneptah was officially proclaimed crown prince\"; \"Prince Regent for the last twelve years\"; thirteenth son)",
+            "url": "https://en.wikipedia.org/wiki/Merneptah"
+          },
+          {
+            "title": "Wikipedia, \"Khaemweset\" (crown prince \"between Year 50 and Year 55 of his father's reign when he died\")",
+            "url": "https://en.wikipedia.org/wiki/Khaemweset"
+          },
+          {
+            "title": "Deuteronomy 31:7",
+            "url": "https://www.sefaria.org/Deuteronomy.31.7"
+          }
+        ]
+      }
+    ]
+  },
+  "haazinu": {
+    "windowStartBCE": 1280,
+    "windowEndBCE": 1207,
+    "note": "Tradition dates Moses' song to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1280 to 1207 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1280,
+        "approx": true,
+        "description": "A Hittite treaty with Alaksandu of Wilusa lists its witnesses: gods, then mountains, rivers and springs, “the great sea, heaven and earth, the winds, the clouds.”",
+        "significance": "The song opens: “Give ear, O heavens, let me speak; Let the earth hear” (32:1). Shalom Holtz argues Moses' appeals to heaven and earth draw on such treaty witness lists.",
+        "sources": [
+          {
+            "title": "\"A Hittite Treaty with Wilusa\", extracts from Gary Beckman's translation, Anistoriton (\"the great sea, heaven and earth, the winds, the clouds\")",
+            "url": "http://www.anistor.gr/english/enback/s013.htm"
+          },
+          {
+            "title": "Wikipedia, \"Alaksandu\" (treaty with Muwatalli II \"ca. 1280 BC\")",
+            "url": "https://en.wikipedia.org/wiki/Alaksandu"
+          },
+          {
+            "title": "Shalom E. Holtz, \"YHWH's Covenant: Why Moses Calls Heaven and Earth as Witnesses\", TheTorah.com (Moses' words \"draw on ancient Near Eastern treaty traditions\")",
+            "url": "https://www.thetorah.com/article/yhwhs-covenant-why-moses-calls-heaven-and-earth-as-witnesses"
+          },
+          {
+            "title": "Deuteronomy 32:1",
+            "url": "https://www.sefaria.org/Deuteronomy.32.1"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1237,
+        "endBCE": 1209,
+        "approx": true,
+        "description": "In a treaty, Hittite king Tudhaliya IV names the kings who are “equal to me”: the kings of Egypt, of Babylon and of Assyria.",
+        "significance": "The song pictures the world's map differently: “When the Most High gave nations their homes / And set the divisions of humankind” (32:8).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Tudḫaliya IV\" (treaty with Šaušgamuwa: \"The kings who are equal to me (are) the king of Egypt, the king of Karanduniyaš (Babylon), the king of Assyria\")",
+            "url": "https://en.wikipedia.org/wiki/Tud%E1%B8%ABaliya_IV"
+          },
+          {
+            "title": "Deuteronomy 32:8",
+            "url": "https://www.sefaria.org/Deuteronomy.32.8"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (Society of Biblical Literature, 2002): Tudhaliya IV \"(c. 1237–1209)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1225,
+        "endBCE": 1207,
+        "approx": true,
+        "description": "Tukulti-Ninurta I's victory over Babylon is told in a long Assyrian poem. It calls Babylon's king “the transgressor of an oath”, who so angered the gods that they left their shrines.",
+        "significance": "Haazinu too explains disaster as the fruit of broken faith: Israel “forsook the God who made them” (32:15). Peter Machinist has compared the epic with the Bible.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kaštiliašu IV\" (the Tukulti-Ninurta Epic, \"a poetic 'victory song'\"; Kaštiliašu \"the transgressor of an oath\", the gods \"have abandoned their sanctuaries\")",
+            "url": "https://en.wikipedia.org/wiki/Ka%C5%A1tilia%C5%A1u_IV"
+          },
+          {
+            "title": "Wikipedia, \"Tukulti-Ninurta Epic\" (further reading: Peter Machinist, \"Literature as Politics: the Tukulti-Ninurta Epic and the Bible\", Catholic Biblical Quarterly 38 (1976))",
+            "url": "https://en.wikipedia.org/wiki/Tukulti-Ninurta_Epic"
+          },
+          {
+            "title": "Wikipedia, \"Tukulti-Ninurta I\" (reigned c. 1243–1207 BC)",
+            "url": "https://en.wikipedia.org/wiki/Tukulti-Ninurta_I"
+          },
+          {
+            "title": "Deuteronomy 32:15",
+            "url": "https://www.sefaria.org/Deuteronomy.32.15"
+          }
+        ]
+      }
+    ]
+  },
+  "vzot-habracha": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1213,
+    "note": "Tradition dates Moses' death to c. 1273 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. Many scholars date the writing of Deuteronomy to the 7th century BCE. These events run from c. 1279 to 1213 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "approx": true,
+        "description": "Pharaoh Seti I, father of Ramesses II, dies. His tomb in the Valley of the Kings, KV17, is one of its largest, deepest and most decorated.",
+        "significance": "Much later his mummy was moved to a royal cache. Of Moses, Deuteronomy 34:6 says “no one knows his burial place to this day.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Seti I\" (ruled \"1290 BC to 1279 BC\"; father of Ramesses II)",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          },
+          {
+            "title": "Wikipedia, \"KV17\" (\"one of the most decorated tombs in the valley, and is one of the largest and deepest\"; mummy moved to the royal cache DB320)",
+            "url": "https://en.wikipedia.org/wiki/KV17"
+          },
+          {
+            "title": "Deuteronomy 34:6",
+            "url": "https://www.sefaria.org/Deuteronomy.34.6"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1272,
+        "approx": true,
+        "description": "Hittite king Muwatalli II dies. His son Urhi-Teshub takes the throne as Mursili III, but seven years later his uncle Hattusili overthrows him.",
+        "significance": "Deuteronomy 34:9: Joshua “was filled with the spirit of wisdom because Moses had laid his hands upon him; and the Israelites heeded him.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Muwatalli II\" (king \"1295–1272 BC in the short chronology\"; Urḫi-Teššup \"became the king of Hatti after the death of his father Muwatalli II, but was overthrown 7 years later by his uncle Hattušili III\")",
+            "url": "https://en.wikipedia.org/wiki/Muwatalli_II"
+          },
+          {
+            "title": "Deuteronomy 34:9",
+            "url": "https://www.sefaria.org/Deuteronomy.34.9"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1213,
+        "description": "Ramesses II dies at about 90, after a reign of 66 years. By then he suffered from arthritis, hardened arteries and severe dental problems.",
+        "significance": "Deuteronomy 34:7: Moses was 120 when he died; “his eyes were undimmed and his vigor unabated.”",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Ramesses II\" (died \"13 August 1213 BC\" after \"66 years and 74 days\"; \"aged about 90 years\", with \"severe dental problems\", \"arthritis, hardening of the arteries\")",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          },
+          {
+            "title": "Deuteronomy 34:7",
+            "url": "https://www.sefaria.org/Deuteronomy.34.7"
+          }
+        ]
+      }
+    ]
+  }
+}
