@@ -174,3 +174,21 @@ Option (a), moving the numbered stop, was not clearly right. The river runs abou
 | Missed: card 3 / 15 "GOD" may be an angel (JPS notes) | Optional | Not needed: the text matches JPS |
 | c48, c73, c118, c119, c156 | Descriptions only | Not needed |
 | R*, parshaList, parshaDates, Luz confidence (places.json), Screens, MapChrome, timeline | Read-tab and gazetteer data | Out of scope for this lane: not edited |
+
+## Third pass (workflow wf_5829c5d6-62d)
+
+328 claims, 298 verified. Story findings applied (each re-checked on Sefaria):
+
+| Finding | Change |
+|---|---|
+| c055 | Card 4 note: "GOD" (in some phrases "the ETERNAL") is how JPS renders the four-letter name (28:13, 28:21 use "the ETERNAL") |
+| c056 | Rashi on 28:17 names no source for "place of prayer". Now: "A similar reading appears in Pirkei DeRabbi Eliezer 35: the gate of heaven is there, open to hear prayers" (PdRE 35, Friedlander: "the gate of heaven is there, and it is open to hear the prayers of Israel"). Sources entry no longer says "as cited by Rashi" |
+| c066 | The "accurate Rashi" marker (עַ״כַּ פֵּרַשִׁ״י מְדֻיָּק) closes the whole long comment, so the "not near Ai" line is no longer singled out: "His comment goes on to say…" |
+| c093 | Rashi on 29:17 explains why Leah's eyes were rakkot ("weak" or "tender"); "tender" is the translator's headword, not Rashi's gloss |
+| c130 | "the only one of Jacob's daughters the Torah names" |
+| c194 | Code comment: about 7 km north-north-west of Jerash |
+| Missed, card 3 body | "God, standing beside him (so JPS; Rashi reads “above him”)" (Rashi on 28:13: "stood above him to guard him") |
+| Missed, talk camera | Comment: the finale ignores the card camera (fitBounds) |
+| c244 / missed, traveller | App fix on `lane/name-letter-cards` (`48c1cc4`): no traveller dot once the line rests on the card's spot, so the hollow Gal-ed ring is the only marker |
+
+Not changed: c241 (description only); optional JPS "may be an angel" note (the text follows JPS); optional merge hint on the finale tag (the talk note explains it); Read-tab, History and date-bar items (outside this lane, reported to Myron).
