@@ -6,8 +6,9 @@
 // Chapter 32 doesn't say where Jacob was when he sent the messengers (last week ended at Mahanaim, 32:3);
 // the camp he prays in is the one he leaves that night to cross the Jabbok (32:14, 32:22–23), so those cards
 // show the Jabbok as a river (a spot, not a stop): where the ford was isn't known. Jacob named the place of
-// the wrestling Peniel (32:31), so the ford was there, wherever that was; the wrestling cards use the Penuel
-// stop, and no trek between a ford and Penuel is drawn. Where the brothers met isn't said; it comes after
+// the wrestling Peniel (32:31); the verses don't say how far it was from the ford. The wrestling cards use the
+// Penuel stop, and no trek between a ford and Penuel is drawn. The river spot is an illustrative point on the
+// Zarqa beside the Penuel pin, not the gazetteer's point (which marks the river's mouth). Where the brothers met isn't said; it comes after
 // Penuel (32:32) and before Succoth (33:17), so the map stays at Penuel. Migdal-eder (35:21) is not a stop: its site is unknown, and the
 // places.json pin (Khirbet el-Bira) is OpenBible's least-favoured proposal. Allon-bacuth has no pin of its own.
 // Verses quote THE JPS TANAKH: Gender-Sensitive Edition (Sefaria); Hebrew is Miqra according to the Masorah
@@ -15,8 +16,11 @@
 // Claim table: docs/plans/2026-09-27-vayishlach-story-factcheck.md.
 import type { LngLat, ParshaStory } from '../story'
 
-/** Jabbok (places.json aca7bd9), a point on the Zarqa River near where it meets the Jordan; shown as a river spot, not a stop. Where the ford was isn't known. */
-const JABBOK: LngLat = [35.543056, 32.11525]
+/**
+ * Jabbok (places.json aca7bd9, whose point marks the river's mouth at the Jordan). Shown as a river spot, not a stop,
+ * at an illustrative point on the Zarqa beside the Penuel pin, where the story's night takes place. Where the ford was isn't known.
+ */
+const JABBOK: LngLat = [35.681, 32.1861]
 /** Penuel (places.json a8a9ff9), pinned at Tell edh-Dhahab el-Sharqi (the eastern of two hills), Israel Finkelstein's proposal. Not certain. */
 const PENUEL: LngLat = [35.69211, 32.187016]
 /** Succoth (places.json a0905b5), pinned at Tell Deir Alla: a suggested identification, not confirmed by any inscription. */
@@ -105,10 +109,10 @@ const vayishlach: ParshaStory = {
       title: 'Two camps',
       body: 'Jacob is greatly frightened. He divides the people with him, and the flocks, herds and camels, into two camps: if Esau attacks one, the other may yet escape.',
       ref: 'Genesis 32:8–9 · Rashi',
-      note: 'Rashi on 32:9 says Jacob prepared for three things: a gift, prayer, and battle. The verses don’t name the place of the camp, but it is the one Jacob leaves that same night to cross the ford of the Jabbok (32:22–23), so the map shows the Jabbok, today’s Zarqa River in Jordan. Where the ford was isn’t known; the point on the river is illustrative.',
+      note: 'Rashi on 32:9 says Jacob prepared for three things: a gift, prayer, and battle. The verses don’t name the place of the camp, but it is the one Jacob leaves that same night to cross the ford of the Jabbok (32:22–23), so the map shows the Jabbok, today’s Zarqa River in Jordan. Where the ford was isn’t known. The point on the river is illustrative: it is drawn beside the Penuel pin, where the story’s night takes place, not at the gazetteer’s point for the Jabbok, which marks the river’s mouth.',
       camera: onPin(JABBOK, 9.4, 55, -15),
       routeTo: 0,
-      spot: { name: 'Jabbok (river)', at: JABBOK, place: 'aca7bd9' },
+      spot: { name: 'Jabbok (river; point illustrative)', at: JABBOK, place: 'aca7bd9' },
     },
     {
       kind: 'quote',
@@ -124,7 +128,7 @@ const vayishlach: ParshaStory = {
       kind: 'offerings',
       title: 'A gift for Esau',
       ref: 'Genesis 32:14–22 · Rashi',
-      note: 'The numbers given add up to 550 animals. The camels’ young aren’t numbered: Rashi on 32:16 reads the thirty as the mother camels, with their colts beside them. Jacob sends them ahead drove by drove, with a space between the droves, and tells each driver to say they are a gift from “your servant Jacob,” who “is right behind us” (32:17–21): “If I propitiate him with presents in advance, and then face him, perhaps he will show me favor.” The Hebrew beside each row names the first animal in it.',
+      note: 'The numbers given add up to 550 animals. The camels’ young aren’t numbered: Rashi on 32:16 reads the thirty as the mother camels, with their colts beside them. Jacob sends them ahead drove by drove, with a space between the droves, and tells each driver to say they are a gift from “your servant Jacob,” who “is right behind us” (32:17–21): “If I propitiate him with presents in advance, and then face him, perhaps he will show me favor.” The Hebrew beside each row names the first animal in it. The Jabbok point is illustrative (see the Two camps card).',
       items: [
         { he: 'עִזִּים', en: '200 she-goats and 20 he-goats' },
         { he: 'רְחֵלִים', en: '200 ewes and 20 rams' },
@@ -134,14 +138,14 @@ const vayishlach: ParshaStory = {
       ],
       camera: onPin(JABBOK, 9.4, 50, 0),
       routeTo: 0,
-      spot: { name: 'Jabbok (river)', at: JABBOK, place: 'aca7bd9' },
+      spot: { name: 'Jabbok (river; point illustrative)', at: JABBOK, place: 'aca7bd9' },
     },
     {
       kind: 'chapter',
-      title: 'Alone at the ford',
+      title: 'Jacob is left alone',
       body: 'That night Jacob takes his wives, his maidservants and his children across the ford of the Jabbok, and sends over all he owns. Jacob is left alone, and a man wrestles with him until the break of dawn. Seeing he cannot win, the man wrenches Jacob’s hip at its socket.',
       ref: 'Genesis 32:23–26 · Hosea 12:4–5 · Rashi · Bereshit Rabbah 77:3',
-      note: 'The Hebrew says only ’ish, “a man” (this JPS translation has “a figure”), and he won’t give his name (32:30). The prophet Hosea says Jacob “strove with an angel and prevailed” (Hosea 12:5). Rashi on 32:25 brings the teaching of Bereshit Rabbah 77:3 (Rabbi Ḥama bar Ḥanina) that it was Esau’s guardian angel. The JPS note says the meaning of the Hebrew for “wrestled” is uncertain; Rashi reads it as two people clasping each other. Jacob named the place of the wrestling Peniel (32:31), so the ford was there, wherever that was. The pin marks the proposed site of Penuel, Tell edh-Dhahab el-Sharqi, just south of the Jabbok; where the ford was isn’t known.',
+      note: 'The Hebrew says only ’ish, “a man” (this JPS translation has “a figure”), and he won’t give his name (32:30). The prophet Hosea says Jacob “strove with an angel and prevailed” (Hosea 12:5). Rashi on 32:25 brings the teaching of Bereshit Rabbah 77:3 (Rabbi Ḥama bar Ḥanina) that it was Esau’s guardian angel. The JPS note says the meaning of the Hebrew for “wrestled” is uncertain; Rashi reads it as two people clasping each other. Jacob named the place of the wrestling Peniel (32:31); the verses don’t say how far it was from the ford. The pin marks the proposed site of Penuel, Tell edh-Dhahab el-Sharqi, just south of the Jabbok; where the ford was isn’t known.',
       act: 'The night at the Jabbok',
       camera: onPin(PENUEL, 10.2, 62, -30),
       routeTo: 0,
@@ -235,7 +239,7 @@ const vayishlach: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Simeon and Levi',
-      body: 'Jacob’s sons answer with guile: only if every male in the city is circumcised. On the third day, while the men are in pain, Simeon and Levi kill all the males, Hamor and Shechem among them, and take Dinah away; the other brothers plunder the town. Jacob rebukes the two for making him hated in the land; they answer, should their sister be treated like a harlot?',
+      body: 'Jacob’s sons answer with guile: only if every male in the city is circumcised. On the third day, while the men are in pain, Simeon and Levi kill all the males, Hamor and Shechem among them, and take Dinah away; the other brothers plunder the town. Jacob rebukes the two for making him hated in the land; they answer that their sister must not be treated like a harlot (34:31).',
       ref: 'Genesis 34:13–31 · Genesis 49:5–7',
       note: 'Jacob comes back to this at the end of his life: “Simeon and Levi are a pair; Their weapons are tools of lawlessness… Cursed be their anger so fierce” (49:5–7).',
       camera: onPin(SHECHEM, 10.0, 56, -5),
@@ -288,15 +292,15 @@ const vayishlach: ParshaStory = {
       kind: 'offerings',
       title: 'Now the sons of Jacob were twelve',
       ref: 'Genesis 35:21–26 · Ibn Ezra · Radak',
-      note: 'Israel journeyed on from Rachel’s grave and pitched his tent beyond Migdal-eder (35:21); where that was isn’t known, so it isn’t on the map, and no pin is lit here. The list ends “These are the sons of Jacob who were born to him in Paddan-aram” (35:26), though Benjamin has just been born near Ephrath; Ibn Ezra and Radak on 35:26 say the verse speaks of most of them.',
+      note: 'Israel journeyed on and pitched his tent beyond Migdal-eder (35:21); where that was isn’t known, so it isn’t on the map, and no pin is lit here. The list ends “These are the sons of Jacob who were born to him in Paddan-aram” (35:26), though Benjamin has just been born near Ephrath; Ibn Ezra and Radak on 35:26 say the verse speaks of most of them.',
       items: [
         { he: 'לֵאָה', en: 'Leah’s sons', note: 'Reuben, Jacob’s first-born; Simeon, Levi, Judah, Issachar and Zebulun' },
         { he: 'רָחֵל', en: 'Rachel’s sons', note: 'Joseph and Benjamin' },
         { he: 'בִּלְהָה', en: 'Bilhah’s sons', note: 'Dan and Naphtali. Bilhah is Rachel’s maid.' },
         { he: 'זִלְפָּה', en: 'Zilpah’s sons', note: 'Gad and Asher. Zilpah is Leah’s maid.' },
       ],
-      // Page card: the Judean hill country south of Ephrath, toward Hebron, as a backdrop; no pin is active, since the family had moved on beyond Migdal-eder (site unknown).
-      camera: { center: [35.15, 31.3], zoom: 9.0, pitch: 30, bearing: 0 },
+      // Page card: the hill country between Ephrath and Hebron as a backdrop; no pin is active, since the family had moved on beyond Migdal-eder (site unknown).
+      camera: { center: [35.16, 31.61], zoom: 9.6, pitch: 30, bearing: 0 },
       routeTo: 4,
     },
     {
@@ -323,7 +327,7 @@ const vayishlach: ParshaStory = {
     {
       kind: 'talk',
       title: 'Esau, who had once resolved to kill Jacob, ran to meet him, and the brothers embraced and wept. What helps people make peace after a long rift?',
-      note: 'Numbered pins mark usual or proposed identifications: Penuel = Tell edh-Dhahab el-Sharqi, Succoth = Tell Deir Alla, Shechem = Tell Balata, Bethel = Beitin, Ephrath = Bethlehem, Hebron = Tel Rumeida. None of these sites is certain. The Jabbok is today’s Zarqa River; where Jacob crossed it isn’t known, and it is shown only as a river. Seir is a region. Migdal-eder and Allon-bacuth can’t be located and aren’t pinned. Lines join the stops in order; Jacob’s roads aren’t known.',
+      note: 'Numbered pins mark usual or proposed identifications: Penuel = Tell edh-Dhahab el-Sharqi, Succoth = Tell Deir Alla, Shechem = Tell Balata, Bethel = Beitin, Ephrath = Bethlehem, Hebron = Tel Rumeida. None of these sites is certain. The Jabbok is today’s Zarqa River; where Jacob crossed it isn’t known, and it is shown only as a river. Seir is a region. Migdal-eder and Allon-bacuth can’t be located and aren’t pinned. Stops close together on screen share one numbered pin, drawn on the first of them (so 1·2 sits on Penuel). Lines join the stops in order; Jacob’s roads aren’t known.',
       camera: { center: [35.42, 31.85], zoom: 7.9, pitch: 30, bearing: 0 },
       routeTo: 5,
     },
