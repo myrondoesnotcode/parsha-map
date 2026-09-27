@@ -172,6 +172,21 @@ const UNPINNED: Record<string, { name: string; note: string }> = {
   a6779cd: { name: 'Hobah', note: 'north of Damascus; site unknown' },
   // Genesis 16:14: Beer-lahai-roi is "between Kadesh and Bered", so Bered can't share the well's point.
   aa3ff18: { name: 'Bered', note: 'site unknown' },
+  // Genesis 22:14 names the site of the binding "Adonai-yireh"; 22:2 puts it in the land of Moriah. OpenBible pins it on Mamre.
+  a559399: { name: 'The Lord Will Provide', note: 'in the land of Moriah (Genesis 22:2, 14); site unknown' },
+  // Genesis 14:1: "Tidal king of Goiim". OpenBible pins it on Damascus.
+  a9796ee: { name: 'Goiim 1', note: 'site unknown' },
+  // Numbers 34:4: the border runs south of Kadesh-barnea, then to Hazar-addar. OpenBible pins it on Kadesh-barnea itself.
+  a3f301c: { name: 'Hazar-addar', note: 'on the southern border, past Kadesh-barnea (Numbers 34:4); site unknown' },
+}
+
+// ---------------------------------------------------------------------------
+// Places OpenBible pins on the wrong point, moved onto another place's point.
+// `to` is the OpenBible id of the place whose coordinates they take.
+// ---------------------------------------------------------------------------
+const MOVED: Record<string, { name: string; to: string; toName: string; note: string }> = {
+  // Exodus 17:1-7: at Rephidim "the place was named Massah and Meribah". OpenBible pins Massah on Kadesh-barnea.
+  a296e06: { name: 'Massah', to: 'a65db0f', toName: 'Meribah 2', note: 'at Rephidim, the place also named Meribah (Exodus 17:7)' },
 }
 
 interface PlaceOutput {
@@ -330,6 +345,16 @@ async function main() {
 
   const missing = Object.keys(UNPINNED).filter((id) => !places.some((p) => p.id === id))
   if (missing.length) throw new Error(`UNPINNED ids not found in the data: ${missing.join(', ')}`)
+
+  for (const [id, move] of Object.entries(MOVED)) {
+    const place = places.find((p) => p.id === id)
+    const target = places.find((p) => p.id === move.to)
+    if (!place || place.name !== move.name) throw new Error(`MOVED id ${id} is not "${move.name}"`)
+    if (!target || target.name !== move.toName) throw new Error(`MOVED target ${move.to} is not "${move.toName}"`)
+    place.latitude = target.latitude
+    place.longitude = target.longitude
+    place.description = move.note
+  }
 
   // Sort: places with parsha links first
   places.sort((a, b) => {

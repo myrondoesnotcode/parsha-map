@@ -3591,8 +3591,8 @@
     "id": "a9796ee",
     "name": "Goiim 1",
     "alternateNames": [],
-    "latitude": 33.511112,
-    "longitude": 36.30639,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -3602,7 +3602,8 @@
     "parshas": [
       "lech-lecha"
     ],
-    "description": "in Syria 1"
+    "description": "site unknown",
+    "locationNote": "site unknown"
   },
   {
     "id": "abb5c1e",
@@ -3887,8 +3888,8 @@
     "id": "a3f301c",
     "name": "Hazar-addar",
     "alternateNames": [],
-    "latitude": 30.648333,
-    "longitude": 34.422222,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -3897,7 +3898,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Khirbet el Qudeirat"
+    "description": "on the southern border, past Kadesh-barnea (Numbers 34:4); site unknown",
+    "locationNote": "on the southern border, past Kadesh-barnea (Numbers 34:4); site unknown"
   },
   {
     "id": "a1ce1b7",
@@ -5220,8 +5222,8 @@
     "id": "a296e06",
     "name": "Massah",
     "alternateNames": [],
-    "latitude": 30.648333,
-    "longitude": 34.422222,
+    "latitude": 28.623056,
+    "longitude": 33.880278,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5237,7 +5239,7 @@
       "ekev",
       "vzot-habracha"
     ],
-    "description": "another name for Kadesh-barnea"
+    "description": "at Rephidim, the place also named Meribah (Exodus 17:7)"
   },
   {
     "id": "a033373",
@@ -7710,8 +7712,8 @@
     "id": "a559399",
     "name": "The Lord Will Provide",
     "alternateNames": [],
-    "latitude": 31.556536,
-    "longitude": 35.105336,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "hill",
     "verses": [
@@ -7720,7 +7722,8 @@
     "parshas": [
       "vayera"
     ],
-    "description": "another name for Mamre"
+    "description": "in the land of Moriah (Genesis 22:2, 14); site unknown",
+    "locationNote": "in the land of Moriah (Genesis 22:2, 14); site unknown"
   },
   {
     "id": "a38ebfd",
