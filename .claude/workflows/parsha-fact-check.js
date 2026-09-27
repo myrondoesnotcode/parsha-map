@@ -13,6 +13,7 @@ const FILES = args.files.join('\n- ')
 // The Read tab (summary, did-you-know, tradition, "the world around it", era card with events) and the map's date bar.
 const READ_FILES = (args.readFiles ?? [
   'src/redesign/Screens.tsx', 'src/redesign/MapChrome.tsx', 'src/redesign/placeText.ts', 'src/hooks/useEraContext.ts',
+  'src/redesign/parshaDates.ts', 'src/data/parshaDates.json', 'src/data/worldEvents.json',
   'src/data/parshaList.json', 'src/data/timeline.json',
 ]).join('\n- ')
 const ALL_FILES = FILES + '\n- ' + READ_FILES
@@ -74,7 +75,7 @@ Only the "${P}" story and the map elements its cards trigger. One claim per item
   `You are extracting claims for a fact-check of what the Parsha Map "Daylight" UI shows about the parsha "${P}" OUTSIDE the story player: the Read tab and the map's date bar. Read these files:
 - ${READ_FILES}
 
-Work out exactly what renders for "${P}": its record in parshaList.json (only the fields Screens.tsx and MapChrome.tsx actually render, e.g. richContent.narrativeSummary, didYouKnow, jewishTradition, themes, historicalContext, approximateDateBCE), and the era card: which timeline.json era useEraContext picks for eraYear(parsha) (the midpoint of approximateDateBCE), and that era's name, startBCE–endBCE, shortDesc and events (each event's yearBCE and description).
+Work out exactly what renders for "${P}": its record in parshaList.json (only the fields Screens.tsx and MapChrome.tsx actually render, e.g. richContent.narrativeSummary, didYouKnow, jewishTradition, themes, historicalContext, approximateDateBCE), the map date bar (scholarly label/range and traditional year from parshaDates.json via parshaDates.ts), and the history section: the parsha's dated events in worldEvents.json if it has an entry, otherwise the timeline.json era that useEraContext picks for eraYear(parsha) in placeText.ts (null for undated parshiot, which get a \"When\" card instead), with that era's name, startBCE–endBCE, shortDesc and events.
 List EVERY assertion a reader could take away, one per item, splitting compound sentences: dates, era boundaries, ancient texts and what they say, empires and rulers, archaeology, customs, statistics, Hebrew words and meanings, traditions and who holds them, and framing (e.g. the era card's events are presented as "the world around" this parsha, so each is implicitly claimed to be roughly contemporary with it; a date range shown on the bar is implicitly presented as the date of these events). Prefix each id with "R". Use kind "history" for historical/archaeological/dating claims. Do not judge truth; extract precisely, with the source cited in the data (or "none").`,
   { label: 'extract: read tab + history', phase: 'Extract', schema: CLAIMS }
 )])
