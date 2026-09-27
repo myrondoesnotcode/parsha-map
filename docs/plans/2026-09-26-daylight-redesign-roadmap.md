@@ -170,7 +170,7 @@ Full results: workflow runs `wf_e606146c-7d0` (Lech Lecha) and `wf_aa891ac1-8f0`
 |---|---|
 | 0.1 One codebase | **Done** (`3bf19d1`). Both CLAUDE.md files still describe the two-repo setup; retiring `/parsha/ios` is Myron's call |
 | 0.2 Card types for weeks with few places | Partly built. `cover, chapter, stars, letter, name, quote, scale, plan, offerings, guess, talk` exist; no template for all 54 yet |
-| 0.3 Story-writing pipeline | Not started. Stories are hand-written in `src/redesign/stories.ts` (Lech Lecha and Vayikra only) |
+| 0.3 Story-writing pipeline | **Built** on `lane/story-pipeline`: one file per story in `src/redesign/stories/<parshaId>.ts`, registered automatically; `npm run check:stories` (no AI); template `stories/_template.ts`; guide `docs/plans/story-authoring.md`. Lech Lecha and Vayikra moved unchanged and pass (Lech Lecha has 12 warnings: notes cite works not in its sources list) |
 | 0.4 Real "this week" | **Done**, merged into `redesign/daylight`. Opens on this Shabbat's parsha from Hebcal; rolls over at local midnight Sat→Sun; double weeks name both halves and open on the half with a story, else the first; holiday Shabbatot name the holiday and its reading and point to the next parsha; Hebcal window moves with the clock (last year → 3 years ahead). Rules in `src/redesign/weekRules.ts`, checked by `npm run check:week` |
 | 0.5 App Store polish | Haptics done; Reduce Motion partial. Fonts not bundled, no offline tiles, no VoiceOver labels, no chunk splitting |
 | 0.6 Pin grouping | **Done** 2026-09-27. Overlapping stops merge into one pin ("2·3·5·6") and separate again when you zoom in |
