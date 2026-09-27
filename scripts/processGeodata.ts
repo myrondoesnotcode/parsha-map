@@ -328,7 +328,17 @@ const DESCRIBED: Record<string, { name: string; description: string }> = {
   a98e4d7: { name: 'Sidon', description: 'Saida, Lebanon' },
   // Genesis 2:14: the Tigris "flows east of Asshur". Assur lies on the Tigris's west bank, so the verse is tied to it (below).
   a874951: { name: 'Asshur', description: 'the city of Assur, on the west bank of the Tigris; Genesis 2:14 says the Tigris flows east of Asshur, which may mean the city or the land of Assyria' },
+  // Genesis 10:10: JPS notes that "and Calneh" (we-khalneh) is better vocalized we-khullanah, "all of them being".
+  aee80af: { name: 'Calneh 1', description: 'Nippur, a proposed site; JPS notes that "and Calneh" (Genesis 10:10) may be better read "all of them being", so it may not be a place name' },
   a38ebfd: { name: 'Tigris', description: 'the Tigris, Hebrew Hiddekel (Genesis 2:14); the pin marks al-Qurnah, where it meets the Euphrates today. It does not mark Eden' },
+}
+
+// ---------------------------------------------------------------------------
+// Places whose first OpenBible type is wrong; `type` replaces it (it must be one of the entry's own types).
+// ---------------------------------------------------------------------------
+const RETYPED: Record<string, { name: string; type: string }> = {
+  // "Ur of the Chaldeans" (Genesis 11:28, 31) is a city; OpenBible lists it as ['region', 'settlement'].
+  a6cf75c: { name: 'Ur 1', type: 'settlement' },
 }
 
 // ---------------------------------------------------------------------------
@@ -534,6 +544,13 @@ async function main() {
       if (picked.confidence) place.confidence = picked.confidence
     }
 
+    const retyped = RETYPED[entry.id]
+    if (retyped) {
+      checkName('RETYPED', entry.id, retyped.name, entry.friendly_id)
+      if (!entry.types?.includes(retyped.type)) throw new Error(`RETYPED: ${entry.friendly_id} has no type "${retyped.type}"`)
+      place.type = retyped.type
+    }
+
     const described = DESCRIBED[entry.id]
     if (described) {
       checkName('DESCRIBED', entry.id, described.name, entry.friendly_id)
@@ -565,7 +582,7 @@ async function main() {
     `Places with Parsha links: ${places.filter((p) => p.parshas.length > 0).length}`
   )
 
-  const tables = { UNPINNED, EXCLUDED, PICKED, DESCRIBED, EXTRA_VERSES, DROPPED_VERSES }
+  const tables = { UNPINNED, EXCLUDED, PICKED, RETYPED, DESCRIBED, EXTRA_VERSES, DROPPED_VERSES }
   const missing = Object.entries(tables).flatMap(([t, table]) =>
     Object.keys(table).filter((id) => !seenOverrides.has(`${t}:${id}`)).map((id) => `${t}:${id}`)
   )

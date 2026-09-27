@@ -1597,7 +1597,7 @@
     "parshas": [
       "noach"
     ],
-    "description": "Nippur"
+    "description": "Nippur, a proposed site; JPS notes that \"and Calneh\" (Genesis 10:10) may be better read \"all of them being\", so it may not be a place name"
   },
   {
     "id": "a581f0c",
@@ -7676,7 +7676,7 @@
     "latitude": 30.962222,
     "longitude": 46.104444,
     "confidence": "low",
-    "type": "region",
+    "type": "settlement",
     "verses": [
       "Genesis 11:28",
       "Genesis 11:31",
