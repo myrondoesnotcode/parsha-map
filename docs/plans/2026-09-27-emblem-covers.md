@@ -24,11 +24,11 @@ Verses checked on Sefaria (JPS, 2026-09-27). Two Talmud references (Bava Batra 1
 | vayera | Genesis 22:2, 22:9, 22:13 | A ram caught in a thicket by its horns, on a mountain; an altar with the wood laid out. | No people, no knife. Thicket plant and altar construction. |
 | chayei-sarah | Genesis 24:10–11, 24:15–16 | Ten camels kneeling by the well outside the city at evening; a jar by the spring. | Well construction and the city’s look. No people. |
 | toldot | Genesis 25:30, 25:34 · 27:3 | A bowl of lentil stew and bread; a quiver and a bow beside them. | Bowl and bread shapes. The stew is red (25:30 “that red stuff”). |
-| vayetze | Genesis 28:11–12 | A stairway set on the ground with its top reaching the sky, small lights going up and down it (the angels, shown only as lights); a stone at its foot; night, after sunset. | Stairway form (the Hebrew sulam may be a ramp or ladder). Angels are not drawn as figures. |
+| vayetze | Genesis 28:11–12 | A stairway set on the ground with its top reaching the sky, small lights going up and down it (the angels, shown only as lights); nearby on the ground, the stone Jacob put under his head; night, after sunset. | Stairway form (the Hebrew sulam may be a ramp or ladder). Angels are not drawn as figures. The stone was under Jacob’s head (28:11), not at the stairway; where he lay relative to the stairway is not said, so the stone sits apart from its foot. |
 | vayishlach | Genesis 32:23, 32:25, 32:32 | The ford of the Jabbok at the break of dawn, the sun rising over the stream. | No figures. The ford’s look. |
 | vayeshev | Genesis 37:7, 37:9 | Joseph’s dreams: one sheaf standing upright; the sun, the moon and exactly eleven stars bowing toward it. | Joins the two dreams in one picture. How stars “bow” is drawn as leaning in. |
 | miketz | Genesis 41:5–7 | Pharaoh’s dream: seven ears of grain, solid and healthy, on a single stalk; behind them seven thin ears scorched by the east wind. | The text does not say the thin ears share one stalk; draw them sprouting close behind. |
-| vayigash | Genesis 45:21, 45:27 | Wagons Joseph sent, loaded with provisions, on the road. | Number and design of the wagons. No people or animals needed. |
+| vayigash | Genesis 45:19, 45:21, 45:27 | The wagons Joseph sent to bring Jacob and the families down to Egypt, on the road. | Number and design of the wagons; drawn empty, with no people or animals. Their cargo is not specified: the wagons were for the children, the wives and Jacob (45:19), and the provisions for Jacob went on donkeys (45:23). |
 | vayechi | Genesis 49:9, 49:11 | Judah’s blessing: a lion crouching, lying down; a donkey’s foal tethered to a vine heavy with grapes. | Poetic images, drawn literally. |
 
 ### Exodus
