@@ -1,0 +1,683 @@
+{
+  "shemot": {
+    "windowStartBCE": 1319,
+    "windowEndBCE": 1275,
+    "note": "Tradition dates Moses at the burning bush to c. 1314 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1319 to 1275 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1319,
+        "approx": true,
+        "description": "Horemheb, commander of Egypt's army, becomes king. With no surviving son, he names his vizier Paramessu as heir, who becomes Ramesses I, founder of the 19th Dynasty.",
+        "significance": "Shemot's story of oppression begins with “a new king over Egypt” (Exodus 1:8). The Torah does not name him.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Horemheb\" (ruled \"between 1319 BC and 1292 BC\"; authored the Edict of Horemheb)",
+            "url": "https://en.wikipedia.org/wiki/Horemheb"
+          },
+          {
+            "title": "Wikipedia, \"Ramesses I\" (Horemheb's vizier; \"founding pharaoh of ancient Egypt's 19th Dynasty\")",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_I"
+          },
+          {
+            "title": "Exodus 1:8",
+            "url": "https://www.sefaria.org/Exodus.1.8"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1279,
+        "approx": true,
+        "description": "Ramesses II becomes king and builds Pi-Ramesses, a new capital in the eastern Nile Delta. The site had been a summer palace under his father, Seti I.",
+        "significance": "Exodus 1:11 names Raamses as a city Israel was forced to build. Many scholars identify it with Pi-Ramesses; others see the name as reflecting a later age.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Pi-Ramesses\" (\"new capital built by ... Ramesses II (1279–1213 BC)\"; summer palace under Seti I; identified with biblical Raamses, though some see an anachronism)",
+            "url": "https://en.wikipedia.org/wiki/Pi-Ramesses"
+          },
+          {
+            "title": "Exodus 1:11",
+            "url": "https://www.sefaria.org/Exodus.1.11"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1275,
+        "approx": true,
+        "description": "A taskmaster's leather roll records daily brick quotas for workmen. One entry: a target of 2,000 bricks, 1,630 delivered, 370 short.",
+        "significance": "In Shemot, Pharaoh keeps Israel's quota of bricks unchanged while taking away their straw (Exodus 5:7–8).",
+        "sources": [
+          {
+            "title": "Manfred Bietak and Gary A. Rendsburg, \"Egypt and the Exodus,\" in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): the Louvre Leather Roll, \"dated to year 5 of Ramesses II\"; \"(target) 2,000 bricks ... total 1,630 / deficit 370\"",
+            "url": "https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%202%20text%20%20notes.pdf"
+          },
+          {
+            "title": "Exodus 5:7-8",
+            "url": "https://www.sefaria.org/Exodus.5.7-8"
+          }
+        ]
+      }
+    ]
+  },
+  "vaera": {
+    "windowStartBCE": 1329,
+    "windowEndBCE": 1213,
+    "note": "Tradition dates the plagues to c. 1314–1313 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1329 to 1213 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1329,
+        "approx": true,
+        "description": "Tutankhamun's Restoration Stela announces the end of Akhenaten's Aten religion and the reopening of the temples of Egypt's old gods.",
+        "significance": "In Egypt, royal power and the gods' temples went together. In Vaera, Moses and Aaron confront Pharaoh and his magicians (Exodus 7:10–12).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Restoration Stela\" (repeals Atenism and reinstates \"the original, indigenous religion of ancient Egypt\"; Aidan Dodson dates it to \"Year 4\")",
+            "url": "https://en.wikipedia.org/wiki/Restoration_Stela"
+          },
+          {
+            "title": "Wikipedia, \"Tutankhamun\" (ruled c. 1332–1323 BC)",
+            "url": "https://en.wikipedia.org/wiki/Tutankhamun"
+          },
+          {
+            "title": "Exodus 7:10-12",
+            "url": "https://www.sefaria.org/Exodus.7.10-12"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1290,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "Egyptian lists of enemy lands, copied at Amara in Nubia under Seti I or Ramesses II, name “the land of the Shasu yhw”, a group of nomads.",
+        "significance": "In Vaera, God tells Moses the patriarchs did not know Him by the name YHWH (Exodus 6:3). Scholars debate whether this place-name is connected to that name.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Shasu\" (13th-century copies \"ordered by Seti I or by Ramesses II at Amara\" list Shasu \"of yhw\"; Astour: it \"corresponds very precisely to the Hebrew Tetragrammaton\")",
+            "url": "https://en.wikipedia.org/wiki/Shasu"
+          },
+          {
+            "title": "Exodus 6:3",
+            "url": "https://www.sefaria.org/Exodus.6.3"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1279,
+        "approx": true,
+        "description": "Ramesses II takes the throne, probably on 31 May 1279 BCE. He will reign 66 years, the longest recorded reign of any pharaoh.",
+        "significance": "Most scholars who accept a historical core to the Exodus place it in the 13th century, in his reign. The Torah does not name the pharaoh.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Ramesses II\" (accession \"most Egyptologists believe to be 31 May 1279 BC\"; \"66-year rule was also the longest recorded reign of any pharaoh\")",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          },
+          {
+            "title": "Wikipedia, \"The Exodus\" (most scholars who accept a historical core date it \"to the thirteenth century BCE at the time of Ramses II\")",
+            "url": "https://en.wikipedia.org/wiki/The_Exodus"
+          }
+        ]
+      }
+    ]
+  },
+  "bo": {
+    "windowStartBCE": 1322,
+    "windowEndBCE": 1244,
+    "note": "Tradition dates the Exodus to c. 1313 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1322 to 1244 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1322,
+        "approx": true,
+        "description": "Hittite king Šuppiluliuma I dies. A plague, brought to his land by prisoners taken from Egypt's army, ravages the Hittites for about twenty years.",
+        "significance": "The plague is often considered the cause of his death and of the death of his eldest son and heir, Arnuwanda I.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Šuppiluliuma I\" (died c. 1322 BC; captives caused \"an outbreak of plague that ravaged Hittite society for at least two decades\"; often considered the cause of his and Arnuwanda I's deaths)",
+            "url": "https://en.wikipedia.org/wiki/Suppiluliuma_I"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1312,
+        "approx": true,
+        "description": "Hittite king Mursili II's annals say that as he set out on campaign, “the Sun gave a sign”. Most scholars identify it with the solar eclipse of 24 June 1312 BCE.",
+        "significance": "This is not the Torah's darkness, which lasts three days (Exodus 10:22). It shows how kings of the time read the sky for signs.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Mursili's eclipse\" (\"the Sun gave a sign\"; \"now more commonly identified as the one of 24 June 1312 BC\")",
+            "url": "https://en.wikipedia.org/wiki/Mursili%27s_eclipse"
+          },
+          {
+            "title": "Wikipedia, \"Mursili II\" (\"most scholars accept the 1312 BC event\"; alternative 13 April 1308 BC)",
+            "url": "https://en.wikipedia.org/wiki/Mursili_II"
+          },
+          {
+            "title": "Exodus 10:22",
+            "url": "https://www.sefaria.org/Exodus.10.22"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1264,
+        "endBCE": 1244,
+        "approx": true,
+        "description": "Ramesses II builds the rock temples of Abu Simbel in Nubia over about twenty years. The great temple honours Amun, Ra-Horakhty, Ptah and the deified king himself.",
+        "significance": "In Bo, God declares judgment “on all the gods of Egypt” (Exodus 12:12). At Abu Simbel, the pharaoh sits among those gods.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Abu Simbel\" (construction \"started in c. 1264 BC\" and lasted \"until 1244 BC\"; dedicated to Amun, Ra-Horakhty, Ptah \"as well as to the deified Ramesses himself\")",
+            "url": "https://en.wikipedia.org/wiki/Abu_Simbel"
+          },
+          {
+            "title": "Exodus 12:12",
+            "url": "https://www.sefaria.org/Exodus.12.12"
+          }
+        ]
+      }
+    ]
+  },
+  "beshalach": {
+    "windowStartBCE": 1323,
+    "windowEndBCE": 1200,
+    "note": "Tradition dates the crossing of the sea to c. 1313 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1323 to 1200 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1323,
+        "approx": true,
+        "description": "Tutankhamun dies at about 18. His tomb holds a painted chest with battle scenes and a gold-leaf picture of him shooting arrows from a chariot.",
+        "significance": "In Beshalach, Pharaoh chases Israel with “six hundred chosen chariots” (Exodus 14:7).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Tutankhamun\" (c. 1342 – c. 1323 BC; \"battle depictions on the painted treasure chest in his tomb, and a gold leaf picture of him during chariot archery\")",
+            "url": "https://en.wikipedia.org/wiki/Tutankhamun"
+          },
+          {
+            "title": "Exodus 14:7",
+            "url": "https://www.sefaria.org/Exodus.14.7"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1290,
+        "approx": true,
+        "description": "In his first year, Seti I marches along the Ways of Horus, a chain of forts with wells across northern Sinai from Egypt to Gaza, fighting Shasu nomads on the way.",
+        "significance": "Beshalach says God did not lead Israel “by way of the land of the Philistines”, the coast road, lest they turn back at the sight of war (Exodus 13:17).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Seti I\" (ruled 1290–1279 BC; \"In his first regnal year\" he led his armies along the Horus road, \"a series of military forts, each with a well\"; fought the Shasu)",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          },
+          {
+            "title": "Wikipedia, \"Via Maris\" (Egyptian \"Way of Horus\"; also called \"Way of the Philistines\")",
+            "url": "https://en.wikipedia.org/wiki/Via_Maris"
+          },
+          {
+            "title": "Exodus 13:17",
+            "url": "https://www.sefaria.org/Exodus.13.17"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1200,
+        "approx": true,
+        "description": "An Egyptian frontier officer reports chasing two runaway slaves past the fort of Tjeku and the Migdol of Seti Merneptah, and asks how many men are pursuing them.",
+        "significance": "Exodus 14:2–9 also has Migdol and a pursuit of escaped slaves. Manfred Bietak and Gary Rendsburg compare the two.",
+        "sources": [
+          {
+            "title": "Manfred Bietak and Gary A. Rendsburg, \"Egypt and the Exodus,\" in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): P. Anastasi V, \"dated to the reign of Seti II\"; \"two slaves have escaped Egypt into the desert\"; Tjeku, Migdol",
+            "url": "https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%202%20text%20%20notes.pdf"
+          },
+          {
+            "title": "Center for Online Judaic Studies, \"Papyrus Anastasi V, c. 1200 BCE\" (\"This surely does not confirm the Israelite Exodus\")",
+            "url": "https://cojs.org/papyrus_anastasi_v-_c-_1200_bce/"
+          },
+          {
+            "title": "Exodus 14:2-9",
+            "url": "https://www.sefaria.org/Exodus.14.2-9"
+          }
+        ]
+      }
+    ]
+  },
+  "yitro": {
+    "windowStartBCE": 1321,
+    "windowEndBCE": 1203,
+    "note": "Tradition dates the giving of the Torah at Sinai to c. 1313 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1321 to 1203 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1321,
+        "endBCE": 1295,
+        "approx": true,
+        "description": "Hittite king Mursili II binds neighbouring rulers, such as Duppi-Teššup of Amurru, by written treaties.",
+        "significance": "Treaties of this kind open by naming the great king and what he had done. Some scholars compare the Ten Commandments, which open “who brought you out of the land of Egypt” (Exodus 20:2).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Mursili II\" (king c. 1321–1295 BC, short chronology; \"Treaty of Muršili II with Duppi-Teššup of Amurru\")",
+            "url": "https://en.wikipedia.org/wiki/Mursili_II"
+          },
+          {
+            "title": "Wikipedia, \"Covenant (biblical)\" (the Decalogue \"begins with Yahweh's identification and what he had done for Israel\", like a suzerainty treaty; Weinfeld sees the Mosaic covenant as one)",
+            "url": "https://en.wikipedia.org/wiki/Covenant_(biblical)"
+          },
+          {
+            "title": "Exodus 20:2",
+            "url": "https://www.sefaria.org/Exodus.20.2"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1319,
+        "endBCE": 1292,
+        "approx": true,
+        "description": "Pharaoh Horemheb's Great Edict names two judges, for the south and the north of Egypt, and orders them not to take bribes.",
+        "significance": "In Yitro, Jethro advises Moses to appoint judges who are trustworthy and “hate unjust gain” (Exodus 18:21).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Great Edict of Horemheb\" (penalties for officials who seize a poor man's goods; judges appointed and told not to take bribes; a judge who \"commits a crime against justice\" commits \"a capital crime\")",
+            "url": "https://en.wikipedia.org/wiki/Great_Edict_of_Horemheb"
+          },
+          {
+            "title": "Wikipedia, \"Horemheb\" (ruled \"between 1319 BC and 1292 BC\"; authored the Edict of Horemheb)",
+            "url": "https://en.wikipedia.org/wiki/Horemheb"
+          },
+          {
+            "title": "Exodus 18:21",
+            "url": "https://www.sefaria.org/Exodus.18.21"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1213,
+        "endBCE": 1203,
+        "approx": true,
+        "description": "At Deir el-Medina, the village of Egypt's royal tomb-builders, the working week is eight days followed by two days off.",
+        "significance": "The fourth commandment sets every seventh day as a day of rest, for servants and animals too (Exodus 20:8–10).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Deir el-Medina\" (\"The working week was eight days followed by two days holiday\"; over a third of the year off \"during the reign of Merneptah (c. 1213–1203 BC)\")",
+            "url": "https://en.wikipedia.org/wiki/Deir_el-Medina"
+          },
+          {
+            "title": "Exodus 20:8-10",
+            "url": "https://www.sefaria.org/Exodus.20.8-10"
+          }
+        ]
+      }
+    ]
+  },
+  "mishpatim": {
+    "windowStartBCE": 1319,
+    "windowEndBCE": 1187,
+    "note": "Tradition dates these laws to c. 1313 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1319 to 1187 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1319,
+        "endBCE": 1292,
+        "approx": true,
+        "description": "Horemheb's Great Edict punishes officials who seize a poor man's goods, and makes it a capital crime for a judge to pervert justice.",
+        "significance": "Mishpatim also commands: do not twist the judgment of the poor, and take no bribe, “for a bribe blinds the clear-sighted” (Exodus 23:6–8).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Great Edict of Horemheb\" (penalties for officials who seize a poor man's goods; judges appointed and told not to take bribes; a judge who \"commits a crime against justice\" commits \"a capital crime\")",
+            "url": "https://en.wikipedia.org/wiki/Great_Edict_of_Horemheb"
+          },
+          {
+            "title": "Wikipedia, \"Horemheb\" (ruled \"between 1319 BC and 1292 BC\"; authored the Edict of Horemheb)",
+            "url": "https://en.wikipedia.org/wiki/Horemheb"
+          },
+          {
+            "title": "Exodus 23:6-8",
+            "url": "https://www.sefaria.org/Exodus.23.6-8"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1259,
+        "approx": true,
+        "description": "Ramesses II and the Hittite king Hattusili III swear a treaty before “a thousand gods”, with curses for whoever breaks it and blessings for whoever keeps it.",
+        "significance": "In Mishpatim, Moses writes down the laws, reads “the book of the covenant” to the people, and they swear to keep it (Exodus 24:4–8).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Egyptian–Hittite peace treaty\" (around 1259 BC; oath before \"a thousand gods, male gods and female gods\"; curses and blessings)",
+            "url": "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"
+          },
+          {
+            "title": "Exodus 24:4-8",
+            "url": "https://www.sefaria.org/Exodus.24.4-8"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1205,
+        "approx": true,
+        "description": "An Egyptian frontier official reports letting Shasu tribes of Edom pass a fort in Tjeku to the lakes of Pithom, “to keep them alive and to keep their flocks alive”.",
+        "significance": "Mishpatim twice forbids oppressing the stranger, “for you were strangers in the land of Egypt” (Exodus 22:20; 23:9).",
+        "sources": [
+          {
+            "title": "Manfred Bietak and Gary A. Rendsburg, \"Egypt and the Exodus,\" in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): P. Anastasi VI, report of a frontier official, \"year 8\" (they date the papyrus to Seti II's reign; others to year 8 of Merneptah)",
+            "url": "https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%202%20text%20%20notes.pdf"
+          },
+          {
+            "title": "Exodus 23:9",
+            "url": "https://www.sefaria.org/Exodus.23.9"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1187,
+        "approx": true,
+        "description": "Emar, a trading city on the Euphrates in Syria, is destroyed. Its tablets, mostly from the 13th century, are private and legal records: sales, court cases, wills, adoptions.",
+        "significance": "They show everyday law at work: property, family and disputes, the same ground many of Mishpatim's rules cover.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Emar\" (texts from the 14th century BC \"to the fall of Emar in 1187 BC\"; tablets record \"private transactions, judicial records, dealings in real estate, marriages, last wills, formal adoptions\")",
+            "url": "https://en.wikipedia.org/wiki/Emar"
+          }
+        ]
+      }
+    ]
+  },
+  "terumah": {
+    "windowStartBCE": 1329,
+    "windowEndBCE": 1290,
+    "note": "Tradition dates the command to build the Tabernacle to c. 1313 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1329 to 1290 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1329,
+        "approx": true,
+        "description": "Tutankhamun's Restoration Stela orders new statues of the gods in fine electrum, and new processional boats of Lebanese cedar decorated with gold and silver.",
+        "significance": "It gives Amun a bigger carrying frame, of 13 poles instead of 7. The ark in Terumah is also carried on poles (Exodus 25:13–15).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Restoration Stela\" (Amun made \"13 poles long ... although ... only 7 poles long before\"; Aidan Dodson dates it to \"Year 4\")",
+            "url": "https://en.wikipedia.org/wiki/Restoration_Stela"
+          },
+          {
+            "title": "Colleen Darnell, \"A Highlight of the GEM: Tutankhamun's Restoration Stela\" (statues \"of the finest electrum\"; barks \"of the best cedar from Lebanon and decorated with gold and silver\")",
+            "url": "https://www.colleendarnell.com/blog/celebratingtheopeningofthegem"
+          },
+          {
+            "title": "Wikipedia, \"Tutankhamun\" (ruled c. 1332–1323 BC)",
+            "url": "https://en.wikipedia.org/wiki/Tutankhamun"
+          },
+          {
+            "title": "Exodus 25:13-15",
+            "url": "https://www.sefaria.org/Exodus.25.13-15"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1323,
+        "approx": true,
+        "description": "Tutankhamun is buried with a gilded wooden shrine topped by a jackal of the god Anubis, mounted on a base with two carrying poles.",
+        "significance": "The ark was a gold-covered wooden chest carried on poles. Some scholars, such as Scott Noegel, see Egyptian portable shrines as a closer model for it than Bedouin sacred chests.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Anubis Shrine\" (wood covered with gold leaf; \"two carrying poles\")",
+            "url": "https://en.wikipedia.org/wiki/Anubis_Shrine"
+          },
+          {
+            "title": "Wikipedia, \"Ark of the Covenant\" (Noegel: the Egyptian solar barque \"a more plausible model\")",
+            "url": "https://en.wikipedia.org/wiki/Ark_of_the_Covenant"
+          },
+          {
+            "title": "Wikipedia, \"Tutankhamun\" (ruled c. 1332–1323 BC)",
+            "url": "https://en.wikipedia.org/wiki/Tutankhamun"
+          },
+          {
+            "title": "Exodus 25:10-14",
+            "url": "https://www.sefaria.org/Exodus.25.10-14"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1290,
+        "approx": true,
+        "description": "At Timna, a copper-mining valley in the Arabah north of the Gulf of Aqaba, a small temple to Hathor is built for Egyptian miners. Its excavator dates it to Seti I; Ramesses II rebuilt it.",
+        "significance": "Scholars such as Mark S. Smith and William Dever see the Tabernacle as modelled on tent shrines like the Midianite tent shrine of Hathor at Timna.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Timna Valley\" (\"approximately 30 kilometres ... north of the Gulf of Aqaba\"; Rothenberg: temple for \"the Egyptian miners\", built \"during the reign of Pharaoh Seti I\"; rebuilt under Ramses II)",
+            "url": "https://en.wikipedia.org/wiki/Timna_Valley"
+          },
+          {
+            "title": "Wikipedia, \"Tabernacle\" (Smith, Dever: based on tent shrines; \"The Midianite tent shrine of Hathor at Timna\")",
+            "url": "https://en.wikipedia.org/wiki/Tabernacle"
+          }
+        ]
+      }
+    ]
+  },
+  "tetzaveh": {
+    "windowStartBCE": 1320,
+    "windowEndBCE": 1213,
+    "note": "Tradition dates the command for the priests' garments to c. 1313 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1320 to 1213 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1320,
+        "approx": true,
+        "description": "A merchant ship sinks off southern Turkey. Its cargo includes cylinder seals carved from rock crystal and hematite, and cobalt-blue glass ingots.",
+        "significance": "The high priest's shoulder stones are engraved with the tribes' names “like the engravings of a signet” (Exodus 28:11).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Uluburun shipwreck\" (late 14th century BC; sinking dated \"1320±15\"; \"Nine ancient Near Eastern cylinder seals\" of rock crystal, faience, hematite; 175 glass ingots of cobalt blue, turquoise, lavender)",
+            "url": "https://en.wikipedia.org/wiki/Uluburun_shipwreck"
+          },
+          {
+            "title": "Exodus 28:11",
+            "url": "https://www.sefaria.org/Exodus.28.11"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1279,
+        "approx": true,
+        "description": "In his first year, Ramesses II names Nebwenenef High Priest of Amun and gives him two gold signet rings and a staff of office. His son inherits his old post.",
+        "significance": "In Tetzaveh, Aaron and his sons are made priests, and the priesthood passes to Aaron's sons “for all time” (Exodus 29:9).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Nebwenenef\" (appointed \"in Year 1, III Akhet of Ramesses II\"; \"two gold signet rings and an electrum staff of office\"; son Sematawy II became High Priest of Hathor)",
+            "url": "https://en.wikipedia.org/wiki/Nebwenenef"
+          },
+          {
+            "title": "Exodus 29:9",
+            "url": "https://www.sefaria.org/Exodus.29.9"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1213,
+        "approx": true,
+        "description": "Bakenkhonsu, High Priest of Amun, dies at about 90. His statue lists his rise through the priestly ranks, from ordinary priest to high priest for 27 years.",
+        "significance": "Egypt's priests held ranks, from the ordinary wab-priest up. Tetzaveh also sets the high priest apart from the other priests by his garments (Exodus 28).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Bakenkhonsu\" (\"died in the last regnal year of Ramesses II, at the age of ninety\"; wab priest, prophets, High Priest \"for 27 years\")",
+            "url": "https://en.wikipedia.org/wiki/Bakenkhonsu"
+          },
+          {
+            "title": "Exodus 28:1-4",
+            "url": "https://www.sefaria.org/Exodus.28.1-4"
+          }
+        ]
+      }
+    ]
+  },
+  "ki-tisa": {
+    "windowStartBCE": 1321,
+    "windowEndBCE": 1250,
+    "note": "Tradition dates the golden calf to c. 1313 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1321 to 1250 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1321,
+        "endBCE": 1295,
+        "approx": true,
+        "description": "Hittite king Mursili II makes written treaties with neighbouring rulers, among them Duppi-Teššup of Amurru and Niqmepa of Ugarit.",
+        "significance": "Some scholars compare the Sinai covenant to such treaties. In Ki Tisa, after the calf, God renews the covenant and Moses writes its words again (Exodus 34:10, 27–28).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Mursili II\" (king c. 1321–1295 BC, short chronology; treaties with Duppi-Teššup of Amurru and Niqmepa of Ugarit)",
+            "url": "https://en.wikipedia.org/wiki/Mursili_II"
+          },
+          {
+            "title": "Wikipedia, \"Covenant (biblical)\" (the Decalogue \"begins with Yahweh's identification and what he had done for Israel\", like a suzerainty treaty; Weinfeld sees the Mosaic covenant as one)",
+            "url": "https://en.wikipedia.org/wiki/Covenant_(biblical)"
+          },
+          {
+            "title": "Exodus 34:27-28",
+            "url": "https://www.sefaria.org/Exodus.34.27-28"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1259,
+        "approx": true,
+        "description": "The Egyptian–Hittite peace treaty is first written on silver tablets, one given to each side. Copies survive on Egyptian temple walls and Hittite clay tablets.",
+        "significance": "The covenant in Ki Tisa is also written on tablets, “the two tablets of the testimony” (Exodus 31:18).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Egyptian–Hittite peace treaty\" (around 1259 BC; \"now-lost silver tablets, which were given to each side\")",
+            "url": "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty"
+          },
+          {
+            "title": "Exodus 31:18",
+            "url": "https://www.sefaria.org/Exodus.31.18"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1264,
+        "endBCE": 1250,
+        "approx": true,
+        "description": "At Saqqara, Ramesses II's son Khaemweset oversees the burials of sacred Apis bulls, in years 16 and 30 of his father's reign, with gilded coffins and gold foil.",
+        "significance": "Egyptians honoured the Apis bull with rich burials. In Ki Tisa, Israel makes a golden calf (Exodus 32:4); the Torah does not say it copied any Egyptian cult.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Serapeum of Saqqara\" (\"Isolated Tomb G/H – Ramesses II, years 16 & 30\"; overseen by Khaemweset; coffins with lower halves gilt, \"gold foil\")",
+            "url": "https://en.wikipedia.org/wiki/Serapeum_of_Saqqara"
+          },
+          {
+            "title": "Exodus 32:4",
+            "url": "https://www.sefaria.org/Exodus.32.4"
+          }
+        ]
+      }
+    ]
+  },
+  "vayakhel": {
+    "windowStartBCE": 1320,
+    "windowEndBCE": 1244,
+    "note": "Tradition dates the building of the Tabernacle to c. 1313–1312 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1320 to 1244 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1320,
+        "approx": true,
+        "description": "The Uluburun ship sinks with ten tons of copper and a ton of tin, enough for about eleven tons of bronze, plus ebony, ivory and glass.",
+        "significance": "In Vayakhel, the people bring gold, silver and copper, and more than enough is given (Exodus 35:5; 36:5–7).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Uluburun shipwreck\" (late 14th century BC; sinking dated \"1320±15\"; \"Raw copper cargo totaling ten tons\"; \"Approximately one ton of tin\" making \"about 11 tons of bronze\"; blackwood (ebony), ivory)",
+            "url": "https://en.wikipedia.org/wiki/Uluburun_shipwreck"
+          },
+          {
+            "title": "Exodus 35:5",
+            "url": "https://www.sefaria.org/Exodus.35.5"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1290,
+        "endBCE": 1279,
+        "approx": true,
+        "description": "Seti I begins a temple of white limestone at Abydos, known for its fine carved reliefs. His son Ramesses II completes it.",
+        "significance": "Vayakhel names Bezalel and Oholiab as master craftsmen, skilled in carving, weaving and metalwork (Exodus 35:30–35).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Seti I\" (ruled 1290–1279 BC; \"a magnificent temple made of white limestone at Abydos featuring exquisite relief scenes was started by Seti, and later completed by his son\")",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          },
+          {
+            "title": "Exodus 35:30-35",
+            "url": "https://www.sefaria.org/Exodus.35.30-35"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1264,
+        "endBCE": 1244,
+        "approx": true,
+        "description": "Work begins on the great rock-cut temple at Abu Simbel. It takes about twenty years, and is aligned so the sun lights the sanctuary statues on two days a year.",
+        "significance": "The Tabernacle, by contrast, is a tent built to be taken down and carried. Vayakhel records its making piece by piece (Exodus 36–38).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Abu Simbel\" (construction \"started in c. 1264 BC\" and lasted \"until 1244 BC\"; sun penetrates the sanctuary \"on October 22 and February 22\")",
+            "url": "https://en.wikipedia.org/wiki/Abu_Simbel"
+          },
+          {
+            "title": "Exodus 36:8",
+            "url": "https://www.sefaria.org/Exodus.36.8"
+          }
+        ]
+      }
+    ]
+  },
+  "pekudei": {
+    "windowStartBCE": 1332,
+    "windowEndBCE": 1187,
+    "note": "Tradition dates the setting up of the Tabernacle to c. 1312 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1332 to 1187 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1332,
+        "endBCE": 1308,
+        "approx": true,
+        "description": "Kurigalzu II rules Babylon for about 25 years. 167 business records, mostly from Nippur, are dated to his reign; an accountant in his service owns a cylinder seal.",
+        "significance": "Pekudei opens with an audit: “These are the accounts of the Tabernacle”, listing the gold, silver and copper used (Exodus 38:21–31).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kurigalzu II\" (c. 1332–1308 BC; \"167 economic texts, mostly from Nippur\"; cylinder seals of servants \"such as the accountant, Uballissu-Marduk\")",
+            "url": "https://en.wikipedia.org/wiki/Kurigalzu_II"
+          },
+          {
+            "title": "Exodus 38:21",
+            "url": "https://www.sefaria.org/Exodus.38.21"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1213,
+        "endBCE": 1203,
+        "approx": true,
+        "description": "Under Pharaoh Merneptah, an Egyptian papyrus keeps a ledger of building works, including brickmaking.",
+        "significance": "Pekudei's accounts also track materials for a building project, down to the silver for its sockets and hooks (Exodus 38:27–28).",
+        "sources": [
+          {
+            "title": "Manfred Bietak and Gary A. Rendsburg, \"Egypt and the Exodus,\" in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): \"P. Anastasi III (verso) 1.2–3.3, dated to the reign of Merneptah ... includes a ledger of sorts recording various building works, including the making of bricks\"",
+            "url": "https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%202%20text%20%20notes.pdf"
+          },
+          {
+            "title": "Wikipedia, \"Merneptah\" (reigned 1213–1203 BCE)",
+            "url": "https://en.wikipedia.org/wiki/Merneptah"
+          },
+          {
+            "title": "Exodus 38:27-28",
+            "url": "https://www.sefaria.org/Exodus.38.27-28"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1187,
+        "approx": true,
+        "description": "Emar in Syria falls. A priest's library there held ritual texts for the local cults, among them a rite for installing the storm god's high priestess.",
+        "significance": "Pekudei ends with the priests' garments made and the Tabernacle set up and anointed (Exodus 39–40), rites that Leviticus then carries out.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Emar\" (texts from the 14th century BC \"to the fall of Emar in 1187 BC\"; \"In the house of a priest, a library contained ... ritual texts for local cults\"; Daniel E. Fleming, The Installation of Baal's High Priestess at Emar (1992))",
+            "url": "https://en.wikipedia.org/wiki/Emar"
+          },
+          {
+            "title": "Exodus 40:9",
+            "url": "https://www.sefaria.org/Exodus.40.9"
+          }
+        ]
+      }
+    ]
+  }
+}
