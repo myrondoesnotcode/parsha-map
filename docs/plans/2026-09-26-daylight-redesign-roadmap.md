@@ -76,3 +76,88 @@ So roughly a third of the year has no journey to fly. **The story format must wo
 4. Phase 1.5–1.10 alongside story writing
 5. Phase 0.5, 0.7, 0.8 → App Store build (see `/Users/myronshneider/.claude/playbooks/ios-app-store-submission.md`) + deploy mobile web
 6. Phase 2
+
+---
+
+## Status and backlog — 2026-09-27
+
+Checked against the code on `redesign/daylight` (latest commit `53be97d`) and the Sep 26–27 sessions. Update this section at the end of every session.
+
+### Next session — do these first
+
+1. **Get Myron's answers to the four open decisions below.** Two of them concern things that are wrong on the live site.
+2. **Fix the live site** (`main` → parshamap.com): image captions, the Hobah pin, and hide the Empires layer if Myron agrees. These are wrong in production today, so they come before prototype work.
+3. **0.4 Real "this week" on launch.** Remove the Lech Lecha hard-code (`OPENING_PARSHA` and the "pretend it's Monday" logic in `src/redesign/week.ts`). Handle double parshiot (which story plays) and holiday weeks. Extend the Hebcal window past Oct 2027. This blocks shipping.
+4. **Show Myron the prototype in the iOS simulator** (roadmap step 2).
+5. **Run the fact-check workflow once more on the final wording** (`.claude/workflows/parsha-fact-check.js`). The last round of fixes was only checked by hand.
+6. Then move on to **0.3 story-writing pipeline** and Genesis stories.
+
+### Open decisions (waiting on Myron)
+
+| Decision | Context |
+|---|---|
+| **Empires & borders layer: hide it or redraw it?** | The fact-check found the shapes are badly wrong. It is also live on parshamap.com |
+| **Map date bar: also show the traditional Jewish date?** | The ranges are also inconsistent (Vayikra overlaps Deuteronomy) |
+| **"World around it": dated events per parsha, with the era list as the fallback?** | Today every parsha in an era shows the same list |
+| **Home: confirm map-first** (built) over the big-blue-card home | Never explicitly picked |
+
+### Wrong on the live site now (fix on `main`)
+
+- **Image captions:** the wrong artist is credited on nearly all 54 parshiot, and some images are photos (clouds, a wheat field). Task chip exists.
+- **Hobah** is pinned on Damascus; Genesis 14:15 says north of it. The error is in the generated `places.json`. Task chip exists.
+- **No audit yet of the live summaries and facts for all 54.** Only Lech Lecha and Vayikra have been fact-checked.
+
+### Roadmap items: where they stand
+
+| Item | State |
+|---|---|
+| 0.1 One codebase | **Done** (`3bf19d1`). Both CLAUDE.md files still describe the two-repo setup; retiring `/parsha/ios` is Myron's call |
+| 0.2 Card types for weeks with few places | Partly built. `cover, chapter, stars, letter, name, quote, scale, plan, offerings, guess, talk` exist; no template for all 54 yet |
+| 0.3 Story-writing pipeline | Not started. Stories are hand-written in `src/redesign/stories.ts` (Lech Lecha and Vayikra only) |
+| 0.4 Real "this week" | **Blocks shipping.** See Next session |
+| 0.5 App Store polish | Haptics done; Reduce Motion partial. Fonts not bundled, no offline tiles, no VoiceOver labels, no chunk splitting |
+| 0.6 Pin grouping | **Done** 2026-09-27. Overlapping stops merge into one pin ("2·3·5·6") and separate again when you zoom in |
+| 0.7 Desktop decision | **Blocks shipping** |
+| 0.8 Analytics (Umami) | Not started |
+| 1.1 3D terrain | **Done** (whole map, true height) |
+| 1.2 Globe opening | Not started |
+| 1.3 Traveller | Partly built: a dot rides the route; no caravan glyph or dust trail |
+| 1.4 Art covers with a slow zoom | The zoom is built (`CoverArt` in `StoryPlayer.tsx`), but neither story has art. Vayikra's was pulled for being the wrong artwork; Lech Lecha needs one |
+| 1.5 Map quiz | Partly built: one guess card per story, answered from a list with the options as pins |
+| 1.6 Sound | Not started (deferred) |
+| 1.7 Share as an image | Not started; sharing is plain text |
+| 1.8 Weekly push | Not started |
+| 1.9 Streak + Library path | Not started |
+| 1.10 Hebrew word + commentary card | Not started |
+| Phase 2 | Deferred on purpose |
+
+**Also built, not numbered above:** Shabbat strip (Hebcal dates and candle times, holiday weeks), Watch → Read → Question → Share path with "Ready for Shabbat", act titles, finale with Kids / Everyone / Deeper questions, Sources sheet behind every verse reference, reading-time pacing, resume, swipe down to close, and the fact-check workflow (text, visual, tradition and history checkers).
+
+### Discussed but not yet on the roadmap
+
+**Fact-check system (proposed, not built):**
+- a `sources` field and claim tags on every card
+- a lint script that checks without AI
+- a "Report an error" link on each card
+- a rabbi or educator signing off each book before it ships
+
+**Story design ideas (never answered):**
+- split the Tabernacle plan card into two beats: the camp, then a close-up
+- an interactive plan: tap the altar or the Holy of Holies
+- reveal the offerings list one row per tap
+- store the card layout choice per card type in the story data
+- draw plans as real map layers, so zoom can come back during stories
+- short linking lines between cards ("After the altar at Shechem…")
+- template the other 16 thin weeks: the Mishkan build-up for Terumah–Pekudei, the camp for Bamidbar and Nasso
+
+**Today and polish:**
+- a Today screen that changes through the week, and an opening title card
+- physical transitions between screens
+
+**Design pass follow-ups (from the 2026-09-27 audit):**
+- story cover: the top half is empty map; add a slow camera move or a faint route preview
+- "Abram becomes Abraham" card: the large Hebrew letters overlap pin 4 and the route line
+
+### Cut on purpose
+
+Narration (Myron: "i dont think we need narration"), per-parsha AI video, AR tabletop map, Live Activity, animated empire borders, depth-parallax engravings, stroke-drawn Hebrew. The two unchosen design directions (Illuminated, Expedition) and the three-tab layout were also not taken.
