@@ -348,10 +348,21 @@ const DROPPED_VERSES: Record<string, { name: string; osises: string[] }> = {
 }
 
 // ---------------------------------------------------------------------------
+// Confidence overrides. OpenBible gives a lone identification a default vote of 500, which reads as
+// "medium" however vague the site is; and an alias can outrank the place it is an alias of.
+// ---------------------------------------------------------------------------
+const RATED: Record<string, { name: string; confidence: PlaceOutput['confidence']; why: string }> = {}
+
+// ---------------------------------------------------------------------------
+// Place types OpenBible gets wrong.
+// ---------------------------------------------------------------------------
+const TYPED: Record<string, { name: string; type: string }> = {}
+
+// ---------------------------------------------------------------------------
 // Places OpenBible pins on the wrong point, moved onto another place's point.
 // `to` is the OpenBible id of the place whose coordinates they take.
 // ---------------------------------------------------------------------------
-const MOVED: Record<string, { name: string; to: string; toName: string; note: string }> = {
+const MOVED: Record<string, { name: string; to: string; toName: string; note: string; confidence?: PlaceOutput['confidence'] }> = {
   // Exodus 17:1-7: at Rephidim "the place was named Massah and Meribah". OpenBible pins Massah on Kadesh-barnea.
   a296e06: { name: 'Massah', to: 'a65db0f', toName: 'Meribah 2', note: 'at Rephidim, the place also named Meribah (Exodus 17:7)' },
   // OpenBible pins the Euphrates at its mouth on the Shatt al-Arab, ~1,000 km from Jacob's crossing between Haran and
@@ -540,6 +551,18 @@ async function main() {
       place.description = described.description
     }
 
+    const rated = RATED[entry.id]
+    if (rated) {
+      checkName('RATED', entry.id, rated.name, entry.friendly_id)
+      place.confidence = rated.confidence
+    }
+
+    const typed = TYPED[entry.id]
+    if (typed) {
+      checkName('TYPED', entry.id, typed.name, entry.friendly_id)
+      place.type = typed.type
+    }
+
     const unpinned = UNPINNED[entry.id]
     if (unpinned) {
       checkName('UNPINNED', entry.id, unpinned.name, entry.friendly_id)
@@ -565,7 +588,7 @@ async function main() {
     `Places with Parsha links: ${places.filter((p) => p.parshas.length > 0).length}`
   )
 
-  const tables = { UNPINNED, EXCLUDED, PICKED, DESCRIBED, EXTRA_VERSES, DROPPED_VERSES }
+  const tables = { UNPINNED, EXCLUDED, PICKED, DESCRIBED, EXTRA_VERSES, DROPPED_VERSES, RATED, TYPED }
   const missing = Object.entries(tables).flatMap(([t, table]) =>
     Object.keys(table).filter((id) => !seenOverrides.has(`${t}:${id}`)).map((id) => `${t}:${id}`)
   )
@@ -579,6 +602,7 @@ async function main() {
     place.latitude = target.latitude
     place.longitude = target.longitude
     place.description = move.note
+    if (move.confidence) place.confidence = move.confidence
   }
 
   // Sort: places with parsha links first
