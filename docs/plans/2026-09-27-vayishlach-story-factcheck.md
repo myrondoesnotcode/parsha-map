@@ -153,3 +153,24 @@ Story: `src/redesign/stories/vayishlach.ts` (Genesis 32:4 – 36:43), 24 cards. 
 - **Dawn sky contrast (app).** On the dawn stars card the body line ("Dawn is breaking. …") is drawn in the warm apricot colour over the new warm lower sky, and it is barely legible at iPhone size (screenshot `v2-7.png`). This needs a styling fix in `StoryPlayer.tsx` (for example a darker body colour or a text shadow when `sky === 'dawn'`). The story can't fix it.
 
 Checks after the changes: `npm run check:stories -- vayishlach --strict` ✓ 24 cards, 0 errors, 0 warnings; `npm run build` ✓. Re-screenshotted at 390×844: cards 3, 5–12, 19–21 and the finale.
+
+## Second pass (workflow wf_9130c6f3-c53)
+
+357 claims, 319 verified. Re-checked against Sefaria (JPS Gender-Sensitive + Masorah) for 32:22–32 and 34:31, and 35:21. The Jabbok spot was checked against the basemap at zoom 12.5. This section replaces the earlier rows on the Jabbok point, the card 6 title and note, the card 15 answer, and the card 20 note and camera.
+
+| Finding | What it said | Done |
+|---|---|---|
+| c34, c36, visual "missed" | The Jabbok spot on cards 3 and 5 sat at the Jordan confluence, 16 km from the Penuel stop the next card uses; its label didn't say the point is illustrative | **Applied.** The spot moved to [35.681, 32.1861], on the Zarqa's line beside the Penuel pin (checked in a z12.5 screenshot: the marker sits on the river). It keeps `place: 'aca7bd9'`. The label reads "Jabbok (river; point illustrative)", which fits at 390 px. Card 3's note says the point is drawn beside Penuel on purpose, not at the gazetteer's point for the Jabbok, which marks the river's mouth; card 5's note refers to it |
+| c69, text/tradition "missed" (header) | "so the ford was there, wherever that was" goes beyond the text: 32:23–25 has Jacob cross, send everything over, then be "left alone" | **Applied** in the card 6 note and the header comment: "Jacob named the place of the wrestling Peniel (32:31); the verses don't say how far it was from the ford." |
+| text "missed", card 6 title | "Alone at the ford": no verse puts him alone at the ford | **Applied.** The title is now "Jacob is left alone" (32:25, JPS "Jacob was left alone") |
+| c74 | The name card has stop 1 but showed no badge | **Not needed in the story.** Fixed on the lane (name cards show their stop badge); card 8 now shows badge 1 |
+| c210 | "journeyed on from Rachel's grave" is added to 35:21 | **Applied.** "Israel journeyed on and pitched his tent beyond Migdal-eder (35:21)" |
+| c215, visual "missed" | The card 20 camera centre (31.3° N) was south of Hebron | **Applied.** Centre [35.16, 31.61], between Ephrath and Hebron. Zoom 9.6 keeps the faded Bethel label off the top edge; only the Ephrath pin (5) shows, unlit |
+| tradition "missed", card 15 | "they answer, should their sister be treated like a harlot?" is a paraphrase shaped like a quote (JPS 34:31: "Should our sister be treated like a whore?") | **Applied.** A plain paraphrase with no question form: "they answer that their sister must not be treated like a harlot (34:31)." |
+| c251, visual "missed" (finale) | The finale's merged pin "1·2" wasn't explained | **Applied.** The talk note now says stops close together on screen share one numbered pin, drawn on the first of them (so 1·2 sits on Penuel). The lane now draws a merged pin on its first stop |
+| visual "missed", Bethel hedge | "usual site: Beitin" vs places.json confidence "low" | **No change**, as instructed: Wikipedia *Bethel* ("Most scholars identify Bethel with … Beitin") supports "usual site", and Vayetze uses the same wording |
+| c73, c132, c186 | Descriptions of the screen only | **Not needed** |
+| c6, c8 | The cover emblem brief (`art/briefs.ts`) shows "the ford of the Jabbok at the break of dawn"; the crossing was at night (32:23), and the sunrise is tied to passing Penuel (32:32) | **Out of scope** (art brief, shared file). Reported to the coordinator |
+| R3–R91; parshaList, Screens, timeline, parshaDates "missed" items | Read-tab and History-tab text and data | **Out of scope for this lane.** Reported to the coordinator |
+
+Checks: `npm run check:stories -- vayishlach --strict` ✓ 24 cards, 0 errors, 0 warnings; `npm run build` ✓. Re-screenshotted at 390×844: cards 3, 5, 6, 8, 20 and the finale (23).
