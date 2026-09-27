@@ -4,22 +4,23 @@
 //
 // The route is Isaac's: Gerar → Rehoboth → Beersheba (Genesis 26). The verses don't say where the twins
 // were born or where the stew was cooked, so the first act has no stop. Esek and Sitnah, the two disputed
-// wells "in the wadi of Gerar" (26:19–21), have no known site and are not pinned. Chapter 27 names no
-// place; the map stays at Beersheba, where Isaac last settled (26:23–33) and where Jacob sets out from
-// next week (28:10). Verses quote THE JPS TANAKH: Gender-Sensitive Edition (Sefaria).
+// wells "in the wadi of Gerar" (26:19–21), have no known site and are not pinned. Chapter 27 doesn't say
+// where the family is living (it names Haran only as Jacob's destination, 27:43); the map stays at
+// Beersheba, where Isaac last settled (26:23–33) and where Jacob sets out from next week (28:10).
+// Verses quote THE JPS TANAKH: Gender-Sensitive Edition (Sefaria).
 // Claim table: docs/plans/2026-09-27-toldot-story-factcheck.md.
 import type { LngLat, ParshaStory } from '../story'
 
 /** Gerar (places.json a3f5814), pinned at Tel Haror (Tell Abu Hureyra) on Nahal Gerar: the usual identification, not certain. */
 const GERAR: LngLat = [34.6065, 31.3821]
-/** Rehoboth (places.json ab1d954 "Rehoboth 1"), pinned at Ruheibeh: an old proposal (Easton's Bible Dictionary), not a known site. */
+/** Rehoboth (places.json ab1d954 "Rehoboth 1"), pinned at Ruheibeh: Easton's Bible Dictionary's proposal, which modern archaeology rejects (nothing there older than the Roman period). The real site is unknown. */
 const REHOBOTH: LngLat = [34.5658, 31.0311]
 /** Beersheba (places.json a075d61 "Beersheba 2"), pinned at Tel Be'er Sheva (Tell es-Seba), its usual identification. */
 const BEERSHEBA: LngLat = [34.8408, 31.2447]
 /** Haran (places.json a6d9af3), pinned at Harran in southern Turkey, its usual identification. */
 const HARAN: LngLat = [39.0328, 36.8644]
-/** A backdrop over the central Negev for cards with no stated place, framed so no route pin is in view. Not a location claim. */
-const NEGEV: LngLat = [34.95, 30.25]
+/** A backdrop over the northern Negev, the Bible's Negeb (the Beersheba–Arad basin), for cards with no stated place. Not a location claim; no route pin shows before the first stop. */
+const NEGEV: LngLat = [34.85, 30.95]
 /** Shift a camera east so a pin sits left of centre and its label fits on a phone. */
 const eastOf = (p: LngLat, d: number): LngLat => [p[0] + d, p[1]]
 
@@ -28,7 +29,7 @@ const toldot: ParshaStory = {
   tagline: 'Two nations, one womb.',
   sources: [
     'Genesis 25:19 – 28:9',
-    'Genesis 12:10, 20:1–2, 21:5, 21:31, 24:62, 25:7, 25:11, 28:10',
+    'Genesis 12:10, 20:1–5, 21:5, 21:31, 24:62, 25:7, 25:11, 28:10',
     'Rashi on Genesis 25:22, 25:23, 25:26, 25:27, 25:30, 25:31, 27:19, 27:22, 27:24, 27:33, 28:5',
     'Megillah 6a',
     'Bava Batra 16b',
@@ -37,10 +38,11 @@ const toldot: ParshaStory = {
     'Bereshit Rabbah 65:20',
     'Devarim Rabbah 1:15',
     'Easton’s Bible Dictionary, “Rehoboth” (via Wikipedia, “Rehoboth (Bible)”)',
+    'Wikipedia, “Rehovot-in-the-Negev”',
   ],
   route: [
     { name: 'Gerar', at: GERAR, place: 'a3f5814', hedge: 'usual site: Tel Haror' },
-    { name: 'Rehoboth', at: REHOBOTH, place: 'ab1d954', hedge: 'site unknown · a proposal' },
+    { name: 'Rehoboth', at: REHOBOTH, place: 'ab1d954', hedge: 'site unknown · pin illustrative' },
     { name: 'Beersheba', at: BEERSHEBA, place: 'a075d61', hedge: 'usual site: Tel Be’er Sheva' },
   ],
   cards: [
@@ -57,7 +59,7 @@ const toldot: ParshaStory = {
       title: 'Twenty years of waiting',
       body: 'Isaac is 40 when he marries Rebekah, and she has no children. Isaac pleads with God for her, and she conceives twins, who struggle inside her. “If so, why do I exist?” she asks, and goes to inquire of God.',
       ref: 'Genesis 25:19–22, 25:26',
-      note: 'Isaac is 60 when the twins are born (25:26), twenty years after the wedding. The verses don’t say where the family lived. Last week Isaac was “settled in the region of the Negeb” (24:62) and then near Beer-lahai-roi (25:11), whose site is unknown, so the map shows the Negev as a backdrop, not a location. Rashi on 25:22 brings two midrashic readings of the struggle: whenever Rebekah passed a house of Torah study, Jacob stirred to come out, and whenever she passed a place of idol worship, Esau did; or, the two were already quarreling over how to divide two worlds.',
+      note: 'Isaac is 60 when the twins are born (25:26), twenty years after the wedding. The verses don’t say where the family lived. Last week Isaac was “settled in the region of the Negeb” (24:62); after Abraham’s death, some fifteen years after the twins were born (21:5, 25:7, 25:26), he settled near Beer-lahai-roi (25:11), whose site is unknown. So the map shows the northern Negev, the Bible’s Negeb, as a backdrop, not a location. The JPS note says the meaning of the Hebrew of Rebekah’s question is uncertain; Rashi on 25:22 reads it as asking why, if the pain is so great, she had longed and prayed to become pregnant. He also brings two midrashic readings of the struggle: whenever Rebekah passed a house of Torah study, Jacob stirred to come out, and whenever she passed a place of idol worship, Esau did; or, the two were already quarreling over how to divide two worlds.',
       act: 'The twins',
       camera: { center: NEGEV, zoom: 8.4, pitch: 35, bearing: -10 },
       routeTo: 0,
@@ -75,7 +77,7 @@ const toldot: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Red, hairy, and holding a heel',
-      body: 'The first twin comes out red and hairy, and they name him Esau. His brother follows holding Esau’s heel, so they name him Jacob. Esau grows into a skillful hunter, a man of the outdoors; Jacob, a mild man who stays in camp. Isaac favors Esau, for he has a taste for game; Rebekah favors Jacob.',
+      body: 'The first twin comes out red and hairy, and they name him Esau. His brother follows holding Esau’s heel, and he is named Jacob. Esau grows into a skillful hunter, a man of the outdoors; Jacob, a mild man who stays in camp. Isaac favors Esau, for he has a taste for game; Rebekah favors Jacob.',
       ref: 'Genesis 25:24–28',
       note: 'The JPS notes explain the names: Esau plays on se‘ar, “hair,” and Jacob on ‘aqeb, “heel.” “Stays in camp” is literally “a sitter in tents”; Rashi on 25:27 reads them as the tents of Shem and Eber, where Torah was studied. Rashi on 25:26 cites a midrash that Jacob held the heel with good reason: he had been conceived first, so the firstborn’s place was rightly his.',
       camera: { center: NEGEV, zoom: 8.4, pitch: 35, bearing: 20 },
@@ -109,7 +111,7 @@ const toldot: ParshaStory = {
       title: 'Isaac in Gerar',
       body: 'Famine strikes, and Isaac goes to Abimelech, king of the Philistines, in Gerar. God tells him not to go down to Egypt but to stay in the land. Afraid the locals will kill him for Rebekah’s sake, Isaac calls her his sister, until Abimelech sees they are husband and wife and orders that no one harm them.',
       ref: 'Genesis 26:1–11',
-      note: 'The verse recalls the earlier famine in Abraham’s days, when Abram went down to Egypt (12:10). Abraham too said of Sarah, “She is my sister,” to a King Abimelech of Gerar (20:1–2); the Torah doesn’t say whether it was the same king. The pin marks Tel Haror, north-west of Beersheba, the site most often identified with Gerar; that isn’t certain.',
+      note: 'The verse recalls the earlier famine in Abraham’s days, when Abram went down to Egypt (12:10). Abraham too said of Sarah, “She is my sister,” to a King Abimelech of Gerar (20:1–5); the Torah doesn’t say whether it was the same king. The pin marks Tel Haror, north-west of Beersheba, the site most often identified with Gerar; that isn’t certain.',
       act: 'Isaac’s wells',
       camera: { center: GERAR, zoom: 9.4, pitch: 55, bearing: -20 },
       routeTo: 0,
@@ -131,7 +133,7 @@ const toldot: ParshaStory = {
       ref: 'Genesis 26:18–22, 26:32–33 · Ramban on Genesis 26:20',
       note: 'The meanings follow the JPS notes. Esek and Sitnah were dug in the wadi of Gerar (26:19–21); their sites are unknown, so they aren’t pinned. Ramban on 26:20 reads the wells as a hint of the three Temples: Esek and Sitnah, fought over, are the first two, and Rehoboth is the third, to be built without strife.',
       items: [
-        { en: 'Abraham’s wells', note: 'Stopped up by the Philistines. Isaac digs them anew and gives them his father’s names.' },
+        { en: 'Abraham’s wells (several)', note: 'Stopped up by the Philistines. Isaac digs them anew and gives them his father’s names.' },
         { he: 'עֵשֶׂק', en: 'Esek, “contention”', note: 'The herdsmen of Gerar quarrel: “The water is ours.”' },
         { he: 'שִׂטְנָה', en: 'Sitnah, “harassment”', note: 'Another well, another dispute.' },
         { he: 'רְחֹבוֹת', en: 'Rehoboth, “ample space”', note: 'No quarrel this time.' },
@@ -145,7 +147,7 @@ const toldot: ParshaStory = {
       title: 'Room at last',
       body: 'Isaac moves on and digs another well, and this time no one quarrels over it. He names it Rehoboth: “Now at last GOD has granted us ample space to increase in the land.”',
       ref: 'Genesis 26:22',
-      note: '“GOD” is how the JPS Gender-Sensitive Edition renders God’s four-letter name. The verse says only that Isaac “moved from there.” Where Rehoboth was is unknown. The pin marks the ruins of Rehovot-in-the-Negev in Wadi er-Ruheibeh, following an old proposal (Easton’s Bible Dictionary); the town there is Nabatean and Byzantine, far later than Isaac.',
+      note: '“GOD” is how the JPS Gender-Sensitive Edition renders God’s four-letter name. The verse says only that Isaac “moved from there.” Where Rehoboth was is unknown. The pin marks the ruins of Rehovot-in-the-Negev in Wadi er-Ruheibeh, following a proposal in Easton’s Bible Dictionary (1890s) that modern archaeology rejects: the town there is Nabatean and Byzantine, with nothing older than the Roman period.',
       camera: { center: eastOf(REHOBOTH, 0.16), zoom: 9.2, pitch: 55, bearing: 10 },
       routeTo: 1,
       stop: 2,
@@ -155,7 +157,7 @@ const toldot: ParshaStory = {
       title: 'Fear not, for I am with you, and I will bless you and increase your offspring for the sake of My servant Abraham.',
       body: 'That night, at Beer-sheba.',
       ref: 'Genesis 26:23–24',
-      note: 'From Rehoboth Isaac “went up to Beer-sheba” (26:23), and God appeared to him that night. The night sky here is an illustration. The pin marks Tel Be’er Sheva (Tell es-Seba), east of the modern city, the site usually identified with biblical Beersheba.',
+      note: 'From Rehoboth Isaac “went up to Beer-sheba” (26:23), and God appeared to him that night. The night sky here is an illustration.',
       camera: { center: BEERSHEBA, zoom: 8.4, pitch: 76, bearing: 0 },
       routeTo: 2,
       stop: 3,
@@ -165,7 +167,7 @@ const toldot: ParshaStory = {
       title: 'A pact, and water',
       body: 'Isaac builds an altar and pitches his tent. Abimelech comes from Gerar with his councilor and his army chief: “We now see plainly that GOD has been with you.” They feast, swear a pact and part in peace. That same day Isaac’s servants report, “We have found water!” He names the well Shibah; so the city is called Beer-sheba.',
       ref: 'Genesis 26:25–33',
-      note: 'The JPS note reads Shibah “as though ‘oath.’” Genesis 21:31 gives the name an earlier start: Abraham and Abimelech swore an oath at this place too.',
+      note: 'The pin marks Tel Be’er Sheva (Tell es-Seba), east of the modern city, the site usually identified with biblical Beersheba. The JPS note reads Shibah “as though ‘oath.’” Genesis 21:31 gives the name an earlier start: Abraham and Abimelech swore an oath at this place too.',
       camera: { center: eastOf(BEERSHEBA, 0.08), zoom: 9.8, pitch: 58, bearing: -15 },
       routeTo: 2,
       stop: 3,
@@ -175,7 +177,7 @@ const toldot: ParshaStory = {
       title: 'Isaac calls Esau',
       body: 'Isaac is old, and his eyes are too dim to see. He calls Esau: take your quiver and bow, hunt me some game, and prepare a dish I like, “so that I may give you my innermost blessing before I die.”',
       ref: 'Genesis 27:1–4',
-      note: 'At the end of chapter 26, Esau, at 40, marries two Hittite women, Judith and Basemath, “a source of bitterness to Isaac and Rebekah” (26:34–35). Chapter 27 names no place. Isaac was last at Beersheba (26:23–33), and next week Jacob sets out from there (28:10), so the map stays there.',
+      note: 'At the end of chapter 26, Esau, at 40, marries two Hittite women, Judith and Basemath, “a source of bitterness to Isaac and Rebekah” (26:34–35). Chapter 27 doesn’t say where the family is living. Isaac was last at Beersheba (26:23–33), and next week Jacob sets out from there (28:10), so the map stays there.',
       act: 'The blessing',
       camera: { center: eastOf(BEERSHEBA, 0.08), zoom: 10.4, pitch: 60, bearing: 25 },
       routeTo: 2,
@@ -207,9 +209,10 @@ const toldot: ParshaStory = {
       hebrew: 'הַקֹּל קוֹל יַעֲקֹב וְהַיָּדַיִם יְדֵי עֵשָׂו',
       body: 'Isaac feels him and wonders. Rashi on 27:22 hears it in the way each son speaks: Jacob asks gently, “Pray sit up,” while Esau will say, “Let my father sit up.”',
       ref: 'Genesis 27:22 · Rashi · Bereshit Rabbah 65:20',
-      note: 'Compare 27:19 and 27:31. Bereshit Rabbah 65:20 reads the verse as a promise: when the voice of Jacob is heard in the synagogues and study halls, the hands of Esau do not prevail.',
+      note: 'Compare 27:19 and 27:31. One reading in Bereshit Rabbah 65:20 takes the verse as a promise: when the voice of Jacob is heard in the synagogues and study halls, the hands of Esau do not prevail.',
       camera: { center: eastOf(BEERSHEBA, 0.08), zoom: 10.8, pitch: 64, bearing: -20 },
       routeTo: 2,
+      stop: 3,
     },
     {
       kind: 'chapter',
@@ -223,9 +226,9 @@ const toldot: ParshaStory = {
     {
       kind: 'chapter',
       title: '“Bless me too, Father!”',
-      body: 'Esau comes back from his hunt with a dish. Isaac trembles: “I blessed him; now he must remain blessed!” Esau sobs, “Have you but one blessing, Father? Bless me too, Father!” Isaac answers: his home will enjoy the fat of the earth and the dew of heaven; he will live by his sword and serve his brother, but one day break his yoke.',
+      body: 'Esau comes back from his hunt with a dish. Isaac trembles: “I blessed him; now he must remain blessed!” Esau sobs, “Have you but one blessing, Father? Bless me too, Father!” Isaac answers: his home will enjoy the fat of the earth and the dew of heaven; he will live by his sword and serve his brother, but when he grows restive he will break his yoke.',
       ref: 'Genesis 27:30–40 · Rashi · Devarim Rabbah 1:15',
-      note: 'Rashi on 27:33 reads “now he must remain blessed” as Isaac confirming the blessing of his own free will, so no one could say Jacob got it only by deceit. In Devarim Rabbah 1:15, Rabban Shimon ben Gamliel says Esau honored his father more than he himself did: Esau served his father in his finest clothes, the very clothes Rebekah put on Jacob.',
+      note: 'Rashi on 27:33 reads “now he must remain blessed” as Isaac confirming the blessing of his own free will, so no one could say Jacob got it only by deceit. In Devarim Rabbah 1:15, Rabban Shimon ben Gamliel says Esau honored his father more than he himself did: Esau served his father in his finest clothes, the very clothes Rebekah put on Jacob. Isaac’s words to Esau follow the JPS reading of 27:39; its note says others read it the opposite way: “be away from the fat of the earth.”',
       camera: { center: eastOf(BEERSHEBA, 0.08), zoom: 10.0, pitch: 56, bearing: -10 },
       routeTo: 2,
       stop: 3,
@@ -243,7 +246,7 @@ const toldot: ParshaStory = {
     {
       kind: 'talk',
       title: 'Esau cried, “Bless me too, Father!” If you could give a blessing to each person at your table, what would it be?',
-      note: 'Numbered pins mark usual or proposed identifications: Gerar = Tel Haror, Rehoboth = Ruheibeh (an old proposal; its site is unknown), Beersheba = Tel Be’er Sheva. None is certain. Esek and Sitnah, the two disputed wells, can’t be located and aren’t shown. Lines join the stops in order; Isaac’s roads aren’t known.',
+      note: 'Numbered pins mark usual or proposed identifications: Gerar = Tel Haror, Rehoboth = Ruheibeh (an 1890s proposal that archaeologists now reject; the real site is unknown), Beersheba = Tel Be’er Sheva. None is certain. Esek and Sitnah, the two disputed wells, can’t be located and aren’t shown. Lines join the stops in order; Isaac’s roads aren’t known.',
       camera: { center: [34.72, 31.2], zoom: 8.2, pitch: 30, bearing: 0 },
       routeTo: 2,
     },
@@ -251,7 +254,7 @@ const toldot: ParshaStory = {
   questions: [
     {
       audience: 'Kids',
-      text: 'Isaac named his wells after what happened at them: Esek for a quarrel, Rehoboth when there was room for everyone. If you named a place in your home after something that happened there, what would you call it?',
+      text: 'Isaac named his wells after what happened at them: Esek for a quarrel, Rehoboth when at last there was room and no quarrel. If you named a place in your home after something that happened there, what would you call it?',
     },
     {
       audience: 'Everyone',
@@ -259,7 +262,7 @@ const toldot: ParshaStory = {
     },
     {
       audience: 'Deeper',
-      text: 'Rebekah heard “the older shall serve the younger” before her sons were born (25:23). Does knowing the future justify how she got the blessing for Jacob? And why might Isaac bless Jacob again, by name, before sending him away (28:1–4)?',
+      text: 'Rebekah heard “the older shall serve the younger” before her sons were born (25:23). Does knowing the future justify how she got the blessing for Jacob? And why might Isaac bless Jacob again, this time knowing it is Jacob, before sending him away (28:1–4)?',
     },
   ],
 }

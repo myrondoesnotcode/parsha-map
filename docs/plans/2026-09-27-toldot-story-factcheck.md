@@ -78,3 +78,30 @@ Story: `src/redesign/stories/toldot.ts` (Genesis 25:19 – 28:9), 20 cards. Chec
 - Jacob, Esau and Rebekah: the story states what the verses say and gives each reading with its author (Rashi, Onkelos, Devarim Rabbah, Bereshit Rabbah). Esau's side gets the text's own weeping (27:34, 38) and Rabban Shimon ben Gamliel's praise.
 - No date other than the automatic date bar.
 - No `name` card (Jacob's renaming is in Vayishlach) and no `plan` card. No `letter` card: the small kuf of קַצְתִּי (27:46; Kitzur Baal HaTurim on 27:46) sits mid-word, and the letter card always shrinks the last letter.
+
+## Round 2: independent fact-check (4 lenses), applied 2026-09-27
+
+Each finding was re-checked before any change: Sefaria v3, JPS Gender-Sensitive (with its notes) + Miqra according to the Masorah, for Genesis 20:1–5, 24:62, 25:19–34, 26, 27, 28:1–9, 36:9; Rashi on 25:22, 27:19, 27:22, 27:24, 27:33; Bereshit Rabbah 65:20; Megillah 6a; Wikipedia *Rehovot-in-the-Negev* and *Negev*. Rows above for the Rehoboth pin, "Chapter 27 names no place", the act-one backdrop, card 17, and the two questions are superseded by these fixes.
+
+**Story (`toldot.ts`)**
+- Act-one backdrop moved from the central Negev (30.25° N, ~110 km south of Beersheba) to the northern Negev (30.95° N), the Bible's Negeb (Wikipedia *Negev*: the biblical Negev is only the northern, semi-arid part). No route pin shows before the first stop (app fix on redesign/daylight).
+- Card 1 note: 25:11 (Beer-lahai-roi) is dated after Abraham's death, some fifteen years after the twins' birth (21:5, 25:7, 25:26), so it no longer reads as where they were born; the JPS note says the Hebrew of "why do I exist?" is uncertain, and Rashi on 25:22 reads it as why she had longed and prayed to become pregnant.
+- Card 3: "so they name him Jacob" → "and he is named Jacob" (25:26 Hebrew וַיִּקְרָא is singular; 25:25 is plural).
+- Card 6 note and sources: Abraham's "She is my sister" said to Abimelech is 20:1–5 (the "to me" is 20:5).
+- Card 8: "Abraham's wells (several)" (26:18, plural).
+- Card 9 note, talk note, route hedge: Ruheibeh was Easton's proposal (1890s) and modern archaeology rejects it (no remains older than the Roman period); hedge "site unknown · pin illustrative".
+- Card 10 → 11: "The pin marks Tel Be'er Sheva…" moved to card 11; on the stars card the sky covers the pin.
+- Card 12 note and header: chapter 27 doesn't say where the family is living (it names Haran as Jacob's destination, 27:43).
+- Card 15: `stop: 3`, so the Beersheba pin stays active through the scene; note: "One reading in Bereshit Rabbah 65:20" (the promise reading is one of several, told of Avnimos).
+- Card 17: "but one day break his yoke" → "but when he grows restive he will break his yoke" (27:40); note: the JPS note to 27:39 records the opposite reading, "be away from the fat of the earth."
+- Questions: Kids "room and no quarrel" (26:22 "us", not "everyone"); Deeper "this time knowing it is Jacob" (Isaac's words in 28:1–4 don't use his name).
+
+**Read tab (`parshaList.json` toldot)**
+- In brief: no "violently", no "would define her family for generations" or primogeniture editorial; 25:23 given as told; birthright sold for "bread and a red lentil stew" (25:34), not "a single bowl"; Isaac "hears Jacob's voice but feels hairy hands" (27:22–23); "a blessing of abundance" (27:28), not "fertility" (that is 28:3); Isaac lets the blessing stand (27:33) and Esau weeps on learning what happened (27:34), not on arrival.
+- Did you know: Rashi on 27:19 and 27:24 given as he says them, not "never tells an outright lie"; "The Torah traces the Edomites to Esau (36:9)"; Edom = Rome sourced to Megillah 6a ("Caesarea, daughter of Edom"), not "throughout rabbinic literature … allegory".
+- History: "Isaac lets the spoken blessing stand … Rashi reads this as Isaac confirming it of his own free will" (27:33), not "cannot be recalled".
+- In Jewish tradition: dropped "and later with Christian civilization in general" (no fetched source).
+
+**Art**: caption "Two scenes in one picture": the stew (25:29–34) and the quiver and bow of 27:3.
+
+**Places**: `Rehoboth 1` (ab1d954) description now says the Ruheibeh identification is rejected and the real site is unknown (DESCRIBED table).

@@ -328,6 +328,9 @@ const DESCRIBED: Record<string, { name: string; description: string }> = {
   a98e4d7: { name: 'Sidon', description: 'Saida, Lebanon' },
   // Genesis 2:14: the Tigris "flows east of Asshur". Assur lies on the Tigris's west bank, so the verse is tied to it (below).
   a874951: { name: 'Asshur', description: 'the city of Assur, on the west bank of the Tigris; Genesis 2:14 says the Tigris flows east of Asshur, which may mean the city or the land of Assyria' },
+  // Genesis 26:22: Easton's Bible Dictionary (1890s) put Isaac's Rehoboth at Ruheibeh; modern archaeology rejects this
+  // (Wikipedia "Rehovot-in-the-Negev": no remains older than the Roman period). Toldot's story keeps it as an illustrative pin.
+  ab1d954: { name: 'Rehoboth 1', description: 'Ruheibeh (Rehovot-in-the-Negev), an 1890s proposal for Isaac\'s well (Genesis 26:22) that archaeologists reject: nothing there is older than the Roman period. The real site is unknown' },
   a38ebfd: { name: 'Tigris', description: 'the Tigris, Hebrew Hiddekel (Genesis 2:14); the pin marks al-Qurnah, where it meets the Euphrates today. It does not mark Eden' },
 }
 
