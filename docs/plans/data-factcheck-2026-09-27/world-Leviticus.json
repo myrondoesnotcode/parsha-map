@@ -1,0 +1,576 @@
+{
+  "tzav": {
+    "windowStartBCE": 1319,
+    "windowEndBCE": 1272,
+    "note": "Tradition dates the seven days of the priests' ordination to c. 1312 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1319 to 1272 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1319,
+        "approx": true,
+        "description": "Pharaoh Horemheb's coronation inscription says he rebuilt ruined temples, remade the damaged statues of the gods, and staffed Amun's temples with priests chosen from the army.",
+        "significance": "In Tzav, Moses installs Aaron and his sons as priests in a ceremony lasting seven days (Leviticus 8:2, 8:33).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Horemheb\" (ruled \"between 1319 BC and 1292 BC\"; coronation inscription: statues of the old gods remade, temples rebuilt, \"servants to the god and lector priests from the military elite\")",
+            "url": "https://en.wikipedia.org/wiki/Horemheb"
+          },
+          {
+            "title": "Leviticus 8:33",
+            "url": "https://www.sefaria.org/Leviticus.8.33"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1290,
+        "endBCE": 1279,
+        "approx": true,
+        "description": "Seti I builds the Great Hypostyle Hall in the temple of Amun at Karnak. Its roof rested on 134 columns; his son Ramesses II finished carving its southern half.",
+        "significance": "Tzav sets out the priests' daily duties at the altar, such as keeping its fire burning, and their share of the offerings (Leviticus 6–7).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Great Hypostyle Hall\" (\"134 columns\"; \"built entirely by Seti I\"; southern wing's decoration \"completed by his son and successor ... Ramesses II\")",
+            "url": "https://en.wikipedia.org/wiki/Great_Hypostyle_Hall"
+          },
+          {
+            "title": "Wikipedia, \"Seti I\" (ruling \"1290 BC to 1279 BC\")",
+            "url": "https://en.wikipedia.org/wiki/Seti_I"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1295,
+        "endBCE": 1272,
+        "approx": true,
+        "description": "Hittite king Muwatalli II's model prayer sets out, on a roof, “35 thick breads” of moist flour and “a thin bowl of honey mixed with fine oil”. The offerings are then burnt.",
+        "significance": "Tzav's grain offering is choice flour and oil, burnt on the altar (Leviticus 6:7–8). Leviticus bars honey from any offering burnt to God (2:11).",
+        "sources": [
+          {
+            "title": "Itamar Singer, Hittite Prayers (Society of Biblical Literature, 2002), no. 20: Muwatalli II \"(c. 1295–1272)\"; §1 breads and \"honey mixed with fine oil\"; offerings \"burnt on the roof (§93)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Leviticus 6:7–8",
+            "url": "https://www.sefaria.org/Leviticus.6.7-8"
+          },
+          {
+            "title": "Leviticus 2:11",
+            "url": "https://www.sefaria.org/Leviticus.2.11"
+          }
+        ]
+      }
+    ]
+  },
+  "shemini": {
+    "windowStartBCE": 1321,
+    "windowEndBCE": 1237,
+    "note": "Tradition dates the eighth day, when the priests began their service, to c. 1312 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1321 to 1237 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1321,
+        "endBCE": 1295,
+        "approx": true,
+        "description": "Hittite king Mursili II complains that scribes and temple staff kept changing the rites set for the Goddess of the Night at Samuha. He restores them from the tablets.",
+        "significance": "Shemini tells of Aaron's sons Nadab and Abihu, who offered “alien fire—which had not been enjoined upon them” (Leviticus 10:1).",
+        "sources": [
+          {
+            "title": "Jared L. Miller, \"Setting Up the Goddess of the Night Separately\" (2008): Mursili II \"(last third of the fourteenth century)\"; \"the wooden tablet scribes and the temple personnel began incessantly to alter them ... I, Mursili, Great King, have re-edited them from the tablets\"",
+            "url": "https://www.assyriologie.uni-muenchen.de/personen/professoren/miller/publ_miller/goddess_2008.pdf"
+          },
+          {
+            "title": "Wikipedia, \"Mursili II\" (king \"1321–1295 BC (short chronology)\")",
+            "url": "https://en.wikipedia.org/wiki/Mursili_II"
+          },
+          {
+            "title": "Leviticus 10:1",
+            "url": "https://www.sefaria.org/Leviticus.10.1"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1267,
+        "endBCE": 1237,
+        "approx": true,
+        "description": "Hittite king Hattusili III founds a second cult for his patron goddess, Ishtar of Samuha, in the town of Urikina.",
+        "significance": "Shemini describes the first day of worship at the newly set-up Tabernacle, on “the eighth day” (Leviticus 9:1).",
+        "sources": [
+          {
+            "title": "Jared L. Miller, \"Setting Up the Goddess of the Night Separately\" (2008): \"Hattusili III even further “split” Ishtar of Samuha in order to found an additional cult for her in the town of Urikina\"",
+            "url": "https://www.assyriologie.uni-muenchen.de/personen/professoren/miller/publ_miller/goddess_2008.pdf"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (2002): Hattusili III \"(c. 1267–1237)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Leviticus 9:1",
+            "url": "https://www.sefaria.org/Leviticus.9.1"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1250,
+        "approx": true,
+        "description": "At Mycenae in Greece, a gate topped by two carved lions is built as the main entrance to the citadel.",
+        "significance": "The Lion Gate is the largest surviving sculpture of the Bronze Age Aegean. It shows the wider world of the time; the Torah does not mention it.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Lion Gate\" (\"erected during the thirteenth century BC, around 1250 BC\"; \"the largest surviving sculpture in the Bronze Age Aegean\")",
+            "url": "https://en.wikipedia.org/wiki/Lion_Gate"
+          }
+        ]
+      }
+    ]
+  },
+  "tazria": {
+    "windowStartBCE": 1267,
+    "windowEndBCE": 1237,
+    "note": "The Torah gives no date for these laws, and scholars place them differently; many date the writing of Leviticus much later. These events run from c. 1267 to 1237 BCE, inside the 13th century BCE, where scholars who date the Exodus usually place it. They show that world; the Torah names none of them.",
+    "events": [
+      {
+        "yearBCE": 1267,
+        "endBCE": 1237,
+        "approx": true,
+        "description": "Hattusili III, the Hittite king, asks Ramesses II for medicine so his sister, aged 50 or 60, can bear children. Ramesses doubts it can work, but sends a physician and an exorcist.",
+        "significance": "Tazria opens with the laws for a woman who has given birth (Leviticus 12:2).",
+        "sources": [
+          {
+            "title": "Diacrítica 37:2 (2023), \"Beyond Amarna: Exorcists without Borders in the Levant\": Hattusili asks for \"a man to prepare a medicine so that she may bear children!\"; \"One can’t produce medicine to enable her to bear children!\"; he sends \"a competent āšipu and a competent a[sû]\"",
+            "url": "https://pdfs.semanticscholar.org/6869/4a3a3976f79cb7154570ba671a2d44f5fcec.pdf"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (2002): Hattusili III \"(c. 1267–1237)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Leviticus 12:2",
+            "url": "https://www.sefaria.org/Leviticus.12.2"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1250,
+        "approx": true,
+        "description": "In China, Shang kings ask their ancestors questions by cracking ox bones and turtle shells, then carve them: the earliest large body of Chinese writing. Some ask about Queen Fu Hao's childbirth.",
+        "significance": "The start date is debated; bones from King Wu Ding's reign are radiocarbon-dated to 1254–1197 BCE. Their topics include illness and birth, the subjects of Tazria.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Oracle bone\" (\"Late Shang period (c. 1250 – c. 1050 BCE)\"; \"the earliest known significant corpus of ancient Chinese writing\"; topics \"from illness, birth and death\"; 26 bones \"radiocarbon dated to 1254–1197 BCE (±10 years)\")",
+            "url": "https://en.wikipedia.org/wiki/Oracle_bone"
+          },
+          {
+            "title": "Wikipedia, \"Fu Hao\" (\"Oracle bone divinations by Nan show concern for her well-being at the time of the birth\")",
+            "url": "https://en.wikipedia.org/wiki/Fu_Hao"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1246,
+        "approx": true,
+        "description": "In his 34th year, Ramesses II marries a daughter of Hattusili III and Queen Puduhepa, who becomes his chief queen.",
+        "significance": "The marriage concluded the peace begun with the treaty of 1259 BCE. Letters between the two courts also dealt with doctors and childbirth, as with Hattusili's sister.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Maathorneferure\" (daughter of Hattusili III and Puduhepa; \"married to the Egyptian Pharaoh Ramesses II in his Year 34, becoming a senior queen, the King's Great Wife\")",
+            "url": "https://en.wikipedia.org/wiki/Maathorneferure"
+          },
+          {
+            "title": "Wikipedia, \"Ramesses II\" (reign 1279–1213 BCE; year 34 ≈ 1246)",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          }
+        ]
+      }
+    ]
+  },
+  "metzora": {
+    "windowStartBCE": 1267,
+    "windowEndBCE": 1213,
+    "note": "The Torah gives no date for these laws, and scholars place them differently; many date the writing of Leviticus much later. These events run from c. 1267 to 1213 BCE, inside the 13th century BCE, where scholars who date the Exodus usually place it. They show that world; the Torah names none of them.",
+    "events": [
+      {
+        "yearBCE": 1267,
+        "endBCE": 1237,
+        "approx": true,
+        "description": "Hittite king Hattusili III writes that he was a sickly child, not expected to live, and credits the goddess Ishtar with saving his life.",
+        "significance": "Metzora gives the rites for someone healed of skin disease: washing, shaving and bathing, then offerings on the eighth day (Leviticus 14:8–10).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Ḫattušili III\" (king \"1267–1237 BC (short chronology)\"; the Apology, written \"during his reign\"; \"an ill and sickly child who was initially expected not to survive\"; \"credited the goddess Ishtar with saving his life\")",
+            "url": "https://en.wikipedia.org/wiki/%E1%B8%AAattu%C5%A1ili_III"
+          },
+          {
+            "title": "Leviticus 14:8–10",
+            "url": "https://www.sefaria.org/Leviticus.14.8-10"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1240,
+        "approx": true,
+        "description": "A register of absences at Deir el-Medina, Egypt's tomb-builders' village, gives reasons: illness, eye disease, a scorpion sting, and a wife's or daughter's menstruation, literally “purification”.",
+        "significance": "Leviticus 15 sets rules for bodily discharges, including seven days of “menstrual separation” (15:19).",
+        "sources": [
+          {
+            "title": "University of Hamburg, CSMC, Manuscript of the Month 54, \"Stung by a scorpion\" (BM EA 5634, year 40 of Ramesses II, \"c. 1250 BCE\"; \"His daughter was in menstruation (literally, in purification)\"; \"ill\"; eye disease; scorpion)",
+            "url": "https://www.csmc.uni-hamburg.de/publications/aom/mom/54-en.html"
+          },
+          {
+            "title": "Leviticus 15:19",
+            "url": "https://www.sefaria.org/Leviticus.15.19"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1237,
+        "endBCE": 1213,
+        "approx": true,
+        "description": "Ramesses II writes to the Hittite court, apparently to Tudhaliya IV and his mother Puduhepa, that he is sending an Egyptian physician, Pariamahu, to cure Kurunta of an illness.",
+        "significance": "In Metzora the priest does not treat the disease. He goes “outside the camp” to see whether it has healed (Leviticus 14:3).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kurunta (king)\" (an \"Insibia letter\" from Ramesses II to \"(apparently) Tudḫaliya IV and his mother Puduḫepa records the special dispatch of an Egyptian physician, Pariamaḫu, to cure Kurunta\")",
+            "url": "https://en.wikipedia.org/wiki/Kurunta_(king)"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (2002): Tudhaliya IV \"(c. 1237–1209)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Leviticus 14:3",
+            "url": "https://www.sefaria.org/Leviticus.14.3"
+          }
+        ]
+      }
+    ]
+  },
+  "acharei-mot": {
+    "windowStartBCE": 1312,
+    "windowEndBCE": 1185,
+    "note": "Tradition dates these laws, given after the death of Aaron's sons, to c. 1312 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1312 to 1185 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1312,
+        "approx": true,
+        "description": "A Hittite ritual for Mursili II's ailing queen sends the god Lelwani a fattened cow and ewe as her “substitutes”, inviting the god to eat their fat and drink their blood.",
+        "significance": "Acharei Mot forbids eating blood: “the life of the flesh is in the blood”, which God assigns to the altar for expiation (Leviticus 17:11–12).",
+        "sources": [
+          {
+            "title": "Itamar Singer, Hittite Prayers (2002), no. 15, Mursili's Prayer to Lelwani (CTH 380): the queen died \"probably in his ninth year of rule\"; \"her substitutes: [one fattened cow,] and one fattened ewe\"; \"eat the fat\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Wikipedia, \"Mursili II\" (king \"1321–1295 BC (short chronology)\")",
+            "url": "https://en.wikipedia.org/wiki/Mursili_II"
+          },
+          {
+            "title": "Leviticus 17:10–12",
+            "url": "https://www.sefaria.org/Leviticus.17.10-12"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1295,
+        "endBCE": 1272,
+        "approx": true,
+        "description": "Hittite king Muwatalli II prays to the Storm-god over the decline of Kummanni, confessing wrongs and asking him to hear “how I dispel the sins of the lands”.",
+        "significance": "On the Day of Atonement Aaron confesses over the live goat “all the iniquities and transgressions of the Israelites” (Leviticus 16:21).",
+        "sources": [
+          {
+            "title": "Itamar Singer, Hittite Prayers (2002), no. 19, Muwatalli's Prayer Concerning the Cult of Kummanni (CTH 382): \"a typical plea of confession and penitence\"; §1; Muwatalli II \"(c. 1295–1272)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Leviticus 16:21",
+            "url": "https://www.sefaria.org/Leviticus.16.21"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1200,
+        "endBCE": 1185,
+        "approx": true,
+        "description": "At Ugarit in Syria, a rite copied several times offers sacrifices on behalf of the kingdom's men and women for sins committed “in your anger”, in impatience or in sacrifices.",
+        "significance": "Some compare it with the Day of Atonement (Leviticus 16:30). Its editor, Dennis Pardee, cautions that the differences are important and allow only general comparison.",
+        "sources": [
+          {
+            "title": "Dennis Pardee, Ritual and Cult at Ugarit (SBL, 2002), text 22 (RS 1.002): male and female inhabitants; \"whether you sin: be it in your anger\"; \"Comparisons with the biblical Day of Atonement are tempting, but the important differences...\"; most sacrificial texts date \"to the years 1200–1185 in round figures\"",
+            "url": "https://www.sbl-site.org/wp-content/uploads/2024/11/Pardee.pdf"
+          },
+          {
+            "title": "Leviticus 16:30",
+            "url": "https://www.sefaria.org/Leviticus.16.30"
+          }
+        ]
+      }
+    ]
+  },
+  "kedoshim": {
+    "windowStartBCE": 1300,
+    "windowEndBCE": 1200,
+    "note": "The Torah gives no date for these laws, and scholars place them differently; many date the writing of Leviticus much later. These events run from c. 1300 to 1200 BCE, inside the 13th century BCE, where scholars who date the Exodus usually place it. They show that world; the Torah names none of them.",
+    "events": [
+      {
+        "yearBCE": 1300,
+        "endBCE": 1201,
+        "approx": true,
+        "description": "At Deir el-Medina, the workman Neferabu dedicates a stela to Ptah: “I am a man who swore falsely by Ptah, Lord of Maat, and he made me see darkness by day.”",
+        "significance": "Kedoshim commands: “You shall not swear falsely by My name” (Leviticus 19:12).",
+        "sources": [
+          {
+            "title": "British Museum Images, \"Stela, 19th Dynasty, Deir el-Medina\" (BM EA 589, stela of Neferabu to Ptah; \"13th century bc\")",
+            "url": "https://www.bmimages.com/preview.asp?image=00125526001"
+          },
+          {
+            "title": "Miriam Lichtheim, Ancient Egyptian Literature II (1976), \"Votive Stela of Neferabu with Hymn to Ptah\" (\"I am a man who swore falsely by Ptah, Lord of Maat, And he made me see darkness by day\")",
+            "url": "https://www.ancientportsantiques.com/wp-content/uploads/Documents/PLACES/Egypt-Libya/EgyptianLiteratureVol.II-Lichtheim1976.pdf"
+          },
+          {
+            "title": "Leviticus 19:12",
+            "url": "https://www.sefaria.org/Leviticus.19.12"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1250,
+        "approx": true,
+        "description": "The Book of the Dead made for the Theban scribe Ani lists wrongs he denies before the gods' judges, including “I have not stolen” and “I have not uttered lies”.",
+        "significance": "Kedoshim's commands include “You shall not steal; you shall not deal deceitfully or falsely with one another” (Leviticus 19:11).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Papyrus of Ani\" (\"created c. 1250 BCE\"; made \"for the Theban scribe Ani\")",
+            "url": "https://en.wikipedia.org/wiki/Papyrus_of_Ani"
+          },
+          {
+            "title": "Joshua J. Mark, \"The Negative Confession\", World History Encyclopedia (Budge's translation from the Papyrus of Ani: \"I have not stolen\", \"I have not uttered lies\")",
+            "url": "https://www.worldhistory.org/The_Negative_Confession/"
+          },
+          {
+            "title": "Leviticus 19:11",
+            "url": "https://www.sefaria.org/Leviticus.19.11"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1200,
+        "approx": true,
+        "description": "A merchant ship sinks off Cape Gelidonya in southern Turkey. Its cargo includes copper and tin ingots and pan-balance weights that follow Near Eastern standards.",
+        "significance": "Kedoshim requires “an honest balance, honest weights” (Leviticus 19:36).",
+        "sources": [
+          {
+            "title": "American Journal of Archaeology 125.3 (2021), necrology of George F. Bass (\"pan-balance weights found in the wreck adhered to Near Eastern standards\"; sank \"around 1200 BCE\")",
+            "url": "https://ajaonline.org/necrology/4343/"
+          },
+          {
+            "title": "Institute of Nautical Archaeology, \"Cape Gelidonya Late Bronze Age Shipwreck Excavation\" (\"In about 1200 B.C.\"; stone weights)",
+            "url": "https://nauticalarch.org/projects/cape-gelidonya-late-bronze-age-shipwreck-excavation/"
+          },
+          {
+            "title": "Wikipedia, \"Cape Gelidonya\" (copper and tin ingots, \"merchant weights\")",
+            "url": "https://en.wikipedia.org/wiki/Cape_Gelidonya"
+          },
+          {
+            "title": "Leviticus 19:35–36",
+            "url": "https://www.sefaria.org/Leviticus.19.35-36"
+          }
+        ]
+      }
+    ]
+  },
+  "emor": {
+    "windowStartBCE": 1279,
+    "windowEndBCE": 1209,
+    "note": "The Torah gives no date for these laws, and scholars place them differently; many date the writing of Leviticus much later. These events run from c. 1279 to 1209 BCE, inside the 13th century BCE, where scholars who date the Exodus usually place it. They show that world; the Torah names none of them.",
+    "events": [
+      {
+        "yearBCE": 1279,
+        "endBCE": 1259,
+        "approx": true,
+        "description": "Ramesses II builds his memorial temple at Thebes, the Ramesseum, over about 20 years. Its reliefs show the festival of Min, held at the start of the harvest.",
+        "significance": "Emor's calendar marks the harvest's start: “you shall bring the first sheaf of your harvest to the priest” (Leviticus 23:10).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Ramesseum\" (work \"began shortly after the start of his reign and continued for 20 years\"; reliefs of \"a feast in honour of\" Min and \"ceremonies of the festival of Min\")",
+            "url": "https://en.wikipedia.org/wiki/Ramesseum"
+          },
+          {
+            "title": "Wikipedia, \"Min (god)\" (\"At the beginning of the harvest season ... the Min Festival, when they blessed the harvest\")",
+            "url": "https://en.wikipedia.org/wiki/Min_(god)"
+          },
+          {
+            "title": "Leviticus 23:10",
+            "url": "https://www.sefaria.org/Leviticus.23.10"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1249,
+        "approx": true,
+        "description": "Ramesses II holds his first Sed festival, a royal feast of renewal held after 30 years on the throne. He will hold more than a dozen.",
+        "significance": "Emor's festivals are set by the calendar, “each at its appointed time” (Leviticus 23:4), not by the years of a king.",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Sed festival\" (celebrated \"after a ruler had held the throne for thirty years\"; Ramesses II \"had his first of over a dozen in approximately 1249 BCE\")",
+            "url": "https://en.wikipedia.org/wiki/Sed_festival"
+          },
+          {
+            "title": "Leviticus 23:4",
+            "url": "https://www.sefaria.org/Leviticus.23.4"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1267,
+        "endBCE": 1209,
+        "approx": true,
+        "description": "Tablets of instructions are prepared for Hittite queen Puduhepa for the hišuwa, a nine-day festival from Kizzuwatna in southern Anatolia, her homeland.",
+        "significance": "Emor's Feast of Booths lasts seven days, with a sacred occasion on the eighth (Leviticus 23:34–36).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Manuzi\" (\"nine day hišuwa festival, known from a set of tablets with instructions pertaining to it prepared for queen Puduḫepa\")",
+            "url": "https://en.wikipedia.org/wiki/Manuzi"
+          },
+          {
+            "title": "Wikipedia, \"Puduḫepa\" (born \"in the city of Lawazantiya in Kizzuwatna (i.e. Cilicia...)\"; queen of Hattusili III, still prominent under Tudhaliya IV)",
+            "url": "https://en.wikipedia.org/wiki/Pudu%E1%B8%ABepa"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (2002): Hattusili III \"(c. 1267–1237)\", Tudhaliya IV \"(c. 1237–1209)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Leviticus 23:34–36",
+            "url": "https://www.sefaria.org/Leviticus.23.34-36"
+          }
+        ]
+      }
+    ]
+  },
+  "behar": {
+    "windowStartBCE": 1262,
+    "windowEndBCE": 1209,
+    "note": "The Torah says these laws were given “on Mount Sinai” (25:1) but gives no date, and scholars place them differently; many date the writing of Leviticus much later. These events run from c. 1262 to 1209 BCE, inside the 13th century BCE, where scholars who date the Exodus usually place it. They show that world; the Torah names none of them.",
+    "events": [
+      {
+        "yearBCE": 1262,
+        "approx": true,
+        "description": "An Egyptian family's court fight over land granted by King Ahmose I centuries before goes on. In year 18 of Ramesses II a widow loses; her son Mose sues to win it back.",
+        "significance": "Behar treats family land as a lasting inheritance: in the jubilee year “each of you shall return to your holding” (Leviticus 25:10).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Mose (scribe)\" (land granted under Ahmose I to Neshi; widow Nubnofret \"lost at the court against Khay. This happened in year 18 under Ramesses II\"; Mose \"tried to claim the land back\")",
+            "url": "https://en.wikipedia.org/wiki/Mose_(scribe)"
+          },
+          {
+            "title": "Wikipedia, \"Ramesses II\" (reign 1279–1213 BCE; year 18 ≈ 1262)",
+            "url": "https://en.wikipedia.org/wiki/Ramesses_II"
+          },
+          {
+            "title": "Leviticus 25:10",
+            "url": "https://www.sefaria.org/Leviticus.25.10"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1240,
+        "approx": true,
+        "description": "After a drought, Hittite king Tudhaliya IV has dams built across his empire, a cuneiform text records. A dam near Alaca Höyük, dedicated to the goddess Hepat, is probably one.",
+        "significance": "Behar asks, “What are we to eat in the seventh year?” and promises a sixth-year crop “sufficient for three years” (Leviticus 25:20–21).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Gölpınar Dam\" (\"Tudhaliya IV ... had ten dams built in the Hittite empire around 1240 BC after a period of drought\"; inscription dedicating it to Ḫepat)",
+            "url": "https://en.wikipedia.org/wiki/G%C3%B6lp%C4%B1nar_Dam"
+          },
+          {
+            "title": "Leviticus 25:20–22",
+            "url": "https://www.sefaria.org/Leviticus.25.20-22"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1237,
+        "endBCE": 1209,
+        "approx": true,
+        "description": "Hittite king Tudhaliya IV confirms Kurunta as king of Tarhuntassa in a treaty on a bronze tablet, fixing his borders and granting more land. It was found at Hattusa in 1986.",
+        "significance": "Behar limits the sale of land, “for the land is Mine; you are but strangers resident with Me” (Leviticus 25:23).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kurunta (king)\" (Tudhaliya's treaty \"inscribed on a bronze tablet, discovered at Ḫattuša in 1986\"; frontiers \"in greater detail\", \"award or return of additional territories\")",
+            "url": "https://en.wikipedia.org/wiki/Kurunta_(king)"
+          },
+          {
+            "title": "Itamar Singer, Hittite Prayers (2002): Tudhaliya IV \"(c. 1237–1209)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Leviticus 25:23",
+            "url": "https://www.sefaria.org/Leviticus.25.23"
+          }
+        ]
+      }
+    ]
+  },
+  "bechukotai": {
+    "windowStartBCE": 1267,
+    "windowEndBCE": 1203,
+    "note": "The Torah gives no date for these blessings, warnings and laws, and scholars place them differently; many date the writing of Leviticus much later. These events run from c. 1267 to 1203 BCE, inside the 13th century BCE, where scholars who date the Exodus usually place it. They show that world; the Torah names none of them.",
+    "events": [
+      {
+        "yearBCE": 1267,
+        "endBCE": 1237,
+        "approx": true,
+        "description": "Hittite queen Puduhepa prays for her sick husband, Hattusili III, vowing the goddess Lelwani a silver statue of him “as big as Hattusili himself”, with head, hands and feet of gold.",
+        "significance": "Leviticus 27 sets silver values for vowing a person: fifty shekels for a man aged twenty to sixty (27:2–3).",
+        "sources": [
+          {
+            "title": "Itamar Singer, Hittite Prayers (2002), no. 22: Puduhepa \"prays for the recuperation of her ailing husband\"; §9″ \"a silver statue of Hattusili, as big as Hattusili himself, with its head, its hands and its feet of gold\"; Hattusili III \"(c. 1267–1237)\"",
+            "url": "https://e-edu.nbu.bg/pluginfile.php/1430192/mod_resource/content/1/Singer_2002_Hittite%20Prayers.pdf"
+          },
+          {
+            "title": "Leviticus 27:2–4",
+            "url": "https://www.sefaria.org/Leviticus.27.2-4"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1225,
+        "approx": true,
+        "description": "Assyrian king Tukulti-Ninurta I captures Babylon, takes its king Kashtiliashu IV to Assyria in chains, and carries off the statue of the god Marduk from its temple.",
+        "significance": "Leviticus 26 warns of cities in ruin, sanctuaries made desolate and a people scattered “among the nations” (26:31–33).",
+        "sources": [
+          {
+            "title": "Wikipedia, \"Kaštiliašu IV\" (king \"c. 1232–1225 BC\", \"ruled for eight years\"; captured and \"deported him ignominiously in chains to Assyria\"; \"made off with the statue of Marduk\")",
+            "url": "https://en.wikipedia.org/wiki/Ka%C5%A1tilia%C5%A1u_IV"
+          },
+          {
+            "title": "Wikipedia, \"Tukulti-Ninurta I\" (\"reigned c. 1243–1207 BC\")",
+            "url": "https://en.wikipedia.org/wiki/Tukulti-Ninurta_I"
+          },
+          {
+            "title": "Leviticus 26:31–33",
+            "url": "https://www.sefaria.org/Leviticus.26.31-33"
+          }
+        ]
+      },
+      {
+        "yearBCE": 1213,
+        "endBCE": 1203,
+        "approx": true,
+        "description": "Pharaoh Merneptah boasts, in a long inscription at Karnak, that he has “caused grain to be sent in ships” to keep the famine-struck Hittite land alive.",
+        "significance": "Leviticus 26 threatens famine, when “they shall dole out your bread by weight” (26:26).",
+        "sources": [
+          {
+            "title": "Colleen Manassa, The Great Karnak Inscription of Merneptah (2003), line 24: \"It is in order to vivify this Hittite land that I have caused grain to be sent in ships\"",
+            "url": "https://archive.org/stream/the-great-karnak-inscription-of-merneptah-colleen-manassa/The%20Great%20Karnak%20Inscription%20of%20Merneptah%20-%20Colleen%20Manassa_djvu.txt"
+          },
+          {
+            "title": "Israel Knohl, \"Joseph and the Famine\", TheTorah.com (Merneptah, 1213–1203 B.C.E.: \"he caused grain to be taken in ships, to keep alive this land of Hatti\")",
+            "url": "https://www.thetorah.com/article/joseph-and-the-famine-the-storys-origins-in-egyptian-history"
+          },
+          {
+            "title": "Leviticus 26:26",
+            "url": "https://www.sefaria.org/Leviticus.26.26"
+          }
+        ]
+      }
+    ]
+  }
+}
