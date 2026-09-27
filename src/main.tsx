@@ -10,8 +10,8 @@ import { ArtGallery } from './redesign/art/EmblemArt'
 
 // Daylight redesign is the default on this branch; ?ui=classic shows the current app (web only).
 const wantsClassic = !isNativeApp && new URLSearchParams(window.location.search).get('ui') === 'classic'
-// Review page for the emblem covers: ?art=gallery
-const wantsArt = new URLSearchParams(window.location.search).get('art') === 'gallery'
+// Review pages for the emblem covers: ?art=gallery or ?art=<parsha-id>
+const wantsArt = new URLSearchParams(window.location.search).has('art')
 const App = wantsArt ? ArtGallery : wantsClassic ? ClassicApp : DaylightApp
 
 // Devtools are dev-server only, so neither the web nor the app bundle ships them.

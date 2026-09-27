@@ -18,7 +18,7 @@ await send('Page.enable')
 const args = process.argv.slice(2)
 for (let i = 0; i < args.length; i += 3) {
   const [out, q, wait] = [args[i], args[i + 1], Number(args[i + 2] ?? 8000)]
-  await send('Page.navigate', { url: q.startsWith('file:') ? q : `http://localhost:5173/${q}` })
+  await send('Page.navigate', { url: q.startsWith('file:') ? q : `${process.env.BASE ?? 'http://localhost:5173'}/${q}` })
   await sleep(wait)
   const shot = await send('Page.captureScreenshot', { format: 'png' })
   writeFileSync(out, Buffer.from(shot.result.data, 'base64'))
