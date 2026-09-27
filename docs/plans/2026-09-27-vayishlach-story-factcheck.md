@@ -124,3 +124,32 @@ Story: `src/redesign/stories/vayishlach.ts` (Genesis 32:4 – 36:43), 24 cards. 
 - `npm run check:stories -- vayishlach --strict`: ✓ 24 cards, 0 errors, 0 warnings.
 - `npm run build`: ✓ built.
 - Every card screenshotted at 390×844 (CDP, GPU); the name card morphs יעקב → ישראל, keeping the shared י.
+
+## Independent fact-check (workflow wf_808669a2-f41)
+
+392 claims, 358 verified. Every finding re-checked before changing anything: Sefaria v3 (JPS Gender-Sensitive + Masorah) for 27:41–45, 32:22–33, 35:8, 35:16–21; Mishnah Chullin 7:1 (William Davidson); Wikipedia *Mamre* and *Mount Seir*. Where they conflict, this section replaces the rows above for the Jabbok stop, the stop numbers, Seir's comment, the card 9, 17, 19, 20 and 21 notes, and the talk card and Everyone question.
+
+| Finding | What it said | Done |
+|---|---|---|
+| c022 | The SEIR comment said "south-east of the Dead Sea"; the pin is ~95 km south of it, east of the Arabah | **Applied.** Comment now says "south of the Dead Sea and east of the Arabah" (Wikipedia *Mount Seir*: bordered by the Arabah to the west) |
+| c045 | Extractor said the Jabbok pin shows on the prayer quote; it is off-frame | **Not needed.** Description error only |
+| c060 | Offerings card with a stop showed no badge | **Applied, by the restructure.** The Jabbok stop is gone, so the gift card has no stop; it shows the Jabbok as a river spot. Badge support came with the app change on this lane |
+| c075, c111, visual "missed" | 32:31 names the place of the wrestling Peniel; the map put the wrestling at the river mouth, 16 km from Penuel, and drew a trek there and back to Succoth | **Applied.** Jabbok route stop removed; the route is Penuel → Succoth → Shechem → Bethel → Ephrath → Hebron. The camp, prayer and gift cards have routeTo 0, no stop, and a spot "Jabbok (river)" (aca7bd9); their notes say the ford's site is unknown. The wrestling, dawn, name, "Face to face" and meeting cards use the Penuel stop (1). The wrestling note says: "Jacob named the place of the wrestling Peniel (32:31), so the ford was there, wherever that was." Every later stop and routeTo is renumbered |
+| c079 | The stars card showed a deep-night sky under "Dawn is breaking" (32:27) | **Applied.** `sky: 'dawn'`; the note says "the dawn sky here is an illustration" |
+| c094 | Extractor said the Jabbok pin shows on the name card | **Not needed.** Description error only. The name card's backdrop is now terrain south of Penuel |
+| c100, tradition "missed" | "(JPS note)" was attached to "two spellings", which the note doesn't say | **Applied.** "Peniel (32:31) and Penuel (32:32) are two forms of one place-name; Peniel is understood as “face of God” (JPS note)." |
+| c193, text "missed" | Quote said "the oak of weeping"; the JPS note has "the oak of the weeping" | **Applied** in the body. The title (not a quotation) stays |
+| c230 | The active Ephrath pin read as where Rachel died | **Applied.** The Ephrath hedge is now "Rachel died short of it" (35:16). The longer "now Bethlehem; Rachel died short of it" was cut off at iPhone width, and the card body already says "now Bethlehem" |
+| c243 | The twelve-sons card lit the Ephrath pin, though the family had moved on beyond Migdal-eder | **Applied.** No stop, routeTo 4 (the route stands at Ephrath), and a backdrop of the hill country south of Ephrath toward Hebron. The note says Migdal-eder's site is unknown, so it isn't on the map and no pin is lit |
+| c257 | "Where Mamre was isn't known" left out the ancient identification | **Applied, after verifying on Wikipedia *Mamre*.** Josephus and Byzantine-era sources place it at Ramat el-Khalil, 4 km north of historical Hebron; modern scholars name four candidate sites. New note: "Mamre has been placed since ancient times (Josephus) at Ramat el-Khalil, about 4 km north of Hebron, but that identification isn't certain; scholars have proposed other sites nearby." Wikipedia “Mamre” added to sources |
+| c275 | "Brothers who had parted in anger" made the anger mutual; it was Esau's (27:41–45) | **Applied** to the talk title and the Everyone question: "Esau, who had once resolved to kill Jacob, ran to meet him, and the brothers embraced and wept. What helps people make peace after a long rift?" I used "resolved", not the suggested "vowed", because 27:41 says Esau "said to himself" he would kill Jacob; no vow is recorded |
+| c289 | Extractor mis-described the finale map | **Not needed.** Description error only. The finale now shows 1·2 (Penuel, Succoth), 3, 4, 5·6 |
+| text "missed", Chullin 7:1 | The note put the verse's words “socket of the hip” in the Mishnah's mouth (the Davidson translation has "spoon of the thigh") | **Applied.** "…doesn't apply to birds, since the verse speaks of the “socket of the hip” (32:33), which a bird doesn't have." |
+| visual "missed", PageCard badge | Offerings cards with a stop had no badge | **Out of scope** (app code). Already done on the lane (ad79ba4) |
+| R3–R81; parshaList, timeline, Screens "missed" items | Read-tab text, approximateDateBCE, the History card and timeline.json | **Out of scope for this lane**: parshaList.json, Screens.tsx and timeline.json weren't edited, as instructed. Left for the Read-tab pass |
+
+### New issue seen while re-checking
+
+- **Dawn sky contrast (app).** On the dawn stars card the body line ("Dawn is breaking. …") is drawn in the warm apricot colour over the new warm lower sky, and it is barely legible at iPhone size (screenshot `v2-7.png`). This needs a styling fix in `StoryPlayer.tsx` (for example a darker body colour or a text shadow when `sky === 'dawn'`). The story can't fix it.
+
+Checks after the changes: `npm run check:stories -- vayishlach --strict` ✓ 24 cards, 0 errors, 0 warnings; `npm run build` ✓. Re-screenshotted at 390×844: cards 3, 5–12, 19–21 and the finale.
