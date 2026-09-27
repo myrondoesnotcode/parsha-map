@@ -171,7 +171,7 @@ export function StoryPlayer() {
         {emblem ? <EmblemCover key="emblem" parshaId={parsha.id} /> : card.kind === 'cover' && card.image && <CoverArt key="art" src={card.image} />}
       </AnimatePresence>
       {!dark && <div className="dl-story-scrim-top" />}
-      <AnimatePresence>{card.kind === 'stars' && <StarSky key="sky" />}</AnimatePresence>
+      <AnimatePresence>{card.kind === 'stars' && <StarSky key="sky" dawn={card.sky === 'dawn'} />}</AnimatePresence>
       <AnimatePresence>
         {card.kind === 'cover' && (
           <motion.div key="scrim" className={emblem ? 'dl-emblem-floor' : 'dl-story-scrim-bottom'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
@@ -480,7 +480,7 @@ function PageCard({ card, onSources }: { card: StoryCard; onSources: () => void 
   const full = LAYOUT === 'full'
   const head = (
     <>
-      <RefButton card={card} onSources={onSources} dark={dark} />
+      <RefButton card={card} onSources={onSources} dark={dark} stop={card.stop} />
       {card.kind !== 'quote' && (
         <div style={{ font: `800 ${full ? 34 : 30}px/1.02 ${FONT.display}`, letterSpacing: '-0.035em', color: C.ink, marginTop: 8 }}>{card.title}</div>
       )}
@@ -893,13 +893,22 @@ function Burst() {
   )
 }
 
-function StarSky() {
+/** Night sky over the map; at dawn the lower sky warms and only a few stars are left, high up. */
+function StarSky({ dawn }: { dawn: boolean }) {
   const stars = useMemo(
-    () => Array.from({ length: 90 }, () => ({ x: Math.random() * 100, y: Math.random() * 62, r: Math.random() * 2 + 0.6, d: Math.random() * 2.5 })),
-    []
+    () =>
+      Array.from({ length: dawn ? 28 : 90 }, () => ({ x: Math.random() * 100, y: Math.random() * (dawn ? 30 : 62), r: Math.random() * 2 + 0.6, d: Math.random() * 2.5 })),
+    [dawn]
   )
   return (
-    <motion.div className="dl-sky" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.2 }}>
+    <motion.div
+      className="dl-sky"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1.2 }}
+      style={dawn ? { background: 'linear-gradient(#0e1554 0%, #3b3fa6 34%, #c9788a 58%, #f4b27c 76%, rgba(244, 178, 124, 0) 100%)' } : undefined}
+    >
       {stars.map((s, i) => (
         <motion.span
           key={i}

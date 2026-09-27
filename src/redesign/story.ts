@@ -78,6 +78,8 @@ export interface StoryCard {
    * share stay in place; the rest fall away and the new ones drop in.
    */
   names?: { from: string; to: string }
+  /** Stars cards: the sky drawn behind them. 'dawn' warms the lower sky for a scene at daybreak (Genesis 32:27). */
+  sky?: 'night' | 'dawn'
   /** Small print shown on the card: sources for a drawing, what is illustrative. */
   note?: string
   /** Full-bleed art behind the cover (public domain). */

@@ -53,7 +53,7 @@ Note `at` is `[longitude, latitude]`; places.json stores latitude first. A place
 |---|---|---|---|
 | `cover` | title, body, ref | Emblem art, Hebrew name, title, tagline, range (+ anchor) | Always first, once. Title, body and ref must be the parsha's display name, the tagline and its range; the checker gives the exact values. |
 | `chapter` | title, body, ref | A card over the map, pointing at the camera's subject | The workhorse: one event at one place. With a route, set `stop`/`routeTo`; add a `spot` for an extra place. |
-| `stars` | title, body, ref | A night sky over the map; the title is set as a quotation | A night scene the verses describe (Lech Lecha 15:5). |
+| `stars` | title, body, ref; optional `sky` | A night sky over the map; the title is set as a quotation. `sky: 'dawn'` warms the lower sky and leaves a few stars high up | A night scene the verses describe (Lech Lecha 15:5); `dawn` for daybreak (Vayishlach 32:27, "dawn is breaking"). |
 | `quote` | title, hebrew, body, ref | The Hebrew verse large on the stage, the English as a quotation | A key verse. `title` is the English (quote the translation you cite), `hebrew` the Hebrew, `body` a line on why it matters. |
 | `letter` | title, hebrew, body, ref; optional `letterAt`, `letterSize` | The Hebrew word, then **one letter shrinks (or grows)**, "size illustrative" | Only for a small or large letter the scribal tradition records. `letterAt` picks the letter: 0-based, counted from the start of `hebrew`, vowel marks not counted; default the last letter. `letterSize: 'large'` grows it instead (default `'small'`). |
 | `guess` | title, ref, options (2–4, exactly one `correct`) | A question; the story waits for an answer | One per story. With `at` on every option it is a map guess (pins); with none, tokens on the stage (`he` optional). `reveal` quotes the verse that answers it. |
@@ -115,6 +115,6 @@ Errors (fail the run):
 Warnings (`--strict` fails on them):
 - a place not linked to this parsha in `places.json`
 - a book reference (e.g. "Judges 18:29") or named work (Rashi, Ramban, Seder Olam…) in a body, note or reveal that `sources` doesn't carry
-- a `plan` card that isn't about the Tabernacle; `hebrew`, `items`, `names`, `letterAt`/`letterSize` or `image` on a kind that doesn't show them
+- a `plan` card that isn't about the Tabernacle; `hebrew`, `items`, `names`, `letterAt`/`letterSize`, `sky` or `image` on a kind that doesn't show them
 
 It does not judge whether anything is true. That is the fact-check workflow's job and Myron's.

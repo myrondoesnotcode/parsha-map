@@ -35,7 +35,7 @@ const NEEDS_ITEMS = new Set<StoryCardKind>(['offerings', 'scale'])
 const AUDIENCES = ['Kids', 'Everyone', 'Deeper'] as const
 
 const STORY_KEYS = ['parshaId', 'tagline', 'sources', 'route', 'anchor', 'cards', 'questions']
-const CARD_KEYS = ['kind', 'title', 'body', 'ref', 'camera', 'routeTo', 'stop', 'spot', 'items', 'hebrew', 'letterAt', 'letterSize', 'names', 'note', 'image', 'act', 'options', 'reveal']
+const CARD_KEYS = ['kind', 'title', 'body', 'ref', 'camera', 'routeTo', 'stop', 'spot', 'items', 'hebrew', 'letterAt', 'letterSize', 'names', 'sky', 'note', 'image', 'act', 'options', 'reveal']
 const CAMERA_KEYS = ['center', 'zoom', 'pitch', 'bearing']
 const STOP_KEYS = ['name', 'at', 'place', 'via', 'hedge']
 const SPOT_KEYS = ['name', 'at', 'place']
@@ -321,6 +321,8 @@ function checkStory(file: string, story: ParshaStory, source: string, hasEmblem:
         err(where, `letterAt ${c.letterAt} must be 0–${count - 1} (a letter of "${c.hebrew}", counted from the start, marks not counted)`)
       if (c.letterSize !== undefined && c.letterSize !== 'small' && c.letterSize !== 'large') err(where, `letterSize must be 'small' or 'large'`)
     }
+    if (c.sky !== undefined && c.sky !== 'night' && c.sky !== 'dawn') err(where, `sky must be 'night' or 'dawn'`)
+    if (c.sky !== undefined && c.kind !== 'stars') warn(where, '`sky` is only used on stars cards')
     if (c.kind !== 'letter' && (c.letterAt !== undefined || c.letterSize !== undefined)) warn(where, '`letterAt` and `letterSize` are only used on letter cards')
     // Kinds whose drawing is still built for one story (StoryPlayer / DaylightMap), not from the card's data.
     if (c.kind === 'plan' && !/Tabernacle|Mishkan|Tent of Meeting/i.test(`${c.title} ${c.body ?? ''}`)) warn(where, 'the plan card always draws the Tabernacle courtyard at MISHKAN_AT (DaylightMap.tsx); use it only for the Tabernacle')
