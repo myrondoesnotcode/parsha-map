@@ -48,13 +48,13 @@ Story: `src/redesign/stories/vayetze.ts` (Genesis 28:10 – 32:3), 23 cards. Che
 | 3 note | Rashi on 28:12: up first, then down; angels of the Land went up, angels for outside came down (Bereshit Rabbah 68:12) | Rashi on 28:12 | ✅ |
 | 3 note | Rashi on 28:13: "stood above him" to guard him | Rashi on 28:13 | ✅ |
 | 3 note | Promise of the land he lies on and offspring as the dust of the earth | 28:13–14 (JPS) | ✅ |
-| 3 note | Night sky illustrative; the sun had set | 28:11 | ✅ |
-| 4 | "Surely GOD is present in this place, and I did not know it!"; early morning; stone under his head set up as a pillar; oil on top; named Bethel; previously Luz | 28:16–19 (JPS) | ✅ |
-| 4 note | "GOD" = JPS GSE rendering of the four-letter name; "house of God" = JPS note on Bethel | JPS text; 28:19 footnote | ✅ |
-| 4 note | Rashi on 28:17: this Bethel not the one near Ai but near Jerusalem, and was Mount Moriah | Rashi on 28:17 ("This Bethel is not the Bethel that is near Ai … but that which is near Jerusalem … This, too, is Mount Moriah") | ✅ |
-| 5 | Quote 28:17 (JPS) and Hebrew (cantillation removed, vowels kept) | 28:17 | ✅ |
-| 5 | "Jacob, shaken" | 28:17 JPS "Shaken, he said" | ✅ |
-| 5 | Rashi on 28:17: gateway = a place of prayer where prayers ascend to heaven (Pirkei DeRabbi Eliezer 35) | Rashi on 28:17 | ✅ |
+| 3 note | The stars are illustrative: the sun had set and he stayed the night, but no sky is described | 28:11 ("stopped there for the night, for the sun had set") | ✅ |
+| 4 | Quote card (moved before the pillar card, verse order): "Surely GOD is present in this place, and I did not know it!"; "Shaken"; quote of 28:17 (JPS) and Hebrew (cantillation removed, vowels kept) | 28:16–17 (JPS, Masorah) | ✅ |
+| 4 | Rashi on 28:17: gateway = a place of prayer where prayers ascend to heaven (Pirkei DeRabbi Eliezer 35) | Rashi on 28:17 | ✅ |
+| 4 note | "GOD" = JPS GSE rendering of the four-letter name; Rashi's reading from Pirkei DeRabbi Eliezer 35 | JPS text; Rashi on 28:17 | ✅ |
+| 5 | Pillar card: early morning; stone under his head set up as a pillar; oil on top; named Bethel; previously Luz | 28:18–19 (JPS) | ✅ |
+| 5 note | "House of God" = JPS note on Bethel | 28:19 footnote | ✅ |
+| 5 note | Rashi on 28:17: Mount Moriah (the site of the Temple) moved to meet Jacob at Luz; this is the "shrinking" of Chullin 91b. A passage marked as from a corrected Rashi text: this Bethel not the one near Ai but one near Jerusalem | Rashi on 28:17 ("Mount Moriah was forcibly removed from its locality and came hither (to Luz) … the site of the Temple came towards him as far as Bethel"; "This Bethel is not the Bethel that is near Ai … (To here from 'This Bethel' is to be found in a certain correct Rashi-text)") | ✅ |
 | 6 | Vow: if God remains with him, protects him on this journey, bread to eat and clothing to wear, returns safe to his father's house; this stone God's abode; a tithe of all God gives him | 28:20–22 (JPS) | ✅ |
 | 6 note | "the ETERNAL shall be my God": JPS reads it as the promise; Rashi on 28:21 as part of the condition (God's name rest on him, no unworthy one among his descendants) | 28:21 (JPS punctuation); Rashi on 28:21 ("AND IF THE LORD WILL BE MY GOD, in that His Name shall rest upon me … no unworthy person … in my descendants") | ✅ |
 | 7 | Land of the Easterners; well with a large stone on its mouth; shepherds from Haran; know Laban; Rachel comes with her father's flock; Jacob rolls the stone off, waters the flock, kisses Rachel, weeps | 29:1–11 (JPS) | ✅ |
@@ -73,14 +73,14 @@ Story: `src/redesign/stories/vayetze.ts` (Genesis 28:10 – 32:3), 23 cards. Che
 | 11 note | Every name explained except Dinah's | 29:32–35, 30:6, 8, 11, 13, 18, 20, 21, 24 | ✅ |
 | 12 | Reuben (Leah) "GOD has seen my affliction"; Simeon "GOD heard that I was unloved"; Levi "This time my husband will become attached to me"; Judah "This time I will praise GOD" | 29:32–35 (JPS) | ✅ |
 | 12 | Dan (Bilhah) Rachel: "God has vindicated me"; Naphtali (Bilhah) Rachel: "A fateful contest I waged with my sister" | 30:5–8 (JPS) | ✅ |
-| 12 note | Words spoken at the birth, JPS; its notes give the connected Hebrew words; Reuben "See a son"; "Now my husband will love me"; Rachel named Bilhah's sons | 29:32 and footnotes; 30:6, 30:8 ("she named him") | ✅ |
-| 13 | Gad (Zilpah) Leah: "Luck has come" (qere); Asher (Zilpah) Leah: "What fortune!"; Issachar (Leah) "God has given me my reward"; Zebulun (Leah) "This time my husband will exalt me"; Dinah (Leah) a daughter, no reason; Joseph (Rachel) "May GOD add another son for me" | 30:10–24 (JPS); 30:11 JPS note (kethib begad, qere baʼ gad "luck has come"); Hebrew 30:11 "(בגד) [בָּא גָד]" | ✅ |
+| 12 note | Words spoken at the birth, JPS; its notes say which Hebrew word each name is "connected with", and explain Reuben as "See a son"; "Now my husband will love me"; Rachel named Bilhah's sons | 29:32 and footnotes ("Reuben Understood as 'See a son'"); 30:6, 30:8 ("she named him") | ✅ |
+| 13 | Numbered 7–11 (`numberFrom: 7`), continuing card 12: Gad 7 (Zilpah) Leah: "Luck has come" (qere); Asher 8 (Zilpah) Leah: "What fortune!"; Issachar 9 (Leah) "God has given me my reward"; Zebulun 10 (Leah) "This time my husband will exalt me"; Joseph 11 (Rachel) "May GOD add another son for me". Dinah, the only daughter, unnumbered in Zebulun's row: born after him and before Joseph; no reason given for her name | 30:10–24 (JPS); 30:11 JPS note; Hebrew 30:11 "(בגד) [בָּא גָד]"; order 30:19–24 | ✅ |
 | 13 note | Leah named Zilpah's sons | 30:11, 30:13 ("she named him") | ✅ |
 | 13 note | Issachar born after the mandrakes exchange | 30:14–18 | ✅ |
 | 13 note | Rashi on 30:21 (Berakhot 60a): Leah judged herself; if a son, Rachel not even equal to a maid; prayed; sex changed | Rashi on 30:21 | ✅ |
 | 13 note | Benjamin, twelfth son, born next week | 35:16–18 (Vayishlach); eleven sons here: Reuben … Joseph | ✅ |
 | 14 | Jacob asks to go home; Laban wants him to stay ("If you will indulge me … GOD has blessed me on your account"); wages the speckled, spotted, dark-colored; same day Laban removes them; peeled rods at the troughs; goats bear streaked, speckled, spotted young; exceedingly prosperous | 30:25–43 (JPS) | ✅ |
-| 14 note | Removed animals left with his sons, three days' journey away | 30:35–36 | ✅ |
+| 14 note | Laban left the removed animals with his sons, and put three days' journey between himself and Jacob | 30:35–36 (JPS) | ✅ |
 | 14 note | Verses don't explain the rods; dream of the angel, he-goats streaked, speckled, mottled; "for I have noted all that Laban has been doing to you" | 31:10–12 (JPS) | ✅ |
 | 15 | Laban's sons' complaint; Laban's manner changed; GOD tells Jacob to return; wages changed "time and again"; "do just as God has told you" | 31:1–16 (JPS) | ✅ |
 | 15 note | "Time and again" lit. "ten times" (31:7, 31:41) | JPS footnotes on 31:7 and 31:41 | ✅ |
@@ -91,10 +91,11 @@ Story: `src/redesign/stories/vayetze.ts` (Genesis 28:10 – 32:3), 23 cards. Che
 | 16 note | Torah gives no reason; Jacob didn't know | 31:19; 31:32 ("Jacob, of course, did not know that Rachel had stolen them") | ✅ |
 | 16 note | Rashi on 31:19: to wean her father from idol worship (Bereshit Rabbah 74:5) | Rashi on 31:19 | ✅ |
 | 17 | Third day; pursued seven days; caught up in the hill country of Gilead; God's warning in a dream; Laban reproaches the secret flight; "Why did you steal my gods?" | 31:22–30 (JPS) | ✅ |
+| 17 note | Not known which side of the Jabbok the mound stood on; Jacob crosses the Jabbok only later; the pin (south of the river) is illustrative | 32:23 (JPS "he crossed the ford of the Jabbok"); places.json a694ea2 [32.1185 N] vs the Zarqa/Jabbok at Tulul adh-Dhahab (32.186 N) | ✅ |
 | 18 | Jacob, not knowing, says whoever has the gods shall not live; Laban searches the tents; idols in the camel cushion, Rachel sits on them; cannot rise before him; not found | 31:32–35 (JPS) | ✅ |
 | 18 note | Rashi on 31:32: because of this curse Rachel died on the journey (Bereshit Rabbah 74:9) | Rashi on 31:32 | ✅ |
 | 18 note | Rachel dies giving birth to Benjamin on the road to Ephrath, next week | 35:16–19 (JPS) | ✅ |
-| 19 | Jacob incensed; twenty years; fourteen for two daughters, six for flocks; made good animals torn by beasts; heat by day, frost by night; wages changed time and again | 31:36–41 (JPS) | ✅ |
+| 19 | Jacob incensed; twenty years; fourteen for two daughters, six for flocks; made good out of his own pocket every animal torn by beasts ("I myself made good the loss"); heat by day, frost by night; wages changed time and again | 31:36–41 (JPS) | ✅ |
 | 20 | Laban proposes a pact; Jacob sets up a stone as a pillar; kinsmen gather stones into a mound and eat there; Yegar-sahadutha (Laban), Gal-ed (Jacob); also Mizpah, "May GOD watch between you and me, when we are out of sight of each other" | 31:44–49 (JPS) | ✅ |
 | 20 note | Both names = "the mound of witness", Aramaic and Hebrew; Gal-ed reflects Gilead; Mizpah associated with yiṣeph "watch" | JPS footnotes on 31:47, 31:49 | ✅ |
 | 20 note | Neither to cross the mound with hostile intent; sacrifice on the Height; night there | 31:52, 31:54 | ✅ |
@@ -118,3 +119,28 @@ Story: `src/redesign/stories/vayetze.ts` (Genesis 28:10 – 32:3), 23 cards. Che
 - **No `name` card.** Luz → Bethel is a place renaming written as two words (בֵּית־אֵל); Jacob → Israel is next week.
 - **No Euphrates pin.** The gazetteer's Euphrates pin is at Carchemish, which the verse doesn't imply; the crossing point is unknown.
 - **Divine names in Hebrew.** The quote card uses 28:17 (אֱלֹהִים, as Bereshit does) rather than 28:16, which has the four-letter name.
+
+## Independent fact-check (workflow wf_b44fdf5b-6e8)
+
+345 claims checked, 306 verified. Each finding and what was done (card numbers are the new ones: the 28:16–17 quote is now card 4, the pillar card 5):
+
+| Finding | What it said | Done |
+|---|---|---|
+| c019 | Route tag showed on card 5 with no line on screen | Applied via c264: the quote card's camera now frames the Bethel pin and the line. The rest describes the app, not the story |
+| c021 | Leg-fit happens on cards 2, 7, 21 only | Not needed: describes app behaviour; no story claim depends on it |
+| c022 / c061 | Stars card had no stop badge, and the sky hides the pin | Out of scope: app fix on `lane/name-letter-cards` (stars cards now show the badge; seen on card 3) |
+| c059 | Note said the verses say "only" that the sun had set | Applied: "the verses say the sun had set and he stayed the night (28:11), but describe no sky" |
+| c072 | Rashi on 28:17 misattributed: "not near Ai but near Jerusalem" is a passage from a corrected Rashi text; his main comment moves Moriah to Luz | Applied, after re-reading Rashi on 28:17 (Rosenbaum–Silbermann) |
+| c079 | Quote of 28:17 came after the pillar card (28:18–19) | Applied: the quote card moved before the pillar card and now carries 28:16 too (ref 28:16–17); the pillar card is "A pillar at Bethel", ref 28:18–19 |
+| c140 | JPS explains Reuben as "See a son", not "connected with" | Applied |
+| c166 | The three days' journey is between Laban and Jacob, not where the animals were | Applied (30:35–36) |
+| c193 / c254 | Merged overview pins sat at Beersheba | Out of scope: app fix on the lane (pins now at their centroid; seen on cards 16 and 22) |
+| c219 | "He paid himself" reversed 31:39 | Applied: "He made good out of his own pocket every animal torn by beasts" |
+| c264 (+ missed) | Card 5's camera left Bethel off-screen | Applied: quote card camera now centered north of Bethel so the pin sits between the Hebrew and the card |
+| Missed: numbering | Card 13 restarted at 1 | Applied: `numberFrom: 7`. Dinah is no longer a numbered row: she is mentioned in Zebulun's row (born after him, before Joseph), so the numbers are sons only (Gad 7 … Joseph 11). Order checked against 29:32–30:24 |
+| Missed: guess stop | Guess card had `stop: 3`, which has no effect while pins are hidden | Applied: removed |
+| Missed: Mizpah vs Jabbok | The pin is south of the Jabbok, but Jacob crosses it only afterwards (32:23) | Applied: Laban-gives-chase note says the side of the Jabbok isn't known and the pin is illustrative; 32:23 added to sources |
+| Missed: card 14 "removes them all" | Optional | Not needed: the finding itself says it is close enough to 30:35 |
+| Missed: Rashi on 28:17, Jacob had reached Haran and turned back | Not an error | Not needed: the note now gives Rashi's main comment (Moriah moved to Luz) |
+| Missed: Euphrates dot at Carchemish on the Map tab | places.json data | Out of scope: reported by the coordinator; not changed |
+| R5–R77, parshaList / timeline / parshaDates / Screens / MapChrome items | Read-tab data | Out of scope for this lane: not edited |
