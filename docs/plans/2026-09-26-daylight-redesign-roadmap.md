@@ -81,31 +81,86 @@ So roughly a third of the year has no journey to fly. **The story format must wo
 
 ## Status and backlog — 2026-09-27
 
-Checked against the code on `redesign/daylight` (latest commit `53be97d`) and the Sep 26–27 sessions. Update this section at the end of every session.
+Checked against the code on `redesign/daylight` (latest commit `df80a25`) and the Sep 26–27 sessions. Update this section at the end of every session.
+
+**Done in the 2026-09-27 (second) session:**
+- **0.4 real "this week"** has been merged into `redesign/daylight` (`6b0db18`, `df80a25`). Build passes, and `npm run check:week` reports 40 dated checks with 0 failures. Review links now need `?today=YYYY-MM-DD` or `?parsha=lech-lecha` to open on a story week.
+- **Prototype in the iOS simulator:** built with `npm run build:ios`, then `xcodebuild -project ios/App/App.xcodeproj -scheme App -sdk iphonesimulator CODE_SIGNING_ALLOWED=NO`. It launched on iPhone 17 Pro and opens on the real week: "Shmini Atzeret · no weekly parsha · Deut 14:22–16:17 · Next parsha: Bereshit, Sat Oct 10" (checked: Shmini Atzeret is 22 Tishrei 5787 = Sat Oct 3, 2026).
+- **Fact-check workflow re-run** on both stories and their Read tabs:
+  - Lech Lecha: 189 of 198 claims confirmed, 8 flagged, 1 unchecked.
+  - Vayikra: 216 of 228 confirmed, 12 flagged.
+  - The story cards are nearly clean. The problems are in the Read tab (`parshaList.json`, which is **live**), the date bar and the era card. Findings are listed under "Fact-check findings to apply" below. **None applied yet.**
 
 ### Next session — do these first
 
-1. **Get Myron's answers to the four open decisions below.** Two of them concern things that are wrong on the live site.
-2. **Fix the live site** (`main` → parshamap.com): image captions, the Hobah pin, and hide the Empires layer if Myron agrees. These are wrong in production today, so they come before prototype work.
-3. ~~**0.4 Real "this week" on launch.**~~ Done on `redesign/real-this-week`; merge into `redesign/daylight` after review. Review links now need `?today=YYYY-MM-DD` or `?parsha=lech-lecha` to open on a story week.
-4. **Show Myron the prototype in the iOS simulator** (roadmap step 2).
-5. **Run the fact-check workflow once more on the final wording** (`.claude/workflows/parsha-fact-check.js`). The last round of fixes was only checked by hand.
-6. Then move on to **0.3 story-writing pipeline** and Genesis stories.
+1. **Get Myron's yes on the Empires plan** (see decisions), then **fix the live site** on `main` in its own worktree. Show him the diff before pushing, because pushing deploys. The fixes:
+   - image captions
+   - the Hobah pin
+   - the Bered / Beer-lahai-roi pin (new)
+   - the Read-tab text fixes for Lech Lecha and Vayikra below
+   - hide the Empires layer
+2. **Apply the story wording fixes** on `redesign/daylight` (Lech Lecha card 12 note; Vayikra sources header).
+3. **Date bar:** show both dates, each labeled (decided). Fix the Lech Lecha and Vayikra ranges, and the Vayikra/Deuteronomy overlap.
+4. **"World around it":** dated events per parsha, with the era list as the fallback (decided).
+5. **Audit the live summaries and facts for the other 52 parshiot** with the fact-check workflow.
+6. Then **0.3 story-writing pipeline** and the Genesis stories. Bereshit is the next real week and has no story.
 
-### Open decisions (waiting on Myron)
+### Decisions
 
-| Decision | Context |
+| Decision | Status |
 |---|---|
-| **Empires & borders layer: hide it or redraw it?** | The fact-check found the shapes are badly wrong. It is also live on parshamap.com |
-| **Map date bar: also show the traditional Jewish date?** | The ranges are also inconsistent (Vayikra overlaps Deuteronomy) |
-| **"World around it": dated events per parsha, with the era list as the fallback?** | Today every parsha in an era shows the same list |
-| **Home: confirm map-first** (built) over the big-blue-card home | Never explicitly picked |
+| **Empires & borders layer** | Myron thinks it adds an interesting layer and wants it redone correctly. Claude's recommendation: hide it on live now, then redraw it as soft zones of influence per era, with sources, an "approximate" label and a fact-check. **Waiting on Myron's yes to hide now** |
+| **Map date bar** | **Decided:** show both, labeled (scholarly range and traditional date) |
+| **"World around it"** | **Decided:** dated events per parsha, with the era list as the fallback |
+| **Home** | Myron unsure. Claude recommends map-first: the map is the differentiator, and the week card lives as a strip over it. Try it in the simulator and confirm |
 
 ### Wrong on the live site now (fix on `main`)
 
 - **Image captions:** the wrong artist is credited on nearly all 54 parshiot, and some images are photos (clouds, a wheat field). Task chip exists.
 - **Hobah** is pinned on Damascus; Genesis 14:15 says north of it. The error is in the generated `places.json`. Task chip exists.
-- **No audit yet of the live summaries and facts for all 54.** Only Lech Lecha and Vayikra have been fact-checked.
+- **Bered and Beer-lahai-roi** are pinned on the same point (31.097N 34.652E), but Genesis 16:14 puts the well *between* Kadesh and Bered. Unpin Bered.
+- **Read-tab text** (see findings below).
+- **Push prompt on every launch (iOS):** `AppDelegate.swift` calls `OneSignal.Notifications.requestPermission(..., fallbackToSettings: true)` on every launch. When notifications are off, the "Open Settings" alert appears every time the app opens (seen twice in the simulator). Ask once instead, or ask at a meaningful moment.
+- **No audit yet of the live summaries and facts for the other 52 parshiot.**
+
+### Fact-check findings to apply (2026-09-27 run)
+
+Full results: workflow runs `wf_e606146c-7d0` (Lech Lecha) and `wf_aa891ac1-8f0` (Vayikra).
+
+**Lech Lecha**
+- Story card 12 note: drop "on a phone". Stops merge into one pin at that zoom on every screen size.
+- `parshaList.json` didYouKnow: "Commentators explain" becomes "Chizkuni (on 17:15) explains".
+- jewishTradition: name the work, "Maimonides' list (Commentary on the Mishnah, Avot 5:3)".
+- historicalContext: the 12th Dynasty sentence sits next to the c. 1738 BCE traditional date. Add that by then Egypt was in the 13th Dynasty.
+- "World around it": "many scholars think the stories can't be tied to any century" becomes "most historians today doubt the stories can be tied to any period, and many think they were written down centuries later".
+- `timeline.json` alphabet event: change from 1800 to c. 1850 BCE. Say "earliest securely identified". An older claim from Syria (Umm el-Marra) is disputed.
+- Era card: the Hyksos event (c. 1650) is long after Abram. Per-parsha events fix this.
+- Date bar: nothing sources the 2000–1800 range. Use "Date unknown · often placed c. 2000–1550 BCE · tradition: c. 1738 BCE".
+- Optional:
+  - Radak on 14:14: link the Hebrew text, since the concession is missing from the English.
+  - Note that the Egypt legs of the route bend at an illustrative Negev point.
+  - Hide the Empires layer while a story is open.
+
+**Vayikra**
+- `stories.ts` sources header: add Lev 7:8, Rashi on Lev 1:1 and 2:13 (Menachot 20a).
+- narrativeSummary: "offerings a person may bring" becomes "some given freely and some required after a wrong".
+- didYouKnow: drop "commentators explain it in several ways", since only one explanation is given. Frame Rashi's "word of affection" as a comment on the word, not on the small aleph.
+- jewishTradition, Musaf: cite Numbers 28–29 for the days, not Berakhot 26b. Attribute the Menachot 110a and Vayikra Rabbah 7:3 lines to the named rabbis.
+- Theme chip: "Social stratification" becomes "Offerings by role and means".
+- historicalContext: Ugarit ritual texts date to "around 1200 BCE", not "13th century".
+- Era card: Megiddo was fought against "Canaanite and Syrian rulers led by the king of Kadesh". Megiddo and Akhenaten are 100–200 years before Vayikra.
+- Date bar: 1250–1200 BCE is shown with no hedge, and the traditional date (c. 1312 BCE) is never stated.
+- Also:
+  - "purgation" and "sin offering" are used for the same offering on neighbouring cards; pick one or gloss it.
+  - Add "c." to the era eyebrow dates.
+  - The offerings close-up camera shows modern Saint Catherine town with no "illustrative" label.
+
+### 0.4 follow-ups (from the build report)
+
+- On holiday weeks the button still says "Watch this week's story" for the next parsha; consider rewording.
+- On the Israel Shmini Atzeret week the app shows Hebcal's title "Shmini Atzeret" unchanged, even though the reading it lists (Deut 33–34) is the Simchat Torah reading.
+- Candle time on a festival-Friday week (Israel, Shavuot on Friday): check that it is the Shabbat lighting.
+- First launch offline with no cached calendar: no parsha is selected.
 
 ### Roadmap items: where they stand
 
@@ -114,7 +169,7 @@ Checked against the code on `redesign/daylight` (latest commit `53be97d`) and th
 | 0.1 One codebase | **Done** (`3bf19d1`). Both CLAUDE.md files still describe the two-repo setup; retiring `/parsha/ios` is Myron's call |
 | 0.2 Card types for weeks with few places | Partly built. `cover, chapter, stars, letter, name, quote, scale, plan, offerings, guess, talk` exist; no template for all 54 yet |
 | 0.3 Story-writing pipeline | Not started. Stories are hand-written in `src/redesign/stories.ts` (Lech Lecha and Vayikra only) |
-| 0.4 Real "this week" | **Done** (branch `redesign/real-this-week`). Opens on this Shabbat's parsha from Hebcal; rolls over at local midnight Sat→Sun; double weeks name both halves and open on the half with a story, else the first; holiday Shabbatot name the holiday and its reading and point to the next parsha; Hebcal window moves with the clock (last year → 3 years ahead). Rules in `src/redesign/weekRules.ts`, checked by `npm run check:week` |
+| 0.4 Real "this week" | **Done**, merged into `redesign/daylight`. Opens on this Shabbat's parsha from Hebcal; rolls over at local midnight Sat→Sun; double weeks name both halves and open on the half with a story, else the first; holiday Shabbatot name the holiday and its reading and point to the next parsha; Hebcal window moves with the clock (last year → 3 years ahead). Rules in `src/redesign/weekRules.ts`, checked by `npm run check:week` |
 | 0.5 App Store polish | Haptics done; Reduce Motion partial. Fonts not bundled, no offline tiles, no VoiceOver labels, no chunk splitting |
 | 0.6 Pin grouping | **Done** 2026-09-27. Overlapping stops merge into one pin ("2·3·5·6") and separate again when you zoom in |
 | 0.7 Desktop decision | **Blocks shipping** |
