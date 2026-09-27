@@ -135,13 +135,13 @@ const lechLecha: ParshaStory = {
   tagline: 'Leave home. Go.',
   route: [
     { name: 'Haran', at: HARAN, hedge: 'usual identification' },
-    { name: 'Shechem', at: SHECHEM },
-    { name: 'Bethel', at: BETHEL, hedge: 'usual site · tent was east, toward Ai' },
+    { name: 'Shechem', at: SHECHEM, hedge: 'usual site' },
+    { name: 'Bethel', at: BETHEL, hedge: 'usual site · tent to its east' },
     // Via the Negev both ways: toward the Negev before the famine (12:9), back up through it after (13:1).
     { name: 'Egypt', at: EGYPT, via: NEGEV, hedge: 'a region; where he stayed isn’t said' },
     // Back up through the Negev to the tent between Bethel and Ai (Genesis 13:1–4).
-    { name: 'Bethel', at: BETHEL, via: NEGEV, hedge: 'usual site · tent was east, toward Ai' },
-    { name: 'Hebron', at: HEBRON },
+    { name: 'Bethel', at: BETHEL, via: NEGEV, hedge: 'usual site · tent to its east' },
+    { name: 'Hebron', at: HEBRON, hedge: 'usual site' },
   ],
   cards: [
     {
@@ -177,7 +177,7 @@ const lechLecha: ParshaStory = {
       title: 'A tent between two towns',
       body: 'In the hill country, with Bethel to the west and Ai to the east, Abram pitches his tent and builds another altar.',
       ref: 'Genesis 12:8',
-      note: 'Bethel is usually identified with Beitin, north of Jerusalem. The pin marks Bethel; the tent stood east of it, between Bethel and Ai.',
+      note: 'Bethel is usually identified with Beitin, north of Jerusalem. The pin marks Bethel; the tent stood east of it, between Bethel and Ai. The Torah uses the later name: Genesis 28:19 says the town was first called Luz.',
       camera: { center: BETHEL, zoom: 9.4, pitch: 58, bearing: 12 },
       routeTo: 2,
       stop: 3,
@@ -220,6 +220,7 @@ const lechLecha: ParshaStory = {
       title: 'Settling in Hebron',
       body: 'Abram moves his tent to the terebinths of Mamre, in Hebron, and builds an altar there.',
       ref: 'Genesis 13:18',
+      note: 'The pin marks Hebron, at its usual site. Where the terebinths of Mamre stood isn’t known. The Torah uses the later name: Genesis 23:2 says Hebron was once called Kiriath-arba.',
       camera: { center: HEBRON, zoom: 9.6, pitch: 58, bearing: -10 },
       routeTo: 5,
       stop: 6,
@@ -247,9 +248,9 @@ const lechLecha: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Hagar and Ishmael',
-      body: 'Sarai gives her servant Hagar to Abram, hoping for a child through her. When Hagar conceives, she looks down on Sarai; Sarai treats her harshly, and Hagar runs away. An angel finds her by a spring in the wilderness, later called Beer-lahai-roi, and sends her back. She bears Abram a son, Ishmael. Abram is 86.',
+      body: 'Sarai gives her servant Hagar to Abram, hoping for a child through her. When Hagar conceives, she looks down on Sarai; Sarai treats her harshly, and Hagar runs away. An angel finds her by a spring in the wilderness and sends her back; the well there is named Beer-lahai-roi. She bears Abram a son, Ishmael. Abram is 86.',
       ref: 'Genesis 16:1–16',
-      note: 'The spring’s site is unknown. The verses put it on the road to Shur, between Kadesh and Bered (16:7, 16:14); the pin is only a rough guess in that direction (the Map tab’s place list uses another guess, further north). Chapters 16–17 say only that Abram had lived ten years in the land of Canaan (16:3), not in which town; the line stays at Hebron, his last stated home (13:18; 14:13).',
+      note: 'Its site is unknown. The verses put the spring on the road to Shur (16:7) and the well between Kadesh and Bered (16:14); the pin is only a rough guess in that direction (the Map tab’s place list uses another guess, further north). Chapters 16–17 say only that Abram had lived ten years in the land of Canaan (16:3), not in which town; the line stays at Hebron, his last stated home (13:18; 14:13).',
       camera: { center: [34.6, 30.95], zoom: 7.6, pitch: 50, bearing: 24 },
       routeTo: 5,
       spot: { name: 'Beer-lahai-roi (site unknown)', at: [34.45, 30.75] },
@@ -266,7 +267,7 @@ const lechLecha: ParshaStory = {
     {
       kind: 'talk',
       title: 'God told Abram to leave his land and his father’s house for “the land that I will show you,” without naming it. What would be hardest for you to leave behind?',
-      note: 'Numbered pins mark usual identifications (Haran = Harran, Bethel = Beitin); none is certain, and Egypt is a region. At this scale the stops in Canaan overlap; Bethel, visited twice, is one pin marked 3·5, and Shechem (2) sits just north of it, hidden under it at this scale. God’s words don’t name the land (12:1), though 12:5 says they set out for the land of Canaan. Lines join the stops in order; the roads Abram took aren’t known.',
+      note: 'Numbered pins mark usual identifications (Haran = Harran, Shechem = Tell Balata, Bethel = Beitin); none is certain, and Egypt is a region. Zoomed out this far, nearby stops share one pin; on a phone, Shechem, Bethel (visited twice) and Hebron show as one pin marked 2·3·5·6. God’s words don’t name the land (12:1), though 12:5 says they set out for the land of Canaan. Lines join the stops in order; the roads Abram took aren’t known.',
       camera: { center: [35.6, 33.2], zoom: 4.9, pitch: 20, bearing: 0 },
       routeTo: 5,
     },
@@ -347,7 +348,7 @@ const vayikra: ParshaStory = {
       kind: 'offerings',
       title: 'Five kinds of offering',
       ref: 'Leviticus 1–5',
-      note: 'Courtyard, tent and altar sizes to scale, if a cubit is about half a metre; the altar’s spot is schematic; the location is illustrative. Purgation and well-being follow the JPS translation; JPS calls the אָשָׁם the reparation offering (older translations: sin offering, peace offering, guilt offering). The priest keeps the burnt offering’s hide (7:8).',
+      note: '“Purgation” and “well-being” follow the JPS Tanakh: Gender-Sensitive Edition, which calls the אָשָׁם the reparation offering; here it keeps its familiar name, guilt offering. Older translations say sin offering and peace offering. The priest keeps the burnt offering’s hide (7:8).',
       items: [
         { he: 'עֹלָה', en: 'Burnt offering', note: 'An unblemished male from the herd or flock is skinned and cut up, and all of it goes up in smoke on the altar; the priest keeps the hide. A bird may be brought instead.' },
         { he: 'מִנְחָה', en: 'Grain offering', note: 'Usually choice flour with oil and frankincense. Always salted.' },

@@ -47,7 +47,13 @@
   top: calc(var(--safe-top) + 64px);
   bottom: auto;
 }
+/* On the Map tab the search, chips and timeline stack down to ~230px; sit below them. */
+.dl-device[data-tab='map'] .maplibregl-ctrl-bottom-right { top: calc(var(--safe-top) + 232px); }
 .dl-device .maplibregl-ctrl-attrib { background: rgba(255, 255, 255, 0.7); border-radius: 12px; }
+/* Collapsed, it's a quiet mark rather than a black button competing with the chrome. */
+.dl-device .maplibregl-ctrl-attrib.maplibregl-compact:not(.maplibregl-compact-show) {
+  opacity: 0.5; transform: scale(0.8); transform-origin: top right;
+}
 
 /* ── Chrome ── */
 .dl-topbar {
@@ -221,7 +227,10 @@
   gap: 6px;
   overflow-x: auto;
   scrollbar-width: none;
-  padding: 2px;
+  padding: 2px 28px 2px 2px;
+  /* Fade the right edge so the row reads as scrollable rather than cut off. */
+  -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent);
+  mask-image: linear-gradient(to right, #000 calc(100% - 36px), transparent);
 }
 .dl-chips::-webkit-scrollbar { display: none; }
 .dl-chips button {
@@ -311,7 +320,14 @@
   align-items: flex-start;
   text-align: left;
 }
-.dl-tile-glyph { position: absolute; right: -4px; top: -16px; font: 80px/1 'Suez One', serif; }
+.dl-tile-he {
+  position: absolute; right: 12px; top: 10px; max-width: calc(100% - 44px);
+  font: 20px/1.15 'Suez One', serif; text-align: right; white-space: nowrap;
+}
+.dl-tile-play {
+  position: absolute; left: 12px; top: 12px; width: 20px; height: 20px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; padding-left: 1px;
+}
 .dl-tile-check {
   position: absolute; left: 12px; top: 12px; width: 20px; height: 20px; border-radius: 10px;
   background: var(--ink); display: flex; align-items: center; justify-content: center;
@@ -465,6 +481,11 @@
   width: 24px; height: 24px; border-radius: 12px; background: var(--sand); color: var(--ink);
   display: flex; align-items: center; justify-content: center;
 }
+.dl-root .dl-step-tile:disabled {
+  opacity: 1; background: transparent !important; box-shadow: none !important;
+  outline: 1.5px dashed #cbbfa8; outline-offset: -1.5px; color: var(--muted) !important;
+}
+.dl-root .dl-step-tile:disabled .dl-step-icon { background: transparent; }
 .dl-step-tile[data-done] { background: var(--ink) !important; color: var(--sand) !important; }
 .dl-step-tile[data-done] .dl-step-icon { background: var(--warm); color: var(--ink); }
 .dl-for-table {
@@ -560,7 +581,12 @@
 .dl-story-card-wrap[data-page='finale'] { top: 34%; }
 .dl-finale {
   flex: 1 1 auto; display: flex; flex-direction: column; background: var(--sand);
-  padding: 20px 20px 14px; box-shadow: 0 -8px 34px rgba(23, 24, 43, 0.16);
+  padding: 20px 20px calc(var(--safe-bottom) + 6px); box-shadow: 0 -8px 34px rgba(23, 24, 43, 0.16);
+  overflow-y: auto;
+}
+.dl-about-map {
+  display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0;
+  font: 600 12px var(--font); color: var(--muted) !important;
 }
 .dl-audience {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: 14px;
@@ -569,8 +595,8 @@
 .dl-audience button { position: relative; height: 34px; border-radius: 14px; font: 700 13px var(--font); }
 .dl-audience .dl-filter-pill { border-radius: 14px; }
 .dl-question {
-  flex: 1 1 auto; margin-top: 10px; padding: 16px; border-radius: 20px; background: #fff;
-  font: 600 19px/1.3 var(--font); letter-spacing: -0.01em; color: var(--ink);
+  flex: 1 1 auto; margin-top: 10px; padding: 14px 16px; border-radius: 20px; background: #fff;
+  font: 600 18px/1.3 var(--font); letter-spacing: -0.01em; color: var(--ink);
 }
 .dl-next-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
 .dl-next-row button {
@@ -580,8 +606,23 @@
 .dl-next-row button > span { display: flex; flex-direction: column; min-width: 0; }
 .dl-next-row b { font: 700 14px/1.15 var(--font); }
 .dl-next-row small { font: 500 12px/1.2 var(--font); color: var(--muted); margin-top: 2px; }
-.dl-done { margin-top: 8px; height: 40px; font: 700 15px var(--font); color: var(--ink); }
+.dl-done { margin-top: 2px; height: 40px; flex-shrink: 0; font: 700 15px var(--font); color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
   .dl-story-ring[data-live='true'], .dl-story-ring[data-live='true'] .dl-story-ring-inner { animation: none; }
+}
+
+/* Journey pins on overviews: one pin per on-screen cluster, numbered for every stop in it. */
+.dl-stop-pin {
+  position: relative; min-width: 32px; height: 32px; padding: 0 8px; border-radius: 16px;
+  background: var(--blue); color: #fff; border: 3px solid #fff; box-sizing: border-box;
+  box-shadow: 0 6px 18px rgba(23, 24, 43, 0.18);
+  display: flex; align-items: center; justify-content: center;
+  font: 800 13px var(--font); letter-spacing: 0.02em; white-space: nowrap;
+}
+.dl-stop-label {
+  position: absolute; left: calc(100% + 6px); /* vertical centring comes from the flex parent */
+  display: flex; flex-direction: column; gap: 1px;
+  white-space: nowrap; background: rgba(255, 255, 255, 0.92); padding: 3px 9px; border-radius: 10px;
+  font: 600 13px var(--font); color: var(--ink); line-height: 1.3;
 }

@@ -1,11 +1,14 @@
 import { Source, Layer } from 'react-map-gl/maplibre'
 import { useMemo } from 'react'
-import { useAllTradeRoutes } from '../../hooks/useTradeRoutes'
+import { useTradeRoutes } from '../../hooks/useTradeRoutes'
+import { useAppStore } from '../../store/useAppStore'
 
 export const TRADE_ROUTE_LAYER_ID = 'trade-routes'
 
 export function TradeRouteLayer() {
-  const routes = useAllTradeRoutes()
+  // Only roads in use in the year on screen (e.g. no Incense Route in Genesis).
+  const currentYearBCE = useAppStore((s) => s.currentYearBCE)
+  const routes = useTradeRoutes(currentYearBCE)
 
   const featureCollection = useMemo(
     () => ({

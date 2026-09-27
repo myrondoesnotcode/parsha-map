@@ -74,9 +74,9 @@
     "shortDesc": "Amorite kingdoms; Old Babylonian Empire; Hyksos in Egypt; Canaanite city-state system",
     "biblicalContext": "Abraham, Isaac, Jacob, Joseph — the Patriarchal period",
     "events": [
-      { "yearBCE": 1792, "description": "Hammurabi becomes king of Babylon", "significance": "Law code promulgated; first written legal system" },
-      { "yearBCE": 1800, "description": "Proto-Sinaitic alphabet invented in Sinai/Canaan", "significance": "Ancestor of Hebrew, Greek, and all modern alphabets" },
-      { "yearBCE": 1650, "description": "Hyksos seize control of northern Egypt", "significance": "First foreign rulers of Egypt; introduced chariots and bronze weapons" }
+      { "yearBCE": 1800, "description": "Earliest known alphabetic writing, by Canaanite speakers in Egypt and Sinai (date debated)", "significance": "Ancestor of the Hebrew, Greek, Latin and Arabic alphabets" },
+      { "yearBCE": 1792, "description": "Hammurabi becomes king of Babylon", "significance": "His law code is among the best preserved of the ancient Near East; older codes, such as Ur-Nammu’s, also survive" },
+      { "yearBCE": 1650, "description": "Hyksos kings of Canaanite origin come to rule northern Egypt from Avaris", "significance": "Egypt’s first foreign dynasty, ruling for about a century (c. 1650–1550 BCE)" }
     ],
     "worldEvents": [
       { "region": "Aegean", "description": "Minoan civilization reaches its height on Crete — the palace of Knossos is built, Linear A script developed, and Minoan merchants trade across the Mediterranean" },
@@ -111,10 +111,10 @@
     "shortDesc": "Egyptian New Kingdom; Hittite Empire; Amarna international system; widespread trade networks",
     "biblicalContext": "Moses, the Exodus, wilderness wanderings",
     "events": [
-      { "yearBCE": 1457, "description": "Battle of Megiddo — Thutmose III defeats Canaanite coalition", "significance": "Egypt establishes dominance over Canaan" },
-      { "yearBCE": 1352, "description": "Akhenaten's religious revolution; worship of Aten", "significance": "First documented monotheistic state religion" },
-      { "yearBCE": 1274, "description": "Battle of Kadesh — Egypt vs. Hittites", "significance": "Oldest known peace treaty; Ramesses II and Hattusili III" },
-      { "yearBCE": 1200, "description": "Bronze Age Collapse — widespread destruction across the eastern Mediterranean", "significance": "Collapse of major palace economies; Ugarit, Hatti, and Mycenae destroyed" }
+      { "yearBCE": 1457, "description": "Battle of Megiddo: Thutmose III defeats a Canaanite coalition", "significance": "Egypt establishes dominance over Canaan" },
+      { "yearBCE": 1353, "description": "Akhenaten becomes pharaoh and promotes worship of the Aten, the sun disk, above all other gods", "significance": "Often called an early move toward worshipping one god; scholars debate whether it was true monotheism" },
+      { "yearBCE": 1274, "description": "Battle of Kadesh: Egypt against the Hittites", "significance": "About 16 years later (c. 1258 BCE) Ramesses II and Hattusili III make one of the earliest peace treaties whose text survives" },
+      { "yearBCE": 1200, "description": "Late Bronze Age collapse: widespread destruction across the eastern Mediterranean", "significance": "Palace economies collapse; Ugarit, the Hittite capital Hattusa and Mycenae fall in the decades around 1200–1180 BCE" }
     ],
     "worldEvents": [
       { "region": "Aegean", "description": "Mycenaean Greece flourishes — the era of the Trojan War cycle immortalized by Homer. Mycenae, Tiryns, and Athens build massive palace complexes" },

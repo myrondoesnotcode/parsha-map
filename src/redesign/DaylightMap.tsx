@@ -250,9 +250,10 @@ const CAMP_LABELS = [
 ]
 
 const PLAN_LABELS = [
-  { text: 'Holy of Holies', at: offset(MISHKAN_AT, -12.5, 4.2), strong: true },
-  { text: 'Tent', at: offset(MISHKAN_AT, -4, -5.5) },
-  { text: 'Altar', at: offset(MISHKAN_AT, 13, 4), strong: true },
+  // Labels sit beside what they name (north gap, south gap), never on top of it.
+  { text: 'Holy of Holies', at: offset(MISHKAN_AT, -12.5, 9), strong: true },
+  { text: 'Tent', at: offset(MISHKAN_AT, -4, -7) },
+  { text: 'Altar', at: offset(MISHKAN_AT, 13, -6), strong: true },
   { text: 'Gate · east', at: offset(MISHKAN_AT, 33, 0) },
 ]
 
@@ -292,13 +293,16 @@ export function DaylightMap() {
   const selectedPlace = allPlaces.find((p) => p.id === selectedPlaceId) ?? null
 
   const geometry = useMemo(() => (story && story.route.length > 1 ? densify(story.route) : null), [story])
-  const showPlan = !!card && (card.kind === 'plan' || card.kind === 'offerings')
+  // Only the plan card: the offerings card is tall enough to cover the plan on a phone.
+  const showPlan = !!card && card.kind === 'plan'
   const [planMpp, setPlanMpp] = useState<number | null>(null)
   useEffect(() => setPlanMpp(null), [card])
 
   // Stops that sit on top of an earlier stop at the current zoom get a compact marker and no label.
   const [crowded, setCrowded] = useState<boolean[]>([])
   const [nearAny, setNearAny] = useState<boolean[]>([])
+  // Overview (no stop in the spotlight): stops that overlap on screen share one pin, led by the earliest.
+  const [clusterOf, setClusterOf] = useState<number[]>([])
   const measure = useCallback(() => {
     const map = mapRef.current
     if (!map || !story) return
@@ -306,6 +310,17 @@ export function DaylightMap() {
     setCrowded(pts.map((p, i) => pts.slice(0, i).some((q) => Math.hypot(p.x - q.x, p.y - q.y) < 34)))
     // Near any other distinct place, before or after: on the finale only one label per cluster should show.
     setNearAny(pts.map((p, i) => pts.some((q, j) => j !== i && story.route[j].at !== story.route[i].at && Math.hypot(p.x - q.x, p.y - q.y) < 34)))
+    const lead = pts.map((_, i) => i)
+    const root = (i: number): number => (lead[i] === i ? i : root(lead[i]))
+    pts.forEach((p, i) =>
+      pts.forEach((q, j) => {
+        if (j < i && Math.hypot(p.x - q.x, p.y - q.y) < 34) {
+          const [a, b] = [root(i), root(j)]
+          lead[Math.max(a, b)] = Math.min(a, b)
+        }
+      })
+    )
+    setClusterOf(pts.map((_, i) => root(i)))
   }, [story])
   useEffect(() => measure(), [measure, loaded])
 
@@ -543,12 +558,12 @@ export function DaylightMap() {
           id="dl-dots"
           type="circle"
           paint={{
-            'circle-radius': ['case', ['==', ['get', 'selected'], 1], 9, onMapTab ? 6 : 4.5],
+            'circle-radius': ['case', ['==', ['get', 'selected'], 1], 9, onMapTab ? 6 : 3.5],
             'circle-color': ['case', ['==', ['get', 'selected'], 1], C.warm, C.white],
             'circle-stroke-color': C.blue,
-            'circle-stroke-width': onMapTab ? 2.5 : 2,
+            'circle-stroke-width': onMapTab ? 2.5 : 1.5,
             'circle-opacity': dotsVisible ? 1 : 0,
-            'circle-stroke-opacity': dotsVisible ? (onMapTab ? 1 : 0.6) : 0,
+            'circle-stroke-opacity': dotsVisible ? (onMapTab ? 1 : 0.4) : 0,
           }}
         />
         <Layer
@@ -587,6 +602,39 @@ export function DaylightMap() {
 
       {story?.route.map((stop, i) => {
         const active = card?.stop === i + 1
+        const overview = !card?.stop && clusterOf.length === story.route.length
+        if (overview) {
+          const members = story.route.map((_, j) => j).filter((j) => clusterOf[j] === i && drawn >= j - 0.02)
+          const names = [...new Set(members.map((j) => story.route[j].name))]
+          const visible = clusterOf[i] === i && drawn >= i - 0.02 && card?.kind !== 'guess' && card?.kind !== 'cover'
+          return (
+            <Marker key={`${stop.name}-${i}`} longitude={stop.at[0]} latitude={stop.at[1]} anchor="center">
+              <AnimatePresence>
+                {visible && (
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    transition={SPRING.snappy}
+                    style={{ position: 'relative', display: 'flex', alignItems: 'center' }}
+                  >
+                    <span className="dl-stop-pin">{members.map((j) => j + 1).join('·')}</span>
+                    <motion.span
+                      initial={{ opacity: 0, x: -6 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.15 }}
+                      className="dl-stop-label"
+                    >
+                      {names.map((n) => (
+                        <span key={n}>{n}</span>
+                      ))}
+                    </motion.span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </Marker>
+          )
+        }
         // A stop visited twice (Bethel) is one pin, numbered for both visits, except while its second visit is the card.
         const firstVisit = story.route.findIndex((s) => s.at === stop.at)
         const laterVisits = story.route.map((s, j) => (j > i && s.at === stop.at && drawn >= j - 0.02 ? j + 1 : 0)).filter(Boolean)

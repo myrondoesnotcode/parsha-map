@@ -461,9 +461,6 @@ function PageCard({ card, onSources }: { card: StoryCard; onSources: () => void 
   const full = LAYOUT === 'full'
   const head = (
     <>
-      {card.kind === 'offerings' && LAYOUT === 'stage' && (
-        <div style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', color: C.muted, marginBottom: 2 }}>PLAN ABOVE: COURTYARD TO SCALE · LOCATION ILLUSTRATIVE</div>
-      )}
       <RefButton card={card} onSources={onSources} dark={dark} />
       {card.kind !== 'quote' && (
         <div style={{ font: `800 ${full ? 34 : 30}px/1.02 ${FONT.display}`, letterSpacing: '-0.035em', color: C.ink, marginTop: 8 }}>{card.title}</div>
@@ -722,9 +719,16 @@ function Finale({ story, card, onClose, onSources }: { story: ParshaStory; card:
         <Check size={16} strokeWidth={3} /> Story complete
       </motion.div>
       <div className="dl-story-panel dl-finale">
-        <div className="dl-eyebrow" style={{ color: C.blue }}>
-          {/* Only this week's parsha is "for Shabbat"; any other week just gets a question for the table. */}
-          {week.kind === 'this-week' ? 'Ready for Shabbat' : 'For your table'}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+          <div className="dl-eyebrow" style={{ color: C.blue }}>
+            {/* Only this week's parsha is "for Shabbat"; any other week just gets a question for the table. */}
+            {week.kind === 'this-week' ? 'Ready for Shabbat' : 'For your table'}
+          </div>
+          {card.note && (
+            <button type="button" onClick={onSources} className="dl-about-map">
+              <Info size={13} strokeWidth={2.4} /> About the map
+            </button>
+          )}
         </div>
         <div style={{ font: `800 25px/1.1 ${FONT.display}`, letterSpacing: '-0.03em', color: C.ink, marginTop: 6 }}>Bring one question to the table</div>
         <div className="dl-audience" role="tablist" aria-label="Who is it for">
@@ -787,16 +791,9 @@ function Finale({ story, card, onClose, onSources }: { story: ParshaStory; card:
             </motion.button>
           )}
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 18 }}>
-          {card.note && (
-            <button type="button" onClick={onSources} className="dl-done" style={{ color: C.muted, display: 'inline-flex', alignItems: 'center', gap: 5 }}>
-              <Info size={14} strokeWidth={2.4} /> About the map
-            </button>
-          )}
-          <button type="button" onClick={onClose} className="dl-done">
-            Done
-          </button>
-        </div>
+        <button type="button" onClick={onClose} className="dl-done">
+          Done
+        </button>
       </div>
     </div>
   )

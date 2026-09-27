@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
-import { Lightbulb, Landmark, Sparkles, Check } from 'lucide-react'
+import { Lightbulb, Landmark, Sparkles, Check, Play } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 import { useEraContext } from '../hooks/useEraContext'
 import { eraYear } from './placeText'
@@ -28,6 +28,23 @@ const rise = (i: number) => ({
 })
 
 type Segment = ReadSegment
+
+/** Typographic quotes and apostrophes; the words themselves are untouched. */
+function smartQuotes(t: string): string {
+  return t.replace(/(^|[\s(\[—–-])'/g, '$1‘').replace(/'/g, '’').replace(/(^|[\s(\[—–-])"/g, '$1“').replace(/"/g, '”')
+}
+
+/** Breaks a long summary into short paragraphs at sentence ends, so it reads in steps rather than one block. */
+function paragraphs(text: string): string[] {
+  const sentences = smartQuotes(text).split(/(?<=[.!?][’”)]?)\s+(?=[A-Z‘“])/)
+  const out: string[] = []
+  for (const sentence of sentences) {
+    const last = out[out.length - 1]
+    if (last !== undefined && last.length < 200) out[out.length - 1] = `${last} ${sentence}`
+    else out.push(sentence)
+  }
+  return out
+}
 
 function Segmented<T extends string>({ value, options, onChange, id }: { value: T; options: [T, string][]; onChange: (v: T) => void; id: string }) {
   return (
@@ -96,7 +113,12 @@ export function ReadScreen() {
       {seg === 'overview' && (
         <div key="overview" className="dl-stack">
           <motion.article {...rise(0)} className="dl-card">
-            <p style={{ margin: 0, font: `400 19px/1.55 ${FONT.reading}`, color: '#2a2c42' }}>{rc?.narrativeSummary ?? parsha.summary}</p>
+            <div className="dl-eyebrow" style={{ color: C.blue, marginBottom: 10 }}>In brief</div>
+            {paragraphs(rc?.narrativeSummary ?? parsha.summary ?? '').map((para, i) => (
+              <p key={i} style={{ margin: i ? '12px 0 0' : 0, font: `400 18px/1.55 ${FONT.reading}`, color: '#2a2c42' }}>
+                {para}
+              </p>
+            ))}
           </motion.article>
           {rc?.didYouKnow && (
             <motion.article {...rise(1)} className="dl-card" style={{ background: C.warm }}>
@@ -145,13 +167,13 @@ export function ReadScreen() {
           {era && (
             <motion.article {...rise(1)} className="dl-card">
               <div className="dl-eyebrow" style={{ color: C.blue }}>
-                {era.name} · {era.startBCE}–{era.endBCE} BCE
+                Across the {era.name} · {era.startBCE}–{era.endBCE} BCE
               </div>
               <p style={{ margin: '8px 0 12px', font: `400 16px/1.5 ${FONT.display}`, color: C.body }}>{era.shortDesc}</p>
               <ol className="dl-timeline">
-                {(era.events ?? []).map((e) => (
+                {[...(era.events ?? [])].sort((a, b) => b.yearBCE - a.yearBCE).map((e) => (
                   <li key={e.description}>
-                    <span style={{ font: `800 13px ${FONT.display}`, color: C.blue }}>{e.yearBCE} BCE</span>
+                    <span style={{ font: `800 13px ${FONT.display}`, color: C.blue }}>c. {e.yearBCE} BCE</span>
                     <span style={{ font: `500 15px/1.35 ${FONT.display}`, color: C.ink }}>{e.description}</span>
                   </li>
                 ))}
@@ -189,7 +211,7 @@ export function LibraryScreen() {
       <header>
         <h1 className="dl-h1">All 54</h1>
         <div style={{ font: `500 15px ${FONT.display}`, color: C.muted, marginTop: 4 }}>
-          {done} {done === 1 ? 'story' : 'stories'} finished · stories arrive weekly
+          {done > 0 ? `${done} ${done === 1 ? 'story' : 'stories'} finished · ` : ''}A new story each week
         </div>
       </header>
 
@@ -225,23 +247,26 @@ export function LibraryScreen() {
               className="dl-tile"
               style={{ background: bg, color: fg, boxShadow: bg === C.white ? SHADOW.float : 'none' }}
             >
-              <span lang="he" className="dl-tile-glyph" style={{ color: hasStory && !isCurrent ? 'rgba(244,236,220,0.18)' : 'rgba(23,24,43,0.08)' }}>
-                {p.hebrewName.replace(/[֑-ׇ]/g, '').charAt(0)}
+              <span lang="he" dir="rtl" className="dl-tile-he" style={{ color: hasStory && !isCurrent ? 'rgba(244,236,220,0.55)' : isCurrent ? 'rgba(23,24,43,0.45)' : 'rgba(23,24,43,0.28)' }}>
+                {p.hebrewName}
               </span>
-              {complete && (
+              {complete ? (
                 <span className="dl-tile-check">
                   <Check size={11} strokeWidth={3.5} color={C.sand} />
                 </span>
-              )}
-              {thisWeek ? (
-                <span className="dl-tile-badge" style={{ background: C.ink, color: C.sand }}>This Shabbat</span>
               ) : (
-                hasStory && !complete && <span className="dl-tile-badge">Story</span>
+                hasStory && (
+                  <span className="dl-tile-play" style={{ background: isCurrent ? C.ink : C.warm }} aria-label="Story">
+                    <Play size={9} fill={isCurrent ? C.sand : C.ink} color={isCurrent ? C.sand : C.ink} />
+                  </span>
+                )
               )}
               <span style={{ position: 'relative', font: `600 11px ${FONT.display}`, opacity: 0.7 }}>{String(p.number).padStart(2, '0')}</span>
               <span style={{ position: 'relative', font: `800 15px/1.05 ${FONT.display}`, letterSpacing: '-0.01em' }}>{parshaDisplayName(p.name)}</span>
-              {reading && (
-                <span style={{ position: 'relative', font: `600 11px ${FONT.display}`, opacity: 0.65, marginTop: 3 }}>{formatDay(reading).replace(/^\w+, /, '')}</span>
+              {thisWeek ? (
+                <span style={{ position: 'relative', font: `800 11px ${FONT.display}`, marginTop: 3 }}>This Shabbat</span>
+              ) : (
+                reading && <span style={{ position: 'relative', font: `600 11px ${FONT.display}`, opacity: 0.65, marginTop: 3 }}>{formatDay(reading).replace(/^\w+, /, '')}</span>
               )}
             </motion.button>
           )

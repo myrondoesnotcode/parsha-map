@@ -24,10 +24,13 @@ export default function DaylightApp() {
   useEffect(() => {
     setSelectedParsha(OPENING_PARSHA)
     setParshaInitialized()
-    // Prototype review links: ?card=N opens the story on card N.
-    const card = new URLSearchParams(window.location.search).get('card')
+    // Prototype review links: ?tab=map|read|library opens that tab; ?card=N opens the story on card N.
+    const params = new URLSearchParams(window.location.search)
+    const reviewTab = params.get('tab')
+    if (reviewTab === 'map' || reviewTab === 'read' || reviewTab === 'library') setTab(reviewTab)
+    const card = params.get('card')
     if (card !== null) setTimeout(() => useDaylight.getState().openStory(Number(card)), 900)
-  }, [setSelectedParsha, setParshaInitialized])
+  }, [setSelectedParsha, setParshaInitialized, setTab])
 
   // Still honours the Israel/Diaspora toggle, which re-arms weekly auto-selection.
   useAutoSelectParsha()
@@ -46,7 +49,7 @@ export default function DaylightApp() {
 
   return (
     <div className="dl-root">
-      <div className="dl-device">
+      <div className="dl-device" data-tab={storyOpen ? 'story' : tab}>
         <DaylightMap />
 
         <AnimatePresence>
