@@ -626,3 +626,9 @@
   white-space: nowrap; background: rgba(255, 255, 255, 0.92); padding: 3px 9px; border-radius: 10px;
   font: 600 13px var(--font); color: var(--ink); line-height: 1.3;
 }
+/* Emblem covers own the top of the screen; the title sits on a solid sand floor below. */
+.dl-emblem { height: 60%; -webkit-mask-image: linear-gradient(#000 86%, transparent); mask-image: linear-gradient(#000 86%, transparent); }
+.dl-emblem-floor {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 50%; pointer-events: none !important;
+  background: linear-gradient(rgba(244, 236, 220, 0), var(--sand) 12%);
+}

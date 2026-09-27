@@ -6,10 +6,13 @@ import ClassicApp from './App'
 import DaylightApp from './redesign/DaylightApp'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import { isNativeApp } from './platform'
+import { ArtGallery } from './redesign/art/EmblemArt'
 
 // Daylight redesign is the default on this branch; ?ui=classic shows the current app (web only).
 const wantsClassic = !isNativeApp && new URLSearchParams(window.location.search).get('ui') === 'classic'
-const App = wantsClassic ? ClassicApp : DaylightApp
+// Review page for the emblem covers: ?art=gallery
+const wantsArt = new URLSearchParams(window.location.search).get('art') === 'gallery'
+const App = wantsArt ? ArtGallery : wantsClassic ? ClassicApp : DaylightApp
 
 // Devtools are dev-server only, so neither the web nor the app bundle ships them.
 const ReactQueryDevtools = import.meta.env.DEV

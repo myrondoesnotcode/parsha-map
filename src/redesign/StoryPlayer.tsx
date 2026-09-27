@@ -12,6 +12,7 @@ import { C, FONT, SPRING } from './theme'
 import { parshaDisplayName, readingName, verseRange } from './placeText'
 import { markStoryComplete, useWeekProgress, useSteps } from './progress'
 import { useWeek, useToday, useNextReading, formatDay } from './week'
+import { EmblemCover, hasEmblem, emblemTone } from './art/EmblemArt'
 
 /** How long an act title holds before its first card takes over. */
 const ACT_MS = 1500
@@ -133,7 +134,8 @@ export function StoryPlayer() {
   }
 
   if (!story || !card || !parsha) return null
-  const dark = card.kind === 'stars'
+  const emblem = card.kind === 'cover' && hasEmblem(parsha.id)
+  const dark = card.kind === 'stars' || (emblem && emblemTone(parsha.id) === 'night')
   const stage = LAYOUT === 'stage' && isStageCard(card)
   // The first segment of each act sits a little apart, so the parts of the story show in the bar.
   const actStarts = new Set(story.cards.map((c, i) => (c.act ? i : -1)).filter((i) => i > 0))
@@ -149,13 +151,13 @@ export function StoryPlayer() {
         )}
       </AnimatePresence>
       <AnimatePresence>
-        {card.kind === 'cover' && card.image && <CoverArt key="art" src={card.image} />}
+        {emblem ? <EmblemCover key="emblem" parshaId={parsha.id} /> : card.kind === 'cover' && card.image && <CoverArt key="art" src={card.image} />}
       </AnimatePresence>
-      <div className="dl-story-scrim-top" />
+      {!dark && <div className="dl-story-scrim-top" />}
       <AnimatePresence>{card.kind === 'stars' && <StarSky key="sky" />}</AnimatePresence>
       <AnimatePresence>
         {card.kind === 'cover' && (
-          <motion.div key="scrim" className="dl-story-scrim-bottom" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
+          <motion.div key="scrim" className={emblem ? 'dl-emblem-floor' : 'dl-story-scrim-bottom'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
         )}
       </AnimatePresence>
 
