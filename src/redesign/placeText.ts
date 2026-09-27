@@ -23,3 +23,10 @@ export function eraYear(parsha: ParshaListItem | undefined): number {
   if (d?.start == null) return 1900
   return d.end == null ? d.start : Math.round((d.start + d.end) / 2)
 }
+
+/** "Genesis.12.1-17.27" → "Genesis 12:1 – 17:27". */
+export function verseRange(seferiaUrl: string): string {
+  const m = seferiaUrl.match(/^([^.]+)\.(\d+)\.(\d+)-(\d+)\.(\d+)$/)
+  if (!m) return seferiaUrl.replace(/\./g, ' ')
+  return `${m[1]} ${m[2]}:${m[3]} – ${m[4]}:${m[5]}`
+}

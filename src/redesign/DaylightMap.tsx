@@ -10,7 +10,7 @@ import { filterPlacesByType } from '../utils/placeUtils'
 import { TradeRouteLayer } from '../components/map/TradeRouteLayer'
 import { TerritoryLayer } from '../components/map/TerritoryLayer'
 import { daylightStyle } from './daylightMapStyle'
-import { getStory, MISHKAN_AT } from './stories'
+import { getStory, isPageCard, MISHKAN_AT } from './stories'
 import type { LngLat } from './stories'
 import { useDaylight, mapHandle, haptic } from './useDaylight'
 import { C, FONT, SPRING, SHADOW } from './theme'
@@ -23,26 +23,37 @@ import { displayName } from './placeText'
  * and remember where each stop lands. Arcs never overshoot, and a there-and-back
  * leg bows the other way on the return, so both directions stay visible.
  */
-function densify(points: LngLat[], samples = 32) {
+function arc(a: LngLat, b: LngLat, bow: number, samples: number, out: LngLat[]) {
+  const [ax, ay] = a
+  const [bx, by] = b
+  const cx = (ax + bx) / 2 - (by - ay) * bow
+  const cy = (ay + by) / 2 + (bx - ax) * bow
+  for (let s = 0; s < samples; s++) {
+    const t = s / samples
+    const u = 1 - t
+    out.push([u * u * ax + 2 * u * t * cx + t * t * bx, u * u * ay + 2 * u * t * cy + t * t * by])
+  }
+}
+
+function densify(points: { at: LngLat; via?: LngLat }[], samples = 32) {
   const coords: LngLat[] = []
   const stopIndex: number[] = []
   for (let i = 0; i < points.length - 1; i++) {
-    const [ax, ay] = points[i]
-    const [bx, by] = points[i + 1]
-    const dx = bx - ax
-    const dy = by - ay
-    const bow = 0.14
-    const cx = (ax + bx) / 2 - dy * bow
-    const cy = (ay + by) / 2 + dx * bow
     stopIndex.push(coords.length)
-    for (let s = 0; s < samples; s++) {
-      const t = s / samples
-      const u = 1 - t
-      coords.push([u * u * ax + 2 * u * t * cx + t * t * bx, u * u * ay + 2 * u * t * cy + t * t * by])
+    const { at: a } = points[i]
+    const { at: b, via } = points[i + 1]
+    if (via) {
+      // Two gentler arcs through the waypoint, both kept inland. A return to a stop already visited
+      // bows the other way, so the way back doesn't retrace the way out.
+      const revisit = points.slice(0, i + 1).some((p) => p.at === b)
+      arc(a, via, revisit ? 0.1 : -0.1, samples / 2, coords)
+      arc(via, b, revisit ? -0.1 : 0.1, samples / 2, coords)
+    } else {
+      arc(a, b, 0.14, samples, coords)
     }
   }
   stopIndex.push(coords.length)
-  coords.push(points[points.length - 1])
+  coords.push(points[points.length - 1].at)
   return { coords, stopIndex }
 }
 
@@ -76,15 +87,17 @@ function metresPerPx(z: number, lat: number) {
  * The courtyard drawn in metres (1 cubit ≈ 0.5 m), east to the right:
  * 100 × 50 cubits of hangings on posts every 5 cubits, a 20-cubit screen at the
  * east gate, the altar (5 × 5) inside the gate, and the tent (30 × 10) in the
- * western half with the Holy of Holies at its far end (Exodus 26–27).
+ * western half with the Holy of Holies at its far end (Exodus 26:16–23 and 27, with Rashi on 26:23 for the 10-cubit width, 26:32 for the 10 × 10 Holy of Holies, and 27:18 for placement).
  */
-function TabernaclePlan({ zoom }: { zoom: number }) {
+function TabernaclePlan({ mpp }: { mpp: number }) {
   // Size the SVG to its whole viewBox (52 × 27 m incl. margin) so 1 unit = 1 metre.
-  const mpp = metresPerPx(zoom, MISHKAN_AT[1])
-  // Posts are schematic (every 5 cubits); the text counts 20 per long side, 10 per short side.
+  // Posts every 5 cubits, each corner counted once going clockwise, so the sides show the
+  // text's own counts: 20 north, 10 east, 20 south, 10 west (Exodus 27:10–16), 60 in all.
   const posts: [number, number][] = []
-  for (let x = 0; x <= 50; x += 2.5) posts.push([x, 0], [x, 25])
-  for (let y = 2.5; y < 25; y += 2.5) posts.push([0, y], [50, y])
+  for (let x = 0; x < 50; x += 2.5) posts.push([x, 0])
+  for (let y = 0; y < 25; y += 2.5) posts.push([50, y])
+  for (let x = 50; x > 0; x -= 2.5) posts.push([x, 25])
+  for (let y = 25; y > 0; y -= 2.5) posts.push([0, y])
   return (
     <motion.svg
       width={52 / mpp}
@@ -92,7 +105,8 @@ function TabernaclePlan({ zoom }: { zoom: number }) {
       viewBox="-1 -1 52 27"
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.9, delay: 1.8 }}
+      // Drawn at the card's final zoom, so it appears only once the camera has arrived (2.4 s flight).
+      transition={{ duration: 0.7, delay: 0.1 }}
       style={{ display: 'block', overflow: 'visible', filter: 'drop-shadow(0 1px 1.5px rgba(23,24,43,0.25))' }}
     >
       <rect x={0} y={0} width={50} height={25} fill={C.white} fillOpacity={0.82} stroke={C.blue} strokeWidth={0.35} strokeDasharray="1.2 0.6" />
@@ -125,6 +139,7 @@ function planModeFor(parshaId: string | null): PlanMode {
 /** The plan card's camera depends on the treatment; other cards use their own. */
 function cameraFor(card: { kind: string; camera: { center: LngLat; zoom: number; pitch?: number; bearing?: number } }, mode: PlanMode) {
   if (card.kind !== 'plan') return card.camera
+  // Turned for a livelier view; a north arrow beside the plan keeps the east gate readable.
   if (mode === 'camp') return { center: MISHKAN_AT, zoom: 17.25, pitch: 52, bearing: -18 }
   return { center: MISHKAN_AT, zoom: 18.4, pitch: 48, bearing: -24 }
 }
@@ -157,9 +172,9 @@ const CAMP_BANDS = [
   { x: -110, y: -45, w: 52, h: 90, n: 150, c: C.ink },
   { x: -45, y: -92, w: 90, h: 52, n: 150, c: C.ink },
 ]
-function Camp() {
+function Camp({ mpp }: { mpp: number }) {
   const tents = useMemo(() => CAMP_BANDS.flatMap((b, i) => scatter(i * 7919 + 13, b.n * 2, b.x, b.y, b.w, b.h).map((t) => ({ ...t, c: b.c }))), [])
-  const px = CAMP_EXTENT / metresPerPx(17.25, MISHKAN_AT[1])
+  const px = CAMP_EXTENT / mpp
   const h = CAMP_EXTENT / 2
   return (
     <motion.svg width={px} height={px} viewBox={`${-h} ${-h} ${CAMP_EXTENT} ${CAMP_EXTENT}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2, delay: 2.2 }} style={{ display: 'block', overflow: 'visible' }}>
@@ -184,10 +199,10 @@ function Camp() {
 }
 
 /** A surveyor's grid: 5-cubit squares, heavier every 25 cubits, fading out at the edges. */
-function SurveyGrid() {
+function SurveyGrid({ mpp }: { mpp: number }) {
   const size = 200
   const h = size / 2
-  const px = size / metresPerPx(18.4, MISHKAN_AT[1])
+  const px = size / mpp
   const lines = []
   for (let v = -h; v <= h; v += 2.5) {
     const major = Math.abs(v % 12.5) < 0.01
@@ -196,7 +211,7 @@ function SurveyGrid() {
   }
   const dim = { stroke: C.ink, strokeWidth: 0.2 }
   return (
-    <motion.svg width={px} height={px} viewBox={`${-h} ${-h} ${size} ${size}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.6 }} style={{ display: 'block', overflow: 'visible' }}>
+    <motion.svg width={px} height={px} viewBox={`${-h} ${-h} ${size} ${size}`} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }} style={{ display: 'block', overflow: 'visible' }}>
       <defs>
         <radialGradient id="dl-grid-fade">
           <stop offset="0.35" stopColor="#fff" />
@@ -217,8 +232,8 @@ function SurveyGrid() {
         <line x1={-32.5} y1={-12.5} x2={-29.5} y2={-12.5} />
         <line x1={-32.5} y1={12.5} x2={-29.5} y2={12.5} />
       </g>
-      <text x={0} y={-18.6} textAnchor="middle" style={{ font: `700 2.4px ${FONT.display}`, fill: C.ink }}>100 cubits</text>
-      <text x={-32.6} y={0} textAnchor="middle" transform="rotate(-90 -32.6 0)" style={{ font: `700 2.4px ${FONT.display}`, fill: C.ink }}>50 cubits</text>
+      <text x={0} y={-18.6} textAnchor="middle" style={{ font: `700 2.4px ${FONT.display}`, fill: C.ink }}>100 cubits ≈ 50 m</text>
+      <text x={-32.6} y={0} textAnchor="middle" transform="rotate(-90 -32.6 0)" style={{ font: `700 2.4px ${FONT.display}`, fill: C.ink }}>50 cubits ≈ 25 m</text>
     </motion.svg>
   )
 }
@@ -235,11 +250,10 @@ const CAMP_LABELS = [
 ]
 
 const PLAN_LABELS = [
-  { text: 'Holy of Holies', at: offset(MISHKAN_AT, -12.5, 6.5), strong: true },
+  { text: 'Holy of Holies', at: offset(MISHKAN_AT, -12.5, 4.2), strong: true },
   { text: 'Tent', at: offset(MISHKAN_AT, -4, -5.5) },
   { text: 'Altar', at: offset(MISHKAN_AT, 13, 4), strong: true },
-  { text: 'Gate · east', at: offset(MISHKAN_AT, 25, -7.6) },
-  { text: '100 cubits ≈ 50 m', at: offset(MISHKAN_AT, 0, -14.5) },
+  { text: 'Gate · east', at: offset(MISHKAN_AT, 33, 0) },
 ]
 
 function lineFeature(coords: LngLat[]) {
@@ -252,13 +266,22 @@ const PAD_TODAY = { top: 120, bottom: 420, left: 48, right: 90 }
 const PAD_MAP = { top: 230, bottom: 130, left: 40, right: 90 }
 const PAD_STORY = { top: 90, bottom: 320, left: 30, right: 30 }
 
+/**
+ * flyTo's `padding` stays on the map afterwards, and MapLibre adds it to the padding of the
+ * next fitBounds. After a story card that left too little room, so the finale and the return
+ * to Today silently failed to move. An offset frames the same way and does not linger.
+ */
+function offsetFor(p: { top: number; bottom: number; left: number; right: number }): [number, number] {
+  return [(p.left - p.right) / 2, (p.top - p.bottom) / 2]
+}
+
 export function DaylightMap() {
   const mapRef = useRef<MapRef | null>(null)
   const [loaded, setLoaded] = useState(false)
 
   const parshaId = useAppStore((s) => s.selectedParshaId)
   const placeTypeFilter = useAppStore((s) => s.placeTypeFilter)
-  const { tab, storyOpen, storyIndex, selectedPlaceId, showTrade, showEmpires, selectPlace, setTab } = useDaylight()
+  const { tab, storyOpen, storyIndex, selectedPlaceId, showTrade, showEmpires, selectPlace, setTab, guessPick, setGuessPick } = useDaylight()
 
   const story = getStory(parshaId)
   const planMode = planModeFor(parshaId)
@@ -268,16 +291,21 @@ export function DaylightMap() {
   const places = useMemo(() => filterPlacesByType(allPlaces, placeTypeFilter), [allPlaces, placeTypeFilter])
   const selectedPlace = allPlaces.find((p) => p.id === selectedPlaceId) ?? null
 
-  const geometry = useMemo(() => (story && story.route.length > 1 ? densify(story.route.map((s) => s.at)) : null), [story])
+  const geometry = useMemo(() => (story && story.route.length > 1 ? densify(story.route) : null), [story])
   const showPlan = !!card && (card.kind === 'plan' || card.kind === 'offerings')
+  const [planMpp, setPlanMpp] = useState<number | null>(null)
+  useEffect(() => setPlanMpp(null), [card])
 
   // Stops that sit on top of an earlier stop at the current zoom get a compact marker and no label.
   const [crowded, setCrowded] = useState<boolean[]>([])
+  const [nearAny, setNearAny] = useState<boolean[]>([])
   const measure = useCallback(() => {
     const map = mapRef.current
     if (!map || !story) return
     const pts = story.route.map((s) => map.project(s.at))
     setCrowded(pts.map((p, i) => pts.slice(0, i).some((q) => Math.hypot(p.x - q.x, p.y - q.y) < 34)))
+    // Near any other distinct place, before or after: on the finale only one label per cluster should show.
+    setNearAny(pts.map((p, i) => pts.some((q, j) => j !== i && story.route[j].at !== story.route[i].at && Math.hypot(p.x - q.x, p.y - q.y) < 34)))
   }, [story])
   useEffect(() => measure(), [measure, loaded])
 
@@ -308,7 +336,8 @@ export function DaylightMap() {
     if (delta < 0.001) return
     const opening = !storyOpen && from === 0
     const controls = animate(from, target, {
-      duration: target < from ? 0.5 : Math.min(2.6, 0.7 + delta * 0.55),
+      // In a story, legs travel slowly enough to watch the traveller go.
+      duration: target < from ? 0.5 : storyOpen ? Math.min(3.4, 1.5 + delta * 0.9) : Math.min(2.6, 0.7 + delta * 0.55),
       delay: opening ? 1.6 : storyOpen ? 0.45 : 0,
       ease: [0.65, 0, 0.35, 1],
       onUpdate: (v) => {
@@ -319,6 +348,13 @@ export function DaylightMap() {
     })
     return () => controls.stop()
   }, [loaded, geometry, target, storyOpen, pushLine])
+
+  // Where the traveller is: the head of the line, only while it is between stops.
+  const traveller = useMemo(() => {
+    if (!geometry || Math.abs(drawn - Math.round(drawn)) < 0.03) return null
+    const line = lineUpTo(geometry.coords, geometry.stopIndex, drawn)
+    return line[line.length - 1]
+  }, [geometry, drawn])
 
   // A small tap each time the line reaches a new stop.
   const reached = Math.floor(drawn + 0.02)
@@ -351,14 +387,33 @@ export function DaylightMap() {
   useEffect(() => {
     const map = mapRef.current
     if (!loaded || !map) return
+    // A new camera move replaces any still in flight (quick taps, closing mid-flight).
+    map.stop()
     if (card) {
-      if ((card.kind === 'name' || card.kind === 'talk') && bounds && story?.route.length) {
-        map.fitBounds(bounds, { padding: { top: 110, bottom: card.kind === 'talk' ? 440 : 400, left: 50, right: 50 }, pitch: 20, bearing: 0, duration: 2400, essential: true })
+      if (card.kind === 'talk' && bounds && story?.route.length) {
+        // The finale: the whole journey in the strip above the card.
+        map.fitBounds(bounds, { padding: { top: 100, bottom: Math.round(window.innerHeight * 0.66) + 56, left: 60, right: 60 }, pitch: 20, bearing: 0, duration: 2400, essential: true })
       } else {
         // Content cards leave only the top of the screen for the map; aim the camera there.
-        const page = card.kind === 'letter' || card.kind === 'offerings' || card.kind === 'scale' || card.kind === 'quote'
-        const padding = page ? { top: 80, bottom: Math.round(window.innerHeight * 0.62), left: 30, right: 30 } : PAD_STORY
-        map.flyTo({ ...cameraFor(card, planMode), duration: 2400, curve: 1.35, padding, essential: true })
+        const padding = isPageCard(card) || card.kind === 'talk' ? { top: 80, bottom: Math.round(window.innerHeight * 0.62), left: 30, right: 30 } : PAD_STORY
+        const settle = () => map.flyTo({ ...cameraFor(card, planMode), duration: 2200, curve: 1.35, offset: offsetFor(padding), essential: true })
+        // A new leg of the journey: first show the whole leg so the traveller can be seen crossing it,
+        // then settle on the stop.
+        const from = Math.floor(drawnRef.current + 0.02)
+        if (story && card.stop && card.stop - 1 > from && story.route[from]) {
+          const a = story.route[from].at
+          const b = story.route[card.stop - 1].at
+          map.fitBounds(
+            [
+              [Math.min(a[0], b[0]), Math.min(a[1], b[1])],
+              [Math.max(a[0], b[0]), Math.max(a[1], b[1])],
+            ],
+            { padding: { top: 130, bottom: 360, left: 60, right: 60 }, pitch: 35, bearing: 0, duration: 1500, essential: true }
+          )
+          const t = setTimeout(settle, 2300)
+          return () => clearTimeout(t)
+        }
+        settle()
       }
       return
     }
@@ -367,13 +422,18 @@ export function DaylightMap() {
         center: [selectedPlace.longitude, selectedPlace.latitude],
         zoom: Math.max(map.getZoom(), 8.2),
         pitch: 45,
-        padding: { top: 200, bottom: 340, left: 30, right: 30 },
+        offset: offsetFor({ top: 200, bottom: 340, left: 30, right: 30 }),
         duration: 1600,
         essential: true,
       })
       return
     }
     if (!bounds || (tab !== 'today' && tab !== 'map')) return
+    // A story with no journey and an uncertain anchor (Sinai) gets a regional view, not a point that reads as the answer.
+    if (story && !story.route.length) {
+      map.flyTo({ ...story.cards[0].camera, offset: offsetFor(tab === 'today' ? PAD_TODAY : PAD_MAP), duration: 2600, essential: true })
+      return
+    }
     map.fitBounds(bounds, {
       padding: tab === 'today' ? PAD_TODAY : PAD_MAP,
       pitch: tab === 'today' ? 38 : 20,
@@ -416,15 +476,15 @@ export function DaylightMap() {
 
   const onMapTab = tab === 'map' && !storyOpen
 
-  // 3D terrain while a story plays: mountains and valleys become physical when the camera pitches.
+  // 3D terrain everywhere: mountains and valleys are physical whenever the camera pitches.
   useEffect(() => {
     const m = mapRef.current?.getMap()
     if (!loaded || !m?.getSource('terrain')) return
     // Off for close-ups: the DEM stops at z12, and drawn plans should lie flat.
-    const on = storyOpen && (!card || cameraFor(card, planMode).zoom < 14)
+    const on = !card || cameraFor(card, planMode).zoom < 14
     // True height: exaggerated relief would misrepresent real, named places.
     m.setTerrain(on ? { source: 'terrain', exaggeration: 1 } : null)
-  }, [loaded, storyOpen, card, planMode])
+  }, [loaded, card, planMode])
 
 
   useEffect(() => {
@@ -441,6 +501,8 @@ export function DaylightMap() {
       ref={(r) => {
         mapRef.current = r
         mapHandle.current = r
+        // Start with the attribution collapsed to its (i) button, before the first tiles arrive.
+        r?.getMap().getContainer().querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show')
       }}
       initialViewState={{ longitude: 38.5, latitude: 32.5, zoom: 3.1, pitch: 0 }}
       mapStyle={daylightStyle}
@@ -453,12 +515,25 @@ export function DaylightMap() {
         // Start with the attribution collapsed to its (i) button.
         e.target.getContainer().querySelector('.maplibregl-ctrl-attrib')?.classList.remove('maplibregl-compact-show')
       }}
-      onMoveEnd={measure}
+      onMoveEnd={() => {
+        measure()
+        // Drawn plans are DOM overlays: the map tilts them but doesn't shrink them with distance, so
+        // the nominal zoom scale is off on a pitched view. Measure the true scale at the plan's own spot,
+        // along the screen's horizontal (which isn't foreshortened), once the camera has settled.
+        const m = mapRef.current
+        if (!m || !showPlan) return
+        const p = m.project(MISHKAN_AT)
+        const a = m.unproject([p.x - 50, p.y])
+        const b = m.unproject([p.x + 50, p.y])
+        setPlanMpp(a.distanceTo(b) / 100)
+      }}
       dragRotate={false}
       // Drawn plans are sized for the card's zoom; zooming during a story would break "to scale".
       scrollZoom={!storyOpen}
       touchZoomRotate={!storyOpen}
       doubleClickZoom={!storyOpen}
+      keyboard={!storyOpen}
+      boxZoom={!storyOpen}
     >
       {showEmpires && <TerritoryLayer />}
       {showTrade && <TradeRouteLayer />}
@@ -498,24 +573,32 @@ export function DaylightMap() {
             id="dl-route-casing"
             type="line"
             layout={{ 'line-cap': 'round', 'line-join': 'round' }}
-            paint={{ 'line-color': C.white, 'line-width': 9, 'line-opacity': 0.85 }}
+            paint={{ 'line-color': C.white, 'line-width': 9, 'line-opacity': card?.kind === 'guess' ? 0 : 0.85 }}
           />
           <Layer
             id="dl-route-line"
             type="line"
             layout={{ 'line-cap': 'round', 'line-join': 'round' }}
-            paint={{ 'line-color': C.blue, 'line-width': 4.5 }}
+            // While guessing, the journey so far steps aside so only the choices show.
+            paint={{ 'line-color': C.blue, 'line-width': 4.5, 'line-opacity': card?.kind === 'guess' ? 0 : 1 }}
           />
         </Source>
       )}
 
       {story?.route.map((stop, i) => {
-        const visible = drawn >= i - 0.02
         const active = card?.stop === i + 1
-        const small = !!crowded[i] && !active
-        const showLabel = (!storyOpen && !crowded[i]) || active
+        // A stop visited twice (Bethel) is one pin, numbered for both visits, except while its second visit is the card.
+        const firstVisit = story.route.findIndex((s) => s.at === stop.at)
+        const laterVisits = story.route.map((s, j) => (j > i && s.at === stop.at && drawn >= j - 0.02 ? j + 1 : 0)).filter(Boolean)
+        const revisitActive = laterVisits.some((n) => card?.stop === n)
+        const visible = drawn >= i - 0.02 && card?.kind !== 'guess' && card?.kind !== 'cover' && (firstVisit === i ? !revisitActive : active)
+        // The merged pin for a stop visited twice stays full size so its numbers can be read.
+        const small = !!crowded[i] && !active && laterVisits.length === 0
+        const last = i === (story?.route.length ?? 0) - 1
+        const finale = card?.kind === 'talk'
+        const showLabel = (!storyOpen && !crowded[i]) || (finale && (!nearAny[i] || last || laterVisits.length > 0)) || active
         return (
-          <Marker key={stop.name} longitude={stop.at[0]} latitude={stop.at[1]} anchor="center">
+          <Marker key={`${stop.name}-${i}`} longitude={stop.at[0]} latitude={stop.at[1]} anchor="center">
             <AnimatePresence>
               {visible && (
                 <motion.div
@@ -550,7 +633,7 @@ export function DaylightMap() {
                       boxSizing: 'border-box',
                     }}
                   >
-                    {i + 1}
+                    {[i + 1, ...(firstVisit === i && !active ? laterVisits : [])].join('·')}
                   </span>
                   <AnimatePresence>
                     {showLabel && (
@@ -561,7 +644,8 @@ export function DaylightMap() {
                         transition={{ delay: 0.15 }}
                         style={{
                           position: 'absolute',
-                          left: 38,
+                          // On the finale the last stop sits in a cluster; its label drops below so it doesn't cover a neighbour's.
+                          ...(card?.kind === 'talk' && last && !active ? { top: 30, left: -8 } : { left: 38 }),
                           whiteSpace: 'nowrap',
                           background: 'rgba(255,255,255,0.92)',
                           padding: '3px 9px',
@@ -571,6 +655,7 @@ export function DaylightMap() {
                         }}
                       >
                         {stop.name}
+                        {active && stop.hedge && <span style={{ display: 'block', font: `600 11px ${FONT.display}`, color: C.muted }}>{stop.hedge}</span>}
                       </motion.span>
                     )}
                   </AnimatePresence>
@@ -581,25 +666,69 @@ export function DaylightMap() {
         )
       })}
 
-      {card?.kind === 'plan' && (
-        <Marker longitude={MISHKAN_AT[0]} latitude={MISHKAN_AT[1]} anchor="center" pitchAlignment="map" rotationAlignment="map">
-          {planMode === 'camp' ? <Camp /> : <SurveyGrid />}
+      {/* The traveller: rides the head of the line while a leg is being drawn. */}
+      {storyOpen && geometry && traveller && (
+        <Marker longitude={traveller[0]} latitude={traveller[1]} anchor="center">
+          <span className="dl-traveller" />
         </Marker>
       )}
 
-      {showPlan && card && (
-        <Marker longitude={MISHKAN_AT[0]} latitude={MISHKAN_AT[1]} anchor="center" pitchAlignment="map" rotationAlignment="map">
-          <TabernaclePlan zoom={cameraFor(card, planMode).zoom} />
+      {card?.kind === 'guess' &&
+        card.options?.map((o, i) =>
+          o.at ? (
+            <Marker key={o.label} longitude={o.at[0]} latitude={o.at[1]} anchor="center">
+              <motion.button
+                type="button"
+                initial={{ scale: 0 }}
+                animate={{ scale: guessPick === null ? 1 : o.correct ? 1.2 : 0.85, opacity: guessPick !== null && !o.correct ? 0.5 : 1 }}
+                transition={{ ...SPRING.snappy, delay: guessPick === null ? 1.2 + i * 0.15 : 0 }}
+                className="dl-guess-pin"
+                data-state={guessPick === null ? 'open' : o.correct ? 'right' : guessPick === i ? 'wrong' : 'dim'}
+                onClick={() => {
+                  if (guessPick !== null) return
+                  setGuessPick(i)
+                  haptic(o.correct ? 'medium' : 'light')
+                }}
+                aria-label={o.label}
+              >
+                <span className="dl-guess-pin-dot">{String.fromCharCode(65 + i)}</span>
+                <span className="dl-guess-pin-label">{o.label.replace(/^(Back|Down|North) to /, '')}</span>
+              </motion.button>
+            </Marker>
+          ) : null
+        )}
+
+      {card?.kind === 'plan' && planMpp !== null && (
+        <Marker longitude={MISHKAN_AT[0]} latitude={MISHKAN_AT[1]} anchor="center" pitchAlignment="map" rotationAlignment="map" style={{ zIndex: 0 }}>
+          {planMode === 'camp' ? <Camp mpp={planMpp ?? metresPerPx(cameraFor(card, planMode).zoom, MISHKAN_AT[1])} /> : <SurveyGrid mpp={planMpp ?? metresPerPx(cameraFor(card, planMode).zoom, MISHKAN_AT[1])} />}
+        </Marker>
+      )}
+
+      {/* Only once the camera has settled and the true scale is measured; never shown at the wrong size mid-flight. */}
+      {showPlan && card && planMpp !== null && (
+        <Marker longitude={MISHKAN_AT[0]} latitude={MISHKAN_AT[1]} anchor="center" pitchAlignment="map" rotationAlignment="map" style={{ zIndex: 1 }}>
+          <TabernaclePlan mpp={planMpp ?? metresPerPx(cameraFor(card, planMode).zoom, MISHKAN_AT[1])} />
+        </Marker>
+      )}
+
+      {/* North arrow on the ground beside the plan, turning with the map. */}
+      {showPlan && planMpp !== null && (
+        <Marker longitude={offset(MISHKAN_AT, -36, -17)[0]} latitude={offset(MISHKAN_AT, -36, -17)[1]} anchor="center" pitchAlignment="map" rotationAlignment="map" style={{ zIndex: 2 }}>
+          <motion.svg width={34} height={46} viewBox="0 0 34 46" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.6 }} aria-label="North">
+            <path d="M17 2 L27 26 L17 20 L7 26 Z" fill={C.ink} />
+            <text x={17} y={42} textAnchor="middle" style={{ font: `800 13px ${FONT.display}`, fill: C.ink }}>N</text>
+          </motion.svg>
         </Marker>
       )}
 
       {card?.kind === 'plan' &&
         (planMode === 'camp' ? CAMP_LABELS : PLAN_LABELS).map((l, i) => (
-          <Marker key={l.text} longitude={l.at[0]} latitude={l.at[1]} anchor="center">
+          // Labels mount before the plan (which waits for the camera), so they need an explicit stacking order.
+          <Marker key={l.text} longitude={l.at[0]} latitude={l.at[1]} anchor="center" style={{ zIndex: 3 }}>
             <motion.span
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.2 + i * 0.18 }}
+              transition={{ delay: 2.7 + i * 0.18 }}
               style={{
                 display: 'block',
                 whiteSpace: 'nowrap',
@@ -629,7 +758,8 @@ export function DaylightMap() {
               animate={{ scale: [0.6, 1.3], opacity: [0.9, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: 'easeOut' }}
             />
-            <span style={{ width: 20, height: 20, borderRadius: 10, background: C.warm, border: `3px solid ${C.white}`, boxShadow: SHADOW.float, boxSizing: 'border-box' }} />
+            {/* Extra places (not numbered stops) are hollow, so they can't be mistaken for the current stop. */}
+            <span style={{ width: 20, height: 20, borderRadius: 10, background: C.white, border: `4px solid ${C.warm}`, boxShadow: SHADOW.float, boxSizing: 'border-box' }} />
             <span
               style={{
                 position: 'absolute',

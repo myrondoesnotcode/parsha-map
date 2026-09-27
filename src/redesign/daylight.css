@@ -402,6 +402,10 @@
   content: ''; position: absolute; inset: -30px -40px; z-index: -1;
   background: radial-gradient(closest-side, rgba(244, 236, 220, 0.9), rgba(244, 236, 220, 0));
 }
+.dl-stage[data-kind='name']::before {
+  inset: -50px -60px;
+  background: radial-gradient(closest-side, rgba(244, 236, 220, 0.97) 62%, rgba(244, 236, 220, 0));
+}
 .dl-hero-halo { text-shadow: 0 0 18px rgba(244, 236, 220, 0.95), 0 0 2px rgba(244, 236, 220, 0.9); }
 
 /* Full page: the card fills the screen; the hero takes the middle. */
@@ -424,6 +428,159 @@
   border-radius: 28px; pointer-events: none !important;
   box-shadow: 0 0 0 100vmax var(--sand), inset 0 0 0 1px rgba(23, 24, 43, 0.08);
 }
+
+/* ── Today: the week around Shabbat ── */
+.dl-strip {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; margin: -2px -4px 0; border-radius: 18px; background: rgba(255, 255, 255, 0.6);
+}
+.dl-strip-eyebrow {
+  font: 800 11px var(--font); letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue);
+}
+.dl-strip-line {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin-top: 3px;
+  font: 500 14px/1.3 var(--font); color: #4a4c63;
+}
+.dl-strip-line b { color: var(--ink); font-weight: 700; }
+.dl-countdown {
+  font: 800 11px var(--font); letter-spacing: 0.04em; background: var(--warm); color: var(--ink);
+  padding: 3px 8px; border-radius: 9px;
+}
+.dl-place-chip {
+  flex-shrink: 0; display: flex; align-items: center; gap: 4px; height: 30px; padding: 0 10px !important;
+  border-radius: 15px; background: #fff !important; font: 700 12px var(--font); color: var(--ink);
+  box-shadow: 0 3px 10px rgba(23, 24, 43, 0.08);
+}
+.dl-link {
+  display: inline-flex; align-items: center; gap: 5px; padding: 0 !important;
+  font: 700 13px var(--font); color: var(--blue) !important;
+}
+.dl-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.dl-step-tile {
+  height: 62px; border-radius: 18px !important; background: #fff !important; padding: 0 10px !important;
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 5px;
+  font: 700 13px/1.15 var(--font); text-align: left; box-shadow: 0 6px 20px rgba(23, 24, 43, 0.08);
+}
+.dl-step-icon {
+  width: 24px; height: 24px; border-radius: 12px; background: var(--sand); color: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+}
+.dl-step-tile[data-done] { background: var(--ink) !important; color: var(--sand) !important; }
+.dl-step-tile[data-done] .dl-step-icon { background: var(--warm); color: var(--ink); }
+.dl-for-table {
+  margin-top: 14px; padding: 14px 16px 16px; border-radius: 22px; background: var(--warm);
+}
+.dl-for-table .dl-link { color: var(--ink) !important; }
+.dl-q-dot {
+  width: 20px; height: 20px; border-radius: 10px; background: var(--ink); color: var(--sand);
+  display: inline-flex; align-items: center; justify-content: center; font: 800 12px var(--font);
+}
+
+/* ── Story: moving through it ── */
+/* Cards let taps through to the tap zones, so tapping the words goes forward too. */
+.dl-story .dl-story-card-wrap { pointer-events: none; }
+.dl-story-card-wrap button, .dl-story-card-wrap a, .dl-story-card-wrap [role='tablist'] { pointer-events: auto; }
+.dl-route-tag {
+  position: absolute; left: 14px; top: calc(var(--safe-top) + 62px); z-index: 2; pointer-events: none !important;
+  font: 700 11px var(--font); color: var(--muted); background: rgba(255, 255, 255, 0.8);
+  padding: 4px 9px; border-radius: 10px;
+}
+.dl-paused {
+  position: absolute; left: 50%; top: calc(var(--safe-top) + 70px); transform: translateX(-50%); z-index: 3;
+  display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 18px;
+  background: var(--ink); color: var(--sand); font: 700 13px var(--font); pointer-events: none !important;
+}
+.dl-act {
+  position: absolute; inset: 0; z-index: 4; pointer-events: none !important;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 24px;
+  background: radial-gradient(closest-side, rgba(244, 236, 220, 0.97) 55%, rgba(244, 236, 220, 0.82));
+}
+.dl-ref {
+  display: inline-flex; align-items: center; gap: 6px; max-width: 100%; padding: 4px 0 !important;
+  font: 600 13px var(--font); text-align: left;
+}
+.dl-stop-badge {
+  width: 24px; height: 24px; border-radius: 12px; background: var(--warm); color: var(--ink); flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center; font: 800 12px var(--font);
+}
+.dl-sources-scrim { position: absolute; inset: 0; z-index: 6; background: rgba(23, 24, 43, 0.28); }
+.dl-sources {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 7; background: var(--sand);
+  border-radius: 30px 30px 0 0; padding: 10px 22px calc(var(--safe-bottom) + 24px);
+  box-shadow: 0 -10px 34px rgba(23, 24, 43, 0.18); touch-action: none;
+}
+
+/* Guess cards */
+.dl-guess-tag {
+  font: 800 11px var(--font); letter-spacing: 0.08em; background: var(--warm); color: var(--ink);
+  padding: 3px 7px; border-radius: 7px; white-space: nowrap;
+}
+.dl-option {
+  display: flex; align-items: center; gap: 12px; height: 52px; padding: 0 14px 0 8px !important;
+  border-radius: 18px !important; background: var(--sand) !important; font: 700 16px var(--font); color: var(--ink);
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+}
+.dl-option-letter {
+  width: 34px; height: 34px; border-radius: 17px; background: #fff; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font: 800 14px var(--font);
+}
+.dl-root .dl-option:disabled { opacity: 1; }
+.dl-option[data-state='right'] { background: var(--blue) !important; color: #fff !important; }
+.dl-option[data-state='right'] .dl-option-letter { background: var(--warm); color: var(--ink); }
+.dl-option[data-state='wrong'] { background: #f6d5c3 !important; }
+.dl-option[data-state='dim'] { opacity: 0.45 !important; }
+.dl-token {
+  width: 96px; height: 116px; border-radius: 24px; background: #fff; color: var(--ink);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 12px 30px rgba(23, 24, 43, 0.16);
+}
+.dl-token[data-lit] { background: var(--blue); color: #fff; }
+.dl-guess-pin {
+  position: relative; display: flex; align-items: center; padding: 0 !important; pointer-events: auto;
+}
+.dl-guess-pin-dot {
+  width: 34px; height: 34px; border-radius: 17px; background: var(--ink); color: var(--sand);
+  border: 3px solid #fff; box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+  font: 800 14px var(--font); box-shadow: 0 6px 20px rgba(23, 24, 43, 0.2);
+}
+.dl-guess-pin-label {
+  position: absolute; left: 40px; white-space: nowrap; background: rgba(255, 255, 255, 0.94);
+  padding: 3px 9px; border-radius: 10px; font: 800 13px var(--font); color: var(--ink);
+}
+.dl-guess-pin[data-state='right'] .dl-guess-pin-dot { background: var(--blue); }
+.dl-guess-pin[data-state='wrong'] .dl-guess-pin-dot { background: #c2491d; }
+
+/* The traveller riding the head of the route line. */
+.dl-traveller {
+  display: block; width: 18px; height: 18px; border-radius: 9px; background: var(--warm);
+  border: 3px solid #fff; box-shadow: 0 0 0 6px rgba(243, 154, 85, 0.3), 0 4px 12px rgba(23, 24, 43, 0.25);
+}
+
+/* Finale: fills the lower two-thirds, the journey stays visible above. */
+.dl-story-card-wrap[data-page='finale'] { top: 34%; }
+.dl-finale {
+  flex: 1 1 auto; display: flex; flex-direction: column; background: var(--sand);
+  padding: 20px 20px 14px; box-shadow: 0 -8px 34px rgba(23, 24, 43, 0.16);
+}
+.dl-audience {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; margin-top: 14px;
+  background: #fff; border-radius: 18px; padding: 4px;
+}
+.dl-audience button { position: relative; height: 34px; border-radius: 14px; font: 700 13px var(--font); }
+.dl-audience .dl-filter-pill { border-radius: 14px; }
+.dl-question {
+  flex: 1 1 auto; margin-top: 10px; padding: 16px; border-radius: 20px; background: #fff;
+  font: 600 19px/1.3 var(--font); letter-spacing: -0.01em; color: var(--ink);
+}
+.dl-next-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 8px; }
+.dl-next-row button {
+  display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 8px 12px !important;
+  border-radius: 18px; background: #fff !important; text-align: left;
+}
+.dl-next-row button > span { display: flex; flex-direction: column; min-width: 0; }
+.dl-next-row b { font: 700 14px/1.15 var(--font); }
+.dl-next-row small { font: 500 12px/1.2 var(--font); color: var(--muted); margin-top: 2px; }
+.dl-done { margin-top: 8px; height: 40px; font: 700 15px var(--font); color: var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
   .dl-story-ring[data-live='true'], .dl-story-ring[data-live='true'] .dl-story-ring-inner { animation: none; }

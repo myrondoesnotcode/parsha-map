@@ -34,8 +34,21 @@ function restyle(layer: LayerSpecification): LayerSpecification {
   return next as LayerSpecification
 }
 
+// Relief everywhere, evenly: the shading draws above the sand fill (which used to wash it
+// out in desert areas and leave the map part textured, part flat), and it reads its own copy
+// of the elevation tiles, since MapLibre advises against sharing one DEM source between
+// hillshade and 3D terrain.
+const layers = parchmentStyle.layers.map(restyle).map((l) => (l.id === 'hillshade' ? ({ ...l, source: 'terrain-shade' } as LayerSpecification) : l))
+const [hillshade] = layers.splice(layers.findIndex((l) => l.id === 'hillshade'), 1)
+layers.splice(layers.findIndex((l) => l.id === 'landcover-sand') + 1, 0, hillshade)
+
 export const daylightStyle: StyleSpecification = {
   ...parchmentStyle,
   name: 'Daylight',
-  layers: parchmentStyle.layers.map(restyle),
+  sources: {
+    ...parchmentStyle.sources,
+    // Same tiles as `terrain`; its credit is already shown once.
+    'terrain-shade': (({ attribution: _credit, ...rest }) => rest)(parchmentStyle.sources.terrain as { attribution?: string }) as StyleSpecification['sources'][string],
+  },
+  layers,
 }

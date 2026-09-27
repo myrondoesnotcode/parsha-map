@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { Lightbulb, Landmark, Sparkles, Check } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
@@ -7,11 +7,12 @@ import { eraYear } from './placeText'
 import { getParshaById, getParshasGroupedByBook, BOOKS_ORDER } from '../utils/parshaUtils'
 import { ParshaTextViewer } from '../components/parsha/ParshaTextViewer'
 import { useDaylight, haptic } from './useDaylight'
+import type { ReadSegment } from './useDaylight'
 import { getStory } from './stories'
-import { verseRange } from './TodaySheet'
 import { C, FONT, SPRING, SHADOW } from './theme'
-import { parshaDisplayName } from './placeText'
-import { isStoryComplete, completedCount } from './progress'
+import { parshaDisplayName, verseRange } from './placeText'
+import { isStoryComplete, completedCount, useWeekProgress } from './progress'
+import { useYear, usePrototypeToday, upcomingShabbat, ymd, formatDay } from './week'
 
 const screen = {
   initial: { opacity: 0, y: 24 },
@@ -26,7 +27,7 @@ const rise = (i: number) => ({
   transition: { ...SPRING.soft, delay: 0.06 * i },
 })
 
-type Segment = 'overview' | 'text' | 'history'
+type Segment = ReadSegment
 
 function Segmented<T extends string>({ value, options, onChange, id }: { value: T; options: [T, string][]; onChange: (v: T) => void; id: string }) {
   return (
@@ -58,7 +59,14 @@ export function ReadScreen() {
   const parshaId = useAppStore((s) => s.selectedParshaId)
   const parsha = parshaId ? getParshaById(parshaId) : undefined
   const { era } = useEraContext(eraYear(parsha))
-  const [seg, setSeg] = useState<Segment>('overview')
+  const seg = useDaylight((s) => s.readSeg)
+  const setReadSeg = useDaylight((s) => s.setReadSeg)
+  const markRead = useWeekProgress((s) => s.update)
+  const setSeg = (v: Segment) => setReadSeg(v)
+  // Opening the text counts as this week's "read the verses" step, however you got here.
+  useEffect(() => {
+    if (seg === 'text' && parshaId) markRead(parshaId, { read: true })
+  }, [seg, parshaId, markRead])
   if (!parsha) return null
   const rc = parsha.richContent
 
@@ -165,6 +173,16 @@ export function LibraryScreen() {
   const current = parshaId ? getParshaById(parshaId) : undefined
   const [book, setBook] = useState<string>(current?.book ?? 'Genesis')
   const done = completedCount()
+  const { data: year } = useYear()
+  const today = usePrototypeToday()
+  const thisSat = today ? ymd(upcomingShabbat(today)) : null
+  /** The reading nearest to today, before or after, for each parsha. */
+  const readingFor = (id: string) => {
+    const days = year?.readOn[id]
+    if (!days?.length || !today) return null
+    const t = today.getTime()
+    return days.reduce((best, d) => (Math.abs(new Date(d).getTime() - t) < Math.abs(new Date(best).getTime() - t) ? d : best))
+  }
 
   return (
     <motion.main className="dl-screen" {...screen}>
@@ -185,6 +203,8 @@ export function LibraryScreen() {
       <div key={book} className="dl-grid">
         {(grouped[book] ?? []).map((p, i) => {
           const hasStory = !!getStory(p.id)
+          const reading = readingFor(p.id)
+          const thisWeek = !!reading && reading === thisSat
           const isCurrent = p.id === parshaId
           const complete = hasStory && isStoryComplete(p.id)
           const bg = isCurrent ? C.warm : hasStory ? C.blue : C.white
@@ -213,9 +233,16 @@ export function LibraryScreen() {
                   <Check size={11} strokeWidth={3.5} color={C.sand} />
                 </span>
               )}
-              {hasStory && !complete && <span className="dl-tile-badge">Story</span>}
+              {thisWeek ? (
+                <span className="dl-tile-badge" style={{ background: C.ink, color: C.sand }}>This Shabbat</span>
+              ) : (
+                hasStory && !complete && <span className="dl-tile-badge">Story</span>
+              )}
               <span style={{ position: 'relative', font: `600 11px ${FONT.display}`, opacity: 0.7 }}>{String(p.number).padStart(2, '0')}</span>
               <span style={{ position: 'relative', font: `800 15px/1.05 ${FONT.display}`, letterSpacing: '-0.01em' }}>{parshaDisplayName(p.name)}</span>
+              {reading && (
+                <span style={{ position: 'relative', font: `600 11px ${FONT.display}`, opacity: 0.65, marginTop: 3 }}>{formatDay(reading).replace(/^\w+, /, '')}</span>
+              )}
             </motion.button>
           )
         })}

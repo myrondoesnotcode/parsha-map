@@ -2,16 +2,22 @@ import { create } from 'zustand'
 import type { MapRef } from 'react-map-gl/maplibre'
 
 export type Tab = 'today' | 'map' | 'read' | 'library'
+export type ReadSegment = 'overview' | 'text' | 'history'
 
 interface DaylightState {
   tab: Tab
+  readSeg: ReadSegment
+  /** Answer picked on the current guess card, if any. */
+  guessPick: number | null
   storyOpen: boolean
   storyIndex: number
   selectedPlaceId: string | null
   layersOpen: boolean
   showTrade: boolean
   showEmpires: boolean
-  setTab: (tab: Tab) => void
+  setTab: (tab: Tab, readSeg?: ReadSegment) => void
+  setReadSeg: (s: ReadSegment) => void
+  setGuessPick: (i: number | null) => void
   openStory: (index?: number) => void
   closeStory: () => void
   setStoryIndex: (i: number) => void
@@ -23,16 +29,20 @@ interface DaylightState {
 
 export const useDaylight = create<DaylightState>((set) => ({
   tab: 'today',
+  readSeg: 'overview',
+  guessPick: null,
   storyOpen: false,
   storyIndex: 0,
   selectedPlaceId: null,
   layersOpen: false,
   showTrade: false,
   showEmpires: false,
-  setTab: (tab) => set({ tab, selectedPlaceId: null, layersOpen: false }),
-  openStory: (index = 0) => set({ storyOpen: true, storyIndex: index, selectedPlaceId: null }),
+  setTab: (tab, readSeg) => set((s) => ({ tab, readSeg: readSeg ?? s.readSeg, selectedPlaceId: null, layersOpen: false })),
+  setReadSeg: (readSeg) => set({ readSeg }),
+  setGuessPick: (guessPick) => set({ guessPick }),
+  openStory: (index = 0) => set({ storyOpen: true, storyIndex: index, selectedPlaceId: null, guessPick: null }),
   closeStory: () => set({ storyOpen: false }),
-  setStoryIndex: (storyIndex) => set({ storyIndex }),
+  setStoryIndex: (storyIndex) => set({ storyIndex, guessPick: null }),
   selectPlace: (selectedPlaceId) => set({ selectedPlaceId }),
   toggleLayers: () => set((s) => ({ layersOpen: !s.layersOpen })),
   toggleTrade: () => set((s) => ({ showTrade: !s.showTrade })),

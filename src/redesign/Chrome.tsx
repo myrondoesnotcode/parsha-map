@@ -1,6 +1,5 @@
 import { motion } from 'motion/react'
-import { Sun, Map as MapIcon, BookOpen, LayoutGrid, Globe2, Search } from 'lucide-react'
-import { useAppStore } from '../store/useAppStore'
+import { Sun, Map as MapIcon, BookOpen, LayoutGrid, Search } from 'lucide-react'
 import { useDaylight, haptic } from './useDaylight'
 import type { Tab } from './useDaylight'
 import { C, FONT, SPRING, SHADOW } from './theme'
@@ -55,8 +54,6 @@ export function TabBar() {
 }
 
 export function TopBar({ onSearch }: { onSearch?: () => void }) {
-  const isIsrael = useAppStore((s) => s.isIsrael)
-  const toggleRegion = useAppStore((s) => s.toggleRegion)
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -69,19 +66,6 @@ export function TopBar({ onSearch }: { onSearch?: () => void }) {
         parsha<span style={{ color: C.warm }}>.</span>map
       </div>
       <div style={{ display: 'flex', gap: 8 }}>
-        <motion.button
-          whileTap={{ scale: 0.94 }}
-          type="button"
-          className="dl-pill"
-          onClick={() => {
-            haptic('light')
-            toggleRegion()
-          }}
-          style={{ height: 40, padding: '0 14px', display: 'flex', alignItems: 'center', gap: 6, font: `600 13px ${FONT.display}` }}
-        >
-          <Globe2 size={15} />
-          {isIsrael ? 'Israel' : 'Diaspora'}
-        </motion.button>
         {onSearch && (
           <motion.button whileTap={{ scale: 0.94 }} type="button" aria-label="Search places" className="dl-pill dl-round" onClick={onSearch}>
             <Search size={17} strokeWidth={2.4} />

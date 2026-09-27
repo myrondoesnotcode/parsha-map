@@ -9,10 +9,10 @@ import { TodaySheet } from './TodaySheet'
 import { MapChrome, PlaceCard } from './MapChrome'
 import { StoryPlayer } from './StoryPlayer'
 import { ReadScreen, LibraryScreen } from './Screens'
+import { OPENING_PARSHA, hasTodayParam, usePrototypeToday, useYear, parshaForWeek } from './week'
 import './daylight.css'
 
-// Prototype: open on the parsha that has a finished story, unless a link names one.
-const PROTOTYPE_START = 'lech-lecha'
+const NAMED_IN_LINK = new URLSearchParams(window.location.search).has('parsha')
 
 export default function DaylightApp() {
   const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
@@ -22,8 +22,7 @@ export default function DaylightApp() {
   const searchRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
-    const fromUrl = new URLSearchParams(window.location.search).get('parsha')
-    setSelectedParsha(fromUrl ?? PROTOTYPE_START)
+    setSelectedParsha(OPENING_PARSHA)
     setParshaInitialized()
     // Prototype review links: ?card=N opens the story on card N.
     const card = new URLSearchParams(window.location.search).get('card')
@@ -32,6 +31,16 @@ export default function DaylightApp() {
 
   // Still honours the Israel/Diaspora toggle, which re-arms weekly auto-selection.
   useAutoSelectParsha()
+
+  // Review links with ?today= (and no ?parsha=) open on that week's parsha, or the next one after a holiday week.
+  const { data: year } = useYear()
+  const today = usePrototypeToday()
+  useEffect(() => {
+    if (!hasTodayParam || NAMED_IN_LINK || !year || !today) return
+    const id = parshaForWeek(year, today)
+    if (id) setSelectedParsha(id)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [year])
 
   const overMap = tab === 'today' || tab === 'map'
 

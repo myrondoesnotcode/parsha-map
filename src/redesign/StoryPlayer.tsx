@@ -1,44 +1,45 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion, AnimatePresence, animate, useMotionValue, useTransform } from 'motion/react'
 import type { MotionValue } from 'motion/react'
-import { X, Share2, Check } from 'lucide-react'
+import { X, Share2, Check, Pause, Info, BookOpen, ArrowRight } from 'lucide-react'
 import { useAppStore } from '../store/useAppStore'
 import { getParshaById } from '../utils/parshaUtils'
 import { useDaylight, haptic } from './useDaylight'
-import { getStory } from './stories'
-import type { StoryCard, ParshaStory } from './stories'
+import { getStory, isStageCard, isPageCard, cardSeconds } from './stories'
+import type { StoryCard, ParshaStory, TableQuestion } from './stories'
 import { RevealText } from './Chrome'
 import { C, FONT, SPRING } from './theme'
-import { parshaDisplayName } from './placeText'
-import { markStoryComplete } from './progress'
+import { parshaDisplayName, verseRange } from './placeText'
+import { markStoryComplete, useWeekProgress, useSteps } from './progress'
+import { useWeek, usePrototypeToday, useNextReading, formatDay } from './week'
 
-const CARD_SECONDS = 9
-
-/** Cards that carry their own content rather than pointing at the map. */
-const PAGE_KINDS = new Set(['letter', 'offerings', 'scale', 'quote'])
+/** How long an act title holds before its first card takes over. */
+const ACT_MS = 1500
 
 /**
  * Design exploration: how a card with no map subject uses the screen.
- * a = panel over the live map · b = paper page · c = map in a window above the card
- * s = stage: the card's hero visual rises into the space above, over the terrain
+ * s = stage: the card's hero visual rises into the space above, over the terrain (chosen)
  * f = full page: the card fills the screen and everything scales up to match.
  */
-type Frame = 'a' | 'b' | 'c' | 's' | 'f'
+type Frame = 's' | 'f'
 /** Review links: ?hold=1 stops auto-advance so a card can be inspected. */
 const HOLD = new URLSearchParams(window.location.search).has('hold')
-const FRAME: Frame = ((new URLSearchParams(window.location.search).get('frame') ?? 's') as Frame)
-/** Which layout the page cards use: text-only card with a hero above it, full page, or everything in the card. */
-const LAYOUT: 'stage' | 'full' | 'card' = FRAME === 's' ? 'stage' : FRAME === 'f' ? 'full' : 'card'
+const FRAME: Frame = new URLSearchParams(window.location.search).get('frame') === 'f' ? 'f' : 's'
+const LAYOUT: 'stage' | 'full' = FRAME === 's' ? 'stage' : 'full'
 
 export function StoryPlayer() {
   const parshaId = useAppStore((s) => s.selectedParshaId)
-  const { storyIndex, setStoryIndex, closeStory } = useDaylight()
+  const { storyIndex, setStoryIndex, closeStory, guessPick } = useDaylight()
   const story = getStory(parshaId)
   const parsha = parshaId ? getParshaById(parshaId) : undefined
+  const updateSteps = useWeekProgress((s) => s.update)
   const [dir, setDir] = useState(1)
-  const [paused, setPaused] = useState(false)
+  const [held, setHeld] = useState(false)
+  const [sourcesOpen, setSourcesOpen] = useState(false)
+  const [actShowing, setActShowing] = useState<string | null>(null)
   const progress = useMotionValue(0)
-  // Frame c sizes the map window to whatever space the card leaves above it.
+
+  // The stage sizes itself to whatever space the card leaves above it.
   const rootRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const root = rootRef.current
@@ -60,6 +61,8 @@ export function StoryPlayer() {
   const count = story?.cards.length ?? 0
   const card = story?.cards[storyIndex]
   const isLast = storyIndex === count - 1
+  const waitsForAnswer = card?.kind === 'guess' && guessPick === null
+  const paused = held || sourcesOpen
 
   const go = (delta: number) => {
     const next = useDaylight.getState().storyIndex + delta
@@ -73,18 +76,33 @@ export function StoryPlayer() {
     setStoryIndex(next)
   }
 
-  // Auto-advance; the last card (table talk) waits for the reader.
+  // Remember where the reader is, so reopening picks up at the same card.
+  useEffect(() => {
+    if (story && !isLast && storyIndex > 0) updateSteps(story.parshaId, { resumeAt: storyIndex })
+  }, [story, storyIndex, isLast, updateSteps])
+
+  // Act titles: a short beat when a new part of the story begins (going forward only).
+  useEffect(() => {
+    if (!card?.act || dir < 0) return
+    setActShowing(card.act)
+    const t = setTimeout(() => setActShowing(null), ACT_MS)
+    return () => clearTimeout(t)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storyIndex])
+
+  // Auto-advance, paced to how long the card takes to read. The last card and an unanswered guess wait.
   useEffect(() => {
     progress.set(0)
-    if (isLast || paused || HOLD) return
+    if (!card || isLast || paused || HOLD || waitsForAnswer) return
     const controls = animate(progress, 1, {
-      duration: CARD_SECONDS,
+      duration: card.kind === 'guess' ? 5 : cardSeconds(card),
+      delay: card.act && dir > 0 ? ACT_MS / 1000 : 0,
       ease: 'linear',
       onComplete: () => go(1),
     })
     return () => controls.stop()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [storyIndex, paused])
+  }, [storyIndex, paused, waitsForAnswer])
 
   useEffect(() => {
     if (isLast && story) {
@@ -93,28 +111,39 @@ export function StoryPlayer() {
     }
   }, [isLast, story])
 
-  if (!story || !card || !parsha) return null
+  // Swipe down anywhere to close; press and hold to pause.
+  const press = useRef<{ y: number; t: number } | null>(null)
+  const swiped = useRef(false)
+  const onDown = (e: React.PointerEvent) => {
+    press.current = { y: e.clientY, t: Date.now() }
+    swiped.current = false
+    setHeld(true)
+  }
+  const onUp = (e: React.PointerEvent) => {
+    setHeld(false)
+    if (press.current && e.clientY - press.current.y > 90) {
+      swiped.current = true
+      closeStory()
+    }
+    press.current = null
+  }
+  const tap = (delta: number) => {
+    if (swiped.current) return
+    go(delta)
+  }
 
-  const holdStart = () => setPaused(true)
-  const holdEnd = () => setPaused(false)
+  if (!story || !card || !parsha) return null
+  const dark = card.kind === 'stars'
+  const stage = LAYOUT === 'stage' && isStageCard(card)
+  // The first segment of each act sits a little apart, so the parts of the story show in the bar.
+  const actStarts = new Set(story.cards.map((c, i) => (c.act ? i : -1)).filter((i) => i > 0))
+  const actNow = [...story.cards.slice(0, storyIndex + 1)].reverse().find((c) => c.act)?.act
 
   return (
     <motion.div ref={rootRef} className="dl-story" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}>
       <AnimatePresence>
-        {PAGE_KINDS.has(card.kind) && (FRAME === 'b' || FRAME === 'c') && (
-          <motion.div
-            key="page"
-            className={FRAME === 'b' ? 'dl-page-paper' : 'dl-page-window'}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-          />
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {LAYOUT === 'stage' && PAGE_KINDS.has(card.kind) && card.kind !== 'offerings' && (
-          <motion.div key={`stage-${storyIndex}`} className="dl-stage" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
+        {stage && (
+          <motion.div key={`stage-${storyIndex}`} className="dl-stage" data-kind={card.kind} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}>
             <Hero card={card} size="stage" />
           </motion.div>
         )}
@@ -125,36 +154,33 @@ export function StoryPlayer() {
       <div className="dl-story-scrim-top" />
       <AnimatePresence>{card.kind === 'stars' && <StarSky key="sky" />}</AnimatePresence>
       <AnimatePresence>
-        {(card.kind === 'cover' || card.kind === 'talk' || card.kind === 'name') && (
+        {card.kind === 'cover' && (
           <motion.div key="scrim" className="dl-story-scrim-bottom" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
         )}
       </AnimatePresence>
 
-      {/* Tap zones: back on the left third, forward elsewhere; press and hold pauses. */}
-      <div
-        className="dl-story-taps"
-        onPointerDown={holdStart}
-        onPointerUp={holdEnd}
-        onPointerCancel={holdEnd}
-        onPointerLeave={holdEnd}
-      >
-        <button type="button" aria-label="Previous card" onClick={() => go(-1)} style={{ width: '33%' }} />
-        <button type="button" aria-label="Next card" onClick={() => go(1)} style={{ flexGrow: 1 }} />
+      {/* Tap zones: back on the left third, forward elsewhere. Cards let taps through to them. */}
+      <div className="dl-story-taps" onPointerDown={onDown} onPointerUp={onUp} onPointerCancel={() => setHeld(false)} onPointerLeave={() => setHeld(false)}>
+        <button type="button" aria-label="Previous card" onClick={() => tap(-1)} style={{ width: '33%' }} />
+        <button type="button" aria-label="Next card" onClick={() => tap(1)} style={{ flexGrow: 1 }} />
       </div>
 
       <div className="dl-story-head">
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))`, gap: 4 }}>
+        <div style={{ display: 'flex', gap: 4 }}>
           {story.cards.map((_, i) => (
-            <Segment key={i} state={i < storyIndex ? 'done' : i === storyIndex ? 'active' : 'todo'} progress={progress} dark={card.kind === 'stars'} />
+            <Segment
+              key={i}
+              state={i < storyIndex ? 'done' : i === storyIndex ? 'active' : 'todo'}
+              progress={progress}
+              dark={dark}
+              gapBefore={actStarts.has(i)}
+            />
           ))}
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 6 }}>
-          <div style={{ font: `600 14px ${FONT.display}`, color: card.kind === 'stars' ? C.sand : C.ink }}>
-            {parshaDisplayName(parsha.name)}{' '}
-            <span style={{ opacity: 0.6 }}>
-              · {storyIndex + 1} of {count}
-            </span>
-            {paused && <span style={{ opacity: 0.6 }}> · paused</span>}
+          <div style={{ font: `600 14px ${FONT.display}`, color: dark ? C.sand : C.ink, minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+            {parshaDisplayName(parsha.name)}
+            <span style={{ opacity: 0.6 }}>{actNow ? ` · ${actNow}` : ` · ${storyIndex + 1} of ${count}`}</span>
           </div>
           <motion.button
             whileTap={{ scale: 0.9 }}
@@ -162,12 +188,28 @@ export function StoryPlayer() {
             aria-label="Close story"
             onClick={closeStory}
             className="dl-round-sm"
-            style={{ background: card.kind === 'stars' ? 'rgba(244,236,220,0.16)' : C.white, color: card.kind === 'stars' ? C.sand : C.ink }}
+            style={{ background: dark ? 'rgba(244,236,220,0.16)' : C.white, color: dark ? C.sand : C.ink }}
           >
             <X size={18} strokeWidth={2.6} />
           </motion.button>
         </div>
       </div>
+
+      {/* A drawn route is a sketch of the order of places, not the roads: say so while it's on screen. */}
+      {story.route.length > 0 && card.kind !== 'cover' && card.kind !== 'guess' && card.kind !== 'stars' && (
+        <div className="dl-route-tag">
+          {card.kind === 'talk' ? 'Route illustrative · pins are usual sites, none certain' : 'Route illustrative · lines join the stops in order'}
+        </div>
+      )}
+
+      {/* Holding a finger down pauses; say so where the eye already is. */}
+      <AnimatePresence>
+        {held && !isLast && !HOLD && (
+          <motion.div key="paused" className="dl-paused" initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.15, delay: 0.25 }}>
+            <Pause size={16} fill={C.sand} strokeWidth={0} /> Paused
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence mode="popLayout" custom={dir} initial={false}>
         <motion.div
@@ -183,19 +225,22 @@ export function StoryPlayer() {
           exit="exit"
           transition={SPRING.soft}
           className="dl-story-card-wrap"
-          data-page={PAGE_KINDS.has(card.kind) ? (FRAME === 'b' ? 'paper' : LAYOUT === 'full' ? 'full' : undefined) : undefined}
+          data-page={card.kind === 'talk' ? 'finale' : isPageCard(card) && LAYOUT === 'full' ? 'full' : undefined}
         >
-          <CardBody card={card} story={story} hebrew={parsha.hebrewName} onClose={closeStory} />
+          <CardBody card={card} story={story} hebrew={parsha.hebrewName} onClose={closeStory} onSources={() => setSourcesOpen(true)} />
         </motion.div>
       </AnimatePresence>
+
+      <AnimatePresence>{actShowing && <ActTitle key={actShowing} story={story} act={actShowing} />}</AnimatePresence>
+      <AnimatePresence>{sourcesOpen && <SourcesSheet key="sources" card={card} onClose={() => setSourcesOpen(false)} />}</AnimatePresence>
     </motion.div>
   )
 }
 
-function Segment({ state, progress, dark }: { state: 'done' | 'active' | 'todo'; progress: MotionValue<number>; dark: boolean }) {
+function Segment({ state, progress, dark, gapBefore }: { state: 'done' | 'active' | 'todo'; progress: MotionValue<number>; dark: boolean; gapBefore: boolean }) {
   const width = useTransform(progress, (p) => `${p * 100}%`)
   return (
-    <div style={{ height: 4, borderRadius: 2, overflow: 'hidden', background: dark ? 'rgba(244,236,220,0.25)' : 'rgba(23,24,43,0.14)' }}>
+    <div style={{ flex: '1 1 0', height: 4, borderRadius: 2, overflow: 'hidden', marginLeft: gapBefore ? 6 : 0, background: dark ? 'rgba(244,236,220,0.25)' : 'rgba(23,24,43,0.14)' }}>
       <motion.div
         style={{
           height: '100%',
@@ -208,7 +253,72 @@ function Segment({ state, progress, dark }: { state: 'done' | 'active' | 'todo';
   )
 }
 
-function CardBody({ card, story, hebrew, onClose }: { card: StoryCard; story: ParshaStory; hebrew: string; onClose: () => void }) {
+/** A beat between parts of the story: "Part 2 · The covenant". */
+function ActTitle({ story, act }: { story: ParshaStory; act: string }) {
+  const n = story.cards.filter((c) => c.act).findIndex((c) => c.act === act) + 1
+  return (
+    <motion.div className="dl-act" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.45 } }} transition={{ duration: 0.25 }}>
+      <motion.div initial={{ y: 12, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ ...SPRING.soft, delay: 0.05 }} style={{ font: `800 13px ${FONT.display}`, letterSpacing: '0.14em', color: C.blue }}>
+        PART {n}
+      </motion.div>
+      <RevealText text={act} delay={0.15} style={{ font: `800 46px/1 ${FONT.display}`, letterSpacing: '-0.04em', color: C.ink, marginTop: 8 }} />
+    </motion.div>
+  )
+}
+
+/** The verse reference on every card; tapping it opens the sources and notes. */
+function RefButton({ card, onSources, dark, stop }: { card: StoryCard; onSources: () => void; dark?: boolean; stop?: number }) {
+  if (!card.ref) return null
+  return (
+    <button type="button" className="dl-ref" onClick={onSources} style={{ color: dark ? C.blueSoft : C.blue }} aria-label={`Sources for ${card.ref}`}>
+      {stop && <span className="dl-stop-badge">{stop}</span>}
+      <span style={{ minWidth: 0 }}>{card.ref}</span>
+      <Info size={13} strokeWidth={2.4} style={{ flexShrink: 0, opacity: card.note ? 1 : 0.55 }} />
+    </button>
+  )
+}
+
+function SourcesSheet({ card, onClose }: { card: StoryCard; onClose: () => void }) {
+  const { closeStory, setTab } = useDaylight()
+  return (
+    <>
+      <motion.div className="dl-sources-scrim" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} />
+      <motion.section
+        className="dl-sources"
+        initial={{ y: '100%' }}
+        animate={{ y: 0 }}
+        exit={{ y: '100%' }}
+        transition={SPRING.sheet}
+        drag="y"
+        dragConstraints={{ top: 0, bottom: 0 }}
+        dragElastic={{ top: 0, bottom: 0.6 }}
+        onDragEnd={(_, info) => info.offset.y > 60 && onClose()}
+        aria-label="Sources"
+      >
+        <button type="button" aria-label="Close sources" className="dl-handle" onClick={onClose} />
+        <div className="dl-eyebrow" style={{ color: C.muted }}>
+          Sources
+        </div>
+        <div style={{ font: `800 22px/1.2 ${FONT.display}`, letterSpacing: '-0.02em', color: C.ink, marginTop: 6 }}>{card.ref ?? 'About the map'}</div>
+        {card.note && <p style={{ margin: '10px 0 0', font: `400 16px/1.5 ${FONT.display}`, color: C.body }}>{card.note}</p>}
+        <motion.button
+          whileTap={{ scale: 0.97 }}
+          type="button"
+          className="dl-primary"
+          style={{ width: '100%', marginTop: 18 }}
+          onClick={() => {
+            closeStory()
+            setTab('read', 'text')
+          }}
+        >
+          <BookOpen size={18} /> Read the verses
+        </motion.button>
+      </motion.section>
+    </>
+  )
+}
+
+function CardBody({ card, story, hebrew, onClose, onSources }: { card: StoryCard; story: ParshaStory; hebrew: string; onClose: () => void; onSources: () => void }) {
   switch (card.kind) {
     case 'cover':
       return (
@@ -227,14 +337,18 @@ function CardBody({ card, story, hebrew, onClose }: { card: StoryCard; story: Pa
             {card.body}
           </motion.div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }} className="dl-cover-meta">
-            {card.ref} · {story.route.length ? `${story.route.length} stops` : `at ${story.anchor?.name ?? 'home'}`} · tap to begin
+            {card.ref}
+            {story.anchor ? ` · ${story.anchor.name}` : ''}
+          </motion.div>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.6 }} style={{ font: `500 13px ${FONT.display}`, color: C.muted, marginTop: 12 }}>
+            Tap to go on · hold to pause · swipe down to close
           </motion.div>
         </div>
       )
     case 'stars':
       return (
         <div className="dl-story-stars">
-          <div style={{ font: `600 13px ${FONT.display}`, color: C.blueSoft }}>{card.ref}</div>
+          <RefButton card={card} onSources={onSources} dark />
           <RevealText text={`“${card.title}”`} delay={0.3} style={{ font: `800 36px/1.05 ${FONT.display}`, letterSpacing: '-0.03em', color: C.sand, marginTop: 12 }} />
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.8 }} style={{ font: `600 22px ${FONT.display}`, color: C.warm, marginTop: 14 }}>
             {card.body}
@@ -244,9 +358,8 @@ function CardBody({ card, story, hebrew, onClose }: { card: StoryCard; story: Pa
     case 'name':
       return (
         <div className="dl-story-panel">
-          <div style={{ font: `600 13px ${FONT.display}`, color: C.blue }}>{card.ref}</div>
-          <NameMorph />
-          <div style={{ font: `800 30px/1.05 ${FONT.display}`, letterSpacing: '-0.03em', color: C.ink }}>{card.title}</div>
+          <RefButton card={card} onSources={onSources} />
+          <div style={{ font: `800 30px/1.05 ${FONT.display}`, letterSpacing: '-0.03em', color: C.ink, marginTop: 8 }}>{card.title}</div>
           <p style={{ margin: '10px 0 0', font: `400 17px/1.45 ${FONT.display}`, color: C.body }}>{card.body}</p>
         </div>
       )
@@ -254,32 +367,28 @@ function CardBody({ card, story, hebrew, onClose }: { card: StoryCard; story: Pa
     case 'offerings':
     case 'scale':
     case 'quote':
-      return <PageCard card={card} />
+      return <PageCard card={card} onSources={onSources} />
+    case 'guess':
+      return <GuessCard card={card} onSources={onSources} />
     case 'plan':
       return (
         <div className="dl-story-panel">
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center', font: `600 13px ${FONT.display}`, color: C.blue }}>
-            <span style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', background: C.ink, color: C.sand, padding: '3px 7px', borderRadius: 7, whiteSpace: 'nowrap' }}>COURTYARD TO SCALE</span>
-            {card.ref}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, alignItems: 'center' }}>
+            <span style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', background: C.ink, color: C.sand, padding: '3px 7px', borderRadius: 7, whiteSpace: 'nowrap' }}>COURTYARD TO SCALE (1 CUBIT ≈ ½ M)</span>
+            {/* The location caveat stays on screen: a drawing placed near a named mountain would otherwise read as where it stood. */}
+            <span style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', background: C.sand, color: C.ink, padding: '3px 7px', borderRadius: 7, whiteSpace: 'nowrap' }}>LOCATION ILLUSTRATIVE</span>
+            <RefButton card={card} onSources={onSources} />
           </div>
           <div style={{ font: `800 30px/1.02 ${FONT.display}`, letterSpacing: '-0.035em', color: C.ink, marginTop: 10 }}>{card.title}</div>
           <p style={{ margin: '10px 0 0', font: `400 17px/1.45 ${FONT.display}`, color: C.body }}>{card.body}</p>
-          {card.note && <p style={{ margin: '10px 0 0', font: `500 12px/1.4 ${FONT.display}`, color: C.muted }}>{card.note}</p>}
         </div>
       )
     case 'talk':
-      return <TalkCard card={card} story={story} onClose={onClose} />
+      return <Finale story={story} card={card} onClose={onClose} onSources={onSources} />
     default:
       return (
         <div className="dl-story-panel">
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            {card.stop && (
-              <span style={{ width: 24, height: 24, borderRadius: 12, background: C.warm, color: C.ink, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', font: `800 12px ${FONT.display}` }}>
-                {card.stop}
-              </span>
-            )}
-            <span style={{ font: `600 13px ${FONT.display}`, color: C.blue }}>{card.ref}</span>
-          </div>
+          <RefButton card={card} onSources={onSources} stop={card.stop} />
           <div style={{ font: `800 34px/1 ${FONT.display}`, letterSpacing: '-0.035em', color: C.ink, marginTop: 10 }}>{card.title}</div>
           <p style={{ margin: '12px 0 0', font: `400 17px/1.45 ${FONT.display}`, color: C.body }}>{card.body}</p>
         </div>
@@ -291,13 +400,7 @@ function CardBody({ card, story, hebrew, onClose }: { card: StoryCard; story: Pa
 function CoverArt({ src }: { src: string }) {
   return (
     <motion.div className="dl-cover-art" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.8 }}>
-      <motion.img
-        src={src}
-        alt=""
-        initial={{ scale: 1.08, x: 0, y: 0 }}
-        animate={{ scale: 1.22, x: -14, y: 10 }}
-        transition={{ duration: CARD_SECONDS + 2, ease: 'linear' }}
-      />
+      <motion.img src={src} alt="" initial={{ scale: 1.08, x: 0, y: 0 }} animate={{ scale: 1.22, x: -14, y: 10 }} transition={{ duration: 10, ease: 'linear' }} />
     </motion.div>
   )
 }
@@ -305,15 +408,29 @@ function CoverArt({ src }: { src: string }) {
 type HeroSize = 'card' | 'stage' | 'full'
 
 /**
- * The visual half of a page card. In the card layout it sits inside the panel;
- * on the stage it rises into the space above the card; on a full page it fills the middle.
+ * The visual half of a page card. On the stage it rises into the space above the card;
+ * on a full page it fills the middle.
  */
 function Hero({ card, size }: { card: StoryCard; size: HeroSize }) {
   switch (card.kind) {
     case 'letter':
-      return <SmallAleph word={card.hebrew ?? ''} size={size} />
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
+          <SmallAleph word={card.hebrew ?? ''} size={size} />
+          {size !== 'card' && <span style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', color: C.muted }}>SIZE ILLUSTRATIVE</span>}
+        </div>
+      )
     case 'scale':
-      return <Staircase card={card} size={size} />
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, width: '100%', height: size === 'stage' ? '100%' : undefined, justifyContent: 'center' }}>
+          <Staircase card={card} size={size} />
+          {size !== 'card' && <span style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', color: C.muted }}>STEP HEIGHTS ILLUSTRATIVE</span>}
+        </div>
+      )
+    case 'name':
+      return <NameMorph size={size} />
+    case 'guess':
+      return <GuessTokens card={card} />
     case 'quote':
       return (
         <motion.div
@@ -339,13 +456,15 @@ function Hero({ card, size }: { card: StoryCard; size: HeroSize }) {
 }
 
 /** Page cards: letter, offerings, scale, quote. The layout decides where the hero goes. */
-function PageCard({ card }: { card: StoryCard }) {
+function PageCard({ card, onSources }: { card: StoryCard; onSources: () => void }) {
   const dark = card.kind === 'quote'
   const full = LAYOUT === 'full'
-  const heroInCard = LAYOUT !== 'stage'
   const head = (
     <>
-      <div style={{ font: `600 13px ${FONT.display}`, color: dark ? C.blueSoft : C.blue }}>{card.ref}</div>
+      {card.kind === 'offerings' && LAYOUT === 'stage' && (
+        <div style={{ font: `800 11px ${FONT.display}`, letterSpacing: '0.08em', color: C.muted, marginBottom: 2 }}>PLAN ABOVE: COURTYARD TO SCALE · LOCATION ILLUSTRATIVE</div>
+      )}
+      <RefButton card={card} onSources={onSources} dark={dark} />
       {card.kind !== 'quote' && (
         <div style={{ font: `800 ${full ? 34 : 30}px/1.02 ${FONT.display}`, letterSpacing: '-0.035em', color: C.ink, marginTop: 8 }}>{card.title}</div>
       )}
@@ -378,14 +497,101 @@ function PageCard({ card }: { card: StoryCard }) {
   return (
     <div className={`dl-story-panel${dark ? ' dl-quote' : ''}`}>
       {head}
-      {heroInCard && card.kind !== 'offerings' && (full ? <div className="dl-hero"><Hero card={card} size="full" /></div> : <Hero card={card} size="card" />)}
+      {full && card.kind !== 'offerings' && (
+        <div className="dl-hero">
+          <Hero card={card} size="full" />
+        </div>
+      )}
       {body}
-      {card.note && <p style={{ margin: '10px 0 0', font: `500 12px/1.4 ${FONT.display}`, color: dark ? C.blueSoft : C.muted }}>{card.note}</p>}
     </div>
   )
 }
 
-/** The word written out, then its final letter shrinks to the size it has in the scroll. */
+/** A question the reader answers before the story goes on. Place guesses also light up on the map. */
+function GuessCard({ card, onSources }: { card: StoryCard; onSources: () => void }) {
+  const { guessPick, setGuessPick } = useDaylight()
+  const options = card.options ?? []
+  const answered = guessPick !== null
+  const right = answered && options[guessPick]?.correct
+  const answer = options.find((o) => o.correct)
+  return (
+    <div className="dl-story-panel">
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <span className="dl-guess-tag">YOUR GUESS</span>
+        <RefButton card={card} onSources={onSources} />
+      </div>
+      <div style={{ font: `800 26px/1.08 ${FONT.display}`, letterSpacing: '-0.03em', color: C.ink, marginTop: 10 }}>{card.title}</div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, marginTop: 14 }}>
+        {options.map((o, i) => {
+          const state = !answered ? 'open' : o.correct ? 'right' : i === guessPick ? 'wrong' : 'dim'
+          return (
+            <motion.button
+              key={o.label}
+              type="button"
+              whileTap={!answered ? { scale: 0.97 } : undefined}
+              disabled={answered}
+              className="dl-option"
+              data-state={state}
+              animate={state === 'wrong' ? { x: [0, -6, 6, -4, 0] } : {}}
+              transition={{ duration: 0.35 }}
+              onClick={() => {
+                setGuessPick(i)
+                haptic(o.correct ? 'medium' : 'light')
+              }}
+            >
+              <span className="dl-option-letter">{state === 'right' ? <Check size={14} strokeWidth={3.4} /> : String.fromCharCode(65 + i)}</span>
+              <span style={{ flexGrow: 1, textAlign: 'left' }}>{o.label}</span>
+              {o.he && (
+                <span lang="he" dir="rtl" style={{ font: `20px/1 ${FONT.hebrew}` }}>
+                  {o.he}
+                </span>
+              )}
+            </motion.button>
+          )
+        })}
+      </div>
+      <AnimatePresence>
+        {answered && (
+          <motion.p key="reveal" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} style={{ margin: '12px 0 0', font: `600 16px/1.4 ${FONT.display}`, color: C.ink }}>
+            <span style={{ color: right ? C.blue : '#c2491d' }}>{right ? 'Right.' : `It was ${answer ? answer.label.charAt(0).toLowerCase() + answer.label.slice(1) : ''}.`}</span> {card.reveal ?? 'Tap to see what happens.'}
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+/** Stage visual for a guess with no map: the choices as big tokens that react to the answer. */
+function GuessTokens({ card }: { card: StoryCard }) {
+  const guessPick = useDaylight((s) => s.guessPick)
+  const options = card.options ?? []
+  return (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+      {options.map((o, i) => {
+        const answered = guessPick !== null
+        const lit = answered && o.correct
+        const faded = answered && !o.correct
+        return (
+          <motion.div
+            key={o.label}
+            initial={{ opacity: 0, y: 24, scale: 0.8 }}
+            animate={{ opacity: faded ? 0.35 : 1, y: 0, scale: lit ? 1.12 : faded ? 0.9 : 1 }}
+            transition={{ ...SPRING.soft, delay: answered ? 0 : 0.3 + i * 0.15 }}
+            className="dl-token"
+            data-lit={lit || undefined}
+          >
+            <span lang="he" dir="rtl" style={{ font: `40px/1 ${FONT.hebrew}` }}>
+              {o.he}
+            </span>
+            <span style={{ font: `700 13px ${FONT.display}`, marginTop: 8 }}>{answered ? o.label : '?'}</span>
+          </motion.div>
+        )
+      })}
+    </div>
+  )
+}
+
+/** The word written out, then its final letter shrinks to show it is written small in the scroll (ratio illustrative). */
 function SmallAleph({ word, size }: { word: string; size: HeroSize }) {
   const [small, setSmall] = useState(false)
   useEffect(() => {
@@ -438,7 +644,7 @@ function Staircase({ card, size }: { card: StoryCard; size: HeroSize }) {
 }
 
 /** אברם → אברהם: the hei slides into the name. */
-function NameMorph() {
+function NameMorph({ size }: { size: HeroSize }) {
   const [added, setAdded] = useState(false)
   useEffect(() => {
     const t = setTimeout(() => {
@@ -449,12 +655,17 @@ function NameMorph() {
   }, [])
   const letters = added ? ['א', 'ב', 'ר', 'ה', 'ם'] : ['א', 'ב', 'ר', 'ם']
   return (
-    <div lang="he" dir="rtl" style={{ display: 'flex', justifyContent: 'flex-end', gap: 2, margin: '10px 0 12px', font: `72px/1 ${FONT.hebrew}` }}>
+    <div
+      lang="he"
+      dir="rtl"
+      className={size === 'stage' ? 'dl-hero-halo' : undefined}
+      style={{ display: 'flex', justifyContent: 'center', gap: 2, font: `${size === 'card' ? 72 : 118}px/1 ${FONT.hebrew}` }}
+    >
       {letters.map((l, i) => (
         <motion.span
           key={l === 'ה' ? 'hei' : `${l}-${i < 3 ? i : 'end'}`}
           layout
-          initial={l === 'ה' ? { scale: 0, y: -40, opacity: 0 } : false}
+          initial={l === 'ה' ? { scale: 0, y: -60, opacity: 0 } : false}
           animate={{ scale: 1, y: 0, opacity: 1 }}
           transition={SPRING.snappy}
           style={{ color: l === 'ה' ? C.warm : C.ink, display: 'inline-block' }}
@@ -466,44 +677,125 @@ function NameMorph() {
   )
 }
 
-function TalkCard({ card, story, onClose }: { card: StoryCard; story: ParshaStory; onClose: () => void }) {
-  const [shared, setShared] = useState(false)
+/**
+ * The end of the story: pick a question for the table, send it, and see where to go next.
+ * Fills the lower two-thirds; the whole journey stays visible above it.
+ */
+function Finale({ story, card, onClose, onSources }: { story: ParshaStory; card: StoryCard; onClose: () => void; onSources: () => void }) {
+  const parsha = getParshaById(story.parshaId)
+  const steps = useSteps(story.parshaId)
+  const update = useWeekProgress((s) => s.update)
+  const { setTab } = useDaylight()
+  const setSelectedParsha = useAppStore((s) => s.setSelectedParsha)
+  const today = usePrototypeToday()
+  const week = useWeek(story.parshaId, today)
+  const readOn = week.kind === 'this-week' || week.kind === 'other-week' ? week.shabbat : null
+  const next = useNextReading(story.parshaId, readOn)
+  const nextParsha = next ? getParshaById(next.parshaId) : undefined
+  const picked = steps.question ?? 1
+  const q: TableQuestion | undefined = story.questions[picked]
+  const [sent, setSent] = useState(false)
+
+  useEffect(() => {
+    if (steps.question === undefined) update(story.parshaId, { question: 1 })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   const share = async () => {
+    if (!q) return
     haptic('medium')
-    const text = `Table talk — ${parshaDisplayName(story.parshaId.replace(/-/g, ' '))}\n\n${card.title}\n\nparshamap.com`
+    const text = `Table talk · ${parshaDisplayName(parsha?.name ?? story.parshaId)}\n\n${q.text}\n\nparshamap.com`
     try {
       if (navigator.share) await navigator.share({ text })
       else await navigator.clipboard.writeText(text)
-      setShared(true)
+      setSent(true)
+      update(story.parshaId, { shared: true })
     } catch {
       /* share sheet dismissed */
     }
   }
+
   return (
-    <div style={{ position: 'relative' }}>
+    <div style={{ position: 'relative', height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Burst />
-      <motion.div
-        initial={{ scale: 0.7, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ ...SPRING.snappy, delay: 0.1 }}
-        className="dl-complete"
-      >
+      <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ ...SPRING.snappy, delay: 0.1 }} className="dl-complete">
         <Check size={16} strokeWidth={3} /> Story complete
       </motion.div>
-      <div className="dl-story-panel" style={{ background: C.sand }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ width: 30, height: 30, borderRadius: 15, background: C.warm, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', font: `800 16px ${FONT.display}`, color: C.ink }}>?</span>
-          <span style={{ font: `800 13px ${FONT.display}`, letterSpacing: '0.1em', color: C.ink }}>TABLE TALK</span>
+      <div className="dl-story-panel dl-finale">
+        <div className="dl-eyebrow" style={{ color: C.blue }}>
+          {/* Only this week's parsha is "for Shabbat"; any other week just gets a question for the table. */}
+          {week.kind === 'this-week' ? 'Ready for Shabbat' : 'For your table'}
         </div>
-        <div style={{ font: `600 23px/1.22 ${FONT.display}`, letterSpacing: '-0.01em', color: C.ink, marginTop: 12 }}>{card.title}</div>
-        <div style={{ display: 'flex', gap: 10, marginTop: 18, position: 'relative', zIndex: 3 }}>
-          <motion.button whileTap={{ scale: 0.96 }} type="button" onClick={share} className="dl-primary">
-            {shared ? <Check size={18} /> : <Share2 size={18} />}
-            {shared ? 'Sent' : 'Send to the family chat'}
+        <div style={{ font: `800 25px/1.1 ${FONT.display}`, letterSpacing: '-0.03em', color: C.ink, marginTop: 6 }}>Bring one question to the table</div>
+        <div className="dl-audience" role="tablist" aria-label="Who is it for">
+          {story.questions.map((qq, i) => (
+            <button
+              key={qq.audience}
+              type="button"
+              role="tab"
+              aria-selected={i === picked}
+              onClick={() => {
+                haptic('light')
+                setSent(false)
+                update(story.parshaId, { question: i })
+              }}
+            >
+              {i === picked && <motion.span layoutId="dl-aud-pill" className="dl-filter-pill" transition={SPRING.snappy} />}
+              <span style={{ position: 'relative', color: i === picked ? C.sand : C.ink }}>{qq.audience}</span>
+            </button>
+          ))}
+        </div>
+        <AnimatePresence mode="wait">
+          <motion.div key={picked} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.2 }} className="dl-question">
+            {q?.text}
+          </motion.div>
+        </AnimatePresence>
+        <motion.button whileTap={{ scale: 0.97 }} type="button" onClick={share} className="dl-primary" style={{ width: '100%', flexGrow: 0, marginTop: 12 }}>
+          {sent ? <Check size={18} /> : <Share2 size={18} />}
+          {sent ? 'Sent' : 'Send to the family chat'}
+        </motion.button>
+        <div className="dl-next-row">
+          <motion.button
+            whileTap={{ scale: 0.96 }}
+            type="button"
+            onClick={() => {
+              onClose()
+              setTab('read', 'text')
+            }}
+          >
+            <BookOpen size={17} />
+            <span>
+              <b>Read the verses</b>
+              <small>{parsha ? verseRange(parsha.seferiaUrl) : ''}</small>
+            </span>
           </motion.button>
-          <motion.button whileTap={{ scale: 0.92 }} type="button" onClick={onClose} className="dl-secondary">
+          {nextParsha && next && (
+            <motion.button
+              whileTap={{ scale: 0.96 }}
+              type="button"
+              onClick={() => {
+                onClose()
+                setSelectedParsha(nextParsha.id)
+                setTab('today')
+              }}
+            >
+              <ArrowRight size={17} />
+              <span>
+                <b>Next: {parshaDisplayName(nextParsha.name)}</b>
+                <small>{formatDay(next.date)}</small>
+              </span>
+            </motion.button>
+          )}
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 18 }}>
+          {card.note && (
+            <button type="button" onClick={onSources} className="dl-done" style={{ color: C.muted, display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+              <Info size={14} strokeWidth={2.4} /> About the map
+            </button>
+          )}
+          <button type="button" onClick={onClose} className="dl-done">
             Done
-          </motion.button>
+          </button>
         </div>
       </div>
     </div>
