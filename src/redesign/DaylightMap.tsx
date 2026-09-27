@@ -473,6 +473,13 @@ export function DaylightMap() {
       type: 'FeatureCollection' as const,
       features: places
         .filter((p) => !stopNames.has(displayName(p.name)))
+        // A region pinned on one of its cities (Shinar on Babel, Chaldea on Ur) would stack a second dot and label on the city;
+        // the city's dot stands for both, and the region stays findable in search.
+        .filter(
+          (p) =>
+            p.type !== 'region' ||
+            !places.some((q) => q.type !== 'region' && Math.abs(q.latitude! - p.latitude!) < 0.01 && Math.abs(q.longitude! - p.longitude!) < 0.01)
+        )
         .map((p) => ({
           type: 'Feature' as const,
           properties: { id: p.id, name: displayName(p.name), selected: p.id === selectedPlaceId ? 1 : 0 },
