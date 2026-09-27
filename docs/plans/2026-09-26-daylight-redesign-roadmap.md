@@ -98,14 +98,23 @@ Checked against the code on `redesign/daylight` (latest commit `df80a25`) and th
 - Duplicate branches and worktrees deleted (`fix/ios-push-prompt*`, `art/emblem-covers`, `fix/content-factcheck`, `redesign/real-this-week`, `fix/map-pins-empires`).
 - Because Daylight replaces parshamap.com on every screen, **0.7 Desktop** is no longer "keep classic on desktop": Daylight needs its own desktop layout before it ships.
 
-### Next session — do these first
+### 2026-09-27 (fourth session): Genesis stories, fact-check pipeline, app fixes
 
-1. ~~**Date bar:** show both dates, each labeled (decided). Fix the Lech Lecha and Vayikra ranges and the Vayikra/Deuteronomy overlap.~~ **Done** on `lane/dates-world` (see below).
-2. ~~**"World around it":** dated events per parsha, with the era list as the fallback (decided). Fixes the Hyksos and Megiddo/Akhenaten timing problems.~~ **Done** for Lech Lecha and Vayikra on `lane/dates-world`; other parshiot still use the era list until their events are written and checked.
-3. **0.3 story-writing pipeline**, then the Genesis stories. Bereshit (Sat Oct 10) is the next real week and has no story. Each story opens with its emblem cover.
-4. **0.2 thin-week templates** (Mishkan build-up for Terumah–Pekudei, the camp for Bamidbar and Nasso), so place-less weeks work.
-5. **0.7 Desktop layout** for Daylight (now a ship blocker, see above).
-6. **Audit the facts for the other 52 parshiot** with the fact-check workflow before they go into stories.
+**Merged into `redesign/daylight` (pushed):** story pipeline (0.3); date bar with both dates and "World around it" for Lech Lecha and Vayikra; the Genesis Read-tab/pin/caption fixes (72 text fixes, pins moved/unpinned, English→Hebrew verse-offset bug fixed for the whole Torah); **Bereshit story** (Myron approved; independent fact-check applied); Lech Lecha's Sodom pin removed; app fixes: finale share button, "pin sites are uncertain" banner, long pin labels wrap, guess-token Hebrew scales, lone overview pins show their hedge, no route pin before the first stop, route banner only while a line is drawn, "Answer: Edom." casing, region dots no longer stack on city dots, era fallback card says the date is unknown, part titles can't get stuck over the next card, no focus-ring line on the tap zones, ← → keys step through cards.
+
+**Waiting for Myron's review (not merged), one branch each, pushed-local only:** `review/noach`, `review/vayera`, `review/chayei-sarah`, `review/toldot`. Each was written by an agent, self fact-checked (claim table in `docs/plans/2026-09-27-<id>-story-factcheck.md`), then run through the independent `parsha-fact-check` workflow and fixed (findings re-verified on Sefaria; rejected findings listed in each doc). Toldot's fix pass may still be finishing. Rebase onto `redesign/daylight` before merging; then `npm run check:stories -- --strict <id>`, build, `check:week`.
+
+**How the fact-check runs:** the workflow reads files from the main checkout; to check a story on a review branch, export it with `git show review/<id>:src/redesign/stories/<id>.ts > <scratch>/<id>.ts` and pass that path in `files`. Parallel agents must each use their own dev-server port and screenshot via `BASE=http://[::1]:<port>` (ports collided once).
+
+### Next session — do these first (parallel lanes)
+
+1. **Myron reviews** Noach, Vayera, Chayei Sarah, Toldot → merge the approved ones.
+2. **Lane 1, rest of Genesis stories** (own files, no conflicts): Vayetze, Vayishlach, Vayeshev, Miketz, Vayigash, Vayechi. Their Read-tab data is already fact-checked. First make the `name` card data-driven (it is hard-coded to Abram → Abraham; Vayishlach needs Jacob → Israel) and give the `letter` card a letter position (Toldot's small kuf is mid-word). Then each story: write → independent fact-check → fix → Myron review.
+3. **Lane 2, fact-check the other 42 parshiot' data** (report-only, one agent per book: Exodus, Leviticus, Numbers, Deuteronomy), then one fixer per book. Include the ~20 image captions outside Genesis that wrongly credit Doré.
+4. **Lane 3, "World around it" events** per parsha in `src/data/worldEvents.json` (sourced), one book at a time.
+5. **Lane 4, app code** (one agent at a time; shares StoryPlayer/DaylightMap): route legs that run over pins (Vayera's Beersheba→Moriah over Mamre) and through labels (Gerar on the finale); thin-week formats (0.2: the Mishkan build-up for Terumah–Pekudei, the camp for Bamidbar and Nasso) before the Exodus–Numbers stories.
+6. **Lane 5, 0.7 desktop layout** (ship blocker: Daylight replaces parshamap.com on every screen). Start with a mockup for Myron.
+7. Later, mostly serial: 0.5 native basics (bundle fonts, offline tiles, VoiceOver labels, chunk splitting), 0.8 analytics, remove the classic UI and `approximateDateBCE`, merge to `main`, App Store build.
 
 ### Decisions
 
@@ -171,7 +180,7 @@ Full results: workflow runs `wf_e606146c-7d0` (Lech Lecha) and `wf_aa891ac1-8f0`
 |---|---|
 | 0.1 One codebase | **Done** (`3bf19d1`). Both CLAUDE.md files still describe the two-repo setup; retiring `/parsha/ios` is Myron's call |
 | 0.2 Card types for weeks with few places | Partly built. `cover, chapter, stars, letter, name, quote, scale, plan, offerings, guess, talk` exist; no template for all 54 yet |
-| 0.3 Story-writing pipeline | **Built** on `lane/story-pipeline`: one file per story in `src/redesign/stories/<parshaId>.ts`, registered automatically; `npm run check:stories` (no AI); template `stories/_template.ts`; guide `docs/plans/story-authoring.md`. Lech Lecha and Vayikra moved unchanged and pass (Lech Lecha has 12 warnings: notes cite works not in its sources list) |
+| 0.3 Story-writing pipeline | **Done** (merged): one file per story in `src/redesign/stories/<parshaId>.ts`, registered automatically; `npm run check:stories` (no AI); template `stories/_template.ts`; guide `docs/plans/story-authoring.md`. Lech Lecha and Vayikra moved unchanged and pass (Lech Lecha has 12 warnings: notes cite works not in its sources list) |
 | 0.4 Real "this week" | **Done**, merged into `redesign/daylight`. Opens on this Shabbat's parsha from Hebcal; rolls over at local midnight Sat→Sun; double weeks name both halves and open on the half with a story, else the first; holiday Shabbatot name the holiday and its reading and point to the next parsha; Hebcal window moves with the clock (last year → 3 years ahead). Rules in `src/redesign/weekRules.ts`, checked by `npm run check:week` |
 | 0.5 App Store polish | Haptics done; Reduce Motion partial. Fonts not bundled, no offline tiles, no VoiceOver labels, no chunk splitting |
 | 0.6 Pin grouping | **Done** 2026-09-27. Overlapping stops merge into one pin ("2·3·5·6") and separate again when you zoom in |
@@ -180,7 +189,7 @@ Full results: workflow runs `wf_e606146c-7d0` (Lech Lecha) and `wf_aa891ac1-8f0`
 | 1.1 3D terrain | **Done** (whole map, true height) |
 | 1.2 Globe opening | Not started |
 | 1.3 Traveller | Partly built: a dot rides the route; no caravan glyph or dust trail |
-| 1.4 Art covers with a slow zoom | **Art done:** papercut emblem cover for all 54 (`src/redesign/art/`), animated in code, no images. Lech Lecha and Vayikra stories open with theirs; wire the rest in as stories are written |
+| 1.4 Art covers with a slow zoom | **Art done** (all 54; Noach, Vayera, Vayigash, Vayetze scenes corrected against the verses): papercut emblem cover for all 54 (`src/redesign/art/`), animated in code, no images. Lech Lecha and Vayikra stories open with theirs; wire the rest in as stories are written |
 | 1.5 Map quiz | Partly built: one guess card per story, answered from a list with the options as pins |
 | 1.6 Sound | Not started (deferred) |
 | 1.7 Share as an image | Not started; sharing is plain text |
