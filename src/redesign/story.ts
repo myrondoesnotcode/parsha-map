@@ -64,6 +64,8 @@ export interface StoryCard {
   spot?: { name: string; at: LngLat; place?: string }
   /** Rows for list-style cards (offerings, scale). */
   items?: StoryItem[]
+  /** Offerings cards: the number of the first row, when a list continues from the card before (default 1). */
+  numberFrom?: number
   /** Hebrew line for quote and letter cards. */
   hebrew?: string
   /**

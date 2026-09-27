@@ -309,8 +309,11 @@ function placeLabels(story: ParshaStory, pts: { x: number; y: number }[], cluste
   const pinBox = (i: number): Box => {
     const n = story.route.map((_, j) => j).filter((j) => cluster[j] === i)
     const w = Math.max(32, textWidth(n.map((j) => j + 1).join('·'), 800) + 22)
-    // The marker is centred on the point; a merged pin widens both ways.
-    return { x0: pts[i].x - w / 2, y0: pts[i].y - 16, x1: pts[i].x + w / 2, y1: pts[i].y + 16 }
+    // The marker is centred in the middle of its distinct places (as drawn); a merged pin widens both ways.
+    const at = n.filter((j, k) => n.findIndex((m) => story.route[m].name === story.route[j].name) === k).map((j) => pts[j])
+    const x = at.reduce((t, p) => t + p.x, 0) / at.length
+    const y = at.reduce((t, p) => t + p.y, 0) / at.length
+    return { x0: x - w / 2, y0: y - 16, x1: x + w / 2, y1: y + 16 }
   }
   const pins: [number, Box][] = leads.map((i) => [i, pinBox(i)])
   const placed: Box[] = []
@@ -386,17 +389,14 @@ export function DaylightMap() {
     setCrowded(pts.map((p, i) => pts.slice(0, i).some((q) => Math.hypot(p.x - q.x, p.y - q.y) < 34)))
     // Near any other distinct place, before or after: on the finale only one label per cluster should show.
     setNearAny(pts.map((p, i) => pts.some((q, j) => j !== i && story.route[j].at !== story.route[i].at && Math.hypot(p.x - q.x, p.y - q.y) < 34)))
-    const lead = pts.map((_, i) => i)
-    const root = (i: number): number => (lead[i] === i ? i : root(lead[i]))
-    pts.forEach((p, i) =>
-      pts.forEach((q, j) => {
-        if (j < i && Math.hypot(p.x - q.x, p.y - q.y) < 34) {
-          const [a, b] = [root(i), root(j)]
-          lead[Math.max(a, b)] = Math.min(a, b)
-        }
-      })
-    )
-    const cluster = pts.map((_, i) => root(i))
+    // A stop joins the first earlier cluster whose lead pin it overlaps, else leads its own. Measured from the
+    // lead (not chained stop to stop), so a merged pin never stands for a place far from where it's drawn.
+    const cluster: number[] = []
+    pts.forEach((p, i) => {
+      const same = story.route.findIndex((s) => s.at === story.route[i].at)
+      const near = cluster.find((l, j) => l === j && Math.hypot(p.x - pts[l].x, p.y - pts[l].y) < 34)
+      cluster.push(same < i ? cluster[same] : near ?? i)
+    })
     setClusterOf(cluster)
     setLabelSide(placeLabels(story, pts, cluster, cardKindRef.current === 'talk', map.getContainer()))
   }, [story])
@@ -699,8 +699,11 @@ export function DaylightMap() {
             .filter((s, k, all) => all.findIndex((t) => t.name === s.name) === k)
           const withHedge = labels.length === 1 && card?.kind !== 'talk'
           const visible = routeStarted && clusterOf[i] === i && drawn >= i - 0.02 && card?.kind !== 'guess' && card?.kind !== 'cover'
+          // A merged pin stands in the middle of its places, not on the first of them.
+          const spots = labels.length ? labels.map((s) => s.at) : [stop.at]
+          const at: LngLat = [spots.reduce((t, p) => t + p[0], 0) / spots.length, spots.reduce((t, p) => t + p[1], 0) / spots.length]
           return (
-            <Marker key={`${stop.name}-${i}`} longitude={stop.at[0]} latitude={stop.at[1]} anchor="center">
+            <Marker key={`${stop.name}-${i}`} longitude={at[0]} latitude={at[1]} anchor="center">
               <AnimatePresence>
                 {visible && (
                   <motion.div

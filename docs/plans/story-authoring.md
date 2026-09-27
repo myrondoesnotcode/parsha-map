@@ -57,7 +57,7 @@ Note `at` is `[longitude, latitude]`; places.json stores latitude first. A place
 | `quote` | title, hebrew, body, ref | The Hebrew verse large on the stage, the English as a quotation | A key verse. `title` is the English (quote the translation you cite), `hebrew` the Hebrew, `body` a line on why it matters. |
 | `letter` | title, hebrew, body, ref; optional `letterAt`, `letterSize` | The Hebrew word, then **one letter shrinks (or grows)**, "size illustrative" | Only for a small or large letter the scribal tradition records. `letterAt` picks the letter: 0-based, counted from the start of `hebrew`, vowel marks not counted; default the last letter. `letterSize: 'large'` grows it instead (default `'small'`). |
 | `guess` | title, ref, options (2–4, exactly one `correct`) | A question; the story waits for an answer | One per story. With `at` on every option it is a map guess (pins); with none, tokens on the stage (`he` optional). `reveal` quotes the verse that answers it. |
-| `offerings` | title, ref, items | A numbered list (Hebrew term, English, note) | Lists of laws, offerings, gifts, tribes, stages: anything the text itself enumerates. |
+| `offerings` | title, ref, items; optional `numberFrom` | A numbered list (Hebrew term, English, note) | Lists of laws, offerings, gifts, tribes, stages: anything the text itself enumerates. A list split over two cards continues its numbering with `numberFrom` (Vayetze's sons: the second card starts at 7). |
 | `scale` | title, body, ref, items (2–3) | A descending staircase, "step heights illustrative" | A graded rule: if you can't afford this, bring that. |
 | `plan` | title, body, ref | **The Tabernacle courtyard to scale** at `MISHKAN_AT`, with its own camera | The Tabernacle only (e.g. Terumah–Pekudei, Vayikra). It always draws the same plan. |
 | `name` | title, body, ref, `names: { from, to }` | The Hebrew name `from` turning into `to`: letters both spellings share (in order) stay put, the others drop out and the new ones drop in, in apricot | A renaming the verses narrate (Lech Lecha: `{ from: 'אברם', to: 'אברהם' }`; Vayishlach: Jacob → Israel). One word each, letters only, no vowel marks. |
@@ -115,6 +115,6 @@ Errors (fail the run):
 Warnings (`--strict` fails on them):
 - a place not linked to this parsha in `places.json`
 - a book reference (e.g. "Judges 18:29") or named work (Rashi, Ramban, Seder Olam…) in a body, note or reveal that `sources` doesn't carry
-- a `plan` card that isn't about the Tabernacle; `hebrew`, `items`, `names`, `letterAt`/`letterSize`, `sky` or `image` on a kind that doesn't show them
+- a `plan` card that isn't about the Tabernacle; `hebrew`, `items`, `names`, `letterAt`/`letterSize`, `sky`, `numberFrom` or `image` on a kind that doesn't show them
 
 It does not judge whether anything is true. That is the fact-check workflow's job and Myron's.

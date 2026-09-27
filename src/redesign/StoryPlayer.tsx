@@ -367,7 +367,7 @@ function CardBody({ card, story, hebrew, onClose, onSources }: { card: StoryCard
     case 'stars':
       return (
         <div className="dl-story-stars">
-          <RefButton card={card} onSources={onSources} dark />
+          <RefButton card={card} onSources={onSources} dark stop={card.stop} />
           <RevealText text={`“${card.title}”`} delay={0.3} style={{ font: `800 36px/1.05 ${FONT.display}`, letterSpacing: '-0.03em', color: C.sand, marginTop: 12 }} />
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.8 }} style={{ font: `600 22px ${FONT.display}`, color: C.warm, marginTop: 14 }}>
             {card.body}
@@ -498,7 +498,7 @@ function PageCard({ card, onSources }: { card: StoryCard; onSources: () => void 
       <ol className="dl-offerings" data-full={full || undefined}>
         {card.items?.map((it, i) => (
           <motion.li key={it.en} initial={{ opacity: 0, x: -14 }} animate={{ opacity: 1, x: 0 }} transition={{ ...SPRING.soft, delay: 0.35 + i * 0.22 }}>
-            <span className="dl-off-num">{i + 1}</span>
+            <span className="dl-off-num">{(card.numberFrom ?? 1) + i}</span>
             <span style={{ minWidth: 0, flexGrow: 1 }}>
               <span style={{ display: 'block', font: `700 ${full ? 18 : 16}px/1.2 ${FONT.display}`, color: C.ink }}>{it.en}</span>
               <span style={{ display: 'block', font: `400 14px/1.35 ${FONT.display}`, color: C.body, marginTop: 1 }}>{it.note}</span>

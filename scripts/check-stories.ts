@@ -35,7 +35,7 @@ const NEEDS_ITEMS = new Set<StoryCardKind>(['offerings', 'scale'])
 const AUDIENCES = ['Kids', 'Everyone', 'Deeper'] as const
 
 const STORY_KEYS = ['parshaId', 'tagline', 'sources', 'route', 'anchor', 'cards', 'questions']
-const CARD_KEYS = ['kind', 'title', 'body', 'ref', 'camera', 'routeTo', 'stop', 'spot', 'items', 'hebrew', 'letterAt', 'letterSize', 'names', 'sky', 'note', 'image', 'act', 'options', 'reveal']
+const CARD_KEYS = ['kind', 'title', 'body', 'ref', 'camera', 'routeTo', 'stop', 'spot', 'items', 'hebrew', 'letterAt', 'letterSize', 'names', 'sky', 'numberFrom', 'note', 'image', 'act', 'options', 'reveal']
 const CAMERA_KEYS = ['center', 'zoom', 'pitch', 'bearing']
 const STOP_KEYS = ['name', 'at', 'place', 'via', 'hedge']
 const SPOT_KEYS = ['name', 'at', 'place']
@@ -321,6 +321,8 @@ function checkStory(file: string, story: ParshaStory, source: string, hasEmblem:
         err(where, `letterAt ${c.letterAt} must be 0–${count - 1} (a letter of "${c.hebrew}", counted from the start, marks not counted)`)
       if (c.letterSize !== undefined && c.letterSize !== 'small' && c.letterSize !== 'large') err(where, `letterSize must be 'small' or 'large'`)
     }
+    if (c.numberFrom !== undefined && (!Number.isInteger(c.numberFrom) || c.numberFrom < 1)) err(where, `numberFrom ${c.numberFrom} must be a whole number from 1`)
+    if (c.numberFrom !== undefined && c.kind !== 'offerings') warn(where, '`numberFrom` is only used on offerings cards')
     if (c.sky !== undefined && c.sky !== 'night' && c.sky !== 'dawn') err(where, `sky must be 'night' or 'dawn'`)
     if (c.sky !== undefined && c.kind !== 'stars') warn(where, '`sky` is only used on stars cards')
     if (c.kind !== 'letter' && (c.letterAt !== undefined || c.letterSize !== undefined)) warn(where, '`letterAt` and `letterSize` are only used on letter cards')
