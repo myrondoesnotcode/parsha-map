@@ -92,11 +92,10 @@ const lechLecha: ParshaStory = {
       title: 'Lot chooses the plain',
       body: 'Back at the tent between Bethel and Ai, Abram’s and Lot’s flocks and herds are too many for the land to hold them both, and their herders quarrel. Lot picks the well-watered Jordan plain and pitches his tents near Sodom.',
       ref: 'Genesis 13:1–12',
-      note: 'From Egypt they went back up through the Negev to the old tent site (13:1–3). Where Sodom stood isn’t known; the pin follows one disputed proposal, Tall el-Hammam, north-east of the Dead Sea, and others place it elsewhere. The numbered pin marks Bethel; the tent site was east of it, toward Ai.',
+      note: 'From Egypt they went back up through the Negev to the old tent site (13:1–3). Where Sodom stood isn’t known, so it has no pin; proposals put it north or south of the Dead Sea, and none is proven. The numbered pin marks Bethel; the tent site was east of it, toward Ai.',
       camera: { center: [35.44, 31.9], zoom: 8.6, pitch: 55, bearing: -40 },
       routeTo: 4,
       stop: 5,
-      spot: { name: 'Sodom (site unknown)', at: [35.67, 31.84], place: 'a0aa664' },
     },
     {
       kind: 'chapter',
