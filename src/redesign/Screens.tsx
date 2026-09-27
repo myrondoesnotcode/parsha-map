@@ -191,6 +191,11 @@ export function ReadScreen() {
                 Across the {era.name} · c. {era.startBCE}–{era.endBCE} BCE
               </div>
               <p style={{ margin: '8px 0 12px', font: `400 16px/1.5 ${FONT.display}`, color: C.body }}>{era.shortDesc}</p>
+              {/* The era list is a fallback for parshiot without dated events of their own: say what it is and isn't. */}
+              <p style={{ margin: '0 0 12px', font: `500 13px/1.45 ${FONT.display}`, color: C.muted }}>
+                No one knows when this parsha’s events happened; scholars often place them in this era. The events below show
+                that world. The Torah names none of them.
+              </p>
               <ol className="dl-timeline">
                 {[...(era.events ?? [])].sort((a, b) => b.yearBCE - a.yearBCE).map((e) => (
                   <li key={e.description}>
