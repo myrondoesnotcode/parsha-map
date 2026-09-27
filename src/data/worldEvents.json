@@ -1,0 +1,96 @@
+{
+  "_about": "Dated events for the Read tab's \"World around it\", per parsha. Each parsha's events are chosen to fall inside its own window (see parshaDates.json): around the traditional date and inside the period scholars use. \"note\" says how uncertain the parsha's own date is. \"approx\" true means the year is shown with \"c.\"; \"endBCE\" makes it a span. Parshiot not listed fall back to the era list in timeline.json.",
+  "lech-lecha": {
+    "windowStartBCE": 1802,
+    "windowEndBCE": 1753,
+    "note": "No one can date Abram. These events fall around the traditional date, c. 1738 BCE, and inside the Middle Bronze Age (c. 2000–1550 BCE), where scholars who try to date him usually place him. They show the world of that time; the Torah names none of them.",
+    "events": [
+      {
+        "yearBCE": 1802,
+        "approx": true,
+        "description": "Egypt's 13th Dynasty takes over from the 12th and rules for about 150 years, until c. 1649 BCE.",
+        "significance": "The traditional date of Abram's stay in Egypt (Genesis 12:10–20) falls in this dynasty. The Torah does not name the Pharaoh.",
+        "sources": [
+          { "title": "Wikipedia, \"Thirteenth Dynasty of Egypt\" (c. 1802–1649 BC)", "url": "https://en.wikipedia.org/wiki/Thirteenth_Dynasty_of_Egypt" }
+        ]
+      },
+      {
+        "yearBCE": 1792,
+        "approx": true,
+        "description": "Hammurabi becomes king of Babylon and reigns until c. 1750 BCE.",
+        "significance": "Late in his reign he brings Mesopotamia under Babylon's rule. Abram's family came from Ur and Haran, in Mesopotamia (Genesis 11:31).",
+        "sources": [
+          { "title": "Wikipedia, \"Hammurabi\" (reign c. 1792–c. 1750 BC; \"succeeded in uniting all of Mesopotamia\")", "url": "https://en.wikipedia.org/wiki/Hammurabi" },
+          { "title": "Genesis 11:31; P. K. McCarter Jr. and R. S. Hendel, \"The Patriarchal Age\" (Ur \"in southern Mesopotamia\", Haran \"in northwestern Mesopotamia\")", "url": "http://cojs.org/wp-content/uploads/Patriarchal_Age.pdf" }
+        ]
+      },
+      {
+        "yearBCE": 1761,
+        "approx": true,
+        "description": "Hammurabi defeats Zimri-Lim, king of Mari on the Euphrates, and razes the city about two years later.",
+        "significance": "Mari's palace archive, over 25,000 tablets from about 1800–1750 BCE, is a major record of the Amorite kingdoms of Syria and Mesopotamia in this age.",
+        "sources": [
+          { "title": "Wikipedia, \"Mari, Syria\" (Babylon invades c. 1761 BC; city razed after revolt c. 1759 BC; over 25,000 tablets, c. 1800–1750 BC)", "url": "https://en.wikipedia.org/wiki/Mari,_Syria" }
+        ]
+      },
+      {
+        "yearBCE": 1753,
+        "approx": true,
+        "description": "Hammurabi's laws are set down near the end of his reign.",
+        "significance": "Law 146 deals with a wife who gives her husband a slave woman, who bears him children and then claims equal standing with her mistress, much as Hagar looks down on Sarai (Genesis 16:4).",
+        "sources": [
+          { "title": "Wikipedia, \"Code of Hammurabi\" (composed c. 1753 BC)", "url": "https://en.wikipedia.org/wiki/Code_of_Hammurabi" },
+          { "title": "The Code of Hammurabi, tr. L. W. King, laws 144–147 (Avalon Project, Yale Law School)", "url": "https://avalon.law.yale.edu/ancient/hamcode.asp" },
+          { "title": "Genesis 16:4", "url": "https://www.sefaria.org/Genesis.16.4" }
+        ]
+      }
+    ]
+  },
+  "vayikra": {
+    "windowStartBCE": 1321,
+    "windowEndBCE": 1185,
+    "note": "Tradition dates the Tabernacle, where these laws are given, to c. 1312 BCE. Scholars who date the Exodus usually place it in the 13th century BCE, and many doubt it can be dated. These events run from c. 1321 to 1185 BCE, across both.",
+    "events": [
+      {
+        "yearBCE": 1321,
+        "endBCE": 1295,
+        "approx": true,
+        "description": "Hittite king Mursili II prays for an end to a plague that has lasted twenty years, confessing that the Hittites broke an oath sworn to their storm-god.",
+        "significance": "He pairs admitting the wrong with offerings. Leviticus 5 also joins confession (5:5) to an offering.",
+        "sources": [
+          { "title": "\"The Plague Prayer of Mursilis II\", Early Indo-European Online, University of Texas at Austin (c. 1321–1295; broken oath; confession and offerings)", "url": "https://lrc.la.utexas.edu/eieol/hitol/80" },
+          { "title": "Eva von Dassow, \"Contagion and Recovery in the Hittite Empire\", History News Network (\"the twentieth year\")", "url": "https://historynewsnetwork.org/article/175827" },
+          { "title": "Leviticus 5:5", "url": "https://www.sefaria.org/Leviticus.5.5" }
+        ]
+      },
+      {
+        "yearBCE": 1274,
+        "approx": true,
+        "description": "Battle of Kadesh: Ramesses II of Egypt fights the Hittites at Kadesh in Syria.",
+        "significance": "About 15 years later Ramesses II and the Hittite king Hattusili III make the oldest known peace treaty whose text survives.",
+        "sources": [
+          { "title": "Wikipedia, \"Battle of Kadesh\" (generally dated to May 1274 BCE; treaty some 15 years later)", "url": "https://en.wikipedia.org/wiki/Battle_of_Kadesh" },
+          { "title": "Wikipedia, \"Egyptian–Hittite peace treaty\" (around 1259 BC; \"the oldest known surviving peace treaty\")", "url": "https://en.wikipedia.org/wiki/Egyptian%E2%80%93Hittite_peace_treaty" }
+        ]
+      },
+      {
+        "yearBCE": 1208,
+        "approx": true,
+        "description": "Pharaoh Merneptah's victory stele says “Israel is laid waste—its seed is no more.”",
+        "significance": "The earliest mention of Israel outside the Bible, and the only one from ancient Egypt. It names Israel as a people, alongside places in Canaan.",
+        "sources": [
+          { "title": "Wikipedia, \"Merneptah Stele\" (year 5 of Merneptah, c. 1208 BCE)", "url": "https://en.wikipedia.org/wiki/Merneptah_Stele" }
+        ]
+      },
+      {
+        "yearBCE": 1185,
+        "approx": true,
+        "description": "Ugarit, on the Syrian coast, is destroyed. Its ritual texts, written before the destruction, list offerings including the šlmm, the “peace-offering”.",
+        "significance": "The word matches Hebrew shelamim, the well-being offering in Leviticus 3. The texts list what was offered more than they explain what the rites meant.",
+        "sources": [
+          { "title": "Dennis Pardee, Ritual and Cult at Ugarit (Society of Biblical Literature, 2002): destruction \"ca. 1185 B.C.E.\"; šlmm \"peace-offering\", \"cognate with Hebrew šəlāmîm\"", "url": "https://www.sbl-site.org/wp-content/uploads/2024/11/Pardee.pdf" }
+        ]
+      }
+    ]
+  }
+}
