@@ -114,7 +114,7 @@
       { "yearBCE": 1457, "description": "Battle of Megiddo: Thutmose III defeats Canaanite and Syrian rulers led by the king of Kadesh", "significance": "Egypt establishes dominance over Canaan" },
       { "yearBCE": 1353, "description": "Akhenaten becomes pharaoh and promotes worship of the Aten, the sun disk, above all other gods", "significance": "Often called an early move toward worshipping one god; scholars debate whether it was true monotheism" },
       { "yearBCE": 1274, "description": "Battle of Kadesh: Egypt against the Hittites", "significance": "About 16 years later (c. 1258 BCE) Ramesses II and Hattusili III make one of the earliest peace treaties whose text survives" },
-      { "yearBCE": 1200, "description": "Late Bronze Age collapse: widespread destruction across the eastern Mediterranean", "significance": "Palace economies collapse; Ugarit, the Hittite capital Hattusa and Mycenae fall in the decades around 1200–1180 BCE" }
+      { "yearBCE": 1200, "description": "Late Bronze Age collapse: widespread destruction across the eastern Mediterranean", "significance": "Palace economies collapse; Ugarit is destroyed in the early 12th century BCE, and Mycenae and the Hittite capital Hattusa are destroyed or abandoned around the same time" }
     ],
     "worldEvents": [
       { "region": "Aegean", "description": "Mycenaean Greece flourishes — the era of the Trojan War cycle immortalized by Homer. Mycenae, Tiryns, and Athens build massive palace complexes" },

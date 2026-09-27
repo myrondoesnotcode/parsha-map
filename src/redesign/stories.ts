@@ -210,7 +210,7 @@ const lechLecha: ParshaStory = {
       title: 'Lot chooses the plain',
       body: 'Back at the tent between Bethel and Ai, Abram’s and Lot’s flocks and herds are too many for the land to hold them both, and their herders quarrel. Lot picks the well-watered Jordan plain and pitches his tents near Sodom.',
       ref: 'Genesis 13:1–12',
-      note: 'From Egypt they went back up through the Negev to the old tent site (13:1–3). Where Sodom stood isn’t known; the pin follows one proposal, north of the Dead Sea, and others place it elsewhere. The numbered pin marks Bethel; the tent site was east of it, toward Ai.',
+      note: 'From Egypt they went back up through the Negev to the old tent site (13:1–3). Where Sodom stood isn’t known; the pin follows one disputed proposal, Tall el-Hammam, north-east of the Dead Sea, and others place it elsewhere. The numbered pin marks Bethel; the tent site was east of it, toward Ai.',
       camera: { center: [35.44, 31.9], zoom: 8.6, pitch: 55, bearing: -40 },
       routeTo: 4,
       stop: 5,
@@ -268,7 +268,7 @@ const lechLecha: ParshaStory = {
     {
       kind: 'talk',
       title: 'God told Abram to leave his land and his father’s house for “the land that I will show you,” without naming it. What would be hardest for you to leave behind?',
-      note: 'Numbered pins mark usual identifications (Haran = Harran, Shechem = Tell Balata, Bethel = Beitin); none is certain, and Egypt is a region. Zoomed out this far, nearby stops share one pin: Shechem, Bethel (visited twice) and Hebron show as one pin marked 2·3·5·6. God’s words don’t name the land (12:1), though 12:5 says they set out for the land of Canaan. Lines join the stops in order; the roads Abram took aren’t known.',
+      note: 'Numbered pins mark usual identifications (Haran = Harran, Shechem = Tell Balata, Bethel = Beitin); none is certain, and Egypt is a region. Zoomed out this far, stops close together share one pin, numbered for each stop in it (for example 2·3·5·6 for Shechem, Bethel twice and Hebron). God’s words don’t name the land (12:1), though 12:5 says they set out for the land of Canaan. Lines join the stops in order; the roads Abram took aren’t known.',
       camera: { center: [35.6, 33.2], zoom: 4.9, pitch: 20, bearing: 0 },
       routeTo: 5,
     },
@@ -340,7 +340,7 @@ const vayikra: ParshaStory = {
       body: 'A courtyard 100 cubits by 50: about 50 by 25 metres if a cubit is half a metre, roughly an Olympic pool. The altar of burnt offering stands at the Tabernacle’s entrance, and offerings are brought there.',
       ref: 'Exodus 27:1, 18; 40:29–30 · Leviticus 1:3',
       act: 'The offerings',
-      note: 'Tent placement and the 10 × 10 cubit Holy of Holies follow Rashi (Exodus 26:32, 27:18). The altar’s exact spot is schematic and the laver (Exodus 40:30) is not shown. Posts are drawn evenly every 5 cubits, so the 20-cubit gate shows five dots from edge to edge. The text gives each 15-cubit flank three posts and the gate four (Exodus 27:14–16); the drawing’s even spacing cannot show that split exactly. Where it all stood is unknown; the location is illustrative.',
+      note: 'Tent placement and the 10 × 10 cubit Holy of Holies follow Rashi (Exodus 26:32, 27:18). The altar’s exact spot is schematic and the laver (Exodus 40:30) is not shown. Posts are drawn evenly every 5 cubits, so the 20-cubit gate shows five dots from edge to edge. The text gives each 15-cubit flank three posts and the gate four (Exodus 27:14–16); the drawing’s even spacing cannot show that split exactly. Where it all stood is unknown; the location is illustrative and lies in today’s town of Saint Catherine.',
       // Camera is set per ground treatment in DaylightMap's cameraFor().
       camera: { center: MISHKAN_AT, zoom: 18.4, pitch: 48, bearing: -24 },
       routeTo: 0,
@@ -349,7 +349,7 @@ const vayikra: ParshaStory = {
       kind: 'offerings',
       title: 'Five kinds of offering',
       ref: 'Leviticus 1–5',
-      note: '“Purgation” and “well-being” follow the JPS Tanakh: Gender-Sensitive Edition, which calls the אָשָׁם the reparation offering; here it keeps its familiar name, guilt offering. Older translations say sin offering and peace offering. The priest keeps the burnt offering’s hide (7:8). Where the Tabernacle stood is unknown; the spot on the map is illustrative and lies in today’s town of Saint Catherine.',
+      note: '“Purgation” and “well-being” follow the JPS Tanakh: Gender-Sensitive Edition, which calls the אָשָׁם the reparation offering; here it keeps its familiar name, guilt offering. Older translations say sin offering and peace offering. The priest keeps the burnt offering’s hide (7:8).',
       items: [
         { he: 'עֹלָה', en: 'Burnt offering', note: 'An unblemished male from the herd or flock is skinned and cut up, and all of it goes up in smoke on the altar; the priest keeps the hide. A bird may be brought instead.' },
         { he: 'מִנְחָה', en: 'Grain offering', note: 'Usually choice flour with oil and frankincense. Always salted.' },
