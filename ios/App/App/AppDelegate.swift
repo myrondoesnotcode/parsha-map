@@ -9,9 +9,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         OneSignal.initialize("bf551fe6-a3b9-4d4e-b36f-bd45ae2e2db5", withLaunchOptions: launchOptions)
-        OneSignal.Notifications.requestPermission({ accepted in
-            print("Push permission accepted: \(accepted)")
-        }, fallbackToSettings: true)
+        // Ask once. canRequestPermission is false after the user has answered the
+        // system prompt, and fallbackToSettings: false means we never show the
+        // "Open Settings" alert to someone who said no.
+        if OneSignal.Notifications.canRequestPermission {
+            OneSignal.Notifications.requestPermission({ accepted in
+                print("Push permission accepted: \(accepted)")
+            }, fallbackToSettings: false)
+        }
         return true
     }
 
