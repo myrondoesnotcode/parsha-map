@@ -188,3 +188,34 @@ Checks: `npm run check:stories -- vayishlach --strict` ✓ 24 cards, 0 errors, 0
 | Missed, card 11 | "Rabbi Ḥama son of Rabbi Ḥanina", as Bereshit Rabbah 77:3 on Sefaria spells it |
 
 Not changed: card 7's lit pin sits under the dawn sky (not a false claim; the stop badge shows the place). Out of scope, reported to Myron: the cover brief (c005, "ford at dawn"; the crossing was at night, 32:23, and the sunrise came at Penuel, 32:32); the Map tab still pins Migdal-eder (Eder 1, Khirbet el-Bira) and Allon-bacuth from places.json; all Read-tab items.
+
+## Fourth pass (workflow wf_82ef0308-a6f)
+
+347 claims, 283 verified. In this run the history checker could not fetch the web (session limit), so it marked site claims "unsupported". Each was then checked by hand against the Wikipedia page the story cites:
+
+| Claim | Source text |
+|---|---|
+| Seir between the Dead Sea and the Gulf of Aqaba; Arabah to the west | "Mount Seir": "stretching between the Dead Sea and the Gulf of Aqaba"; "bordered by the Arabah to the west" |
+| Finkelstein places Penuel at the eastern mound, Tell edh-Dhahab el-Sharqi | "Penuel": "the eastern one, Tell edh-Dhahab el-Sharqi, with Penuel" |
+| Deir Alla as Succoth not confirmed by any inscription | "Deir Alla": "The hopeful identification of the site as the biblical Sukkot is not confirmed by any inscription at the site" |
+| Tell Balata usually identified with Shechem | "Tell Balata": "associated since 1913 with the Biblical city of Shechem" |
+| Most scholars identify Bethel with Beitin | "Bethel": "Most scholars identify Bethel with the modern-day village of Beitin" |
+| Rachel's Tomb at Bethlehem's northern entrance; named as her grave since the early 4th century; northern proposals | "Rachel's Tomb": "located at the northern entrance to … Bethlehem"; "earliest extra-biblical records … date to the first decades of the 4th century CE"; "a northern version, locating it north of Jerusalem near Ramah" |
+| Tel Rumeida the usual site of ancient Hebron | "Tel Rumeida": "thought to constitute the Canaanite, Israelite and Edomite settlements of Hebron" |
+| Mamre at Ramat el-Khalil (Josephus), 4 km north of Hebron; other proposals | "Mamre": "Josephus … locate Mamre at … Ramat el-Khalil, 4 km north of historical Hebron"; Abel and Jericke place it at Khirbet Nimra |
+| Migdal-eder | "Migdal Eder (biblical location)": "locates it near the present-day city of Bethlehem … early sources differ on the location" |
+
+Applied:
+
+| Finding | Change |
+|---|---|
+| c34 | Card 4 note: the river point is drawn beside Penuel "(its pin appears later)" |
+| c217 | "Genesis 49:29–31" |
+| c250 | Deeper question: "at Peniel by the Jabbok (32:29–31)" |
+| c235 / missed | Seir card camera zoomed in so the route pins no longer sit clipped under the header |
+| Missed, card 6 camera | Same view as card 4 |
+| Missed, card 21 | Title "…twelve in number" (JPS 35:22b); note says the first half of 35:22, about Reuben, is not told here (the ref stays 35:21–26: the checker can't read "22b") |
+| Missed, card 10 note | "Peniel (32:31) and Penuel (32:32) name the same place; JPS notes that Peniel is understood as 'face of God'" |
+| c241 / missed, Ephrath | Finale note: on a phone 1·2 sits on Penuel and 5·6 on Ephrath, and the line runs on to Hebron; the Ephrath pin marks the road Rachel died on, and the text doesn't say Jacob reached the town |
+
+Not changed: the Zarqa isn't drawn by the basemap at the gift card's zoom (map data; the label says "point illustrative"); the NameMorph keeps only the shared י (checked on screen). Out of scope, reported: cover brief (c5), Map-tab pins for Migdal-eder and Allon-bacuth, Read-tab items.
