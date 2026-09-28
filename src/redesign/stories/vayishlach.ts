@@ -29,8 +29,6 @@ const SUCCOTH: LngLat = [35.62118, 32.1966]
 const SHECHEM: LngLat = [35.281944, 32.213611]
 /** Bethel (places.json a64f355), pinned at Beitin, its usual identification. */
 const BETHEL: LngLat = [35.241389, 31.922778]
-/** Ephrath (places.json af4e985) = Bethlehem (35:19), pinned at Bethlehem. Rachel died some distance short of it (35:16). */
-const EPHRATH: LngLat = [35.207639, 31.704306]
 /** Hebron (places.json a85151a), pinned at Tel Rumeida, its usual identification. */
 /** Rachel's Tomb, the traditional site of her grave at Bethlehem's northern entrance (Wikipedia "Rachel's Tomb": 31.7193 N, 35.2021 E). Only a bend in the Bethel → Hebron line. */
 const RACHELS_TOMB: LngLat = [35.2021, 31.7193]
@@ -283,11 +281,11 @@ const vayishlach: ParshaStory = {
       title: 'Rachel',
       body: 'On the road from Bethel, still some distance short of Ephrath, Rachel has a hard labor. As she is dying she names her son Ben-oni; his father calls him Benjamin. She is buried on the road to Ephrath, now Bethlehem, and Jacob sets up a pillar over her grave.',
       ref: 'Genesis 35:16–20 · Rashi · Jeremiah 31:15',
-      note: 'The midwife tells her, “Have no fear, for it is another boy for you” (35:17). The JPS notes: Ben-oni is understood as “son of my suffering (or, strength),” Benjamin as “son of the right hand” or “son of the south.” The verse calls it “the pillar at Rachel’s grave to this day” (35:20). Rashi on 48:7 says Jacob buried her by the road at God’s command, so that she could plead for her children when they were driven into exile: “Rachel weeping for her children” (Jeremiah 31:15). The pin marks Bethlehem. Rachel’s Tomb, at Bethlehem’s northern entrance, is the traditional site, named as her grave in writings since the early 4th century CE; some scholars propose sites further north. The line stops at that traditional site, short of the town; where on the road she died isn’t said.',
+      note: 'The midwife tells her, “Have no fear, for it is another boy for you” (35:17). The JPS notes: Ben-oni is understood as “son of my suffering (or, strength),” Benjamin as “son of the right hand” or “son of the south.” The verse calls it “the pillar at Rachel’s grave to this day” (35:20). Rashi on 48:7 says Jacob buried her by the road at God’s command, so that she could plead for her children when they were driven into exile: “Rachel weeping for her children” (Jeremiah 31:15). The ring marks Rachel’s Tomb, at Bethlehem’s northern entrance, the traditional site, named as her grave in writings since the early 4th century CE; some scholars propose sites further north. The line stops at that traditional site, short of the town; where on the road she died isn’t said.',
       // The line stops at the traditional grave (the bend of the Bethel → Hebron leg), short of Ephrath: she died "some distance short of Ephrath" (35:16).
       camera: { center: [35.225, 31.79], zoom: 10.2, pitch: 45, bearing: 0 },
       routeTo: 3.5,
-      spot: { name: 'Ephrath (now Bethlehem)', at: EPHRATH, place: 'af4e985' },
+      spot: { name: 'Rachel’s Tomb (traditional site)', at: RACHELS_TOMB },
     },
     {
       kind: 'offerings',
