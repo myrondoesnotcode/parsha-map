@@ -904,7 +904,8 @@ function Burst() {
 function DreamSky() {
   const bodies = Array.from({ length: 13 }, (_, i) => {
     const t = i / 12
-    return { x: 8 + t * 84, y: 24 - Math.sin(Math.PI * t) * 16, kind: i === 0 ? 'sun' : i === 12 ? 'moon' : 'star' }
+    // A low arc near the horizon, below the card's text (which fills the top of the sky).
+    return { x: 12 + t * 76, y: 86 - Math.sin(Math.PI * t) * 10, kind: i === 0 ? 'sun' : i === 12 ? 'moon' : 'star' }
   })
   return (
     <motion.div className="dl-sky" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.2 }} aria-label="The sun, the moon and eleven stars">
