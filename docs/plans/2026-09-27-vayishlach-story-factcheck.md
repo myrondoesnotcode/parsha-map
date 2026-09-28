@@ -251,3 +251,28 @@ Out of scope, reported: cover emblem brief (c7, c9), Map-tab dots, Read-tab item
 | Read tab | R11, R14, R23, R34, R38/R39, R44, keyFigures: applied on `lane/name-letter-cards` (`4461b5b`) |
 
 Not changed: the Rashi on 32:16 midrash (optional); approximateDateBCE and timeline primarySources (classic UI only; not rendered in Daylight).
+
+## Final pass (workflow wf_1be9a141-f3a)
+
+352 claims (251 story, 101 Read tab and history), 342 verified, status INCOMPLETE: one claim (c5) was checked by no lens. 9 problems and 12 missed items, each re-checked against the source. Shared-file fixes are written up in `2026-09-28-vayishlach-shared-fixes.md`.
+
+| Finding | Decision | Evidence | Change |
+|---|---|---|---|
+| c8 / missed: Penuel hedge "proposed: Tell edh-Dhahab" | Accept | Wikipedia "Penuel": Finkelstein identifies "the western, larger, Tell el-Dhahab al-Gharbi with Mahanaim and the eastern one, Tell edh-Dhahab el-Sharqi, with Penuel" | Route hedge: "proposed: Tell edh-Dhahab el-Sharqi" |
+| c78 / missed: wrestling shown at the Penuel pin, with no word on which bank | Accept, reworded | JPS 32:23–25 has Jacob cross the ford, take them across, then be "left alone"; Rashi on 32:25: "He had forgotten some small jars and he returned for them (Chullin 91a)" | "Jacob is left alone" note adds: "Rashi on 32:25 says Jacob was left alone because he had gone back for some small jars he had forgotten; the verses don't say on which bank of the river he wrestled." Pin kept. The checker's "went back across … on the side he came from" is an inference Rashi doesn't state, so not used |
+| c201 / missed: route tag "the line ends at an illustrative point" on the Rachel and sons cards | Accept, shared | StoryPlayer.tsx shows that tag for any non-integer `routeTo`; the line ends on `RACHELS_TOMB` (Wikipedia "Rachel's Tomb" 31.7193434 N, 35.202116 E) | Needs a shared fix (item 1) |
+| R30 / missed: didYouKnow "given after Jacob crossed the Jabbok" | Accept, reworded | As c78: JPS 32:23 "he crossed the ford", but Rashi on 32:25 has him go back | "given the night Jacob took his family across the ford of the Jabbok (32:23–29)" |
+| R45 / missed: jewishTradition "given that night after Jacob crossed the Jabbok" | Accept, reworded | As R30 | "The name given the night Jacob took his family across the ford of the Jabbok, Israel, …" |
+| R53: "In history" eyebrow | Reject as a separate change | The card's other content is history (Tell Balata, Khu-Sebek, Amarna); only the first sentence was Torah narrative, fixed under R54 | None |
+| R54 / missed: "Jacob's wrestling came the night …" under "In history" | Accept, reworded | JPS 32:23–25 is the only source for the event | "The Torah sets Jacob's wrestling on the night he took his family across the ford of the Jabbok (32:23–25), today's Zarqa River in Jordan, …" |
+| R82: "earliest known alphabetic writing, c. 1850 BCE" | Accept, shared (`lane/name-letter-cards` only) | Wikipedia "Proto-Sinaitic script": Umm el-Marra cylinders "ca. 2300 BC … hypothesized to be Early Alphabetic". This branch already reads "Earliest securely identified … (dates debated)"; wt-cards reads "Earliest known" | Needs a shared fix (item 4) |
+| R95: date-bar tail to 1150 BCE | Accept, shared (`lane/name-letter-cards` only; no `laterToBCE` on this branch) | McCarter/Hendel give Late Bronze "1550–1200 B.C.E." and Iron I 1200–1000; no cited source names 1150 for the patriarchs | Needs a shared fix (item 6) |
+| Missed: Dinah "the women of the land" | Accept | JPS 34:1 "went out to visit the daughters of the land"; the Read tab says "daughters" | "the daughters of the land" |
+| Missed: Map tab plots 35:21 as "Eder" at Khirbet el-Bira | Accept, shared | places.json ab80fa1 "Eder 1", 31.6793 N, 35.15464 E; a1b30e1 "Eder 2" is Joshua 15:21 (Arad) | Needs a shared fix (item 2) |
+| Missed: Allon-bacuth, El-bethel, Luz "medium" while Bethel is "low" | Accept, shared | places.json descriptions "within 1 km of Bethel", "in Bethel", "another name for Bethel"; JPS 35:8 "the oak below Bethel" | Needs a shared fix (item 3) |
+| Missed: approximateDateBCE 1850–1650 | Accept, shared | Unsourced; shown only by the classic UI (`?ui=classic`, ParshaHeader.tsx); all 54 records carry the field and the classic time slider uses it | Needs a shared fix (item 7); record not changed alone |
+| Missed: Execration Texts "the earliest Egyptian references to biblical cities" | Accept, shared | Wikipedia "Execration texts": Berlin/Brussels groups "end of the 20th century BCE to midway through the 18th"; "possibly the first known mention of Jerusalem" | Needs a shared fix (item 5); not rendered in Daylight |
+| Missed: Mamre "since ancient times (Josephus)" | Accept, reworded | Wikipedia "Mamre" credits Josephus, but Josephus (War 4.9.7, Whiston tr., Project Gutenberg) shows "at the distance of six furlongs from the city, a very large turpentine tree", about 1.1 km, and doesn't name Mamre there. The same article: "Herod the Great initiated the Jewish identification of the site with Mamre" and "a tradition from the time of Herod (1st century BCE)" | "Mamre has been placed since Herod's time (1st century BCE) at Ramat el-Khalil, about 4 km north of Hebron, …" |
+| Unchecked c5: "24 cards · about N min" | Checked here | Counted 24 cards; the minutes come from `storyMinutes` (reading pace ~190 words a minute, talk and guess cards excluded) and are labelled "about" | None |
+
+The Read tab text changed here also sits unchanged on `lane/name-letter-cards`; merge with care. The "No `via` points" line under Deliberate choices is out of date since the sixth pass (the Hebron leg bends at Rachel's Tomb).
