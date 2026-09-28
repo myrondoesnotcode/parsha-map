@@ -532,6 +532,7 @@
   position: absolute; left: 14px; top: calc(var(--safe-top) + 62px); z-index: 2; pointer-events: none !important;
   font: 700 11px var(--font); color: var(--muted); background: rgba(255, 255, 255, 0.8);
   padding: 4px 9px; border-radius: 10px;
+  max-width: calc(100% - 72px); /* wraps before the map's attribution button on the right */
 }
 /* Today tab: under the top bar. Map tab: under the search, chips and date bar. */
 .dl-device[data-tab='map'] .dl-route-tag-map { top: calc(var(--safe-top) + 262px); }
