@@ -695,16 +695,9 @@ export function Vayishlach() {
     <>
       <Sky id="vayishlach-sky" stops={[[0, C.blueSoft], [0.5, '#f4b27c'], [0.7, C.sand]]} />
       <Layer depth={0.1} tilt={tilt}>
-        {/* the sun coming up */}
-        <motion.g initial={still ? false : { y: 46 }} animate={{ y: 0 }} transition={{ duration: 7, ease: 'easeOut' }}>
-          <motion.g style={at(210, 356)} animate={still ? undefined : { scale: [1, 1.08, 1], opacity: [0.7, 1, 0.7] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}>
-            {Array.from({ length: 11 }, (_, i) => (
-              <path key={i} d="M210 356 L204 250 L216 250 Z" fill="#fff7e6" opacity="0.4" transform={`rotate(${-75 + i * 15} 210 356)`} />
-            ))}
-          </motion.g>
-          <circle cx="210" cy="356" r="80" fill="url(#glow)" />
-          <circle cx="210" cy="356" r="36" fill="#f1cf7a" />
-          <circle cx="205" cy="351" r="26" fill="#ffe2b8" opacity="0.7" />
+        {/* first light: the glow of the sun still below the hills (the break of dawn, 32:25; the sun rises only at Penuel, 32:32) */}
+        <motion.g initial={still ? false : { opacity: 0.5 }} animate={{ opacity: 1 }} transition={{ duration: 7, ease: 'easeOut' }}>
+          <motion.circle cx="210" cy="392" r="96" fill="url(#glow)" animate={still ? undefined : { opacity: [0.75, 1, 0.75] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }} />
         </motion.g>
       </Layer>
       <Layer depth={0.3} tilt={tilt}>
@@ -725,8 +718,8 @@ export function Vayishlach() {
             transition={{ duration: 3 + i * 0.6, delay: i * 0.4, repeat: Infinity, ease: 'easeInOut' }}
           />
         ))}
-        {/* the sun on the water */}
-        {[[60, 458, 16], [120, 466, 12], [214, 470, 22], [300, 472, 14], [370, 466, 18]].map(([x, y, w], i) => (
+        {/* first light on the water */}
+        {[[120, 466, 12], [214, 470, 18], [300, 472, 12]].map(([x, y, w], i) => (
           <motion.rect
             key={i} x={x - w / 2} y={y} width={w} height="2.6" rx="1.3" fill="#fff7e6"
             initial={false}

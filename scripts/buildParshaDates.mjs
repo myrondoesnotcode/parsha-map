@@ -52,7 +52,7 @@ const parshiot = {
     note: 'Sarah was 90 at Isaac\'s birth (17:17, 21:5) and died at 127 (23:1), so Isaac was 37; Seder Olam 1 also gives 37 for the binding. Chabad.org lists her death as 2084, a year earlier; the "c." covers it.',
   },
   toldot: { scholarly: 'patriarchs', traditional: t(JACOB, 'Jacob and Esau are born; Isaac is 60', [SEF('Genesis 25:26'), SOR(1), CHABAD_PATRIARCHS]) },
-  vayetze: { scholarly: 'patriarchs', traditional: t(JACOB + 77, 'Jacob reaches the well in Haran, aged 77', [SOR(2), SEF('Genesis 29:2')]) },
+  vayetze: { scholarly: 'patriarchs', traditional: t(JACOB + 77, 'Jacob comes to the well, aged 77', [SOR(2), SEF('Genesis 29:2')]) },
   vayishlach: { scholarly: 'patriarchs', traditional: t(JACOB + 97, 'Jacob returns after 20 years with Laban', [SEF('Genesis 31:41'), SOR(2)]) },
   vayeshev: { scholarly: 'patriarchs', traditional: t(JOSEPH + 17, 'Joseph is 17', [SEF('Genesis 37:2'), SEF('Genesis 47:9'), SOR(2)]) },
   miketz: { scholarly: 'patriarchs', traditional: t(JOSEPH + 30, 'Joseph, 30, stands before Pharaoh', [SEF('Genesis 41:46'), SOR(2)]) },
@@ -115,11 +115,11 @@ const scholarly = {
     ],
   },
   patriarchs: {
-    label: 'Date unknown · often placed c. 2000–1550 BCE',
+    label: 'Date unknown · often placed c. 2000–1550 BCE; some date it later',
     startBCE: 2000,
     endBCE: 1550,
     sources: [
-      { title: 'Gary A. Rendsburg, "The Ancestral Narratives," in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): "Those who date \'the patriarchal age\' to the Middle Bronze Age (c. 2000–c. 1550)…"', url: 'https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%201%20text%20%20notes.pdf' },
+      { title: 'Gary A. Rendsburg, "The Ancestral Narratives," in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): proposals for Abraham run "anywhere from c. 2100 to c. 1400"; he describes the Middle Bronze Age dating (c. 2000–c. 1550) and favours the later, Late Bronze Age date', url: 'https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%201%20text%20%20notes.pdf' },
       { title: 'P. Kyle McCarter Jr., rev. Ronald S. Hendel, "The Patriarchal Age," in Ancient Israel (1999): Middle Bronze Age texts "dating to about 2000–1550 B.C.E."', url: 'http://cojs.org/wp-content/uploads/Patriarchal_Age.pdf' },
       { title: 'Wikipedia, "Abraham" (historicity: by the 21st century archaeologists had stopped trying to fix a context)', url: 'https://en.wikipedia.org/wiki/Abraham' },
     ],

@@ -163,7 +163,7 @@ export function ReadScreen() {
             <motion.article {...rise(0)} className="dl-card" style={{ background: C.blue, color: C.sand }}>
               <div className="dl-eyebrow" style={{ color: C.blueSoft }}>
                 <Landmark size={16} strokeWidth={2.2} />{' '}
-                {eraYear(parsha) === null ? 'Other ancient stories' : 'The world around it'}
+                {eraYear(parsha) === null ? 'Other ancient stories' : 'In history'}
               </div>
               <p style={{ margin: '8px 0 0', font: `400 16px/1.5 ${FONT.display}` }}>{rc.historicalContext}</p>
             </motion.article>
@@ -193,8 +193,8 @@ export function ReadScreen() {
               <p style={{ margin: '8px 0 12px', font: `400 16px/1.5 ${FONT.display}`, color: C.body }}>{era.shortDesc}</p>
               {/* The era list is a fallback for parshiot without dated events of their own: say what it is and isn't. */}
               <p style={{ margin: '0 0 12px', font: `500 13px/1.45 ${FONT.display}`, color: C.muted }}>
-                No one knows when this parsha’s events happened; scholars often place them in this era. The events below show
-                that world. The Torah names none of them.
+                No one knows when this parsha’s events happened, or whether they can be dated; some scholars place them in
+                this era, others later. The events below show that era’s world. The Torah names none of them.
               </p>
               <ol className="dl-timeline">
                 {[...(era.events ?? [])].sort((a, b) => b.yearBCE - a.yearBCE).map((e) => (
