@@ -330,7 +330,7 @@ function placeLabels(story: ParshaStory, pts: { x: number; y: number }[], cluste
     const hedge = names.length === 1 && !finale ? names[0].hedge : undefined
     const w = Math.min(170, Math.max(...lines.map((l) => textWidth(l)), hedge ? textWidth(hedge, 600, 11) : 0) + 18)
     const hedgeLines = hedge ? Math.ceil((textWidth(hedge, 600, 11) + 18) / 170) : 0
-    const h = lines.length * 17 + hedgeLines * 15 + 6
+    const h = lines.length * 17 + hedgeLines * 15 + (names.length > 1 && !finale ? 15 : 0) + 6
     const pin = pinBox(i)
     const cy = (pin.y0 + pin.y1) / 2
     const boxes: [LabelSide, Box][] = [
@@ -736,6 +736,8 @@ export function DaylightMap() {
                           {withHedge && s.hedge && <span style={{ display: 'block', font: `600 11px ${FONT.display}`, color: C.muted }}>{s.hedge}</span>}
                         </span>
                       ))}
+                      {/* A merged pin can't show each stop's hedge; off the finale (which has its own banner) say it once. */}
+                      {labels.length > 1 && card?.kind !== 'talk' && <span style={{ font: `600 11px ${FONT.display}`, color: C.muted }}>sites uncertain</span>}
                     </motion.span>
                   </motion.div>
                 )}

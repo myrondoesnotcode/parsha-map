@@ -215,7 +215,7 @@ export function StoryPlayer() {
       </div>
 
       {/* A drawn route is a sketch of the order of places, not the roads: say so while a line is on screen, and on the finale. */}
-      {story.route.length > 0 && (card.kind === 'talk' || ((card.routeTo ?? 0) > 0 && card.kind !== 'cover' && card.kind !== 'guess' && card.kind !== 'stars')) && (
+      {story.route.length > 0 && (card.kind === 'talk' || ((card.routeTo ?? 0) > 0 && card.kind !== 'cover' && card.kind !== 'guess')) && (
         <div className="dl-route-tag">
           {card.kind === 'talk'
             ? 'Route illustrative · pin sites are uncertain'
