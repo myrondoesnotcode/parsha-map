@@ -677,7 +677,7 @@ export function Vayetze() {
             </motion.g>
           )
         })}
-        {/* the stone Jacob put under his head (28:11), on the ground apart from the stairway */}
+        {/* the stone Jacob put under his head (28:11); its place relative to the stairway is illustrative */}
         <g transform="translate(-50 0)">
           <path d="M112 508 C106 496 116 484 134 484 C150 484 160 492 158 504 C156 510 118 512 112 508 Z" fill={C.land} />
           <path d="M140 485 C152 487 160 494 158 504 C156 508 146 510 138 510 C146 500 146 492 140 485 Z" fill="#d9ccb1" />
@@ -687,19 +687,14 @@ export function Vayetze() {
   )
 }
 
-// ——— Vayishlach: the ford of the Jabbok as the sun rises ———————————————————————
+// ——— Vayishlach: the ford of the Jabbok at night (32:23) ———————————————————————
 
 export function Vayishlach() {
   const { tilt, still } = useArtMotion()
   return (
     <>
-      <Sky id="vayishlach-sky" stops={[[0, C.blueSoft], [0.5, '#f4b27c'], [0.7, C.sand]]} />
-      <Layer depth={0.1} tilt={tilt}>
-        {/* first light: the glow of the sun still below the hills (the break of dawn, 32:25; the sun rises only at Penuel, 32:32) */}
-        <motion.g initial={still ? false : { opacity: 0.5 }} animate={{ opacity: 1 }} transition={{ duration: 7, ease: 'easeOut' }}>
-          <motion.circle cx="210" cy="392" r="96" fill="url(#glow)" animate={still ? undefined : { opacity: [0.75, 1, 0.75] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }} />
-        </motion.g>
-      </Layer>
+      {/* Night: Jacob crossed "that same night" (32:23). No dawn, sun or stars: the verses give none at the ford. */}
+      <Sky id="vayishlach-sky" stops={[[0, '#0e1554'], [0.62, C.blue], [0.8, '#6f7be6']]} />
       <Layer depth={0.3} tilt={tilt}>
         <path d="M-40 380 L20 352 L70 364 L120 340 L166 366 L196 372 L226 370 L262 346 L310 360 L360 338 L460 370 L460 560 L-40 560 Z" fill="#e6cfa8" />
       </Layer>
@@ -718,7 +713,7 @@ export function Vayishlach() {
             transition={{ duration: 3 + i * 0.6, delay: i * 0.4, repeat: Infinity, ease: 'easeInOut' }}
           />
         ))}
-        {/* first light on the water */}
+        {/* a faint sheen on the water */}
         {[[120, 466, 12], [214, 470, 18], [300, 472, 12]].map(([x, y, w], i) => (
           <motion.rect
             key={i} x={x - w / 2} y={y} width={w} height="2.6" rx="1.3" fill="#fff7e6"
