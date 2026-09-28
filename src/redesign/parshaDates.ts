@@ -11,6 +11,8 @@ export interface ScholarlyDate {
   label: string
   startBCE?: number
   endBCE?: number
+  /** Later dates some scholars give: drawn as a fading tail after the band (the "or later" of the label). */
+  laterToBCE?: number
   sources: Source[]
 }
 

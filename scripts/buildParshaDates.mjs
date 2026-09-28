@@ -118,6 +118,8 @@ const scholarly = {
     label: 'Date unknown · often c. 2000–1550 BCE, or later',
     startBCE: 2000,
     endBCE: 1550,
+    // Rendsburg favours the Late Bronze Age (c. 1550–c. 1150) for "the patriarchal age": the band fades out to there.
+    laterToBCE: 1150,
     sources: [
       { title: 'Gary A. Rendsburg, "The Ancestral Narratives," in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): proposals for Abraham run "anywhere from c. 2100 to c. 1400"; he describes the Middle Bronze Age dating (c. 2000–c. 1550) and favours the later, Late Bronze Age date', url: 'https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%201%20text%20%20notes.pdf' },
       { title: 'P. Kyle McCarter Jr., rev. Ronald S. Hendel, "The Patriarchal Age," in Ancient Israel (1999): Middle Bronze Age texts "dating to about 2000–1550 B.C.E."', url: 'http://cojs.org/wp-content/uploads/Patriarchal_Age.pdf' },

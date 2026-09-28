@@ -45,6 +45,8 @@ export function MapChrome({ searchRef }: { searchRef: React.RefObject<HTMLInputE
   const pct = (y: number) => ((TIMELINE_START - y) / span) * 100
   const sch = date?.scholarly
   const band = sch?.startBCE != null && sch.endBCE != null ? { left: pct(sch.startBCE), width: Math.max(3, pct(sch.endBCE) - pct(sch.startBCE)) } : null
+  // "or later": a tail that fades out, so the band doesn't read as the only range.
+  const tail = band && sch?.laterToBCE != null && sch.endBCE != null ? { left: pct(sch.endBCE), width: pct(sch.laterToBCE) - pct(sch.endBCE) } : null
   const trad = date?.traditional
   const tradText = trad ? `Tradition: ${formatBCE(trad.yearBCE, trad.endBCE)}` : null
   const tradYear = trad ? (trad.endBCE != null ? (trad.yearBCE + trad.endBCE) / 2 : trad.yearBCE) : null
@@ -168,6 +170,14 @@ export function MapChrome({ searchRef }: { searchRef: React.RefObject<HTMLInputE
                     animate={{ left: `${band.left}%`, width: `${band.width}%` }}
                     transition={SPRING.soft}
                     style={{ position: 'absolute', top: 0, bottom: 0, borderRadius: 3, background: C.blue, opacity: 0.35 }}
+                  />
+                )}
+                {tail && (
+                  <motion.div
+                    initial={false}
+                    animate={{ left: `${tail.left}%`, width: `${tail.width}%` }}
+                    transition={SPRING.soft}
+                    style={{ position: 'absolute', top: 0, bottom: 0, borderRadius: '0 3px 3px 0', background: `linear-gradient(90deg, ${C.blue}, transparent)`, opacity: 0.35 }}
                   />
                 )}
                 {dot != null && (
