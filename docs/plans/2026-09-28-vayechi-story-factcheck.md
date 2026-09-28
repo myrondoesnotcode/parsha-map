@@ -121,3 +121,23 @@ All 20 cards screenshotted at iPhone size (390 × 844) with `.claude/cdp-shot.mj
 | Missed (card 13 body) | No change beyond C140 | None | — |
 
 Re-screenshotted at 390 × 844: cards 1, 2, 4, 6, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19. `check:stories -- vayechi --strict`: 0 errors, 0 warnings; `npm run build` passes.
+
+## Independent fact-check, pass 2 (wf_563e4ade-2ca)
+
+308 claims, 299 verified. c6 (acts: the claim text said "four parts") needs no change. c200 (briefs.ts) and the R* items go to the code branch. Each story item below was re-checked before the fix.
+
+| Id | Finding | Fix | Re-verified against |
+|---|---|---|---|
+| c43 | 48:6 paraphrase dropped "shall be yours" and "in their inheritance" | "Children born to Joseph after these two would be his own, and would be recorded under their brothers' names in their inheritance (48:6)." | 48:6 (JPS + note "Lit. 'under the name'"; Hebrew עַל שֵׁם אֲחֵיהֶם יִקָּרְאוּ בְּנַחֲלָתָם) |
+| c58 | "his father's knees" interprets an ambiguous "his" | "Joseph removed them from his knees…" | 48:12 (JPS; Hebrew מֵעִם בִּרְכָּיו) |
+| c85 + missed (PAGE comment) | PAGE centre [30.2, 30.6] was desert near Wadi El Natrun, not the Delta | New constant DELTA = [31.0, 30.78] (Tanta, central Delta); PAGE centres on it at zoom 9.0, so the Goshen pin and its label stay off screen | Wikipedia "Tanta" (30.783 N, 31.0 E); screenshots of cards 7, 9, 10, 17 |
+| c87 | "speaks to each of them in turn" overstates; Simeon and Levi are addressed together | "Then he speaks to his sons in poetry, one by one (Simeon and Levi together)." | 49:5–7, 49:28 (JPS) |
+| c185 | "What helps someone let go of a grudge?" implies Joseph held one; only the brothers feared it | Talk title and Everyone question: "…Joseph wept, and spoke kindly to them. Why might they still have been afraid? What helps people trust each other again after a wrong?" | 50:15 (the brothers' "What if Joseph still bears a grudge"), 50:17, 50:19–21 (JPS) |
+| Missed (header comment) | "Paddan-aram"; 48:7 says "Paddan" | Comment says "Paddan" | 48:7 (JPS, Hebrew מִפַּדָּן) |
+| Missed (unlit Goshen pin on unplaced Egypt cards) | The blue "unlit" Goshen pin, labelled and framed like the lit cards, reads as "this happened at Goshen" | Cards 2, 4, 5, 6, 8, 12, 16 and 18 now use `inEgypt(…)`: the camera centres on the Delta (Tanta) at zoom 9.2, so no pin is on screen; the notes say "so no pin is shown" | Screenshots of those cards: no Goshen pin or label visible |
+| Missed (card 14 "he") | "he keeps seven days" has no antecedent | "Joseph keeps seven days of mourning for his father"; the note says the verse has only "he", and that the one who went up with the procession to bury his father is Joseph (50:7–9) | 50:7, 50:9, 50:10 (JPS; Hebrew וַיַּעַשׂ) |
+| Missed (card 14 Shadal, optional) | Shadal on the order of mourning and burial | Added: Shadal says the seven days came before the burial; Ibn Ezra on 50:10 says, as the early sages taught, after it. Ibn Ezra on Genesis 50:10 added to sources | Shadal on 50:10 (אבל שבעת ימים: קודם הקבורה); Ibn Ezra on 50:10 (אחר שקברוהו כאשר אמרו קדמונינו) |
+| Missed (card 1, Rashi and Bereshit Rabbah) | "citing Bereshit Rabbah" could suggest the midrash gives only two reasons | "He gives two of the reasons found in Bereshit Rabbah 96:1… A third reason there, which Rashi doesn't bring: God shielded him from all the troubles of the world." Source now "Bereshit Rabbah 96:1" | Bereshit Rabbah 96:1 (Sefaria Midrash Rabbah 2022; Hebrew: שֶׁסָּתַם מִמֶּנּוּ כָּל צָרוֹת שֶׁבָּעוֹלָם) |
+| Missed (route tag on page cards) | "Route illustrative" tag shows when no line is on screen | Code change, not made here (StoryPlayer): hide the route tag when the line is off screen or on page cards. It now also shows on cards 16 and 18, whose Delta camera keeps the line off screen | — |
+
+Re-screenshotted at 390 × 844: cards 2, 4, 5, 6, 7, 8, 9, 10, 12, 14, 16, 17, 18, 19. On the finale the longer Everyone question pushes the "Done" link below the fold (the panel is taller); no text is cut. `check:stories -- vayechi --strict`: 0 errors, 0 warnings; `npm run build` passes.
