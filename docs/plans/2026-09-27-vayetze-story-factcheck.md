@@ -206,3 +206,17 @@ Not changed: c241 (description only); optional JPS "may be an angel" note (the t
 | c160 / c213 | Cards 16 and 22: where the drawn line meets the Euphrates is not a claim |
 | c211 | Finale note: "on a phone, 1·2·4 sits on Beersheba" (clustering depends on screen size) |
 | c17 / c20 / missed | App fixes on `lane/name-letter-cards` (`781dbf4`): the traveller shows only while a leg is drawn, so no dot rests in Gilead on card 16; a line that ends between stops is tagged "the line ends at an illustrative point" |
+
+## Fifth pass (workflow wf_d984dfa2-43f)
+
+331 claims, 307 verified. Applied (each checked on Sefaria):
+
+| Finding | Change |
+|---|---|
+| c147 / c148 / missed | Card 14 no longer casts the removal as cheating: "that same day Laban removes the ones already in the flock and leaves them with his sons". Note: Jacob had proposed setting them apart (30:32); Rashi on 30:32 reads his wages as the ones born from then on. JPS 30:35 does open with "But" |
+| c020 | Kitzur Baal HaTurim's "some say … left in secret" is given as its reason for why the parsha has no breaks |
+| c164 | Card 16 note: Jacob set out from the pastures, three days' journey from Laban (30:36, 31:22); the line starts at the Haran pin |
+| c187 | "no site for it has been identified" (cards 17 and 20) |
+| Missed, card 2 | "the verb 'came upon' (vayifga)" |
+
+Not changed: c058 (card 4's camera): the screenshot shows the Bethel pin and its hedge between the Hebrew and the card, so the projected position in the finding was wrong. Optional: Joseph's and Zebulun's second naming phrases (30:20, 30:23); the dream card's pin under the night sky (the stop badge carries the place).
