@@ -51,11 +51,11 @@ export function EmblemArt({ parshaId, caption = true }: { parshaId: string; capt
       {caption && (
         <span
           style={{
-            position: 'absolute', left: 16, top: 'calc(env(safe-area-inset-top, 0px) + 74px)', font: `800 10px ${FONT.display}`, letterSpacing: '0.08em',
+            position: 'absolute', left: 16, right: 16, top: 'calc(env(safe-area-inset-top, 0px) + 74px)', font: `800 10px ${FONT.display}`, letterSpacing: '0.08em',
             color: brief.tone === 'night' ? 'rgba(244,236,220,0.6)' : 'rgba(23,24,43,0.45)', textTransform: 'uppercase',
           }}
         >
-          Illustrative · {brief.refs}
+          Illustrative · {brief.note ? `${brief.note} · ` : ''}{brief.refs}
         </span>
       )}
     </div>

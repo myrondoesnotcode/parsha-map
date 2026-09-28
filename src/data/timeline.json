@@ -74,7 +74,7 @@
     "shortDesc": "Amorite kingdoms; Old Babylonian Empire; Hyksos in Egypt; Canaanite city-state system",
     "biblicalContext": "Where the patriarchal stories — Abraham to Joseph — are often placed",
     "events": [
-      { "yearBCE": 1850, "description": "Earliest securely identified alphabetic writing, by Canaanite speakers in Egypt and Sinai (dates debated)", "significance": "Ancestor of the Hebrew, Greek, Latin and Arabic alphabets" },
+      { "yearBCE": 1850, "description": "Earliest known alphabetic writing, by Canaanite speakers in Egypt and Sinai (often dated c. 1850 BCE; some scholars date it c. 1550)", "significance": "Ancestor of the Hebrew, Greek, Latin and Arabic alphabets" },
       { "yearBCE": 1792, "description": "Hammurabi becomes king of Babylon (by the usual, “middle” chronology)", "significance": "His law code is among the best preserved of the ancient Near East; older codes, such as Ur-Nammu’s, also survive" },
       { "yearBCE": 1650, "description": "Hyksos kings, probably from the Levant, come to rule northern Egypt from Avaris", "significance": "The first foreign dynasty to rule much of Egypt, governing Lower and Middle Egypt for about a century (c. 1650–1550 BCE)" }
     ],
