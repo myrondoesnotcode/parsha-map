@@ -9,6 +9,7 @@ import { MapChrome, PlaceCard } from './MapChrome'
 import { StoryPlayer } from './StoryPlayer'
 import { ReadScreen, LibraryScreen } from './Screens'
 import { useToday, useYear, parshaForWeek, upcomingShabbat, ymd } from './week'
+import { isNativeApp } from '../platform'
 import './daylight.css'
 
 const LINKED_PARSHA = new URLSearchParams(window.location.search).get('parsha')
@@ -61,6 +62,18 @@ export default function DaylightApp() {
 
   return (
     <div className="dl-root">
+      {/* Wide screens only (CSS hides it below 1100px): the app sits in a column, with a short intro beside it. */}
+      {!isNativeApp && (
+        <aside className="dl-desk-intro" aria-label="About Parsha Map">
+          <div className="dl-desk-mark">
+            parsha<span>.</span>map
+          </div>
+          <p>The weekly Torah portion on a map: its places, its verses and questions for the Shabbat table.</p>
+          <a href="https://apps.apple.com/app/id6762464493" target="_blank" rel="noopener noreferrer">
+            Get the iPhone app
+          </a>
+        </aside>
+      )}
       <div className="dl-device" data-tab={storyOpen ? 'story' : tab}>
         <DaylightMap />
 

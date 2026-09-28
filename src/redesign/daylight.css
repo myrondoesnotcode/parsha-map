@@ -35,13 +35,37 @@
   background: var(--land);
 }
 @media (min-width: 700px) {
+  /* A column on a sand page with faint contour lines, not a phone on black. */
+  .dl-root {
+    background-color: var(--sand);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480' fill='none' stroke='%23ddd4c2' stroke-width='1.2'%3E%3Cpath d='M-20 90c80-40 150 30 240-10s170-50 280 0'/%3E%3Cpath d='M-20 130c90-45 160 35 250-5s160-40 270 5'/%3E%3Cpath d='M-20 250c70 30 150-40 230 0s190 45 290-5'/%3E%3Cpath d='M-20 290c80 35 160-35 240 5s180 40 280-10'/%3E%3Cpath d='M-20 410c100-30 170 25 260-5s150-35 260 10'/%3E%3C/svg%3E");
+  }
   .dl-device {
     inset: 24px auto 24px 50%;
     width: 430px;
     transform: translateX(-50%);
-    border-radius: 44px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    border-radius: 32px;
+    box-shadow: 0 1px 0 var(--hair), 0 24px 60px rgba(23, 24, 43, 0.18);
   }
+}
+.dl-desk-intro { display: none; }
+@media (min-width: 1100px) {
+  .dl-desk-intro {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: calc(50% + 215px + 56px);
+    width: 300px;
+    transform: translateY(-50%);
+  }
+  .dl-desk-mark { font: 800 40px/1 var(--font); letter-spacing: -0.03em; }
+  .dl-desk-mark span { color: var(--warm); }
+  .dl-desk-intro p { margin: 16px 0 24px; font-size: 17px; line-height: 1.5; color: #4a4c60; }
+  .dl-desk-intro a {
+    display: inline-block; padding: 12px 20px; border-radius: 999px;
+    background: var(--ink); color: var(--sand); font-weight: 600; font-size: 15px; text-decoration: none;
+  }
+  .dl-desk-intro a:hover { background: var(--blue); }
 }
 
 /* MapLibre attribution: keep it visible but out of the sheets' way. */
