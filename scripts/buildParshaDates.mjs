@@ -54,7 +54,7 @@ const parshiot = {
   toldot: { scholarly: 'patriarchs', traditional: t(JACOB, 'Jacob and Esau are born; Isaac is 60', [SEF('Genesis 25:26'), SOR(1), CHABAD_PATRIARCHS]) },
   vayetze: { scholarly: 'patriarchs', traditional: t(JACOB + 77, 'Jacob comes to the well, aged 77', [SOR(2), SEF('Genesis 29:2')]) },
   vayishlach: { scholarly: 'patriarchs', traditional: t(JACOB + 97, 'Jacob returns after 20 years with Laban', [SEF('Genesis 31:41'), SOR(2)]) },
-  vayeshev: { scholarly: 'patriarchs', traditional: t(JOSEPH + 17, 'Joseph is 17', [SEF('Genesis 37:2'), SEF('Genesis 47:9'), SOR(2)]) },
+  vayeshev: { scholarly: 'patriarchs', traditional: t(JOSEPH + 17, 'Joseph is 17', [SEF('Genesis 37:2'), SEF('Genesis 41:46'), SEF('Genesis 45:6'), SEF('Genesis 47:9'), SOR(2)]) },
   miketz: { scholarly: 'patriarchs', traditional: t(JOSEPH + 30, 'Joseph, 30, stands before Pharaoh', [SEF('Genesis 41:46'), SOR(2)]) },
   vayigash: { scholarly: 'patriarchs', traditional: t(JACOB + 130, 'Jacob, 130, comes to Egypt', [SEF('Genesis 47:9'), CHABAD_PATRIARCHS, CHABAD_TIMELINE]) },
   vayechi: { scholarly: 'patriarchs', traditional: t(JACOB + 147, 'Jacob dies at 147', [SEF('Genesis 47:28'), CHABAD_PATRIARCHS]) },
