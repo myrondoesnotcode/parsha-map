@@ -323,7 +323,7 @@ function checkStory(file: string, story: ParshaStory, source: string, hasEmblem:
     }
     if (c.numberFrom !== undefined && (!Number.isInteger(c.numberFrom) || c.numberFrom < 1)) err(where, `numberFrom ${c.numberFrom} must be a whole number from 1`)
     if (c.numberFrom !== undefined && c.kind !== 'offerings') warn(where, '`numberFrom` is only used on offerings cards')
-    if (c.sky !== undefined && c.sky !== 'night' && c.sky !== 'dawn') err(where, `sky must be 'night' or 'dawn'`)
+    if (c.sky !== undefined && c.sky !== 'night' && c.sky !== 'dawn' && c.sky !== 'dream') err(where, `sky must be 'night', 'dawn' or 'dream'`)
     if (c.sky !== undefined && c.kind !== 'stars') warn(where, '`sky` is only used on stars cards')
     if (c.kind !== 'letter' && (c.letterAt !== undefined || c.letterSize !== undefined)) warn(where, '`letterAt` and `letterSize` are only used on letter cards')
     // Kinds whose drawing is still built for one story (StoryPlayer / DaylightMap), not from the card's data.

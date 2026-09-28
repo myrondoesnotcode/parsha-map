@@ -171,7 +171,7 @@ export function StoryPlayer() {
         {emblem ? <EmblemCover key="emblem" parshaId={parsha.id} /> : card.kind === 'cover' && card.image && <CoverArt key="art" src={card.image} />}
       </AnimatePresence>
       {!dark && <div className="dl-story-scrim-top" />}
-      <AnimatePresence>{card.kind === 'stars' && <StarSky key="sky" dawn={card.sky === 'dawn'} />}</AnimatePresence>
+      <AnimatePresence>{card.kind === 'stars' && (card.sky === 'dream' ? <DreamSky key="sky" /> : <StarSky key="sky" dawn={card.sky === 'dawn'} />)}</AnimatePresence>
       <AnimatePresence>
         {card.kind === 'cover' && (
           <motion.div key="scrim" className={emblem ? 'dl-emblem-floor' : 'dl-story-scrim-bottom'} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} />
@@ -894,6 +894,41 @@ function Burst() {
         />
       ))}
     </div>
+  )
+}
+
+/**
+ * Joseph's second dream as the verse names it (Genesis 37:9): the sun, the moon and eleven stars, on one arc,
+ * and nothing else in the sky, so the count on screen is the count in the text.
+ */
+function DreamSky() {
+  const bodies = Array.from({ length: 13 }, (_, i) => {
+    const t = i / 12
+    return { x: 8 + t * 84, y: 24 - Math.sin(Math.PI * t) * 16, kind: i === 0 ? 'sun' : i === 12 ? 'moon' : 'star' }
+  })
+  return (
+    <motion.div className="dl-sky" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1.2 }} aria-label="The sun, the moon and eleven stars">
+      {bodies.map((b, i) => (
+        <motion.span
+          key={i}
+          style={{
+            position: 'absolute',
+            left: `${b.x}%`,
+            top: `${b.y}%`,
+            transform: 'translate(-50%, -50%)',
+            width: b.kind === 'star' ? 9 : 30,
+            height: b.kind === 'star' ? 9 : 30,
+            borderRadius: '50%',
+            background: b.kind === 'sun' ? '#f4b27c' : b.kind === 'moon' ? 'transparent' : C.sand,
+            // A crescent: a light disc with a sky-coloured bite taken out of it.
+            boxShadow: b.kind === 'moon' ? `inset -9px 3px 0 0 ${C.sand}` : b.kind === 'sun' ? '0 0 22px 6px rgba(244,178,124,0.45)' : '0 0 8px 2px rgba(244,236,220,0.5)',
+          }}
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3 + i * 0.12, duration: 0.6 }}
+        />
+      ))}
+    </motion.div>
   )
 }
 
