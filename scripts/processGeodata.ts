@@ -528,6 +528,8 @@ const DROPPED_VERSES: Record<string, { name: string; osises: string[] }> = {
 // "medium" however vague the site is; and an alias can outrank the place it is an alias of.
 // ---------------------------------------------------------------------------
 const RATED: Record<string, { name: string; confidence: PlaceOutput['confidence']; why: string }> = {
+  // Genesis 28:19: Luz is Bethel's earlier name and shares its pin, so it shares Bethel's confidence (low).
+  a397042: { name: 'Luz 1', confidence: 'low', why: 'another name for Bethel (Genesis 28:19), which is low' },
   // Exodus 19:1-2: placed only relative to Mount Sinai, itself low; medium was OpenBible's default 500. [EXO-76, LEV-67, P2-34]
   ae50cf1: { name: 'Wilderness of Sinai', confidence: 'low', why: 'located only relative to the disputed Mount Sinai (low)' },
   // Exodus 17:7: at Rephidim, whose site is unknown (low). [EXO-73, DEU-89]
@@ -570,7 +572,7 @@ const MOVED: Record<string, { name: string; to: string; toName: string; note: st
   a296e06: { name: 'Massah', to: 'a65db0f', toName: 'Meribah 2', note: 'at Rephidim, the place also named Meribah (Exodus 17:7)' },
   // OpenBible pins the Euphrates at its mouth on the Shatt al-Arab, ~1,000 km from Jacob's crossing between Haran and
   // Gilead (Genesis 31:21) and from Balaam's Pethor (Numbers 22:5). Pin the upper river at Carchemish instead.
-  a62dec4: { name: 'Euphrates', to: 'af6c730', toName: 'Carchemish', note: 'the Euphrates; the pin marks the upper river at Carchemish, west of Haran' },
+  a62dec4: { name: 'Euphrates', to: 'af6c730', toName: 'Carchemish', note: 'the Euphrates; the pin marks the upper river at Carchemish, west of Haran, not where Jacob crossed it (Genesis 31:21 doesn\'t say where)' },
   a669096: { name: 'River 2', to: 'af6c730', toName: 'Carchemish', note: 'the Euphrates ("the River", Numbers 22:5); the pin marks the upper river at Carchemish' },
   // Genesis 38:14 "the entrance to Enaim, which is on the road to Timnah"; JPS compares Enam (Joshua 15:34).
   // OpenBible describes Enaim as Enam but pins it on a different candidate site.

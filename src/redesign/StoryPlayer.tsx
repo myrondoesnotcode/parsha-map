@@ -221,7 +221,7 @@ export function StoryPlayer() {
             ? 'Route illustrative · pin sites are uncertain'
             : Number.isInteger(card.routeTo)
               ? 'Route illustrative · lines join the stops in order'
-              : 'Route illustrative · the line ends at an illustrative point'}
+              : `Route illustrative · ${card.routeNote ?? 'the line ends at an illustrative point'}`}
         </div>
       )}
 

@@ -48,7 +48,7 @@ export function MapChrome({ searchRef }: { searchRef: React.RefObject<HTMLInputE
   // "or later": a tail that fades out, so the band doesn't read as the only range.
   const tail = band && sch?.laterToBCE != null && sch.endBCE != null ? { left: pct(sch.endBCE), width: pct(sch.laterToBCE) - pct(sch.endBCE) } : null
   const trad = date?.traditional
-  const tradText = trad ? `Tradition: ${formatBCE(trad.yearBCE, trad.endBCE)}` : null
+  const tradText = trad ? `Jewish tradition: ${formatBCE(trad.yearBCE, trad.endBCE)}` : null
   const tradYear = trad ? (trad.endBCE != null ? (trad.yearBCE + trad.endBCE) / 2 : trad.yearBCE) : null
   const dot = tradYear != null && tradYear <= TIMELINE_START && tradYear >= TIMELINE_END ? pct(tradYear) : null
 

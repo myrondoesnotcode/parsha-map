@@ -8,6 +8,7 @@ import { TodaySheet } from './TodaySheet'
 import { MapChrome, PlaceCard } from './MapChrome'
 import { StoryPlayer } from './StoryPlayer'
 import { ReadScreen, LibraryScreen } from './Screens'
+import { getStory } from './stories'
 import { useToday, useYear, parshaForWeek, upcomingShabbat, ymd } from './week'
 import { isNativeApp } from '../platform'
 import './daylight.css'
@@ -59,6 +60,8 @@ export default function DaylightApp() {
   }, [year, shabbat, parshaInitialized])
 
   const overMap = tab === 'today' || tab === 'map'
+  // With the story closed the map still draws its whole route; the same caveat goes with it.
+  const routeShown = !storyOpen && overMap && (getStory(selectedParshaId ?? '')?.route.length ?? 0) > 1
 
   return (
     <div className="dl-root">
@@ -92,6 +95,8 @@ export default function DaylightApp() {
             />
           )}
         </AnimatePresence>
+
+        {routeShown && <div className="dl-route-tag dl-route-tag-map">Route illustrative · lines join the stops in order</div>}
 
         <AnimatePresence>
           {!storyOpen && tab === 'map' && <MapChrome key="mapchrome" searchRef={searchRef} />}

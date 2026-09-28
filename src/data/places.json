@@ -3349,7 +3349,7 @@
       "devarim",
       "ekev"
     ],
-    "description": "the Euphrates; the pin marks the upper river at Carchemish, west of Haran"
+    "description": "the Euphrates; the pin marks the upper river at Carchemish, west of Haran, not where Jacob crossed it (Genesis 31:21 doesn't say where)"
   },
   {
     "id": "a8e53d5",
@@ -5017,7 +5017,7 @@
     "alternateNames": [],
     "latitude": 31.922778,
     "longitude": 35.241389,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Genesis 28:19",

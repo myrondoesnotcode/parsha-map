@@ -55,6 +55,11 @@ export interface StoryCard {
   camera: StoryCamera
   /** How far the journey line is drawn: index along `route` (fractions allowed). */
   routeTo: number
+  /**
+   * Replaces the route tag's second half while the line stops part-way along a leg, when it stops at
+   * a known point rather than an illustrative one (Vayishlach: "the line stops at the traditional site of Rachel’s Tomb").
+   */
+  routeNote?: string
   /** Numbered stop to spotlight (1-based), if any. */
   stop?: number
   /**
