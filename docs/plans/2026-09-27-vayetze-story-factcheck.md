@@ -220,3 +220,18 @@ Not changed: c241 (description only); optional JPS "may be an angel" note (the t
 | Missed, card 2 | "the verb 'came upon' (vayifga)" |
 
 Not changed: c058 (card 4's camera): the screenshot shows the Bethel pin and its hedge between the Hebrew and the card, so the projected position in the finding was wrong. Optional: Joseph's and Zebulun's second naming phrases (30:20, 30:23); the dream card's pin under the night sky (the stop badge carries the place).
+
+## Sixth pass (workflow wf_cf32c01b-b2b; three lenses re-run after an API outage)
+
+278 claims, 271 verified. No story-card findings. Applied on `lane/name-letter-cards` (`4461b5b` content; app fixes in the commit before it):
+
+| Finding | Change |
+|---|---|
+| R45 | Read tab: Chullin 91b says only that the angels gazed at Jacob's "image above"; the Throne of Glory is the Targum attributed to Jonathan on 28:12 ("whose likeness is inlaid in the throne of glory") |
+| R44 | Edom "which the Rabbis identified with Rome" (not "later tradition") |
+| R63 | Teraphim as JPS renders them ("oracle idols"; Laban's "my gods," 31:30) |
+| c7 / c8 | Cover brief: the stone's place relative to the stairway and the stars are illustrative |
+| Missed, stars card | The route tag now shows on stars cards too |
+| Missed, merged pins | Merged overview pins off the finale add "sites uncertain" |
+
+Not changed: R86 (a fading "or later" tail on the date band; the label says "or later"); approximateDateBCE and timeline.json fields the Daylight UI doesn't render; the Map-tab Mizpah pin (places.json).
