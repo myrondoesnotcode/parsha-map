@@ -2,12 +2,13 @@
 // Text is paraphrased from the sources cited on each card; run the parsha-fact-check workflow on any change.
 // Sources: see `sources` below. Authoring guide: docs/plans/story-authoring.md.
 //
-// No journey line: the story stays in Egypt, and only the brothers travel, down from Canaan and back, then down
+// No journey line. Joseph never leaves Egypt (he goes from the dungeon to Pharaoh, 41:14, and travels through all
+// the land of Egypt, 41:46); the journeys between lands are the brothers': down from Canaan and back, then down
 // again. A route would need two endpoints the text doesn't give: it never says which Egyptian city Pharaoh's court
 // or Joseph's house was in, nor where in Canaan Jacob's family was living. So `route` is empty and the map holds on
 // Egypt (anchor: places.json Egypt, whose pin is the same point as Heliopolis). Pins shown, both linked to miketz in
-// places.json: On (Heliopolis, in Ain Shams / El Matareya, north-east Cairo) and Canaan (a region; the gazetteer's
-// point, in the Galilee, is only illustrative). The dream cards aim the camera at the Nile at today's Cairo but
+// places.json: On (Heliopolis, in Ain Shams / El Matareya, north-east Cairo) and Canaan (a region, shown at an
+// illustrative point in the hill country, not the gazetteer's point in the Galilee; see CANAAN below). The dream cards aim the camera at the Nile at today's Cairo but
 // draw no pin (the stars and list cards hide spots), so the Nile isn't marked in this story.
 // Verses quote THE JPS TANAKH: Gender-Sensitive Edition (Sefaria); Hebrew is Miqra according to the Masorah
 // without cantillation marks. Claim table: docs/plans/2026-09-28-miketz-story-factcheck.md.
@@ -19,8 +20,12 @@ const EGYPT: LngLat = [31.3075, 30.129444]
 const ON: LngLat = [31.3075, 30.129444]
 /** A point on the Nile at today's Cairo, used only to aim the camera on the dream cards; no pin is drawn. */
 const NILE: LngLat = [31.2296, 30.0437]
-/** Canaan (places.json a581f0c, a region), pinned in the Galilee: an illustrative point only. */
-const CANAAN: LngLat = [35.333333, 32.766667]
+/**
+ * Canaan (places.json a581f0c, a region). Deliberately NOT the gazetteer's point (35.333, 32.767, in the Galilee):
+ * an illustrative point in the central hill country, in the Judean hills west of Bethlehem. The verses of Miketz
+ * don't say where in Canaan Jacob's family lived; the last hint is the valley of Hebron (37:14). Not a location claim.
+ */
+const CANAAN: LngLat = [35.1, 31.75]
 
 /**
  * Camera on a pin, with the pin moved about 95 px left of centre so its label fits on a phone.
@@ -36,7 +41,7 @@ const onPin = (p: LngLat, zoom: number, pitch: number, bearing: number) => {
 /** Egypt's delta and the Nile valley at Cairo, as a backdrop when the text names no place. */
 const EGYPT_VIEW = { center: [31.25, 30.3] as LngLat, zoom: 7.2, pitch: 40, bearing: 0 }
 /** Egypt and Canaan together, for the brothers' trips. */
-const BOTH_VIEW = { center: [34.4, 31.2] as LngLat, zoom: 5.1, pitch: 25, bearing: 0 }
+const BOTH_VIEW = { center: [35.2, 31.2] as LngLat, zoom: 4.9, pitch: 25, bearing: 0 }
 
 const miketz: ParshaStory = {
   parshaId: 'miketz',
@@ -44,8 +49,10 @@ const miketz: ParshaStory = {
   sources: [
     'Genesis 41:1 – 44:17',
     'Genesis 37:5–10, 37:14, 40:23',
-    'Rashi on Genesis 41:1, 41:16, 41:45, 42:8, 42:24, 43:34, 44:15, 44:16',
+    'Rashi on Genesis 40:23, 41:1, 41:16, 41:45, 42:8, 42:24, 43:34, 44:15, 44:16',
     'Targum Onkelos on Genesis 41:45',
+    'Ibn Ezra on Genesis 41:1',
+    'THE JPS TANAKH: Gender-Sensitive Edition (translation and notes), Sefaria',
     'Wikipedia, “Heliopolis (ancient Egypt)”',
   ],
   route: [],
@@ -62,8 +69,8 @@ const miketz: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Still in Egypt',
-      body: 'No journey for Joseph this week. The story stays in Egypt, where Joseph is in the dungeon and the chief cupbearer has forgotten him. Only his brothers travel: down from Canaan and back, then down again.',
-      ref: 'Genesis 40:23, 41:14, 42:3, 42:29, 43:15',
+      body: 'No journey line this week. Joseph never leaves Egypt: he is in the dungeon, where the chief cupbearer has forgotten him, and later travels through all the land of Egypt. The journeys between lands are his brothers’: down from Canaan and back, then down again.',
+      ref: 'Genesis 40:23, 41:14, 41:46, 42:3, 42:29, 43:15',
       note: 'The verses don’t say which Egyptian city Pharaoh’s court or Joseph’s house was in, so no journey line is drawn; the view of Egypt is a backdrop, not a location.',
       act: 'Pharaoh’s dreams',
       camera: EGYPT_VIEW,
@@ -73,15 +80,15 @@ const miketz: ParshaStory = {
       kind: 'stars',
       title: 'Pharaoh dreamed that he was standing by the Nile',
       body: '“After two years’ time,” Pharaoh has two dreams, waking after each one. Next morning his spirit is agitated.',
-      ref: 'Genesis 41:1–8 · Rashi',
-      note: 'The parsha’s name, מִקֵּץ, is the verse’s word for “at the end”: Rashi on 41:1 reads it “at the end,” as the Targum renders it. The verse doesn’t say two years after what. Rashi on 41:1 also says no river but the Nile is called יְאֹר, because it rises into the canals that water the land, where rain does not fall as regularly as in other lands. The night sky is an illustration: the verses say Pharaoh awoke, slept and dreamed again, and was agitated the next morning.',
-      camera: onPin(NILE, 8.6, 70, 0),
+      ref: 'Genesis 41:1–8 · Rashi · Ibn Ezra',
+      note: 'The parsha’s name, מִקֵּץ, is the verse’s word for “at the end”: Rashi on 41:1 reads it “at the end,” as the Targum renders it. The verse doesn’t say two years after what: Ibn Ezra on 41:1 says the count may run from the cupbearer’s release or from the day Joseph was put in prison, and Rashi on 40:23 says that because Joseph put his trust in the cupbearer, he had to stay imprisoned two years. Rashi on 41:1 also says no river but the Nile is called יְאֹר, because it rises into the canals that water the land, where rain does not fall as regularly as in other lands. The night sky is an illustration: the verses say Pharaoh awoke, slept and dreamed again, and was agitated the next morning. The view of the Nile is a backdrop; the verses don’t say where Pharaoh was.',
+      camera: onPin(NILE, 7.6, 70, 0),
       routeTo: 0,
     },
     {
       kind: 'offerings',
       title: 'Two dreams, four sevens',
-      ref: 'Genesis 41:2–7',
+      ref: 'Genesis 41:2–7, 41:19–21',
       note: 'The Hebrew beside each row is the verse’s word for it: “handsome” (41:2), “ugly” (41:3), “solid” (41:5), “thin” (41:6). The handsome, sturdy cows graze in the reed grass; the ugly, gaunt cows come up close behind them (41:2–3). The verses say the seven healthy ears grew on a single stalk (41:5); they don’t say how the thin ears grew. The thin ears are “scorched by the east wind” (41:6). Telling Joseph the dream, Pharaoh adds that after eating the others, the lean cows looked just as bad as before (41:19–21).',
       items: [
         { he: 'יְפוֹת מַרְאֶה', en: 'Seven cows, handsome and sturdy', note: 'come up out of the Nile' },
@@ -89,7 +96,7 @@ const miketz: ParshaStory = {
         { he: 'בְּרִיאוֹת', en: 'Seven ears of grain, solid and healthy', note: 'on a single stalk' },
         { he: 'דַּקּוֹת', en: 'Seven ears, thin and scorched', note: 'swallow up the first seven' },
       ],
-      camera: onPin(NILE, 8.2, 45, 0),
+      camera: onPin(NILE, 7.4, 40, 0),
       routeTo: 0,
     },
     {
@@ -114,7 +121,8 @@ const miketz: ParshaStory = {
       hebrew: 'בִּלְעָדָי אֱלֹהִים יַעֲנֶה אֶת־שְׁלוֹם פַּרְעֹה',
       body: 'Joseph’s answer to Pharaoh. Rashi on 41:16 explains: the wisdom is not his own; God will put in his mouth an answer for Pharaoh’s welfare.',
       ref: 'Genesis 41:16 · Rashi',
-      camera: { center: [31.25, 29.95], zoom: 9.5, pitch: 40, bearing: 0 },
+      note: 'The map is a backdrop; the verses don’t say where Pharaoh’s court was.',
+      camera: { center: [31.25, 30.3], zoom: 7.4, pitch: 40, bearing: 0 },
       routeTo: 0,
     },
     {
@@ -130,7 +138,7 @@ const miketz: ParshaStory = {
       title: 'Discerning and wise',
       body: 'Let Pharaoh find someone discerning and wise to set over Egypt, Joseph says, and appoint overseers, and let the grain of the good years be stored in the cities as a reserve for the famine. “Could we find another like him,” Pharaoh asks his courtiers, “a man with the divine spirit?” He puts Joseph in charge of his court: “only with respect to the throne shall I be superior to you.”',
       ref: 'Genesis 41:33–40',
-      note: 'In 41:34 JPS has Pharaoh “organize” the land in the years of plenty; its note says others translate “take a fifth part of,” and that the meaning of the Hebrew is uncertain.',
+      note: 'In 41:34 Joseph advises that Pharaoh “organize” the land of Egypt in the seven years of plenty (so JPS); the JPS note says others translate “take a fifth part of,” and that the meaning of the Hebrew is uncertain.',
       act: 'Joseph over Egypt',
       camera: { ...EGYPT_VIEW, zoom: 7.6, pitch: 50, bearing: 10 },
       routeTo: 0,
@@ -160,7 +168,7 @@ const miketz: ParshaStory = {
       ref: 'Genesis 41:46',
       options: [{ label: '20' }, { label: '30', correct: true }, { label: '40' }],
       reveal: '“Joseph was thirty years old when he entered the service of Pharaoh king of Egypt” (41:46).',
-      camera: { center: [31.3, 29.95], zoom: 9.2, pitch: 45, bearing: 0 },
+      camera: { center: [31.3, 30.3], zoom: 7.4, pitch: 45, bearing: 0 },
       routeTo: 0,
     },
     {
@@ -181,7 +189,7 @@ const miketz: ParshaStory = {
         { he: 'מְנַשֶּׁה', en: 'Manasseh, the first-born', note: '“God has made me forget completely my hardship and my parental home”' },
         { he: 'אֶפְרָיִם', en: 'Ephraim, the second', note: '“God has made me fertile in the land of my affliction”' },
       ],
-      camera: { center: [31.3, 29.95], zoom: 9.2, pitch: 40, bearing: 20 },
+      camera: { center: [31.3, 30.3], zoom: 7.4, pitch: 40, bearing: 20 },
       routeTo: 0,
     },
     {
@@ -196,12 +204,12 @@ const miketz: ParshaStory = {
       kind: 'chapter',
       title: 'Ten brothers go down',
       body: 'Jacob sees that there are rations to be had in Egypt. “Why do you keep looking at one another?” he asks his sons, and sends them down. Ten of Joseph’s brothers go to get grain rations; Jacob does not send Joseph’s brother Benjamin, fearing he might meet with disaster. The famine has reached the land of Canaan.',
-      ref: 'Genesis 42:1–5 · 37:14',
-      note: 'Canaan is a region; its pin is only an illustrative point in it. The verses don’t say where in Canaan Jacob’s family was living; Joseph had last been sent out from the valley of Hebron (37:14). Benjamin is Joseph’s brother, “his mother’s son” (43:29).',
+      ref: 'Genesis 42:1–5, 43:29 · 37:14',
+      note: 'Canaan is a region; its pin is only an illustrative point in the hill country, not a place the text names, and it differs on purpose from the gazetteer’s point in the Galilee. The verses don’t say where in Canaan Jacob’s family was living. Joseph had last been sent out from the valley of Hebron (37:14). Benjamin is Joseph’s brother, “his mother’s son” (43:29).',
       act: 'The brothers',
       camera: BOTH_VIEW,
       routeTo: 0,
-      spot: { name: 'Canaan (a region)', at: CANAAN, place: 'a581f0c' },
+      spot: { name: 'Canaan (a region; point illustrative)', at: CANAAN, place: 'a581f0c' },
     },
     {
       kind: 'chapter',
@@ -243,27 +251,27 @@ const miketz: ParshaStory = {
       title: '“It is always me that you bereave”',
       body: 'Back with their father Jacob in Canaan, they tell him all that happened. As they empty their sacks, each finds his money-bag, and they and their father are dismayed. “Joseph is no more and Simeon is no more,” says Jacob, “and now you would take away Benjamin.” Reuben says, “You may kill my two sons if I do not bring him back to you,” but Jacob answers, “My son must not go down with you.”',
       ref: 'Genesis 42:29–38',
-      note: 'Canaan is a region; its pin is only an illustrative point in it.',
+      note: 'Canaan is a region; its pin is only an illustrative point in the hill country, not a place the text names, and it differs on purpose from the gazetteer’s point in the Galilee. The verses don’t say where in Canaan Jacob’s family was living.',
       camera: onPin(CANAAN, 6.8, 40, 0),
       routeTo: 0,
-      spot: { name: 'Canaan (a region)', at: CANAAN, place: 'a581f0c' },
+      spot: { name: 'Canaan (a region; point illustrative)', at: CANAAN, place: 'a581f0c' },
     },
     {
       kind: 'chapter',
       title: 'Judah’s surety',
       body: 'The famine is severe, and when the rations are eaten up, their father tells them to go again. Judah reminds him that the man warned, “Do not let me see your faces unless your brother is with you.” “Send the boy in my care,” Judah says. “I myself will be surety for him.”',
       ref: 'Genesis 43:1–10',
-      note: 'JPS notes that “Do not let me see your faces” is literally “Do not see my face.” In this chapter the Torah calls their father both Jacob and Israel (43:6, 43:8).',
+      note: 'JPS notes that “Do not let me see your faces” is literally “Do not see my face.” In this chapter the Torah calls their father Israel (43:6, 43:8, 43:11); in the chapter before, he is Jacob (42:1, 42:29, 42:36). Canaan is a region; its pin is only an illustrative point in the hill country, not a place the text names, and it differs on purpose from the gazetteer’s point in the Galilee. The verses don’t say where in Canaan Jacob’s family was living.',
       act: 'Benjamin',
       camera: onPin(CANAAN, 7.0, 45, 15),
       routeTo: 0,
-      spot: { name: 'Canaan (a region)', at: CANAAN, place: 'a581f0c' },
+      spot: { name: 'Canaan (a region; point illustrative)', at: CANAAN, place: 'a581f0c' },
     },
     {
       kind: 'offerings',
       title: 'A gift for the man',
       ref: 'Genesis 43:11–14',
-      note: '“Take some of the choice products of the land in your baggage, and carry them down as a gift for the man” (43:11). Israel also tells them to take double the money and to carry back the money returned in their bags: “perhaps it was a mistake.” And he sends Benjamin: “May El Shaddai dispose the man to mercy toward you… As for me, if I am to be bereaved, I shall be bereaved” (43:12–14). The Hebrew beside each row is the verse’s word, without the “and” two of them carry. Canaan is a region; its pin is only an illustrative point in it.',
+      note: '“Take some of the choice products of the land in your baggage, and carry them down as a gift for the man” (43:11). Israel also tells them to take double the money and to carry back the money returned in their bags: “perhaps it was a mistake.” And he sends Benjamin: “May El Shaddai dispose the man to mercy toward you… As for me, if I am to be bereaved, I shall be bereaved” (43:12–14). The Hebrew beside each row is the verse’s word, without the “and” two of them carry. Canaan is a region; its pin is only an illustrative point in the hill country, not a place the text names, and it differs on purpose from the gazetteer’s point in the Galilee. The verses don’t say where in Canaan Jacob’s family was living.',
       items: [
         { he: 'צֳרִי', en: 'Some balm' },
         { he: 'דְּבַשׁ', en: 'Some honey' },
@@ -274,7 +282,7 @@ const miketz: ParshaStory = {
       ],
       camera: onPin(CANAAN, 6.8, 35, 0),
       routeTo: 0,
-      spot: { name: 'Canaan (a region)', at: CANAAN, place: 'a581f0c' },
+      spot: { name: 'Canaan (a region; point illustrative)', at: CANAAN, place: 'a581f0c' },
     },
     {
       kind: 'chapter',
@@ -332,7 +340,7 @@ const miketz: ParshaStory = {
     {
       kind: 'talk',
       title: 'Standing before Pharaoh, Joseph said, “Not I! God will see to Pharaoh’s welfare.” When has someone praised you for something that wasn’t only your doing?',
-      note: 'The story stays in Egypt, and no journey line is drawn: the verses don’t say which city Pharaoh’s court or Joseph’s house was in, nor where in Canaan Jacob’s family lived, nor where the brothers camped on the way. Pins on the cards: On, at the site of ancient Heliopolis in north-east Cairo, and Canaan, a region (point illustrative).',
+      note: 'The story stays in Egypt, and no journey line is drawn: the verses don’t say which city Pharaoh’s court or Joseph’s house was in, nor where in Canaan Jacob’s family lived, nor where the brothers camped on the way. Pins on the cards: On, at the site of ancient Heliopolis in north-east Cairo, and Canaan, a region, at an illustrative point in the hill country (not the gazetteer’s point in the Galilee). Joseph never leaves Egypt; the journeys between lands are his brothers’.',
       camera: BOTH_VIEW,
       routeTo: 0,
     },
