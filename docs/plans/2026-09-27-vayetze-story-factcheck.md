@@ -192,3 +192,17 @@ Option (a), moving the numbered stop, was not clearly right. The river runs abou
 | c244 / missed, traveller | App fix on `lane/name-letter-cards` (`48c1cc4`): no traveller dot once the line rests on the card's spot, so the hollow Gal-ed ring is the only marker |
 
 Not changed: c241 (description only); optional JPS "may be an angel" note (the text follows JPS); optional merge hint on the finale tag (the talk note explains it); Read-tab, History and date-bar items (outside this lane, reported to Myron).
+
+## Fourth pass (workflow wf_7ea6ae7a-3a8)
+
+307 claims, 273 verified; one claim (c166, "Gilead is a region east of the Jordan") went unchecked by the lenses and was checked by hand against Wikipedia "Gilead". Applied:
+
+| Finding | Change |
+|---|---|
+| c43 / missed | Card 3 body writes the four-letter name as "GOD", like the rest of the story |
+| c68 | "In some texts, his comment goes on to say…" (the passage is marked as found in an accurate Rashi text) |
+| c78 | Card 7 note: the verses don't name the well's town; they say it was in the land of the Easterners (29:1) and its shepherds were from Haran (29:4) |
+| c126 | "Dinah, the only daughter of Jacob whom the Torah names" |
+| c160 / c213 | Cards 16 and 22: where the drawn line meets the Euphrates is not a claim |
+| c211 | Finale note: "on a phone, 1·2·4 sits on Beersheba" (clustering depends on screen size) |
+| c17 / c20 / missed | App fixes on `lane/name-letter-cards` (`781dbf4`): the traveller shows only while a leg is drawn, so no dot rests in Gilead on card 16; a line that ends between stops is tagged "the line ends at an illustrative point" |
