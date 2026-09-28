@@ -10,7 +10,7 @@
 // verses name. Where Pharaoh received Joseph's family isn't said, so those cards light no stop. Goshen is a
 // region whose extent is uncertain; its places.json point lies at Qantir (about 0.2 km from Wikipedia's
 // Pi-Ramesses coordinates, beside Avaris), which is one of the proposed areas; the western Wadi Tumilat, the other,
-// lies some 30–40 km south and isn't pinned. The gazetteer's Rameses pin (a079b21) is about 1.8 km south-west of
+// lies about 30 km south and isn't pinned. The gazetteer's Rameses pin (a079b21) is about 1.8 km south-west of
 // the Goshen point, so the "region of Rameses" card (47:11) is shown at the Goshen pin and says so. Verses quote
 // THE JPS TANAKH: Gender-Sensitive Edition (Sefaria); Hebrew is Miqra according to the Masorah without
 // cantillation marks (the meteg, a vowel-stress mark, is kept; a verse-final silluq is dropped). Claim table: docs/plans/2026-09-28-vayigash-story-factcheck.md.
@@ -38,7 +38,7 @@ const onPin = (p: LngLat, zoom: number, pitch: number, bearing: number) => {
   return { center, zoom, pitch, bearing }
 }
 
-const EGYPT_SPOT = { name: 'Egypt (a region)', at: EGYPT, place: 'af301ca' }
+const EGYPT_SPOT = { name: 'Egypt (a region, not a site)', at: EGYPT, place: 'af301ca' }
 
 const vayigash: ParshaStory = {
   parshaId: 'vayigash',
@@ -107,7 +107,7 @@ const vayigash: ParshaStory = {
       hebrew: 'אֲנִי יוֹסֵף הַעוֹד אָבִי חָי',
       body: 'His brothers cannot answer him, “so dumfounded were they on account of him.”',
       ref: 'Genesis 45:3 · Rashi · Bereshit Rabbah 93:10',
-      note: 'The Hebrew חָי means “alive”; this JPS translation has “well.” Rashi on 45:3 says they were dumfounded out of shame. In Bereshit Rabbah 93:10, Abba Kohen Bardela draws a lesson: Joseph was “the young one of the tribes” (Benjamin was younger still), and his brothers could not stand up to his rebuke; how much less will anyone stand up when the Holy One comes to rebuke each person.',
+      note: 'The Hebrew חָי means “alive”; this JPS translation has “well.” Rashi on 45:3 says they were dumfounded out of shame. In Bereshit Rabbah 93:10, Abba Kohen Bardela draws a lesson: the midrash calls Joseph קְטַנָּן שֶׁל שְׁבָטִים, “the youngest of the tribes” in Sefaria’s translation (Benjamin was in fact younger), and his brothers could not stand up to his rebuke; how much less will anyone stand up when the Holy One comes to rebuke each person.',
       // Page card: the Delta as a backdrop.
       camera: { center: [31.3, 30.6], zoom: 7.2, pitch: 35, bearing: 0 },
       routeTo: 0,
@@ -137,7 +137,7 @@ const vayigash: ParshaStory = {
       title: 'Wagons from Egypt',
       body: 'Pharaoh and his courtiers are pleased, and Pharaoh has the brothers take wagons from Egypt for their children and wives, and bring their father. Joseph gives each brother a change of clothing, and Benjamin three hundred pieces of silver and several changes. To his father he sends ten male donkeys laden with the best things of Egypt, and ten female donkeys with grain, bread and provisions.',
       ref: 'Genesis 45:16–24 · Rashi',
-      note: 'Joseph also gives them provisions for the journey (45:21). “Several” is literally “five” (JPS note). As he sends them off he tells them, “Do not be quarrelsome on the way” (45:24); Rashi on 45:24 gives the plain sense: he feared they would argue on the way over which of them was to blame for selling him. The hollow pin only marks Egypt, a region.',
+      note: 'Joseph also gives them provisions for the journey (45:21). “Several” is literally “five” (JPS note). As he sends them off he tells them, “Do not be quarrelsome on the way” (45:24); Rashi on 45:24, after two other readings, gives the plain sense: he feared they would argue on the way over which of them was to blame for selling him. The hollow pin only marks Egypt, a region.',
       camera: onPin(EGYPT, 6.8, 40, 20),
       routeTo: 0,
       spot: EGYPT_SPOT,
@@ -214,7 +214,7 @@ const vayigash: ParshaStory = {
       title: 'Judah goes ahead',
       body: 'Jacob had sent Judah ahead to Joseph, to point the way to Goshen. When they reach the region of Goshen, Joseph orders his chariot and goes to meet his father Israel, embraces him around the neck, and weeps on his neck a good while. “Now I can die,” says Israel, “having seen for myself that you are still alive.”',
       ref: 'Genesis 46:28–30 · Rashi · Wikipedia',
-      note: '“Ordered” is literally “hitched” (JPS note); Rashi on 46:29 says Joseph harnessed the horses himself, eager to honor his father, and that Jacob did not fall on Joseph’s neck or kiss him: the Rabbis say he was reciting the Shema. Rashi on 46:28 reads “to point the way” as to prepare a place for him, and brings a midrash: to set up a house of study. Goshen is a region whose extent is uncertain. It is usually placed in the eastern Nile Delta; scholars have proposed the western Wadi Tumilat, or an area at or near Avaris (Wikipedia, “Land of Goshen”). The pin is the gazetteer’s point for Goshen, at Qantir by Avaris, one of the proposed areas; the western Wadi Tumilat, the other, lies some 30–40 km to the south and isn’t pinned. The pin doesn’t mark the region’s extent. Lines join the stops in order; the road isn’t known.',
+      note: '“Ordered” is literally “hitched” (JPS note); Rashi on 46:29 says Joseph harnessed the horses himself, eager to honor his father, and that Jacob did not fall on Joseph’s neck or kiss him: the Rabbis say he was reciting the Shema. Rashi on 46:28 reads “to point the way” as to prepare a place for him, and brings a midrash: to set up a house of study. Goshen is a region whose extent is uncertain. It is usually placed in the eastern Nile Delta; scholars have proposed the western Wadi Tumilat, or an area at or near Avaris (Wikipedia, “Land of Goshen”). The pin is the gazetteer’s point for Goshen, at Qantir by Avaris, one of the proposed areas; the western Wadi Tumilat, the other, lies about 30 km to the south and isn’t pinned. The pin doesn’t mark the region’s extent. Lines join the stops in order; the road isn’t known.',
       act: 'In Goshen',
       camera: onPin(GOSHEN, 8.2, 45, 0),
       routeTo: 1,
@@ -225,7 +225,7 @@ const vayigash: ParshaStory = {
       title: 'Shepherds',
       body: 'Joseph tells his family to say they have always bred livestock, “so that you may stay in the region of Goshen. For all shepherds are abhorrent to Egyptians.” He presents a few of his brothers to Pharaoh, and they ask to stay in Goshen: there is no pasture for their flocks, the famine being severe in Canaan. Pharaoh tells Joseph to settle them in the best part of the land, in Goshen, and to put any capable men among them in charge of his livestock.',
       ref: 'Genesis 46:31 – 47:6',
-      note: '“A few” is literally “five” (JPS note). The verses don’t say where Pharaoh received them, so no numbered pin is lit; the hollow pin marks Egypt, a region.',
+      note: '“A few” is literally “five” (JPS note). The verses don’t say where Pharaoh received them. The Goshen pin shows where the family was staying (47:1), not where Pharaoh received them; the hollow pin marks Egypt, a region.',
       camera: { center: [31.75, 30.3], zoom: 7.4, pitch: 40, bearing: 0 },
       routeTo: 1,
       spot: EGYPT_SPOT,
@@ -242,9 +242,9 @@ const vayigash: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Few and hard',
-      body: 'Jacob greets Pharaoh. “Few and hard have been the years of my life,” he says, “nor do they come up to the life spans of my ancestors.” Then he bids Pharaoh farewell and leaves his presence.',
+      body: 'Jacob greets Pharaoh. “Few and hard have been the years of my life,” he says, “nor do they come up to the life spans of my ancestors during their sojourns.” Then he bids Pharaoh farewell and leaves his presence.',
       ref: 'Genesis 47:7–10 · Genesis 25:7, 35:28 · Rashi',
-      note: 'JPS notes that the ancestors are Terah, Abraham and Isaac; Abraham lived 175 years (25:7), Isaac 180 (35:28). “Greeted” (47:7) and “bade farewell” (47:10) are both וַיְבָרֶךְ, literally “blessed”; Rashi reads it as a greeting of peace, as people do before kings, and on 47:10 brings a midrash that Jacob blessed Pharaoh that the Nile would rise at his approach. Rashi on 47:9 reads “sojourn” as: all my days I have been a stranger in other people’s lands. Where Pharaoh received Jacob isn’t said; the hollow pin marks Egypt, a region.',
+      note: 'JPS notes that the ancestors are Terah, Abraham and Isaac; Abraham lived 175 years (25:7), Isaac 180 (35:28). “Greeted” (47:7) and “bade farewell” (47:10) are both וַיְבָרֶךְ, literally “blessed”; Rashi reads it as a greeting of peace, as people do before kings, and on 47:10 brings a midrash that Jacob blessed Pharaoh that the Nile would rise at his approach. Rashi on 47:9 reads “sojourn” as: all my days I have been a stranger in other people’s lands. Where Pharaoh received Jacob isn’t said; the Goshen pin shows where the family was staying (47:1), and the hollow pin marks Egypt, a region.',
       camera: { center: [31.75, 30.3], zoom: 7.4, pitch: 45, bearing: 0 },
       routeTo: 1,
       spot: EGYPT_SPOT,
@@ -254,7 +254,7 @@ const vayigash: ParshaStory = {
       title: 'In the region of Rameses',
       body: 'As Pharaoh had commanded, Joseph settles his father and brothers, giving them holdings in the choicest part of the land of Egypt, in the region of Rameses. He sustains his father, his brothers and all his father’s household with bread, down to the little ones.',
       ref: 'Genesis 47:11–12 · Rashi · Wikipedia',
-      note: 'Rashi on 47:11 says Rameses is part of the land of Goshen. The name is linked with Pi-Ramesses, the capital Ramesses II (reigned 1279–1213 BCE) built at Qantir in the eastern Delta; the Goshen pin already stands at Qantir, so the region of Rameses is shown at the same pin. Wikipedia (“Pi-Ramesses”) reports that some scholars see the Bible’s Rameses place names as memories of that era, and others as later names, anachronisms, set into an older story.',
+      note: 'Rashi on 47:11 says Rameses is part of the land of Goshen. The name is linked with Pi-Ramesses, the capital Ramesses II (reigned 1279–1213 BCE) built at Qantir in the eastern Delta; the Goshen pin already stands at Qantir, so the region of Rameses is shown at the same pin. Wikipedia (“Pi-Ramesses”) reports that some scholars see the Bible’s Rameses place names as memories of that era, and others as anachronisms from the 7th century BCE, when they date the text’s composition.',
       camera: onPin(GOSHEN, 9.0, 50, 20),
       routeTo: 1,
       stop: 2,
@@ -297,7 +297,7 @@ const vayigash: ParshaStory = {
     {
       kind: 'talk',
       title: 'Judah asked to stay as a slave in Benjamin’s place, so that their father would not lose another son. When have you seen someone put another person first?',
-      note: 'Numbered pins: Beersheba at Tel Be’er Sheva, its usual site; Goshen, a region whose extent is uncertain, at the gazetteer’s point by Qantir and Avaris, one of the proposed areas (the western Wadi Tumilat, some 30–40 km south, is another). The “region of Rameses” (47:11) is shown at the Goshen pin, which stands at Qantir, the proposed site of Pi-Ramesses. Egypt is a region, marked by a hollow pin. Canaan is a region and isn’t pinned: where Jacob lived in it isn’t said here, and the verses last place him at Hebron (35:27, 37:14). Where Joseph’s house was and where Pharaoh received the family aren’t said. Stops close together on screen may share one numbered pin, drawn on the first of them; which ones merge depends on the screen size. The line joins the stops in order; Jacob’s road isn’t known.',
+      note: 'Numbered pins: Beersheba at Tel Be’er Sheva, its usual site; Goshen, a region whose extent is uncertain, at the gazetteer’s point by Qantir and Avaris, one of the proposed areas (the western Wadi Tumilat, about 30 km south, is another). The “region of Rameses” (47:11) is shown at the Goshen pin, which stands at Qantir, the proposed site of Pi-Ramesses. Egypt is a region; on earlier cards a hollow pin stands for it and doesn’t mark a site. Canaan is a region and isn’t pinned: where Jacob lived in it isn’t said here, and the verses last place him at Hebron (35:27, 37:14). Where Joseph’s house was and where Pharaoh received the family aren’t said. Stops close together on screen may share one numbered pin, drawn on the first of them; which ones merge depends on the screen size. The line joins the stops in order; Jacob’s road isn’t known.',
       // Not used on screen: the finale fits the whole route into the strip above the card (DaylightMap fitBounds).
       camera: { center: [33.3, 31.0], zoom: 6.2, pitch: 30, bearing: 0 },
       routeTo: 1,
