@@ -79,6 +79,29 @@ So roughly a third of the year has no journey to fly. **The story format must wo
 
 ---
 
+## Relaunch for Bereshit — 2026-09-28
+
+**Decision (Myron, 2026-09-28):** relaunch web + iOS with Daylight as a week-by-week companion for the new cycle. Bereshit is Sat Oct 10 2026; Genesis runs to Vayechi (Dec 26); Shemot is Jan 2 2027 (Hebcal). Target: parshamap.com on Sun Oct 4; App Store submission by Wed Oct 7. Lean scope: desktop placeholder instead of 0.7; weeks without a story show "Story coming soon" (already built); offline tiles, sound, image share, streak and globe wait until after launch.
+
+**Done 2026-09-28 (on `redesign/daylight`, pushed):**
+- Merged `lane/name-letter-cards` (includes `lane/data-factcheck`: Exodus–Deuteronomy fact-check and 125 World-around-it events).
+- Desktop placeholder: the app column on a sand page with contour lines; ≥1100px adds a short intro and App Store link (web only).
+- Classic app and art gallery are lazy-loaded (main bundle −240 KB).
+- Shared fact-check fixes: route tag on Today/Map too; per-card `routeNote`; "Historical background" eyebrow; "Jewish tradition:" on the date bar; alphabet "earliest securely identified"; Luz/El-bethel/Allon-bacuth low like Bethel; Migdal-eder unpinned; Canaan and Nile descriptions say what the pin marks.
+- iOS 2.0 (build 7) uploaded to TestFlight (push entitlement seeded and verified: `aps-environment` production).
+- App Store listing draft with claims list: `docs/plans/2026-09-28-app-store-2.0-listing.md`. New screenshots (iPhone 6.9", iPad 13") made from the app, not yet uploaded.
+
+**Stories, all fact-checked, waiting for Myron's review (branches local, not pushed):**
+- `review/genesis-batch` = Noach, Vayera, Chayei Sarah, Toldot, rebased on the merged lane (conflicts in `processGeodata.ts`, `timeline.json`, `briefs.ts` resolved; places.json regenerates identically). Force-push to origin was blocked; the origin copies are the old, un-rebased ones.
+- `review/vayetze`, `review/vayishlach`, `review/vayeshev`, `review/miketz`, `review/vayigash`, `review/vayechi`: pass 3 / final pass applied 2026-09-28; each has a claim-table section and a `docs/plans/2026-09-28-<id>-shared-fixes.md` where needed. They are based on an older lane commit: rebase onto `redesign/daylight` before merging.
+
+**Open, from the pass-3 shared-fix docs (not blockers):**
+- Joseph date band: Miketz's branch adds a `joseph` range (c. 1675–1550, McCarter/Hendel on the Hyksos period) used only by Miketz. Decide whether Vayeshev, Vayigash and Vayechi use it too.
+- World-around-it entries for the Joseph parshiot (Miketz has a sourced draft in its shared-fixes doc); they fall back to the Middle Bronze era card with its disclaimer.
+- `approximateDateBCE` is unsourced for most parshiot; only `?ui=classic` shows it. Remove it with the classic UI.
+- Date-bar dot colour vs the band; Execration-texts superlative (classic only).
+- Set `routeNote` on Vayishlach's Rachel and sons cards once it's rebased.
+
 ## Status and backlog — 2026-09-27
 
 Checked against the code on `redesign/daylight` (latest commit `df80a25`) and the Sep 26–27 sessions. Update this section at the end of every session.
