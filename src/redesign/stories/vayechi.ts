@@ -4,11 +4,11 @@
 //
 // Two stops: Goshen (where Israel had settled, 47:27) and the cave of Machpelah (50:13). The verses say
 // Jacob's last years, the oath, the blessings and his death happened "in the land of Egypt" (47:28–29) but
-// not where in Egypt, so those cards keep the camera on Goshen with no pin lit. Goshen is lit only where the
-// text names it (47:27, 50:8). The funeral's road isn't known. Goren ha-Atad and Abel-mizraim (50:10–11)
+// not where in Egypt, so those cards show the central Delta west of Goshen as a backdrop, with the Goshen pin
+// kept off screen. Goshen is lit only where the text names it (47:27, 50:8). The funeral's road isn't known. Goren ha-Atad and Abel-mizraim (50:10–11)
 // are "beyond the Jordan", from a side the verse doesn't state, and have no pin: their card shows only the
-// river (an illustrative point near its mouth) and no line; the line from Goshen to the cave is drawn only
-// on the burial card, bent inland through an illustrative point in northern Sinai, and is not a route. Mamre, Luz, Sidon and Paddan are named but not marked.
+// river (an illustrative point near its mouth) and no line; the line from Goshen to the cave is first drawn
+// on the burial card and stays drawn to the end, bent inland through an illustrative point in northern Sinai, and is not a route. Mamre, Luz, Sidon and Paddan are named but not marked.
 // Verses quote THE JPS TANAKH: Gender-Sensitive Edition (Sefaria); Hebrew is Miqra according to the Masorah
 // without cantillation marks. Claim table: docs/plans/2026-09-28-vayechi-story-factcheck.md.
 import type { LngLat, ParshaStory } from '../story'
@@ -24,7 +24,7 @@ const EPHRATH: LngLat = [35.207639, 31.704306]
  * Goshen → Machpelah line stays on land. The procession's road isn't known.
  */
 const SINAI_VIA: LngLat = [33.8, 30.85]
-/** Jordan (places.json ae686c9), a point near where the river flows into the Dead Sea. Shown as a river, not as Goren ha-Atad. */
+/** Jordan (places.json ae686c9), at the river's mouth on the Dead Sea as Wikidata Q40059 gives it (31.761389 N, 35.558333 E). Shown as a river, not as Goren ha-Atad. */
 const JORDAN: LngLat = [35.558333, 31.761389]
 
 /**
@@ -66,6 +66,7 @@ const vayechi: ParshaStory = {
     'Ibn Ezra on Genesis 50:10',
     'Siddur Ashkenaz (Metsudah), Shabbat Evening, Blessing the Children',
     'Wikipedia, “Land of Goshen”, “Cave of the Patriarchs”, “Mamre”, “Jordan River”',
+    'Wikidata, “Jordan River” (Q40059), coordinates of its mouth',
   ],
   route: [
     { name: 'Goshen', at: GOSHEN, place: 'a60f092', hedge: 'a region; extent uncertain' },
@@ -105,7 +106,7 @@ const vayechi: ParshaStory = {
       title: 'Mine, like Reuben and Simeon',
       body: 'Joseph hears that his father is ill and brings his two sons, Manasseh and Ephraim. Jacob recalls that El Shaddai appeared to him at Luz and promised this land to his offspring, and says: “Ephraim and Manasseh shall be mine no less than Reuben and Simeon.” He remembers Rachel, who died as he came back from Paddan, and whom he buried on the road to Ephrath, now Bethlehem.',
       ref: 'Genesis 48:1–7 · Rashi · Jeremiah 31:15',
-      note: 'Israel “summoned his strength and sat up in bed” (48:2). Children born to Joseph after these two would be his own, and would be recorded under their brothers’ names in their inheritance (48:6). Rachel died “when still some distance short of Ephrath” (48:7). Rashi on 48:7 hears Jacob answering what Joseph might hold against him: he asks to be carried to Canaan, yet he did not bring Rachel even into Bethlehem. He buried her there at God’s command, Rashi says, so that she could plead for her children when they were led into exile along that road, as Jeremiah says: “Rachel weeping for her children” (Jeremiah 31:15). The map marks Ephrath at Bethlehem; she died short of it. Luz is Bethel; it isn’t marked in this story.',
+      note: 'Israel “summoned his strength and sat up in bed” (48:2). Children born to Joseph after these two would be his own, and would be recorded under their brothers’ names in their inheritance (48:6). Rachel died “when still some distance short of Ephrath” (48:7). Rashi on 48:7 hears Jacob answering what Joseph might hold against him: he asks to be carried to Canaan, yet he did not bring Rachel even into Bethlehem. He buried her there at God’s command, Rashi says, so that she could plead for her children when they were led into exile along that road, as Jeremiah says: “Rachel weeping for her children” (Jeremiah 31:15). Jacob speaks in Egypt (48:5); the map shows Ephrath, a place he names, marked at Bethlehem. Rachel died short of it. Luz is Bethel; it isn’t marked in this story.',
       act: 'Ephraim and Manasseh',
       camera: onPin(EPHRATH, 7.8, 40, 0),
       routeTo: 0,
@@ -220,7 +221,7 @@ const vayechi: ParshaStory = {
       title: 'Up to Canaan',
       body: 'When the wailing is over, Pharaoh gives Joseph leave: “Go up and bury your father, as he made you promise on oath.” With Joseph go Pharaoh’s officials and Egypt’s dignitaries, his own household, his brothers and his father’s household, with chariots and charioteers: “a very large troop.” Only their children, flocks and herds are left in the region of Goshen.',
       ref: 'Genesis 50:4–9',
-      note: 'Joseph asked Pharaoh’s court to tell Pharaoh: “My father made me swear, saying, ‘I am about to die. Be sure to bury me in the grave that I made ready for myself in the land of Canaan.’ Now, therefore, let me go up and bury my father; then I shall return” (50:5). Goshen was a region in the eastern Nile Delta; its extent is uncertain, and the pin is an illustrative point in it.',
+      note: 'Joseph asked Pharaoh’s court to tell Pharaoh: “My father made me swear, saying, ‘I am about to die. Be sure to bury me in the grave that I made ready for myself in the land of Canaan.’ Now, therefore, let me go up and bury my father; then I shall return” (50:5). The verses don’t say where the procession set out from; Goshen is lit because the children, flocks and herds were left there (50:8). Goshen was a region in the eastern Nile Delta; its extent is uncertain, and the pin is an illustrative point in it.',
       camera: onPin(GOSHEN, 8.2, 45, -15),
       routeTo: 0,
       stop: 1,
@@ -230,7 +231,7 @@ const vayechi: ParshaStory = {
       title: 'Goren ha-Atad',
       body: 'They come to Goren ha-Atad, “the threshing floor of Atad,” beyond the Jordan, and hold a very great and solemn lamentation there; Joseph keeps seven days of mourning for his father. The Canaanites of the land say, “This is a solemn mourning on the part of the Egyptians,” so the place is named Abel-mizraim, interpreted as “the mourning of the Egyptians.”',
       ref: 'Genesis 50:10–11 · Steinsaltz · Shadal · Rashi',
-      note: 'Where Goren ha-Atad and Abel-mizraim were isn’t known, and neither is marked in this story. “Beyond the Jordan” doesn’t say from which side. Steinsaltz on 50:10 reads it as east of the Jordan, and suggests the procession may have taken a longer road that way; Shadal on 50:10 says it was in the Land of Israel, called “beyond the Jordan” from the place where Moses and Israel were. Shadal adds that the seven days of mourning came before the burial; Ibn Ezra on 50:10 says, as the early sages taught, that they came after it. The verse says only “he” kept the mourning; the one who went up with the procession to bury his father is Joseph (50:7–9). The map shows only the river, at an illustrative point near where it flows into the Dead Sea; no road is drawn, since the procession’s road isn’t known. Rashi on 50:10 says the threshing floor was ringed with thorn bushes (atad), and brings the Rabbis’ teaching that kings of Canaan and princes of Ishmael came to make war, but on seeing Joseph’s crown hanging on Jacob’s coffin, hung their own crowns on it too.',
+      note: 'Where Goren ha-Atad and Abel-mizraim were is uncertain, and neither is marked in this story. “Beyond the Jordan” doesn’t say from which side. Steinsaltz on 50:10 reads it as east of the Jordan, and suggests the procession may have taken a longer road that way; Shadal on 50:10 says it was in the Land of Israel, called “beyond the Jordan” from the place where Moses and Israel were. Shadal adds that the seven days of mourning came before the burial; Ibn Ezra on 50:10 says, as the early sages taught, that they came after it. The verse says only “he” kept the mourning; the one who went up with the procession to bury his father is Joseph (50:7–9). The map shows only the river, at an illustrative point near where it flows into the Dead Sea; no road is drawn, since the procession’s road isn’t known. Rashi on 50:10 says the threshing floor was ringed with thorn bushes (atad), and brings the Rabbis’ teaching that kings of Canaan and princes of Ishmael came to make war, but on seeing Joseph’s crown hanging on Jacob’s coffin, hung their own crowns on it too.',
       camera: onPin(JORDAN, 9.0, 45, 0),
       routeTo: 0,
       spot: { name: 'Jordan (river; point illustrative)', at: JORDAN, place: 'ae686c9' },
@@ -240,7 +241,7 @@ const vayechi: ParshaStory = {
       title: 'The cave of Machpelah',
       body: 'His sons do for him as he instructed them. They carry him to the land of Canaan and bury him in the cave of the field of Machpelah, near Mamre, which Abraham had bought as a burial site from Ephron the Hittite. Then Joseph returns to Egypt, with his brothers and all who had gone up with him.',
       ref: 'Genesis 50:12–14 · Rashi',
-      note: 'Rashi on 50:13 says Jacob’s own sons carried him, as he had commanded: not an Egyptian, and not one of their sons, who were born of Canaanite women. Levi, who would carry the Ark, and Joseph, a king, did not carry him; Joseph’s sons Manasseh and Ephraim took their places. The pin marks the Cave of the Patriarchs in the Old City of Hebron, the cave’s traditional site. The line only joins Goshen to the cave, bending inland through northern Sinai at an illustrative point: the procession’s road isn’t known, nor whether it crossed the Jordan.',
+      note: 'Rashi on 50:13 says Jacob’s own sons carried him, as he had commanded: not an Egyptian, and not one of their sons, who were born of Canaanite women. Levi, who would carry the Ark, and Joseph, a king, did not carry him; Joseph’s sons Manasseh and Ephraim took their places. The pin marks the Cave of the Patriarchs in the Old City of Hebron, the cave’s traditional site. The line only joins Goshen, where the family had settled (47:27), to the cave, bending inland through northern Sinai at an illustrative point: the procession’s road isn’t known, nor whether it crossed the Jordan.',
       camera: onPin(MACHPELAH, 9.4, 55, 10),
       routeTo: 1,
       stop: 2,
@@ -276,7 +277,7 @@ const vayechi: ParshaStory = {
     {
       kind: 'talk',
       title: 'After their father died, Joseph’s brothers feared he still bore a grudge. Joseph wept, and spoke kindly to them. Why might they still have been afraid? What helps people trust each other again after a wrong?',
-      note: 'Numbered pins: Goshen, a region in the eastern Nile Delta whose extent is uncertain (the pin is an illustrative point in it); and Machpelah, at the Cave of the Patriarchs in Hebron, its traditional site. The line joins the two stops through an illustrative point in northern Sinai; the funeral’s road isn’t known. Goren ha-Atad and Abel-mizraim, “beyond the Jordan” (50:10–11), can’t be located and aren’t marked, nor is Mamre. On the card about Ephrath, its pin marks Bethlehem; Rachel died some distance short of it (48:7).',
+      note: 'Numbered pins: Goshen, a region in the eastern Nile Delta whose extent is uncertain (the pin is an illustrative point in it); and Machpelah, at the Cave of the Patriarchs in Hebron, its traditional site. The line joins the two stops through an illustrative point in northern Sinai; the funeral’s road isn’t known. Goren ha-Atad and Abel-mizraim, “beyond the Jordan” (50:10–11), can’t be located with certainty and aren’t marked, nor is Mamre. On the card about Ephrath, its pin marks Bethlehem; Rachel died some distance short of it (48:7).',
       // Not used on screen: the finale fits the whole route into the strip above the card (DaylightMap fitBounds).
       camera: { center: [33.55, 31.1], zoom: 6.2, pitch: 20, bearing: 0 },
       routeTo: 1,
