@@ -857,9 +857,11 @@ export function Miketz() {
       <Layer depth={0.1} tilt={tilt}>
         <circle cx="330" cy="170" r="80" fill="url(#glow)" opacity="0.7" />
         <circle cx="330" cy="170" r="26" fill="#fbe6c8" />
-        {/* the east wind */}
+        {/* the east wind (41:6): drifting streaks, or held still where motion is off */}
         {[250, 300, 350, 280].map((y, i) =>
-          still ? null : (
+          still ? (
+            <path key={i} d={`M0 ${y} q30 -8 60 0 t60 0 t40 -4`} transform={`translate(${[30, 150, 80, 200][i]} 0)`} fill="none" stroke="#fff7e6" strokeWidth="2.4" strokeLinecap="round" opacity="0.4" />
+          ) : (
             <motion.path
               key={i} d={`M0 ${y} q30 -8 60 0 t60 0 t40 -4`} fill="none" stroke="#fff7e6" strokeWidth="2.4" strokeLinecap="round"
               initial={{ x: 420, opacity: 0 }}
