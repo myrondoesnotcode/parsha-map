@@ -1009,21 +1009,19 @@ function Foal({ still }: { still: boolean }) {
       <path d="M32 -22 L34 -14 L37 -22 Z" fill="#3b2a24" />
       <ellipse cx="2" cy="-40" rx="30" ry="15" fill="#8a6a58" />
       <ellipse cx="2" cy="-32" rx="22" ry="7" fill="#cfae98" />
-      {/* head: nibbling toward the vine */}
-      <motion.g
-        style={at(-20, -46)}
-        animate={still ? undefined : { rotate: [0, 0, -14, -14, 0] }}
-        transition={{ duration: 5, times: [0, 0.3, 0.45, 0.7, 0.85], repeat: Infinity, ease: 'easeInOut' }}
-      >
+      {/* head, held still: 49:11 has the foal tethered and gives it no action; only an ear flicks */}
+      <g>
         <path d="M-16 -50 L-30 -76 L-42 -70 L-26 -40 Z" fill="#8a6a58" />
         <path d="M-18 -52 L-30 -75 L-26 -77 L-14 -52 Z" fill="#3b2a24" />
-        <ellipse cx="-30" cy="-88" rx="3.6" ry="12" fill="#8a6a58" transform="rotate(-14 -30 -88)" />
+        <motion.g style={at(-28, -77)} animate={still ? undefined : { rotate: [0, 0, -10, 0, 0] }} transition={{ duration: 5, times: [0, 0.6, 0.66, 0.72, 1], repeat: Infinity, ease: 'easeInOut' }}>
+          <ellipse cx="-30" cy="-88" rx="3.6" ry="12" fill="#8a6a58" transform="rotate(-14 -30 -88)" />
+        </motion.g>
         <ellipse cx="-38" cy="-86" rx="3.6" ry="12" fill="#8a6a58" transform="rotate(-30 -38 -86)" />
         <ellipse cx="-38" cy="-86" rx="3.6" ry="12" fill="#3b2a24" opacity="0.3" transform="rotate(-30 -38 -86)" />
         <path d="M-28 -80 C-40 -84 -52 -76 -56 -64 C-58 -58 -52 -54 -46 -58 L-30 -66 Z" fill="#8a6a58" />
         <ellipse cx="-52" cy="-61" rx="7" ry="6" fill="#cfae98" />
         <circle cx="-38" cy="-73" r="1.8" fill={C.ink} />
-      </motion.g>
+      </g>
     </g>
   )
 }
