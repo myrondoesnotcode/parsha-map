@@ -13,10 +13,10 @@ Story: `src/redesign/stories/miketz.ts` (Genesis 41:1 – 44:17), 30 cards. Chec
 | Claim | Source | Verdict |
 |---|---|---|
 | No journey line; `route: []`, anchor "in Egypt" (places.json af301ca, a region, pin [31.3075, 30.1294], the same point as Heliopolis) | The verses name no Egyptian city for Pharaoh's court or Joseph's house (41–44), and no place in Canaan for Jacob (42:29, 43:1–14) | ✅ |
-| Only the brothers travel: down (42:3), back to Canaan (42:29), down again (43:15) | Verses | ✅ |
+| Joseph never leaves Egypt (dungeon to Pharaoh, 41:14; through all the land of Egypt, 41:46); the journeys between lands are the brothers': down (42:3), back to Canaan (42:29), down again (43:15) | Verses | ✅ (reworded in pass 1) |
 | On = Heliopolis; site in the Ain Shams and El Matareya districts of north-east Cairo; pin acd9137 at 30.1294 N, 31.3075 E | Wikipedia "Heliopolis (ancient Egypt)": Hebrew אֹן in Gen 41:45, 50; site "within the boundaries of Ain Shams and El Matareya … in northeastern Cairo"; coord 30.129333 N 31.307528 E | ✅ spot "On (usual identification: Heliopolis)" |
 | "the Egyptian city the Greeks called Heliopolis" | Wikipedia: Greek Hēlioúpolis, "City of the Sun" | ✅ |
-| Canaan is a region; its pin (a581f0c, in the Galilee) is an illustrative point only | places.json type "region" | ✅ spot "Canaan (a region)", note says point is illustrative |
+| Canaan is a region; shown at an illustrative point in the hill country, [35.1, 31.75], not the gazetteer's point in the Galilee (a581f0c kept as `place`) | places.json type "region"; 37:14 (valley of Hebron is the last hint) | ✅ spot "Canaan (a region; point illustrative)"; all four Canaan cards carry the note |
 | The Nile isn't marked in this story. The dream cards aim the camera at the river at today's Cairo ([31.2296, 30.0437]), but the stars and list cards don't draw spots, so no Nile pin is shown | Screenshots of cards 2 and 3 | ✅ (the stars card's note no longer mentions a river point) |
 | The night encampment (42:27) isn't located | 42:27, 43:21 | ✅ no pin; note says so |
 | Every place shown is linked to miketz in places.json | `check:stories --strict`: 0 warnings | ✅ |
@@ -26,8 +26,8 @@ Story: `src/redesign/stories/miketz.ts` (Genesis 41:1 – 44:17), 30 cards. Chec
 | # | Claim | Source | Verdict |
 |---|---|---|---|
 | 0 | Title Miketz, tagline "Dreams, grain and brothers.", range 41:1 – 44:17 | parshaList.json; checker | ✅ |
-| 1 | Joseph is in the dungeon; the chief cupbearer has forgotten him | 40:23 ("he forgot him"); 41:14 ("rushed from the dungeon") | ✅ |
-| 1 | No journey for Joseph; only the brothers travel: down, back, down again | 42:3, 42:29, 43:15 | ✅ |
+| 1 | No journey line; Joseph never leaves Egypt: in the dungeon, forgotten by the chief cupbearer; later travels through all the land of Egypt | 40:23; 41:14; 41:46 | ✅ |
+| 1 | The journeys between lands are the brothers': down, back, down again | 42:3, 42:29, 43:15 | ✅ |
 | 2 | Stars title "Pharaoh dreamed that he was standing by the Nile": a part of the JPS verse | 41:1 (JPS) | ✅ |
 | 2 | "After two years' time"; two dreams, waking after each; "next morning" his spirit agitated | 41:1, 41:4–5, 41:7–8 (JPS) | ✅ |
 | 2 note | מִקֵּץ; Rashi on 41:1: "at the end", as the Targum renders it | Rashi on 41:1 (names the Targum) | ✅ |
@@ -76,7 +76,7 @@ Story: `src/redesign/stories/miketz.ts` (Genesis 41:1 – 44:17), 30 cards. Chec
 | 20 | Title "It is always me that you bereave" | 42:36 (JPS) | ✅ |
 | 20 | Told Jacob in Canaan all that happened; each money-bag in his sack; they and their father dismayed; Jacob's and Reuben's quotes; "My son must not go down with you." | 42:29, 42:35–38 (JPS) | ✅ |
 | 21 | Famine severe; rations eaten up; "Go again"; Judah: the man warned "Do not let me see your faces unless your brother is with you"; "Send the boy in my care"; "I myself will be surety for him" | 43:1–3, 43:8–9 (JPS) | ✅ |
-| 21 note | JPS: literally "Do not see my face"; father called Jacob and Israel in these chapters (43:6, 43:8) | JPS note on 43:3; 43:6, 43:8 | ✅ |
+| 21 note | JPS: literally "Do not see my face"; chapter 43 calls the father Israel (43:6, 43:8, 43:11); chapter 42 calls him Jacob (42:1, 42:29, 42:36) | JPS note on 43:3; Genesis 42–43 (Hebrew and JPS) | ✅ (corrected in pass 1) |
 | 22 | Gift: balm, honey, gum, ladanum, pistachio nuts, almonds (צֳרִי, דְּבַשׁ, נְכֹאת, לֹט, בׇּטְנִים, שְׁקֵדִים) | 43:11 (JPS; Hebrew; וָלֹט and וּשְׁקֵדִים shown without the "and") | ✅ |
 | 22 note | Quote 43:11; double the money; carry back the returned money, "perhaps it was a mistake"; Benjamin; El Shaddai quote; "if I am to be bereaved, I shall be bereaved" | 43:11–14 (JPS) | ✅ |
 | 23 | Went down with the gift, double money and Benjamin; stood before Joseph; steward to bring them home to dine at noon; afraid over the money; told the steward they had brought it back; "All is well with you; do not be afraid"; Simeon brought out | 43:15–23 (JPS) | ✅ |
@@ -95,6 +95,27 @@ Story: `src/redesign/stories/miketz.ts` (Genesis 41:1 – 44:17), 30 cards. Chec
 | 29 | Talk = Everyone question; quotes 41:16 exactly | 41:16 | ✅ |
 | Q Kids | Stored grain in the seven good years for the famine | 41:35–36, 41:48 | ✅ |
 | Q Deeper | Quotes of 42:21 and 44:16; brothers sure of their innocence (44:7–9) | JPS | ✅ |
+
+## Independent fact-check, pass 1 (wf_02d2dc32-bd3)
+
+Findings in `fc1-miketz.json` / `.txt`: 325 claims, 303 verified, 22 problems, 18 missed. Every story finding on `miketz.ts` is fixed below, each re-checked on Sefaria (JPS and Hebrew of Genesis 42–43; Ibn Ezra on 41:1, Strickman–Silver; Rashi on 40:23, Rosenbaum–Silbermann) before the edit. The R* items (Read tab, parshaList.json), the cover and other files belong to the coordinator and are unchanged here.
+
+| Finding | Fix | Re-verified against |
+|---|---|---|
+| c010, c013, missed (header comment) | "No journey for Joseph… Only his brothers travel" became "No journey line this week. Joseph never leaves Egypt: he is in the dungeon… and later travels through all the land of Egypt. The journeys between lands are his brothers'…"; 41:46 added to the ref; the header comment and talk note were aligned | 41:14, 41:46, 42:3, 42:29, 43:15 |
+| c129, c171, missed (Judah's surety pin) | CANAAN moved from the gazetteer's Galilee point to an illustrative hill-country point [35.1, 31.75], with a comment saying so; `place: 'a581f0c'` kept; every spot now reads "Canaan (a region; point illustrative)" | places.json a581f0c; 37:14 |
+| c130, missed (Judah's surety note) | All four Canaan cards (Ten brothers go down, "It is always me that you bereave", Judah's surety, A gift for the man) carry the note: a region, illustrative point, differs on purpose from the gazetteer's point, the verses don't say where the family lived | the same |
+| c176 | "calls their father both Jacob and Israel (43:6, 43:8)" became "calls their father Israel (43:6, 43:8, 43:11); in the chapter before, he is Jacob (42:1, 42:29, 42:36)" | Genesis 43 has no יַעֲקֹב; 42:1, 42:4, 42:29, 42:36 have Jacob |
+| c248 | Sources now include "THE JPS TANAKH: Gender-Sensitive Edition (translation and notes), Sefaria", plus "Ibn Ezra on Genesis 41:1" and Rashi on 40:23 | — |
+| missed: Ten brothers ref | ref became "Genesis 42:1–5, 43:29 · 37:14" | 43:29 |
+| missed: dreams ref | ref became "Genesis 41:2–7, 41:19–21" | 41:19–21 |
+| missed: "organize" note | Now "In 41:34 Joseph advises that Pharaoh 'organize' the land of Egypt in the seven years of plenty (so JPS)…" | 41:33–34 and JPS note |
+| missed: stars note, "two years after what" | Attributed: Ibn Ezra on 41:1 (the count may run from the cupbearer's release or from Joseph's imprisonment); Rashi on 40:23 (having trusted the cupbearer, Joseph had to stay imprisoned two years); "Ibn Ezra" added to the ref | Ibn Ezra 41:1 (לא פירש הכתוב תחלת זה החשבון… ליציאת שר המשקים… או לשבת יוסף שם); Rashi 40:23 (הֻזְקַק לִהְיוֹת אָסוּר שְׁתֵּי שָׁנִים) |
+| missed: close-ups near Memphis | The quote, guess and sons cameras went from zoom 9.2–9.5 to 7.4, centred on [31.25–31.3, 30.3]. The quote card gained the note "The map is a backdrop; the verses don't say where Pharaoh's court was." The stars card note gained "The view of the Nile is a backdrop…". The dream cameras were lowered to 7.6 / 7.4 | screenshots |
+| Screen-only (no text change) | BOTH_VIEW re-centred ([35.2, 31.2], z4.9) so the longer Canaan label fits on a phone | screenshots of cards 15, 19, 29 |
+| Out of scope here | R3, R9, R10, R14, R18, R19, R26, R33, R34, R36, R38, R39, R40, R41 (Read tab / parshaList.json); R70 and the date bar (MapChrome.tsx); the Nile / Canaan / Heliopolis dots on the Map tab (processGeodata.ts); the cover emblem's east wind (scenes-genesis.tsx); the History-tab note | coordinator's branch |
+
+After the fixes: `check:stories -- miketz --strict` gives 0 errors and 0 warnings, and `npm run build` passes. Changed cards 1, 2, 3, 6, 8, 11, 13, 15, 19, 20, 21, 22 and 29 were re-screenshotted at phone size.
 
 ## Not claimed, on purpose
 
