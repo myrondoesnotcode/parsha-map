@@ -102,3 +102,22 @@ Story: `src/redesign/stories/vayechi.ts` (Genesis 47:28 – 50:26), 20 cards. Ch
 ## Screens
 
 All 20 cards screenshotted at iPhone size (390 × 844) with `.claude/cdp-shot.mjs`. Fixed during the walk: the Ephrath and Machpelah cards were reframed on their own pins (a wide view put the Ephrath label off screen and hid stop 2, which isn't drawn before `routeTo` reaches it); the Jordan label was cut off at the right edge; page cards (quote, lists) put the Goshen pin under the Hebrew or the card, so their camera now keeps it off screen; the first list card was too tall to show its reference, so its rows were shortened (the cut text moved to the note).
+
+## Independent fact-check, pass 1 (wf_d291ac8a-044)
+
+291 claims, 259 verified. The 32 problems and 16 missed items include Read-tab (R*), cover (C006), DaylightMap and parshaList items, which are handled on the code branch and not listed here. Each story item below was re-checked on Sefaria (or the named source) before the fix.
+
+| Id | Finding | Fix | Re-verified against |
+|---|---|---|---|
+| C057, C072, C088 (and the same wording on cards 2 and 12) | "The verses say only that this was in Egypt" overstates: 48:8–13, 48:15–19, 49:1–2 and 49:33–50:3 don't name Egypt | "The verses don't say where in Egypt this was, so no pin is lit." | Genesis 47:28 – 50:3 (JPS): Egypt is named in 47:28–30, 48:5, not in those ranges |
+| C090 + missed (Simeon) | Rows stop mid-verse without "…" | Trailing "…" added to Reuben, Levi, Judah, Issachar, Dan, Joseph; leading "…" to Simeon ("Simeon and Levi are a pair;" cut) | 49:4, 49:5, 49:7, 49:10, 49:15, 49:17, 49:26 (JPS). Gad, Asher, Naphtali, Zebulun and Benjamin end where their verses end |
+| C099 | "Sidon, named for Zebulun" reads as "named after" | "Sidon, named in Zebulun's blessing (49:13), isn't marked in this story." | 49:13 (JPS) |
+| C140 | 50:5 quote dropped "My father made me swear, saying, 'I am about to die.'" so Jacob's words read as Joseph's | Quoted in full with nested quotation marks | 50:5 (JPS) |
+| C160 | "His sons, not his grandsons" clashed with Manasseh and Ephraim taking places | Rashi's reason given: not an Egyptian, not one of their sons, born of Canaanite women; Levi and Joseph excluded; Joseph's sons Manasseh and Ephraim took their places | Rashi on 50:13 (Hebrew: לֹא אִישׁ מִצְרִי וְלֹא אֶחָד מִבְּנֵיכֶם, שֶׁהֵם מִבְּנוֹת כְּנַעַן … מְנַשֶּׁה וְאֶפְרַיִם יִהְיוּ תַחְתֵּיהֶם) |
+| C163, C164, C190, C193 + missed (line over the sea) | The Goshen → Machpelah arc (bow 0.14, no via) ran up to ~30 km over the Mediterranean | Machpelah stop gets `via: [33.8, 30.85]`, an illustrative inland point in northern Sinai (~30 km south of the coast at El Arish). Computed samples of the second leg: 34.10E 31.07N, 34.26E 31.16N, 34.42E 31.25N, 34.59E 31.33N, all inland of the Sinai–Gaza coast. Card 15 and finale notes now say the line bends inland through an illustrative point and that the road isn't known | densify()/arc() in DaylightMap.tsx; screenshots of cards 15–19 and a zoomed crop of the finale show the line on land |
+| Missed (Deeper question) | "twins" is in 25:24, not 25:25–26 | Cited as Genesis 25:24–26 in the question and in sources | 25:24 (JPS "there were twins in her womb") |
+| Missed (card 1 note) | Rashi's "bondage that began" when Jacob died, stated without the Torah's own timing | "…the bondage, which in this reading began then (the Torah tells of the oppression only after Joseph and his generation had died, Exodus 1:6–11)"; Exodus 1:6–11 added to sources | Rashi on 47:28; Exodus 1:6–11 (JPS) |
+| Missed (card 14, Rashi on 50:10) | Confirmed; optional "(Sotah 13a)" | Not added: Sotah 13a names the children of Esau, Ishmael and Keturah, not Rashi's kings of Canaan and princes of Ishmael, so the card keeps Rashi's version under his name | Rashi on 50:10; Sotah 13a:4–5 |
+| Missed (card 13 body) | No change beyond C140 | None | — |
+
+Re-screenshotted at 390 × 844: cards 1, 2, 4, 6, 8, 9, 10, 12, 13, 15, 16, 17, 18, 19. `check:stories -- vayechi --strict`: 0 errors, 0 warnings; `npm run build` passes.
