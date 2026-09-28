@@ -219,3 +219,18 @@ Applied:
 | c241 / missed, Ephrath | Finale note: on a phone 1·2 sits on Penuel and 5·6 on Ephrath, and the line runs on to Hebron; the Ephrath pin marks the road Rachel died on, and the text doesn't say Jacob reached the town |
 
 Not changed: the Zarqa isn't drawn by the basemap at the gift card's zoom (map data; the label says "point illustrative"); the NameMorph keeps only the shared י (checked on screen). Out of scope, reported: cover brief (c5), Map-tab pins for Migdal-eder and Allon-bacuth, Read-tab items.
+
+## Fifth pass (workflow wf_32575a04-344)
+
+371 claims, 338 verified. Two claims went unchecked by the lenses (c35, the ford's site isn't known: no verse locates it; c277, the finale's UI text). Applied:
+
+| Finding | Change |
+|---|---|
+| c221 | Rachel card: the line stops short of Ephrath (routeTo 3.9) and no stop is lit; Ephrath shows as a hollow spot "Ephrath (now Bethlehem)"; note: "The line stops short of the town; where on the road she died isn't said" (35:16, 35:19) |
+| c269 / c270 | Finale note: which stops merge depends on the screen size (the tested phones gave different groupings); the Ephrath pin marks Bethlehem, Rachel died some distance short of it |
+| c230 / c268 | "aren't marked in this story" (the Map tab still shows places.json dots for Eder and Allon-bacuth: reported, outside this lane) |
+| c257 | "a concubine of Esau's son Eliphaz" (36:12) |
+| Missed, card 11 note | Bereshit Rabbah 77:3 reads 33:10 "I have seen your face, as the sight of the face of angels" |
+| App | Overview labels stay below the story header and route tag (`55b1ac9`) |
+
+Out of scope, reported: cover emblem brief (c7, c9), Map-tab dots, Read-tab items.
