@@ -7,6 +7,7 @@ const SOR = (ch) => ({ title: `Seder Olam Rabbah ${ch}`, url: `https://www.sefar
 const CHABAD_EXODUS = { title: 'Chabad.org, "The Exodus" (2448 = 1313 BCE, after Seder Olam)', url: 'https://www.chabad.org/library/article_cdo/aid/1663/jewish/The-Exodus.htm' }
 const CHABAD_TIMELINE = { title: 'Chabad.org, "Timeline of Jewish History" (Flood 1656 = 2105 BCE; Abraham born 1948 = 1813 BCE; Moses died 2488 = 1273 BCE)', url: 'https://www.chabad.org/library/article_cdo/aid/3915966/jewish/Timeline-of-Jewish-History.htm' }
 const CHABAD_PATRIARCHS = { title: 'Chabad.org, "Is It Known When the Patriarchs & Matriarchs Were Born and Died?" (Isaac born 2048; Jacob born 2108, died 2255)', url: 'https://www.chabad.org/library/article_cdo/aid/595482/jewish/Is-it-known-when-the-Patriarchs-Matriarchs-were-born-and-died.htm' }
+const CHABAD_JEWISH_TIMELINE = { title: 'Chabad.org, "Jewish Timeline for Chabad.org" (PDF): 2199 = 1562 BCE, Joseph born; 2229 = 1532 BCE, Joseph became viceroy of Egypt', url: 'https://w2.chabad.org/media/pdf/1296/gOiK12961145.pdf' }
 
 // Anchors (AM), each with how it is reached.
 const FLOOD = 1656 // SOR 1: "From Adam to the Flood, 1656 years"
@@ -55,7 +56,8 @@ const parshiot = {
   vayetze: { scholarly: 'patriarchs', traditional: t(JACOB + 77, 'Jacob comes to the well, aged 77', [SOR(2), SEF('Genesis 29:2')]) },
   vayishlach: { scholarly: 'patriarchs', traditional: t(JACOB + 97, 'Jacob returns after 20 years with Laban', [SEF('Genesis 31:41'), SOR(2)]) },
   vayeshev: { scholarly: 'patriarchs', traditional: t(JOSEPH + 17, 'Joseph is 17', [SEF('Genesis 37:2'), SEF('Genesis 41:46'), SEF('Genesis 45:6'), SEF('Genesis 47:9'), SOR(2)]) },
-  miketz: { scholarly: 'patriarchs', traditional: t(JOSEPH + 30, 'Joseph, 30, stands before Pharaoh', [SEF('Genesis 41:46'), SOR(2)]) },
+  // Joseph-specific range (McCarter/Hendel); vayeshev, vayigash and vayechi still use 'patriarchs' (see docs/plans/2026-09-28-miketz-shared-fixes.md).
+  miketz: { scholarly: 'joseph', traditional: t(JOSEPH + 30, 'Joseph, 30, stands before Pharaoh', [SEF('Genesis 41:46'), SEF('Genesis 47:9'), SOR(2), CHABAD_PATRIARCHS, CHABAD_JEWISH_TIMELINE]) },
   vayigash: { scholarly: 'patriarchs', traditional: t(JACOB + 130, 'Jacob, 130, comes to Egypt', [SEF('Genesis 47:9'), CHABAD_PATRIARCHS, CHABAD_TIMELINE]) },
   vayechi: { scholarly: 'patriarchs', traditional: t(JACOB + 147, 'Jacob dies at 147', [SEF('Genesis 47:28'), CHABAD_PATRIARCHS]) },
 
@@ -124,6 +126,20 @@ const scholarly = {
       { title: 'Gary A. Rendsburg, "The Ancestral Narratives," in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): proposals for Abraham run "anywhere from c. 2100 to c. 1400"; he describes the Middle Bronze Age dating (c. 2000–c. 1550) and favours the later, Late Bronze Age date', url: 'https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%201%20text%20%20notes.pdf' },
       { title: 'P. Kyle McCarter Jr., rev. Ronald S. Hendel, "The Patriarchal Age," in Ancient Israel (1999): Middle Bronze Age texts "dating to about 2000–1550 B.C.E."', url: 'http://cojs.org/wp-content/uploads/Patriarchal_Age.pdf' },
       { title: 'Wikipedia, "Abraham" (historicity: by the 21st century archaeologists had stopped trying to fix a context)', url: 'https://en.wikipedia.org/wiki/Abraham' },
+    ],
+  },
+  // The Joseph story, dated on its own: McCarter/Hendel say scholars who put the patriarchs in the Middle Bronze Age have
+  // often put Joseph in the Hyksos period; Rendsburg's genealogical dating (Jacob c. 1350, Levi c. 1320) gives the Late
+  // Bronze Age tail. Its midpoint (1612) keeps the era card in the Middle Bronze Age.
+  joseph: {
+    label: 'Date unknown · often c. 1675–1550 BCE, or later',
+    startBCE: 1675,
+    endBCE: 1550,
+    laterToBCE: 1150,
+    sources: [
+      { title: 'P. Kyle McCarter Jr., rev. Ronald S. Hendel, "The Patriarchal Age," in Ancient Israel (1999): "It has often been supposed, especially by those scholars who believe that Abraham, Isaac and Jacob lived in the Middle Bronze Age (about 2000–1550 B.C.E.), that Joseph lived during the so-called Hyksos period (c. 1675–1552)"; it adds that the story\'s Egyptian details fit the author\'s own day and that the story as we know it was unlikely to be composed before about 1000 B.C.E.', url: 'http://cojs.org/wp-content/uploads/Patriarchal_Age.pdf' },
+      { title: 'Gary A. Rendsburg, "The Ancestral Narratives," in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): counting back by generations from an Exodus c. 1200 gives Levi c. 1320 and Jacob c. 1350, placing "the patriarchal age" in the Late Bronze Age (c. 1550–c. 1150)', url: 'https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%201%20text%20%20notes.pdf' },
+      { title: 'Wikipedia, "Joseph (Genesis)": scholars disagree on the story\'s historical background and date; by the early 1990s a majority read it as a novella that reached its current form in the 5th century BCE at the earliest, while some trace its core to a 2nd-millennium BCE context', url: 'https://en.wikipedia.org/wiki/Joseph_(Genesis)' },
     ],
   },
   exodus: {
