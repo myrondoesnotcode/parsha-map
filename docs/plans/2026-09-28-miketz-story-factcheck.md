@@ -117,6 +117,25 @@ Findings in `fc1-miketz.json` / `.txt`: 325 claims, 303 verified, 22 problems, 1
 
 After the fixes: `check:stories -- miketz --strict` gives 0 errors and 0 warnings, and `npm run build` passes. Changed cards 1, 2, 3, 6, 8, 11, 13, 15, 19, 20, 21, 22 and 29 were re-screenshotted at phone size.
 
+## Independent fact-check, pass 2 (wf_26de592c-3dd)
+
+Status NOTES: 291 claims, 279 verified, 12 problems, 10 missed. Every item on `miketz.ts` is fixed below, each re-checked on Sefaria first (JPS and Hebrew of 41:6, 41:23, 42:1–5, 42:29, 42:36, 43:6–11; Rashi on 41:1, Hebrew and Rosenbaum–Silbermann). The R* items and the classic-UI and date items are outside this file.
+
+| Finding | Fix | Re-verified against |
+|---|---|---|
+| c30 | The Rashi on 41:1 note now reads: Egypt is full of man-made canals (יְאוֹרִים) that the Nile rises into and fills, since rain does not fall in Egypt as regularly as in other lands | Rashi 41:1 (שֶׁכָּל הָאָרֶץ עֲשׂוּיִם יְאוֹרִים יְאוֹרִים בִּידֵי אָדָם וְנִילוּס עוֹלֶה בְּתוֹכָם וּמַשְׁקֶה אוֹתָם) |
+| c42, missed (row 4) | Note: the thin ears sprouted close behind them (41:6); the verses don't say whether they too grew on one stalk. Row 4 note: "sprout close behind them and swallow up the first seven" | 41:6 צֹמְחוֹת אַחֲרֵיהֶן; 41:23 |
+| c116 | CANAAN comment: "west of Jerusalem" (the point [35.1, 31.75] is about 10 km west of Jerusalem, not west of Bethlehem) | coordinates |
+| c117, missed (label) | BOTH_VIEW re-centred to [33.6, 30.9], z4.6, so the Delta and Canaan are both in frame ("Money in the sacks", talk). "Ten brothers go down" (set in Canaan, 42:1–5) now has its own camera, onPin(CANAAN, 5.8, 30, 0), so its label fits | screenshots at 390 px: cards 15, 19, 29 |
+| c154 | "in the chapter before, the narrative calls him Jacob (42:1, 42:4, 42:29, 42:36), though 42:5 calls his sons 'the sons of Israel.'" | 42:1, 42:4, 42:5 (בְּנֵי יִשְׂרָאֵל), 42:29, 42:36; 43:6, 43:8, 43:11 |
+| c199, missed (talk note "never") | Talk note: "Joseph stays in Egypt throughout this parsha, and no journey line is drawn…"; "In this parsha the journeys between lands are his brothers'." (Joseph leaves Egypt to bury Jacob in 50:7–14, so "never" is scoped to this parsha) | 42:29–43:14 set in Canaan |
+| missed (header: "story stays in Egypt") | The header now says the anchor is Egypt, and that Joseph stays in Egypt throughout the parsha while the brothers' scenes in 42:1–5 and 42:29–43:14 are in Canaan | — |
+| missed (header: "cards hide spots") | Corrected: the dream cards draw no pin because they have no `spot`; no card kind hides spots | DaylightMap.tsx renders card.spot for every kind |
+| missed (Seder Olam 12 years) | No change: Rashi's two years stay framed as a consequence of trusting the cupbearer, not as Joseph's whole time in prison | — |
+| Out of scope | R45, R70, R77, R78, R79, R82; the classic-UI date/era items; parshaDates scholarly entry | coordinator |
+
+After the fixes: `check:stories -- miketz --strict` gives 0 errors and 0 warnings, and `npm run build` passes. Cards 3, 15, 19 and 29 were re-screenshotted at 390 px.
+
 ## Not claimed, on purpose
 
 - No gloss of Zaphenath-paneah is given as plain fact; all three readings are attributed.
