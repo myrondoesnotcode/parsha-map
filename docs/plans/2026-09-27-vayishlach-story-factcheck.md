@@ -234,3 +234,20 @@ Not changed: the Zarqa isn't drawn by the basemap at the gift card's zoom (map d
 | App | Overview labels stay below the story header and route tag (`55b1ac9`) |
 
 Out of scope, reported: cover emblem brief (c7, c9), Map-tab dots, Read-tab items.
+
+## Sixth pass (workflow wf_ae98e5fc-7a6; three lenses re-run after an API outage)
+
+279 claims, 265 verified, status NOTES. Applied:
+
+| Finding | Change |
+|---|---|
+| c169 / missed | Ephrath is no longer a numbered stop: the text never has Jacob reach the town (35:16–19). The Bethel → Hebron leg bends at Rachel's Tomb, the traditional site (Wikipedia coordinates 31.7193 N, 35.2021 E); the Rachel card ends the line there (routeTo 3.5) under a hollow "Rachel's Tomb (traditional site)" ring; Hebron is stop 5 |
+| c19 / c186 | Seir spots read "Seir (a region; point illustrative)" |
+| c30 / missed | Card 4 note and JABBOK comment: "beside Penuel, where Jacob wrestled (he named the place Peniel, 32:31)" |
+| c114 / missed | Card 15: JPS 34:2 wording, "Shechem son of Hamor the Hivite, chief of the country" (Ramban on 34:2 reads Shechem as the prince) |
+| c180 / missed | Card 23 note: the Torah doesn't date Esau's move; he was already in Seir (32:4, 33:16) |
+| Missed | "Rabbi Ḥama son of Rabbi Ḥanina" on both cards |
+| Cover (c5, c7, c8) | Brief and drawing: the ford of the Jabbok at night (32:23), tone night, no dawn, sun or stars (on `lane/name-letter-cards`, `4461b5b`) |
+| Read tab | R11, R14, R23, R34, R38/R39, R44, keyFigures: applied on `lane/name-letter-cards` (`4461b5b`) |
+
+Not changed: the Rashi on 32:16 midrash (optional); approximateDateBCE and timeline primarySources (classic UI only; not rendered in Daylight).
