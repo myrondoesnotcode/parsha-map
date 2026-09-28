@@ -319,6 +319,8 @@ function placeLabels(story: ParshaStory, pts: { x: number; y: number }[], cluste
   const top = el.getBoundingClientRect().top
   const cover = [...document.querySelectorAll('.dl-complete, .dl-story-card-wrap')].map((e) => e.getBoundingClientRect().top - top)
   const screen = { w: el.clientWidth, h: Math.min(el.clientHeight, ...cover) }
+  // The story header and the route tag sit over the top of the map: labels stay below them.
+  const ceiling = Math.max(4, ...[...document.querySelectorAll('.dl-story-head, .dl-route-tag')].map((e) => e.getBoundingClientRect().bottom - top + 4))
   for (const i of leads) {
     const names = story.route.filter((_, j) => cluster[j] === i).filter((s, k, all) => all.findIndex((t) => t.name === s.name) === k)
     const lines = names.map((s) => s.name)
@@ -336,7 +338,7 @@ function placeLabels(story: ParshaStory, pts: { x: number; y: number }[], cluste
       ['above', { x0: pin.x0, y0: pin.y0 - 4 - h, x1: pin.x0 + w, y1: pin.y0 - 4 }],
     ]
     const free = (b: Box) =>
-      !placed.some((p) => hits(p, b)) && !pins.some(([j, p]) => j !== i && hits(p, b)) && b.x0 >= 4 && b.x1 <= screen.w - 4 && b.y0 >= 4 && b.y1 <= screen.h - 4
+      !placed.some((p) => hits(p, b)) && !pins.some(([j, p]) => j !== i && hits(p, b)) && b.x0 >= 4 && b.x1 <= screen.w - 4 && b.y0 >= ceiling && b.y1 <= screen.h - 4
     const [side, box] = boxes.find(([, b]) => free(b)) ?? boxes[0]
     sides[i] = side
     placed.push(box)
