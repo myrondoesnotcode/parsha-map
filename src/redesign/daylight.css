@@ -534,7 +534,7 @@
   padding: 4px 9px; border-radius: 10px;
 }
 /* Today tab: under the top bar. Map tab: under the search, chips and date bar. */
-.dl-device[data-tab='map'] .dl-route-tag-map { top: calc(var(--safe-top) + 232px); }
+.dl-device[data-tab='map'] .dl-route-tag-map { top: calc(var(--safe-top) + 262px); }
 .dl-paused {
   position: absolute; left: 50%; top: calc(var(--safe-top) + 70px); transform: translateX(-50%); z-index: 3;
   display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 18px;

@@ -221,7 +221,7 @@
     "alternateNames": [],
     "latitude": 31.922778,
     "longitude": 35.241389,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "tree",
     "verses": [
       "Genesis 35:8"
@@ -1732,7 +1732,8 @@
       "masei",
       "devarim",
       "haazinu"
-    ]
+    ],
+    "description": "the land of Canaan, a region; the pin marks only a point in it"
   },
   {
     "id": "a329990",
@@ -2186,8 +2187,8 @@
     "id": "ab80fa1",
     "name": "Eder 1",
     "alternateNames": [],
-    "latitude": 31.6793,
-    "longitude": 35.15464,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -2196,7 +2197,8 @@
     "parshas": [
       "vayishlach"
     ],
-    "description": "Khirbet el Bira"
+    "description": "Migdal-eder, \"the tower of Eder\" (Genesis 35:21); site unknown",
+    "locationNote": "Migdal-eder, \"the tower of Eder\" (Genesis 35:21); site unknown"
   },
   {
     "id": "a2735ff",
@@ -3062,7 +3064,7 @@
     "alternateNames": [],
     "latitude": 31.922778,
     "longitude": 35.241389,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "altar",
     "verses": [
       "Genesis 35:7"
@@ -6198,7 +6200,7 @@
       "vaera",
       "beshalach"
     ],
-    "description": "Nile River"
+    "description": "the Nile; the pin marks one point on the river, on its Rosetta branch near the sea"
   },
   {
     "id": "a314731",

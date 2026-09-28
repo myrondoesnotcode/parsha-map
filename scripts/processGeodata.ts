@@ -257,6 +257,8 @@ const ANCIENT_JSONL_URL =
 // contradicts. Keyed by OpenBible id; `note` replaces the description.
 // ---------------------------------------------------------------------------
 const UNPINNED: Record<string, { name: string; note: string }> = {
+  // Genesis 35:21: Jacob camps "beyond Migdal-eder". OpenBible's only pin (Khirbet el-Bira) is low-confidence; the site isn't known.
+  ab80fa1: { name: 'Eder 1', note: 'Migdal-eder, "the tower of Eder" (Genesis 35:21); site unknown' },
   // Genesis 14:15: "Hobah, which is on the left hand (north) of Damascus". OpenBible pins it on Damascus itself.
   a6779cd: { name: 'Hobah', note: 'north of Damascus; site unknown' },
   // Genesis 16:14: Beer-lahai-roi is "between Kadesh and Bered", so Bered can't share the well's point.
@@ -414,6 +416,10 @@ const PICKED: Record<string, { name: string; match: string; note: string; confid
 // Descriptions that are wrong, unclear or self-referential in OpenBible.
 // ---------------------------------------------------------------------------
 const DESCRIBED: Record<string, { name: string; description: string }> = {
+  // A region: the Map tab shows its dot, so the description says the point is only illustrative.
+  a581f0c: { name: 'Canaan', description: 'the land of Canaan, a region; the pin marks only a point in it' },
+  // OpenBible's point is on the Rosetta branch near the sea; the description says what it marks.
+  a012705: { name: 'Nile', description: 'the Nile; the pin marks one point on the river, on its Rosetta branch near the sea' },
   a60f092: { name: 'Goshen 1', description: 'a region in the eastern Nile Delta; exact extent uncertain' },
   a079b21: { name: 'Rameses', description: "Pi-Ramesses, Ramesses II's Delta capital (13th century BCE), at Qantir beside Tell el-Dab'a (ancient Avaris); Genesis 47:11 speaks of \"the region of Rameses\"" },
   ab89be9: { name: 'Ararat', description: 'Urartu: Genesis 8:4 names only "the mountains of Ararat"; the pin shows the peak now called Mount Ararat' },
@@ -528,6 +534,9 @@ const DROPPED_VERSES: Record<string, { name: string; osises: string[] }> = {
 // "medium" however vague the site is; and an alias can outrank the place it is an alias of.
 // ---------------------------------------------------------------------------
 const RATED: Record<string, { name: string; confidence: PlaceOutput['confidence']; why: string }> = {
+  // Genesis 35:7-8: El-bethel and Allon-bacuth are placed only at or below Bethel, which is low.
+  a30b045: { name: 'El-bethel', confidence: 'low', why: 'placed only at Bethel, which is low' },
+  af9a894: { name: 'Allon-bacuth', confidence: 'low', why: 'placed only "below Bethel" (Genesis 35:8), which is low' },
   // Genesis 28:19: Luz is Bethel's earlier name and shares its pin, so it shares Bethel's confidence (low).
   a397042: { name: 'Luz 1', confidence: 'low', why: 'another name for Bethel (Genesis 28:19), which is low' },
   // Exodus 19:1-2: placed only relative to Mount Sinai, itself low; medium was OpenBible's default 500. [EXO-76, LEV-67, P2-34]
