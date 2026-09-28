@@ -285,7 +285,7 @@ const vayishlach: ParshaStory = {
       // The line stops at the traditional grave (the bend of the Bethel → Hebron leg), short of Ephrath: she died "some distance short of Ephrath" (35:16).
       camera: { center: [35.225, 31.79], zoom: 10.2, pitch: 45, bearing: 0 },
       routeTo: 3.5,
-      routeNote: 'the line stops at the traditional site of Rachel’s Tomb',
+      routeNote: 'ends at Rachel’s Tomb, a traditional site',
       spot: { name: 'Rachel’s Tomb (traditional site)', at: RACHELS_TOMB },
     },
     {
@@ -302,7 +302,7 @@ const vayishlach: ParshaStory = {
       // Page card: the hill country between Ephrath and Hebron as a backdrop; no pin is active, since the family had moved on beyond Migdal-eder (site unknown).
       camera: { center: [35.16, 31.61], zoom: 9.6, pitch: 30, bearing: 0 },
       routeTo: 3.5,
-      routeNote: 'the line stops at the traditional site of Rachel’s Tomb',
+      routeNote: 'ends at Rachel’s Tomb, a traditional site',
     },
     {
       kind: 'chapter',
