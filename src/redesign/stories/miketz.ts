@@ -6,11 +6,12 @@
 // the land of Egypt, 41:46); the journeys between lands are the brothers': down from Canaan and back, then down
 // again. A route would need two endpoints the text doesn't give: it never says which Egyptian city Pharaoh's court
 // or Joseph's house was in, nor where in Canaan Jacob's family was living. So `route` is empty and the anchor is
-// Egypt (anchor: places.json Egypt, whose pin is the same point as Heliopolis). Pins shown, both linked to miketz in
+// Egypt (anchor: places.json Egypt, whose pin is the same point as Heliopolis); the cover line names both lands,
+// "in Egypt and Canaan". Pins shown, both linked to miketz in
 // places.json: On (Heliopolis, in Ain Shams / El Matareya, north-east Cairo) and Canaan (a region, shown at an
 // illustrative point in the hill country, not the gazetteer's point in the Galilee; see CANAAN below). The dream cards aim the camera at the Nile at today's Cairo but
 // draw no pin (the stars card and the 'Two dreams' list have no `spot`), so the Nile isn't marked in this story.
-// Joseph stays in Egypt throughout this parsha; the brothers' scenes in 42:1–5 and 42:29–43:14 are in Canaan.
+// Joseph stays in Egypt throughout this parsha; the brothers' scenes in 42:1–4 and 42:29–43:14 are in Canaan.
 // Verses quote THE JPS TANAKH: Gender-Sensitive Edition (Sefaria); Hebrew is Miqra according to the Masorah
 // without cantillation marks. Claim table: docs/plans/2026-09-28-miketz-story-factcheck.md.
 import type { LngLat, ParshaStory } from '../story'
@@ -57,7 +58,7 @@ const miketz: ParshaStory = {
     'Wikipedia, “Heliopolis (ancient Egypt)”',
   ],
   route: [],
-  anchor: { name: 'in Egypt', at: EGYPT, place: 'af301ca' },
+  anchor: { name: 'in Egypt and Canaan', at: EGYPT, place: 'af301ca' },
   cards: [
     {
       kind: 'cover',
@@ -83,7 +84,7 @@ const miketz: ParshaStory = {
       body: '“After two years’ time,” Pharaoh has two dreams, waking after each one. Next morning his spirit is agitated.',
       ref: 'Genesis 41:1–8 · Rashi · Ibn Ezra',
       note: 'The parsha’s name, מִקֵּץ, is the verse’s word for “at the end”: Rashi on 41:1 reads it “at the end,” as the Targum renders it. The verse doesn’t say two years after what: Ibn Ezra on 41:1 says the count may run from the cupbearer’s release or from the day Joseph was put in prison, and Rashi on 40:23 says that because Joseph put his trust in the cupbearer, he had to stay imprisoned two years. Rashi on 41:1 also says no river but the Nile is called יְאֹר, because Egypt is full of man-made canals (יְאוֹרִים) that the Nile rises into and fills, since rain does not fall in Egypt as regularly as in other lands. The night sky is an illustration: the verses say Pharaoh awoke, slept and dreamed again, and was agitated the next morning. The view of the Nile is a backdrop; the verses don’t say where Pharaoh was.',
-      camera: onPin(NILE, 7.6, 70, 0),
+      camera: { center: NILE, zoom: 7.6, pitch: 70, bearing: 0 },
       routeTo: 0,
     },
     {
@@ -97,7 +98,7 @@ const miketz: ParshaStory = {
         { he: 'בְּרִיאוֹת', en: 'Seven ears of grain, solid and healthy', note: 'on a single stalk' },
         { he: 'דַּקּוֹת', en: 'Seven ears, thin and scorched', note: 'sprout close behind them and swallow up the first seven' },
       ],
-      camera: onPin(NILE, 7.4, 40, 0),
+      camera: { center: NILE, zoom: 7.4, pitch: 40, bearing: 0 },
       routeTo: 0,
     },
     {
@@ -208,7 +209,7 @@ const miketz: ParshaStory = {
       ref: 'Genesis 42:1–5, 43:29 · 37:14',
       note: 'Canaan is a region; its pin is only an illustrative point in the hill country, not a place the text names, and it differs on purpose from the gazetteer’s point in the Galilee. The verses don’t say where in Canaan Jacob’s family was living. Joseph had last been sent out from the valley of Hebron (37:14). Benjamin is Joseph’s brother, “his mother’s son” (43:29).',
       act: 'The brothers',
-      // Set in Canaan (42:1–5): the camera frames the Canaan spot so its label fits on a phone.
+      // Set in Canaan (42:1–4): the camera frames the Canaan spot so its label fits on a phone.
       camera: onPin(CANAAN, 5.8, 30, 0),
       routeTo: 0,
       spot: { name: 'Canaan (a region; point illustrative)', at: CANAAN, place: 'a581f0c' },
@@ -306,7 +307,7 @@ const miketz: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Seated by age',
-      body: 'Joseph is served by himself, the brothers by themselves, and the Egyptians by themselves, for the Egyptians could not dine with the Hebrews. The brothers are seated from the oldest to the youngest, and look at one another in astonishment. Benjamin’s portion is several times anyone else’s, and they drink their fill with him.',
+      body: 'Joseph is served by himself, the brothers by themselves, and the Egyptians by themselves, for the Egyptians could not dine with the Hebrews. The brothers are seated from the oldest to the youngest, and look at one another in astonishment. Benjamin’s portion is several times anyone else’s, and they drink their fill with Joseph.',
       ref: 'Genesis 43:32–34 · Rashi',
       note: 'The Hebrew says Benjamin’s portion was “five” times as much (חָמֵשׁ יָדוֹת); JPS translates “several” and notes that it is literally “five.” Rashi on 43:34 counts the five: his own share, and shares from Joseph, Asenath, Manasseh and Ephraim. He also says that from the day they sold Joseph, neither they nor he had drunk wine; that day they drank.',
       camera: { ...EGYPT_VIEW, zoom: 7.4, pitch: 50, bearing: -20 },

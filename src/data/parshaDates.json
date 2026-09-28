@@ -44,6 +44,26 @@
         }
       ]
     },
+    "joseph": {
+      "label": "Date unknown · often c. 1675–1550 BCE, or later",
+      "startBCE": 1675,
+      "endBCE": 1550,
+      "laterToBCE": 1150,
+      "sources": [
+        {
+          "title": "P. Kyle McCarter Jr., rev. Ronald S. Hendel, \"The Patriarchal Age,\" in Ancient Israel (1999): \"It has often been supposed, especially by those scholars who believe that Abraham, Isaac and Jacob lived in the Middle Bronze Age (about 2000–1550 B.C.E.), that Joseph lived during the so-called Hyksos period (c. 1675–1552)\"; it adds that the story's Egyptian details fit the author's own day and that the story as we know it was unlikely to be composed before about 1000 B.C.E.",
+          "url": "http://cojs.org/wp-content/uploads/Patriarchal_Age.pdf"
+        },
+        {
+          "title": "Gary A. Rendsburg, \"The Ancestral Narratives,\" in Ancient Israel, ed. H. Shanks (Biblical Archaeology Society): counting back by generations from an Exodus c. 1200 gives Levi c. 1320 and Jacob c. 1350, placing \"the patriarchal age\" in the Late Bronze Age (c. 1550–c. 1150)",
+          "url": "https://jewishstudies.rutgers.edu/images/documents/faculty/Rendsburg/ch.%201%20text%20%20notes.pdf"
+        },
+        {
+          "title": "Wikipedia, \"Joseph (Genesis)\": scholars disagree on the story's historical background and date; by the early 1990s a majority read it as a novella that reached its current form in the 5th century BCE at the earliest, while some trace its core to a 2nd-millennium BCE context",
+          "url": "https://en.wikipedia.org/wiki/Joseph_(Genesis)"
+        }
+      ]
+    },
     "exodus": {
       "label": "Date unknown · often placed c. 1300–1200 BCE",
       "startBCE": 1300,
@@ -253,7 +273,7 @@
       }
     },
     "miketz": {
-      "scholarly": "patriarchs",
+      "scholarly": "joseph",
       "traditional": {
         "am": 2229,
         "yearBCE": 1532,
@@ -264,8 +284,20 @@
             "url": "https://www.sefaria.org/Genesis_41.46"
           },
           {
+            "title": "Genesis 47:9",
+            "url": "https://www.sefaria.org/Genesis_47.9"
+          },
+          {
             "title": "Seder Olam Rabbah 2",
             "url": "https://www.sefaria.org/Seder_Olam_Rabbah.2"
+          },
+          {
+            "title": "Chabad.org, \"Is It Known When the Patriarchs & Matriarchs Were Born and Died?\" (Isaac born 2048; Jacob born 2108, died 2255)",
+            "url": "https://www.chabad.org/library/article_cdo/aid/595482/jewish/Is-it-known-when-the-Patriarchs-Matriarchs-were-born-and-died.htm"
+          },
+          {
+            "title": "Chabad.org, \"Jewish Timeline for Chabad.org\" (PDF): 2199 = 1562 BCE, Joseph born; 2229 = 1532 BCE, Joseph became viceroy of Egypt",
+            "url": "https://w2.chabad.org/media/pdf/1296/gOiK12961145.pdf"
           }
         ]
       }
