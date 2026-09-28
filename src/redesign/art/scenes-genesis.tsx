@@ -905,15 +905,16 @@ export function Miketz() {
 
 // ——— Vayigash: the wagons Joseph sent to bring Jacob and the families ————————————————
 
-function Wagon({ still }: { still: boolean }) {
+// Standing ready: no draft animals are drawn, so the wagons don't move.
+function Wagon() {
   const wheel = (cx: number) => (
-    <motion.g key={cx} animate={still ? undefined : { rotate: -360 }} transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}>
+    <g key={cx}>
       <circle cx={cx} cy="-19" r="19" fill="#8a5a3c" />
       <circle cx={cx} cy="-19" r="15" fill="#b0612f" />
       <rect x={cx - 15} y="-24" width="30" height="2" fill="#8a5a3c" />
       <rect x={cx - 15} y="-16" width="30" height="2" fill="#8a5a3c" />
       <circle cx={cx} cy="-19" r="4.5" fill="#e59b62" />
-    </motion.g>
+    </g>
   )
   return (
     <g>
@@ -935,7 +936,7 @@ function Wagon({ still }: { still: boolean }) {
 }
 
 export function Vayigash() {
-  const { tilt, still } = useArtMotion()
+  const { tilt } = useArtMotion()
   return (
     <>
       <Sky id="vayigash-sky" stops={[[0, C.blueSoft], [0.72, C.sand]]} />
@@ -950,23 +951,12 @@ export function Vayigash() {
         <path d="M-40 420 C80 404 240 402 460 414 L460 560 L-40 560 Z" fill={C.land} />
         {/* the road, running off toward the hills */}
         <path d="M44 420 L60 420 C120 440 220 470 360 500 L110 500 C90 470 70 440 44 420 Z" fill="#e6cfa8" />
-        <g transform="translate(112 452) scale(0.5)"><Wagon still={still} /></g>
+        <g transform="translate(112 452) scale(0.5)"><Wagon /></g>
       </Layer>
       <Layer depth={1} tilt={tilt}>
         <path d="M-40 500 C80 486 200 488 300 494 C360 498 420 496 460 494 L460 560 L-40 560 Z" fill="#e2d2b2" />
         <path d="M100 496 C200 490 300 494 380 500 C420 520 440 540 450 560 L150 560 C140 540 120 516 100 496 Z" fill="#e6cfa8" />
-        {/* dust off the wheels */}
-        {still ? null : [0, 1, 2].map((i) => (
-          <motion.circle
-            key={i} cx="344" cy="502" r="8" fill="#fff7e6"
-            initial={{ opacity: 0 }}
-            animate={{ x: [0, 36], y: [0, -10], scale: [0.5, 1.6], opacity: [0, 0.45, 0] }}
-            transition={{ duration: 3, delay: i, repeat: Infinity, ease: 'easeOut' }}
-          />
-        ))}
-        <motion.g animate={still ? undefined : { y: [0, -1.5, 0, -1, 0] }} transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}>
-          <g transform="translate(244 512) scale(1.28)"><Wagon still={still} /></g>
-        </motion.g>
+        <g transform="translate(244 512) scale(1.28)"><Wagon /></g>
       </Layer>
     </>
   )
