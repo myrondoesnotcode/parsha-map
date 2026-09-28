@@ -18,7 +18,7 @@ import type { LngLat, ParshaStory } from '../story'
 
 /**
  * Jabbok (places.json aca7bd9, whose point marks the river's mouth at the Jordan). Shown as a river spot, not a stop,
- * at an illustrative point on the Zarqa beside the Penuel pin, where the story's night takes place. Where the ford was isn't known.
+ * at an illustrative point on the Zarqa beside the Penuel pin, where Jacob wrestled (he named the place Peniel, 32:31). Where the ford was isn't known.
  */
 const JABBOK: LngLat = [35.681, 32.1861]
 /** Penuel (places.json a8a9ff9), pinned at Tell edh-Dhahab el-Sharqi (the eastern of two hills), Israel Finkelstein's proposal. Not certain. */
@@ -32,6 +32,8 @@ const BETHEL: LngLat = [35.241389, 31.922778]
 /** Ephrath (places.json af4e985) = Bethlehem (35:19), pinned at Bethlehem. Rachel died some distance short of it (35:16). */
 const EPHRATH: LngLat = [35.207639, 31.704306]
 /** Hebron (places.json a85151a), pinned at Tel Rumeida, its usual identification. */
+/** Rachel's Tomb, the traditional site of her grave at Bethlehem's northern entrance (Wikipedia "Rachel's Tomb": 31.7193 N, 35.2021 E). Only a bend in the Bethel → Hebron line. */
+const RACHELS_TOMB: LngLat = [35.2021, 31.7193]
 const HEBRON: LngLat = [35.10222, 31.525087]
 /** Seir (places.json ae981db "Mount Seir 1"), a region: an illustrative point in the range around Jebel esh-Shera, south of the Dead Sea and east of the Arabah. */
 const SEIR: LngLat = [35.3166, 30.1843]
@@ -72,8 +74,8 @@ const vayishlach: ParshaStory = {
     { name: 'Succoth', at: SUCCOTH, place: 'a0905b5', hedge: 'proposed: Tell Deir Alla' },
     { name: 'Shechem', at: SHECHEM, place: 'adf74d4', hedge: 'usual site: Tell Balata' },
     { name: 'Bethel', at: BETHEL, place: 'a64f355', hedge: 'usual site: Beitin' },
-    { name: 'Ephrath', at: EPHRATH, place: 'af4e985', hedge: 'Rachel died short of it' },
-    { name: 'Hebron', at: HEBRON, place: 'a85151a', hedge: 'usual site: Tel Rumeida' },
+    // Ephrath is not a stop: Rachel died short of it and the text doesn't say Jacob reached the town (35:16–19).
+    { name: 'Hebron', at: HEBRON, via: RACHELS_TOMB, place: 'a85151a', hedge: 'usual site: Tel Rumeida' },
   ],
   cards: [
     {
@@ -93,7 +95,7 @@ const vayishlach: ParshaStory = {
       act: 'Facing Esau',
       camera: { center: [35.45, 31.15], zoom: 6.3, pitch: 30, bearing: 0 },
       routeTo: 0,
-      spot: { name: 'Seir (a region)', at: SEIR, place: 'ae981db' },
+      spot: { name: 'Seir (a region; point illustrative)', at: SEIR, place: 'ae981db' },
     },
     {
       kind: 'guess',
@@ -109,7 +111,7 @@ const vayishlach: ParshaStory = {
       title: 'Two camps',
       body: 'Jacob is greatly frightened. He divides the people with him, and the flocks, herds and camels, into two camps: if Esau attacks one, the other may yet escape.',
       ref: 'Genesis 32:8–9 · Rashi',
-      note: 'Rashi on 32:9 says Jacob prepared for three things: a gift, prayer, and battle. The verses don’t name the place of the camp, but it is the one Jacob leaves that same night to cross the ford of the Jabbok (32:22–23), so the map shows the Jabbok, today’s Zarqa River in Jordan. Where the ford was isn’t known. The point on the river is illustrative: it is drawn beside Penuel, where the story’s night takes place (its pin appears later), not at the gazetteer’s point for the Jabbok, which marks the river’s mouth.',
+      note: 'Rashi on 32:9 says Jacob prepared for three things: a gift, prayer, and battle. The verses don’t name the place of the camp, but it is the one Jacob leaves that same night to cross the ford of the Jabbok (32:22–23), so the map shows the Jabbok, today’s Zarqa River in Jordan. Where the ford was isn’t known. The point on the river is illustrative: it is drawn beside Penuel, where Jacob wrestled (he named the place Peniel, 32:31; its pin appears later), not at the gazetteer’s point for the Jabbok, which marks the river’s mouth.',
       camera: onPin(JABBOK, 9.4, 55, -15),
       routeTo: 0,
       spot: { name: 'Jabbok (river; point illustrative)', at: JABBOK, place: 'aca7bd9' },
@@ -145,7 +147,7 @@ const vayishlach: ParshaStory = {
       title: 'Jacob is left alone',
       body: 'That night Jacob takes his wives, his maidservants and his children across the ford of the Jabbok, and sends over all he owns. Jacob is left alone, and a man wrestles with him until the break of dawn. Seeing he cannot win, the man wrenches Jacob’s hip at its socket.',
       ref: 'Genesis 32:23–26 · Hosea 12:4–5 · Rashi · Bereshit Rabbah 77:3',
-      note: 'The Hebrew says only ’ish, “a man” (this JPS translation has “a figure”), and he won’t give his name (32:30). The prophet Hosea says Jacob “strove with an angel and prevailed” (Hosea 12:5). Rashi on 32:25 brings the teaching of Bereshit Rabbah 77:3 (Rabbi Ḥama bar Ḥanina) that it was Esau’s guardian angel. The JPS note says the meaning of the Hebrew for “wrestled” is uncertain; Rashi reads it as two people clasping each other. Jacob named the place of the wrestling Peniel (32:31); the verses don’t say how far it was from the ford. The pin marks the proposed site of Penuel, Tell edh-Dhahab el-Sharqi, just south of the Jabbok; where the ford was isn’t known.',
+      note: 'The Hebrew says only ’ish, “a man” (this JPS translation has “a figure”), and he won’t give his name (32:30). The prophet Hosea says Jacob “strove with an angel and prevailed” (Hosea 12:5). Rashi on 32:25 brings the teaching of Bereshit Rabbah 77:3 (Rabbi Ḥama son of Rabbi Ḥanina) that it was Esau’s guardian angel. The JPS note says the meaning of the Hebrew for “wrestled” is uncertain; Rashi reads it as two people clasping each other. Jacob named the place of the wrestling Peniel (32:31); the verses don’t say how far it was from the ford. The pin marks the proposed site of Penuel, Tell edh-Dhahab el-Sharqi, just south of the Jabbok; where the ford was isn’t known.',
       act: 'The night at the Jabbok',
       camera: onPin(PENUEL, 10.2, 62, -30),
       routeTo: 0,
@@ -227,7 +229,7 @@ const vayishlach: ParshaStory = {
     {
       kind: 'chapter',
       title: 'Dinah',
-      body: 'Dinah, Jacob and Leah’s daughter, goes out to visit the women of the land. Shechem, son of Hamor, the chief of the country, seizes her and violates her. Then he asks for her as his wife, and Hamor asks Jacob’s family to marry into his people and settle among them.',
+      body: 'Dinah, Jacob and Leah’s daughter, goes out to visit the women of the land. Shechem son of Hamor the Hivite, chief of the country, seizes her and violates her. Then he asks for her as his wife, and Hamor asks Jacob’s family to marry into his people and settle among them.',
       ref: 'Genesis 34:1–12',
       note: 'The verse says Shechem “took her and lay with her and disgraced her” (34:2; the JPS note gives “violated”). Jacob heard and kept silent until his sons came home from the field; they were distressed and very angry (34:5–7).',
       camera: onPin(SHECHEM, 10.2, 58, 10),
@@ -281,10 +283,10 @@ const vayishlach: ParshaStory = {
       title: 'Rachel',
       body: 'On the road from Bethel, still some distance short of Ephrath, Rachel has a hard labor. As she is dying she names her son Ben-oni; his father calls him Benjamin. She is buried on the road to Ephrath, now Bethlehem, and Jacob sets up a pillar over her grave.',
       ref: 'Genesis 35:16–20 · Rashi · Jeremiah 31:15',
-      note: 'The midwife tells her, “Have no fear, for it is another boy for you” (35:17). The JPS notes: Ben-oni is understood as “son of my suffering (or, strength),” Benjamin as “son of the right hand” or “son of the south.” The verse calls it “the pillar at Rachel’s grave to this day” (35:20). Rashi on 48:7 says Jacob buried her by the road at God’s command, so that she could plead for her children when they were driven into exile: “Rachel weeping for her children” (Jeremiah 31:15). The pin marks Bethlehem. Rachel’s Tomb, at Bethlehem’s northern entrance, is the traditional site, named as her grave in writings since the early 4th century CE; some scholars propose sites further north. The line stops short of the town; where on the road she died isn’t said.',
-      // The line stops short of Ephrath and its pin stays unlit: she died "some distance short of Ephrath" (35:16).
+      note: 'The midwife tells her, “Have no fear, for it is another boy for you” (35:17). The JPS notes: Ben-oni is understood as “son of my suffering (or, strength),” Benjamin as “son of the right hand” or “son of the south.” The verse calls it “the pillar at Rachel’s grave to this day” (35:20). Rashi on 48:7 says Jacob buried her by the road at God’s command, so that she could plead for her children when they were driven into exile: “Rachel weeping for her children” (Jeremiah 31:15). The pin marks Bethlehem. Rachel’s Tomb, at Bethlehem’s northern entrance, is the traditional site, named as her grave in writings since the early 4th century CE; some scholars propose sites further north. The line stops at that traditional site, short of the town; where on the road she died isn’t said.',
+      // The line stops at the traditional grave (the bend of the Bethel → Hebron leg), short of Ephrath: she died "some distance short of Ephrath" (35:16).
       camera: { center: [35.225, 31.79], zoom: 10.2, pitch: 45, bearing: 0 },
-      routeTo: 3.9,
+      routeTo: 3.5,
       spot: { name: 'Ephrath (now Bethlehem)', at: EPHRATH, place: 'af4e985' },
     },
     {
@@ -300,7 +302,7 @@ const vayishlach: ParshaStory = {
       ],
       // Page card: the hill country between Ephrath and Hebron as a backdrop; no pin is active, since the family had moved on beyond Migdal-eder (site unknown).
       camera: { center: [35.16, 31.61], zoom: 9.6, pitch: 30, bearing: 0 },
-      routeTo: 4,
+      routeTo: 3.5,
     },
     {
       kind: 'chapter',
@@ -309,27 +311,27 @@ const vayishlach: ParshaStory = {
       ref: 'Genesis 35:27–29 · Genesis 49:29–31 · Rashi',
       note: 'The verses here don’t say where he was buried; Genesis 49:29–31 says Isaac and Rebekah were buried in the cave of Machpelah, facing Mamre. Rashi on 35:29 says the Torah doesn’t always tell events in order: by his count Isaac died twelve years after Joseph was sold, a story still to come. The pin marks Tel Rumeida, the usual site of ancient Hebron. Mamre has been placed since ancient times (Josephus) at Ramat el-Khalil, about 4 km north of Hebron, but that identification isn’t certain; scholars have proposed other sites nearby.',
       camera: onPin(HEBRON, 9.8, 55, 10),
-      routeTo: 5,
-      stop: 6,
+      routeTo: 4,
+      stop: 5,
     },
     {
       kind: 'chapter',
       title: 'Esau’s line',
       body: 'Esau takes his household and herds to another land, because of his brother Jacob: they have too much to live together. He settles in the hill country of Seir. The chapter lists his sons and grandsons, among them Amalek, the clans of Edom, and eight kings who reigned in Edom “before any king reigned over the Israelites.”',
       ref: 'Genesis 36:1–43',
-      note: 'Amalek was the son of Timna, a concubine of Esau’s son Eliphaz (36:12). The eight kings are Bela, Jobab, Husham, Hadad, Samlah, Saul, Baal-hanan and Hadar (36:32–39). The chapter also lists the Horites, “the sons of Seir,” who were settled in the land (36:20–30). Seir is a region; its pin is only an illustrative point in it.',
+      note: 'Amalek was the son of Timna, a concubine of Esau’s son Eliphaz (36:12). The eight kings are Bela, Jobab, Husham, Hadad, Samlah, Saul, Baal-hanan and Hadar (36:32–39). The chapter also lists the Horites, “the sons of Seir,” who were settled in the land (36:20–30). Seir is a region; its pin is only an illustrative point in it. The Torah doesn’t say when Esau moved away; he was already in Seir when Jacob came back (32:4, 33:16).',
       act: 'Esau’s line',
       camera: { center: [35.35, 29.95], zoom: 8, pitch: 40, bearing: 0 },
-      routeTo: 5,
-      spot: { name: 'Seir (a region)', at: SEIR, place: 'ae981db' },
+      routeTo: 4,
+      spot: { name: 'Seir (a region; point illustrative)', at: SEIR, place: 'ae981db' },
     },
     {
       kind: 'talk',
       title: 'Esau, who had once resolved to kill Jacob, ran to meet him, and the brothers embraced and wept. What helps people make peace after a long rift?',
-      note: 'Numbered pins mark usual or proposed identifications: Penuel = Tell edh-Dhahab el-Sharqi, Succoth = Tell Deir Alla, Shechem = Tell Balata, Bethel = Beitin, Ephrath = Bethlehem, Hebron = Tel Rumeida. None of these sites is certain. The Jabbok is today’s Zarqa River; where Jacob crossed it isn’t known, and it is shown only as a river. Seir is a region. Migdal-eder (somewhere past Rachel’s grave; early sources differ on where) and Allon-bacuth (“below Bethel,” 35:8) can’t be located exactly and aren’t marked in this story. Stops close together on screen may share one numbered pin, drawn on the first of them; which ones merge depends on the screen size. The Ephrath pin marks Bethlehem; Rachel died some distance short of it, on the road there, and the text doesn’t say Jacob reached the town (35:16–19). Lines join the stops in order; Jacob’s roads aren’t known.',
+      note: 'Numbered pins mark usual or proposed identifications: Penuel = Tell edh-Dhahab el-Sharqi, Succoth = Tell Deir Alla, Shechem = Tell Balata, Bethel = Beitin, Hebron = Tel Rumeida. None of these sites is certain. The Jabbok is today’s Zarqa River; where Jacob crossed it isn’t known, and it is shown only as a river. Seir is a region. Migdal-eder (somewhere past Rachel’s grave; early sources differ on where) and Allon-bacuth (“below Bethel,” 35:8) can’t be located exactly and aren’t marked in this story. Stops close together on screen may share one numbered pin, drawn on the first of them; which ones merge depends on the screen size. Ephrath (Bethlehem) is not a numbered stop: Rachel died some distance short of it, and the text doesn’t say Jacob reached the town (35:16–19); the line bends at the traditional site of Rachel’s Tomb. Lines join the stops in order; Jacob’s roads aren’t known.',
       // Not used on screen: the finale fits the whole route into the strip above the card (DaylightMap fitBounds).
       camera: { center: [35.42, 31.85], zoom: 7.9, pitch: 30, bearing: 0 },
-      routeTo: 5,
+      routeTo: 4,
     },
   ],
   questions: [
