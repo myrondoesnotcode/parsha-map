@@ -136,3 +136,28 @@ Nothing in the text is unverified. The site identifications (Tel Be'er Sheva, Qa
 | c184 | Describes the screen only (pin 1 is off-screen on card 15) | No change needed | — |
 
 Checks after the fixes: `check:stories -- vayigash --strict` gives 0 errors and 0 warnings, and `npm run build` passes. I re-screenshotted every card at phone size (cards 1–22).
+
+## Independent fact-check, pass 2 (wf_38a70ced-f79)
+
+364 claims, 350 verified. Below are the fixes for every c-id and every "missed" item about vayigash.ts. I re-checked each before writing it. The cover items c005 and c006 only describe the art, so nothing changes for them; the R* items go to the code branch.
+
+Distances are haversine, from the Goshen point (30.79937 N, 31.834217 E):
+- Wikipedia's Pi-Ramesses (30.79888889, 31.83583333): 0.16 km.
+- Wikipedia's Qantir (30.80305556, 31.83777778): 0.53 km.
+- The gazetteer's Rameses pin a079b21: 1.84 km.
+- The gazetteer's Pithom pin at Tell er-Retaba, in the western Wadi Tumilat: 30.6 km.
+- Zagazig, at the valley's west end: about 39 km.
+
+This supersedes the pass 1 wording "not a choice between the proposals" and the "about 2 km" claims in the Map section above.
+
+| ID | Finding | Fix |
+|---|---|---|
+| c097 | The card 8 camera ([35.0, 31.6], zoom 6.8) showed only Canaan, not "the way down to Egypt" as its comment said | Re-framed to [33.6, 31.0], zoom 6.0. The screenshot shows Canaan, the coast and the way toward the Delta, with no pin, and the comment now matches |
+| c177, c253, c259, missed | The pin effectively stands on the "at or near Avaris" proposal, yet the text said it wasn't a choice | Card 14 now says the pin is the gazetteer's point for Goshen, at Qantir by Avaris, one of the proposed areas; the western Wadi Tumilat, the other, lies some 30–40 km south and isn't pinned; the pin doesn't mark the region's extent. Cards 21 and 22 are reworded the same way |
+| c217, missed | Card 18 showed "places.json" to readers, and "2 km" was wrong for Pi-Ramesses | Now reads "the Goshen pin already stands at Qantir, so the region of Rameses is shown at the same pin." No reader-facing text names places.json |
+| c260 | The finale gave "about 2 km" for Pi-Ramesses at Qantir | Now: the Goshen pin "stands at Qantir, the proposed site of Pi-Ramesses" |
+| missed (header and GOSHEN comment) | The comments said the wrong point was at Qantir | Both comments now give the distances listed above |
+| missed (meteg) | The meteg was dropped in אֶֽעֱלֶה (44:34) and לְבֵֽית (46:27) | Restored from the Sefaria Miqra text. The verse-final silluq on שִׁבְעִֽים is a cantillation mark and stays dropped; the header now says so. The famine list's Hebrew words (כֶּסֶף, מִקְנֵיכֶם, אַדְמָתֵנוּ) carry no meteg in the source, and neither does the card 4 quote |
+| missed (Rashi on 45:27) | The heifer reading should be marked as a midrash | Now: "Rashi on 45:27 brings a midrashic reading, found in Bereshit Rabbah 94:3 in the name of Rabbi Levi citing Rabbi Yoḥanan bar Shaul…". I verified this on Sefaria, in both the Hebrew and the 2022 English. It doesn't say Rashi cites the midrash, since his Hebrew names no source. Bereshit Rabbah 94:3 is added to `sources` |
+
+Checks after the fixes: `check:stories -- vayigash --strict` gives 0 errors and 0 warnings, and `npm run build` passes. I re-screenshotted cards 2, 8, 13, 14, 18, 21 and 22 at phone size and found no framing problems.
