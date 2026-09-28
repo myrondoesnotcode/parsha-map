@@ -278,11 +278,14 @@ function offsetFor(p: { top: number; bottom: number; left: number; right: number
   return [(p.left - p.right) / 2, (p.top - p.bottom) / 2]
 }
 
-type LabelSide = 'right' | 'left' | 'below' | 'above'
+type LabelSide = 'right' | 'left' | 'rightLow' | 'rightHigh' | 'below' | 'above'
 /** Overrides on .dl-stop-label (which sits right of the pin, centred) for the other sides. */
 const LABEL_SIDE_STYLE: Record<LabelSide, CSSProperties | undefined> = {
   right: undefined,
   left: { left: 'auto', right: 'calc(100% + 6px)' },
+  // Beside the pin but shifted half a pin down (top at the pin's centre) or up (bottom at its centre).
+  rightLow: { top: 16 },
+  rightHigh: { bottom: 16 },
   below: { left: 0, top: 'calc(100% + 4px)' },
   above: { left: 0, bottom: 'calc(100% + 4px)' },
 }
@@ -333,6 +336,8 @@ function placeLabels(story: ParshaStory, pts: { x: number; y: number }[], cluste
     const boxes: [LabelSide, Box][] = [
       ['right', { x0: pin.x1 + 6, y0: cy - h / 2, x1: pin.x1 + 6 + w, y1: cy + h / 2 }],
       ['left', { x0: pin.x0 - 6 - w, y0: cy - h / 2, x1: pin.x0 - 6, y1: cy + h / 2 }],
+      ['rightLow', { x0: pin.x1 + 6, y0: cy, x1: pin.x1 + 6 + w, y1: cy + h }],
+      ['rightHigh', { x0: pin.x1 + 6, y0: cy - h, x1: pin.x1 + 6 + w, y1: cy }],
       ['below', { x0: pin.x0, y0: pin.y1 + 4, x1: pin.x0 + w, y1: pin.y1 + 4 + h }],
       ['above', { x0: pin.x0, y0: pin.y0 - 4 - h, x1: pin.x0 + w, y1: pin.y0 - 4 }],
     ]
