@@ -35,7 +35,7 @@ const NEEDS_ITEMS = new Set<StoryCardKind>(['offerings', 'scale'])
 const AUDIENCES = ['Kids', 'Everyone', 'Deeper'] as const
 
 const STORY_KEYS = ['parshaId', 'tagline', 'sources', 'route', 'anchor', 'cards', 'questions']
-const CARD_KEYS = ['kind', 'title', 'body', 'ref', 'camera', 'routeTo', 'stop', 'spot', 'items', 'hebrew', 'letterAt', 'letterSize', 'names', 'sky', 'numberFrom', 'note', 'image', 'act', 'options', 'reveal']
+const CARD_KEYS = ['kind', 'title', 'body', 'ref', 'camera', 'routeTo', 'routeNote', 'stop', 'spot', 'items', 'hebrew', 'letterAt', 'letterSize', 'names', 'sky', 'numberFrom', 'note', 'image', 'act', 'options', 'reveal']
 const CAMERA_KEYS = ['center', 'zoom', 'pitch', 'bearing']
 const STOP_KEYS = ['name', 'at', 'place', 'via', 'hedge']
 const SPOT_KEYS = ['name', 'at', 'place']
@@ -251,7 +251,9 @@ function checkStory(file: string, story: ParshaStory, source: string, hasEmblem:
     if (!KINDS.includes(c.kind)) err(where, `unknown kind "${c.kind}" (one of ${KINDS.join(', ')})`)
     if (!text(c.title)) err(where, 'title is missing')
     if (NEEDS_BODY.has(c.kind) && !text(c.body)) err(where, `the ${c.kind} card needs a body`)
-    for (const f of ['body', 'note', 'act', 'reveal', 'image'] as const) if (c[f] !== undefined && !text(c[f])) err(where, `${f} is empty`)
+    for (const f of ['body', 'note', 'act', 'reveal', 'image', 'routeNote'] as const) if (c[f] !== undefined && !text(c[f])) err(where, `${f} is empty`)
+    // The route tag only reads routeNote while the line stops part-way along a leg.
+    if (c.routeNote !== undefined && Number.isInteger(c.routeTo)) err(where, 'routeNote is only shown when routeTo is a fraction (the line stops part-way along a leg)')
 
     // Verse reference.
     if (NEEDS_REF.has(c.kind)) {
