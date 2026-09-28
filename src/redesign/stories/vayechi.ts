@@ -8,7 +8,7 @@
 // text names it (47:27, 50:8). The funeral's road isn't known. Goren ha-Atad and Abel-mizraim (50:10–11)
 // are "beyond the Jordan", from a side the verse doesn't state, and have no pin: their card shows only the
 // river (an illustrative point near its mouth) and no line; the line from Goshen to the cave is drawn only
-// on the burial card, and is not a route. Mamre, Luz, Sidon and Paddan-aram are named but not marked.
+// on the burial card, bent inland through an illustrative point in northern Sinai, and is not a route. Mamre, Luz, Sidon and Paddan-aram are named but not marked.
 // Verses quote THE JPS TANAKH: Gender-Sensitive Edition (Sefaria); Hebrew is Miqra according to the Masorah
 // without cantillation marks. Claim table: docs/plans/2026-09-28-vayechi-story-factcheck.md.
 import type { LngLat, ParshaStory } from '../story'
@@ -19,6 +19,11 @@ const GOSHEN: LngLat = [31.834217, 30.79937]
 const MACHPELAH: LngLat = [35.110758, 31.524672]
 /** Ephrath (places.json af4e985) = Bethlehem (48:7), pinned at Bethlehem. Rachel died some distance short of it. */
 const EPHRATH: LngLat = [35.207639, 31.704306]
+/**
+ * Not a place: an illustrative inland point in northern Sinai, about 30 km south of the coast, so the drawn
+ * Goshen → Machpelah line stays on land. The procession's road isn't known.
+ */
+const SINAI_VIA: LngLat = [33.8, 30.85]
 /** Jordan (places.json ae686c9), a point near where the river flows into the Dead Sea. Shown as a river, not as Goren ha-Atad. */
 const JORDAN: LngLat = [35.558333, 31.761389]
 
@@ -41,7 +46,8 @@ const vayechi: ParshaStory = {
   tagline: 'Jacob blesses his family.',
   sources: [
     'Genesis 47:28 – 50:26',
-    'Genesis 25:25–26, 27:1–35, 35:22, 47:9, 47:27',
+    'Genesis 25:24–26, 27:1–35, 35:22, 47:9, 47:27',
+    'Exodus 1:6–11',
     'Exodus 13:19',
     'Joshua 24:32',
     'Jeremiah 31:15',
@@ -55,7 +61,7 @@ const vayechi: ParshaStory = {
   ],
   route: [
     { name: 'Goshen', at: GOSHEN, place: 'a60f092', hedge: 'a region; extent uncertain' },
-    { name: 'Machpelah', at: MACHPELAH, place: 'ae00861', hedge: 'traditional site: Hebron' },
+    { name: 'Machpelah', at: MACHPELAH, via: SINAI_VIA, place: 'ae00861', hedge: 'traditional site: Hebron' },
   ],
   cards: [
     {
@@ -71,7 +77,7 @@ const vayechi: ParshaStory = {
       title: 'Seventeen years in Egypt',
       body: 'Israel has settled in Egypt, in the region of Goshen. Jacob lives seventeen years in the land of Egypt, and the span of his life comes to 147 years.',
       ref: 'Genesis 47:27–28 · 47:9 · Rashi · Bereshit Rabbah',
-      note: 'The parsha is named for its first word, וַיְחִי, “(Jacob) lived.” When he came before Pharaoh, Jacob said he was 130 (47:9): 130 + 17 = 147. Rashi on 47:28 notes that this parsha is “closed”: in the Torah scroll no paragraph break comes before it. He gives two reasons, citing Bereshit Rabbah: when Jacob died, the eyes and hearts of Israel were “closed” by the misery of the bondage that began; or Jacob wished to reveal to his sons the End of Days, and it was closed off from him. Goshen was a region in the eastern Nile Delta; its extent is uncertain, and the pin is an illustrative point in it.',
+      note: 'The parsha is named for its first word, וַיְחִי, “(Jacob) lived.” When he came before Pharaoh, Jacob said he was 130 (47:9): 130 + 17 = 147. Rashi on 47:28 notes that this parsha is “closed”: in the Torah scroll no paragraph break comes before it. He gives two reasons, citing Bereshit Rabbah: when Jacob died, the eyes and hearts of Israel were “closed” by the misery of the bondage, which in this reading began then (the Torah tells of the oppression only after Joseph and his generation had died, Exodus 1:6–11); or Jacob wished to reveal to his sons the End of Days, and it was closed off from him. Goshen was a region in the eastern Nile Delta; its extent is uncertain, and the pin is an illustrative point in it.',
       act: 'Jacob’s last days',
       camera: onPin(GOSHEN, 8.2, 45, -10),
       routeTo: 0,
@@ -82,7 +88,7 @@ const vayechi: ParshaStory = {
       title: '“Swear to me”',
       body: 'When his time to die draws near, Israel summons Joseph: “place your hand under my thigh… please do not bury me in Egypt. When I rest with my ancestors, take me up from Egypt and bury me in their burial-place.” “I will do as you have spoken,” Joseph replies. “Swear to me,” says Jacob, and Joseph swears; then Israel bows at the head of the bed.',
       ref: 'Genesis 47:29–31 · Rashi',
-      note: 'Placing the hand under the thigh goes with an oath: Rashi on 47:29 reads it as “and take an oath.” JPS renders ḥesed ve’emet as “steadfast loyalty”; Rashi reads it as the kindness shown to the dead, a “kindness of truth,” because no repayment is expected. Rashi gives reasons for “do not bury me in Egypt,” among them that the Egyptians should not make him an object of idol worship. The verses say only that this was in Egypt, so no pin is lit; the family had settled in Goshen (47:27).',
+      note: 'Placing the hand under the thigh goes with an oath: Rashi on 47:29 reads it as “and take an oath.” JPS renders ḥesed ve’emet as “steadfast loyalty”; Rashi reads it as the kindness shown to the dead, a “kindness of truth,” because no repayment is expected. Rashi gives reasons for “do not bury me in Egypt,” among them that the Egyptians should not make him an object of idol worship. The verses don’t say where in Egypt this was, so no pin is lit; the family had settled in Goshen (47:27).',
       camera: onPin(GOSHEN, 8.6, 50, 15),
       routeTo: 0,
     },
@@ -102,7 +108,7 @@ const vayechi: ParshaStory = {
       title: '“Who are these?”',
       body: '“Who are these?” Israel asks, seeing Joseph’s sons. “They are my sons, whom God has given me here,” says Joseph. Israel’s eyes are dim with age; Joseph brings them close, and he kisses and embraces them: “I never expected to see you again, and here God has let me see your children as well.” Then Joseph sets Ephraim at Israel’s left hand and Manasseh at his right.',
       ref: 'Genesis 48:8–13',
-      note: 'Joseph took them from his father’s knees and bowed low with his face to the ground before bringing them close (48:12–13). Manasseh was the first-born (48:14, 48:18). The verses say only that this was in Egypt, so no pin is lit.',
+      note: 'Joseph took them from his father’s knees and bowed low with his face to the ground before bringing them close (48:12–13). Manasseh was the first-born (48:14, 48:18). The verses don’t say where in Egypt this was, so no pin is lit.',
       camera: onPin(GOSHEN, 8.8, 55, -20),
       routeTo: 0,
     },
@@ -124,7 +130,7 @@ const vayechi: ParshaStory = {
       title: '“I know, my son, I know”',
       body: 'Jacob blesses Joseph: may “the Angel who has redeemed me from all harm” bless the lads, and may his name and the names of Abraham and Isaac be recalled in them. Joseph thinks it wrong, and takes his father’s hand to move it to Manasseh’s head: “Not so, Father, for the other is the first-born.” His father refuses: “I know, my son, I know. He too shall become a people… Yet his younger brother shall be greater than he.”',
       ref: 'Genesis 48:15–19',
-      note: '“Angel” is literally “Messenger” (JPS note). Jacob begins: “The God in whose ways my fathers Abraham and Isaac walked, The God who has been my shepherd from my birth to this day” (48:15). The verses say only that this was in Egypt, so no pin is lit.',
+      note: '“Angel” is literally “Messenger” (JPS note). Jacob begins: “The God in whose ways my fathers Abraham and Isaac walked, The God who has been my shepherd from my birth to this day” (48:15). The verses don’t say where in Egypt this was, so no pin is lit.',
       camera: onPin(GOSHEN, 8.6, 52, 20),
       routeTo: 0,
     },
@@ -143,7 +149,7 @@ const vayechi: ParshaStory = {
       title: '“Come together”',
       body: 'Jacob calls his sons: “Come together that I may tell you what is to befall you in days to come.” Then he speaks to each of them in turn, in poetry. The Hebrew is often obscure, so the next two cards quote the JPS translation, whose notes mark several words as uncertain.',
       ref: 'Genesis 49:1–2 · Rashi',
-      note: 'Rashi on 49:1 says Jacob wished to reveal to them the End, but the Divine Presence departed from him, and he began to speak of other things. The verses say only that this was in Egypt, so no pin is lit.',
+      note: 'Rashi on 49:1 says Jacob wished to reveal to them the End, but the Divine Presence departed from him, and he began to speak of other things. The verses don’t say where in Egypt this was, so no pin is lit.',
       act: 'Jacob’s sons',
       camera: onPin(GOSHEN, 8.4, 50, -5),
       routeTo: 0,
@@ -152,14 +158,14 @@ const vayechi: ParshaStory = {
       kind: 'offerings',
       title: 'From Reuben to Issachar',
       ref: 'Genesis 49:3–15 · 35:22',
-      note: 'Each row quotes the JPS translation, shortened (… marks a cut). The words for Reuben, Simeon and Levi are rebukes. Reuben’s begin “you are my first-born… Exceeding in rank” (49:3); compare the rebuke with 35:22. Judah’s begin “You, O Judah, your brothers shall praise” (49:8). For “maim an ox” (49:6) the JPS note offers “overthrow a dignitary” (cf. chapter 34). For Judah, the JPS notes say the nuance of “lioness” (49:9) is uncertain, and that “So that tribute shall come to him” (49:10) construes shiloh as shai loh, “tribute to him,” following the Midrash; the meaning of the Hebrew is uncertain, literally “Until he comes to Shiloh.” Sidon, named for Zebulun, isn’t marked in this story.',
+      note: 'Each row quotes the JPS translation, shortened (… marks a cut). The words for Reuben, Simeon and Levi are rebukes. Reuben’s begin “you are my first-born… Exceeding in rank” (49:3); compare the rebuke with 35:22. Judah’s begin “You, O Judah, your brothers shall praise” (49:8). For “maim an ox” (49:6) the JPS note offers “overthrow a dignitary” (cf. chapter 34). For Judah, the JPS notes say the nuance of “lioness” (49:9) is uncertain, and that “So that tribute shall come to him” (49:10) construes shiloh as shai loh, “tribute to him,” following the Midrash; the meaning of the Hebrew is uncertain, literally “Until he comes to Shiloh.” Sidon, named in Zebulun’s blessing (49:13), isn’t marked in this story.',
       items: [
-        { he: 'רְאוּבֵן', en: 'Reuben', note: '“Unstable as water, you shall excel no longer; For when you mounted your father’s bed, You brought disgrace”' },
-        { he: 'שִׁמְעוֹן', en: 'Simeon', note: 'With Levi: “Their weapons are tools of lawlessness”' },
-        { he: 'לֵוִי', en: 'Levi', note: 'With Simeon: “Cursed be their anger so fierce… I will divide them in Jacob”' },
-        { he: 'יְהוּדָה', en: 'Judah', note: '“Judah is a lion’s whelp… The scepter shall not depart from Judah”' },
+        { he: 'רְאוּבֵן', en: 'Reuben', note: '“Unstable as water, you shall excel no longer; For when you mounted your father’s bed, You brought disgrace…”' },
+        { he: 'שִׁמְעוֹן', en: 'Simeon', note: 'With Levi: “…Their weapons are tools of lawlessness”' },
+        { he: 'לֵוִי', en: 'Levi', note: 'With Simeon: “Cursed be their anger so fierce… I will divide them in Jacob…”' },
+        { he: 'יְהוּדָה', en: 'Judah', note: '“Judah is a lion’s whelp… The scepter shall not depart from Judah…”' },
         { he: 'זְבוּלֻן', en: 'Zebulun', note: '“Zebulun shall dwell by the seashore… And his flank shall rest on Sidon”' },
-        { he: 'יִשָּׂשכָר', en: 'Issachar', note: '“Issachar is a strong-boned donkey… He bent his shoulder to the burden”' },
+        { he: 'יִשָּׂשכָר', en: 'Issachar', note: '“Issachar is a strong-boned donkey… He bent his shoulder to the burden…”' },
       ],
       camera: PAGE,
       routeTo: 0,
@@ -171,11 +177,11 @@ const vayechi: ParshaStory = {
       ref: 'Genesis 49:16–28',
       note: 'After Dan’s words comes one line: “I wait for Your deliverance, O ETERNAL One!” (49:18). For Joseph, the JPS note gives others’ rendering: “Joseph is a fruitful bough, A fruitful bough by a spring”; it also marks part of 49:26 as uncertain. For Benjamin, the meaning of ʻad, “foe,” is uncertain; others render “booty.” “All these were the tribes of Israel, twelve in number” (49:28). That verse’s Hebrew says he blessed them, each according to his blessing; JPS renders it “as he bade them farewell, addressing to each a parting word appropriate to him.”',
       items: [
-        { he: 'דָּן', en: 'Dan', note: '“Dan shall govern his people… Dan shall be a serpent by the road”' },
+        { he: 'דָּן', en: 'Dan', note: '“Dan shall govern his people… Dan shall be a serpent by the road…”' },
         { he: 'גָּד', en: 'Gad', note: '“Gad shall be raided by raiders, But he shall raid at their heels”' },
         { he: 'אָשֵׁר', en: 'Asher', note: '“Asher’s bread shall be rich, And he shall yield royal dainties”' },
         { he: 'נַפְתָּלִי', en: 'Naphtali', note: '“Naphtali is a hind let loose, Which yields lovely fawns”' },
-        { he: 'יוֹסֵף', en: 'Joseph', note: '“Joseph is a wild ass, A wild ass by a spring… May they rest on the head of Joseph”' },
+        { he: 'יוֹסֵף', en: 'Joseph', note: '“Joseph is a wild ass, A wild ass by a spring… May they rest on the head of Joseph…”' },
         { he: 'בִּנְיָמִין', en: 'Benjamin', note: '“Benjamin is a ravenous wolf… in the evening he divides the spoil”' },
       ],
       camera: PAGE,
@@ -196,7 +202,7 @@ const vayechi: ParshaStory = {
       title: 'Jacob dies',
       body: 'When he has finished, Jacob draws his feet into the bed and, breathing his last, is gathered to his kin, at 147. Joseph flings himself on his father’s face, weeps over him and kisses him. The physicians embalm Israel over forty days, “the full period of embalming,” and the Egyptians bewail him seventy days.',
       ref: 'Genesis 49:33 – 50:3 · 47:28 · Rashi',
-      note: 'His age comes from 47:28. The verse doesn’t say whether the forty days of embalming fall within the seventy days of mourning; Rashi on 50:3 counts them together: forty for embalming and thirty for weeping. The verses say only that this was in Egypt, so no pin is lit.',
+      note: 'His age comes from 47:28. The verse doesn’t say whether the forty days of embalming fall within the seventy days of mourning; Rashi on 50:3 counts them together: forty for embalming and thirty for weeping. The verses don’t say where in Egypt this was, so no pin is lit.',
       act: 'The funeral',
       camera: onPin(GOSHEN, 8.6, 50, 5),
       routeTo: 0,
@@ -206,7 +212,7 @@ const vayechi: ParshaStory = {
       title: 'Up to Canaan',
       body: 'When the wailing is over, Pharaoh gives Joseph leave: “Go up and bury your father, as he made you promise on oath.” With Joseph go Pharaoh’s officials and Egypt’s dignitaries, his own household, his brothers and his father’s household, with chariots and charioteers: “a very large troop.” Only their children, flocks and herds are left in the region of Goshen.',
       ref: 'Genesis 50:4–9',
-      note: 'Joseph asked Pharaoh’s court to tell Pharaoh of his oath: “Be sure to bury me in the grave that I made ready for myself in the land of Canaan… let me go up and bury my father; then I shall return” (50:5). Goshen was a region in the eastern Nile Delta; its extent is uncertain, and the pin is an illustrative point in it.',
+      note: 'Joseph asked Pharaoh’s court to tell Pharaoh: “My father made me swear, saying, ‘I am about to die. Be sure to bury me in the grave that I made ready for myself in the land of Canaan.’ Now, therefore, let me go up and bury my father; then I shall return” (50:5). Goshen was a region in the eastern Nile Delta; its extent is uncertain, and the pin is an illustrative point in it.',
       camera: onPin(GOSHEN, 8.2, 45, -15),
       routeTo: 0,
       stop: 1,
@@ -226,7 +232,7 @@ const vayechi: ParshaStory = {
       title: 'The cave of Machpelah',
       body: 'His sons do for him as he instructed them. They carry him to the land of Canaan and bury him in the cave of the field of Machpelah, near Mamre, which Abraham had bought as a burial site from Ephron the Hittite. Then Joseph returns to Egypt, with his brothers and all who had gone up with him.',
       ref: 'Genesis 50:12–14 · Rashi',
-      note: 'Rashi on 50:13 says his sons, not his grandsons, carried him, as he had commanded; Levi, who would carry the Ark, and Joseph, a king, did not carry him, and Manasseh and Ephraim took their places. The pin marks the Cave of the Patriarchs in the Old City of Hebron, the cave’s traditional site. The line only joins Goshen to the cave: the procession’s road isn’t known, nor whether it crossed the Jordan.',
+      note: 'Rashi on 50:13 says Jacob’s own sons carried him, as he had commanded: not an Egyptian, and not one of their sons, who were born of Canaanite women. Levi, who would carry the Ark, and Joseph, a king, did not carry him; Joseph’s sons Manasseh and Ephraim took their places. The pin marks the Cave of the Patriarchs in the Old City of Hebron, the cave’s traditional site. The line only joins Goshen to the cave, bending inland through northern Sinai at an illustrative point: the procession’s road isn’t known, nor whether it crossed the Jordan.',
       camera: onPin(MACHPELAH, 9.4, 55, 10),
       routeTo: 1,
       stop: 2,
@@ -262,7 +268,7 @@ const vayechi: ParshaStory = {
     {
       kind: 'talk',
       title: 'After their father died, Joseph’s brothers feared he still bore a grudge. Joseph wept, and spoke kindly to them. What helps someone let go of a grudge?',
-      note: 'Numbered pins: Goshen, a region in the eastern Nile Delta whose extent is uncertain (the pin is an illustrative point in it); and Machpelah, at the Cave of the Patriarchs in Hebron, its traditional site. The line joins the two stops; the funeral’s road isn’t known. Goren ha-Atad and Abel-mizraim, “beyond the Jordan” (50:10–11), can’t be located and aren’t marked, nor is Mamre. On the card about Ephrath, its pin marks Bethlehem; Rachel died some distance short of it (48:7).',
+      note: 'Numbered pins: Goshen, a region in the eastern Nile Delta whose extent is uncertain (the pin is an illustrative point in it); and Machpelah, at the Cave of the Patriarchs in Hebron, its traditional site. The line joins the two stops through an illustrative point in northern Sinai; the funeral’s road isn’t known. Goren ha-Atad and Abel-mizraim, “beyond the Jordan” (50:10–11), can’t be located and aren’t marked, nor is Mamre. On the card about Ephrath, its pin marks Bethlehem; Rachel died some distance short of it (48:7).',
       // Not used on screen: the finale fits the whole route into the strip above the card (DaylightMap fitBounds).
       camera: { center: [33.55, 31.1], zoom: 6.2, pitch: 20, bearing: 0 },
       routeTo: 1,
@@ -279,7 +285,7 @@ const vayechi: ParshaStory = {
     },
     {
       audience: 'Deeper',
-      text: 'Jacob, the younger twin, once took the blessing Isaac meant for Esau, the first-born (Genesis 25:25–26, 27:1–35). Now he puts the younger Ephraim before the first-born Manasseh, and tells Joseph, “I know, my son, I know” (48:19). What might Jacob know?',
+      text: 'Jacob, the younger twin, once took the blessing Isaac meant for Esau, the first-born (Genesis 25:24–26, 27:1–35). Now he puts the younger Ephraim before the first-born Manasseh, and tells Joseph, “I know, my son, I know” (48:19). What might Jacob know?',
     },
   ],
 }
