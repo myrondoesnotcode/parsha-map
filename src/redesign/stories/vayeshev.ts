@@ -10,7 +10,7 @@
 // confidence. Egypt is a region; its pin is an illustrative point near today's Cairo, and the verses don't say where
 // in Egypt Potiphar's house or the prison was. Gilead (the caravan's starting point, 37:25) is a region; its
 // gazetteer point is shown only as an illustrative spot. The line to Egypt bends through an inland point in the
-// western Negev ([34.6, 31.1]) only so that it doesn't cross the sea; the caravan's road isn't known. The cards before
+// western Negev ([34.6, 31.1]) only so that it doesn't cross the Mediterranean; the caravan's road isn't known. The cards before
 // 37:14 and the dream card use a regional camera on the land of Canaan (37:1), not a town. Verses quote THE JPS TANAKH: Gender-Sensitive Edition
 // (Sefaria), which writes God's four-letter name as GOD; Hebrew is Miqra according to the Masorah without
 // cantillation marks. Claim table: docs/plans/2026-09-28-vayeshev-story-factcheck.md.
@@ -20,7 +20,7 @@ import type { LngLat, ParshaStory } from '../story'
 const HEBRON: LngLat = [35.10222, 31.525087]
 /** Shechem (places.json adf74d4), pinned at Tell Balata by Nablus, its usual identification. */
 const SHECHEM: LngLat = [35.281944, 32.213611]
-/** Dothan (places.json ab635e4), pinned at Tel Dothan, near Jenin; the modern consensus identification. */
+/** Dothan (places.json ab635e4), pinned at Tel Dothan, near Jenin: the identification most scholars accept, though places.json rates it low-confidence. */
 const DOTHAN: LngLat = [35.239861, 32.413528]
 /** Egypt (places.json af301ca), a region: the gazetteer's point, near today's Cairo, is illustrative only. */
 const EGYPT: LngLat = [31.3075, 30.129444]
@@ -28,7 +28,7 @@ const EGYPT: LngLat = [31.3075, 30.129444]
 const GILEAD: LngLat = [35.69211, 32.187016]
 /** Adullam (places.json af82614), pinned at Khirbet esh-Sheikh Madhkur: a proposed identification, still inconclusive. */
 const ADULLAM: LngLat = [35.001667, 31.651667]
-/** An inland point in the western Negev, so the drawn line to Egypt stays on land. Not a claim about the caravan's road. */
+/** An inland point in the western Negev, so the drawn line to Egypt doesn't cross the Mediterranean. Not a claim about the caravan's road. */
 const NEGEV: LngLat = [34.6, 31.1]
 
 /**
@@ -47,14 +47,15 @@ const vayeshev: ParshaStory = {
   tagline: 'Joseph and his dreams.',
   sources: [
     'Genesis 37:1 – 40:23',
-    'Genesis 15:13, 35:19, 35:27, 41:1, 45:4–5',
+    'Genesis 15:13, 35:19, 35:27, 41:1, 45:4–5, 46:12',
     'Deuteronomy 25:5–6',
     'Judges 8:24',
+    'Daniel 9:21',
     '2 Samuel 13:18',
     'Ruth 4:18–22',
     'Rashi on Genesis 37:2, 37:3, 37:10, 37:14, 37:15, 37:24, 37:25, 37:28, 38:1, 38:14, 38:25, 39:1, 40:1, 40:23',
     'Rashbam on Genesis 37:28, 37:36',
-    'Ibn Ezra on Genesis 37:25, 37:28',
+    'Ibn Ezra on Genesis 37:25, 37:28, 38:1',
     'Bekhor Shor on Genesis 37:25 (as cited by the JPS note)',
     'Bereshit Rabbah 85:11',
     'Shabbat 10b',
@@ -64,7 +65,7 @@ const vayeshev: ParshaStory = {
   route: [
     { name: 'Valley of Hebron', at: HEBRON, place: 'a375f5a', hedge: 'pin marks Hebron (Tel Rumeida)' },
     { name: 'Shechem', at: SHECHEM, place: 'adf74d4', hedge: 'usual site: Tell Balata' },
-    { name: 'Dothan', at: DOTHAN, place: 'ab635e4', hedge: 'usual site: Tel Dothan' },
+    { name: 'Dothan', at: DOTHAN, place: 'ab635e4', hedge: 'likely site: Tel Dothan' },
     { name: 'Egypt', at: EGYPT, place: 'af301ca', via: NEGEV, hedge: 'a region; point illustrative' },
   ],
   cards: [
@@ -119,7 +120,7 @@ const vayeshev: ParshaStory = {
     {
       kind: 'chapter',
       title: '“I am ready”',
-      body: 'Joseph’s brothers have gone to pasture their father’s flock at Shechem. Israel tells Joseph: go and see how your brothers and the flocks are faring, and bring me back word. “I am ready,” he answers, and his father sends him from the valley of Hebron.',
+      body: 'Joseph’s brothers have gone to pasture their father’s flock at Shechem. “Come, I will send you to them,” Israel tells Joseph. “I am ready,” he answers. Go and see how your brothers and the flocks are faring, says his father, and bring me back word; and he sends him from the valley of Hebron.',
       ref: 'Genesis 37:12–14 · Rashi · Genesis 15:13',
       note: 'Rashi on 37:14 asks why the verse says “valley,” when Hebron stands on a hill; he reads ‘emeq (“valley,” from the root for “deep”) as the deep counsel of “that righteous one buried in Hebron,” so that what God had told Abraham would come true: “your offspring shall be strangers in a land not theirs” (15:13). The gazetteer pins the valley of Hebron at the same point as Hebron itself, Tel Rumeida.',
       act: 'To Shechem and Dothan',
@@ -132,7 +133,7 @@ const vayeshev: ParshaStory = {
       title: 'A man in the fields',
       body: 'At Shechem a man finds Joseph wandering in the fields. “What are you looking for?” “I am looking for my brothers.” “They have gone from here,” says the man; “I heard them say: Let us go to Dothan.”',
       ref: 'Genesis 37:14–17 · Rashi',
-      note: 'The verses call him only “a man”; Rashi on 37:15 says he was the angel Gabriel, pointing to Daniel’s words “the man Gabriel.” The pin marks Tell Balata, by Nablus, usually identified with Shechem.',
+      note: 'The verses call him only “a man”; Rashi on 37:15 says he was the angel Gabriel, pointing to Daniel 9:21, where the Hebrew calls Gabriel “the man.” The pin marks Tell Balata, by Nablus, usually identified with Shechem.',
       camera: onPin(SHECHEM, 9.6, 55, -20),
       routeTo: 1,
       stop: 2,
@@ -142,7 +143,7 @@ const vayeshev: ParshaStory = {
       title: '“Here comes that dreamer!”',
       body: 'Joseph finds his brothers at Dothan. They see him from afar and plot to kill him and throw him into a pit. Reuben says, “Shed no blood! Cast him into that pit,” meaning to save him and bring him back to his father. They strip Joseph of his ornamented tunic and cast him into the pit; it is empty, with no water in it.',
       ref: 'Genesis 37:17–24 · Rashi',
-      note: 'Their plan was to say “A savage beast devoured him” (37:20). Rashi on 37:24 asks why the verse adds “no water in it” after “empty”: there was no water, he says, but there were snakes and scorpions. The pin marks Tel Dothan, near Jenin, which the modern consensus identifies with Dothan.',
+      note: 'Their plan was to say “A savage beast devoured him” (37:20). Rashi on 37:24 asks why the verse adds “no water in it” after “empty”: there was no water, he says, but there were snakes and scorpions. The pin marks Tel Dothan, near Jenin, which most scholars today identify with Dothan, though it isn’t certain.',
       camera: onPin(DOTHAN, 9.8, 58, 10),
       routeTo: 2,
       stop: 3,
@@ -151,7 +152,7 @@ const vayeshev: ParshaStory = {
       kind: 'offerings',
       title: 'A caravan from Gilead',
       ref: 'Genesis 37:25 · Rashi · Ibn Ezra',
-      note: 'They sit down to a meal and, looking up, see a caravan of Ishmaelites coming from Gilead, their camels carrying these goods to Egypt. The JPS note, citing Bekhor Shor, says “they” means the brothers other than those tending the flock, who included Reuben; Bekhor Shor on 37:25 says shepherds eat in turns, so Reuben, away with the flock, didn’t know of the sale. Ibn Ezra on 37:25 says only “the nine brothers”; that would leave out Reuben and Benjamin as well as Joseph. Rashi on 37:25 asks why the verse tells what the camels carried: Arab traders usually carried foul-smelling naphtha and tar, but for Joseph they carried fragrant spices. Gilead is a region east of the Jordan; its pin is only an illustrative point in it.',
+      note: 'They sit down to a meal and, looking up, see a caravan of Ishmaelites coming from Gilead, their camels carrying these goods to Egypt. The JPS note, citing Bekhor Shor, says “they” means the brothers other than those tending the flock, who included Reuben; Bekhor Shor on 37:25 says shepherds eat in turns, so Reuben, away with the flock, didn’t know of the sale. Ibn Ezra on 37:25 says only “the nine brothers,” so two besides Joseph were not there; he doesn’t say which (Reuben, by 37:29, was one). Rashi on 37:25 asks why the verse tells what the camels carried: Arab traders usually carried foul-smelling naphtha and tar, but for Joseph they carried fragrant spices. Gilead is a region east of the Jordan; its pin is only an illustrative point in it.',
       items: [
         { he: 'נְכֹאת', en: 'Gum', note: 'Rashi: a gathering of many spices' },
         { he: 'צְרִי', en: 'Balm', note: 'Rashi: a resin that drips from the balsam tree' },
@@ -203,10 +204,10 @@ const vayeshev: ParshaStory = {
       kind: 'chapter',
       title: 'Judah’s sons',
       body: 'Judah leaves his brothers and camps near an Adullamite named Hirah. He marries the daughter of a Canaanite named Shua, and they have three sons: Er, Onan and Shelah. Er marries Tamar, but he displeases GOD and dies; Onan, told to provide offspring for his brother, makes sure he will not, and dies too. Judah sends Tamar back to her father’s house, to wait for Shelah.',
-      ref: 'Genesis 38:1–11 · Rashi · Deuteronomy 25:5–6',
-      note: 'Where the verse says Judah “left” his brothers, the Hebrew says he “went down” from them. Rashi on 38:1 asks why this story interrupts Joseph’s: his brothers brought Judah down from his high standing when they saw their father’s grief, saying: you told us to sell him; had you told us to bring him back, we would have listened. Judah told Onan to do “your duty by her as a brother-in-law”; the JPS note points to Deuteronomy 25:5, the law that a man’s brother marries his widow when he dies without offspring. Judah held back Shelah, thinking, “He too might die like his brothers” (38:11). When Shelah was born, “he was at Chezib” (38:5); Chezib isn’t marked in this story. Adullam’s site is proposed, not certain; the verse says only that Hirah was an Adullamite.',
+      ref: 'Genesis 38:1–11 · Rashi · Ibn Ezra · Genesis 46:12 · Deuteronomy 25:5–6',
+      note: 'Where the verse says Judah “left” his brothers, the Hebrew says he “went down” from them. Rashi on 38:1 asks why this story interrupts Joseph’s: his brothers brought Judah down from his high standing when they saw their father’s grief, saying: you told us to sell him; had you told us to bring him back, we would have listened. Ibn Ezra on 38:1 reads “about that time” differently: this story began before Joseph was sold, since only twenty-two years passed between the sale and the family’s going down to Egypt, yet Perez came down with sons of his own (46:12); he says the chapter is set here to contrast Judah with Joseph and his master’s wife. Judah told Onan to do “your duty by her as a brother-in-law”; the JPS note points to Deuteronomy 25:5, the law that a man’s brother marries his widow when he dies without offspring. Judah held back Shelah, thinking, “He too might die like his brothers” (38:11). When Shelah was born, “he was at Chezib” (38:5); Chezib isn’t marked in this story. Adullam’s site is proposed, not certain; the verse says only that Hirah was an Adullamite.',
       act: 'Judah and Tamar',
-      camera: { center: [35.03, 31.64], zoom: 9.8, pitch: 35, bearing: 0 },
+      camera: { center: [35.04, 31.74], zoom: 9.8, pitch: 35, bearing: 0 },
       routeTo: 2,
       spot: { name: 'Adullam (proposed: Kh. esh-Sheikh Madhkur)', at: ADULLAM, place: 'af82614' },
     },
@@ -215,10 +216,9 @@ const vayeshev: ParshaStory = {
       title: 'On the road to Timnah',
       body: 'A long time afterward, Judah goes up to Timnah for his sheepshearing. Tamar, seeing that Shelah is grown and she has not been given to him as wife, takes off her widow’s garb, veils her face, and sits by the road at the entrance to Enaim. Judah does not recognize her and takes her for a prostitute; she becomes pregnant by him, and keeps his seal, cord and staff as a pledge.',
       ref: 'Genesis 38:12–23 · Rashi',
-      note: 'By then Judah’s wife, Shua’s daughter, had died (38:12). The pledge was until he sent her a kid from his flock (38:17–18); when his friend Hirah the Adullamite came with the kid, no one there knew of her, and Judah said, “Let her keep them, lest we become a laughingstock” (38:20–23). Rashi on 38:14 says she veiled her face so that he would not recognize her. Where Enaim and this Timnah were isn’t known: scholars differ on which of the Bible’s Timnahs this is, so neither is marked in this story.',
+      note: 'By then Judah’s wife, Shua’s daughter, had died (38:12). The pledge was until he sent her a kid from his flock (38:17–18); when his friend Hirah the Adullamite came with the kid, no one there knew of her, and Judah said, “Let her keep them, lest we become a laughingstock” (38:20–23). Rashi on 38:14 says she veiled her face so that he would not recognize her. Where Enaim and this Timnah were isn’t known: scholars differ on which of the Bible’s Timnahs this is, so neither is marked in this story. Adullam, Hirah’s town, isn’t marked on this card either: the verses don’t place the meeting there.',
       camera: { center: [35.03, 31.64], zoom: 9.6, pitch: 38, bearing: 10 },
       routeTo: 2,
-      spot: { name: 'Adullam (proposed: Kh. esh-Sheikh Madhkur)', at: ADULLAM, place: 'af82614' },
     },
     {
       kind: 'quote',
@@ -245,7 +245,7 @@ const vayeshev: ParshaStory = {
       title: 'In Potiphar’s house',
       body: 'In Egypt, Potiphar, a courtier of Pharaoh, buys Joseph. GOD is with Joseph and he succeeds; his master sees it, makes him his personal attendant and puts all that he owns in his hands. GOD blesses the house for Joseph’s sake.',
       ref: 'Genesis 37:36, 39:1–6 · Rashi',
-      note: 'Potiphar is “a courtier of Pharaoh and his prefect”; the JPS note says the precise force of the Hebrew sar haṭṭabaḥim is uncertain. Chapter 37 ends with “the Midianites” selling Joseph to Potiphar (37:36); chapter 39 says Potiphar bought him “from the Ishmaelites who had brought him there” (39:1). Rashi on 39:1 says the story now returns to Joseph, and that Judah’s story was set between to connect Judah’s being brought down from his high standing with the sale of Joseph. Egypt is a region; its pin is only an illustrative point near today’s Cairo. The verses don’t say where in Egypt Potiphar lived. The line to Egypt bends inland only so that it stays on land; the caravan’s road isn’t known.',
+      note: 'Potiphar is “a courtier of Pharaoh and his prefect”; the JPS note says the precise force of the Hebrew sar haṭṭabaḥim is uncertain. Chapter 37 ends with “the Midianites” selling Joseph to Potiphar (37:36); chapter 39 says Potiphar bought him “from the Ishmaelites who had brought him there” (39:1). Rashi on 39:1 says the story now returns to Joseph, and that Judah’s story was set between to connect Judah’s being brought down from his high standing with the sale of Joseph. Egypt is a region; its pin is only an illustrative point near today’s Cairo. The verses don’t say where in Egypt Potiphar lived. The line to Egypt bends inland only so that it doesn’t cross the Mediterranean; the caravan’s road isn’t known.',
       act: 'In Egypt',
       camera: onPin(EGYPT, 7.2, 45, 0),
       routeTo: 3,
@@ -325,7 +325,7 @@ const vayeshev: ParshaStory = {
     {
       kind: 'talk',
       title: 'Judah said of Tamar, “She is more in the right than I.” Why is it hard to say “I was wrong,” and what makes it easier?',
-      note: 'Numbered pins: the valley of Hebron (the gazetteer pins it at Hebron itself, Tel Rumeida), Shechem = Tell Balata, Dothan = Tel Dothan (usual identifications, not certain). Egypt and Gilead are regions; their points are illustrative. Adullam is a proposed site (Khirbet esh-Sheikh Madhkur); Chezib, Timnah and Enaim can’t be located with confidence and aren’t marked in this story. Stops close together on screen may share one numbered pin, drawn on the first of them; which ones merge depends on the screen size. Lines join the stops in order; the roads Joseph and the caravan took aren’t known, and the line to Egypt bends through the Negev only so that it stays on land.',
+      note: 'Numbered pins: the valley of Hebron (the gazetteer pins it at Hebron itself, Tel Rumeida), Shechem = Tell Balata, Dothan = Tel Dothan (usual or likely identifications, not certain). Egypt and Gilead are regions; their points are illustrative. Adullam is a proposed site (Khirbet esh-Sheikh Madhkur); Chezib, Timnah and Enaim can’t be located with confidence and aren’t marked in this story. Stops close together on screen may share one numbered pin, drawn on the first of them; which ones merge depends on the screen size. Lines join the stops in order; the roads Joseph and the caravan took aren’t known, and the line to Egypt bends through the Negev only so that it doesn’t cross the Mediterranean.',
       // Not used on screen: the finale fits the whole route into the strip above the card (DaylightMap fitBounds).
       camera: { center: [33.3, 31.2], zoom: 5.3, pitch: 20, bearing: 0 },
       routeTo: 3,
