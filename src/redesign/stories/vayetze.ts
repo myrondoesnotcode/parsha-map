@@ -6,7 +6,7 @@
 // hill country of Gilead (Gal-ed / Mizpah) shown as an unnumbered spot on the way. Verse numbers follow the Hebrew text (Sefaria), where the
 // parsha ends at 32:3; many English Bibles number Hebrew 32:1 as 31:55. Verses quote THE JPS TANAKH:
 // Gender-Sensitive Edition (Sefaria), which writes God's four-letter name as GOD (and as "the ETERNAL"
-// in "I am the ETERNAL"). Where the heap stood is unknown. The gazetteer's pin for it (places.json
+// in some phrases: "I am the ETERNAL", 28:13; "the ETERNAL shall be my God", 28:21). Where the heap stood is unknown. The gazetteer's pin for it (places.json
 // "Mizpah 4") lies south of the Jabbok, but Jacob crosses the Jabbok only later (32:23), so the story
 // draws the mound as an illustrative spot north of the river instead. Claim table: docs/plans/2026-09-27-vayetze-story-factcheck.md.
 import type { LngLat, ParshaStory } from '../story'
@@ -37,7 +37,7 @@ const vayetze: ParshaStory = {
   sources: [
     'Genesis 28:10 – 32:3',
     'Genesis 22:4, 27:35, 27:43–45, 28:2, 32:23, 35:16–19',
-    'Rashi on Genesis 28:10, 28:11, 28:12, 28:13, 28:17, 28:21, 29:11, 29:17, 29:25, 30:21, 31:7, 31:19, 31:32, 32:2, 32:3',
+    'Rashi on Genesis 28:10, 28:11, 28:12, 28:13, 28:17, 28:21, 29:11, 29:17, 29:25, 30:21, 30:32, 31:7, 31:19, 31:32, 32:2, 32:3',
     'Kitzur Baal HaTurim on Genesis 28:10',
     'Talmud, Chullin 91b; Megillah 13b; Berakhot 60a (as cited by Rashi on Genesis 28:11, 29:25, 30:21)',
     'Bereshit Rabbah 68:12, 74:3, 74:9 (as cited by Rashi on Genesis 28:12, 31:7, 31:32)',
@@ -181,7 +181,7 @@ const vayetze: ParshaStory = {
       kind: 'offerings',
       title: 'Sons of Leah and of Bilhah',
       ref: 'Genesis 29:32 – 30:8',
-      note: 'The words after each name are the words spoken at the birth, in the JPS translation; its notes say which Hebrew word each name is “connected with,” and explain Reuben as “See a son.” Bilhah was Rachel’s maid, and Rachel named her sons. Leah also said at Reuben’s birth, “Now my husband will love me” (29:32).',
+      note: 'The words after each name are the words spoken at the birth, in the JPS translation; its notes say which Hebrew word each of these names is “connected with,” and explain Reuben as “See a son.” Bilhah was Rachel’s maid, and Rachel named her sons. Leah also said at Reuben’s birth, “Now my husband will love me” (29:32).',
       items: [
         { he: 'רְאוּבֵן', en: 'Reuben · Leah', note: '“GOD has seen my affliction”' },
         { he: 'שִׁמְעוֹן', en: 'Simeon · Leah', note: '“GOD heard that I was unloved”' },
@@ -198,7 +198,7 @@ const vayetze: ParshaStory = {
       title: 'Children of Zilpah, Leah and Rachel',
       numberFrom: 7,
       ref: 'Genesis 30:9–24, 35:16–19 · Rashi',
-      note: 'The sons are numbered in the order the verses tell of their births, across both cards; Dinah, the only daughter of Jacob whom the Torah names, is in Zebulun’s row, since she was born after him and before Joseph (30:21). Zilpah was Leah’s maid, and Leah named her sons. Gad follows the qere, the way the verse is read (בָּא גָד, “luck has come”); it is written בגד, which JPS renders “What luck!” Issachar was born after Rachel traded Leah a night with Jacob for Reuben’s mandrakes (30:14–16). The verse gives no reason for Dinah’s name. Rashi on 30:21 brings the Talmud’s reading (Berakhot 60a): Leah passed judgment (dan) on herself and prayed, so that Rachel would not have fewer sons than a maid, and the child became a girl. Benjamin, Jacob’s twelfth son, is born next week (35:16–19).',
+      note: 'The sons are numbered in the order the verses tell of their births, across both cards; Dinah, the only daughter of Jacob whom the Torah names, is in Zebulun’s row, since she was born after him and before Joseph (30:21). Zilpah was Leah’s maid, and Leah named her sons. Gad follows the qere, the way the verse is read (בָּא גָד, “luck has come”); it is written בגד, which JPS renders “What luck!” Issachar was born after Rachel traded Leah a night with Jacob for Reuben’s mandrakes (30:14–16). The verse gives no reason for Dinah’s name. Rashi on 30:21 brings the Talmud’s reading (Berakhot 60a): Leah passed judgment (dan) on herself and prayed, so that Rachel would not have fewer sons than a maid, and the child became a girl. Leah also said at Zebulun’s birth, “God has given me a choice gift” (30:20), and Rachel at Joseph’s, “God has taken away my disgrace” (30:23). Benjamin, Jacob’s twelfth son, is born next week (35:16–19).',
       items: [
         { he: 'גָּד', en: 'Gad · Zilpah', note: 'Leah: “Luck has come”' },
         { he: 'אָשֵׁר', en: 'Asher · Zilpah', note: 'Leah: “What fortune!”' },
@@ -213,7 +213,7 @@ const vayetze: ParshaStory = {
       kind: 'chapter',
       title: 'Speckled and spotted',
       body: 'Jacob asks leave to go home, but Laban wants him to stay. They agree that Jacob’s wages will be the speckled, spotted and dark-colored animals; that same day Laban removes the ones already in the flock and leaves them with his sons. Jacob sets peeled rods by the watering troughs, the goats bear streaked, speckled and spotted young, and he grows exceedingly prosperous.',
-      ref: 'Genesis 30:25–43',
+      ref: 'Genesis 30:25–43 · Rashi',
       note: 'Jacob had proposed setting those animals apart (30:32); Rashi on 30:32 reads his wages as the ones born from then on. Laban left the animals he removed with his sons, and put three days’ journey between himself and Jacob (30:35–36). The verses don’t explain how the rods worked. Later Jacob tells of a dream in which an angel showed him that the mating he-goats were streaked, speckled and mottled: “for I have noted all that Laban has been doing to you” (31:10–12).',
       act: 'Going home',
       camera: { center: eastOf(HARAN, 0.12), zoom: 9.6, pitch: 58, bearing: 20 },
@@ -235,7 +235,7 @@ const vayetze: ParshaStory = {
       title: 'Away in secret',
       body: 'While Laban is off shearing his sheep, Jacob puts his wives and children on camels and sets out with all his livestock for his father Isaac in Canaan, without telling Laban. Rachel steals her father’s terafim. Jacob crosses the Euphrates and heads for the hill country of Gilead.',
       ref: 'Genesis 31:17–21 · Rashi',
-      note: 'JPS calls the terafim “oracle idols”: figurines, apparently in human form, used in divination. The Torah doesn’t say why Rachel took them, and Jacob didn’t know she had (31:32). Rashi on 31:19 says she meant to wean her father from idol worship. The Hebrew says “the River,” which JPS renders as the Euphrates; where Jacob crossed isn’t said, and where the drawn line meets the river is not a claim. Jacob set out from the pastures where he kept Laban’s flock, three days’ journey from Laban (30:36, 31:22); where they were isn’t said, so the line starts at the Haran pin.',
+      note: 'JPS calls the terafim “oracle idols”: figurines, apparently in human form, used in divination. The Torah doesn’t say why Rachel took them, and Jacob didn’t know she had (31:32). Rashi on 31:19 says she meant to wean her father from idol worship. The Hebrew says “the River,” which JPS renders as the Euphrates; where Jacob crossed isn’t said, and where the drawn line meets the river is not a claim. Where Jacob set out from isn’t said, so the line starts at the Haran pin.',
       camera: { center: [39.0, 34.3], zoom: 4.5, pitch: 20, bearing: 0 },
       routeTo: 2.96,
     },
@@ -244,7 +244,7 @@ const vayetze: ParshaStory = {
       title: 'Laban gives chase',
       body: 'On the third day Laban hears that Jacob has fled. He pursues him for seven days and catches up with him in the hill country of Gilead. But God warns Laban in a dream: “Beware of attempting anything with Jacob, good or bad.” Laban scolds Jacob for fleeing in secret, and asks, “Why did you steal my gods?”',
       ref: 'Genesis 31:22–30',
-      note: 'Gilead is a region east of the Jordan. The verses don’t say where in it Laban caught up; it was where they would pile the mound of 31:46–49, called Gal-ed and Mizpah; no site for it has been identified. Jacob, coming from Haran in the north, crosses the Jabbok only later (32:23), so the spot is drawn north of the river, in the hills of Gilead. It is only illustrative, and it differs on purpose from the Map tab’s pin for Mizpah, which lies south of the Jabbok. The line stops short of Mahanaim, his next stop.',
+      note: 'Gilead is a region east of the Jordan. The verses don’t say where in it Laban caught up; it was where they would pile the mound of 31:46–49, called Gal-ed and Mizpah, and where that was is unknown. Jacob, coming from Haran in the north, crosses the Jabbok only later (32:23), so the spot is drawn north of the river, in the hills of Gilead. It is only illustrative, and it differs on purpose from the Map tab’s pin for Mizpah, which lies south of the Jabbok. The line stops short of Mahanaim, his next stop.',
       act: 'Gilead',
       camera: { center: eastOf(GALED, 0.1), zoom: 8.6, pitch: 52, bearing: -10 },
       routeTo: 2.96,
@@ -274,7 +274,7 @@ const vayetze: ParshaStory = {
       title: 'The mound of witness',
       body: 'Laban proposes a pact. Jacob sets up a stone as a pillar, and his kinsmen heap stones into a mound and eat there. Laban calls it Yegar-sahadutha, and Jacob calls it Gal-ed; it is also called Mizpah: “May GOD watch between you and me, when we are out of sight of each other.”',
       ref: 'Genesis 31:43–54',
-      note: 'Both names mean “the mound of witness,” say the JPS notes: Yegar-sahadutha in Aramaic, Gal-ed in Hebrew, echoing the name Gilead. Mizpah is associated with yiṣeph, “watch.” Neither may cross the mound to harm the other (31:52). Jacob offers a sacrifice on the Height, and they spend the night there (31:54). The spot is illustrative; no site for the mound has been identified.',
+      note: 'Both names mean “the mound of witness,” say the JPS notes: Yegar-sahadutha in Aramaic, Gal-ed in Hebrew, echoing the name Gilead. Mizpah is associated with yiṣeph, “watch.” Neither may cross the mound to harm the other (31:52). Jacob offers a sacrifice on the Height, and they spend the night there (31:54). The spot is illustrative; where the mound stood is unknown.',
       camera: { center: eastOf(GALED, 0.1), zoom: 10.2, pitch: 60, bearing: 10 },
       routeTo: 2.96,
       spot: { name: 'Gal-ed / Mizpah (site unknown)', at: GALED, place: 'a694ea2' },
@@ -293,7 +293,7 @@ const vayetze: ParshaStory = {
     {
       kind: 'talk',
       title: 'Jacob woke and said, “Surely GOD is present in this place, and I did not know it!” When have you found something special in a place you didn’t expect?',
-      note: 'Numbered pins mark usual or proposed identifications: Beersheba = Tel Be’er Sheva, Bethel = Beitin, Haran = Harran, Mahanaim = Tell edh-Dhahab el-Gharbi (one of several proposed sites). Zoomed out this far, stops close together share one numbered pin, drawn on the first of them (on a phone, 1·2·4 sits on Beersheba); each stop’s own card shows its own pin. Where the mound of Gal-ed and Mizpah stood is unknown; it is not shown here, and on its cards it is an illustrative spot. Lines join the stops in order; Jacob’s roads aren’t known, nor where he crossed the Euphrates; where the line meets the river is not a claim.',
+      note: 'Numbered pins mark usual or proposed identifications: Beersheba = Tel Be’er Sheva, Bethel = Beitin, Haran = Harran, Mahanaim = Tell edh-Dhahab el-Gharbi (one of several proposed sites). Zoomed out this far, stops close together can share one numbered pin, drawn on the first of them; each stop’s own card shows its own pin. Where the mound of Gal-ed and Mizpah stood is unknown; it is not shown here, and on its cards it is an illustrative spot. Lines join the stops in order; Jacob’s roads aren’t known, nor where he crossed the Euphrates; where the line meets the river is not a claim.',
       // Not used on screen: the finale fits the whole route into the strip above the card (DaylightMap fitBounds).
       camera: { center: [37.1, 34.1], zoom: 4.6, pitch: 20, bearing: 0 },
       routeTo: 3,

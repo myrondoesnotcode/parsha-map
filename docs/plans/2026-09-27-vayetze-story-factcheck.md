@@ -235,3 +235,28 @@ Not changed: c058 (card 4's camera): the screenshot shows the Bethel pin and its
 | Missed, merged pins | Merged overview pins off the finale add "sites uncertain" |
 
 Not changed: R86 (a fading "or later" tail on the date band; the label says "or later"); approximateDateBCE and timeline.json fields the Daylight UI doesn't render; the Map-tab Mizpah pin (places.json).
+
+## Final pass (workflow wf_6b2dc982-d88, 2026-09-28)
+
+309 claims (220 story, 89 Read tab / history), 302 verified, 5 problems, 12 "missed" items. Status INCOMPLETE: C159 and C162 were checked by no lens; both are checked by hand below. Every finding was re-checked against the source named (Sefaria API v3 unless stated). Shared-file proposals: `docs/plans/2026-09-28-vayetze-shared-fixes.md`.
+
+| Finding | Decision | Evidence | Change |
+|---|---|---|---|
+| C99 card 12 note: JPS notes say which word each name is "connected with" | Accept, modified | JPS notes on 29:32–30:8 say "connected with" for all six names on card 12 (Reuben: "connected with the first part … the end of 'Reuben'"). Zebulun's notes (30:20: "Heb. *zebadani…zebed*"; "Heb. *yizbeleni*") have no "connected with", so the sentence must not read as covering card 13 | "each of these names" |
+| C151 card 16 note: Jacob set out from the pastures three days from Laban | Accept (cut) | 30:36 puts the three days between Laban and Jacob when the six years begin; 31:22 says only "On the third day, Laban was told"; 31:4 "to the field, where his flock was" names no place. The three-day gap at the flight is Rashi's reading of 31:22 ("for there was a journey of three days between them"), not the verses' | Sentence replaced by "Where Jacob set out from isn’t said, so the line starts at the Haran pin." (30:36 stays on card 14) |
+| C219 header comment: "the ETERNAL" only in "I am the ETERNAL" | Accept (code comment) | JPS 28:13 "I am the ETERNAL"; 28:21 "the ETERNAL shall be my God" | Comment names both. No user-facing change |
+| R14 Read tab: "Laban, in turn, deceives Jacob" | Accept, modified | The summary never tells of Jacob's deception, so "in turn" asserts a link the text does not draw (27:35 בְּמִרְמָה, 29:25 רִמִּיתָנִי share a root; the Deeper question asks about the echo) | "Laban deceives Jacob:" (parshaList.json). The checker's longer fix was not taken: it adds an interpretation the Deeper question already raises |
+| R46 History tab eyebrow "In history" | Accept → shared fix | Screens.tsx:166; McCarter/Hendel "The Patriarchal Age" on disputed parallels | Shared-fixes §1 |
+| Missed: card 14 quotes Rashi on 30:32 but its ref and `sources` don't | Accept | Rashi on 30:32: אוֹתָן שֶׁיִּוָּלְדוּ מִכָּאן וּלְהַבָּא … יִהְיוּ שֶׁלִּי | Ref "Genesis 30:25–43 · Rashi"; 30:32 added to the Rashi line in `sources` |
+| Missed: Joseph's and Zebulun's first sayings | Accept | JPS 30:20 "God has given me a choice gift"; 30:23 "God has taken away my disgrace" (note: *ʼasaph*, "connected with 'Joseph'") | Card 13 note adds both, like Reuben's second saying on card 12 |
+| Missed: card 1 break types | No change | Sefaria Hebrew: {ס} after 28:9, {פ} after 32:3; the note doesn't name the kinds | — |
+| Missed: route tag not shown outside the story | Accept → shared fix | DaylightMap.tsx:417 draws the full route when the story is closed; tag only in StoryPlayer.tsx:219 | Shared-fixes §2 |
+| Missed: Luz "medium" vs Bethel "low" at the same point | Accept → shared fix | places.json a397042 / a64f355 | Shared-fixes §3 |
+| Missed: Euphrates as one dot | Accept → shared fix | places.json a62dec4 (36.8297 N, 38.015 E); sheet shows its description (MapChrome.tsx:248) | Shared-fixes §4 |
+| Missed: finale note "on a phone, 1·2·4 sits on Beersheba" | Accept (cut) | Merging depends on screen size (threshold 34 px, DaylightMap.tsx:406; checker measured 27 px at 390×844, 33 px at 430×932); a merged pin stays on its first stop (line 713) | "stops close together can share one numbered pin, drawn on the first of them"; the phone parenthetical removed |
+| Missed: Read tab credits the Throne of Glory only to the Targum | Reject | Chullin 91b Aramaic: עוֹלִין וּמִסְתַּכְּלִין בִּדְיוֹקְנוֹ שֶׁל מַעְלָה, no כסא הכבוד. In the Davidson English, "engraved on the Throne of Glory" is unbolded, i.e. Steinsaltz's explanation, not the Talmud's words. The sixth-pass wording (R45) stands | — |
+| Missed: approximateDateBCE 1850–1650 | Accept → shared fix | Unsourced; parshaDates patriarchs 2000–1550 "or later"; shown only in the classic UI (ParshaSelector.tsx:10) | Shared-fixes §6 (all patriarchal parshiot) |
+| Missed: timeline.json Execration texts "the earliest" | Shared (not verified here) | Rendered only in the classic UI (PrimarySourcesCard via ContextPanel) | Shared-fixes §7 |
+| Missed: date bar "Tradition:" | Accept → shared fix | MapChrome.tsx:49; the date is Seder Olam's (buildParshaDates.mjs `SOR(2)`) | Shared-fixes §5 |
+| C159 (unchecked) "Gilead is a region east of the Jordan" | Verified by hand | Wikipedia "Gilead": the mountainous northern part of Transjordan, "bounded in the west by the Jordan River" | — |
+| C162 (unchecked) "no site for the mound has been identified" | Modified | OpenBible.info "Mizpah 4" (Galeed): "another name for Mizpah 1 (ancient): 50% confidence. It may be: Jel‘ad, Tall er Rumeith, Khirbet er Rasuni, Suf"; "the modern location is uncertain". Wikipedia "Mizpah in Gilead (Genesis)" gives no location. So sites have been proposed; none is established | Cards 17 and 20: "where that was is unknown" / "where the mound stood is unknown", matching the spot label "(site unknown)" |
