@@ -217,7 +217,11 @@ export function StoryPlayer() {
       {/* A drawn route is a sketch of the order of places, not the roads: say so while a line is on screen, and on the finale. */}
       {story.route.length > 0 && (card.kind === 'talk' || ((card.routeTo ?? 0) > 0 && card.kind !== 'cover' && card.kind !== 'guess' && card.kind !== 'stars')) && (
         <div className="dl-route-tag">
-          {card.kind === 'talk' ? 'Route illustrative · pin sites are uncertain' : 'Route illustrative · lines join the stops in order'}
+          {card.kind === 'talk'
+            ? 'Route illustrative · pin sites are uncertain'
+            : Number.isInteger(card.routeTo)
+              ? 'Route illustrative · lines join the stops in order'
+              : 'Route illustrative · the line ends at an illustrative point'}
         </div>
       )}
 

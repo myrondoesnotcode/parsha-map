@@ -439,14 +439,14 @@ export function DaylightMap() {
     return () => controls.stop()
   }, [loaded, geometry, target, storyOpen, pushLine])
 
-  // Where the traveller is: the head of the line, only while it is between stops. When the line comes to rest on the
-  // card's spot (Vayetze's Gal-ed, site unknown), the spot's hollow ring is the marker: a filled dot would read as a stop.
-  const spotAtHead = !!card?.spot && Math.abs(drawn - target) < 0.005
+  // Where the traveller is: the head of the line, only while a leg is being drawn. A dot left resting between stops
+  // (Vayetze's line into Gilead) would read as a located place; where the line rests on a spot, its ring is the marker.
+  const atRest = Math.abs(drawn - target) < 0.005
   const traveller = useMemo(() => {
-    if (!geometry || spotAtHead || Math.abs(drawn - Math.round(drawn)) < 0.03) return null
+    if (!geometry || atRest || Math.abs(drawn - Math.round(drawn)) < 0.03) return null
     const line = lineUpTo(geometry.coords, geometry.stopIndex, drawn)
     return line[line.length - 1]
-  }, [geometry, drawn, spotAtHead])
+  }, [geometry, drawn, atRest])
 
   // A small tap each time the line reaches a new stop.
   const reached = Math.floor(drawn + 0.02)
