@@ -115,7 +115,7 @@ const scholarly = {
     ],
   },
   patriarchs: {
-    label: 'Date unknown · often placed c. 2000–1550 BCE; some date it later',
+    label: 'Date unknown · often c. 2000–1550 BCE, or later',
     startBCE: 2000,
     endBCE: 1550,
     sources: [

@@ -297,7 +297,6 @@ function textWidth(t: string, weight = 600, size = 13): number {
 }
 
 type Box = { x0: number; y0: number; x1: number; y1: number }
-const hits = (a: Box, b: Box) => a.x0 < b.x1 && b.x0 < a.x1 && a.y0 < b.y1 && b.y0 < a.y1
 
 /**
  * Overview labels, placed greedily in route order: each cluster's label goes right of its pin unless that
@@ -337,9 +336,15 @@ function placeLabels(story: ParshaStory, pts: { x: number; y: number }[], cluste
       ['below', { x0: pin.x0, y0: pin.y1 + 4, x1: pin.x0 + w, y1: pin.y1 + 4 + h }],
       ['above', { x0: pin.x0, y0: pin.y0 - 4 - h, x1: pin.x0 + w, y1: pin.y0 - 4 }],
     ]
-    const free = (b: Box) =>
-      !placed.some((p) => hits(p, b)) && !pins.some(([j, p]) => j !== i && hits(p, b)) && b.x0 >= 4 && b.x1 <= screen.w - 4 && b.y0 >= ceiling && b.y1 <= screen.h - 4
-    const [side, box] = boxes.find(([, b]) => free(b)) ?? boxes[0]
+    // How much a label box would cover: other pins count double (a covered number is worse than a covered label),
+    // and any part off the free screen counts as covered.
+    const area = (a: Box, b: Box) => Math.max(0, Math.min(a.x1, b.x1) - Math.max(a.x0, b.x0)) * Math.max(0, Math.min(a.y1, b.y1) - Math.max(a.y0, b.y0))
+    const cost = (b: Box) =>
+      placed.reduce((t, p) => t + area(p, b), 0) +
+      pins.reduce((t, [j, p]) => t + (j === i ? 0 : 2 * area(p, b)), 0) +
+      ((b.x1 - b.x0) * (b.y1 - b.y0) - area(b, { x0: 4, y0: ceiling, x1: screen.w - 4, y1: screen.h - 4 }))
+    // The first side that covers nothing, else the one that covers least.
+    const [side, box] = boxes.find(([, b]) => cost(b) === 0) ?? [...boxes].sort((a, b) => cost(a[1]) - cost(b[1]))[0]
     sides[i] = side
     placed.push(box)
   }
