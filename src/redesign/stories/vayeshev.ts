@@ -26,7 +26,7 @@ const DOTHAN: LngLat = [35.239861, 32.413528]
 const EGYPT: LngLat = [31.3075, 30.129444]
 /** Gilead (places.json ae73b90 "Gilead 1"), a region east of the Jordan; the gazetteer's point is illustrative only. */
 const GILEAD: LngLat = [35.69211, 32.187016]
-/** Adullam (places.json af82614), pinned at Khirbet esh-Sheikh Madhkur: a proposed identification, still inconclusive. */
+/** Adullam (places.json af82614), pinned at Khirbet esh-Sheikh Madhkur, thought to be "upper Adullam", above Kh. ʿId el-Minya, the ruin identified as Adullam itself; the identification is inconclusive. */
 const ADULLAM: LngLat = [35.001667, 31.651667]
 /** An inland point in the western Negev, so the drawn line to Egypt doesn't cross the Mediterranean. Not a claim about the caravan's road. */
 const NEGEV: LngLat = [34.6, 31.1]
@@ -185,7 +185,7 @@ const vayeshev: ParshaStory = {
       kind: 'chapter',
       title: 'Midianites and Ishmaelites',
       body: 'Midianite traders pass by, Joseph is pulled up out of the pit, and he is sold to the Ishmaelites, who bring him to Egypt. When Reuben comes back to the pit, Joseph is gone. He tears his clothes, goes back to his brothers and says, “The boy is gone! Now, what am I to do?”',
-      ref: 'Genesis 37:28–30 · Genesis 45:4 · Rashi · Rashbam · Ibn Ezra · Judges 8:24',
+      ref: 'Genesis 37:28–30, 37:36, 39:1 · Genesis 45:4 · Rashi · Rashbam · Ibn Ezra · Judges 8:24',
       note: 'The Hebrew says only that “they” pulled Joseph up and sold him; JPS translates “the brothers”; its note points to 45:4–5 and to Bekhor Shor. In 45:4 Joseph says, “I am your brother Joseph, he whom you sold into Egypt.” Later, “the Midianites” (in the Hebrew, Medanites) sell him to Potiphar (37:36), yet Potiphar buys him “from the Ishmaelites” (39:1). Commentators read this differently. Rashi on 37:28: the Midianites were another caravan; the brothers pulled Joseph up and sold him to the Ishmaelites, the Ishmaelites to the Midianites, and the Midianites to the Egyptians. Rashbam on 37:28: while the brothers sat eating, Midianites passing by found Joseph, pulled him up and sold him to the Ishmaelites, and the brothers may not have known. Ibn Ezra on 37:28 says Midianites are also called Ishmaelites, as in Judges 8:24; Rashbam on 37:36 says that by the plain sense the Medanites and the Ishmaelites are the same people.',
       camera: onPin(DOTHAN, 9.8, 56, 20),
       routeTo: 2,
@@ -209,7 +209,7 @@ const vayeshev: ParshaStory = {
       act: 'Judah and Tamar',
       camera: { center: [35.04, 31.74], zoom: 9.8, pitch: 35, bearing: 0 },
       routeTo: 2,
-      spot: { name: 'Adullam (proposed: Kh. esh-Sheikh Madhkur)', at: ADULLAM, place: 'af82614' },
+      spot: { name: 'Adullam (proposed site)', at: ADULLAM, place: 'af82614' },
     },
     {
       kind: 'chapter',
@@ -227,7 +227,7 @@ const vayeshev: ParshaStory = {
       body: 'About three months later Judah is told Tamar is pregnant, and he orders her brought out to be burned. She sends him his seal, cord and staff: “Examine these: whose seal and cord and staff are these?” Judah recognizes them, and says this.',
       ref: 'Genesis 38:24–26 · Rashi · Sotah 10b · Bereshit Rabbah 85:11',
       note: 'The JPS note says “Bring her out” means for a hearing in court. Tamar’s message said only, “It’s by the man to whom these belong that I’m pregnant” (38:25). Rashi on 38:25 says she did not want to shame Judah openly: if he would admit it, let him admit it himself; if not, let them burn her. From here, he writes, it was taught that it is better to be thrown into a fiery furnace than to shame another person in public; Sotah 10b learns this from Tamar. “Examine” (הַכֶּר־נָא) are the words the brothers said to Jacob over the tunic (37:32); in Bereshit Rabbah 85:11 Rabbi Yoḥanan says God told Judah: you said to your father “Identify, please”; Tamar will say to you “Identify, please.”',
-      // Page card: the Shephelah just north of Adullam as a backdrop (the Hebron pin kept under the card).
+      // Page card: a Shephelah backdrop about 22 km north-north-west of the Adullam spot (not marked on this card).
       camera: { center: [34.95, 31.85], zoom: 9.8, pitch: 35, bearing: 0 },
       routeTo: 2,
     },
@@ -325,7 +325,7 @@ const vayeshev: ParshaStory = {
     {
       kind: 'talk',
       title: 'Judah said of Tamar, “She is more in the right than I.” Why is it hard to say “I was wrong,” and what makes it easier?',
-      note: 'Numbered pins: the valley of Hebron (the gazetteer pins it at Hebron itself, Tel Rumeida), Shechem = Tell Balata, Dothan = Tel Dothan (usual or likely identifications, not certain). Egypt and Gilead are regions; their points are illustrative. Adullam is a proposed site (Khirbet esh-Sheikh Madhkur); Chezib, Timnah and Enaim can’t be located with confidence and aren’t marked in this story. Stops close together on screen may share one numbered pin, drawn on the first of them; which ones merge depends on the screen size. Lines join the stops in order; the roads Joseph and the caravan took aren’t known, and the line to Egypt bends through the Negev only so that it doesn’t cross the Mediterranean.',
+      note: 'Numbered pins: the valley of Hebron (the gazetteer pins it at Hebron itself, Tel Rumeida), Shechem = Tell Balata, Dothan = Tel Dothan (usual or likely identifications, not certain). Egypt and Gilead are regions; their points are illustrative. Adullam’s site isn’t certain: its pin is at Khirbet esh-Sheikh Madhkur, thought to be “upper Adullam”, above Khirbet ʿId el-Minya, the ruin identified as Adullam itself. Chezib, Timnah and Enaim can’t be located with confidence and aren’t marked in this story. Stops close together on screen may share one numbered pin, drawn on the first of them; which ones merge depends on the screen size. Lines join the stops in order; the roads Joseph and the caravan took aren’t known, and the line to Egypt bends through the Negev only so that it doesn’t cross the Mediterranean.',
       // Not used on screen: the finale fits the whole route into the strip above the card (DaylightMap fitBounds).
       camera: { center: [33.3, 31.2], zoom: 5.3, pitch: 20, bearing: 0 },
       routeTo: 3,

@@ -17,13 +17,13 @@ Story: `src/redesign/stories/vayeshev.ts` (Genesis 37:1 – 40:23), 26 cards. Ch
 | Route: valley of Hebron → Shechem → Dothan → Egypt, in that order | 37:14, 37:17, 37:28, 39:1 | ✅ |
 | The Dothan → Egypt line bends through an inland point in the western Negev ([34.6, 31.1], as Lech Lecha does) only so that it stays on land; the caravan's road isn't known (said in the Potiphar note and the finale) | fact-check c216: the plain arc ran offshore from Ashdod to El Arish | ✅ |
 | Cards 1, 3, 4 (and page card 2) use a regional camera on the land of Canaan (37:1), not Hebron; the notes say the town isn't named until 37:14 | 37:1, 37:14 | ✅ |
-| Judah cards (13, 14, 16) are centred near Adullam ([35.03, 31.64]); the 38:26 quote backdrop is the Shephelah just north of Adullam ([34.95, 31.85]) | places.json Adullam; screenshots | ✅ |
+| Judah cards (13, 14, 16) are centred near Adullam ([35.03, 31.64]); the 38:26 quote backdrop is the Shephelah about 22 km north-north-west of the Adullam spot ([34.95, 31.85]; pass 3) | places.json Adullam; screenshots | ✅ |
 | Valley of Hebron (a375f5a) pinned at the same point as Hebron (Tel Rumeida); hedge "pin marks Hebron (Tel Rumeida)" | places.json a375f5a [35.10222, 31.525087] = Hebron a85151a | ✅ |
 | Shechem pin (adf74d4) = Tell Balata; hedge "usual site" | places.json "Tell Balatah"; Vayishlach table (Wikipedia "Tell Balata") | ✅ |
 | Dothan pin (ab635e4) = Tel Dothan, near Jenin; "the modern consensus" | places.json "Tel Dotan"; Wikipedia "Tel Dothan" ("The modern consensus is that the archaeological site of Tell Dothan corresponds to ancient Dothan"; ~10 km SW of Jenin) | ✅ hedged "usual site" |
 | Egypt pin (af301ca) is a region; point illustrative, "near today's Cairo" | places.json [31.3075, 30.129444], type region; about 12 km NE of central Cairo (30.044 N, 31.236 E) | ✅ |
 | Gilead (ae73b90) is a region east of the Jordan; point illustrative | places.json type region; 37:25; Vayetze/Vayishlach tables | ✅ spot "Gilead (a region; point illustrative)" |
-| Adullam (af82614) proposed at Khirbet esh-Sheikh Madhkur, not certain | places.json; Wikipedia "Adullam" ("The identification … is still inconclusive") | ✅ spot "Adullam (proposed: …)" |
+| Adullam (af82614): pin at Khirbet esh-Sheikh Madhkur ("upper Adullam"), above Kh. ʿId el-Minya ("Adullam proper"); not certain | places.json; Wikipedia "Adullam" ("thought … to be the “upper Adullam”"; "the site recognised as Adullam proper"; "still inconclusive") | ✅ spot "Adullam (proposed site)" (pass 3) |
 | The verse says only that Hirah was an Adullamite | 38:1 | ✅ |
 | Timnah of Genesis 38 uncertain (scholars differ which Timnah); Enaim's site unknown; neither marked | Wikipedia "Timnah" (Gen 38 Timnah: Tibna or Khirbet et-Tibbaneh proposed; hill-country Timnah "as yet unidentified"); places.json Enaim "location uncertain", Timnah 3 confidence low | ✅ |
 | Chezib not marked | 38:5 | ✅ |
@@ -164,3 +164,28 @@ Story: `src/redesign/stories/vayeshev.ts` (Genesis 37:1 – 40:23), 26 cards. Ch
 Not changed here (handled on the code branch or outside the story file): c005 (cover emblem), R5–R83 (Read and History tabs, date bar), and the parshaList.json summary items.
 
 **Rendering note for the code branch.** On the dream card at 390 px, the drawn sun, moon and stars arc sits behind the ref line and the top of the quoted title (screenshot `shots2/c4.png`). This is StoryPlayer layout; the story file can't move it.
+
+## Independent fact-check, pass 3 (wf_e3eb356b-2b9)
+
+376 claims, 368 verified; 8 problems and 10 "missed" notes. Each was re-checked here: Sefaria API v3 (Genesis 37:8, 37:11, 38:14 with the JPS note, 38:16, 38:26; Rashi on 37:24 and 39:1, English and Hebrew); Wikipedia "Adullam", "Middle Kingdom of Egypt", "Second Intermediate Period of Egypt", "Ten Martyrs" (raw wikitext). The Read-tab checker read the pass-2 `parshaList.json` text (on `redesign/daylight`, commit 42f4f1c), which this branch doesn't have yet; so the Read-tab fixes are written up in `2026-09-28-vayeshev-shared-fixes.md`, not applied here.
+
+| Id | Finding | Decision | Evidence | Change |
+|---|---|---|---|---|
+| c154 | Spot label named only Kh. esh-Sheikh Madhkur | Accept, modified | Wikipedia "Adullam": Madhkur "is thought … to be the 'upper Adullam'"; Kh. ʿId el-Minya, "lying directly below it", "is the site recognised as Adullam proper"; "still inconclusive" | Card 14 spot: "Adullam (proposed site)" |
+| c260 | Finale note: "Adullam is a proposed site (Khirbet esh-Sheikh Madhkur)" | Accept, modified | As c154 | Card 26 note: "Adullam's site isn't certain: its pin is at Khirbet esh-Sheikh Madhkur, thought to be 'upper Adullam', above Khirbet ʿId el-Minya, the ruin identified as Adullam itself." |
+| missed | `ADULLAM` doc comment names Madhkur only | Accept | As c154 | Comment rewritten the same way (not user-facing) |
+| c184 + missed | Card 16 comment: "just north of Adullam", "Hebron pin kept under the card" | Accept, modified (code comment only) | Centre [34.95, 31.85] is 22.6 km from the Adullam spot at bearing 347° (computed); the checker's "north-west" would be wrong too | Comment: "a Shephelah backdrop about 22 km north-north-west of the Adullam spot (not marked on this card)"; the Map row above updated |
+| c264 | "all four pins" in the finale; on a phone Shechem and Dothan merge | No user-facing change | The claim is the extractor's wording; the card 26 note already says "Stops close together on screen may share one numbered pin … which ones merge depends on the screen size" | None |
+| missed | Card 12 ref line lacks 37:36 and 39:1, which the note quotes | Accept | Note quotes 37:36 ("the Midianites") and 39:1 ("from the Ishmaelites") | ref: "Genesis 37:28–30, 37:36, 39:1 · Genesis 45:4 · …" |
+| missed | Enaim: the JPS note compares Enam (Joshua 15:34) | Reject (optional; no error) | 38:14 JPS note: "Enaim Cf. Enam, Josh. 15.34." A "cf." is not a location; "Where Enaim … was isn't known" stands | None |
+| missed | Rashi on 37:24 (snakes and scorpions) is from Shabbat 22a | Reject | Rashi's Hebrew gives no source in his words; the parenthesis "(בראשית רבה, שבת כ"ב)" is the edition's reference. Per the Rashi rule above, the story credits a source only where Rashi names it | None |
+| R25 | narrativeSummary "who does not know her" | Accept | 38:16 JPS "he did not know that she was his daughter-in-law"; 38:26 "he was not intimate with her again" (לְדַעְתָּהּ) | Shared-fixes doc, item 2 |
+| missed ×2 | `summary` puts Judah and Tamar after Potiphar and prison | Accept | Rashi on 39:1: "It (Scripture) now reverts to the original subject" | Shared-fixes doc, item 1 |
+| R60 | "the sources disagree on who the ten were and how some of them died" unsupported | Reject | Wikipedia "Ten Martyrs": the poem has Rabbi Yishmael's skin flayed from his head, while "The Avot of Rabbi Natan states that … he was quickly decapitated as well"; Judah ben Baba was killed by soldiers' javelins per Sanhedrin 14a, not executed by the emperor; "The identities of some of the lesser known martyrs are also inconsistently reported" | None |
+| R74 | "Middle Kingdom gave way in the 18th century BCE" | Accept, modified | Wikipedia "Middle Kingdom of Egypt": "2040 to 1782 or 1700 BC (depending on the definition)", or "around 1650 BC" if the 13th Dynasty is included | Shared-fixes doc, item 3 |
+| R97 | The shared patriarchs label reads as a date for Vayeshev's events | Accept in part; shared | The band's sources date "the patriarchal age" as a whole | Shared-fixes doc, item 4 (shared band, not edited) |
+| missed | `approximateDateBCE` 1750–1550 unhedged (legacy UI) | Accept; shared | No source in the data; differs from the date bar | Shared-fixes doc, item 5 |
+| missed | historicalContext leaves out Hendel's conclusion (first-millennium price) | Not decided | Hendel's article was not read in this pass (pass 2: the BAR articles are paywalled) | None |
+| missed | Nuzi/Ugarit "15th–13th centuries" vs Kitchen BAR 1995 "14th and 13th" | Reject (optional) | The checker says the span is supported (Kitchen's book: "later 15th-century Nuzi"); not re-read here | None |
+
+**Note on this branch's copy of `parshaList.json`.** It still has the pre-pass-2 Vayeshev text ("Meanwhile, Judah's story with Tamar is told"; "only about six of them seem to have been martyred"; "comes from the Greek Septuagint"). Those were fixed on `redesign/daylight` in 42f4f1c; this branch doesn't touch that record, so a merge keeps the daylight text.
