@@ -20,7 +20,7 @@ Story: `src/redesign/stories/vayigash.ts` (Genesis 44:18 – 47:27), 23 cards. C
 | Rameses pin is about 2 km from the Goshen pin (so the map shows one pin) | haversine 1.84 km | ✅ |
 | Some scholars see Rameses place names as memories of the Ramesside era, others as later names (anachronisms) | Wikipedia "Pi-Ramesses", Biblical Raamses section ("viewed by some as authentic cultural memories … also considered to be editorial choices and anachronisms") | ⚠️ Wikipedia says this of the Rameses/Raamses toponyms generally; the note attributes it to Wikipedia and says "the Bible's Rameses place names" |
 | Egypt (af301ca) is a region; its point is the Heliopolis pin; where Joseph's house was isn't said | places.json (same coordinates as acd9137); 44:14 names no place | ✅ spot "Egypt (a region)" |
-| Canaan (a581f0c) is a region; where Jacob was isn't said in this parsha; last named place is the valley of Hebron | places.json; 45:25; 37:14 | ✅ spot "Canaan (a region)" |
+| Canaan is a region; where Jacob was isn't said in this parsha; the last specific places named for him are Hebron (35:27) and the valley of Hebron (37:14) | 45:25; 35:27; 37:14 | ✅ no pin (see pass 1, c096) |
 | Where Pharaoh received the family isn't said, so no stop is lit on those cards | 47:1–10 | ✅ |
 | Stops lit only where the text places the event: Beersheba 46:1–5 (the vision falls between arriving at 46:1 and setting out at 46:5); Goshen 46:28–29, 47:27; 47:11 shown at Goshen per Rashi on 47:11 | verses; Rashi on 47:11 ("מארץ גשן היא") | ⚠️ 47:11 at the Goshen stop rests on Rashi and the pins' proximity, stated in the note |
 | All places used are linked to vayigash in places.json | `check:stories --strict` 0 warnings | ✅ |
@@ -116,3 +116,23 @@ Story: `src/redesign/stories/vayigash.ts` (Genesis 44:18 – 47:27), 23 cards. C
 ## Unverified
 
 Nothing in the text is unverified. The site identifications (Tel Be'er Sheva, Qantir) and Goshen's placement are hedged on screen and in the notes.
+
+## Independent fact-check, pass 1 (wf_e0bdaaef-f02)
+
+348 claims, 324 verified. The fixes below are for the story findings. I re-checked each one on Sefaria or the named source before rewording. The R* Read-tab items and the cover (c005, and the missed item about the wagons moving with nothing pulling them) are being fixed by the coordinator on the code branch, so this branch doesn't change them.
+
+| ID | Finding | Fix | Re-verified against |
+|---|---|---|---|
+| c033 | The quote cards' camera [31.3, 29.75] frames the Nile valley south of Cairo, not the Delta | Cards 2 and 4 now use center [31.3, 30.6]; the screenshot shows the Delta | screenshots |
+| c049 (+ missed) | "Joseph was the youngest of the tribes" contradicts 44:20 | Now reads "Joseph was 'the young one of the tribes' (Benjamin was younger still)" | Bereshit Rabbah 93:10 Hebrew יוֹסֵף קְטַנָּן שֶׁל שְׁבָטִים; 44:20 |
+| c093 | "not Pharaoh" was unattributed | Now reads "Rashi points out that the verse says 'the wagons that Joseph had sent,' not 'that Pharaoh had sent.'" | Rashi on 45:27 (וְלֹא נֶאֱמַר אֲשֶׁר שָׁלַח פַּרְעֹה) |
+| c096 (+ missed) | A spot for Canaan in the Galilee, about 135 km north of Hebron | Spot removed; the CANAAN constant removed; regional camera [35.0, 31.6], zoom 6.8, with no pin. The note says the last specific places named for Jacob are Hebron (35:27) and the valley of Hebron (37:14). The header comment and the finale note are updated to match; 35:27 added to `sources` | 35:27 (JPS "Jacob came to his father Isaac at Mamre, at Kiriath-arba—now Hebron"); 37:14 |
+| c101 (+ missed) | "the last place he is named": 42:29 and 45:25 name "the land of Canaan" after 37:14 | Now reads "the last specific place named for him is the valley of Hebron" | 37:14, 42:29, 45:25 |
+| c129 (+ missed) | "their sister Serah" read as the sister of Gad and Asher | Now reads "Asher's daughter Serah" | 46:17 ("Asher's sons … and their sister Serah") |
+| c183 (+ missed) | "no pin is lit; the pin marks Egypt": contradicts itself | Card 15 now reads "no numbered pin is lit; the hollow pin marks Egypt, a region" | on screen: Egypt spot plus the Goshen stop |
+| c201, c226 (+ missed) | "the pin marks Egypt" is ambiguous with Goshen pin 2 on screen | Cards 17, 19 and 20 now say "the hollow pin". Cards 1, 3, 5, 6 and 7 are changed to match | screenshots |
+| missed (Goshen pin) | The pin sits near Qantir/Avaris, one of the proposals the note lists | Card 14: "The pin, near Qantir by Avaris, is only a point in the eastern Delta, not a choice between the proposals." Card 21 and the finale note say the same | places.json a60f092; Wikipedia "Land of Goshen", "Qantir" (Avaris about 2 km south of Qantir) |
+| missed (Tel Be'er Sheva, optional) | The pin could make readers picture a town there in Jacob's time | Card 9 note adds that excavations found the mound's earliest occupation in Iron Age I | Wikipedia "Tel Be'er Sheva" ("The earliest occupation at Beer-sheba during Iron Age I (Stratum IX)") |
+| c184 | Describes the screen only (pin 1 is off-screen on card 15) | No change needed | — |
+
+Checks after the fixes: `check:stories -- vayigash --strict` gives 0 errors and 0 warnings, and `npm run build` passes. I re-screenshotted every card at phone size (cards 1–22).
