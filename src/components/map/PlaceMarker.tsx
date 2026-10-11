@@ -1,6 +1,6 @@
 import { Marker, Popup, Tooltip } from 'react-leaflet'
 import L from 'leaflet'
-import type { Place } from '../../types/places'
+import type { Place, PinnedPlace } from '../../types/places'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
 import { ExternalLink } from 'lucide-react'
@@ -47,7 +47,7 @@ function createPlaceIcon(confidence: Place['confidence'], isHighlighted?: boolea
 }
 
 interface Props {
-  place: Place
+  place: PinnedPlace
   showLabel?: boolean
   isHighlighted?: boolean
 }

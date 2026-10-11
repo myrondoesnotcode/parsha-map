@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 import { useMap } from 'react-leaflet'
-import type { Place } from '../../types/places'
+import type { PinnedPlace } from '../../types/places'
 import { getBoundsForPlaces } from '../../utils/placeUtils'
 import { useAppStore } from '../../store/useAppStore'
 
 interface Props {
-  places: Place[]
+  places: PinnedPlace[]
   parshaId: string | null
 }
 

@@ -25,10 +25,10 @@ React 19 · TypeScript · Vite 6 · Tailwind CSS 3 · Zustand 5 · React Query 5
 | Source | Used for | Notes |
 |---|---|---|
 | `src/data/parshaList.json` | The 54 parshas — name, hebrewName, book, seferiaUrl range, approximateDateBCE, summary, richContent | Hand-curated. Source of truth for parsha matching. |
-| `src/data/places.json` | All map markers | **Generated** — not committed. Regenerate with `npm run geodata`. |
+| `src/data/places.json` | All map markers | Seeded from OpenBible, then **hand-corrected** (synced from `redesign/daylight`). Do **not** regenerate with `npm run geodata` — it would erase the corrections. Places with `latitude: null` have no known site and are left off the map. |
 | OpenBible Geocoding | Seed data for `places.json` | `https://raw.githubusercontent.com/openbibleinfo/Bible-Geocoding-Data/master/data/ancient.jsonl`. JSONL; OSIS refs like `Gen.12.4`. 1342 entries → 1256 usable → 273 linked to parshas. |
 | Sefaria API | Current week's parsha + Hebrew/English text + commentary | `https://www.sefaria.org/api/calendars?diaspora=0|1` and `/api/texts/{ref}`. The `date` param is **ignored** — always returns the upcoming Shabbat from server-side "now". |
-| CARTO Voyager tiles | Map basemap | Free, no API key: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png` |
+| Esri World_Street_Map tiles | Map basemap | No API key: `https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}`. (CARTO Voyager, used until 2026-10, began requiring a key.) |
 
 ## Architecture
 

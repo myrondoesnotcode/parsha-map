@@ -32,10 +32,9 @@ function MapResizeHandler() {
     const observer = new ResizeObserver(() => {
       const isNowVisible = container.offsetWidth > 0
       map.invalidateSize()
-      if (wasHidden && isNowVisible) {
-        triggerFitBounds()
-        wasHidden = false
-      }
+      if (wasHidden && isNowVisible) triggerFitBounds()
+      // Track every hide, not just the first: a parsha picked while the map is hidden fits a 0×0 view.
+      wasHidden = !isNowVisible
     })
     observer.observe(container)
     return () => observer.disconnect()

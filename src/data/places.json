@@ -18,15 +18,14 @@
       "pinchas",
       "masei",
       "haazinu"
-    ],
-    "description": "Abarim"
+    ]
   },
   {
     "id": "a70ac98",
     "name": "Abel-mizraim",
     "alternateNames": [],
-    "latitude": 31.914888,
-    "longitude": 35.530445,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -35,7 +34,8 @@
     "parshas": [
       "vayechi"
     ],
-    "description": "near the mouth of the Jordan River"
+    "description": "\"beyond the Jordan\" (Genesis 50:10-11); site unknown",
+    "locationNote": "\"beyond the Jordan\" (Genesis 50:10-11); site unknown"
   },
   {
     "id": "a51d1fa",
@@ -57,8 +57,8 @@
     "id": "a7560c2",
     "name": "Abronah",
     "alternateNames": [],
-    "latitude": 29.6131,
-    "longitude": 34.84979,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -68,7 +68,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "in Qa’an Naqb"
+    "description": "a camp between Jotbathah and Ezion-geber (Numbers 33:34-35); site unknown",
+    "locationNote": "a camp between Jotbathah and Ezion-geber (Numbers 33:34-35); site unknown"
   },
   {
     "id": "a8b7a6b",
@@ -90,15 +91,15 @@
     "id": "a41a054",
     "name": "Admah",
     "alternateNames": [],
-    "latitude": 31.90094,
-    "longitude": 35.624546,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
       "Genesis 10:19",
       "Genesis 14:2",
       "Genesis 14:8",
-      "Deuteronomy 29:23",
+      "Deuteronomy 29:22",
       "Hosea 11:8"
     ],
     "parshas": [
@@ -106,7 +107,8 @@
       "lech-lecha",
       "nitzavim"
     ],
-    "description": "Tall Nimrin"
+    "description": "one of the cities of the Plain near the Dead Sea (Genesis 14:2-3); site unknown",
+    "locationNote": "one of the cities of the Plain near the Dead Sea (Genesis 14:2-3); site unknown"
   },
   {
     "id": "af82614",
@@ -219,7 +221,7 @@
     "alternateNames": [],
     "latitude": 31.922778,
     "longitude": 35.241389,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "tree",
     "verses": [
       "Genesis 35:8"
@@ -227,7 +229,7 @@
     "parshas": [
       "vayishlach"
     ],
-    "description": "within 1 km of Bethel 1"
+    "description": "within 1 km of Bethel"
   },
   {
     "id": "aeb052c",
@@ -250,8 +252,8 @@
     "id": "a32397f",
     "name": "Alush",
     "alternateNames": [],
-    "latitude": 28.770311,
-    "longitude": 33.767493,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -261,7 +263,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "along Wadi el Esh"
+    "description": "a camp between Dophkah and Rephidim (Numbers 33:13-14); site unknown",
+    "locationNote": "a camp between Dophkah and Rephidim (Numbers 33:13-14); site unknown"
   },
   {
     "id": "ab95484",
@@ -269,7 +272,7 @@
     "alternateNames": [],
     "latitude": 30.648333,
     "longitude": 34.422222,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "region",
     "verses": [
       "Exodus 17:8",
@@ -280,8 +283,10 @@
       "Exodus 17:14",
       "Exodus 17:16",
       "Numbers 13:29",
+      "Numbers 14:25",
+      "Numbers 14:43",
+      "Numbers 14:45",
       "Numbers 24:20",
-      "Numbers 24:24",
       "Deuteronomy 25:17",
       "Deuteronomy 25:19",
       "Judges 3:13",
@@ -307,7 +312,7 @@
       "balak",
       "ki-teitzei"
     ],
-    "description": "Amalek"
+    "description": "the Amalekites, a people of the Negeb (Numbers 13:29), not one place; the pin marks only the general area, on the same point as Kadesh-barnea"
   },
   {
     "id": "ac5cab3",
@@ -323,7 +328,7 @@
     "parshas": [
       "balak"
     ],
-    "description": "between Aleppo and Carchemish"
+    "description": "Amaw, a land between Aleppo and Carchemish known from the Idrimi inscription; some translations (RSV, NRSV) read it in Numbers 22:5, where the Hebrew is usually translated \"the land of his kinsfolk\""
   },
   {
     "id": "a6046fa",
@@ -445,8 +450,7 @@
       "vayera",
       "chukat",
       "devarim"
-    ],
-    "description": "Ammon"
+    ]
   },
   {
     "id": "a38ad07",
@@ -511,8 +515,7 @@
       "devarim",
       "vaetchanan",
       "reeh"
-    ],
-    "description": "Arabah"
+    ]
   },
   {
     "id": "abc358b",
@@ -531,33 +534,25 @@
       "chukat",
       "masei"
     ],
-    "description": "Tel Malhata"
+    "description": "the Canaanite city of Arad in the Negeb (Numbers 21:1); site debated — Tel Arad has no Middle or Late Bronze Age remains, so some place Canaanite Arad at Tel Malhata, shown here"
   },
   {
-    "id": "a3e66cd",
-    "name": "Aram",
+    "id": "a3c7b44",
+    "name": "Aram-naharaim",
     "alternateNames": [],
-    "latitude": 33.511112,
-    "longitude": 36.30639,
+    "latitude": 36.864444,
+    "longitude": 39.032778,
     "confidence": "medium",
     "type": "region",
     "verses": [
       "Numbers 23:7",
-      "Judges 18:7",
-      "Judges 18:28",
-      "2 Samuel 8:6",
-      "2 Samuel 15:8",
-      "2 Kings 5:18",
-      "2 Kings 6:14",
-      "2 Kings 8:15",
-      "1 Chronicles 2:23",
-      "Hosea 12:12",
-      "Zechariah 9:1"
+      "Deuteronomy 23:5",
+      "Psalms 60:1"
     ],
     "parshas": [
-      "balak"
-    ],
-    "description": "Aram"
+      "balak",
+      "ki-teitzei"
+    ]
   },
   {
     "id": "ab89be9",
@@ -576,7 +571,7 @@
     "parshas": [
       "noach"
     ],
-    "description": "Urartu"
+    "description": "Urartu: Genesis 8:4 names only \"the mountains of Ararat\"; the pin shows the peak now called Mount Ararat"
   },
   {
     "id": "a42a5b2",
@@ -594,8 +589,7 @@
     ],
     "parshas": [
       "devarim"
-    ],
-    "description": "Argob"
+    ]
   },
   {
     "id": "a4cc324",
@@ -702,15 +696,17 @@
     "confidence": "medium",
     "type": "settlement",
     "verses": [
+      "Genesis 2:14",
       "Numbers 24:22",
       "Numbers 24:24",
       "Psalms 83:8",
       "Ezekiel 27:23"
     ],
     "parshas": [
+      "bereshit",
       "balak"
     ],
-    "description": "Assur"
+    "description": "the city of Assur, on the west bank of the Tigris, for a time the capital of Assyria. Genesis 2:14 says the Tigris flows east of Asshur, which may mean the city or the land of Assyria; in Balaam's oracle (Numbers 24:22, 24) Asshur is the nation, Assyria"
   },
   {
     "id": "a3d1321",
@@ -721,7 +717,6 @@
     "confidence": "medium",
     "type": "region",
     "verses": [
-      "Genesis 2:14",
       "Genesis 10:11",
       "Genesis 25:18",
       "2 Kings 15:19",
@@ -864,18 +859,16 @@
       "Zechariah 10:11"
     ],
     "parshas": [
-      "bereshit",
       "noach",
       "chayei-sarah"
-    ],
-    "description": "Assyria"
+    ]
   },
   {
     "id": "a2f186d",
     "name": "Atad",
     "alternateNames": [],
-    "latitude": 31.914888,
-    "longitude": 35.530445,
+    "latitude": null,
+    "longitude": null,
     "confidence": "medium",
     "type": "settlement",
     "verses": [
@@ -885,7 +878,8 @@
     "parshas": [
       "vayechi"
     ],
-    "description": "another name for Abel-mizraim"
+    "description": "Goren ha-Atad, \"the threshing floor of Atad\", \"beyond the Jordan\" (Genesis 50:10-11); site unknown",
+    "locationNote": "Goren ha-Atad, \"the threshing floor of Atad\", \"beyond the Jordan\" (Genesis 50:10-11); site unknown"
   },
   {
     "id": "abc9a1d",
@@ -1005,14 +999,14 @@
     "parshas": [
       "vaetchanan"
     ],
-    "description": "another name for Peor"
+    "description": "the Baal of Peor, the god Israel worshipped at Peor (Numbers 25:3), and the affair there, which Deuteronomy 4:3 recalls; the pin marks the Peor area"
   },
   {
     "id": "a22663b",
     "name": "Baal-zephon",
     "alternateNames": [],
-    "latitude": 31.044722,
-    "longitude": 32.66,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -1024,7 +1018,8 @@
       "beshalach",
       "masei"
     ],
-    "description": "Al Mahamdiyah"
+    "description": "faced the camp by the sea before the crossing (Exodus 14:2; Numbers 33:7); site unknown. Proposals range from the Mediterranean coast to the Gulf of Suez, depending on the route assumed",
+    "locationNote": "faced the camp by the sea before the crossing (Exodus 14:2; Numbers 33:7); site unknown. Proposals range from the Mediterranean coast to the Gulf of Suez, depending on the route assumed"
   },
   {
     "id": "ab8fdbc",
@@ -1041,7 +1036,7 @@
     "parshas": [
       "noach"
     ],
-    "description": "another name for Babylon 1"
+    "description": "another name for Babylon"
   },
   {
     "id": "a1db553",
@@ -1066,7 +1061,7 @@
     "alternateNames": [],
     "latitude": 31.731791,
     "longitude": 35.740891,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 22:41",
@@ -1099,7 +1094,7 @@
       "Deuteronomy 3:14",
       "Deuteronomy 4:43",
       "Deuteronomy 4:47",
-      "Deuteronomy 29:7",
+      "Deuteronomy 29:6",
       "Deuteronomy 32:14",
       "Deuteronomy 33:22",
       "Joshua 9:10",
@@ -1148,8 +1143,7 @@
       "ki-tavo",
       "haazinu",
       "vzot-habracha"
-    ],
-    "description": "Bashan"
+    ]
   },
   {
     "id": "a656cb6",
@@ -1190,8 +1184,8 @@
     "id": "a280f83",
     "name": "Beeroth Bene-jaakan",
     "alternateNames": [],
-    "latitude": 30.791764,
-    "longitude": 34.472522,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -1200,7 +1194,8 @@
     "parshas": [
       "ekev"
     ],
-    "description": "another name for Bene-jaakan"
+    "description": "\"the wells of Bene-jaakan\", the camp before Moserah (Deuteronomy 10:6; Numbers 33:31-32); site unknown",
+    "locationNote": "\"the wells of Bene-jaakan\", the camp before Moserah (Deuteronomy 10:6; Numbers 33:31-32); site unknown"
   },
   {
     "id": "a075d61",
@@ -1227,15 +1222,14 @@
       "toldot",
       "vayetze",
       "vayigash"
-    ],
-    "description": "another name for Beersheba 1"
+    ]
   },
   {
     "id": "a0fe2be",
     "name": "Bene-jaakan",
     "alternateNames": [],
-    "latitude": 30.791764,
-    "longitude": 34.472522,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -1245,7 +1239,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Birein"
+    "description": "a camp between Moseroth and Hor-haggidgad (Numbers 33:31-32); Deuteronomy 10:6 calls it Beeroth-bene-jaakan. Site unknown",
+    "locationNote": "a camp between Moseroth and Hor-haggidgad (Numbers 33:31-32); Deuteronomy 10:6 calls it Beeroth-bene-jaakan. Site unknown"
   },
   {
     "id": "a882ef5",
@@ -1253,7 +1248,7 @@
     "alternateNames": [],
     "latitude": 31.679501,
     "longitude": 35.735321,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 32:3"
@@ -1267,8 +1262,8 @@
     "id": "aa3ff18",
     "name": "Bered",
     "alternateNames": [],
-    "latitude": 31.097,
-    "longitude": 34.652,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -1277,7 +1272,8 @@
     "parshas": [
       "lech-lecha"
     ],
-    "description": "Haluza"
+    "description": "site unknown",
+    "locationNote": "site unknown"
   },
   {
     "id": "a4590cd",
@@ -1294,7 +1290,7 @@
     "parshas": [
       "matot"
     ],
-    "description": "Tall er Rama"
+    "description": "Beth-haran (Numbers 32:36), called Beth-haram in Joshua 13:27; site uncertain — the pin marks Tall er-Rama; Tall Iktanu is the other proposal"
   },
   {
     "id": "a30f37b",
@@ -1503,8 +1499,7 @@
     "parshas": [
       "vayishlach",
       "vayechi"
-    ],
-    "description": "Bethlehem"
+    ]
   },
   {
     "id": "a0cd098",
@@ -1675,7 +1670,6 @@
       "Numbers 35:10",
       "Numbers 35:14",
       "Deuteronomy 1:7",
-      "Deuteronomy 2:12",
       "Deuteronomy 32:49",
       "Joshua 5:12",
       "Joshua 11:3",
@@ -1739,7 +1733,7 @@
       "devarim",
       "haazinu"
     ],
-    "description": "Canaan"
+    "description": "the land of Canaan, a region; the pin marks only a point in it"
   },
   {
     "id": "a329990",
@@ -1860,8 +1854,7 @@
     "parshas": [
       "noach",
       "lech-lecha"
-    ],
-    "description": "Chaldea"
+    ]
   },
   {
     "id": "ab41e6b",
@@ -1877,7 +1870,7 @@
     "parshas": [
       "vayeshev"
     ],
-    "description": "another name for Achzib 1"
+    "description": "another name for Achzib"
   },
   {
     "id": "a2bb265",
@@ -1896,7 +1889,7 @@
     "parshas": [
       "devarim"
     ],
-    "description": "Tel Kinrot"
+    "description": "Kinneret: in Deuteronomy 3:17 the Sea of Galilee or the town on its shore; the pin marks the town's mound, Tel Kinrot"
   },
   {
     "id": "a529e92",
@@ -1914,14 +1907,14 @@
     "parshas": [
       "vzot-habracha"
     ],
-    "description": "another name for Jericho 1"
+    "description": "another name for Jericho"
   },
   {
     "id": "a74ee0d",
     "name": "Cush 2",
     "alternateNames": [],
-    "latitude": 32.543333,
-    "longitude": 44.422222,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -1930,7 +1923,8 @@
     "parshas": [
       "bereshit"
     ],
-    "description": "another name for Babylonia"
+    "description": "the land the Gihon winds through (Genesis 2:13); identification uncertain",
+    "locationNote": "the land the Gihon winds through (Genesis 2:13); identification uncertain"
   },
   {
     "id": "a69c1d4",
@@ -2002,8 +1996,7 @@
     ],
     "parshas": [
       "lech-lecha"
-    ],
-    "description": "Damascus"
+    ]
   },
   {
     "id": "a513646",
@@ -2015,6 +2008,7 @@
     "type": "settlement",
     "verses": [
       "Genesis 14:14",
+      "Deuteronomy 34:1",
       "Joshua 19:47",
       "Judges 18:7",
       "Judges 18:14",
@@ -2041,7 +2035,8 @@
       "Amos 8:14"
     ],
     "parshas": [
-      "lech-lecha"
+      "lech-lecha",
+      "vzot-habracha"
     ],
     "description": "Tel Dan"
   },
@@ -2076,8 +2071,8 @@
     "id": "afcb77d",
     "name": "Dizahab",
     "alternateNames": [],
-    "latitude": 31.806601,
-    "longitude": 36.050752,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -2086,7 +2081,8 @@
     "parshas": [
       "devarim"
     ],
-    "description": "Ad Duhaybah"
+    "description": "Di-zahab (Deuteronomy 1:1); site unknown. Onkelos and Rashi read the name (\"enough gold\") as an allusion to the golden calf",
+    "locationNote": "Di-zahab (Deuteronomy 1:1); site unknown. Onkelos and Rashi read the name (\"enough gold\") as an allusion to the golden calf"
   },
   {
     "id": "a070c7b",
@@ -2103,7 +2099,7 @@
     "parshas": [
       "masei"
     ],
-    "description": "Serabit el Khadim"
+    "description": "a camp between the wilderness of Sin and Alush (Numbers 33:12-13); site unknown — the pin marks one proposal, the Egyptian turquoise mines at Serabit el-Khadim, which assumes a southern route through Sinai"
   },
   {
     "id": "ab635e4",
@@ -2126,8 +2122,8 @@
     "id": "ab0b2dd",
     "name": "East",
     "alternateNames": [],
-    "latitude": 31.9547,
-    "longitude": 35.9343,
+    "latitude": null,
+    "longitude": null,
     "confidence": "medium",
     "type": "region",
     "verses": [
@@ -2155,14 +2151,15 @@
       "vayetze",
       "balak"
     ],
-    "description": "region around Rabbah 1"
+    "description": "\"the East\" (Kedem): a general term for the lands east of Canaan (Genesis 25:6; 29:1), not one site",
+    "locationNote": "\"the East\" (Kedem): a general term for the lands east of Canaan (Genesis 25:6; 29:1), not one site"
   },
   {
     "id": "af3daeb",
     "name": "Eden 1",
     "alternateNames": [],
-    "latitude": 32.543333,
-    "longitude": 44.422222,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "garden",
     "verses": [
@@ -2183,14 +2180,15 @@
     "parshas": [
       "bereshit"
     ],
-    "description": "in Babylonia"
+    "description": "the garden \"in Eden, in the east\" (Genesis 2:8); site unknown — of its four rivers only the Tigris and Euphrates can be identified",
+    "locationNote": "the garden \"in Eden, in the east\" (Genesis 2:8); site unknown — of its four rivers only the Tigris and Euphrates can be identified"
   },
   {
     "id": "ab80fa1",
     "name": "Eder 1",
     "alternateNames": [],
-    "latitude": 31.6793,
-    "longitude": 35.15464,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -2199,7 +2197,8 @@
     "parshas": [
       "vayishlach"
     ],
-    "description": "Khirbet el Bira"
+    "description": "Migdal-eder, \"the tower of Eder\" (Genesis 35:21); site unknown",
+    "locationNote": "Migdal-eder, \"the tower of Eder\" (Genesis 35:21); site unknown"
   },
   {
     "id": "a2735ff",
@@ -2210,7 +2209,7 @@
     "confidence": "medium",
     "type": "region",
     "verses": [
-      "Genesis 32:3",
+      "Genesis 32:4",
       "Genesis 36:9",
       "Genesis 36:16",
       "Genesis 36:17",
@@ -2323,14 +2322,12 @@
       "Malachi 1:4"
     ],
     "parshas": [
-      "vayetze",
       "vayishlach",
       "beshalach",
       "chukat",
       "balak",
       "masei"
-    ],
-    "description": "Edom"
+    ]
   },
   {
     "id": "aaa6f7a",
@@ -2364,6 +2361,32 @@
     "confidence": "medium",
     "type": "region",
     "verses": [
+      "Jude 1:5",
+      "Acts 2:10",
+      "Matt 2:13",
+      "Matt 2:14",
+      "Matt 2:15",
+      "Matt 2:19",
+      "Heb 3:16",
+      "Acts 7:9",
+      "Acts 7:10",
+      "Acts 7:11",
+      "Acts 7:12",
+      "Acts 7:14",
+      "Acts 7:15",
+      "Acts 7:17",
+      "Acts 7:18",
+      "Acts 7:34",
+      "Acts 7:36",
+      "Acts 7:39",
+      "Acts 7:40",
+      "Heb 8:9",
+      "Rev 11:8",
+      "Heb 11:22",
+      "Heb 11:26",
+      "Heb 11:27",
+      "Acts 13:17",
+      "Acts 18:24",
       "Genesis 12:10",
       "Genesis 12:11",
       "Genesis 12:14",
@@ -2487,13 +2510,13 @@
       "Exodus 7:19",
       "Exodus 7:21",
       "Exodus 7:22",
-      "Exodus 8:5",
-      "Exodus 8:6",
-      "Exodus 8:7",
-      "Exodus 8:16",
+      "Exodus 8:1",
+      "Exodus 8:2",
+      "Exodus 8:3",
+      "Exodus 8:12",
+      "Exodus 8:13",
       "Exodus 8:17",
-      "Exodus 8:21",
-      "Exodus 8:24",
+      "Exodus 8:20",
       "Exodus 9:4",
       "Exodus 9:6",
       "Exodus 9:9",
@@ -2565,7 +2588,7 @@
       "Exodus 19:1",
       "Exodus 19:4",
       "Exodus 20:2",
-      "Exodus 22:21",
+      "Exodus 22:20",
       "Exodus 23:9",
       "Exodus 23:15",
       "Exodus 29:46",
@@ -2592,12 +2615,9 @@
       "Numbers 3:13",
       "Numbers 8:17",
       "Numbers 9:1",
-      "Numbers 10:11",
-      "Numbers 11:4",
       "Numbers 11:5",
       "Numbers 11:18",
       "Numbers 11:20",
-      "Numbers 11:34",
       "Numbers 13:22",
       "Numbers 14:2",
       "Numbers 14:3",
@@ -2619,9 +2639,9 @@
       "Numbers 26:59",
       "Numbers 32:11",
       "Numbers 33:1",
+      "Numbers 33:3",
       "Numbers 33:4",
       "Numbers 33:38",
-      "Deuteronomy 1:3",
       "Deuteronomy 1:27",
       "Deuteronomy 1:30",
       "Deuteronomy 4:20",
@@ -2638,19 +2658,17 @@
       "Deuteronomy 7:8",
       "Deuteronomy 7:15",
       "Deuteronomy 7:18",
-      "Deuteronomy 7:19",
       "Deuteronomy 8:14",
       "Deuteronomy 9:7",
       "Deuteronomy 9:12",
       "Deuteronomy 9:26",
-      "Deuteronomy 9:29",
       "Deuteronomy 10:19",
       "Deuteronomy 10:22",
       "Deuteronomy 11:3",
       "Deuteronomy 11:4",
       "Deuteronomy 11:10",
-      "Deuteronomy 13:5",
-      "Deuteronomy 13:10",
+      "Deuteronomy 13:6",
+      "Deuteronomy 13:11",
       "Deuteronomy 15:15",
       "Deuteronomy 16:1",
       "Deuteronomy 16:3",
@@ -2658,7 +2676,7 @@
       "Deuteronomy 16:12",
       "Deuteronomy 17:16",
       "Deuteronomy 20:1",
-      "Deuteronomy 23:4",
+      "Deuteronomy 23:5",
       "Deuteronomy 24:9",
       "Deuteronomy 24:18",
       "Deuteronomy 24:22",
@@ -2668,9 +2686,9 @@
       "Deuteronomy 28:27",
       "Deuteronomy 28:60",
       "Deuteronomy 28:68",
-      "Deuteronomy 29:2",
-      "Deuteronomy 29:16",
-      "Deuteronomy 29:25",
+      "Deuteronomy 29:1",
+      "Deuteronomy 29:15",
+      "Deuteronomy 29:24",
       "Deuteronomy 34:11",
       "Joshua 2:10",
       "Joshua 5:4",
@@ -2995,33 +3013,7 @@
       "Zechariah 10:10",
       "Zechariah 10:11",
       "Zechariah 14:18",
-      "Zechariah 14:19",
-      "Matt 2:13",
-      "Matt 2:14",
-      "Matt 2:15",
-      "Matt 2:19",
-      "Acts 2:10",
-      "Acts 7:9",
-      "Acts 7:10",
-      "Acts 7:11",
-      "Acts 7:12",
-      "Acts 7:14",
-      "Acts 7:15",
-      "Acts 7:17",
-      "Acts 7:18",
-      "Acts 7:34",
-      "Acts 7:36",
-      "Acts 7:39",
-      "Acts 7:40",
-      "Acts 13:17",
-      "Acts 18:24",
-      "Heb 3:16",
-      "Heb 8:9",
-      "Heb 11:22",
-      "Heb 11:26",
-      "Heb 11:27",
-      "Jude 1:5",
-      "Rev 11:8"
+      "Zechariah 14:19"
     ],
     "parshas": [
       "lech-lecha",
@@ -3064,8 +3056,7 @@
       "ki-tavo",
       "nitzavim",
       "vzot-habracha"
-    ],
-    "description": "Egypt"
+    ]
   },
   {
     "id": "a30b045",
@@ -3073,7 +3064,7 @@
     "alternateNames": [],
     "latitude": 31.922778,
     "longitude": 35.241389,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "altar",
     "verses": [
       "Genesis 35:7"
@@ -3081,7 +3072,7 @@
     "parshas": [
       "vayishlach"
     ],
-    "description": "in Bethel 1"
+    "description": "in Bethel"
   },
   {
     "id": "a738bf1",
@@ -3127,8 +3118,7 @@
     ],
     "parshas": [
       "lech-lecha"
-    ],
-    "description": "Elam"
+    ]
   },
   {
     "id": "af0ac29",
@@ -3137,7 +3127,7 @@
     "latitude": 29.530676,
     "longitude": 34.999999,
     "confidence": "low",
-    "type": "island",
+    "type": "settlement",
     "verses": [
       "Deuteronomy 2:8",
       "1 Kings 9:26",
@@ -3189,7 +3179,7 @@
       "beshalach",
       "masei"
     ],
-    "description": "along Wadi Gharandal"
+    "description": "an oasis with twelve springs and seventy palms (Exodus 15:27); site uncertain — the pin marks the usual identification, Wadi Gharandal in western Sinai"
   },
   {
     "id": "a6f4a6d",
@@ -3212,8 +3202,8 @@
     "id": "a59fdf2",
     "name": "Enaim",
     "alternateNames": [],
-    "latitude": 31.68768,
-    "longitude": 35.012365,
+    "latitude": 31.7151,
+    "longitude": 34.9852,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -3223,7 +3213,7 @@
     "parshas": [
       "vayeshev"
     ],
-    "description": "another name for Enam"
+    "description": "on the road to Timnah (Genesis 38:14); probably Enam (Joshua 15:34); location uncertain"
   },
   {
     "id": "af4e985",
@@ -3242,7 +3232,7 @@
       "vayishlach",
       "vayechi"
     ],
-    "description": "another name for Bethlehem 1"
+    "description": "another name for Bethlehem"
   },
   {
     "id": "a5db1a6",
@@ -3265,8 +3255,8 @@
     "id": "a43608b",
     "name": "Esek",
     "alternateNames": [],
-    "latitude": 31.424497,
-    "longitude": 34.6062,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "well",
     "verses": [
@@ -3275,14 +3265,15 @@
     "parshas": [
       "toldot"
     ],
-    "description": "in the region between Gerar and Beersheba"
+    "description": "a well Isaac's servants dug in the wadi of Gerar (Genesis 26:19-20); site unknown",
+    "locationNote": "a well Isaac's servants dug in the wadi of Gerar (Genesis 26:19-20); site unknown"
   },
   {
     "id": "a27d0e0",
     "name": "Etham",
     "alternateNames": [],
-    "latitude": 30.85,
-    "longitude": 32.316667,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -3295,14 +3286,15 @@
       "beshalach",
       "masei"
     ],
-    "description": "Al Qantarah"
+    "description": "a camp \"on the edge of the wilderness\" (Exodus 13:20; Numbers 33:6); site unknown",
+    "locationNote": "a camp \"on the edge of the wilderness\" (Exodus 13:20; Numbers 33:6); site unknown"
   },
   {
     "id": "a62dec4",
     "name": "Euphrates",
     "alternateNames": [],
-    "latitude": 31.0043,
-    "longitude": 47.442,
+    "latitude": 36.829722,
+    "longitude": 38.015,
     "confidence": "medium",
     "type": "river",
     "verses": [
@@ -3359,16 +3351,16 @@
       "devarim",
       "ekev"
     ],
-    "description": "Euphrates River"
+    "description": "the Euphrates; the pin marks the upper river at Carchemish, west of Haran, not where Jacob crossed it (Genesis 31:21 doesn't say where)"
   },
   {
     "id": "a8e53d5",
     "name": "Ezion-geber",
     "alternateNames": [],
-    "latitude": 29.530676,
-    "longitude": 34.999999,
+    "latitude": 29.547181,
+    "longitude": 34.980258,
     "confidence": "low",
-    "type": "island",
+    "type": "settlement",
     "verses": [
       "Numbers 33:35",
       "Numbers 33:36",
@@ -3382,7 +3374,7 @@
       "masei",
       "devarim"
     ],
-    "description": "another name for Elath"
+    "description": "a port at the head of the Gulf of Aqaba, listed beside Elath (Deuteronomy 2:8) and \"near Eloth\" (1 Kings 9:26); site debated — the pin marks Tell el-Kheleifeh; Pharaoh's Island is another proposal"
   },
   {
     "id": "aa8edd2",
@@ -3452,8 +3444,8 @@
     "id": "a71d79b",
     "name": "Gihon 1",
     "alternateNames": [],
-    "latitude": 2.245889,
-    "longitude": 32.2525,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "river",
     "verses": [
@@ -3462,7 +3454,8 @@
     "parshas": [
       "bereshit"
     ],
-    "description": "White Nile"
+    "description": "a river of Eden that winds through the land of Cush (Genesis 2:13); unidentified",
+    "locationNote": "a river of Eden that winds through the land of Cush (Genesis 2:13); unidentified"
   },
   {
     "id": "ae73b90",
@@ -3482,7 +3475,6 @@
       "Numbers 32:29",
       "Numbers 32:39",
       "Numbers 32:40",
-      "Numbers 32:41",
       "Deuteronomy 2:36",
       "Deuteronomy 3:10",
       "Deuteronomy 3:12",
@@ -3567,15 +3559,14 @@
       "devarim",
       "vaetchanan",
       "vzot-habracha"
-    ],
-    "description": "Gilead 1"
+    ]
   },
   {
     "id": "a84a509",
     "name": "Gilgal 4",
     "alternateNames": [],
-    "latitude": 32.030556,
-    "longitude": 35.225,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -3584,14 +3575,15 @@
     "parshas": [
       "reeh"
     ],
-    "description": "another name for Gilgal 2"
+    "locationNote": "the Gilgal near Mount Gerizim and Mount Ebal, \"by the terebinths of Moreh\" (Deuteronomy 11:29-30); site unknown",
+    "description": "the Gilgal near Mount Gerizim and Mount Ebal, \"by the terebinths of Moreh\" (Deuteronomy 11:29-30); site unknown"
   },
   {
     "id": "a9796ee",
     "name": "Goiim 1",
     "alternateNames": [],
-    "latitude": 33.511112,
-    "longitude": 36.30639,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -3601,7 +3593,8 @@
     "parshas": [
       "lech-lecha"
     ],
-    "description": "in Syria 1"
+    "description": "site unknown",
+    "locationNote": "site unknown"
   },
   {
     "id": "abb5c1e",
@@ -3626,8 +3619,8 @@
     "id": "aa572e2",
     "name": "Gomorrah",
     "alternateNames": [],
-    "latitude": 31.20849,
-    "longitude": 35.449223,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -3640,7 +3633,7 @@
       "Genesis 18:20",
       "Genesis 19:24",
       "Genesis 19:28",
-      "Deuteronomy 29:23",
+      "Deuteronomy 29:22",
       "Deuteronomy 32:32",
       "Isaiah 1:9",
       "Isaiah 1:10",
@@ -3663,7 +3656,8 @@
       "nitzavim",
       "haazinu"
     ],
-    "description": "in the Valley of Siddim"
+    "description": "one of the cities of the Plain near the Dead Sea (Genesis 14:2-3); site unknown",
+    "locationNote": "one of the cities of the Plain near the Dead Sea (Genesis 14:2-3); site unknown"
   },
   {
     "id": "a60f092",
@@ -3683,7 +3677,7 @@
       "Genesis 47:6",
       "Genesis 47:27",
       "Genesis 50:8",
-      "Exodus 8:22",
+      "Exodus 8:18",
       "Exodus 9:26"
     ],
     "parshas": [
@@ -3691,7 +3685,7 @@
       "vayechi",
       "vaera"
     ],
-    "description": "Goshen 1"
+    "description": "a region in the eastern Nile Delta; exact extent uncertain"
   },
   {
     "id": "aa805fb",
@@ -3768,8 +3762,8 @@
     "id": "a73af5f",
     "name": "Haradah",
     "alternateNames": [],
-    "latitude": 30.359167,
-    "longitude": 34.4425,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -3779,7 +3773,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Jebel Araif en Nakah"
+    "description": "a camp between Mount Shepher and Makheloth (Numbers 33:24-25); site unknown",
+    "locationNote": "a camp between Mount Shepher and Makheloth (Numbers 33:24-25); site unknown"
   },
   {
     "id": "a6d9af3",
@@ -3815,8 +3810,8 @@
     "id": "aaa8a88",
     "name": "Hashmonah",
     "alternateNames": [],
-    "latitude": 30.832057,
-    "longitude": 35.056872,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -3826,14 +3821,15 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Moseroth"
+    "description": "a camp between Mithkah and Moseroth (Numbers 33:29-30); site unknown",
+    "locationNote": "a camp between Mithkah and Moseroth (Numbers 33:29-30); site unknown"
   },
   {
     "id": "ad7e819",
     "name": "Havilah 1",
     "alternateNames": [],
-    "latitude": 32.543333,
-    "longitude": 44.422222,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -3842,7 +3838,8 @@
     "parshas": [
       "bereshit"
     ],
-    "description": "in Babylonia"
+    "description": "the land the Pishon winds through, where there is gold (Genesis 2:11-12); identification uncertain",
+    "locationNote": "the land the Pishon winds through, where there is gold (Genesis 2:11-12); identification uncertain"
   },
   {
     "id": "ac5e5c4",
@@ -3858,7 +3855,7 @@
     "parshas": [
       "chayei-sarah"
     ],
-    "description": "in Arabia 1"
+    "description": "in Arabia"
   },
   {
     "id": "a26c8f2",
@@ -3866,7 +3863,7 @@
     "alternateNames": [],
     "latitude": 32.5876,
     "longitude": 35.7256,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "region",
     "verses": [
       "Numbers 32:41",
@@ -3880,14 +3877,14 @@
       "matot",
       "devarim"
     ],
-    "description": "Havvoth-jair"
+    "description": "the villages of Jair, in Gilead (Numbers 32:40-41); Deuteronomy 3:14 links them with Argob in Bashan. Exact area uncertain"
   },
   {
     "id": "a3f301c",
     "name": "Hazar-addar",
     "alternateNames": [],
-    "latitude": 30.648333,
-    "longitude": 34.422222,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -3896,7 +3893,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Khirbet el Qudeirat"
+    "description": "on the southern border, past Kadesh-barnea (Numbers 34:4); site unknown",
+    "locationNote": "on the southern border, past Kadesh-barnea (Numbers 34:4); site unknown"
   },
   {
     "id": "a1ce1b7",
@@ -3931,7 +3929,7 @@
     "parshas": [
       "lech-lecha"
     ],
-    "description": "another name for Tamar 2"
+    "description": "another name for Tamar"
   },
   {
     "id": "a1b6474",
@@ -3943,7 +3941,6 @@
     "type": "settlement",
     "verses": [
       "Numbers 11:35",
-      "Numbers 12:1",
       "Numbers 12:16",
       "Numbers 33:17",
       "Numbers 33:18",
@@ -4081,7 +4078,7 @@
       "Deuteronomy 3:2",
       "Deuteronomy 3:6",
       "Deuteronomy 4:46",
-      "Deuteronomy 29:7",
+      "Deuteronomy 29:6",
       "Joshua 9:10",
       "Joshua 12:2",
       "Joshua 12:5",
@@ -4117,8 +4114,8 @@
     "id": "a6779cd",
     "name": "Hobah",
     "alternateNames": [],
-    "latitude": 33.511112,
-    "longitude": 36.30639,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -4127,14 +4124,15 @@
     "parshas": [
       "lech-lecha"
     ],
-    "description": "another name for Upu"
+    "description": "north of Damascus; site unknown",
+    "locationNote": "north of Damascus; site unknown"
   },
   {
     "id": "a5e36e6",
     "name": "Hor-haggidgad",
     "alternateNames": [],
-    "latitude": 29.85878,
-    "longitude": 35.0965,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -4146,7 +4144,8 @@
       "masei",
       "ekev"
     ],
-    "description": "Et Taba"
+    "description": "a camp between Bene-jaakan and Jotbathah (Numbers 33:32-33), called Gudgod in Deuteronomy 10:7; site unknown",
+    "locationNote": "a camp between Bene-jaakan and Jotbathah (Numbers 33:32-33), called Gudgod in Deuteronomy 10:7; site unknown"
   },
   {
     "id": "ada25df",
@@ -4218,7 +4217,7 @@
     "confidence": "medium",
     "type": "river",
     "verses": [
-      "Genesis 32:22",
+      "Genesis 32:23",
       "Numbers 21:24",
       "Deuteronomy 2:37",
       "Deuteronomy 3:16",
@@ -4267,7 +4266,6 @@
     "confidence": "low",
     "type": "settlement",
     "verses": [
-      "Numbers 21:24",
       "Numbers 21:32",
       "Numbers 32:1",
       "Numbers 32:3",
@@ -4371,28 +4369,6 @@
     "description": "Tell es Sultan"
   },
   {
-    "id": "ad41f6e",
-    "name": "Jeshimon",
-    "alternateNames": [],
-    "latitude": 31.4703,
-    "longitude": 35.2228,
-    "confidence": "medium",
-    "type": "region",
-    "verses": [
-      "Numbers 21:20",
-      "Numbers 23:28",
-      "1 Samuel 23:19",
-      "1 Samuel 23:24",
-      "1 Samuel 26:1",
-      "1 Samuel 26:3"
-    ],
-    "parshas": [
-      "chukat",
-      "balak"
-    ],
-    "description": "Jeshimon"
-  },
-  {
     "id": "acf6e00",
     "name": "Jogbehah",
     "alternateNames": [],
@@ -4418,7 +4394,7 @@
     "confidence": "medium",
     "type": "river",
     "verses": [
-      "Genesis 32:10",
+      "Genesis 32:11",
       "Genesis 50:10",
       "Genesis 50:11",
       "Numbers 13:29",
@@ -4429,7 +4405,6 @@
       "Numbers 32:5",
       "Numbers 32:19",
       "Numbers 32:21",
-      "Numbers 32:22",
       "Numbers 32:29",
       "Numbers 32:32",
       "Numbers 33:48",
@@ -4447,13 +4422,9 @@
       "Deuteronomy 2:29",
       "Deuteronomy 3:8",
       "Deuteronomy 3:17",
-      "Deuteronomy 3:18",
       "Deuteronomy 3:20",
-      "Deuteronomy 3:21",
       "Deuteronomy 3:25",
       "Deuteronomy 3:27",
-      "Deuteronomy 3:28",
-      "Deuteronomy 4:14",
       "Deuteronomy 4:21",
       "Deuteronomy 4:22",
       "Deuteronomy 4:26",
@@ -4461,10 +4432,7 @@
       "Deuteronomy 4:46",
       "Deuteronomy 4:47",
       "Deuteronomy 4:49",
-      "Deuteronomy 6:1",
       "Deuteronomy 9:1",
-      "Deuteronomy 11:8",
-      "Deuteronomy 11:11",
       "Deuteronomy 11:30",
       "Deuteronomy 11:31",
       "Deuteronomy 12:10",
@@ -4661,8 +4629,7 @@
     "parshas": [
       "lech-lecha",
       "vayera"
-    ],
-    "description": "Jordan Valley"
+    ]
   },
   {
     "id": "a7384d7",
@@ -4681,7 +4648,7 @@
       "masei",
       "ekev"
     ],
-    "description": "Ein Yotvata"
+    "description": "a camp between Hor-haggidgad and Abronah (Numbers 33:33-34), \"a region of running brooks\" (Deuteronomy 10:7); site uncertain — the pin marks Ein Yotvata in the Arabah; Taba is another proposal"
   },
   {
     "id": "ac2cef0",
@@ -4728,24 +4695,7 @@
       "devarim",
       "ekev"
     ],
-    "description": "Ain el Qudeirat"
-  },
-  {
-    "id": "a765bd8",
-    "name": "Kain",
-    "alternateNames": [],
-    "latitude": 31.49627,
-    "longitude": 35.15154,
-    "confidence": "low",
-    "type": "settlement",
-    "verses": [
-      "Numbers 24:22",
-      "Joshua 15:57"
-    ],
-    "parshas": [
-      "balak"
-    ],
-    "description": "Khirbet Bani Dar"
+    "description": "Kadesh, also Kadesh-barnea; the pin marks the most common identification, the oasis of Ain el-Qudeirat in north-eastern Sinai. The site is not certain, and a minority think the Bible speaks of two places named Kadesh"
   },
   {
     "id": "a416b43",
@@ -4770,8 +4720,8 @@
     "id": "a32d25a",
     "name": "Kehelathah",
     "alternateNames": [],
-    "latitude": 30.193056,
-    "longitude": 34.421111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -4781,7 +4731,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Kuntillet Ajrud"
+    "description": "a camp between Rissah and Mount Shepher (Numbers 33:22-23); site unknown",
+    "locationNote": "a camp between Rissah and Mount Shepher (Numbers 33:22-23); site unknown"
   },
   {
     "id": "a4f650b",
@@ -4804,8 +4755,8 @@
     "id": "ae7836a",
     "name": "Kibroth-hattaavah",
     "alternateNames": [],
-    "latitude": 28.70667,
-    "longitude": 34.04194,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -4820,7 +4771,8 @@
       "masei",
       "ekev"
     ],
-    "description": "along Wadi Sa’l"
+    "description": "\"the graves of craving\", a camp between the wilderness of Sinai and Hazeroth (Numbers 11:34-35; 33:16-17); site unknown",
+    "locationNote": "\"the graves of craving\", a camp between the wilderness of Sinai and Hazeroth (Numbers 11:34-35; 33:16-17); site unknown"
   },
   {
     "id": "a057d59",
@@ -4836,8 +4788,7 @@
     ],
     "parshas": [
       "chukat"
-    ],
-    "description": "King’s Highway"
+    ]
   },
   {
     "id": "ac9f98d",
@@ -4860,8 +4811,8 @@
     "id": "aeb19d6",
     "name": "Kiriath-huzoth",
     "alternateNames": [],
-    "latitude": 31.502236,
-    "longitude": 35.776574,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -4870,7 +4821,8 @@
     "parshas": [
       "balak"
     ],
-    "description": "within 10 km of Dibon 1"
+    "description": "a town of Moab where Balak brought Balaam (Numbers 22:39); site unknown",
+    "locationNote": "a town of Moab where Balak brought Balaam (Numbers 22:39); site unknown"
   },
   {
     "id": "ad54201",
@@ -4907,14 +4859,14 @@
     "parshas": [
       "balak"
     ],
-    "description": "another name for Cyprus"
+    "description": "Kition on Cyprus, and by extension Cyprus and the western coastlands; Onkelos and Rashi read Kittim in Numbers 24:24 as Rome"
   },
   {
     "id": "ad763b1",
     "name": "Laban",
     "alternateNames": [],
-    "latitude": 31.23194,
-    "longitude": 34.10667,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -4923,7 +4875,8 @@
     "parshas": [
       "devarim"
     ],
-    "description": "Tel Abu Seleimeh"
+    "description": "named in Deuteronomy 1:1; site unknown. Rashi, following the Sifrei and Onkelos, reads the names in this verse as allusions to Israel's sins",
+    "locationNote": "named in Deuteronomy 1:1; site unknown. Rashi, following the Sifrei and Onkelos, reads the names in this verse as allusions to Israel's sins"
   },
   {
     "id": "adaef13",
@@ -5012,8 +4965,7 @@
       "devarim",
       "vaetchanan",
       "ekev"
-    ],
-    "description": "Lebanon"
+    ]
   },
   {
     "id": "a5eb047",
@@ -5047,8 +4999,8 @@
     "id": "a3e94bd",
     "name": "Libnah 2",
     "alternateNames": [],
-    "latitude": 31.23194,
-    "longitude": 34.10667,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5058,7 +5010,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "another name for Laban"
+    "description": "a camp between Rimmon-perez and Rissah (Numbers 33:20-21); site unknown",
+    "locationNote": "a camp between Rimmon-perez and Rissah (Numbers 33:20-21); site unknown"
   },
   {
     "id": "a397042",
@@ -5066,7 +5019,7 @@
     "alternateNames": [],
     "latitude": 31.922778,
     "longitude": 35.241389,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Genesis 28:19",
@@ -5081,7 +5034,7 @@
       "vayishlach",
       "vayechi"
     ],
-    "description": "another name for Bethel 1"
+    "description": "another name for Bethel"
   },
   {
     "id": "ae00861",
@@ -5114,7 +5067,7 @@
     "confidence": "low",
     "type": "settlement",
     "verses": [
-      "Genesis 32:2",
+      "Genesis 32:3",
       "Joshua 13:26",
       "Joshua 13:30",
       "Joshua 21:38",
@@ -5140,8 +5093,8 @@
     "id": "ac1fbba",
     "name": "Makheloth",
     "alternateNames": [],
-    "latitude": 30.193056,
-    "longitude": 34.421111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5151,7 +5104,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Kuntillet Ajrud"
+    "description": "a camp between Haradah and Tahath (Numbers 33:25-26); site unknown",
+    "locationNote": "a camp between Haradah and Tahath (Numbers 33:25-26); site unknown"
   },
   {
     "id": "aeb9e97",
@@ -5162,6 +5116,8 @@
     "confidence": "low",
     "type": "settlement",
     "verses": [
+      "Genesis 13:18",
+      "Genesis 18:1",
       "Genesis 23:17",
       "Genesis 23:19",
       "Genesis 25:9",
@@ -5170,6 +5126,8 @@
       "Genesis 50:13"
     ],
     "parshas": [
+      "lech-lecha",
+      "vayera",
       "chayei-sarah",
       "vayishlach",
       "vayechi"
@@ -5180,14 +5138,13 @@
     "id": "ad3970d",
     "name": "Marah",
     "alternateNames": [],
-    "latitude": 29.876944,
-    "longitude": 32.658333,
+    "latitude": 29.34604,
+    "longitude": 32.94284,
     "confidence": "low",
     "type": "body of water",
     "verses": [
       "Exodus 15:23",
       "Exodus 15:25",
-      "Exodus 15:27",
       "Numbers 33:8",
       "Numbers 33:9"
     ],
@@ -5195,7 +5152,7 @@
       "beshalach",
       "masei"
     ],
-    "description": "Uyun Musa"
+    "description": "where the water was bitter, three days into the wilderness after the sea (Exodus 15:23; Numbers 33:8); site unknown — the pin marks the traditional identification, Ain Hawarah in western Sinai"
   },
   {
     "id": "a57e0a0",
@@ -5218,8 +5175,8 @@
     "id": "a296e06",
     "name": "Massah",
     "alternateNames": [],
-    "latitude": 30.648333,
-    "longitude": 34.422222,
+    "latitude": 28.623056,
+    "longitude": 33.880278,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5235,7 +5192,7 @@
       "ekev",
       "vzot-habracha"
     ],
-    "description": "another name for Kadesh-barnea"
+    "description": "at Rephidim, the place also named Meribah (Exodus 17:7)"
   },
   {
     "id": "a033373",
@@ -5280,14 +5237,13 @@
     "alternateNames": [],
     "latitude": 30.648333,
     "longitude": 34.422222,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 20:13",
       "Numbers 20:24",
       "Numbers 27:14",
       "Deuteronomy 32:51",
-      "Deuteronomy 33:2",
       "Psalms 81:7",
       "Psalms 106:32",
       "Ezekiel 47:19",
@@ -5296,10 +5252,9 @@
     "parshas": [
       "chukat",
       "pinchas",
-      "haazinu",
-      "vzot-habracha"
+      "haazinu"
     ],
-    "description": "another name for Kadesh-barnea"
+    "description": "the waters of Meribah at Kadesh, in the wilderness of Zin (Numbers 20:13; 27:14); shown at the Kadesh-barnea pin, Ain el-Qudeirat, the most common identification"
   },
   {
     "id": "a65db0f",
@@ -5307,7 +5262,7 @@
     "alternateNames": [],
     "latitude": 28.623056,
     "longitude": 33.880278,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "campsite",
     "verses": [
       "Exodus 17:7",
@@ -5318,7 +5273,7 @@
       "beshalach",
       "vzot-habracha"
     ],
-    "description": "within 500 m of Rephidim"
+    "description": "the waters of Meribah at Rephidim, the place also named Massah (Exodus 17:7); site unknown, shown at the Rephidim pin. Rashi also reads Deuteronomy 33:8 as the Meribah at Kadesh"
   },
   {
     "id": "a6b4fb2",
@@ -5346,7 +5301,7 @@
     "type": "region",
     "verses": [
       "Genesis 24:10",
-      "Deuteronomy 23:4",
+      "Deuteronomy 23:5",
       "Judges 3:8",
       "Judges 3:10",
       "1 Chronicles 19:6",
@@ -5358,23 +5313,6 @@
       "ki-teitzei"
     ],
     "description": "Aram-naharaim"
-  },
-  {
-    "id": "a3498b5",
-    "name": "Mezahab",
-    "alternateNames": [],
-    "latitude": 31.806601,
-    "longitude": 36.050752,
-    "confidence": "low",
-    "type": "settlement",
-    "verses": [
-      "Genesis 36:39",
-      "1 Chronicles 1:50"
-    ],
-    "parshas": [
-      "vayishlach"
-    ],
-    "description": "another name for Dizahab"
   },
   {
     "id": "acc6d8e",
@@ -5444,15 +5382,14 @@
       "balak",
       "pinchas",
       "matot"
-    ],
-    "description": "Midian"
+    ]
   },
   {
     "id": "a411283",
     "name": "Migdol 1",
     "alternateNames": [],
-    "latitude": 30.18333,
-    "longitude": 32.51667,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -5463,14 +5400,15 @@
       "beshalach",
       "masei"
     ],
-    "description": "Jebel Abu Hasa"
+    "description": "near the camp by the sea before the crossing (Exodus 14:2; Numbers 33:7); site unknown. \"Migdol\" means a fort, and several Egyptian border forts had the name",
+    "locationNote": "near the camp by the sea before the crossing (Exodus 14:2; Numbers 33:7); site unknown. \"Migdol\" means a fort, and several Egyptian border forts had the name"
   },
   {
     "id": "aa5f658",
     "name": "Mithkah",
     "alternateNames": [],
-    "latitude": 30.640556,
-    "longitude": 34.411111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5480,7 +5418,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Hashmonah"
+    "description": "a camp between Terah and Hashmonah (Numbers 33:28-29); site unknown",
+    "locationNote": "a camp between Terah and Hashmonah (Numbers 33:28-29); site unknown"
   },
   {
     "id": "a694ea2",
@@ -5497,8 +5436,7 @@
     ],
     "parshas": [
       "vayetze"
-    ],
-    "description": "another name for Mizpah 1"
+    ]
   },
   {
     "id": "aa0b1d6",
@@ -5530,13 +5468,12 @@
       "Numbers 23:17",
       "Numbers 24:17",
       "Numbers 25:1",
-      "Numbers 25:2",
       "Numbers 33:44",
       "Deuteronomy 1:5",
       "Deuteronomy 2:8",
       "Deuteronomy 2:9",
       "Deuteronomy 2:18",
-      "Deuteronomy 29:1",
+      "Deuteronomy 28:69",
       "Deuteronomy 32:49",
       "Deuteronomy 34:5",
       "Deuteronomy 34:6",
@@ -5682,8 +5619,7 @@
       "ki-tavo",
       "haazinu",
       "vzot-habracha"
-    ],
-    "description": "Moab 1"
+    ]
   },
   {
     "id": "aca767b",
@@ -5713,8 +5649,7 @@
       "matot",
       "masei",
       "vzot-habracha"
-    ],
-    "description": "Moab 2"
+    ]
   },
   {
     "id": "a38ad9f",
@@ -5738,8 +5673,8 @@
     "id": "adaf385",
     "name": "Moriah",
     "alternateNames": [],
-    "latitude": 31.771661,
-    "longitude": 35.255903,
+    "latitude": 31.777778,
+    "longitude": 35.235556,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -5748,14 +5683,14 @@
     "parshas": [
       "vayera"
     ],
-    "description": "about 2 km around Al Eizariya"
+    "description": "the land of Moriah (Genesis 22:2); tradition identifies it with the Temple Mount (2 Chronicles 3:1)"
   },
   {
     "id": "a88331e",
     "name": "Moseroth",
     "alternateNames": [],
-    "latitude": 30.832057,
-    "longitude": 35.056872,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -5767,7 +5702,8 @@
       "masei",
       "ekev"
     ],
-    "description": "within 50 km of Mount Hor 1"
+    "description": "a camp between Hashmonah and Bene-jaakan (Numbers 33:30-31); Deuteronomy 10:6 calls it Moserah and says Aaron died there. Site unknown",
+    "locationNote": "a camp between Hashmonah and Bene-jaakan (Numbers 33:30-31); Deuteronomy 10:6 calls it Moserah and says Aaron died there. Site unknown"
   },
   {
     "id": "aa5cc66",
@@ -5787,8 +5723,7 @@
     "parshas": [
       "reeh",
       "ki-tavo"
-    ],
-    "description": "Mount Ebal"
+    ]
   },
   {
     "id": "a30e967",
@@ -5808,8 +5743,7 @@
     "parshas": [
       "reeh",
       "ki-tavo"
-    ],
-    "description": "Mount Gerizim"
+    ]
   },
   {
     "id": "a341fe8",
@@ -5840,15 +5774,14 @@
     "parshas": [
       "devarim",
       "vaetchanan"
-    ],
-    "description": "Mount Hermon"
+    ]
   },
   {
     "id": "ad8027f",
     "name": "Mount Hor 1",
     "alternateNames": [],
-    "latitude": 30.832057,
-    "longitude": 35.056872,
+    "latitude": 30.317,
+    "longitude": 35.407,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -5868,14 +5801,14 @@
       "masei",
       "haazinu"
     ],
-    "description": "Har Zin"
+    "description": "where Aaron died, \"on the boundary of the land of Edom\" (Numbers 20:23); location disputed — the pin marks the traditional site, Jebel Harun near Petra; others propose Jebel Madurah (Har Zin) in the Negev"
   },
   {
     "id": "a62fa2d",
     "name": "Mount Hor 2",
     "alternateNames": [],
-    "latitude": 34.3075,
-    "longitude": 35.69167,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -5885,7 +5818,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Ras Shaqqa"
+    "description": "a mountain on the northern border, between the Great Sea and Lebo-hamath (Numbers 34:7-8); site unknown. Second Temple and rabbinic tradition identifies it with the Amanus (Amanah)",
+    "locationNote": "a mountain on the northern border, between the Great Sea and Lebo-hamath (Numbers 34:7-8); site unknown. Second Temple and rabbinic tradition identifies it with the Amanus (Amanah)"
   },
   {
     "id": "a9bb03e",
@@ -5907,7 +5841,7 @@
       "Deuteronomy 5:2",
       "Deuteronomy 9:8",
       "Deuteronomy 18:16",
-      "Deuteronomy 29:1",
+      "Deuteronomy 28:69",
       "1 Kings 8:9",
       "1 Kings 19:8",
       "2 Chronicles 5:10",
@@ -5924,7 +5858,7 @@
       "shoftim",
       "ki-tavo"
     ],
-    "description": "another name for Mount Sinai"
+    "description": "another name for Mount Sinai; the pin marks the traditional site, Jebel Musa. Location disputed"
   },
   {
     "id": "aefaa2d",
@@ -5948,8 +5882,8 @@
     "id": "af693b8",
     "name": "Mount Paran",
     "alternateNames": [],
-    "latitude": 28.539722,
-    "longitude": 33.973333,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -5959,7 +5893,8 @@
     "parshas": [
       "vzot-habracha"
     ],
-    "description": "another name for Mount Sinai"
+    "description": "named beside Sinai and Seir in Moses's blessing (Deuteronomy 33:2; also Habakkuk 3:3); site unknown",
+    "locationNote": "named beside Sinai and Seir in Moses's blessing (Deuteronomy 33:2; also Habakkuk 3:3); site unknown"
   },
   {
     "id": "ae981db",
@@ -5971,7 +5906,7 @@
     "type": "mountain range",
     "verses": [
       "Genesis 14:6",
-      "Genesis 32:3",
+      "Genesis 32:4",
       "Genesis 33:14",
       "Genesis 33:16",
       "Genesis 36:8",
@@ -6007,7 +5942,6 @@
     ],
     "parshas": [
       "lech-lecha",
-      "vayetze",
       "vayishlach",
       "balak",
       "devarim",
@@ -6019,8 +5953,8 @@
     "id": "a39fe14",
     "name": "Mount Shepher",
     "alternateNames": [],
-    "latitude": 30.50662,
-    "longitude": 34.30356,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "mountain",
     "verses": [
@@ -6030,7 +5964,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Haradah"
+    "description": "a camp between Kehelathah and Haradah (Numbers 33:23-24); site unknown",
+    "locationNote": "a camp between Kehelathah and Haradah (Numbers 33:23-24); site unknown"
   },
   {
     "id": "abfba2a",
@@ -6060,7 +5995,6 @@
       "Numbers 3:1",
       "Numbers 28:6",
       "Deuteronomy 33:2",
-      "Deuteronomy 33:16",
       "Judges 5:5",
       "Nehemiah 9:13",
       "Psalms 68:8",
@@ -6084,7 +6018,7 @@
       "pinchas",
       "vzot-habracha"
     ],
-    "description": "Jebel Musa"
+    "description": "location disputed; the pin marks the traditional site, Jebel Musa in southern Sinai, where Saint Catherine's Monastery was built in the 6th century CE. Other proposals are in northern Sinai, the Negev (Har Karkom) and north-west Arabia"
   },
   {
     "id": "a8dafd6",
@@ -6116,7 +6050,7 @@
     "parshas": [
       "chayei-sarah"
     ],
-    "description": "another name for Nahuru"
+    "description": "\"the city of Nahor\" (Genesis 24:10): probably Haran itself, where Laban lives (27:43), or the nearby town of Nahur"
   },
   {
     "id": "ab5bd29",
@@ -6203,8 +6137,7 @@
       "masei",
       "devarim",
       "vzot-habracha"
-    ],
-    "description": "Negeb"
+    ]
   },
   {
     "id": "a012705",
@@ -6232,9 +6165,9 @@
       "Exodus 7:21",
       "Exodus 7:24",
       "Exodus 7:25",
-      "Exodus 8:3",
-      "Exodus 8:9",
-      "Exodus 8:11",
+      "Exodus 7:28",
+      "Exodus 8:5",
+      "Exodus 8:7",
       "Exodus 17:5",
       "Isaiah 7:18",
       "Isaiah 18:1",
@@ -6267,7 +6200,7 @@
       "vaera",
       "beshalach"
     ],
-    "description": "Nile River"
+    "description": "the Nile; the pin marks one point on the river, on its Rosetta branch near the sea"
   },
   {
     "id": "a314731",
@@ -6275,7 +6208,7 @@
     "alternateNames": [],
     "latitude": 31.909106,
     "longitude": 35.63872,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 32:3"
@@ -6327,8 +6260,7 @@
     ],
     "parshas": [
       "noach"
-    ],
-    "description": "Nineveh"
+    ]
   },
   {
     "id": "aa23a3e",
@@ -6336,7 +6268,7 @@
     "alternateNames": [],
     "latitude": 32.75616,
     "longitude": 36.61899,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "settlement",
     "verses": [
       "Numbers 32:42"
@@ -6350,8 +6282,8 @@
     "id": "aed6b0e",
     "name": "Nophah",
     "alternateNames": [],
-    "latitude": 31.180556,
-    "longitude": 35.701389,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -6360,14 +6292,15 @@
     "parshas": [
       "chukat"
     ],
-    "description": "in Moab 1"
+    "description": "named in the song over Moab, \"hard by Medeba\" (Numbers 21:30); the verse's meaning is uncertain and the site unknown",
+    "locationNote": "named in the song over Moab, \"hard by Medeba\" (Numbers 21:30); the verse's meaning is uncertain and the site unknown"
   },
   {
     "id": "a0ef1e1",
     "name": "Oboth",
     "alternateNames": [],
-    "latitude": 30.82991,
-    "longitude": 35.41082,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -6380,7 +6313,8 @@
       "chukat",
       "masei"
     ],
-    "description": "Telah"
+    "description": "a camp between Punon and Iye-abarim (Numbers 21:10-11; 33:43-44); site unknown",
+    "locationNote": "a camp between Punon and Iye-abarim (Numbers 21:10-11; 33:43-44); site unknown"
   },
   {
     "id": "a8ec7ba",
@@ -6435,8 +6369,7 @@
       "behaalotecha",
       "shelach",
       "devarim"
-    ],
-    "description": "Paran"
+    ]
   },
   {
     "id": "a880de2",
@@ -6464,8 +6397,8 @@
     "confidence": "low",
     "type": "settlement",
     "verses": [
-      "Genesis 32:30",
       "Genesis 32:31",
+      "Genesis 32:32",
       "Judges 8:8",
       "Judges 8:9",
       "Judges 8:17",
@@ -6482,7 +6415,7 @@
     "alternateNames": [],
     "latitude": 31.777021,
     "longitude": 35.738498,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "mountain",
     "verses": [
       "Numbers 23:28",
@@ -6500,7 +6433,7 @@
       "matot",
       "vaetchanan"
     ],
-    "description": "within 1 km of Beth-peor"
+    "description": "the peak of Peor, near Beth-peor (Numbers 23:28); site uncertain. In Numbers 25 and 31:16 \"Peor\" is the Baal of Peor and the affair there"
   },
   {
     "id": "aa9e754",
@@ -6512,7 +6445,7 @@
     "type": "settlement",
     "verses": [
       "Numbers 22:5",
-      "Deuteronomy 23:4"
+      "Deuteronomy 23:5"
     ],
     "parshas": [
       "balak",
@@ -6529,6 +6462,7 @@
     "confidence": "medium",
     "type": "region",
     "verses": [
+      "Exodus 13:17",
       "Exodus 15:14",
       "Judges 10:6",
       "1 Samuel 31:9",
@@ -6554,17 +6488,16 @@
     ],
     "parshas": [
       "beshalach"
-    ],
-    "description": "Philistia"
+    ]
   },
   {
     "id": "ababfd2",
     "name": "Pi-hahiroth",
     "alternateNames": [],
-    "latitude": 30.860556,
-    "longitude": 32.171389,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
-    "type": "mountain",
+    "type": "campsite",
     "verses": [
       "Exodus 14:2",
       "Exodus 14:9",
@@ -6575,7 +6508,8 @@
       "beshalach",
       "masei"
     ],
-    "description": "within 1 km of Baal-zephon"
+    "description": "where Israel camped by the sea before the crossing, \"between Migdol and the sea, before Baal-zephon\" (Exodus 14:2; Numbers 33:7); site unknown",
+    "locationNote": "where Israel camped by the sea before the crossing, \"between Migdol and the sea, before Baal-zephon\" (Exodus 14:2; Numbers 33:7); site unknown"
   },
   {
     "id": "afd9259",
@@ -6608,8 +6542,8 @@
     "id": "a19b076",
     "name": "Pishon",
     "alternateNames": [],
-    "latitude": 30.4275,
-    "longitude": 48.1654,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "body of water",
     "verses": [
@@ -6618,7 +6552,8 @@
     "parshas": [
       "bereshit"
     ],
-    "description": "Karun River"
+    "description": "a river of Eden that winds through Havilah (Genesis 2:11); unidentified — Rashi identifies it with the Nile",
+    "locationNote": "a river of Eden that winds through Havilah (Genesis 2:11); unidentified — Rashi identifies it with the Nile"
   },
   {
     "id": "a3870fe",
@@ -6634,7 +6569,7 @@
     "parshas": [
       "shemot"
     ],
-    "description": "Tell er Retaba"
+    "description": "one of the cities built for Pharaoh by Israelite labor (Exodus 1:11); the pin marks Tell er-Retaba in Wadi Tumilat, one of two proposed sites (the other is Tell el-Maskhuta)"
   },
   {
     "id": "a9ecc26",
@@ -6706,7 +6641,7 @@
       "bo",
       "masei"
     ],
-    "description": "Tell el Daba"
+    "description": "Pi-Ramesses, Ramesses II's Delta capital (13th century BCE), at Qantir beside Tell el-Dab'a (ancient Avaris); Genesis 47:11 speaks of \"the region of Rameses\""
   },
   {
     "id": "a95147f",
@@ -6763,7 +6698,7 @@
       "masei",
       "ekev"
     ],
-    "description": "Bitter Lakes"
+    "description": "Yam Suf, the \"Sea of Reeds\" Israel crossed (Exodus 13:18; 15:4); site unknown — the pin marks one proposal, the Bitter Lakes; others include Lake Timsah, the Ballah Lakes and the Gulf of Suez"
   },
   {
     "id": "ad64d75",
@@ -6808,8 +6743,8 @@
     "id": "ae4cd38",
     "name": "Rehob 1",
     "alternateNames": [],
-    "latitude": 32.901389,
-    "longitude": 35.169444,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -6819,7 +6754,8 @@
     "parshas": [
       "shelach"
     ],
-    "description": "another name for Rehob 3"
+    "locationNote": "Rehob, at Lebo-hamath, the northern limit of the scouts' route (Numbers 13:21); site unknown",
+    "description": "Rehob, at Lebo-hamath, the northern limit of the scouts' route (Numbers 13:21); site unknown"
   },
   {
     "id": "ab1d954",
@@ -6841,8 +6777,8 @@
     "id": "a17e154",
     "name": "Rehoboth 2",
     "alternateNames": [],
-    "latitude": 30.93412,
-    "longitude": 35.598339,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -6852,14 +6788,15 @@
     "parshas": [
       "vayishlach"
     ],
-    "description": "Khirbet Musrab"
+    "description": "Rehoboth-on-the-river (Genesis 36:37); site unknown — Onkelos puts it on the Euphrates, others in Edom",
+    "locationNote": "Rehoboth-on-the-river (Genesis 36:37); site unknown — Onkelos puts it on the Euphrates, others in Edom"
   },
   {
     "id": "a260ff1",
     "name": "Rehoboth-Ir",
     "alternateNames": [],
-    "latitude": 36.3594,
-    "longitude": 43.1528,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "district in settlement",
     "verses": [
@@ -6868,14 +6805,15 @@
     "parshas": [
       "noach"
     ],
-    "description": "in Nineveh"
+    "description": "listed with Nineveh and Calah (Genesis 10:11); site unknown",
+    "locationNote": "listed with Nineveh and Calah (Genesis 10:11); site unknown"
   },
   {
     "id": "a05ebb7",
     "name": "Rephidim",
     "alternateNames": [],
-    "latitude": 28.699444,
-    "longitude": 33.681667,
+    "latitude": 28.623056,
+    "longitude": 33.880278,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -6890,7 +6828,7 @@
       "yitro",
       "masei"
     ],
-    "description": "along Wadi el Sheikh"
+    "description": "the last camp before the wilderness of Sinai, where there was no water (Exodus 17:1; 19:2); site unknown — the pin marks one proposal on the traditional route, Wadi Rufaiyil near Jebel Musa; Wadi Feiran is another"
   },
   {
     "id": "abd8ada",
@@ -6945,8 +6883,8 @@
     "id": "af04ad9",
     "name": "Rissah",
     "alternateNames": [],
-    "latitude": 28.026,
-    "longitude": 35.248,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -6956,7 +6894,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "Sharma"
+    "description": "a camp between Libnah and Kehelathah (Numbers 33:21-22); site unknown",
+    "locationNote": "a camp between Libnah and Kehelathah (Numbers 33:21-22); site unknown"
   },
   {
     "id": "a2e73ba",
@@ -6979,8 +6918,8 @@
     "id": "a669096",
     "name": "River 2",
     "alternateNames": [],
-    "latitude": 31.0043,
-    "longitude": 47.442,
+    "latitude": 36.829722,
+    "longitude": 38.015,
     "confidence": "low",
     "type": "river",
     "verses": [
@@ -6989,24 +6928,7 @@
     "parshas": [
       "balak"
     ],
-    "description": "another name for the Euphrates"
-  },
-  {
-    "id": "a3bb384",
-    "name": "River 3",
-    "alternateNames": [],
-    "latitude": 30.954444,
-    "longitude": 35.619167,
-    "confidence": "low",
-    "type": "river",
-    "verses": [
-      "Genesis 36:37",
-      "1 Chronicles 1:48"
-    ],
-    "parshas": [
-      "vayishlach"
-    ],
-    "description": "Wadi Rihab"
+    "description": "the Euphrates (\"the River\", Numbers 22:5); the pin marks the upper river at Carchemish"
   },
   {
     "id": "ac3bc41",
@@ -7107,8 +7029,7 @@
     ],
     "parshas": [
       "masei"
-    ],
-    "description": "Sea of Galilee"
+    ]
   },
   {
     "id": "ad27e17",
@@ -7159,7 +7080,7 @@
     "parshas": [
       "lech-lecha"
     ],
-    "description": "within 1 km of Kiriathaim 1"
+    "description": "within 1 km of Kiriathaim"
   },
   {
     "id": "adf74d4",
@@ -7227,8 +7148,8 @@
     "id": "a9ba60c",
     "name": "Shepham",
     "alternateNames": [],
-    "latitude": 34.39674,
-    "longitude": 36.38715,
+    "latitude": null,
+    "longitude": null,
     "confidence": "medium",
     "type": "settlement",
     "verses": [
@@ -7239,7 +7160,8 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 100 km of Riblah 2"
+    "description": "on the eastern border, between Hazar-enan and Riblah (Numbers 34:10-11); site unknown",
+    "locationNote": "on the eastern border, between Hazar-enan and Riblah (Numbers 34:10-11); site unknown"
   },
   {
     "id": "af084cf",
@@ -7272,60 +7194,7 @@
     ],
     "parshas": [
       "devarim"
-    ],
-    "description": "Shephelah"
-  },
-  {
-    "id": "aa4680a",
-    "name": "Shiloh",
-    "alternateNames": [],
-    "latitude": 32.055703,
-    "longitude": 35.289536,
-    "confidence": "medium",
-    "type": "settlement",
-    "verses": [
-      "Genesis 49:10",
-      "Joshua 18:1",
-      "Joshua 18:8",
-      "Joshua 18:9",
-      "Joshua 18:10",
-      "Joshua 19:51",
-      "Joshua 21:2",
-      "Joshua 22:9",
-      "Joshua 22:12",
-      "Judges 18:31",
-      "Judges 21:12",
-      "Judges 21:19",
-      "Judges 21:21",
-      "1 Samuel 1:3",
-      "1 Samuel 1:9",
-      "1 Samuel 1:24",
-      "1 Samuel 2:14",
-      "1 Samuel 3:21",
-      "1 Samuel 4:3",
-      "1 Samuel 4:4",
-      "1 Samuel 4:12",
-      "1 Samuel 4:13",
-      "1 Samuel 14:3",
-      "1 Kings 2:27",
-      "1 Kings 11:29",
-      "1 Kings 12:15",
-      "1 Kings 14:2",
-      "1 Kings 14:4",
-      "1 Kings 15:29",
-      "2 Chronicles 9:29",
-      "2 Chronicles 10:15",
-      "Psalms 78:60",
-      "Jeremiah 7:12",
-      "Jeremiah 7:14",
-      "Jeremiah 26:6",
-      "Jeremiah 26:9",
-      "Jeremiah 41:5"
-    ],
-    "parshas": [
-      "vayechi"
-    ],
-    "description": "Khirbet Seilun"
+    ]
   },
   {
     "id": "af725b1",
@@ -7355,8 +7224,8 @@
     "id": "af64fb3",
     "name": "Shittim",
     "alternateNames": [],
-    "latitude": 31.84161,
-    "longitude": 35.68404,
+    "latitude": 31.84018,
+    "longitude": 35.67368,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -7369,7 +7238,7 @@
     "parshas": [
       "balak"
     ],
-    "description": "Tell Matabi"
+    "description": "Abel-shittim, the last camp in the steppes of Moab (Numbers 25:1; 33:49); site uncertain — the pin marks Tall el-Hammam, the usual identification; Tall Kafrayn is another proposal"
   },
   {
     "id": "acdbce0",
@@ -7399,8 +7268,8 @@
     "id": "aa10f27",
     "name": "Sibmah",
     "alternateNames": [],
-    "latitude": 31.81688,
-    "longitude": 35.771417,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -7414,7 +7283,8 @@
     "parshas": [
       "matot"
     ],
-    "description": "Sumia"
+    "description": "a town rebuilt by Reuben, listed with Heshbon and Nebo (Numbers 32:3, 38); site unknown",
+    "locationNote": "a town rebuilt by Reuben, listed with Heshbon and Nebo (Numbers 32:3, 38); site unknown"
   },
   {
     "id": "a98e4d7",
@@ -7467,7 +7337,7 @@
       "noach",
       "vayechi"
     ],
-    "description": "Sandikli archaeological site in Sidon"
+    "description": "Saida, Lebanon"
   },
   {
     "id": "a0f54e4",
@@ -7487,14 +7357,14 @@
       "beshalach",
       "masei"
     ],
-    "description": "Debbet er Ramleh"
+    "description": "the wilderness \"between Elim and Sinai\" (Exodus 16:1); location depends on the route — the pin marks one proposal on the traditional route, Debbet er-Ramleh; the coastal plain of el-Markha is another"
   },
   {
     "id": "aa454f7",
     "name": "Sitnah",
     "alternateNames": [],
-    "latitude": 31.424497,
-    "longitude": 34.6062,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "well",
     "verses": [
@@ -7503,14 +7373,15 @@
     "parshas": [
       "toldot"
     ],
-    "description": "in the region between Gerar and Beersheba"
+    "description": "a second well Isaac's servants dug near Gerar (Genesis 26:21); site unknown",
+    "locationNote": "a second well Isaac's servants dug near Gerar (Genesis 26:21); site unknown"
   },
   {
     "id": "a0aa664",
     "name": "Sodom",
     "alternateNames": [],
-    "latitude": 31.84018,
-    "longitude": 35.67368,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -7534,7 +7405,7 @@
       "Genesis 19:4",
       "Genesis 19:24",
       "Genesis 19:28",
-      "Deuteronomy 29:23",
+      "Deuteronomy 29:22",
       "Deuteronomy 32:32",
       "Isaiah 1:9",
       "Isaiah 1:10",
@@ -7572,7 +7443,8 @@
       "nitzavim",
       "haazinu"
     ],
-    "description": "Tall el Hammam"
+    "description": "one of the cities of the Plain near the Dead Sea (Genesis 13:10-12; 14:2-3); site unknown — proposals include Bab edh-Dhra (south) and Tall el-Hammam (north), both disputed",
+    "locationNote": "one of the cities of the Plain near the Dead Sea (Genesis 13:10-12; 14:2-3); site unknown — proposals include Bab edh-Dhra (south) and Tall el-Hammam (north), both disputed"
   },
   {
     "id": "a0905b5",
@@ -7624,8 +7496,8 @@
     "id": "af725bb",
     "name": "Suph",
     "alternateNames": [],
-    "latitude": 31.665609,
-    "longitude": 35.81749,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "body of water",
     "verses": [
@@ -7634,7 +7506,8 @@
     "parshas": [
       "devarim"
     ],
-    "description": "another name for Suphah"
+    "description": "\"near Suph\" (Deuteronomy 1:1); site unknown. Onkelos renders it \"the Sea of Reeds\"",
+    "locationNote": "\"near Suph\" (Deuteronomy 1:1); site unknown. Onkelos renders it \"the Sea of Reeds\""
   },
   {
     "id": "a88bcb2",
@@ -7656,8 +7529,8 @@
     "id": "a028191",
     "name": "Taberah",
     "alternateNames": [],
-    "latitude": 28.788667,
-    "longitude": 34.275439,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -7668,14 +7541,15 @@
       "behaalotecha",
       "ekev"
     ],
-    "description": "within 50 km of Kibroth-hattaavah"
+    "description": "where a fire of the LORD broke out against the people (Numbers 11:1-3; Deuteronomy 9:22); site unknown",
+    "locationNote": "where a fire of the LORD broke out against the people (Numbers 11:1-3; Deuteronomy 9:22); site unknown"
   },
   {
     "id": "abe40d1",
     "name": "Tahath",
     "alternateNames": [],
-    "latitude": 30.640556,
-    "longitude": 34.411111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -7685,14 +7559,15 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Terah"
+    "description": "a camp between Makheloth and Terah (Numbers 33:26-27); site unknown",
+    "locationNote": "a camp between Makheloth and Terah (Numbers 33:26-27); site unknown"
   },
   {
     "id": "a944b90",
     "name": "Terah",
     "alternateNames": [],
-    "latitude": 30.640556,
-    "longitude": 34.411111,
+    "latitude": null,
+    "longitude": null,
     "confidence": "medium",
     "type": "campsite",
     "verses": [
@@ -7702,14 +7577,15 @@
     "parshas": [
       "masei"
     ],
-    "description": "within 50 km of Mithkah"
+    "description": "a camp between Tahath and Mithkah (Numbers 33:27-28); site unknown",
+    "locationNote": "a camp between Tahath and Mithkah (Numbers 33:27-28); site unknown"
   },
   {
     "id": "a559399",
     "name": "The Lord Will Provide",
     "alternateNames": [],
-    "latitude": 31.556536,
-    "longitude": 35.105336,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "hill",
     "verses": [
@@ -7718,7 +7594,8 @@
     "parshas": [
       "vayera"
     ],
-    "description": "another name for Mamre"
+    "description": "in the land of Moriah (Genesis 22:2, 14); site unknown",
+    "locationNote": "in the land of Moriah (Genesis 22:2, 14); site unknown"
   },
   {
     "id": "a38ebfd",
@@ -7735,7 +7612,7 @@
     "parshas": [
       "bereshit"
     ],
-    "description": "Tigris River"
+    "description": "the Tigris, Hebrew Hiddekel (Genesis 2:14); the pin marks al-Qurnah, where it meets the Euphrates today. It does not mark Eden"
   },
   {
     "id": "a17c178",
@@ -7752,15 +7629,14 @@
     ],
     "parshas": [
       "vayeshev"
-    ],
-    "description": "another name for Timnah 2"
+    ]
   },
   {
     "id": "a7ecf6c",
     "name": "Tophel",
     "alternateNames": [],
-    "latitude": 30.939606,
-    "longitude": 35.458842,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -7769,7 +7645,8 @@
     "parshas": [
       "devarim"
     ],
-    "description": "in the region between Punon and Zered"
+    "description": "named in Deuteronomy 1:1; site unknown (Tafila in Edom has been proposed). Rashi, following the Sifrei and Onkelos, reads the names in this verse as allusions to Israel's sins",
+    "locationNote": "named in Deuteronomy 1:1; site unknown (Tafila in Edom has been proposed). Rashi, following the Sifrei and Onkelos, reads the names in this verse as allusions to Israel's sins"
   },
   {
     "id": "a6cf75c",
@@ -7788,8 +7665,7 @@
     "parshas": [
       "noach",
       "lech-lecha"
-    ],
-    "description": "another name for Ur 2"
+    ]
   },
   {
     "id": "a38ecff",
@@ -7842,8 +7718,7 @@
     ],
     "parshas": [
       "vayeshev"
-    ],
-    "description": "Valley of Hebron"
+    ]
   },
   {
     "id": "ac9a77c",
@@ -7858,8 +7733,7 @@
     ],
     "parshas": [
       "vzot-habracha"
-    ],
-    "description": "Valley of Jericho"
+    ]
   },
   {
     "id": "a402ee4",
@@ -7942,8 +7816,8 @@
     "id": "adec54b",
     "name": "Waheb",
     "alternateNames": [],
-    "latitude": 31.665609,
-    "longitude": 35.81749,
+    "latitude": null,
+    "longitude": null,
     "confidence": "medium",
     "type": "campsite",
     "verses": [
@@ -7952,7 +7826,8 @@
     "parshas": [
       "chukat"
     ],
-    "description": "within 50 km of Suphah"
+    "description": "\"Waheb in Suphah\", quoted from the Book of the Wars of the LORD (Numbers 21:14); site unknown. Rashi reads the words as \"what He gave\", not a place name",
+    "locationNote": "\"Waheb in Suphah\", quoted from the Book of the Wars of the LORD (Numbers 21:14); site unknown. Rashi reads the words as \"what He gave\", not a place name"
   },
   {
     "id": "a55c970",
@@ -7981,7 +7856,7 @@
     "alternateNames": [],
     "latitude": 28.539722,
     "longitude": 33.973333,
-    "confidence": "medium",
+    "confidence": "low",
     "type": "region",
     "verses": [
       "Exodus 19:1",
@@ -8006,14 +7881,14 @@
       "pinchas",
       "masei"
     ],
-    "description": "about 50 km around Mount Sinai"
+    "description": "the wilderness around Mount Sinai, where Israel camped (Exodus 19:1-2; Numbers 1:1); shown around the traditional site, Jebel Musa. Location disputed"
   },
   {
     "id": "a1c6a50",
     "name": "Zalmonah",
     "alternateNames": [],
-    "latitude": 30.4136,
-    "longitude": 35.5677,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "campsite",
     "verses": [
@@ -8023,21 +7898,22 @@
     "parshas": [
       "masei"
     ],
-    "description": "Rujm Talat az Zalma"
+    "description": "a camp between Mount Hor and Punon (Numbers 33:41-42); site unknown",
+    "locationNote": "a camp between Mount Hor and Punon (Numbers 33:41-42); site unknown"
   },
   {
     "id": "abfbfb9",
     "name": "Zeboiim",
     "alternateNames": [],
-    "latitude": 31.20849,
-    "longitude": 35.449223,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "settlement",
     "verses": [
       "Genesis 10:19",
       "Genesis 14:2",
       "Genesis 14:8",
-      "Deuteronomy 29:23",
+      "Deuteronomy 29:22",
       "Hosea 11:8"
     ],
     "parshas": [
@@ -8045,7 +7921,8 @@
       "lech-lecha",
       "nitzavim"
     ],
-    "description": "in the Valley of Siddim"
+    "description": "one of the cities of the Plain near the Dead Sea (Genesis 14:2-3); site unknown",
+    "locationNote": "one of the cities of the Plain near the Dead Sea (Genesis 14:2-3); site unknown"
   },
   {
     "id": "aab92ca",
@@ -8112,8 +7989,8 @@
     "id": "a190097",
     "name": "Zin 2",
     "alternateNames": [],
-    "latitude": 30.971,
-    "longitude": 35.325,
+    "latitude": null,
+    "longitude": null,
     "confidence": "low",
     "type": "region",
     "verses": [
@@ -8123,14 +8000,15 @@
     "parshas": [
       "masei"
     ],
-    "description": "another name for Zin 1"
+    "locationNote": "a point on the southern border between the ascent of Akrabbim and Kadesh-barnea (Numbers 34:4); site unknown",
+    "description": "a point on the southern border between the ascent of Akrabbim and Kadesh-barnea (Numbers 34:4); site unknown"
   },
   {
     "id": "adf05b8",
     "name": "Ziphron",
     "alternateNames": [],
-    "latitude": 33.871861,
-    "longitude": 36.814639,
+    "latitude": 34.266667,
+    "longitude": 37.066667,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -8139,7 +8017,7 @@
     "parshas": [
       "masei"
     ],
-    "description": "Zifran"
+    "description": "on the northern border, between Zedad and Hazar-enan (Numbers 34:8-9); site uncertain — the pin marks one proposal, Huwwarin"
   },
   {
     "id": "ac31fee",
@@ -8167,8 +8045,8 @@
     "id": "aacfcda",
     "name": "Zoar",
     "alternateNames": [],
-    "latitude": 31.465833,
-    "longitude": 35.573333,
+    "latitude": 31.036904,
+    "longitude": 35.487657,
     "confidence": "low",
     "type": "settlement",
     "verses": [
@@ -8187,7 +8065,7 @@
       "vayera",
       "vzot-habracha"
     ],
-    "description": "mouth of Wadi Mujib"
+    "description": "traditional site: Byzantine Zoara, at Ghor es-Safi south-east of the Dead Sea"
   },
   {
     "id": "ae7f7b5",
@@ -8295,7 +8173,7 @@
       "Judges 8:2"
     ],
     "parshas": [],
-    "description": "about 15 km around Ophrah 2"
+    "description": "about 15 km around Ophrah"
   },
   {
     "id": "a498faa",
@@ -8308,8 +8186,7 @@
     "verses": [
       "Luke 3:1"
     ],
-    "parshas": [],
-    "description": "Abilene"
+    "parshas": []
   },
   {
     "id": "a5f4dfc",
@@ -8345,8 +8222,7 @@
       "1Thess 1:7",
       "1Thess 1:8"
     ],
-    "parshas": [],
-    "description": "Achaia"
+    "parshas": []
   },
   {
     "id": "a8ce5c4",
@@ -8406,7 +8282,7 @@
       "Joshua 15:22"
     ],
     "parshas": [],
-    "description": "another name for Aroer 3"
+    "description": "another name for Aroer"
   },
   {
     "id": "adc31c7",
@@ -8533,8 +8409,7 @@
       "Joshua 15:7",
       "Joshua 18:17"
     ],
-    "parshas": [],
-    "description": "Adummim"
+    "parshas": []
   },
   {
     "id": "a112fe3",
@@ -8564,7 +8439,7 @@
       "Ezra 8:31"
     ],
     "parshas": [],
-    "description": "within 250 km of Babylon 1"
+    "description": "within 250 km of Babylon"
   },
   {
     "id": "a36348c",
@@ -8592,7 +8467,7 @@
       "Jeremiah 49:3"
     ],
     "parshas": [],
-    "description": "in Moab 1"
+    "description": "in Moab"
   },
   {
     "id": "a63c70b",
@@ -8606,8 +8481,7 @@
       "Ezra 2:28",
       "Nehemiah 7:32"
     ],
-    "parshas": [],
-    "description": "another name for Ai 1"
+    "parshas": []
   },
   {
     "id": "ad053dd",
@@ -8621,7 +8495,7 @@
       "Isaiah 10:28"
     ],
     "parshas": [],
-    "description": "another name for Ai 1"
+    "description": "another name for Ai"
   },
   {
     "id": "aa884e2",
@@ -8714,8 +8588,7 @@
       "Matt 27:8",
       "Acts 1:19"
     ],
-    "parshas": [],
-    "description": "Akeldama"
+    "parshas": []
   },
   {
     "id": "ad4ad26",
@@ -8745,8 +8618,7 @@
       "Acts 27:6",
       "Acts 28:11"
     ],
-    "parshas": [],
-    "description": "Alexandria"
+    "parshas": []
   },
   {
     "id": "a84cafa",
@@ -8857,8 +8729,7 @@
     "verses": [
       "Acts 17:1"
     ],
-    "parshas": [],
-    "description": "Amphipolis"
+    "parshas": []
   },
   {
     "id": "a234727",
@@ -9115,7 +8986,7 @@
       "Joshua 15:53"
     ],
     "parshas": [],
-    "description": "another name for Aphek 2"
+    "description": "another name for Aphek"
   },
   {
     "id": "a012133",
@@ -9129,7 +9000,7 @@
       "Judges 1:31"
     ],
     "parshas": [],
-    "description": "another name for Aphek 1"
+    "description": "another name for Aphek"
   },
   {
     "id": "ab20df9",
@@ -9142,8 +9013,7 @@
     "verses": [
       "Acts 17:1"
     ],
-    "parshas": [],
-    "description": "Apollonia"
+    "parshas": []
   },
   {
     "id": "adbc03e",
@@ -9204,22 +9074,29 @@
     "verses": [
       "Judges 1:16"
     ],
-    "parshas": [],
-    "description": "another name for Arad 1"
+    "parshas": []
   },
   {
-    "id": "a3c7b44",
-    "name": "Aram-naharaim",
+    "id": "a3e66cd",
+    "name": "Aram",
     "alternateNames": [],
-    "latitude": 36.864444,
-    "longitude": 39.032778,
+    "latitude": 33.511112,
+    "longitude": 36.30639,
     "confidence": "medium",
     "type": "region",
     "verses": [
-      "Psalms 60:1"
+      "Judges 18:7",
+      "Judges 18:28",
+      "2 Samuel 8:6",
+      "2 Samuel 15:8",
+      "2 Kings 5:18",
+      "2 Kings 6:14",
+      "2 Kings 8:15",
+      "1 Chronicles 2:23",
+      "Hosea 12:12",
+      "Zechariah 9:1"
     ],
-    "parshas": [],
-    "description": "Aram-naharaim"
+    "parshas": []
   },
   {
     "id": "a815d89",
@@ -9234,8 +9111,7 @@
       "Acts 17:22",
       "Acts 17:33"
     ],
-    "parshas": [],
-    "description": "Areopagus"
+    "parshas": []
   },
   {
     "id": "a8754c4",
@@ -9324,8 +9200,7 @@
     "verses": [
       "1 Chronicles 11:44"
     ],
-    "parshas": [],
-    "description": "another name for Aroer 3"
+    "parshas": []
   },
   {
     "id": "a173c40",
@@ -9539,8 +9414,7 @@
       "Rev 1:4",
       "Rev 1:11"
     ],
-    "parshas": [],
-    "description": "Asia"
+    "parshas": []
   },
   {
     "id": "a0a2ca7",
@@ -9554,8 +9428,7 @@
       "Acts 20:13",
       "Acts 20:14"
     ],
-    "parshas": [],
-    "description": "Assos"
+    "parshas": []
   },
   {
     "id": "a919ab0",
@@ -9582,8 +9455,7 @@
     "verses": [
       "Joshua 16:7"
     ],
-    "parshas": [],
-    "description": "another name for Ataroth 2"
+    "parshas": []
   },
   {
     "id": "a2bf0f8",
@@ -9598,7 +9470,7 @@
       "Joshua 18:13"
     ],
     "parshas": [],
-    "description": "another name for Ataroth 1"
+    "description": "another name for Ataroth"
   },
   {
     "id": "a0e21ff",
@@ -9630,8 +9502,7 @@
       "Acts 18:1",
       "1Thess 3:1"
     ],
-    "parshas": [],
-    "description": "Athens"
+    "parshas": []
   },
   {
     "id": "a03afe1",
@@ -9645,7 +9516,7 @@
       "1 Chronicles 2:54"
     ],
     "parshas": [],
-    "description": "within 5 km of Bethlehem 1"
+    "description": "within 5 km of Bethlehem"
   },
   {
     "id": "ac744c1",
@@ -9674,7 +9545,7 @@
       "Hosea 10:8"
     ],
     "parshas": [],
-    "description": "another name for Beth-aven 2"
+    "description": "another name for Beth-aven"
   },
   {
     "id": "a4b500d",
@@ -9702,7 +9573,7 @@
       "Joshua 18:23"
     ],
     "parshas": [],
-    "description": "another name for Ai 1"
+    "description": "another name for Ai"
   },
   {
     "id": "aba3717",
@@ -9810,7 +9681,7 @@
       "Song of Songs 8:11"
     ],
     "parshas": [],
-    "description": "another name for Hammon 1"
+    "description": "another name for Hammon"
   },
   {
     "id": "a366989",
@@ -9881,7 +9752,7 @@
       "Judges 20:33"
     ],
     "parshas": [],
-    "description": "within 10 km of Gibeah 1"
+    "description": "within 10 km of Gibeah"
   },
   {
     "id": "a289254",
@@ -10277,8 +10148,7 @@
       "Matt 1:17",
       "Acts 7:43"
     ],
-    "parshas": [],
-    "description": "Babylon"
+    "parshas": []
   },
   {
     "id": "a8394b8",
@@ -10305,8 +10175,7 @@
       "Jeremiah 51:27",
       "Jeremiah 51:43"
     ],
-    "parshas": [],
-    "description": "Babylonia"
+    "parshas": []
   },
   {
     "id": "a9ed5a4",
@@ -10340,7 +10209,7 @@
       "Joshua 19:3"
     ],
     "parshas": [],
-    "description": "another name for Baalah 1"
+    "description": "another name for Baalah"
   },
   {
     "id": "abaa030",
@@ -10381,8 +10250,7 @@
     "verses": [
       "1 Kings 4:16"
     ],
-    "parshas": [],
-    "description": "another name for Bealoth 1"
+    "parshas": []
   },
   {
     "id": "a5c37fd",
@@ -10712,7 +10580,7 @@
       "Hosea 10:5"
     ],
     "parshas": [],
-    "description": "another name for Bethel 1"
+    "description": "another name for Bethel"
   },
   {
     "id": "a0d1977",
@@ -10809,8 +10677,7 @@
     "verses": [
       "Amos 1:5"
     ],
-    "parshas": [],
-    "description": "Beth-eden"
+    "parshas": []
   },
   {
     "id": "a7abec7",
@@ -10867,7 +10734,7 @@
       "1 Chronicles 2:51"
     ],
     "parshas": [],
-    "description": "another name for Gedor 1"
+    "description": "another name for Gedor"
   },
   {
     "id": "a367677",
@@ -10895,7 +10762,7 @@
       "Nehemiah 12:29"
     ],
     "parshas": [],
-    "description": "another name for Gilgal 1"
+    "description": "another name for Gilgal"
   },
   {
     "id": "a30f9a0",
@@ -11284,8 +11151,7 @@
       "Jeremiah 48:13",
       "Zechariah 7:2"
     ],
-    "parshas": [],
-    "description": "another name for Bethel 1"
+    "parshas": []
   },
   {
     "id": "a0aa8cf",
@@ -11327,8 +11193,7 @@
       "Judges 12:8",
       "Judges 12:10"
     ],
-    "parshas": [],
-    "description": "another name for Bethlehem 2"
+    "parshas": []
   },
   {
     "id": "abff59d",
@@ -11376,8 +11241,7 @@
       "Mark 8:22",
       "Luke 9:10"
     ],
-    "parshas": [],
-    "description": "another name for Bethsaida 1"
+    "parshas": []
   },
   {
     "id": "a55cec0",
@@ -11391,7 +11255,7 @@
       "1 Chronicles 4:30"
     ],
     "parshas": [],
-    "description": "another name for Bethel 2"
+    "description": "another name for Bethel"
   },
   {
     "id": "a92de65",
@@ -11447,8 +11311,7 @@
       "Nehemiah 2:9",
       "Nehemiah 3:7"
     ],
-    "parshas": [],
-    "description": "Beyond the River"
+    "parshas": []
   },
   {
     "id": "af48fdd",
@@ -11462,8 +11325,7 @@
       "Judges 1:4",
       "Judges 1:5"
     ],
-    "parshas": [],
-    "description": "another name for Bezek 2"
+    "parshas": []
   },
   {
     "id": "a206291",
@@ -11505,7 +11367,7 @@
       "1 Chronicles 4:29"
     ],
     "parshas": [],
-    "description": "another name for Baalah 1"
+    "description": "another name for Baalah"
   },
   {
     "id": "a5c0cb0",
@@ -11519,8 +11381,7 @@
       "Acts 16:7",
       "1Pet 1:1"
     ],
-    "parshas": [],
-    "description": "Bithynia"
+    "parshas": []
   },
   {
     "id": "a859268",
@@ -11562,8 +11423,7 @@
     "verses": [
       "1 Samuel 14:4"
     ],
-    "parshas": [],
-    "description": "Bozez"
+    "parshas": []
   },
   {
     "id": "a58252b",
@@ -11606,8 +11466,7 @@
       "Nehemiah 3:8",
       "Nehemiah 12:38"
     ],
-    "parshas": [],
-    "description": "Broad Wall"
+    "parshas": []
   },
   {
     "id": "a5983ec",
@@ -11690,8 +11549,7 @@
     "verses": [
       "1 Kings 9:13"
     ],
-    "parshas": [],
-    "description": "Cabul 2"
+    "parshas": []
   },
   {
     "id": "a58735e",
@@ -11751,7 +11609,7 @@
       "1 Chronicles 2:24"
     ],
     "parshas": [],
-    "description": "another name for Bethlehem 1"
+    "description": "another name for Bethlehem"
   },
   {
     "id": "a7be664",
@@ -11828,8 +11686,7 @@
       "Acts 2:9",
       "1Pet 1:1"
     ],
-    "parshas": [],
-    "description": "Cappadocia"
+    "parshas": []
   },
   {
     "id": "af6c730",
@@ -12066,8 +11923,7 @@
     "verses": [
       "Acts 20:15"
     ],
-    "parshas": [],
-    "description": "Chios"
+    "parshas": []
   },
   {
     "id": "a898f06",
@@ -12130,8 +11986,7 @@
       "Acts 27:5",
       "Gal 1:21"
     ],
-    "parshas": [],
-    "description": "Cilicia"
+    "parshas": []
   },
   {
     "id": "a84f426",
@@ -12189,8 +12044,7 @@
       "Isaiah 22:9",
       "Isaiah 29:1"
     ],
-    "parshas": [],
-    "description": "City of David"
+    "parshas": []
   },
   {
     "id": "adca4b1",
@@ -12218,7 +12072,7 @@
       "Judges 1:16"
     ],
     "parshas": [],
-    "description": "another name for Jericho 1"
+    "description": "another name for Jericho"
   },
   {
     "id": "acc1702",
@@ -12245,8 +12099,7 @@
     "verses": [
       "Acts 27:7"
     ],
-    "parshas": [],
-    "description": "Cnidus"
+    "parshas": []
   },
   {
     "id": "a4e5a69",
@@ -12259,8 +12112,7 @@
     "verses": [
       "Col 1:2"
     ],
-    "parshas": [],
-    "description": "Colossae"
+    "parshas": []
   },
   {
     "id": "a6f437a",
@@ -12283,8 +12135,7 @@
       "2Cor 10:14",
       "2Tim 4:20"
     ],
-    "parshas": [],
-    "description": "Corinth"
+    "parshas": []
   },
   {
     "id": "a68aa8f",
@@ -12330,7 +12181,7 @@
       "1 Chronicles 4:22"
     ],
     "parshas": [],
-    "description": "another name for Achzib 1"
+    "description": "another name for Achzib"
   },
   {
     "id": "a26aa94",
@@ -12351,8 +12202,7 @@
       "Titus 1:5",
       "Titus 1:12"
     ],
-    "parshas": [],
-    "description": "Crete"
+    "parshas": []
   },
   {
     "id": "a70f9d3",
@@ -12397,8 +12247,7 @@
       "Nahum 3:9",
       "Zephaniah 3:10"
     ],
-    "parshas": [],
-    "description": "Cush 1"
+    "parshas": []
   },
   {
     "id": "a567e0e",
@@ -12451,8 +12300,7 @@
       "Acts 21:16",
       "Acts 27:4"
     ],
-    "parshas": [],
-    "description": "Cyprus"
+    "parshas": []
   },
   {
     "id": "a81cdb5",
@@ -12471,8 +12319,7 @@
       "Acts 11:20",
       "Acts 13:1"
     ],
-    "parshas": [],
-    "description": "Cyrene"
+    "parshas": []
   },
   {
     "id": "a411151",
@@ -12567,8 +12414,7 @@
     "verses": [
       "Joshua 15:7"
     ],
-    "parshas": [],
-    "description": "another name for Debir 1"
+    "parshas": []
   },
   {
     "id": "ac6416d",
@@ -12597,8 +12443,7 @@
       "Mark 5:20",
       "Mark 7:31"
     ],
-    "parshas": [],
-    "description": "Decapolis"
+    "parshas": []
   },
   {
     "id": "a3a2a75",
@@ -12649,8 +12494,7 @@
     "verses": [
       "Nehemiah 11:25"
     ],
-    "parshas": [],
-    "description": "another name for Dibon 1"
+    "parshas": []
   },
   {
     "id": "ae8badb",
@@ -12663,8 +12507,7 @@
     "verses": [
       "Isaiah 15:9"
     ],
-    "parshas": [],
-    "description": "another name for Dibon 1"
+    "parshas": []
   },
   {
     "id": "aecc492",
@@ -12692,7 +12535,7 @@
       "Joshua 21:35"
     ],
     "parshas": [],
-    "description": "another name for Rimmon 3"
+    "description": "another name for Rimmon"
   },
   {
     "id": "ac17675",
@@ -12706,7 +12549,7 @@
       "Joshua 15:22"
     ],
     "parshas": [],
-    "description": "another name for Dibon 2"
+    "description": "another name for Dibon"
   },
   {
     "id": "a0dc90b",
@@ -12942,7 +12785,7 @@
       "Joshua 15:21"
     ],
     "parshas": [],
-    "description": "another name for Arad 2"
+    "description": "another name for Arad"
   },
   {
     "id": "a85eb38",
@@ -13081,7 +12924,7 @@
       "Joshua 19:43"
     ],
     "parshas": [],
-    "description": "another name for Aijalon 1"
+    "description": "another name for Aijalon"
   },
   {
     "id": "a8e6824",
@@ -13140,7 +12983,7 @@
       "1 Chronicles 4:29"
     ],
     "parshas": [],
-    "description": "within 10 km of Beersheba 1"
+    "description": "within 10 km of Beersheba"
   },
   {
     "id": "a774e50",
@@ -13271,7 +13114,7 @@
       "Nehemiah 11:29"
     ],
     "parshas": [],
-    "description": "another name for Rimmon 2"
+    "description": "another name for Rimmon"
   },
   {
     "id": "af9cfc9",
@@ -13320,7 +13163,7 @@
       "Joshua 17:9"
     ],
     "parshas": [],
-    "description": "within 2 km of Tappuah 1"
+    "description": "within 2 km of Tappuah"
   },
   {
     "id": "a26921e",
@@ -13429,8 +13272,7 @@
       "Rev 1:11",
       "Rev 2:1"
     ],
-    "parshas": [],
-    "description": "Ephesus"
+    "parshas": []
   },
   {
     "id": "a507da9",
@@ -13444,7 +13286,7 @@
       "2 Samuel 13:23"
     ],
     "parshas": [],
-    "description": "another name for Ophrah 1"
+    "description": "another name for Ophrah"
   },
   {
     "id": "ad14500",
@@ -13457,8 +13299,7 @@
     "verses": [
       "John 11:54"
     ],
-    "parshas": [],
-    "description": "another name for Ephraim 1"
+    "parshas": []
   },
   {
     "id": "aa24ad4",
@@ -13471,8 +13312,7 @@
     "verses": [
       "2 Samuel 18:6"
     ],
-    "parshas": [],
-    "description": "Ephraim 3"
+    "parshas": []
   },
   {
     "id": "a7b6270",
@@ -13504,7 +13344,7 @@
       "Psalms 132:6"
     ],
     "parshas": [],
-    "description": "another name for Bethlehem 1"
+    "description": "another name for Bethlehem"
   },
   {
     "id": "a9a6f72",
@@ -13517,8 +13357,7 @@
     "verses": [
       "Joshua 18:15"
     ],
-    "parshas": [],
-    "description": "another name for Ephron 2"
+    "parshas": []
   },
   {
     "id": "a1230e5",
@@ -13612,8 +13451,7 @@
     "verses": [
       "1 Chronicles 4:32"
     ],
-    "parshas": [],
-    "description": "another name for Etam 3"
+    "parshas": []
   },
   {
     "id": "aa21f26",
@@ -13668,8 +13506,7 @@
     "verses": [
       "Joshua 19:7"
     ],
-    "parshas": [],
-    "description": "another name for Ether 1"
+    "parshas": []
   },
   {
     "id": "ab45bd3",
@@ -13688,8 +13525,7 @@
       "Amos 9:7",
       "Acts 8:27"
     ],
-    "parshas": [],
-    "description": "Ethiopia"
+    "parshas": []
   },
   {
     "id": "acb3716",
@@ -13704,7 +13540,7 @@
       "1 Samuel 20:41"
     ],
     "parshas": [],
-    "description": "within 1 km of Gibeah 1"
+    "description": "within 1 km of Gibeah"
   },
   {
     "id": "a573b95",
@@ -13831,8 +13667,7 @@
       "2Tim 4:10",
       "1Pet 1:1"
     ],
-    "parshas": [],
-    "description": "Galatia"
+    "parshas": []
   },
   {
     "id": "a9cf1e8",
@@ -13922,8 +13757,7 @@
       "Acts 10:37",
       "Acts 13:31"
     ],
-    "parshas": [],
-    "description": "Galilee"
+    "parshas": []
   },
   {
     "id": "a4e39f6",
@@ -13936,8 +13770,7 @@
     "verses": [
       "Joshua 12:23"
     ],
-    "parshas": [],
-    "description": "another name for Galilee 1"
+    "parshas": []
   },
   {
     "id": "ac10bcf",
@@ -14103,8 +13936,7 @@
       "2 Samuel 6:10",
       "1 Chronicles 13:13"
     ],
-    "parshas": [],
-    "description": "another name for Gath 1"
+    "parshas": []
   },
   {
     "id": "ac51cec",
@@ -14219,8 +14051,7 @@
       "2 Kings 23:8",
       "Zechariah 14:10"
     ],
-    "parshas": [],
-    "description": "another name for Geba 1"
+    "parshas": []
   },
   {
     "id": "ae14b1d",
@@ -14233,8 +14064,7 @@
     "verses": [
       "Joshua 18:24"
     ],
-    "parshas": [],
-    "description": "another name for Geba 1"
+    "parshas": []
   },
   {
     "id": "a9a2541",
@@ -14320,8 +14150,7 @@
     "verses": [
       "1 Chronicles 12:4"
     ],
-    "parshas": [],
-    "description": "another name for Gederah 1"
+    "parshas": []
   },
   {
     "id": "a0a5b78",
@@ -14334,8 +14163,7 @@
     "verses": [
       "1 Chronicles 4:23"
     ],
-    "parshas": [],
-    "description": "another name for Gederah 1"
+    "parshas": []
   },
   {
     "id": "a728f1b",
@@ -14364,7 +14192,7 @@
       "Joshua 15:36"
     ],
     "parshas": [],
-    "description": "another name for Gederah 1"
+    "description": "another name for Gederah"
   },
   {
     "id": "af054ba",
@@ -14406,8 +14234,7 @@
     "verses": [
       "1 Chronicles 4:18"
     ],
-    "parshas": [],
-    "description": "another name for Gedor 2"
+    "parshas": []
   },
   {
     "id": "a47678a",
@@ -14420,8 +14247,7 @@
     "verses": [
       "1 Chronicles 12:7"
     ],
-    "parshas": [],
-    "description": "another name for Gedor 1"
+    "parshas": []
   },
   {
     "id": "a0c9a06",
@@ -14483,7 +14309,7 @@
       "Jeremiah 41:17"
     ],
     "parshas": [],
-    "description": "within 5 km of Bethlehem 1"
+    "description": "within 5 km of Bethlehem"
   },
   {
     "id": "af6c325",
@@ -14506,8 +14332,7 @@
       "1 Chronicles 2:23",
       "1 Chronicles 3:2"
     ],
-    "parshas": [],
-    "description": "Geshur"
+    "parshas": []
   },
   {
     "id": "a42418f",
@@ -14521,8 +14346,7 @@
       "Matt 26:36",
       "Mark 14:32"
     ],
-    "parshas": [],
-    "description": "Gethsemane"
+    "parshas": []
   },
   {
     "id": "aed6538",
@@ -14609,7 +14433,7 @@
       "1 Chronicles 2:49"
     ],
     "parshas": [],
-    "description": "another name for Gibeah 2"
+    "description": "another name for Gibeah"
   },
   {
     "id": "ac24f5f",
@@ -14695,8 +14519,7 @@
     "verses": [
       "Joshua 24:33"
     ],
-    "parshas": [],
-    "description": "another name for Gibeah 1"
+    "parshas": []
   },
   {
     "id": "ac25f34",
@@ -14709,8 +14532,7 @@
     "verses": [
       "Joshua 18:28"
     ],
-    "parshas": [],
-    "description": "another name for Gibeah 1"
+    "parshas": []
   },
   {
     "id": "a45b692",
@@ -14724,7 +14546,7 @@
       "1 Samuel 10:5"
     ],
     "parshas": [],
-    "description": "another name for Geba 1"
+    "description": "another name for Geba"
   },
   {
     "id": "a97126d",
@@ -14738,7 +14560,7 @@
       "Joshua 5:3"
     ],
     "parshas": [],
-    "description": "within 5 km of Jericho 1"
+    "description": "within 5 km of Jericho"
   },
   {
     "id": "aede336",
@@ -14804,7 +14626,7 @@
       "Judges 20:45"
     ],
     "parshas": [],
-    "description": "within 10 km of Rimmon 1"
+    "description": "within 10 km of Rimmon"
   },
   {
     "id": "a2a303c",
@@ -14836,8 +14658,7 @@
     "verses": [
       "Hosea 6:8"
     ],
-    "parshas": [],
-    "description": "another name for Gilead 1"
+    "parshas": []
   },
   {
     "id": "ab94aea",
@@ -15060,7 +14881,7 @@
       "Joshua 11:16"
     ],
     "parshas": [],
-    "description": "about 20 km around Goshen 3"
+    "description": "about 20 km around Goshen"
   },
   {
     "id": "a81a10a",
@@ -15111,8 +14932,7 @@
       "Acts 20:2",
       "1Thess 1:7"
     ],
-    "parshas": [],
-    "description": "Greece"
+    "parshas": []
   },
   {
     "id": "aaa3eca",
@@ -15127,7 +14947,7 @@
       "Judges 1:15"
     ],
     "parshas": [],
-    "description": "within 5 km of Debir 1"
+    "description": "within 5 km of Debir"
   },
   {
     "id": "a878fea",
@@ -15303,8 +15123,7 @@
     "verses": [
       "Joshua 15:58"
     ],
-    "parshas": [],
-    "description": "Halhul"
+    "parshas": []
   },
   {
     "id": "a79d6a5",
@@ -15425,8 +15244,7 @@
       "2 Kings 17:24",
       "2 Kings 17:30"
     ],
-    "parshas": [],
-    "description": "another name for Hamath 1"
+    "parshas": []
   },
   {
     "id": "ab6a417",
@@ -15468,8 +15286,7 @@
     "verses": [
       "1 Chronicles 2:55"
     ],
-    "parshas": [],
-    "description": "another name for Hammath 1"
+    "parshas": []
   },
   {
     "id": "a9d4f8e",
@@ -15497,7 +15314,7 @@
       "1 Chronicles 6:76"
     ],
     "parshas": [],
-    "description": "another name for Hammath 1"
+    "description": "another name for Hammath"
   },
   {
     "id": "a7d3e84",
@@ -15511,7 +15328,7 @@
       "Joshua 21:32"
     ],
     "parshas": [],
-    "description": "another name for Hammath 1"
+    "description": "another name for Hammath"
   },
   {
     "id": "a154d7b",
@@ -15674,8 +15491,7 @@
       "Ezekiel 47:16",
       "Ezekiel 47:18"
     ],
-    "parshas": [],
-    "description": "Hauran"
+    "parshas": []
   },
   {
     "id": "a1d9047",
@@ -15688,8 +15504,7 @@
     "verses": [
       "1 Samuel 15:7"
     ],
-    "parshas": [],
-    "description": "another name for Havilah 2"
+    "parshas": []
   },
   {
     "id": "a7672d8",
@@ -15720,7 +15535,7 @@
       "Nehemiah 11:27"
     ],
     "parshas": [],
-    "description": "within 10 km of Beersheba 1"
+    "description": "within 10 km of Beersheba"
   },
   {
     "id": "ab270f6",
@@ -15976,7 +15791,7 @@
       "Isaiah 37:13"
     ],
     "parshas": [],
-    "description": "within 75 km of Hamath 1"
+    "description": "within 75 km of Hamath"
   },
   {
     "id": "a2ebe1c",
@@ -16033,7 +15848,7 @@
       "Joshua 15:27"
     ],
     "parshas": [],
-    "description": "within 30 km of Beersheba 1"
+    "description": "within 30 km of Beersheba"
   },
   {
     "id": "a1ab517",
@@ -16075,8 +15890,7 @@
     "verses": [
       "Col 4:13"
     ],
-    "parshas": [],
-    "description": "Hierapolis"
+    "parshas": []
   },
   {
     "id": "a8819e0",
@@ -16105,8 +15919,7 @@
     "verses": [
       "Jeremiah 48:21"
     ],
-    "parshas": [],
-    "description": "another name for Holon 1"
+    "parshas": []
   },
   {
     "id": "ab60a74",
@@ -16377,8 +16190,7 @@
     "verses": [
       "Mark 3:8"
     ],
-    "parshas": [],
-    "description": "Idumea"
+    "parshas": []
   },
   {
     "id": "ad161d1",
@@ -16465,7 +16277,7 @@
       "Joshua 19:41"
     ],
     "parshas": [],
-    "description": "another name for Beth-shemesh 1"
+    "description": "another name for Beth-shemesh"
   },
   {
     "id": "a21b934",
@@ -16493,7 +16305,7 @@
       "Joshua 19:42"
     ],
     "parshas": [],
-    "description": "within 10 km of Aijalon 1"
+    "description": "within 10 km of Aijalon"
   },
   {
     "id": "ac333a2",
@@ -16520,8 +16332,7 @@
     "verses": [
       "Luke 3:1"
     ],
-    "parshas": [],
-    "description": "Ituraea"
+    "parshas": []
   },
   {
     "id": "a9ac5f9",
@@ -16598,7 +16409,7 @@
       "1 Chronicles 2:55"
     ],
     "parshas": [],
-    "description": "within 5 km of Arad 1"
+    "description": "within 5 km of Arad"
   },
   {
     "id": "a7adb01",
@@ -16731,7 +16542,7 @@
       "Joshua 21:29"
     ],
     "parshas": [],
-    "description": "another name for Ramoth 1"
+    "description": "another name for Ramoth"
   },
   {
     "id": "ad6eb0b",
@@ -16830,8 +16641,7 @@
     "verses": [
       "2 Chronicles 20:16"
     ],
-    "parshas": [],
-    "description": "Jeruel"
+    "parshas": []
   },
   {
     "id": "a15257a",
@@ -17798,8 +17608,7 @@
       "Rev 21:2",
       "Rev 21:10"
     ],
-    "parshas": [],
-    "description": "Jerusalem"
+    "parshas": []
   },
   {
     "id": "a5f5b06",
@@ -17814,6 +17623,22 @@
     ],
     "parshas": [],
     "description": "Burj el Isaneh"
+  },
+  {
+    "id": "ad41f6e",
+    "name": "Jeshimon",
+    "alternateNames": [],
+    "latitude": 31.4703,
+    "longitude": 35.2228,
+    "confidence": "medium",
+    "type": "region",
+    "verses": [
+      "1 Samuel 23:19",
+      "1 Samuel 23:24",
+      "1 Samuel 26:1",
+      "1 Samuel 26:3"
+    ],
+    "parshas": []
   },
   {
     "id": "ab8473d",
@@ -17901,8 +17726,7 @@
       "2 Samuel 3:2",
       "1 Chronicles 3:1"
     ],
-    "parshas": [],
-    "description": "another name for Jezreel 1"
+    "parshas": []
   },
   {
     "id": "a56cad5",
@@ -18094,8 +17918,7 @@
       "Gal 1:22",
       "1Thess 2:14"
     ],
-    "parshas": [],
-    "description": "Judea 1"
+    "parshas": []
   },
   {
     "id": "ab86a69",
@@ -18109,8 +17932,7 @@
       "Ezra 5:8",
       "Ezra 9:9"
     ],
-    "parshas": [],
-    "description": "Judea 2"
+    "parshas": []
   },
   {
     "id": "acc7184",
@@ -18158,6 +17980,20 @@
     ],
     "parshas": [],
     "description": "Tell Nebi Mend"
+  },
+  {
+    "id": "a765bd8",
+    "name": "Kain",
+    "alternateNames": [],
+    "latitude": 31.49627,
+    "longitude": 35.15154,
+    "confidence": "low",
+    "type": "settlement",
+    "verses": [
+      "Joshua 15:57"
+    ],
+    "parshas": [],
+    "description": "Khirbet Bani Dar"
   },
   {
     "id": "a804aeb",
@@ -18306,8 +18142,7 @@
       "Jeremiah 49:28",
       "Ezekiel 27:21"
     ],
-    "parshas": [],
-    "description": "Kedar"
+    "parshas": []
   },
   {
     "id": "a321cb8",
@@ -18469,7 +18304,7 @@
       "Joshua 21:22"
     ],
     "parshas": [],
-    "description": "another name for Jokmeam 2"
+    "description": "another name for Jokmeam"
   },
   {
     "id": "a553110",
@@ -18805,7 +18640,7 @@
       "Joshua 12:18"
     ],
     "parshas": [],
-    "description": "another name for Sharon 1"
+    "description": "another name for Sharon"
   },
   {
     "id": "a9de8b7",
@@ -18861,7 +18696,7 @@
       "1 Chronicles 4:22"
     ],
     "parshas": [],
-    "description": "another name for Bethlehem 1"
+    "description": "another name for Bethlehem"
   },
   {
     "id": "aeeaca0",
@@ -18922,8 +18757,7 @@
       "Nahum 3:9",
       "Acts 2:10"
     ],
-    "parshas": [],
-    "description": "Libya"
+    "parshas": []
   },
   {
     "id": "a376eed",
@@ -18959,8 +18793,7 @@
       "Acts 9:35",
       "Acts 9:38"
     ],
-    "parshas": [],
-    "description": "Lod"
+    "parshas": []
   },
   {
     "id": "a094036",
@@ -19036,8 +18869,7 @@
       "Jeremiah 46:9",
       "Ezekiel 30:5"
     ],
-    "parshas": [],
-    "description": "another name for Lud 1"
+    "parshas": []
   },
   {
     "id": "a91d516",
@@ -19080,8 +18912,7 @@
       "Acts 14:6",
       "Acts 14:11"
     ],
-    "parshas": [],
-    "description": "Lycaonia"
+    "parshas": []
   },
   {
     "id": "a19fd03",
@@ -19094,8 +18925,7 @@
     "verses": [
       "Acts 27:5"
     ],
-    "parshas": [],
-    "description": "Lycia"
+    "parshas": []
   },
   {
     "id": "af0719d",
@@ -19134,8 +18964,7 @@
       "1 Chronicles 19:6",
       "1 Chronicles 19:7"
     ],
-    "parshas": [],
-    "description": "Maacah"
+    "parshas": []
   },
   {
     "id": "ae60c0c",
@@ -19163,7 +18992,7 @@
       "Judges 20:33"
     ],
     "parshas": [],
-    "description": "within 2 km of Gibeah 1"
+    "description": "within 2 km of Gibeah"
   },
   {
     "id": "a69e1b8",
@@ -19199,8 +19028,7 @@
       "1Thess 4:10",
       "1Tim 1:3"
     ],
-    "parshas": [],
-    "description": "Macedonia"
+    "parshas": []
   },
   {
     "id": "a3b7885",
@@ -19535,8 +19363,7 @@
       "Jeremiah 51:28",
       "Daniel 8:20"
     ],
-    "parshas": [],
-    "description": "Media"
+    "parshas": []
   },
   {
     "id": "a8554e3",
@@ -19581,8 +19408,7 @@
       "Ezekiel 30:16",
       "Hosea 9:6"
     ],
-    "parshas": [],
-    "description": "Memphis"
+    "parshas": []
   },
   {
     "id": "a97cb23",
@@ -19613,7 +19439,7 @@
       "Jeremiah 50:21"
     ],
     "parshas": [],
-    "description": "another name for Babylon 1"
+    "description": "another name for Babylon"
   },
   {
     "id": "a662bda",
@@ -19628,7 +19454,7 @@
       "Nehemiah 3:7"
     ],
     "parshas": [],
-    "description": "within 6 km of Mizpah 3"
+    "description": "within 6 km of Mizpah"
   },
   {
     "id": "a8bc4e3",
@@ -19676,7 +19502,7 @@
       "2 Samuel 8:1"
     ],
     "parshas": [],
-    "description": "another name for Gath 1"
+    "description": "another name for Gath"
   },
   {
     "id": "adea06c",
@@ -19800,8 +19626,7 @@
       "Ezekiel 29:10",
       "Ezekiel 30:6"
     ],
-    "parshas": [],
-    "description": "another name for Migdol 2"
+    "parshas": []
   },
   {
     "id": "a4335ba",
@@ -19844,8 +19669,7 @@
       "Acts 20:17",
       "2Tim 4:20"
     ],
-    "parshas": [],
-    "description": "Miletus"
+    "parshas": []
   },
   {
     "id": "a734b66",
@@ -19907,7 +19731,7 @@
       "Jeremiah 48:1"
     ],
     "parshas": [],
-    "description": "in Moab 1"
+    "description": "in Moab"
   },
   {
     "id": "a93f8b6",
@@ -20043,7 +19867,7 @@
       "Joshua 18:26"
     ],
     "parshas": [],
-    "description": "another name for Mizpah 3"
+    "description": "another name for Mizpah"
   },
   {
     "id": "a67990c",
@@ -20071,7 +19895,7 @@
       "1 Samuel 22:3"
     ],
     "parshas": [],
-    "description": "in Moab 1"
+    "description": "in Moab"
   },
   {
     "id": "a03a5d0",
@@ -20169,7 +19993,7 @@
       "Heb 10:20"
     ],
     "parshas": [],
-    "description": "in the Holy Place 2"
+    "description": "in the Holy Place"
   },
   {
     "id": "ac8955e",
@@ -20241,8 +20065,7 @@
       "Micah 7:14",
       "Nahum 1:4"
     ],
-    "parshas": [],
-    "description": "Mount Carmel"
+    "parshas": []
   },
   {
     "id": "ac0d1a5",
@@ -20257,8 +20080,7 @@
       "Jeremiah 31:6",
       "Jeremiah 50:19"
     ],
-    "parshas": [],
-    "description": "Mount Ephraim"
+    "parshas": []
   },
   {
     "id": "a75aff4",
@@ -20289,7 +20111,7 @@
       "Obadiah 1:21"
     ],
     "parshas": [],
-    "description": "another name for Mount Seir 1"
+    "description": "another name for Mount Seir"
   },
   {
     "id": "acf57c5",
@@ -20309,8 +20131,7 @@
       "1 Chronicles 10:1",
       "1 Chronicles 10:8"
     ],
-    "parshas": [],
-    "description": "Mount Gilboa"
+    "parshas": []
   },
   {
     "id": "a954735",
@@ -20353,7 +20174,7 @@
       "Judges 1:35"
     ],
     "parshas": [],
-    "description": "another name for Beth-shemesh 1"
+    "description": "another name for Beth-shemesh"
   },
   {
     "id": "a3587ba",
@@ -20380,8 +20201,7 @@
     "verses": [
       "Judges 3:3"
     ],
-    "parshas": [],
-    "description": "Mount Lebanon"
+    "parshas": []
   },
   {
     "id": "a597123",
@@ -20408,8 +20228,7 @@
     "verses": [
       "2 Chronicles 3:1"
     ],
-    "parshas": [],
-    "description": "Mount Moriah"
+    "parshas": []
   },
   {
     "id": "ac2c4c5",
@@ -20439,8 +20258,7 @@
       "John 8:1",
       "Acts 1:12"
     ],
-    "parshas": [],
-    "description": "Mount of Olives"
+    "parshas": []
   },
   {
     "id": "a991067",
@@ -20555,8 +20373,7 @@
       "Heb 12:22",
       "Rev 14:1"
     ],
-    "parshas": [],
-    "description": "Mount Zion"
+    "parshas": []
   },
   {
     "id": "af35635",
@@ -20597,8 +20414,7 @@
     "verses": [
       "Acts 27:5"
     ],
-    "parshas": [],
-    "description": "Myra"
+    "parshas": []
   },
   {
     "id": "a2d9bc8",
@@ -20612,8 +20428,7 @@
       "Acts 16:7",
       "Acts 16:8"
     ],
-    "parshas": [],
-    "description": "Mysia"
+    "parshas": []
   },
   {
     "id": "ae7bd8b",
@@ -20644,7 +20459,7 @@
       "Job 42:9"
     ],
     "parshas": [],
-    "description": "another name for Sheba 1"
+    "description": "another name for Sheba"
   },
   {
     "id": "a179865",
@@ -20721,7 +20536,7 @@
       "1 Samuel 20:42"
     ],
     "parshas": [],
-    "description": "within 2 km of Ramah 4"
+    "description": "within 2 km of Ramah"
   },
   {
     "id": "ad05040",
@@ -20782,8 +20597,7 @@
       "Acts 22:8",
       "Acts 26:9"
     ],
-    "parshas": [],
-    "description": "Nazareth"
+    "parshas": []
   },
   {
     "id": "a2a77d2",
@@ -20854,8 +20668,7 @@
     "verses": [
       "Ezra 10:43"
     ],
-    "parshas": [],
-    "description": "another name for Nebo 2"
+    "parshas": []
   },
   {
     "id": "a071cb2",
@@ -20991,8 +20804,7 @@
     "verses": [
       "Titus 3:12"
     ],
-    "parshas": [],
-    "description": "Nicopolis"
+    "parshas": []
   },
   {
     "id": "ace3edc",
@@ -21054,8 +20866,7 @@
     "verses": [
       "Judges 8:11"
     ],
-    "parshas": [],
-    "description": "another name for Nobah 1"
+    "parshas": []
   },
   {
     "id": "a244929",
@@ -21077,8 +20888,7 @@
       "Daniel 11:28",
       "Daniel 11:40"
     ],
-    "parshas": [],
-    "description": "North"
+    "parshas": []
   },
   {
     "id": "aa4589b",
@@ -21141,8 +20951,7 @@
       "Nehemiah 3:27",
       "Nehemiah 11:21"
     ],
-    "parshas": [],
-    "description": "Ophel"
+    "parshas": []
   },
   {
     "id": "a104820",
@@ -21229,8 +21038,7 @@
       "Acts 15:38",
       "Acts 27:5"
     ],
-    "parshas": [],
-    "description": "Pamphylia"
+    "parshas": []
   },
   {
     "id": "a314765",
@@ -21286,8 +21094,7 @@
     "verses": [
       "Acts 21:1"
     ],
-    "parshas": [],
-    "description": "Patara"
+    "parshas": []
   },
   {
     "id": "aab30ec",
@@ -21318,8 +21125,7 @@
     "verses": [
       "Rev 1:9"
     ],
-    "parshas": [],
-    "description": "Patmos"
+    "parshas": []
   },
   {
     "id": "a4b9865",
@@ -21333,8 +21139,7 @@
       "Jeremiah 50:21",
       "Ezekiel 23:23"
     ],
-    "parshas": [],
-    "description": "Pekod"
+    "parshas": []
   },
   {
     "id": "aa32a17",
@@ -21393,8 +21198,7 @@
       "Acts 13:14",
       "Acts 14:25"
     ],
-    "parshas": [],
-    "description": "Perga"
+    "parshas": []
   },
   {
     "id": "a75d2c1",
@@ -21448,8 +21252,7 @@
       "Daniel 10:20",
       "Daniel 11:2"
     ],
-    "parshas": [],
-    "description": "Persia"
+    "parshas": []
   },
   {
     "id": "a8d054a",
@@ -21494,8 +21297,7 @@
       "Phil 1:1",
       "1Thess 2:2"
     ],
-    "parshas": [],
-    "description": "Philippi"
+    "parshas": []
   },
   {
     "id": "a33d53e",
@@ -21511,8 +21313,7 @@
       "Acts 15:3",
       "Acts 21:2"
     ],
-    "parshas": [],
-    "description": "Phoenicia"
+    "parshas": []
   },
   {
     "id": "a9ee958",
@@ -21541,8 +21342,7 @@
       "Acts 16:6",
       "Acts 18:23"
     ],
-    "parshas": [],
-    "description": "Phrygia"
+    "parshas": []
   },
   {
     "id": "a2cd991",
@@ -21588,8 +21388,7 @@
       "Acts 13:14",
       "Acts 14:24"
     ],
-    "parshas": [],
-    "description": "Pisidia"
+    "parshas": []
   },
   {
     "id": "a83a43e",
@@ -21604,8 +21403,7 @@
       "Acts 18:2",
       "1Pet 1:1"
     ],
-    "parshas": [],
-    "description": "Pontus"
+    "parshas": []
   },
   {
     "id": "a70e895",
@@ -21708,7 +21506,7 @@
       "1 Samuel 30:29"
     ],
     "parshas": [],
-    "description": "another name for Carmel 1"
+    "description": "another name for Carmel"
   },
   {
     "id": "a204528",
@@ -21861,8 +21659,7 @@
     "verses": [
       "Nehemiah 11:33"
     ],
-    "parshas": [],
-    "description": "another name for Ramah 1"
+    "parshas": []
   },
   {
     "id": "a15bdfd",
@@ -21876,7 +21673,7 @@
       "1 Samuel 22:6"
     ],
     "parshas": [],
-    "description": "within 1 km of Gibeah 1"
+    "description": "within 1 km of Gibeah"
   },
   {
     "id": "ad42cdc",
@@ -21889,8 +21686,7 @@
     "verses": [
       "1 Chronicles 27:27"
     ],
-    "parshas": [],
-    "description": "another name for Ramah 1"
+    "parshas": []
   },
   {
     "id": "a601121",
@@ -21918,7 +21714,7 @@
       "Joshua 13:26"
     ],
     "parshas": [],
-    "description": "another name for Mizpah 1"
+    "description": "another name for Mizpah"
   },
   {
     "id": "a54ef72",
@@ -21932,7 +21728,7 @@
       "1 Samuel 1:1"
     ],
     "parshas": [],
-    "description": "another name for Ramah 4"
+    "description": "another name for Ramah"
   },
   {
     "id": "ada2a0b",
@@ -21960,7 +21756,7 @@
       "1 Samuel 30:27"
     ],
     "parshas": [],
-    "description": "another name for Ramah 6"
+    "description": "another name for Ramah"
   },
   {
     "id": "a2fe63c",
@@ -22007,7 +21803,7 @@
       "1 Chronicles 4:12"
     ],
     "parshas": [],
-    "description": "within 5 km of Bethlehem 1"
+    "description": "within 5 km of Bethlehem"
   },
   {
     "id": "aaf5fef",
@@ -22066,7 +21862,7 @@
       "Joshua 19:21"
     ],
     "parshas": [],
-    "description": "another name for Ramoth 1"
+    "description": "another name for Ramoth"
   },
   {
     "id": "aefdac1",
@@ -22094,8 +21890,7 @@
     "verses": [
       "Acts 21:1"
     ],
-    "parshas": [],
-    "description": "Rhodes"
+    "parshas": []
   },
   {
     "id": "a8c207b",
@@ -22108,8 +21903,7 @@
     "verses": [
       "Ezekiel 27:15"
     ],
-    "parshas": [],
-    "description": "Rhodes"
+    "parshas": []
   },
   {
     "id": "ab2bde8",
@@ -22195,7 +21989,7 @@
       "1 Chronicles 6:77"
     ],
     "parshas": [],
-    "description": "another name for Rimmon 3"
+    "description": "another name for Rimmon"
   },
   {
     "id": "a897bdb",
@@ -22265,8 +22059,7 @@
     "verses": [
       "Acts 13:5"
     ],
-    "parshas": [],
-    "description": "Salamis"
+    "parshas": []
   },
   {
     "id": "a86e0b0",
@@ -22419,8 +22212,7 @@
       "Micah 1:6",
       "Micah 1:9"
     ],
-    "parshas": [],
-    "description": "Samaria"
+    "parshas": []
   },
   {
     "id": "a282dce",
@@ -22445,8 +22237,7 @@
       "Acts 9:31",
       "Acts 15:3"
     ],
-    "parshas": [],
-    "description": "Samaria 2"
+    "parshas": []
   },
   {
     "id": "acf6ec0",
@@ -22459,8 +22250,7 @@
     "verses": [
       "Acts 20:15"
     ],
-    "parshas": [],
-    "description": "Samos"
+    "parshas": []
   },
   {
     "id": "a68750d",
@@ -22503,8 +22293,7 @@
       "Rev 3:1",
       "Rev 3:4"
     ],
-    "parshas": [],
-    "description": "Sardis"
+    "parshas": []
   },
   {
     "id": "ab5b542",
@@ -22533,7 +22322,7 @@
       "Isaiah 11:15"
     ],
     "parshas": [],
-    "description": "another name for the Red Sea 1"
+    "description": "another name for the Red Sea"
   },
   {
     "id": "ad259d1",
@@ -22636,8 +22425,7 @@
       "2 Kings 14:7",
       "Isaiah 42:11"
     ],
-    "parshas": [],
-    "description": "Sela"
+    "parshas": []
   },
   {
     "id": "a6343cc",
@@ -22650,8 +22438,7 @@
     "verses": [
       "Isaiah 16:1"
     ],
-    "parshas": [],
-    "description": "another name for Sela 2"
+    "parshas": []
   },
   {
     "id": "a6d306d",
@@ -22694,8 +22481,7 @@
     "verses": [
       "1 Samuel 14:4"
     ],
-    "parshas": [],
-    "description": "Seneh"
+    "parshas": []
   },
   {
     "id": "a0a98de",
@@ -22801,8 +22587,7 @@
       "Joshua 15:36",
       "1 Samuel 17:52"
     ],
-    "parshas": [],
-    "description": "another name for Shaaraim 2"
+    "parshas": []
   },
   {
     "id": "a488856",
@@ -22886,8 +22671,7 @@
       "Judges 10:1",
       "Judges 10:2"
     ],
-    "parshas": [],
-    "description": "another name for Shamir 1"
+    "parshas": []
   },
   {
     "id": "a7b3f5d",
@@ -22901,7 +22685,7 @@
       "Micah 1:11"
     ],
     "parshas": [],
-    "description": "another name for Shamir 1"
+    "description": "another name for Shamir"
   },
   {
     "id": "a83fd43",
@@ -22978,8 +22762,7 @@
       "Ezekiel 38:13",
       "Joel 3:8"
     ],
-    "parshas": [],
-    "description": "Sheba"
+    "parshas": []
   },
   {
     "id": "ae44746",
@@ -23007,7 +22790,7 @@
       "Joshua 7:5"
     ],
     "parshas": [],
-    "description": "within 2 km of Ai 1"
+    "description": "within 2 km of Ai"
   },
   {
     "id": "aa3d425",
@@ -23067,7 +22850,7 @@
       "Jeremiah 51:41"
     ],
     "parshas": [],
-    "description": "another name for Babylon 1"
+    "description": "another name for Babylon"
   },
   {
     "id": "a305f43",
@@ -23138,7 +22921,7 @@
       "Joshua 15:32"
     ],
     "parshas": [],
-    "description": "another name for Shaaraim 2"
+    "description": "another name for Shaaraim"
   },
   {
     "id": "ae71673",
@@ -23153,6 +22936,55 @@
     ],
     "parshas": [],
     "description": "another name for Siloam"
+  },
+  {
+    "id": "aa4680a",
+    "name": "Shiloh",
+    "alternateNames": [],
+    "latitude": 32.055703,
+    "longitude": 35.289536,
+    "confidence": "medium",
+    "type": "settlement",
+    "verses": [
+      "Joshua 18:1",
+      "Joshua 18:8",
+      "Joshua 18:9",
+      "Joshua 18:10",
+      "Joshua 19:51",
+      "Joshua 21:2",
+      "Joshua 22:9",
+      "Joshua 22:12",
+      "Judges 18:31",
+      "Judges 21:12",
+      "Judges 21:19",
+      "Judges 21:21",
+      "1 Samuel 1:3",
+      "1 Samuel 1:9",
+      "1 Samuel 1:24",
+      "1 Samuel 2:14",
+      "1 Samuel 3:21",
+      "1 Samuel 4:3",
+      "1 Samuel 4:4",
+      "1 Samuel 4:12",
+      "1 Samuel 4:13",
+      "1 Samuel 14:3",
+      "1 Kings 2:27",
+      "1 Kings 11:29",
+      "1 Kings 12:15",
+      "1 Kings 14:2",
+      "1 Kings 14:4",
+      "1 Kings 15:29",
+      "2 Chronicles 9:29",
+      "2 Chronicles 10:15",
+      "Psalms 78:60",
+      "Jeremiah 7:12",
+      "Jeremiah 7:14",
+      "Jeremiah 26:6",
+      "Jeremiah 26:9",
+      "Jeremiah 41:5"
+    ],
+    "parshas": [],
+    "description": "Khirbet Seilun"
   },
   {
     "id": "a072bae",
@@ -23223,7 +23055,7 @@
       "1 Samuel 13:17"
     ],
     "parshas": [],
-    "description": "within 10 km of Ophrah 1"
+    "description": "within 10 km of Ophrah"
   },
   {
     "id": "ac86af5",
@@ -23424,7 +23256,7 @@
       "Luke 11:31"
     ],
     "parshas": [],
-    "description": "another name for Sheba 1"
+    "description": "another name for Sheba"
   },
   {
     "id": "a1c0469",
@@ -23448,8 +23280,7 @@
       "Daniel 11:29",
       "Daniel 11:40"
     ],
-    "parshas": [],
-    "description": "South 3"
+    "parshas": []
   },
   {
     "id": "a092025",
@@ -23476,8 +23307,7 @@
     "verses": [
       "Acts 9:11"
     ],
-    "parshas": [],
-    "description": "Straight Street"
+    "parshas": []
   },
   {
     "id": "aadfb8f",
@@ -23676,8 +23506,7 @@
       "Acts 21:3",
       "Gal 1:21"
     ],
-    "parshas": [],
-    "description": "Syria 2"
+    "parshas": []
   },
   {
     "id": "a6f05f6",
@@ -23767,7 +23596,7 @@
       "1 Samuel 10:3"
     ],
     "parshas": [],
-    "description": "within 2 km of Bethel 1"
+    "description": "within 2 km of Bethel"
   },
   {
     "id": "ad797fe",
@@ -23814,8 +23643,7 @@
     "verses": [
       "1 Kings 9:18"
     ],
-    "parshas": [],
-    "description": "another name for Tamar 2"
+    "parshas": []
   },
   {
     "id": "a5947d7",
@@ -23892,8 +23720,7 @@
       "Acts 21:39",
       "Acts 22:3"
     ],
-    "parshas": [],
-    "description": "Tarsus"
+    "parshas": []
   },
   {
     "id": "a2e3aa0",
@@ -24029,7 +23856,7 @@
       "Habakkuk 3:3"
     ],
     "parshas": [],
-    "description": "about 30 km around Bozrah 1"
+    "description": "about 30 km around Bozrah"
   },
   {
     "id": "a012194",
@@ -24061,8 +23888,7 @@
       "Nahum 3:8",
       "Nahum 3:10"
     ],
-    "parshas": [],
-    "description": "Thebes"
+    "parshas": []
   },
   {
     "id": "a5d1690",
@@ -24129,8 +23955,7 @@
     "verses": [
       "John 6:23"
     ],
-    "parshas": [],
-    "description": "Tiberias"
+    "parshas": []
   },
   {
     "id": "a7cdf52",
@@ -24225,7 +24050,7 @@
       "2 Kings 15:16"
     ],
     "parshas": [],
-    "description": "another name for Tappuah 1"
+    "description": "another name for Tappuah"
   },
   {
     "id": "a80d317",
@@ -24525,8 +24350,7 @@
       "Acts 21:3",
       "Acts 21:7"
     ],
-    "parshas": [],
-    "description": "Tyre"
+    "parshas": []
   },
   {
     "id": "a7a7549",
@@ -24796,8 +24620,7 @@
       "1 Samuel 17:19",
       "1 Samuel 21:9"
     ],
-    "parshas": [],
-    "description": "Valley of Elah"
+    "parshas": []
   },
   {
     "id": "a8c579d",
@@ -24810,8 +24633,7 @@
     "verses": [
       "Isaiah 28:21"
     ],
-    "parshas": [],
-    "description": "Valley of Gibeon"
+    "parshas": []
   },
   {
     "id": "a2109c3",
@@ -24880,8 +24702,7 @@
       "Joel 3:2",
       "Joel 3:12"
     ],
-    "parshas": [],
-    "description": "Valley of Jehoshaphat"
+    "parshas": []
   },
   {
     "id": "aa516c2",
@@ -24928,7 +24749,7 @@
       "Joshua 11:8"
     ],
     "parshas": [],
-    "description": "about 10 km around Mizpah 2"
+    "description": "about 10 km around Mizpah"
   },
   {
     "id": "a7559e6",
@@ -24948,8 +24769,7 @@
       "1 Chronicles 14:9",
       "Isaiah 17:5"
     ],
-    "parshas": [],
-    "description": "Valley of Rephaim"
+    "parshas": []
   },
   {
     "id": "af936bd",
@@ -25009,8 +24829,7 @@
       "Psalms 60:6",
       "Psalms 108:7"
     ],
-    "parshas": [],
-    "description": "Valley of Succoth"
+    "parshas": []
   },
   {
     "id": "a7c5927",
@@ -25054,7 +24873,7 @@
       "Isaiah 36:2"
     ],
     "parshas": [],
-    "description": "within 500 m of Gihon 2"
+    "description": "within 500 m of Gihon"
   },
   {
     "id": "a0293ff",
@@ -25143,8 +24962,7 @@
       "1 Samuel 23:24",
       "1 Samuel 23:25"
     ],
-    "parshas": [],
-    "description": "Wilderness of Maon"
+    "parshas": []
   },
   {
     "id": "a50057d",
@@ -25159,8 +24977,7 @@
       "1 Samuel 23:15",
       "1 Samuel 26:2"
     ],
-    "parshas": [],
-    "description": "Wilderness of Ziph"
+    "parshas": []
   },
   {
     "id": "adea7b0",
@@ -25480,7 +25297,7 @@
       "Judges 7:22"
     ],
     "parshas": [],
-    "description": "another name for Zeredah 2"
+    "description": "another name for Zeredah"
   },
   {
     "id": "a31a510",
@@ -25795,8 +25612,7 @@
       "1 Chronicles 19:6",
       "Psalms 60:1"
     ],
-    "parshas": [],
-    "description": "Zobah"
+    "parshas": []
   },
   {
     "id": "a08174b",

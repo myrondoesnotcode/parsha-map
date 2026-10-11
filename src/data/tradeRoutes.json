@@ -7,7 +7,7 @@
         "id": "via-maris",
         "name": "Via Maris",
         "nameHe": "דֶּרֶךְ הַיָּם",
-        "context": "\"Way of the Sea\" — Israel deliberately avoided this road fleeing Egypt (Exod 13:17); Abraham traveled it to Egypt (Gen 12)",
+        "context": "The coastal road between Egypt and Canaan. Many identify it with “the way of the land of the Philistines”, which God did not lead Israel by after they left Egypt (Exod 13:17).",
         "activeFrom": 3000,
         "activeTo": 400,
         "color": "#E67E22",
@@ -92,11 +92,11 @@
         "id": "great-trunk-road",
         "name": "Euphrates Route",
         "nameHe": "דֶּרֶךְ הַנָּהָר",
-        "context": "Abraham's migration path from Ur through Haran down to Canaan (Gen 11–12)",
+        "context": "Genesis names the stops on Abram’s family’s journey (Ur, Haran, Canaan; Gen 11:31–12:5) but not the roads they took.",
         "activeFrom": 3000,
         "activeTo": 400,
         "color": "#1ABC9C",
-        "description": "The inland route following the Euphrates River connecting Mesopotamia (Babylon, Ur) with northern Syria and Anatolia. Used by Abraham's migration from Ur to Haran.",
+        "description": "The inland route following the Euphrates River connecting Mesopotamia (Babylon, Ur) with northern Syria and Anatolia.",
         "biblicalRef": "Genesis 11:31"
       },
       "geometry": {

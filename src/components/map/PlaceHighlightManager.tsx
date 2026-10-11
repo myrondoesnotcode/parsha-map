@@ -2,9 +2,10 @@ import { useEffect } from 'react'
 import { useMap } from 'react-leaflet'
 import { useAppStore } from '../../store/useAppStore'
 import placesData from '../../data/places.json'
-import type { Place } from '../../types/places'
+import { isPinned, type Place, type PinnedPlace } from '../../types/places'
 
-const allPlaces = placesData as Place[]
+// The map can only show places with a known site; unpinned ones carry a locationNote instead.
+const allPlaces: PinnedPlace[] = (placesData as Place[]).filter(isPinned)
 
 export function PlaceHighlightManager() {
   const map = useMap()

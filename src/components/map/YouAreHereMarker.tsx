@@ -1,6 +1,6 @@
 import { Marker } from 'react-leaflet'
 import L from 'leaflet'
-import type { Place } from '../../types/places'
+import type { PinnedPlace } from '../../types/places'
 import { getCentroidOfPlaces } from '../../utils/placeUtils'
 import { useAppStore } from '../../store/useAppStore'
 import { getParshaById } from '../../utils/parshaUtils'
@@ -53,7 +53,7 @@ function makeYouAreHereIcon(parshaName: string) {
 }
 
 interface Props {
-  places: Place[]
+  places: PinnedPlace[]
 }
 
 export function YouAreHereMarker({ places }: Props) {
